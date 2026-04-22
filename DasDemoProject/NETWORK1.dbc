@@ -1,0 +1,132 @@
+VERSION ""
+
+
+NS_ :
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	SIG_VALTYPE_
+	BU_BO_REL_
+
+BS_:
+
+
+BU_: CU_3606_21 
+
+BO_ 385 _CU_3606_21_TPDO1: 6 CU_3606_21
+ SG_ Joystick : 0|16@1- (1,0) [-32768|32767] "" Vector__XXX
+ SG_ SensorMeter : 16|16@1- (1,0) [-32768|32767] "" Vector__XXX
+ SG_ SwitchFoot : 32|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SwitchEmergency : 33|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DigitalInput_Bit2 : 34|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DigitalInput_Bit3 : 35|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DigitalInput_Bit4 : 36|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DigitalInput_Bit5 : 37|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DigitalInput_Bit6 : 38|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DigitalInput_Bit7 : 39|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ LED1 : 40|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ LED2 : 41|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DigitalOutput_Bit2 : 42|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DigitalOutput_Bit3 : 43|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DigitalOutput_Bit4 : 44|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DigitalOutput_Bit5 : 45|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DigitalOutput_Bit6 : 46|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DigitalOutput_Bit7 : 47|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 641 _CU_3606_21_TPDO2: 6 CU_3606_21
+ SG_ ValveUpPWM : 0|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ ValveDnPWM : 16|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ FeedbackCurrent : 32|16@1+ (1,0) [0|65535] "" Vector__XXX
+
+BO_ 512 RPDO1: 1 Vector__XXX
+ SG_ Ctrl_JogCalibration : 0|1@1+ (1,0) [0|1] "" CU_3606_21
+ SG_ Ctrl_Bit1 : 1|1@1+ (1,0) [0|1] "" CU_3606_21
+ SG_ Ctrl_Bit2 : 2|1@1+ (1,0) [0|1] "" CU_3606_21
+ SG_ Ctrl_Bit3 : 3|1@1+ (1,0) [0|1] "" CU_3606_21
+ SG_ Ctrl_Bit4 : 4|1@1+ (1,0) [0|1] "" CU_3606_21
+ SG_ Ctrl_Bit5 : 5|1@1+ (1,0) [0|1] "" CU_3606_21
+ SG_ Ctrl_Bit6 : 6|1@1+ (1,0) [0|1] "" CU_3606_21
+ SG_ Ctrl_Bit7 : 7|1@1+ (1,0) [0|1] "" CU_3606_21
+
+CM_ SG_ 385 SwitchFoot "Bit[0]";
+CM_ SG_ 385 SwitchEmergency "Bit[1]";
+CM_ SG_ 385 DigitalInput_Bit2 "Bit[2]";
+CM_ SG_ 385 DigitalInput_Bit3 "Bit[3]";
+CM_ SG_ 385 DigitalInput_Bit4 "Bit[4]";
+CM_ SG_ 385 DigitalInput_Bit5 "Bit[5]";
+CM_ SG_ 385 DigitalInput_Bit6 "Bit[6]";
+CM_ SG_ 385 DigitalInput_Bit7 "Bit[7]";
+CM_ SG_ 385 LED1 "Bit[0]";
+CM_ SG_ 385 LED2 "Bit[1]";
+CM_ SG_ 385 DigitalOutput_Bit2 "Bit[2]";
+CM_ SG_ 385 DigitalOutput_Bit3 "Bit[3]";
+CM_ SG_ 385 DigitalOutput_Bit4 "Bit[4]";
+CM_ SG_ 385 DigitalOutput_Bit5 "Bit[5]";
+CM_ SG_ 385 DigitalOutput_Bit6 "Bit[6]";
+CM_ SG_ 385 DigitalOutput_Bit7 "Bit[7]";
+CM_ SG_ 512 Ctrl_JogCalibration "Bit[0]";
+CM_ SG_ 512 Ctrl_Bit1 "Bit[1]";
+CM_ SG_ 512 Ctrl_Bit2 "Bit[2]";
+CM_ SG_ 512 Ctrl_Bit3 "Bit[3]";
+CM_ SG_ 512 Ctrl_Bit4 "Bit[4]";
+CM_ SG_ 512 Ctrl_Bit5 "Bit[5]";
+CM_ SG_ 512 Ctrl_Bit6 "Bit[6]";
+CM_ SG_ 512 Ctrl_Bit7 "Bit[7]";
+BA_DEF_   "ProtocolType" STRING ;
+BA_DEF_   "BusType" STRING ;
+BA_DEF_ BU_  "NmJ1939IndustryGroup" INT 0 7;
+BA_DEF_ BU_  "NmJ1939Function" INT 0 255;
+BA_DEF_ BU_  "NmStationAddress" INT 0 255;
+BA_DEF_ BU_  "NmJ1939System" INT 0 127;
+BA_DEF_ BU_  "NmJ1939SystemInstance" INT 0 15;
+BA_DEF_ BU_  "NmJ1939FunctionInstance" INT 0 31;
+BA_DEF_ BU_  "NmJ1939ECUInstance" INT 0 7;
+BA_DEF_ BU_  "NmJ1939ManufacturerCode" INT 0 2047;
+BA_DEF_ BU_  "NmJ1939IdentityNumber" INT 0 2097151;
+BA_DEF_ BU_  "NmJ1939AAC" INT 0 1;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 3600000;
+BA_DEF_ BO_  "VFrameFormat" ENUM "StandardCAN","ExtendedCAN","reserved","J1939PG";
+BA_DEF_ BO_  "FsJ1939NeedsSHM" ENUM "No","Yes";
+BA_DEF_ BO_  "FastPacketTransfer" ENUM "No","Yes";
+BA_DEF_DEF_ "ProtocolType" "J1939";
+BA_DEF_DEF_ "BusType" "CAN";
+BA_DEF_DEF_ "NmJ1939IndustryGroup" 2;
+BA_DEF_DEF_ "NmJ1939Function" 255;
+BA_DEF_DEF_ "NmStationAddress" 128;
+BA_DEF_DEF_ "NmJ1939System" 127;
+BA_DEF_DEF_ "NmJ1939SystemInstance" 0;
+BA_DEF_DEF_ "NmJ1939FunctionInstance" 0;
+BA_DEF_DEF_ "NmJ1939ECUInstance" 0;
+BA_DEF_DEF_ "NmJ1939ManufacturerCode" 0;
+BA_DEF_DEF_ "NmJ1939IdentityNumber" 0;
+BA_DEF_DEF_ "NmJ1939AAC" 1;
+BA_DEF_DEF_ "GenMsgCycleTime" 0;
+BA_DEF_DEF_ "VFrameFormat" "StandardCAN";
+BA_DEF_DEF_ "FsJ1939NeedsSHM" "No";
+BA_DEF_DEF_ "FastPacketTransfer" "No";
+BA_ "BusType" "CAN";
+BA_ "ProtocolType" "J1939";
+

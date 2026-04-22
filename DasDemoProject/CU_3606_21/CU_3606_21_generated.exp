@@ -1,0 +1,2563 @@
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'Code_Template_globals' *)
+(* @PATH := 'Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL CONSTANT
+	G_MAX_NUMBER_OF_COBIDS:DWORD:=100;
+	G_CANOPEN_NUMBER_OF_LAST_PDO_MAP:WORD:=8;
+	G_CANOPEN_OD_SAVE_MAX_IND_SIZE:WORD:=1020;
+	G_CANVXD_CAN1_USE_BUFFER:BOOL:=TRUE;
+
+END_VAR
+
+VAR_GLOBAL
+(*START - Implicit variables, made by EPEC Parser*)
+	G_AIBufferOf_SupplyVolt:IO_SET_AI_BUFFER; (* Function block for AI filtering. *)
+	G_AIBufferOf_PcbTemperature:IO_SET_AI_BUFFER; (* Function block for AI filtering. *)
+	G_AIBufferOf_Ref5V:IO_SET_AI_BUFFER; (* Function block for AI filtering. *)
+	G_AIBufferOf_Ref2_5V:IO_SET_AI_BUFFER; (* Function block for AI filtering. *)
+	G_HWDiagnostics:HWD_Measurements; (* Function block instance which is used for voltage and temperature monitoring. *)
+	G_AddAllAutoGenEventsToLog:BOOL := TRUE; (* Add all automatically generated events to log. *)
+	G_OffDelayForAutoGenEvents:WORD := 50; (* Off delay for automatically generated events. *)
+	G_OnDelayForAutoGenEvents:WORD := 100; (* On delay for automatically generated events. *)
+	G_LowLimitForParameterSaving:WORD := 900; (* Variable defines low limit for parameter saving [0.01V]. Compared votlage is read from HWD_Measurements function block. If read voltage is smaller than defined value parameter saving is not started. *)
+	G_DebounceDI_SW_FOOT:Filters_DebounceDI_Fast := 0; (* Pin 1.14 *)
+	G_DebounceDI_SW_EMERGENCY:Filters_DebounceDI_Fast := 0; (* Pin 1.15 *)
+	G_AIBufferOf_JOYSTICK_MV:IO_SET_AI_BUFFER := 0; (* Pin 1.20 *)
+	G_AIBufferOf_SENSOR_MV:IO_SET_AI_BUFFER := 0; (* Pin 1.21 *)
+	G_AIBufferOf_VALVE_UPDN_CURRENT:IO_SET_AI_BUFFER := 0; (* Pin 1.22 *)
+	G_SystemOk:BOOL:=FALSE;
+	G_TempHighLimit:INT:=1050;
+	G_TempLowLimit:INT:=-400;
+	G_SupplyVoltageHighLimit:INT:=3300;
+	G_SupplyVoltageLowLimit:INT:=900;
+	G_Ref5VHighLimit:INT:=550;
+	G_Ref5VLowLimit:INT:=450;
+	G_CycleTimeHighLimit:INT:=30;
+	G_Ref2V5HighLimit:INT:=300;
+	G_Ref2V5LowLimit:INT:=200;
+
+(*Init Flags*)
+
+	G_InitEntryReady:BOOL:=FALSE;
+	G_InitFlashReady:BOOL:=FALSE;
+	G_InitIOReady:BOOL:=FALSE;
+	G_InitBusReady:BOOL:=FALSE;
+	G_InitProtocolsCan1Ready:BOOL:=FALSE;
+	G_InitProtocolsCan2Ready:BOOL:=FALSE;
+	G_InitIsobusCan1Ready:BOOL:=FALSE;
+	G_InitIsobusCan2Ready:BOOL:=FALSE;
+	G_InitEventsReady:BOOL:=FALSE;
+	G_InitExitReady:BOOL:=FALSE;
+	G_ActiveError:BOOL:=FALSE;
+
+	G_FileSysDir:POINTER TO FileSysDirBlock;  		(* Pointer to file system block which contains dir. *)
+	G_FileSysKeyWord:DWORD:=16#70F8E809;       (* Keyword which is used to check match between file system and Codesys project. *)
+	G_RESET_MODULE:BOOL:=FALSE;							        (* Setting this flag to TRUE, resets module in the end of the application cycle. *)
+
+	G_3606_ErrFileSysInit:DINT:=0;					      (* Possible error code from file system init *)
+	G_3606_ErrFastParamsLoad:INT := 0;				    (* Possible error code when loading fast parameters from NVRAM *)
+	G_3606_ErrParamsLoad:INT := 0;					      (* Possible error code when loading parameter image from NVRAM *)
+	G_3606_NvLoadStarted:BOOL:=FALSE;				      (* Tells that NvLoad has been started. *)
+	G_3606_OldImageChanged:DWORD;					        (* Counter which is used to store latest counter value for RAM image. *)
+	G_3606_CommsSaveOldCnt:WORD;		              (* Variable contains latest value for number od comms save commands. *)
+	G_3606_CommsRestoreOldCnt:WORD;               (* Variable contains latest value for number od comms restore commands. *)
+
+(*Error codes*)
+
+(* Global NodeIds *)
+	G_NodeIds:ARRAY[1..1] OF INT := 1;
+
+
+	G_CAN1_CANopenDevice: CANopenDev;
+	G_CAN1_CANopenDevice_OD: CANopenOD;(*Description of ObjectDictionary*)
+	G_CAN1_CANopenDevice_ODEntrys: ARRAY [1..83] OF CANopenOD_ENTRY;(*ObjectDictionary data*)
+	G_CAN1_CANopenDevice_Protocols:ARRAY [1..7] OF CANopenProtocolEntry;(*Used protocols - NMT, OD, SSDO, SYNC & HBCons always exist*)
+	G_CAN1_CANopenDevice_NMT: CANopenNMT;
+	G_CAN1_CANopenDevice_SSDO: CANopenSSDO;
+	G_CAN1_CANopenDevice_SYNC: CANopenSYNC  := (COBID := 16#80);
+	G_CAN1_CANopenDevice_HBConsumer:CANopenHeartBeatConsumer; (*HeartBeat Consumer protocol*)
+	G_CAN1_CANopenDevice_TPDOS:ARRAY [1..2] OF CANopenPDO;
+	G_CAN1_CANopenDevice_TPDODesc:CANopenDefPDO;
+	G_CAN1_CANopenDevice_RPDOS:ARRAY [1..1] OF CANopenPDO;
+	G_CAN1_CANopenDevice_RPDODesc:CANopenDefPDO;
+	G_CAN1_CANopenDevice_SaveData:ARRAY [0..3] OF sSaveIndexData :=
+				(StartIndex:=16#1000, EndIndex:=16#FFFF, FileName:='Device1.Par'),
+				(StartIndex:=16#1000, EndIndex:=16#1FFF, FileName:='Device1.Par'),
+				(StartIndex:=16#2000, EndIndex:=16#FFFF, FileName:='Device1.Par'),
+				(StartIndex:=16#0000, EndIndex:=16#0000, FileName:='Device1.Par');
+	G_CAN1_CANopenDevice_SaveSubData1010h:sODSave:= (SubService:=Save,Sub1Count:=0,pNext:=0,NumOfEntrys:=4,SaveIndexData:=0,SaveSigns:=0,NextOD:=0);
+	G_CAN1_CANopenDevice_SaveSigns1010:ARRAY [0..3] OF DWORD;
+
+
+(*Init diagnostics CAN1*)
+	G_CAN1_Diagnostics:CANVXDDiagnostic;
+(*Init monitoring CAN1*)
+	G_CAN1_NetworkManager:NM_NetworkManager;
+
+
+(*Initialize type definitions for structs to be added into CAN1 OD*)
+	G_CAN1_DEFSTRUCT_DATATYPES_40h:ARRAY [1..8] OF WORD:= 6,6,6,6,6,6,6,6;
+	G_CAN1_DEFSTRUCT_DATATYPES_41h:ARRAY [1..16] OF WORD:= 6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6;
+	G_CAN1_DEFSTRUCT_DATATYPES_42h:ARRAY [1..11] OF WORD:= 6,6,6,6,6,6,6,6,6,6,6;
+	G_CAN1_DEFSTRUCT_DATATYPES_43h:ARRAY [1..2] OF WORD:= 6,6;
+
+
+(*END - Implicit variables, made by EPEC Parser*)
+END_VAR
+(* @OBJECT_END := 'Code_Template_globals' *)
+(* @CONNECTIONS :=Code_Template_globals
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'IO' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+
+VAR_GLOBAL
+
+	PWM_RATIO_VAVLE_UP AT %QW16:WORD := 0; (* Pin 1.2 *)
+	PWFM_FREQ_VAVLE_UP AT %QW112:WORD := 140; (* Pin 1.2 *)
+
+	PWM_RATIO_VAVLE_DN AT %QW18:WORD := 0; (* Pin 1.3 *)
+	PWFM_FREQ_VAVLE_DN AT %QW113:WORD := 140; (* Pin 1.3 *)
+
+	DO_LED1 AT %QW20:BOOL := FALSE; (* Pin 1.7 *)
+	DOS_LED1 AT %IX12.1:BOOL := FALSE; (* Pin 1.7 *)
+
+	DO_LED2 AT %QW22:BOOL := FALSE; (* Pin 1.8 *)
+	DOS_LED2 AT %IX4.7:BOOL := FALSE; (* Pin 1.8 *)
+
+	DI_SW_FOOT:BOOL := FALSE; (* Pin 1.14 *)
+
+	DI_SW_EMERGENCY:BOOL := FALSE; (* Pin 1.15 *)
+
+	AI_JOYSTICK_MV:WORD := 0; (* Pin 1.20 *)
+
+	AI_SENSOR_MV:WORD := 0; (* Pin 1.21 *)
+
+	FB_VALVE_UPDN_CURRENT:WORD := 0; (* Pin 1.22 *)
+END_VAR
+(* @OBJECT_END := 'IO' *)
+(* @CONNECTIONS :=IO
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'SYSTEM' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+
+VAR_GLOBAL
+	SYSTEM_FW_VERSION:STRING := 'X.X.X';
+	SYSTEM_ControlUnitType:DWORD := 0; (* Type for control unit. *)
+	SYSTEM_ControlUnitRevision:DWORD := 0; (* Revision for control unit *)
+	SYSTEM_SerialNumber:DWORD := 0; (* Serial number for control unit *)
+	SYSTEM_VendorId:DWORD := 0; (* [Vendor-ID which is read from firmware *)
+END_VAR
+(* @OBJECT_END := 'SYSTEM' *)
+(* @CONNECTIONS :=SYSTEM
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'IO_RAW' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+
+VAR_GLOBAL
+	AiSupplyAiFiltArrayIndex:BYTE := 0; (* Index which points last added conversion result in array. *)
+	AI_RAW_SupplyVolt AT %IW19:WORD := 0; (* Raw value for control unit supply voltage measurement. *)
+	AI_ARR_SupplyVolt:ARRAY [1..50] OF WORD; (* Array of 50 latest conversion values for supplyvolt measurement. *)
+	AI_ARR_INDEX_PcbTemperature:BYTE := 0; (* Index which points last added conversion result in array. *)
+	AI_RAW_PcbTemperature AT %IW18:WORD := 0; (* Raw value for control unit's PCB temperature measurement. *)
+	AI_ARR_PcbTemperature:ARRAY [1..50] OF WORD; (* Array of 50 latest conversion values for pcbtemperature measurement. *)
+	AI_ARR_INDEX_Ref5V:BYTE := 0; (* Index which points last added conversion result in array. *)
+	AI_RAW_Ref5V AT %IW16:WORD := 0; (* Raw value for control unit 5 V reference voltage measurement. *)
+	AI_ARR_Ref5V:ARRAY [1..50] OF WORD; (* Array of 50 latest conversion values for ref5v measurement. *)
+	AI_ARR_INDEX_Ref2_5V:BYTE := 0; (* Index which points last added conversion result in array. *)
+	AI_RAW_Ref2_5V AT %IW17:WORD := 0; (* Raw value for control unit 2.5 V reference voltage measurement. *)
+	AI_ARR_Ref2_5V:ARRAY [1..50] OF WORD; (* Array of 50 latest conversion values for ref2_5v measurement. *)
+
+
+	DI_RAW_SW_FOOT AT %IX13.2:BOOL := FALSE; (* Pin 1.14 *)
+
+	DI_RAW_SW_EMERGENCY AT %IX13.0:BOOL := FALSE; (* Pin 1.15 *)
+
+	AI_ARR_JOYSTICK_MV:ARRAY [0..49] OF WORD; (* Pin 1.20 *)
+	AI_ARR_INDEX_JOYSTICK_MV:BYTE := 0; (* Pin 1.20 *)
+	AI_RAW_JOYSTICK_MV AT %IW27:WORD := 0; (* Pin 1.20 *)
+
+	AI_ARR_SENSOR_MV:ARRAY [0..49] OF WORD; (* Pin 1.21 *)
+	AI_ARR_INDEX_SENSOR_MV:BYTE := 0; (* Pin 1.21 *)
+	AI_RAW_SENSOR_MV AT %IW26:WORD := 0; (* Pin 1.21 *)
+
+	AI_ARR_VALVE_UPDN_CURRENT:ARRAY [0..49] OF WORD; (* Pin 1.22 *)
+	AI_ARR_INDEX_VALVE_UPDN_CURRENT:BYTE := 0; (* Pin 1.22 *)
+	FB_RAW_VALVE_UPDN_CURRENT:WORD := 0; (* Pin 1.22 *)
+END_VAR
+(* @OBJECT_END := 'IO_RAW' *)
+(* @CONNECTIONS :=IO_RAW
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'IO_INTERNAL' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+
+VAR_GLOBAL
+	AI_SupplyVolt:WORD := 0; (* Filtered AI value for control unit supply voltage measurement. *)
+	SUPPLY_Volt:WORD := 0; (* Scaled supply voltage [0.01 V] *)
+	AI_PCBTemperature:WORD := 0; (* Filtered AI value for PCB temperature measurement. *)
+	TEMP_PCB:INT := 0; (* Scaled PCB temperature [0.1 C] *)
+	AI_Ref5V:WORD := 0; (* Raw value for control unit 5 V reference voltage measurement. *)
+	REF_5V:WORD := 0; (* Scaled 5 V reference voltage [0.01 V] *)
+	AI_Ref2_5V:WORD := 0; (* Raw value for 2.5 V reference. *)
+	REF_2_5V:WORD := 0; (* Scaled 2.5 V reference voltage [0.01 V] *)
+	REF_OUT_5V_StatusOk AT %IX5.13:BOOL := FALSE; (* Status of the 5 V reference output. (TRUE - Status OK, FALSE - Failure). *)
+	REF_OUT_5V_Enable AT %QX12.14:BOOL := FALSE; (* Enable variable for 5 V reference output. *)
+	G_NoErrors:BOOL := FALSE; (* No active errors for AI overcurrent protection. *)
+	G_X1_20_OverCurrent:BOOL := FALSE; (* Error status for AI over current protection *)
+	G_X1_21_OverCurrent:BOOL := FALSE; (* Error status for AI over current protection *)
+	G_X1_31_OverCurrent:BOOL := FALSE; (* Error status for AI over current protection *)
+	G_X1_32_OverCurrent:BOOL := FALSE; (* Error status for AI over current protection *)
+END_VAR
+(* @OBJECT_END := 'IO_INTERNAL' *)
+(* @CONNECTIONS :=IO_INTERNAL
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'ERRORS' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+
+VAR_GLOBAL
+	ERR_FLAG_OUTPUT_ST_INIT:BOOL := FALSE; (* Flag is set true if there is at least one monitored error in output status. *)
+	ERR_FLAG_IO_INIT:BOOL := FALSE; (* Flag is set true if there is at least one monitored error in I/O init functions. *)
+END_VAR
+(* @OBJECT_END := 'ERRORS' *)
+(* @CONNECTIONS :=ERRORS
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'IO_CONFIG' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+
+VAR_GLOBAL
+
+	PWFM_ERROR_VAVLE_UP:DINT := 0; (* Pin 1.2 *)
+
+	PWFM_ERROR_VAVLE_DN:DINT := 0; (* Pin 1.3 *)
+
+	DO_ERROR_LED1:DINT := 0; (* Pin 1.7 *)
+
+	DO_ERROR_LED2:DINT := 0; (* Pin 1.8 *)
+
+	AI_SET_mA_JOYSTICK_MV AT %QX12.11:BOOL := FALSE; (* Pin 1.20 *)
+
+	AI_SET_mA_SENSOR_MV AT %QX12.10:BOOL := FALSE; (* Pin 1.21 *)
+END_VAR
+(* @OBJECT_END := 'IO_CONFIG' *)
+(* @CONNECTIONS :=IO_CONFIG
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @PATH := '\/MultiTool OD' *)
+TYPE UpDnJoystick:
+STRUCT
+	MaxPosition:UINT := 900;(* 0.1% *)
+	MidPosition:UINT := 500;(* 0.1% *)
+	MinPosition:UINT := 100;(* 0.1% *)
+	Deadband:BYTE := 3;(* % *)
+	ProgressionPosDir:BYTE := 0;
+	ProgressionNegDir:BYTE := 0;
+	ErrorTolerance:INT := 0;(* 0.1% *)
+	ErrorDelay:UINT := 500;(* ms *)
+END_STRUCT
+END_TYPE
+(* @END_DECLARATION := '0' *)
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @PATH := '\/MultiTool OD' *)
+TYPE AngleSensor:
+STRUCT
+	HighSensorValue:UINT := 450;(* 0.01V *)
+	LowSensorValue:UINT := 50;(* 0.01V *)
+	HighCalibratedValue:INT := 1800;
+	LowCalibratedValue:INT := -1800;
+	SensorValueErrorLimitHigh:UINT := 480;(* 0.01V *)
+	SensorValueErrorLimitLow:UINT := 20;(* 0.01V *)
+	CalibratedValueAlarmLimitHigh:INT := 900;
+	CalibratedValueWarningLimitHigh:INT := 450;
+	CalibratedValueWarningLimitLow:INT := -450;
+	CalibratedValueAlarmLimitLow:INT := -900;
+	EnableSensorValueErrors:BOOL := 1;(* T/F *)
+	EnableCalibratedValueHighAlarm:BOOL := 1;(* T/F *)
+	EnableCalibratedValueHighWarning:BOOL := 1;(* T/F *)
+	EnableCalibratedValueLowWarning:BOOL := 1;(* T/F *)
+	EnableCalibratedValueLowAlarm:BOOL := 1;(* T/F *)
+	ErrorDelay:UINT := 1000;(* ms *)
+END_STRUCT
+END_TYPE
+(* @END_DECLARATION := '0' *)
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @PATH := '\/MultiTool OD' *)
+TYPE UpDnPairValve:
+STRUCT
+	PosDirMaxCurrent:UINT := 150;(* mA *)
+	PosDirMinCurrent:UINT := 30;(* mA *)
+	NegDirMaxCurrent:UINT := 150;(* mA *)
+	NegDirMinCurrent:UINT := 30;(* mA *)
+	PosDirAscendRamp:UINT := 300;(* ms *)
+	PosDirDescendRamp:UINT := 300;(* ms *)
+	NegDirAscendRamp:UINT := 300;(* ms *)
+	NegDirDescendRamp:UINT := 300;(* ms *)
+	PosDirAttenuationAmount:BYTE := 0;(* % *)
+	NegDirAttenuationAmount:BYTE := 0;(* % *)
+	EnableCounterControl:BOOL := 1;(* T/F *)
+END_STRUCT
+END_TYPE
+(* @END_DECLARATION := '0' *)
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @PATH := '\/MultiTool OD' *)
+TYPE Regulation:
+STRUCT
+	ValveUpLimit:INT := 0;
+	ValveDnLimit:INT := 0;
+END_STRUCT
+END_TYPE
+(* @END_DECLARATION := '0' *)
+
+
+
+
+
+
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'OD1_PAR' *)
+(* @PATH := 'Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+
+VAR_GLOBAL
+	PAR_UpDnJoystick:UpDnJoystick;
+	PAR_AngleSensor:AngleSensor;
+	PAR_UpDnPairValve:UpDnPairValve;
+	PAR_Regulation:Regulation;
+END_VAR
+(* @OBJECT_END := 'OD1_PAR' *)
+(* @CONNECTIONS :=OD1_PAR
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'Code_Template_globals' *)
+(* @PATH := 'Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL CONSTANT
+
+
+END_VAR
+
+VAR_GLOBAL
+(*START - Implicit variables, made by EPEC Parser*)
+
+(*Init Flags*)
+
+	G_InitEntryReady:BOOL:=FALSE;
+	G_InitFlashReady:BOOL:=FALSE;
+	G_InitIOReady:BOOL:=FALSE;
+	G_InitBusReady:BOOL:=FALSE;
+	G_InitProtocolsCan1Ready:BOOL:=FALSE;
+	G_InitProtocolsCan2Ready:BOOL:=FALSE;
+	G_InitIsobusCan1Ready:BOOL:=FALSE;
+	G_InitIsobusCan2Ready:BOOL:=FALSE;
+	G_InitEventsReady:BOOL:=FALSE;
+	G_InitExitReady:BOOL:=FALSE;	
+	G_ActiveError:BOOL:=FALSE;
+
+	G_FileSysDir:POINTER TO FileSysDirBlock;  		(* Pointer to file system block which contains dir. *)
+	G_FileSysKeyWord:DWORD:=16#70F8E809;       (* Keyword which is used to check match between file system and Codesys project. *)
+	G_RESET_MODULE:BOOL:=FALSE;						        (* Setting this flag to TRUE, resets module in the end of the application cycle. *)
+
+	G_3606_ErrFileSysInit:DINT:=0;					      (* Possible error code from file system init *)
+	G_3606_ErrFastParamsLoad:INT := 0;				    (* Possible error code when loading fast parameters from NVRAM *)
+	G_3606_ErrParamsLoad:INT := 0;					      (* Possible error code when loading parameter image from NVRAM *)
+	G_3606_NvLoadStarted:BOOL:=FALSE;				      (* Tells that NvLoad has been started. *)
+	G_3606_OldImageChanged:DWORD;					        (* Counter which is used to store latest counter value for RAM image. *)
+	G_3606_CommsSaveOldCnt:WORD;		              (* Variable contains latest value for number od comms save commands. *)
+	G_3606_CommsRestoreOldCnt:WORD;               (* Variable contains latest value for number od comms restore commands. *)
+
+(*Error codes*)
+
+(* Global NodeIds *)
+	G_NodeIds:ARRAY[1..1] OF INT := 1;
+
+	G_CAN1_CANopenDevice: CANopenDev;
+
+
+
+
+
+
+(*END - Implicit variables, made by EPEC Parser*)
+END_VAR
+(* @OBJECT_END := 'Code_Template_globals' *)
+(* @CONNECTIONS :=Code_Template_globals
+FILENAME:  ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @PATH := '' *)
+(* @SYMFILEFLAGS := '2048' *)
+PROGRAM PLC_PRG
+VAR
+(*
+		Tool version       : '8.4.9308.1109'
+		Xml version        : '5.0.45'
+		Control Unit       : 'CU_3606_21'
+		Control Unit Type  : '3606'
+		Export Time        : '22.04.2026 10:10.23'
+		Export Path        : 'C:\Users\JONE\Desktop\EPEC\CoDeSysProject\DasDemoProject'
+		Project File       : 'C:\Users\JONE\Desktop\EPEC\CoDeSysProject\DasDemoProject\DasDemoProject.mtproject'
+		Libraries Path     : 'C:\Users\JONE\Desktop\EPEC\CoDeSysProject\DasDemoProject\Libraries'
+*)
+
+(* Code template local variables don't remove *)
+CANInitSequencer:BYTE := 0;
+
+END_VAR
+(* @END_DECLARATION := '0' *)
+INITIAL_STEP Init:
+
+INITIAL_STEP Init_Entry:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+SystemParameters.ReadData();
+
+	OD_G_CAN1_Comms := SystemParameters.i_CAN1;
+
+¤#COMM_CONFIGURATION#0#¤
+	G_InitEntryReady:=TRUE;
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Entry TO Init_Flash:=
+G_InitEntryReady
+END_TRANSITION
+INITIAL_STEP Init_Flash:7
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+G_InitFlashReady := FALSE;
+
+IF G_3606_NvLoadStarted = FALSE THEN
+	NvRam_3606_Init(i_Enable :=TRUE, i_KeyWordFastParams := G_FileSysKeyWord, i_SizeOfParams := G_3606_PARAM_SIZE, i_SizeOfFastParams := G_3606_FAST_PARAM_SIZE);
+	G_3606_NvLoadStarted := TRUE;
+ELSE
+	NvRam_3606_Init();
+
+	(* Flash init ready exit from block *)
+	IF NvRam_3606_Init.o_InitDone = TRUE THEN
+
+	  G_3606_ErrFastParamsLoad := NvRam_3606_Init.o_ErrorFastParams;
+	  G_3606_ErrParamsLoad := NvRam_3606_Init.o_ErrorParams;
+
+	  FileSysInit(
+			  i_FileSysKey:=G_FileSysKeyWord ,
+			  i_pStart:= ADR(G_3606_ParameterImage[3]) ,                      (* Image contains footer and header. *)
+			  i_pEnd:=  ADR(G_3606_ParameterImage[G_3606_PARAM_SIZE-2]),
+			  i_BlockSize:= G_3606_BLOCK_SIZE_FILE_SYS ,
+			  o_Error=> G_3606_ErrFileSysInit);
+	      G_FileSysDir := G_FileSysFileSystem.Dir;
+		   (* Store old ram image changed counter *)
+		G_3606_OldImageChanged := G_FileSysFileSystem.RamImageChanged;
+		G_InitFlashReady := TRUE;
+	END_IF
+
+END_IF
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Flash TO Init_IO:=
+G_InitFlashReady
+END_TRANSITION
+INITIAL_STEP Init_IO:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+(*IO init:*)
+    (* System inits *)
+    {{SYSTEM_FW_Version.name}}:=SystemParameters.o_SoftwareVersion;    
+    {{SYSTEM_ControlUnitType.name}} := SystemParameters.o_ProductCode;
+    {{SYSTEM_ControlUnitRevision.name}} := SystemParameters.o_RevisionNumber;
+    {{SYSTEM_SerialNumber.name}} := SystemParameters.o_SerialNumber;
+    {{SYSTEM_VendorId.name}} := SystemParameters.o_VendorId;
+
+(* Enabled 5V reference as default *)
+    {{REF_OUT_5V_Enable.name}} := TRUE;
+
+(* Init conversion array for supply voltage measurement *)
+    {{AiSupplyAiFiltFb.name}}.i_CH:= 3;
+    {{AiSupplyAiFiltFb.name}}.i_Data := ADR({{AiSupplyArray.name}});
+    {{AiSupplyAiFiltFb.name}}.i_Length := SIZEOF({{AiSupplyArray.name}});
+    {{AiSupplyAiFiltFb.name}}();
+
+(* Init conversion array for PCB temperature measurement *)
+    {{AiPCBTempAiFiltFb.name}}.i_CH:= 2;
+    {{AiPCBTempAiFiltFb.name}}.i_Data := ADR({{AiPCBTempArray.name}});
+    {{AiPCBTempAiFiltFb.name}}.i_Length := SIZEOF({{AiPCBTempArray.name}});
+    {{AiPCBTempAiFiltFb.name}}();
+
+(* Init conversion array 5V reference voltage measurement *)
+    {{AI_Ref5VAiFiltFb.name}}.i_CH:= 0;
+    {{AI_Ref5VAiFiltFb.name}}.i_Data := ADR({{AI_Ref5VArray.name}});
+    {{AI_Ref5VAiFiltFb.name}}.i_Length := SIZEOF({{AI_Ref5VArray.name}});
+    {{AI_Ref5VAiFiltFb.name}}();
+
+(* Init conversion array 2.5V reference voltage  measurement *)
+    {{AI_Ref2_5VAiFiltFb.name}}.i_CH:= 1;
+    {{AI_Ref2_5VAiFiltFb.name}}.i_Data := ADR({{AI_Ref2_5VArray.name}});
+    {{AI_Ref2_5VAiFiltFb.name}}.i_Length := SIZEOF({{AI_Ref2_5VArray.name}});
+    {{AI_Ref2_5VAiFiltFb.name}}();
+
+(* Configurations for pin 1.2 *)
+    (* Use pin as Digital Output *)
+    {{pwmX1_2_DoInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIGITAL_OUTPUT,
+                  i_PwfmChn := {{pwmX1_2_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_2_DoInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_2_doState.name}} :=  0; (* Set output as 0 in init. *)
+    (* Use pin as Pwfm Output *)
+    {{pwmX1_2_PwfmInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIRECT_PWFM,
+                  i_PwfmChn := {{pwmX1_2_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_2_PwfmInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_2_pulseRatio.name}} :=  0; (* Set ratio as 0 in init. *)
+    {{pwmX1_2_Frequency.name}} := {{pwmX1_2_Frequency.value}};(* Set default frequency. *)
+    (* Use pin as Step Motor Output *)
+    {{pwmX1_2_StepMInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_STEP_MOTOR,
+                  i_PwfmChn := {{pwmX1_2_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_2_StepMInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_2_pulseRequest.name}} :=  0; (* Set step request as 0 in init. *)
+    {{pwmX1_2_Frequency.name}} := {{pwmX1_2_Frequency.value}}; (* Set default frequency. *)
+    (* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_2_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_2_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := 0, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_2MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_2_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_2_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_2_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_2_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_2_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_2MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_2_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_2_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_2_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_2_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_2_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_2MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_2_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_2_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_2_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_2ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_2MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_2_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Set channel pair *)
+    {{pwmX1_2_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_2ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_2_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_2MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_2_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+   (* Set reset channel *)
+    {{pwmX1_2_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_2ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_2_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_2_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_2_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_2MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_2_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+
+(* Configurations for pin 1.3 *)
+    (* Use pin as Digital Output *)
+    {{pwmX1_3_DoInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIGITAL_OUTPUT,
+                  i_PwfmChn := {{pwmX1_3_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_3_DoInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_3_doState.name}} :=  0; (* Set output as 0 in init. *)
+    (* Use pin as Pwfm Output *)
+    {{pwmX1_3_PwfmInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIRECT_PWFM,
+                  i_PwfmChn := {{pwmX1_3_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_3_PwfmInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_3_pulseRatio.name}} :=  0; (* Set ratio as 0 in init. *)
+    {{pwmX1_3_Frequency.name}} := {{pwmX1_3_Frequency.value}};(* Set default frequency. *)
+    (* Use pin as Step Motor Output *)
+    {{pwmX1_3_StepMInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_STEP_MOTOR,
+                  i_PwfmChn := {{pwmX1_3_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_3_StepMInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_3_pulseRequest.name}} :=  0; (* Set step request as 0 in init. *)
+    {{pwmX1_3_Frequency.name}} := {{pwmX1_3_Frequency.value}}; (* Set default frequency. *)
+    (* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_3_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_3_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := 0, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_3MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_3_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_3_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_3_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_3_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_3_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_3MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_3_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_3_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_3_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_3_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_3_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_3MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_3_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_3_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_3_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_3ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_3MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_3_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Set channel pair *)
+    {{pwmX1_3_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_3ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_3_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_3MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_3_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+   (* Set reset channel *)
+    {{pwmX1_3_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_3ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_3_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_3_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_3_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_3MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_3_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+
+(* Configurations for pin 1.7 *)
+    (* Use pin as Digital Output *)
+    {{pwmX1_7_DoInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIGITAL_OUTPUT,
+                  i_PwfmChn := {{pwmX1_7_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_7_DoInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_7_doState.name}} :=  0; (* Set output as 0 in init. *)
+    (* Use pin as Pwfm Output *)
+    {{pwmX1_7_PwfmInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIRECT_PWFM,
+                  i_PwfmChn := {{pwmX1_7_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_7_PwfmInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_7_pulseRatio.name}} :=  0; (* Set ratio as 0 in init. *)
+    {{pwmX1_7_Frequency.name}} := {{pwmX1_7_Frequency.value}};(* Set default frequency. *)
+    (* Use pin as Step Motor Output *)
+    {{pwmX1_7_StepMInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_STEP_MOTOR,
+                  i_PwfmChn := {{pwmX1_7_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_7_StepMInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_7_pulseRequest.name}} :=  0; (* Set step request as 0 in init. *)
+    {{pwmX1_7_Frequency.name}} := {{pwmX1_7_Frequency.value}}; (* Set default frequency. *)
+    (* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_7_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_7_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := 0, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_7MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_7_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_7_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_7_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_7_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_7_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_7MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_7_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_7_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_7_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_7_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_7_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_7MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_7_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_7_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_7_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_7ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_7MinmumFrequency.value}}));
+   IF NOT ( {{pwmX1_7_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Set channel pair *)
+    {{pwmX1_7_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_7ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_7_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_7MinmumFrequency.value}}));
+   IF NOT ( {{pwmX1_7_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+   (* Set reset channel *)
+    {{pwmX1_7_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_7ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_7_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_7_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_7_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_7MinmumFrequency.value}}));
+   IF NOT ( {{pwmX1_7_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+
+(* Configurations for pin 1.8 *)
+    (* Use pin as Digital Output *)
+    {{pwmX1_8_DoInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIGITAL_OUTPUT,
+                  i_PwfmChn := {{pwmX1_8_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_8_DoInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_8_doState.name}} :=  0; (* Set output as 0 in init. *)
+    (* Use pin as Pwfm Output *)
+    {{pwmX1_8_PwfmInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIRECT_PWFM,
+                  i_PwfmChn := {{pwmX1_8_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_8_PwfmInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_8_pulseRatio.name}} :=  0; (* Set ratio as 0 in init. *)
+    {{pwmX1_8_Frequency.name}} := {{pwmX1_8_Frequency.value}};(* Set default frequency. *)
+    (* Use pin as Step Motor Output *)
+    {{pwmX1_8_StepMInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_STEP_MOTOR,
+                  i_PwfmChn := {{pwmX1_8_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_8_StepMInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_8_pulseRequest.name}} :=  0; (* Set step request as 0 in init. *)
+    {{pwmX1_8_Frequency.name}} := {{pwmX1_8_Frequency.value}}; (* Set default frequency. *)
+    (* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_8_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_8_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := 0, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_8MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_8_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_8_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_8_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_8_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_8_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_8MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_8_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_8_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_8_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_8_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_8_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_8MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_8_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_8_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_8_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_8ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_8MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_8_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Set channel pair *)
+    {{pwmX1_8_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_8ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_8_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_8MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_8_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+   (* Set reset channel *)
+    {{pwmX1_8_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_8ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_8_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_8_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_8_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_8MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_8_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+
+(* Configurations for pin 1.9 *)
+    (* Use pin as Digital Output *)
+    {{pwmX1_9_DoInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIGITAL_OUTPUT,
+                  i_PwfmChn := {{pwmX1_9_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_9_DoInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_9_doState.name}} :=  0; (* Set output as 0 in init. *)
+    (* Use pin as Pwfm Output *)
+    {{pwmX1_9_PwfmInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIRECT_PWFM,
+                  i_PwfmChn := {{pwmX1_9_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_9_PwfmInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_9_pulseRatio.name}} :=  0; (* Set ratio as 0 in init. *)
+    {{pwmX1_9_Frequency.name}} := {{pwmX1_9_Frequency.value}};(* Set default frequency. *)
+    (* Use pin as Step Motor Output *)
+    {{pwmX1_9_StepMInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_STEP_MOTOR,
+                  i_PwfmChn := {{pwmX1_9_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_9_StepMInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_9_pulseRequest.name}} :=  0; (* Set step request as 0 in init. *)
+    {{pwmX1_9_Frequency.name}} := {{pwmX1_9_Frequency.value}}; (* Set default frequency. *)
+    (* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_9_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_9_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := 0, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_9MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_9_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_9_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_9_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_9_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_9_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_9MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_9_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_9_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_9_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_9_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_9_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_9MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_9_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_9_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_9_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_9ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_9MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_9_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Set channel pair *)
+    {{pwmX1_9_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_9ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_9_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_9MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_9_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+   (* Set reset channel *)
+    {{pwmX1_9_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_9ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_9_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_9_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_9_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_9MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_9_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+
+(* Configurations for pin 1.10 *)
+    (* Use pin as Digital Output *)
+    {{pwmX1_10_DoInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIGITAL_OUTPUT,
+                  i_PwfmChn := {{pwmX1_10_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_10_DoInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_10_doState.name}} :=  0; (* Set output as 0 in init. *)
+    (* Use pin as Pwfm Output *)
+    {{pwmX1_10_PwfmInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIRECT_PWFM,
+                  i_PwfmChn := {{pwmX1_10_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_10_PwfmInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_10_pulseRatio.name}} :=  0; (* Set ratio as 0 in init. *)
+    {{pwmX1_10_Frequency.name}} := {{pwmX1_10_Frequency.value}};(* Set default frequency. *)
+    (* Use pin as Step Motor Output *)
+    {{pwmX1_10_StepMInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_STEP_MOTOR,
+                  i_PwfmChn := {{pwmX1_10_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_10_StepMInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_10_pulseRequest.name}} :=  0; (* Set step request as 0 in init. *)
+    {{pwmX1_10_Frequency.name}} := {{pwmX1_10_Frequency.value}}; (* Set default frequency. *)
+    (* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_10_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_10_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := 0, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_10MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_10_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_10_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_10_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_10_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_10_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_10MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_10_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_10_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_10_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_10_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_10_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_10MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_10_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_10_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_10_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_10ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_10MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_10_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Set channel pair *)
+    {{pwmX1_10_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_10ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_10_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_10MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_10_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+   (* Set reset channel *)
+    {{pwmX1_10_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_10ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_10_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_10_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_10_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_10MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_10_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+
+(* Configurations for pin 1.11 *)
+    (* Use pin as Digital Output *)
+    {{pwmX1_11_DoInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIGITAL_OUTPUT,
+                  i_PwfmChn := {{pwmX1_11_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_11_DoInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_11_doState.name}} :=  0; (* Set output as 0 in init. *)
+    (* Use pin as Pwfm Output *)
+    {{pwmX1_11_PwfmInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIRECT_PWFM,
+                  i_PwfmChn := {{pwmX1_11_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_11_PwfmInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_11_pulseRatio.name}} :=  0; (* Set ratio as 0 in init. *)
+    {{pwmX1_11_Frequency.name}} := {{pwmX1_11_Frequency.value}};(* Set default frequency. *)
+    (* Use pin as Step Motor Output *)
+    {{pwmX1_11_StepMInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_STEP_MOTOR,
+                  i_PwfmChn := {{pwmX1_11_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_11_StepMInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_11_pulseRequest.name}} :=  0; (* Set step request as 0 in init. *)
+    {{pwmX1_11_Frequency.name}} := {{pwmX1_11_Frequency.value}}; (* Set default frequency. *)
+    (* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_11_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_11_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := 0, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_11MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_11_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_11_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_11_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_11_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_11_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_11MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_11_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_11_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_11_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_11_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_11_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_11MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_11_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_11_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_11_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_11ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_11MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_11_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Set channel pair *)
+    {{pwmX1_11_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_11ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_11_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_11MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_11_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+   (* Set reset channel *)
+    {{pwmX1_11_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_11ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_11_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_11_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_11_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_11MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_11_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+
+(* Configurations for pin 1.12 *)
+    (* Use pin as Digital Output *)
+    {{pwmX1_12_DoInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIGITAL_OUTPUT,
+                  i_PwfmChn := {{pwmX1_12_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_12_DoInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_12_doState.name}} :=  0; (* Set output as 0 in init. *)
+    (* Use pin as Pwfm Output *)
+    {{pwmX1_12_PwfmInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIRECT_PWFM,
+                  i_PwfmChn := {{pwmX1_12_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_12_PwfmInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_12_pulseRatio.name}} :=  0; (* Set ratio as 0 in init. *)
+    {{pwmX1_12_Frequency.name}} := {{pwmX1_12_Frequency.value}};(* Set default frequency. *)
+    (* Use pin as Step Motor Output *)
+    {{pwmX1_12_StepMInitError.name}} := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_STEP_MOTOR,
+                  i_PwfmChn := {{pwmX1_12_OutChnNbr.value}});
+   IF NOT ( {{pwmX1_12_StepMInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    {{pwmX1_12_pulseRequest.name}} :=  0; (* Set step request as 0 in init. *)
+    {{pwmX1_12_Frequency.name}} := {{pwmX1_12_Frequency.value}}; (* Set default frequency. *)
+    (* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_12_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_12_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect :=0, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_12MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_12_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_12_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_12_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_12_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_12_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_12MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_12_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_12_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_12_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_12_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_12_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_12MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_12_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_12_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_12_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_12ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_12MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_12_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Set channel pair *)
+    {{pwmX1_12_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_12ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_12_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_12MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_12_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+   (* Set reset channel *)
+    {{pwmX1_12_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_12ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_12_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_12_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_12_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_12MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_12_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+
+(* Configurations for pin 1.14 *)
+    (* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_14_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_14_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_14_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_14_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_14MinmumFrequency.value}});
+  IF NOT ( {{pwmX1_14_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF  
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_14_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_14_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_14_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_14_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_14MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_14_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_14_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_14_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_14_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_14_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_14MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_14_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_14_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_14_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_14ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_14MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_14_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Set channel pair *)
+    {{pwmX1_14_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_14ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_14_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_14MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_14_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+   (* Set reset channel *)
+    {{pwmX1_14_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_14ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_14_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_14_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_14_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_14MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_14_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+
+(* Configurations for pin 1.15 *)
+    (* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_15_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_15_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := 0, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_15MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_15_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_15_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_15_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_15_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_15_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_15MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_15_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_15_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_15_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_15_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_15_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_15MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_15_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+﻿    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_15_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_15_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_15_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_15_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_15MinmumFrequency.value}});
+  IF NOT ( {{pwmX1_15_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF  
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_15_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_15_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_15ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_15MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_15_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+
+    (* Set channel pair *)
+    {{pwmX1_15_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_15ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_15_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_15MinmumFrequency.value}});
+  IF NOT ( {{pwmX1_15_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF 
+   (* Set reset channel *)
+    {{pwmX1_15_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_15ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_15_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_15_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_15_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_15MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_15_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+﻿(* Update Functions for pin 1.20 *)
+(* Set AI mode for pin 1.20 *)
+    {{aiX1_20AiModeInDi.name}} := {{aiX1_20AiModeInDi.value}};
+(* Set AI mode for pin 1.20 *)
+    {{aiX1_20AiMode.name}} := {{aiX1_20AiMode.value}};
+{% if aiX1_20AiFiltMethod.value == '2' or aiX1_20DiConversionMethod.value == '2'  %}
+(* Mean filtering for pin 1.20 *)
+    {{aiX1_20AiFiltFb.name}}.i_CH:= 11;
+    {{aiX1_20AiFiltFb.name}}.i_Data := ADR({{aiX1_20AiFiltArray.name}});
+    {{aiX1_20AiFiltFb.name}}.i_Length := SIZEOF({{aiX1_20AiFiltArray.name}});
+    {{aiX1_20AiFiltFb.name}}();
+{% endif %}
+(* Init ratiometric mode for for pin 1.20 *)
+    {{aiX1_20AiModeInRatiometric.name}} := {{aiX1_20AiModeInRatiometric.value}};
+{% if aiX1_20AiFiltMethod.value == '2' or aiX1_20DiConversionMethod.value == '2'  %}
+(* Mean filtering for pin 1.20 *)
+    {{aiX1_20AiFiltFb.name}}.i_CH:= 15;
+    {{aiX1_20AiFiltFb.name}}.i_Data := ADR({{aiX1_20AiFiltArray.name}});
+    {{aiX1_20AiFiltFb.name}}.i_Length := SIZEOF({{aiX1_20AiFiltArray.name}});
+    {{aiX1_20AiFiltFb.name}}();
+{% endif %}
+(* Set AI mode for pin 1.21 *)
+    {{aiX1_21AiModeInDi.name}} := {{aiX1_21AiModeInDi.value}};
+(* Set AI mode for pin 1.21 *)
+    {{aiX1_21AiMode.name}} := {{aiX1_21AiMode.value}};
+{% if aiX1_21AiFiltMethod.value == '2' or aiX1_21DiConversionMethod.value == '2'  %}
+(* Mean filtering for pin 1.21 *)
+    {{aiX1_21AiFiltFb.name}}.i_CH:= 10;
+    {{aiX1_21AiFiltFb.name}}.i_Data := ADR({{aiX1_21AiFiltArray.name}});
+    {{aiX1_21AiFiltFb.name}}.i_Length := SIZEOF({{aiX1_21AiFiltArray.name}});
+    {{aiX1_21AiFiltFb.name}}();
+{% endif %}
+(* Init ratiometric mode for for pin 1.21 *)
+    {{aiX1_21AiModeInRatiometric.name}} := {{aiX1_21AiModeInRatiometric.value}};
+{% if aiX1_21AiFiltMethod.value == '2' or aiX1_21DiConversionMethod.value == '2'  %}
+(* Mean filtering for pin 1.21 *)
+    {{aiX1_21AiFiltFb.name}}.i_CH:= 14;
+    {{aiX1_21AiFiltFb.name}}.i_Data := ADR({{aiX1_21AiFiltArray.name}});
+    {{aiX1_21AiFiltFb.name}}.i_Length := SIZEOF({{aiX1_21AiFiltArray.name}});
+    {{aiX1_21AiFiltFb.name}}();
+{% endif %}
+
+(* Configurations for pin 1.22 *)
+   (* Init array where is 50 latest conversion result for feedback *)
+   {{aiX1_22AiFiltFb.name}}.i_CH:= 6;
+   {{aiX1_22AiFiltFb.name}}.i_Data := ADR({{aiX1_22AiFiltArray.name}});
+   {{aiX1_22AiFiltFb.name}}.i_Length := SIZEOF({{aiX1_22AiFiltArray.name}});
+   {{aiX1_22AiFiltFb.name}}();
+
+(* Configurations for pin 1.23 *)
+   (* Init array where is 50 latest conversion result for feedback *)
+   {{aiX1_23AiFiltFb.name}}.i_CH:= 8;
+   {{aiX1_23AiFiltFb.name}}.i_Data := ADR({{aiX1_23AiFiltArray.name}});
+   {{aiX1_23AiFiltFb.name}}.i_Length := SIZEOF({{aiX1_23AiFiltArray.name}});
+   {{aiX1_23AiFiltFb.name}}();
+
+(* Configurations for pin 1.25 *)
+	(* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_25_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_25_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_25_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_25_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_25MinmumFrequency.value}});
+    IF NOT ( {{pwmX1_25_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF 
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_25_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_25_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_25_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_25_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_25MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_25_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_25_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_25_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_25_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_25_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_25MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_25_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_25_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_25_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_25ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_25MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_25_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Set channel pair *)
+    {{pwmX1_25_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_25ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_25_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_25MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_25_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+   (* Set reset channel *)
+    {{pwmX1_25_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_25ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_25_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_25_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_25_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_25MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_25_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+
+(* Configurations for pin 1.26 *)
+    (* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_26_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_26_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := 0, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_26MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_26_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_26_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_26_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_26_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_26_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_26MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_26_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_26_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_26_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_26_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_26_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_26MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_26_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_26_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_26_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_26ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_26MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_26_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Set channel pair *)
+    {{pwmX1_26_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_26ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_26_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_26MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_26_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+   (* Set reset channel *)
+    {{pwmX1_26_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_26ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_26_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_26_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_26_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_26MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_26_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+﻿    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_26_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_26_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_26_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_26_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_26MinmumFrequency.value}});
+  IF NOT ( {{pwmX1_26_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF  
+
+(* Configurations for pin 1.27 *)
+    (* Use pin as 1-ch pulse input to measure pulse width. *)
+    {{pwmX1_27_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_PULSEWIDTH, 
+                        i_ChannelNbr := {{pwmX1_27_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := 0, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_27MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_27_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse count *)
+    {{pwmX1_27_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_1CH,
+                        i_ChannelNbr := {{pwmX1_27_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_27_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_27_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_27MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_27_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_27_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_27_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_27_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_27_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_27MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_27_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    (* Use pin as 2-ch pulse input to measure pulse count. *)
+    {{pwmX1_27_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pwmX1_27_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pulseInChn1_27ChnPair.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_27MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_27_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+
+    (* Set channel pair *)
+    {{pwmX1_27_PiInitErrorChnPair.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_2CH,
+                        i_ChannelNbr := {{pulseInChn1_27ChnPair.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := {{pwmX1_27_OwnChannel.value}}, 
+                        i_EdgeSelect := 1, 
+                        i_EdgePolarity := 0,
+                        i_GateTime := {{pulseInChn1_27MinmumFrequency.value}});
+  IF NOT ( {{pwmX1_27_PiInitErrorChnPair.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF 
+   (* Set reset channel *)
+    {{pwmX1_27_PiInitErrorRstChn.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_RESET,
+                        i_ChannelNbr := {{pulseInChn1_27ResetChn.value}}, 
+                        i_ResetChnNbr := {{pwmX1_27_OwnChannel.value}}, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_27_EdgeSelectReset.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_27_EdgePolarityReset.value}},
+                        i_GateTime := {{pulseInChn1_27MinmumFrequency.value}});
+   IF NOT ( {{pwmX1_27_PiInitErrorRstChn.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+﻿    (* Use pin as 1-ch pulse input to measure pulse frequency *)
+    {{pwmX1_27_PiInitError.name}} := IO_PULSEIN_SET_CONFIG(
+                        i_Mode := IO_PULSEIN_MODE_FREQUENCY, 
+                        i_ChannelNbr := {{pwmX1_27_OwnChannel.value}}, 
+                        i_ResetChnNbr := 0, 
+                        i_ChannelPairNbr := 0, 
+                        i_EdgeSelect := {{pulseInChn1_27_EdgeSelect.value}}, 
+                        i_EdgePolarity := {{pulseInChn1_27_EdgePolarity.value}},
+                        i_GateTime := {{pulseInChn1_27MinmumFrequency.value}});
+  IF NOT ( {{pwmX1_27_PiInitError.name}} = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF  
+(* Set AI mode for pin 1.31 *)
+    {{aiX1_31AiModeInDi.name}} := {{aiX1_31AiModeInDi.value}};
+(* Set AI mode for pin 1.31 *)
+    {{aiX1_31AiMode.name}} := {{aiX1_31AiMode.value}};
+{% if aiX1_31AiFiltMethod.value == '2' or aiX1_31DiConversionMethod.value == '2'  %}
+(* Mean filtering for pin 1.31 *)
+    {{aiX1_31AiFiltFb.name}}.i_CH:= 12;
+    {{aiX1_31AiFiltFb.name}}.i_Data := ADR({{aiX1_31AiFiltArray.name}});
+    {{aiX1_31AiFiltFb.name}}.i_Length := SIZEOF({{aiX1_31AiFiltArray.name}});
+    {{aiX1_31AiFiltFb.name}}();
+{% endif %}
+(* Init ratiometric mode for for pin 1.31 *)
+    {{aiX1_31AiModeInRatiometric.name}} := {{aiX1_31AiModeInRatiometric.value}};
+{% if aiX1_31AiFiltMethod.value == '2' or aiX1_31DiConversionMethod.value == '2'  %}
+(* Mean filtering for pin 1.31 *)
+    {{aiX1_31AiFiltFb.name}}.i_CH:= 16;
+    {{aiX1_31AiFiltFb.name}}.i_Data := ADR({{aiX1_31AiFiltArray.name}});
+    {{aiX1_31AiFiltFb.name}}.i_Length := SIZEOF({{aiX1_31AiFiltArray.name}});
+    {{aiX1_31AiFiltFb.name}}();
+{% endif %}
+(* Set AI mode for pin 1.32 *)
+    {{aiX1_32AiModeInDi.name}} := {{aiX1_32AiModeInDi.value}};
+(* Set AI mode for pin 1.32 *)
+    {{aiX1_32AiMode.name}} := {{aiX1_32AiMode.value}};
+(* Init ratiometric mode for for pin 1.31 *)
+    {{aiX1_32AiModeInRatiometric.name}} := {{aiX1_32AiModeInRatiometric.value}};
+{% if aiX1_32AiFiltMethod.value == '2' or aiX1_32DiConversionMethod.value == '2'  %}
+(* Mean filtering for pin 1.31 *)
+    {{aiX1_32AiFiltFb.name}}.i_CH:= 17;
+    {{aiX1_32AiFiltFb.name}}.i_Data := ADR({{aiX1_32AiFiltArray.name}});
+    {{aiX1_32AiFiltFb.name}}.i_Length := SIZEOF({{aiX1_32AiFiltArray.name}});
+    {{aiX1_32AiFiltFb.name}}();
+{% endif %}
+{% if aiX1_32AiFiltMethod.value == '2' or aiX1_32DiConversionMethod.value == '2'  %}
+(* Mean filtering for pin 1.32 *)
+{{aiX1_32AiFiltFb.name}}.i_CH:= 13;
+{{aiX1_32AiFiltFb.name}}.i_Data := ADR({{aiX1_32AiFiltArray.name}});
+{{aiX1_32AiFiltFb.name}}.i_Length := SIZEOF({{aiX1_32AiFiltArray.name}});
+{{aiX1_32AiFiltFb.name}}();
+{% endif %}
+
+(* Configurations for pin 1.34 *)
+   (* Init array where is 50 latest conversion result for feedback *)
+   {{aiX1_34AiFiltFb.name}}.i_CH:= 9;
+   {{aiX1_34AiFiltFb.name}}.i_Data := ADR({{aiX1_34AiFiltArray.name}});
+   {{aiX1_34AiFiltFb.name}}.i_Length := SIZEOF({{aiX1_34AiFiltArray.name}});
+   {{aiX1_34AiFiltFb.name}}();
+
+(* Configurations for pin 1.35 *)
+   (* Init array where is 50 latest conversion result for feedback *)
+   {{aiX1_35AiFiltFb.name}}.i_CH:= 7;
+   {{aiX1_35AiFiltFb.name}}.i_Data := ADR({{aiX1_35AiFiltArray.name}});
+   {{aiX1_35AiFiltFb.name}}.i_Length := SIZEOF({{aiX1_35AiFiltArray.name}});
+   {{aiX1_35AiFiltFb.name}}();
+
+(* Configurations for pin 1.2 *)
+    (* Use pin as Pwfm Output *)
+    PWFM_ERROR_VAVLE_UP := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIRECT_PWFM,
+                  i_PwfmChn := 1);
+   IF NOT ( PWFM_ERROR_VAVLE_UP = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    PWM_RATIO_VAVLE_UP :=  0; (* Set ratio as 0 in init. *)
+    PWFM_FREQ_VAVLE_UP := 140;(* Set default frequency. *)
+
+(* Configurations for pin 1.3 *)
+    (* Use pin as Pwfm Output *)
+    PWFM_ERROR_VAVLE_DN := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIRECT_PWFM,
+                  i_PwfmChn := 2);
+   IF NOT ( PWFM_ERROR_VAVLE_DN = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    PWM_RATIO_VAVLE_DN :=  0; (* Set ratio as 0 in init. *)
+    PWFM_FREQ_VAVLE_DN := 140;(* Set default frequency. *)
+
+(* Configurations for pin 1.7 *)
+    (* Use pin as Digital Output *)
+    DO_ERROR_LED1 := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIGITAL_OUTPUT,
+                  i_PwfmChn := 3);
+   IF NOT ( DO_ERROR_LED1 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    DO_LED1 :=  0; (* Set output as 0 in init. *)
+
+(* Configurations for pin 1.8 *)
+    (* Use pin as Digital Output *)
+    DO_ERROR_LED2 := IO_PWFM_SET_CONFIG(
+                  i_PwfmMode := IO_PWFM_MODE_DIGITAL_OUTPUT,
+                  i_PwfmChn := 4);
+   IF NOT ( DO_ERROR_LED2 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;                
+    END_IF
+    DO_LED2 :=  0; (* Set output as 0 in init. *)
+
+(* Configurations for pin 1.14 *)
+
+(* Configurations for pin 1.15 *)
+﻿(* Update Functions for pin 1.20 *)
+(* Set AI mode for pin 1.20 *)
+    AI_SET_mA_JOYSTICK_MV := 0;
+{% if aiX1_20AiFiltMethod.value == '2' or aiX1_20DiConversionMethod.value == '2'  %}
+(* Mean filtering for pin 1.20 *)
+    G_AIBufferOf_JOYSTICK_MV.i_CH:= 11;
+    G_AIBufferOf_JOYSTICK_MV.i_Data := ADR(AI_ARR_JOYSTICK_MV);
+    G_AIBufferOf_JOYSTICK_MV.i_Length := SIZEOF(AI_ARR_JOYSTICK_MV);
+    G_AIBufferOf_JOYSTICK_MV();
+{% endif %}
+(* Set AI mode for pin 1.21 *)
+    AI_SET_mA_SENSOR_MV := 0;
+{% if aiX1_21AiFiltMethod.value == '2' or aiX1_21DiConversionMethod.value == '2'  %}
+(* Mean filtering for pin 1.21 *)
+    G_AIBufferOf_SENSOR_MV.i_CH:= 10;
+    G_AIBufferOf_SENSOR_MV.i_Data := ADR(AI_ARR_SENSOR_MV);
+    G_AIBufferOf_SENSOR_MV.i_Length := SIZEOF(AI_ARR_SENSOR_MV);
+    G_AIBufferOf_SENSOR_MV();
+{% endif %}
+
+(* Configurations for pin 1.22 *)
+   (* Init array where is 50 latest conversion result for feedback *)
+   G_AIBufferOf_VALVE_UPDN_CURRENT.i_CH:= 6;
+   G_AIBufferOf_VALVE_UPDN_CURRENT.i_Data := ADR(AI_ARR_VALVE_UPDN_CURRENT);
+   G_AIBufferOf_VALVE_UPDN_CURRENT.i_Length := SIZEOF(AI_ARR_VALVE_UPDN_CURRENT);
+   G_AIBufferOf_VALVE_UPDN_CURRENT();  
+	(* tag INIT_INIT_IO *)
+	
+(* Init for overcurrent protection for mA AI inputs *)
+AIP_InputProtection_3606(); (* 3606 Analog overcurrent input protection init *)	
+	
+(*IO-init OK?*)
+	G_InitIOReady:=TRUE;
+END_STEP
+
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_IO TO Init_Bus:=
+G_InitIOReady
+END_TRANSITION
+INITIAL_STEP Init_Bus:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+¤#MESSAGE_TYPE#0#¤
+
+¤#MESSAGE_TYPE#1#¤
+	
+(*IO-init OK?*)
+	G_InitBusReady:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Bus TO Init_Protocols_Can1:= 
+G_InitBusReady
+END_TRANSITION
+
+INITIAL_STEP Init_Protocols_Can1:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*CAN1 INIT*)
+(* Sequencer is used to split init to smaller steps *)
+CASE CANInitSequencer OF
+	0: (* Sequencer step 0*)
+¤#CAN#0#¤
+		CANInitSequencer := CANInitSequencer + 1;
+	1: (* Sequencer step 1*)
+¤#MONITORING#0#¤
+		CANInitSequencer := CANInitSequencer + 1;
+	2: (* Sequencer step 2*)
+¤#BASEOD#0#¤
+		CANInitSequencer := CANInitSequencer + 1;
+	3:  (* Sequencer step 3*)
+¤#PDO#0#¤
+		CANInitSequencer := CANInitSequencer + 1;
+	4:   (* Sequencer step 4*)
+¤#J9139_INIT_PROTOCOL#0#¤
+		CANInitSequencer := CANInitSequencer + 1;
+	5:   (* Sequencer step 5*)
+¤#AFTER_CAN_INIT#0#¤	
+		CANInitSequencer := CANInitSequencer + 1;
+	ELSE
+		(* Sequencer ready *)
+		G_InitProtocolsCan1Ready:=TRUE;
+		CANInitSequencer := 0;
+END_CASE	
+  
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Protocols_Can1 TO Init_Protocols_Can2:= 
+G_InitProtocolsCan1Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Protocols_Can2:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+	
+
+(*CAN2 INIT*)
+(* Sequencer is used to split init to smaller steps *)
+CASE CANInitSequencer OF
+	0: (* Sequencer step 0*)
+¤#CAN#1#¤
+		CANInitSequencer := CANInitSequencer + 1;
+	1: (* Sequencer step 1*)
+¤#MONITORING#1#¤
+		CANInitSequencer := CANInitSequencer + 1;
+	2: (* Sequencer step 2*)
+¤#BASEOD#1#¤
+		CANInitSequencer := CANInitSequencer + 1;
+	3:  (* Sequencer step 3*)
+¤#PDO#1#¤
+		CANInitSequencer := CANInitSequencer + 1;
+	4:   (* Sequencer step 4*)
+¤#J9139_INIT_PROTOCOL#1#¤
+		CANInitSequencer := CANInitSequencer + 1;
+	5:   (* Sequencer step 5*)
+¤#AFTER_CAN_INIT#1#¤	
+		CANInitSequencer := CANInitSequencer + 1;
+	ELSE
+		(* Sequencer ready *)
+		G_InitProtocolsCan2Ready:=TRUE;
+		CANInitSequencer := 0;
+END_CASE	
+
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Protocols_Can2 TO Init_Isobus_Can1:=
+G_InitProtocolsCan2Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Isobus_Can1:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+	
+(*Initialize ISOBUS for CAN1*)
+
+¤#INIT_ISOBUS#0#¤
+
+	G_InitIsobusCan1Ready:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Isobus_Can1 TO Init_Isobus_Can2:=
+G_InitIsobusCan1Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Isobus_Can2:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+	
+(*Initialize ISOBUS for CAN2*)
+
+¤#INIT_ISOBUS#1#¤
+
+	G_InitIsobusCan2Ready:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Isobus_Can2 TO Init_Events:=
+G_InitIsobusCan2Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Events:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+
+	G_InitEventsReady:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Events TO Init_Exit:=
+G_InitEventsReady
+END_TRANSITION
+
+INITIAL_STEP Init_Exit:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+;
+(*Init CANopen variables*)
+
+	
+
+	G_InitExitReady:=TRUE;
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Exit TO Init_Entry:=
+TRUE
+END_TRANSITION
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := 'Don't add own code to this block !!' *)
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init TO (EPEC_In,Application,EPEC_Out):=
+G_InitExitReady
+END_TRANSITION
+
+STEP EPEC_In:
+
+INITIAL_STEP Init_EpecIn:
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_EpecIn TO (IOFilter,Diag,Bus,Other):= 
+TRUE
+
+
+END_TRANSITION
+STEP IOFilter:
+;
+(* Update Functions for pin 1.2 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_2_DebounceFb.name}}(i_In:={{diX1_2DiRaw.name}}, i_Delay:={{diX1_2_DebounceDelay.value}});
+     {{diX1_2DiFiltered.name}} := {{diX1_2_DebounceFb.name}}.o_Out;
+(* Update Functions for pin 1.3 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_3_DebounceFb.name}}(i_In:={{diX1_3DiRaw.name}}, i_Delay:={{diX1_3_DebounceDelay.value}});
+     {{diX1_3DiFiltered.name}} := {{diX1_3_DebounceFb.name}}.o_Out;
+(* Update Functions for pin 1.7 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_7_DebounceFb.name}}(i_In:={{diX1_7DiRaw.name}}, i_Delay:={{diX1_7_DebounceDelay.value}});
+     {{diX1_7DiFiltered.name}} := {{diX1_7_DebounceFb.name}}.o_Out;
+(* Update Functions for pin 1.8 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_8_DebounceFb.name}}(i_In:={{diX1_8DiRaw.name}}, i_Delay:={{diX1_8_DebounceDelay.value}});
+     {{diX1_8DiFiltered.name}} := {{diX1_8_DebounceFb.name}}.o_Out;
+(* Update Functions for pin 1.9 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_9_DebounceFb.name}}(i_In:={{diX1_9DiRaw.name}}, i_Delay:={{diX1_9_DebounceDelay.value}});
+     {{diX1_9DiFiltered.name}} := {{diX1_9_DebounceFb.name}}.o_Out;
+(* Update Functions for pin 1.10 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_10_DebounceFb.name}}(i_In:={{diX1_10DiRaw.name}}, i_Delay:={{diX1_10_DebounceDelay.value}});
+     {{diX1_10DiFiltered.name}} := {{diX1_10_DebounceFb.name}}.o_Out;
+(* Update Functions for pin 1.11 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_11_DebounceFb.name}}(i_In:={{diX1_11DiRaw.name}}, i_Delay:={{diX1_11_DebounceDelay.value}});
+     {{diX1_11DiFiltered.name}} := {{diX1_11_DebounceFb.name}}.o_Out;
+(* Update Functions for pin 1.12 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_12_DebounceFb.name}}(i_In:={{diX1_12DiRaw.name}}, i_Delay:={{diX1_12_DebounceDelay.value}});
+     {{diX1_12DiFiltered.name}} := {{diX1_12_DebounceFb.name}}.o_Out;
+(* Update Functions for pin 1.14 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_14_DebounceFb.name}}(i_In:={{diX1_14DiRaw.name}}, i_Delay:={{diX1_14_DebounceDelay.value}});
+     {{diX1_14DiFiltered.name}} := {{diX1_14_DebounceFb.name}}.o_Out;
+(* Update Functions for pin 1.15 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_15_DebounceFb.name}}(i_In:={{diX1_15DiRaw.name}}, i_Delay:={{diX1_15_DebounceDelay.value}});
+     {{diX1_15DiFiltered.name}} := {{diX1_15_DebounceFb.name}}.o_Out;
+(* Make mean filtering for pin 1.20 *)
+
+(* Make mean filtering for pin 1.20 *)
+
+(* Make mean filtering for pin 1.21 *)
+
+(* Make mean filtering for pin 1.20 *)
+
+(* Filter actions for pin 1.22 *)
+    {{aiX1_22AiFiltArrayIndex.name}}:= WORD_TO_BYTE({{aiX1_22AiFiltFb.name}}.o_Write);
+    {{aiX1_22AiVarLatest.name}} := {{aiX1_22AiFiltArray.name}}[{{aiX1_22AiFiltArrayIndex.name}}];
+    {{aiX1_22AiVarFilt.name}}:=AI_MeanValue(
+        i_LatestBufferIndex := {{aiX1_22AiFiltArrayIndex.name}},
+        i_pBuffer := {{aiX1_22AiFiltFb.name}}.i_Data,
+        i_FirstIndex := 0,
+        i_SizeOfBuffer := 50,
+        i_Samples := {{aiX1_22AiFiltSamp.value}});
+(* Filter actions for pin 1.23 *)
+    {{aiX1_23AiFiltArrayIndex.name}}:= WORD_TO_BYTE({{aiX1_23AiFiltFb.name}}.o_Write);
+    {{aiX1_23AiVarLatest.name}} := {{aiX1_23AiFiltArray.name}}[{{aiX1_23AiFiltArrayIndex.name}}];
+    {{aiX1_23AiVarFilt.name}}:=AI_MeanValue(
+        i_LatestBufferIndex := {{aiX1_23AiFiltArrayIndex.name}},
+        i_pBuffer := {{aiX1_23AiFiltFb.name}}.i_Data,
+        i_FirstIndex := 0,
+        i_SizeOfBuffer := 50,
+        i_Samples := {{aiX1_23AiFiltSamp.value}});
+(* Update Functions for pin 1.25 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_25_DebounceFb.name}}(i_In:={{diX1_25DiRaw.name}}, i_Delay:={{diX1_25_DebounceDelay.value}});
+     {{diX1_25DiFiltered.name}} := {{diX1_25_DebounceFb.name}}.o_Out;
+(* Update Functions for pin 1.26 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_26_DebounceFb.name}}(i_In:={{diX1_26DiRaw.name}}, i_Delay:={{diX1_26_DebounceDelay.value}});
+     {{diX1_26DiFiltered.name}} := {{diX1_26_DebounceFb.name}}.o_Out;
+(* Update Functions for pin 1.27 *)
+     (* Debounce filtering to raw DI value *)
+     {{diX1_27_DebounceFb.name}}(i_In:={{diX1_27DiRaw.name}}, i_Delay:={{diX1_27_DebounceDelay.value}});
+     {{diX1_27DiFiltered.name}} := {{diX1_27_DebounceFb.name}}.o_Out;
+(* Make mean filtering for pin 1.31 *)
+
+(* Make mean filtering for pin 1.20 *)
+
+(* Make mean filtering for pin 1.32 *)
+
+(* Make mean filtering for pin 1.20 *)
+
+(* Filter actions for pin 1.34 *)
+    {{aiX1_34AiFiltArrayIndex.name}}:= WORD_TO_BYTE({{aiX1_34AiFiltFb.name}}.o_Write);
+    {{aiX1_34AiVarLatest.name}} := {{aiX1_34AiFiltArray.name}}[{{aiX1_34AiFiltArrayIndex.name}}];
+    {{aiX1_34AiVarFilt.name}}:=AI_MeanValue(
+            i_LatestBufferIndex := {{aiX1_34AiFiltArrayIndex.name}},
+            i_pBuffer := {{aiX1_34AiFiltFb.name}}.i_Data,
+            i_FirstIndex := 0,
+            i_SizeOfBuffer := 50,
+            i_Samples := {{aiX1_34AiFiltSamp.value}});
+(* Filter actions for pin 1.35 *)
+    {{aiX1_35AiFiltArrayIndex.name}}:= WORD_TO_BYTE({{aiX1_35AiFiltFb.name}}.o_Write);
+    {{aiX1_35AiVarLatest.name}} := {{aiX1_35AiFiltArray.name}}[{{aiX1_35AiFiltArrayIndex.name}}];
+    {{aiX1_35AiVarFilt.name}}:=AI_MeanValue(
+             i_LatestBufferIndex := {{aiX1_35AiFiltArrayIndex.name}},
+             i_pBuffer := {{aiX1_35AiFiltFb.name}}.i_Data,
+             i_FirstIndex := 0,
+             i_SizeOfBuffer := 50,
+             i_Samples := {{aiX1_35AiFiltSamp.value}});
+(* Update Functions for pin 1.2 *)
+(* Update Functions for pin 1.3 *)
+(* Update Functions for pin 1.7 *)
+(* Update Functions for pin 1.8 *)
+(* Update Functions for pin 1.14 *)
+     (* Debounce filtering to raw DI value *)
+     G_DebounceDI_SW_FOOT(i_In:=DI_RAW_SW_FOOT, i_Delay:=30);
+     DI_SW_FOOT := G_DebounceDI_SW_FOOT.o_Out;
+(* Update Functions for pin 1.15 *)
+     (* Debounce filtering to raw DI value *)
+     G_DebounceDI_SW_EMERGENCY(i_In:=DI_RAW_SW_EMERGENCY, i_Delay:=30);
+     DI_SW_EMERGENCY := G_DebounceDI_SW_EMERGENCY.o_Out;
+(* Make mean filtering for pin 1.20 *)
+
+AI_ARR_INDEX_JOYSTICK_MV:= WORD_TO_BYTE(G_AIBufferOf_JOYSTICK_MV.o_Write);
+AI_JOYSTICK_MV:=AI_MeanValue(
+	i_LatestBufferIndex := AI_ARR_INDEX_JOYSTICK_MV,
+	i_pBuffer := G_AIBufferOf_JOYSTICK_MV.i_Data,
+	i_FirstIndex := 0,
+	i_SizeOfBuffer := 50,
+	i_Samples := 10);
+
+(* Make mean filtering for pin 1.21 *)
+
+AI_ARR_INDEX_SENSOR_MV:= WORD_TO_BYTE(G_AIBufferOf_SENSOR_MV.o_Write);
+AI_SENSOR_MV:=AI_MeanValue(
+	i_LatestBufferIndex := AI_ARR_INDEX_SENSOR_MV,
+	i_pBuffer := G_AIBufferOf_SENSOR_MV.i_Data,
+	i_FirstIndex := 0,
+	i_SizeOfBuffer := 50,
+	i_Samples := 10);
+
+(* Filter actions for pin 1.22 *)
+    AI_ARR_INDEX_VALVE_UPDN_CURRENT:= WORD_TO_BYTE(G_AIBufferOf_VALVE_UPDN_CURRENT.o_Write);
+    FB_RAW_VALVE_UPDN_CURRENT := AI_ARR_VALVE_UPDN_CURRENT[AI_ARR_INDEX_VALVE_UPDN_CURRENT];
+    FB_VALVE_UPDN_CURRENT:=AI_MeanValue(
+        i_LatestBufferIndex := AI_ARR_INDEX_VALVE_UPDN_CURRENT,
+        i_pBuffer := G_AIBufferOf_VALVE_UPDN_CURRENT.i_Data,
+        i_FirstIndex := 0,
+        i_SizeOfBuffer := 50,
+        i_Samples := 10);
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+STEP Diag:
+
+
+
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+STEP Bus:
+;
+
+
+
+
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+STEP Other:
+
+
+
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM (IOFilter,Diag,Bus,Other) TO Init_EpecIn:= 
+FALSE
+
+
+END_TRANSITION
+
+
+END_STEP
+
+STEP Application:
+INITIAL_STEP Init_Application:
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Application TO Main_Application:= 
+TRUE
+END_TRANSITION
+
+STEP Main_Application:
+(* Call user application *)
+    Main();
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Main_Application TO Init_Application:= 
+FALSE
+END_TRANSITION
+END_STEP
+
+STEP Epec_Out:
+
+INITIAL_STEP Init_EpecOut:
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_EpecOut TO Other_EpecOut:= 
+TRUE
+
+
+END_TRANSITION
+STEP Other_EpecOut:
+
+
+NvRam_3606_Save();
+
+IF NvRam_3606_Save.o_Busy = FALSE THEN
+	SaveOdBlockActions(i_StateForActions := FALSE);
+END_IF
+
+(* Check reset request only if there is no data store going on. Exception is if error counter is bigger than 10 *)
+IF G_RESET_MODULE AND NvRam_3606_Save.o_Busy = FALSE THEN
+	(* Reset control unit *)
+	SYSTEM_RESTART_PLCOPEN_APP(0);
+END_IF
+
+(* Block actions if voltage level is under defined limit *)
+IF G_HWDiagnostics.o_SupplyVoltage > G_LowLimitForParameterSaving THEN
+
+    (* Check if fast parameters are necessary to save *)
+    IF G_3606_FastParamsSave = TRUE AND NvRam_3606_Save.o_Busy = FALSE THEN
+        G_3606_FastParamsSave := FALSE;
+        NvRam_3606_Save(
+            i_SaveFastParamsStart:= TRUE,
+            i_TimeOutValue:= G_3606_NVRAM_SAVE_MAX_TIME,
+            i_SizeOfParams := G_3606_PARAM_SIZE,
+            i_SizeOfFastParams := G_3606_FAST_PARAM_SIZE);
+    END_IF
+
+    (* If RAM image is changed nvram copying is always started again from begin. *)
+    IF G_3606_OldImageChanged <> G_FileSysFileSystem.RamImageChanged AND G_3606_CopyNvRam.o_Busy = FALSE THEN
+        SaveOdBlockActions(i_StateForActions := TRUE);
+        G_3606_OldImageChanged := G_FileSysFileSystem.RamImageChanged;
+        NvRam_3606_Save(
+            i_SaveParamsStart:= TRUE,
+            i_TimeOutValue:= G_3606_NVRAM_SAVE_MAX_TIME,
+            i_SizeOfParams := G_3606_PARAM_SIZE,
+            i_SizeOfFastParams := G_3606_FAST_PARAM_SIZE);
+    END_IF
+
+    (* Check if it is necessary to save communication parameters *)
+    IF G_3606_CommsSaveOldCnt <> G_ODSAVE_SAVE_COMMS_COUNTER THEN
+    ¤#COMM_CONFIGURATION#1#¤
+        SystemParameters.WriteData();
+        G_3606_CommsSaveOldCnt := G_ODSAVE_SAVE_COMMS_COUNTER;
+    END_IF
+
+    (* Check if it is necessary to restor communication parameters *)
+    IF G_3606_CommsRestoreOldCnt <> G_ODSAVE_RESTORE_COMMS_COUNTER THEN
+        (* Restore communication parameters *)
+        SystemParameters.RestoreDefaultData();
+    ¤#COMM_CONFIGURATION#0#¤
+        G_3606_CommsRestoreOldCnt := G_ODSAVE_RESTORE_COMMS_COUNTER;
+    END_IF
+
+END_IF
+    
+(* Overcurrent protection for mA AI inputs *)
+AIP_InputProtection_3606(
+	o_NoErrors=>G_NoErrors ,
+	o_XM1_20_OverCurrent=>G_X1_20_OverCurrent ,
+	o_XM1_21_OverCurrent=>G_X1_21_OverCurrent ,
+	o_XM1_31_OverCurrent=>G_X1_31_OverCurrent,
+	o_XM1_32_OverCurrent=>G_X1_32_OverCurrent );
+
+
+
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Other_EpecOut TO Init_EpecOut:= 
+FALSE
+
+
+END_TRANSITION
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+
+TRANSITION FROM (EPEC_In,Application,EPEC_Out) TO Init:=
+FALSE
+END_TRANSITION
+
+END_PROGRAM
+
+MACRO
+MacroName: 'Import MultiTool'
+MacroMenu: 'Import MultiTool'
+MacroCmd: 'ImportMultiTool'
+END_MACRO
+
+MACRO
+MacroName: 'Show MultiTool Errors'
+MacroMenu: 'Show MultiTool Errors'
+MacroCmd: 'ShowMultiToolErrors'
+END_MACRO

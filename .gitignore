@@ -1,0 +1,22 @@
+# CoDeSys 빌드 아티팩트
+*.BIN
+*.HEX
+*.LST
+*.MAP
+*.ci
+*.ri
+*.SDB
+*.SYM
+
+# CoDeSys 프로젝트 (바이너리 — IDE 전용)
+*.pro
+
+# MultiTool 잠금 파일
+~$projlock.mtproject
+
+# 백업
+Backups/
+
+# Python
+__pycache__/
+*.pyc

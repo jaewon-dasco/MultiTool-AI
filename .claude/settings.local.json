@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk -F';' '{print $1}')",
+      "Bash(\"C:/Program Files \\(x86\\)/Epec/MultiTool Creator 8.4/MultiTool.exe\" --help)",
+      "Bash(powershell *)",
+      "Bash(\"C:/Program Files \\(x86\\)/Epec/MultiTool Creator 8.4/Epec.MT.FileExtensionWriter.exe\" --help)",
+      "Bash(\"C:/Program Files \\(x86\\)/Epec/MultiTool Creator 8.4/Epec.MT.FileExtensionWriter.exe\")",
+      "Bash('C:\\\\Users\\\\JONE\\\\Desktop\\\\EPEC\\\\CoDeSysProject\\\\CLAUDE.md')",
+      "Bash('C:\\\\Users\\\\JONE\\\\Desktop\\\\EPEC\\\\CoDeSysProject\\\\agent\\\\MultiTool.md')",
+      "Bash('C:\\\\Users\\\\JONE\\\\.claude\\\\CLAUDE.md')",
+      "Bash($PYTHON *)",
+      "Bash(C:\\\\Users\\\\JONE\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python313\\\\python.exe *)",
+      "Bash(gh --version)",
+      "Bash(ssh-keygen -t ed25519 -C \"rnd10@das-co.com\" -f /c/Users/JONE/.ssh/id_ed25519 -N \"\")",
+      "Bash(ssh *)",
+      "Bash(git remote *)",
+      "Bash(C:/Users/JONE/AppData/Local/Programs/Python/Python313/python.exe *)",
+      "Bash(\"C:/Users/JONE/AppData/Local/Programs/Python/Python313/python.exe\" \"C:/Users/JONE/Desktop/EPEC/CoDeSysProject/agent/codesys23_exp_generate.py\")",
+      "Bash(mkdir -p \"/c/Users/JONE/Desktop/EPEC/CoDeSysProject/skills\")",
+      "Bash(mv \"/c/Users/JONE/Desktop/EPEC/CoDeSysProject/agent/edit_mtproject.py\" \"/c/Users/JONE/Desktop/EPEC/CoDeSysProject/skills/edit_mtproject.py\")",
+      "Bash(awk '{print $5 \"\\\\t\" $9}')",
+      "Bash(awk '{print $9, \"\\\\t\", $5}')",
+      "Bash(git *)",
+      "PowerShell(pip show *)",
+      "PowerShell(python --version)",
+      "PowerShell(py *)"
+    ]
+  }
+}
