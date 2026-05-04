@@ -8,6 +8,11 @@ MT_EXE_PATTERN = r"C:\Program Files (x86)\Epec\MultiTool Creator {ver}\MultiTool
 DEMO_DIR       = Path(__file__).parent.parent.parent / "DemoProject" / "ScanDemo"
 DEMO_PROJECT   = DEMO_DIR / "ScanDemo.mtproject"
 
+# 디바이스 클릭 좌표 — maximized 캔버스 기준 fixed offset
+# Pane left + 150, canvas_top_offset + 120 (디바이스 박스 중앙)
+DEV_X_OFFSET = 150
+DEV_Y_OFFSET = 120
+
 
 def dump_ui_tree(ver: str, out_path: Path):
     """MultiTool 실행 → 메뉴바 + 컨텍스트 메뉴 수집 → JSON 저장"""
@@ -81,7 +86,9 @@ def close_app(app, win):
 
 # ── 데모 프로젝트 생성 ────────────────────────────────────────────────────────
 def _create_demo_project(app, win):
-    """기존 ScanDemo 폴더 삭제 → New Project 생성 → CU-3606-21 디바이스 추가 → 저장"""
+    """기존 ScanDemo 폴더 삭제 → 창 maximize → New Project 생성 → CU-3606-21 디바이스 추가 → 저장
+
+    MultiTool은 항상 maximized 상태에서 작업 — 캔버스 좌표 일관성 유지."""
     import shutil
     from pywinauto import keyboard
 
@@ -94,6 +101,13 @@ def _create_demo_project(app, win):
         if DEMO_DIR.exists():
             shutil.rmtree(DEMO_DIR, ignore_errors=True)
     DEMO_DIR.parent.mkdir(parents=True, exist_ok=True)
+
+    # 창 maximize — 모든 작업을 전체화면에서 수행
+    try:
+        win.maximize()
+        time.sleep(1.5)
+    except Exception as e:
+        print(f"  [WARN] maximize 실패: {e}")
 
     # FILE > New Project
     _open_menu_item(app, win, 0, "New Project")
@@ -555,9 +569,9 @@ def _collect_popup(app, top_labels: set) -> list:
 def _collect_context_menus(app, win) -> dict:
     try:
         win = app.top_window()
-        # 이전 실행에서 maximize 잔존 가능 — default 크기로 복원
+        # maximized 상태 유지 (모든 작업 전체화면)
         try:
-            win.restore()
+            win.maximize()
             time.sleep(1.0)
         except Exception: pass
         win = app.top_window()
@@ -720,17 +734,18 @@ def _collect_device_config_tabs(app, win) -> dict:
             canvas_off = (ab.rectangle().bottom - pane.top) + 10
         except Exception: pass
 
-        dev_x = pane.left + (pane.width() // 4)
-        dev_y = pane.top + canvas_off + 110
+        dev_x = pane.left + DEV_X_OFFSET
+        dev_y = pane.top + canvas_off + DEV_Y_OFFSET
+        cfg_x, cfg_y = dev_x + 70, dev_y - 85
 
-        # 디바이스 클릭 + Configure (default 크기에서 검증된 좌표)
+        # 디바이스 클릭 + Configure
         win.set_focus(); time.sleep(0.5)
         click(coords=(dev_x, dev_y))
         time.sleep(0.8)
-        pyautogui.click(dev_x + 30, dev_y - 85)
+        pyautogui.click(cfg_x, cfg_y)
         time.sleep(2.5)
 
-        # Configuration view 열림 → 창 최대화
+        # Configuration view 열림 → 창 최대화 유지
         win = app.top_window()
         try:
             win.maximize()
@@ -744,6 +759,7 @@ def _collect_device_config_tabs(app, win) -> dict:
                 win = app.top_window()
                 tab = _find_config_tab(win, label, aid_kw)
                 if tab is None:
+                    print(f"  [WARN] {label} 탭 미발견")
                     result[label] = {"error": "tab not found"}
                     continue
                 tab.click_input()
@@ -878,10 +894,8 @@ def _collect_device_toolbar(app, win) -> list:
         except Exception:
             pass
 
-        rel_x = pane_rect.width() // 4
-        rel_y = canvas_top_offset + 110
-        dev_x = pane_rect.left + rel_x
-        dev_y = pane_rect.top + rel_y
+        dev_x = pane_rect.left + DEV_X_OFFSET
+        dev_y = pane_rect.top + canvas_top_offset + DEV_Y_OFFSET
 
         win.set_focus(); time.sleep(0.3)
         click(coords=(dev_x, dev_y))
@@ -889,9 +903,10 @@ def _collect_device_toolbar(app, win) -> list:
 
         # 툴바 sweep: 디바이스 본체 위로 이동(선택 유지)했다가 다음 hover
         # 아이콘 순서 — 🔧 Configure / 📦 Create CODESYS Project / ❌ Delete
+        # maximized 기준: Configure ~+70, CCP ~+110, Delete ~+150
         tb_y = dev_y - 85
         seen = set()
-        for offset in range(-30, 145, 10):
+        for offset in range(-30, 200, 10):
             px = dev_x + offset
             try:
                 # 디바이스 본체 위로 이동 → tooltip 리셋(선택은 유지)
@@ -951,10 +966,8 @@ def _rclick_collect(app, win, target: str) -> list:
             pass
 
         # 디바이스 박스 좌표 (단일 디바이스 레이아웃 가정)
-        rel_x = pane_rect.width() // 4
-        rel_y = canvas_top_offset + 110
-        cx_t = pane_rect.left + rel_x
-        cy_t = pane_rect.top + rel_y
+        cx_t = pane_rect.left + DEV_X_OFFSET
+        cy_t = pane_rect.top + canvas_top_offset + DEV_Y_OFFSET
 
         try:
             win.set_focus()
