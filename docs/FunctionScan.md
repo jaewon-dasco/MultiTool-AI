@@ -139,14 +139,25 @@ WPF(.NET) 앱 → UIA 네이티브 지원
 
 ### 실행 단계
 
-| 단계 | 작업          | 상세                                                                     |
-| ---- | ------------- | ------------------------------------------------------------------------ |
-| 1    | 버전 탐지     | `Program Files\Epec` 열거 → CHM MD5 비교 → 신규/변경 버전만 진행         |
-| 2    | CHM 추출·파싱 | `hh.exe -decompile` → `chm_extracted/` 저장 → 버전 히스토리·기능명 수집  |
-| 3    | UIA 트리 덤프 | `MultiTool.exe` 실행 → 메뉴바 순회 → Name/AutomationId/BoundingRect 저장 |
-| 4    | 단축키 수집   | UIA 읽기 → 검증 → `function_map.json` 기록                               |
-| 5    | 기능 매핑     | 단축키 + 메뉴 경로 + 좌표 + 다이얼로그 구조 수집                         |
-| 6    | 버전 diff     | 이전/현재 `ui_tree.json` 비교 → 변경 항목 재매핑                         |
+| 단계 | 작업               | 상세                                                                    |
+| ---- | ------------------ | ----------------------------------------------------------------------- |
+| 1    | 버전 탐지          | `Program Files\Epec` 열거 → CHM MD5 비교 → 신규/변경 버전만 진행        |
+| 2    | CHM 추출·파싱      | `hh.exe -decompile` → `chm_extracted/` 저장 → 버전 히스토리·기능명 수집 |
+| 3    | 메뉴바 덤프        | `MultiTool.exe` 실행 → FILE/PROJECT/HELP 메뉴 순회 → 항목 수집          |
+| 4    | 데모 프로젝트 생성 | 기존 스캔용 프로젝트 삭제 → New Project → CU-3606-21 디바이스 추가      |
+| 5    | 컨텍스트 메뉴 수집 | 네트워크·디바이스 우클릭 → hover 메뉴 항목 수집                         |
+| 6    | 단축키 수집        | UIA 읽기 → 검증 → `function_map.json` 기록                              |
+| 7    | 기능 매핑          | 단축키 + 메뉴 경로 + 좌표 + 다이얼로그 구조 수집                        |
+| 8    | 버전 diff          | 이전/현재 `ui_tree.json` 비교 → 변경 항목 재매핑                        |
+
+### 스캔용 데모 프로젝트
+
+| 항목      | 내용                                                            |
+| --------- | --------------------------------------------------------------- |
+| 경로      | `DemoProject/ScanDemo/ScanDemo.mtproject`                       |
+| 생성 방식 | 매 스캔 시 기존 삭제 후 New Project로 신규 생성                 |
+| 디바이스  | CU-3606-21 (컨텍스트 메뉴 수집 목적 — 네트워크·디바이스 필요)   |
+| 사용 목적 | 우클릭 컨텍스트 메뉴, hover 메뉴 수집 전용 (실제 프로젝트 불변) |
 
 ### 단축키 수집
 
@@ -184,16 +195,18 @@ WPF(.NET) 앱 → UIA 네이티브 지원
 | `coordinates`       | 3순위 fallback, BoundingRect 중심   |
 | `dialog`            | 실행 후 열리는 다이얼로그 UIA 참조  |
 
-### 스크립트 구성 (`skills/`)
+### 스크립트 구성 (`skills/fnscan/`)
 
-| 스크립트            | 역할                               |
-| ------------------- | ---------------------------------- |
-| `fnscan_version.py` | 설치 버전 탐지, CHM 해시 비교      |
-| `fnscan_chm.py`     | CHM 추출, 버전 히스토리·기능 파싱  |
-| `fnscan_uitree.py`  | MultiTool 실행, UIA 트리 덤프      |
-| `fnscan_mapper.py`  | UI 트리 → `function_map.json` 생성 |
-| `fnscan_diff.py`    | 버전 간 diff, 변경 기능 리포트     |
-| `fnscan_run.py`     | 전체 순차 실행 진입점              |
+| 스크립트      | 역할                                              |
+| ------------- | ------------------------------------------------- |
+| `version.py`  | 설치 버전 탐지, CHM 해시 비교                     |
+| `chm.py`      | CHM 추출, 버전 히스토리·기능 파싱                 |
+| `uitree.py`   | MultiTool 실행, 메뉴바·컨텍스트 메뉴 수집         |
+| `mapper.py`   | UI 트리 → `function_map.json` 생성                |
+| `diff.py`     | 버전 간 diff, 변경 기능 리포트                    |
+| `verify.py`   | 단축키 일괄 검증, `shortcut_verified` 갱신        |
+| `coverage.py` | 커버리지 체크 (기준 90%)                          |
+| `run.py`      | 전체 순차 실행 진입점 (`py skills/fnscan/run.py`) |
 
 ---
 

@@ -25,5 +25,5 @@ def needs_update(ver: str, chm_path: Path) -> bool:
     meta = VERSIONS_DIR / ver / "meta.json"
     if not meta.exists():
         return True
-    stored = json.loads(meta.read_text())
+    stored = json.loads(meta.read_text(encoding="utf-8-sig"))
     return stored.get("chm_md5") != chm_md5(chm_path)

@@ -1,36 +1,67 @@
-"""mapper.py — UIA 트리 → function_map.json 생성"""
+"""mapper.py — UIA 메뉴 트리 → function_map.json 생성"""
 
 import json
 from pathlib import Path
 
 
 def build_function_map(ui_tree: dict, out_path: Path):
-    """UIA 트리 dict에서 MenuItem 항목을 추출해 function_map.json 저장"""
+    """uitree.dump_ui_tree() 결과에서 function_map.json 생성"""
     fmap: dict = {}
-    _extract_menu_items(ui_tree, [], fmap)
-    out_path.write_text(json.dumps(fmap, ensure_ascii=False, indent=2))
 
+    # 메뉴바 항목
+    for top in ui_tree.get("items", []):
+        top_name = top["name"]
+        for item in top.get("children", []):
+            name = item.get("name", "").strip()
+            if not name or name.startswith("MultiTool."):
+                continue
+            fmap[name] = {
+                "shortcut":          item.get("shortcut", ""),
+                "shortcut_verified": False,
+                "menu_path":         [top_name, name],
+                "automation_id":     item.get("automation_id", ""),
+                "coordinates":       item.get("coordinates", []),
+                "dialog":            "none",
+                "source":            "menubar"
+            }
 
-def _extract_menu_items(node: dict, path: list, fmap: dict):
-    if node.get("control_type") == "MenuItem" and node.get("name"):
-        name     = node["name"].split("\t")[0].strip()
-        shortcut = _parse_shortcut(node.get("name", ""))
-        rect     = node.get("rect", [0, 0, 0, 0])
-        cx       = (rect[0] + rect[2]) // 2
-        cy       = (rect[1] + rect[3]) // 2
-        fmap[name] = {
-            "shortcut":          shortcut,
-            "shortcut_verified": False,
-            "menu_path":         path + [name],
-            "automation_id":     node.get("automation_id", ""),
-            "coordinates":       [cx, cy],
-            "dialog":            "none"
-        }
-    for child in node.get("children", []):
-        new_path = path + [node["name"]] if node.get("name") else path
-        _extract_menu_items(child, new_path, fmap)
+    # 컨텍스트 메뉴 / 플로팅 툴바 항목
+    for ctx_type, ctx_items in ui_tree.get("context_menus", {}).items():
+        if ctx_type == "_device_config":
+            continue  # 별도 처리 (탭 전체)
+        path_prefix = "toolbar" if ctx_type == "device_toolbar" else f"context:{ctx_type}"
+        for item in ctx_items:
+            name = item.get("name", "").strip()
+            if not name or name.startswith("MultiTool."):
+                continue
+            if name not in fmap:
+                fmap[name] = {
+                    "shortcut":          item.get("shortcut", ""),
+                    "shortcut_verified": False,
+                    "menu_path":         [path_prefix, name],
+                    "automation_id":     item.get("automation_id", ""),
+                    "coordinates":       item.get("coordinates", []),
+                    "dialog":            "none",
+                    "source":            path_prefix
+                }
 
+    # 디바이스 Configuration 탭 — 탭 자체 + 각 탭의 입력 컨트롤
+    cfg = ui_tree.get("context_menus", {}).get("_device_config", {})
+    for tab_name, tab_data in cfg.items():
+        if isinstance(tab_data, dict) and "error" in tab_data:
+            continue
+        tab_key = f"Configure: {tab_name}"
+        if tab_key not in fmap:
+            fmap[tab_key] = {
+                "shortcut":          "",
+                "shortcut_verified": False,
+                "menu_path":         ["Configure", tab_name],
+                "automation_id":     "",
+                "coordinates":       [],
+                "dialog":            "DeviceConfigureView",
+                "source":            "device_config",
+                "inputs":            tab_data.get("inputs", []),
+                "labels":            tab_data.get("labels", []),
+            }
 
-def _parse_shortcut(text: str) -> str:
-    parts = text.split("\t")
-    return parts[1].strip() if len(parts) > 1 else ""
+    out_path.write_text(json.dumps(fmap, ensure_ascii=False, indent=2), encoding="utf-8")

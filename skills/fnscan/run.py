@@ -1,8 +1,12 @@
 """run.py — FunctionScan 전체 순차 실행 진입점"""
 
+import sys
 import json
 import datetime
 from pathlib import Path
+
+sys.stdout.reconfigure(encoding="utf-8")
+sys.stderr.reconfigure(encoding="utf-8")
 
 from version import VERSIONS_DIR, EPEC_ROOT, get_installed_versions, chm_md5, needs_update
 from chm     import extract_chm, parse_version_history
@@ -26,6 +30,11 @@ def run():
             print(f"[SKIP] {ver} — 변경 없음")
             continue
 
+        exe = inst_path / "MultiTool.exe"
+        if not exe.exists():
+            print(f"[SKIP] {ver} — MultiTool.exe 없음")
+            continue
+
         print(f"[RUN]  {ver}")
 
         # CHM 추출
@@ -47,11 +56,11 @@ def run():
         # function_map 빌드
         fmap_prev = VERSIONS_DIR / f"{ver}_prev" / "function_map.json"
         fmap_path = ver_dir / "function_map.json"
-        build_function_map(json.loads(tree_path.read_text()), fmap_path)
+        build_function_map(json.loads(tree_path.read_text(encoding="utf-8")), fmap_path)
 
         # diff
         diff = diff_function_maps(fmap_prev, fmap_path)
-        (ver_dir / "diff.json").write_text(json.dumps(diff, ensure_ascii=False, indent=2))
+        (ver_dir / "diff.json").write_text(json.dumps(diff, ensure_ascii=False, indent=2), encoding="utf-8")
         print_diff_report(diff)
 
         # meta 저장
@@ -60,7 +69,7 @@ def run():
             "chm_md5":   chm_md5(chm),
             "dumped_at": ts,
             "tree_file": str(tree_path)
-        }, indent=2))
+        }, indent=2), encoding="utf-8")
         print(f"  -> {fmap_path}")
 
 

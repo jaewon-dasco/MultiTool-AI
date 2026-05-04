@@ -1,7 +1,11 @@
 """coverage.py — function_map 커버리지 체크"""
 
+import sys
 import json
 from pathlib import Path
+
+sys.stdout.reconfigure(encoding="utf-8")
+sys.stderr.reconfigure(encoding="utf-8")
 
 VERSIONS_DIR = Path(__file__).parent.parent.parent / "docs" / "versions"
 
@@ -9,7 +13,7 @@ MANUAL_FUNCTIONS = [
     "New Project",
     "Open Project",
     "Save Project",
-    "Save As",
+    "Save As...",
     "Export Project Archive",
     "Settings",
     "System Export",
@@ -32,7 +36,7 @@ def check_coverage(ver: str) -> bool:
         print(f"[ERROR] function_map.json 없음: {fmap_path}")
         return False
 
-    fmap    = json.loads(fmap_path.read_text())
+    fmap    = json.loads(fmap_path.read_text(encoding="utf-8"))
     missing = [f for f in MANUAL_FUNCTIONS if f not in fmap]
     ratio   = (len(MANUAL_FUNCTIONS) - len(missing)) / len(MANUAL_FUNCTIONS) * 100
 

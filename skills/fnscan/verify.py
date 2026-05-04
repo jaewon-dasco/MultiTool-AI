@@ -20,7 +20,7 @@ def verify_shortcuts(ver: str):
         print(f"[ERROR] function_map.json 없음: {fmap_path}")
         return
 
-    fmap = json.loads(fmap_path.read_text())
+    fmap = json.loads(fmap_path.read_text(encoding="utf-8"))
     exe  = rf"C:\Program Files (x86)\Epec\MultiTool Creator {ver}\MultiToolCreator.exe"
     app  = Application(backend="uia").start(exe)
     time.sleep(3)
@@ -43,7 +43,7 @@ def verify_shortcuts(ver: str):
         except Exception:
             info["shortcut_verified"] = False
 
-    fmap_path.write_text(json.dumps(fmap, ensure_ascii=False, indent=2))
+    fmap_path.write_text(json.dumps(fmap, ensure_ascii=False, indent=2), encoding="utf-8")
     app.kill()
 
     total    = sum(1 for v in fmap.values() if v.get("shortcut"))
