@@ -293,8 +293,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      841,
-      567
+      867,
+      593
     ],
     "dialog": "none",
     "source": "context:device"
@@ -308,8 +308,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      841,
-      591
+      867,
+      617
     ],
     "dialog": "none",
     "source": "context:device"
@@ -323,8 +323,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      841,
-      615
+      867,
+      641
     ],
     "dialog": "none",
     "source": "context:device"
@@ -338,8 +338,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      841,
-      639
+      867,
+      665
     ],
     "dialog": "none",
     "source": "context:device"
@@ -353,8 +353,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      783,
-      469
+      809,
+      495
     ],
     "dialog": "none",
     "source": "toolbar"
@@ -368,8 +368,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      823,
-      469
+      849,
+      495
     ],
     "dialog": "none",
     "source": "toolbar"
@@ -383,8 +383,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      853,
-      469
+      879,
+      495
     ],
     "dialog": "none",
     "source": "toolbar"
@@ -398,8 +398,8 @@
     ],
     "automation_id": "NetworkEditorView_AddDeviceButton",
     "coordinates": [
-      603,
-      416
+      629,
+      442
     ],
     "dialog": "none",
     "source": "ne_toolbar"
@@ -413,8 +413,8 @@
     ],
     "automation_id": "NetworkEditorView_AddSlaveDeviceButton",
     "coordinates": [
-      664,
-      416
+      690,
+      442
     ],
     "dialog": "none",
     "source": "ne_toolbar"
@@ -428,8 +428,8 @@
     ],
     "automation_id": "NetworkEditorView_AddNetworkButton",
     "coordinates": [
-      718,
-      416
+      744,
+      442
     ],
     "dialog": "none",
     "source": "ne_toolbar"
@@ -1364,7 +1364,6 @@
       }
     ],
     "labels": [
-      "Diagnostics",
       "Network Editor",
       "EPEC_CU1",
       "CAN",
@@ -1494,7 +1493,6 @@
       }
     ],
     "labels": [
-      "Object Dictionary",
       "Network Editor",
       "EPEC_CU1",
       "CAN",
@@ -1522,7 +1520,185 @@
       "Events",
       "ISOBUS",
       "Library Manager"
+    ],
+    "toolbar_buttons": [
+      {
+        "index": 0,
+        "tooltip": "Add Index",
+        "x": 207,
+        "y": 139
+      },
+      {
+        "index": 1,
+        "tooltip": "Add Pre-Defined Index",
+        "x": 245,
+        "y": 139
+      },
+      {
+        "index": 2,
+        "tooltip": "Remove",
+        "x": 283,
+        "y": 139
+      },
+      {
+        "index": 3,
+        "tooltip": "Add Sub-Index",
+        "x": 327,
+        "y": 139
+      },
+      {
+        "index": 4,
+        "tooltip": "Show Hidden",
+        "x": 371,
+        "y": 139
+      },
+      {
+        "index": 5,
+        "tooltip": "Store / Restore Settings",
+        "x": 415,
+        "y": 139
+      },
+      {
+        "index": 6,
+        "tooltip": "Import from supported file types",
+        "x": 459,
+        "y": 139
+      },
+      {
+        "index": 7,
+        "tooltip": "Export to supported file types",
+        "x": 497,
+        "y": 139
+      }
     ]
+  },
+  "Object Dictionary: Add Index": {
+    "shortcut": "",
+    "shortcut_verified": false,
+    "menu_path": [
+      "Configure",
+      "Object Dictionary",
+      "Add Index"
+    ],
+    "automation_id": "",
+    "coordinates": [
+      207,
+      139
+    ],
+    "dialog": "none",
+    "source": "device_config_toolbar:Object Dictionary"
+  },
+  "Object Dictionary: Add Pre-Defined Index": {
+    "shortcut": "",
+    "shortcut_verified": false,
+    "menu_path": [
+      "Configure",
+      "Object Dictionary",
+      "Add Pre-Defined Index"
+    ],
+    "automation_id": "",
+    "coordinates": [
+      245,
+      139
+    ],
+    "dialog": "none",
+    "source": "device_config_toolbar:Object Dictionary"
+  },
+  "Object Dictionary: Remove": {
+    "shortcut": "",
+    "shortcut_verified": false,
+    "menu_path": [
+      "Configure",
+      "Object Dictionary",
+      "Remove"
+    ],
+    "automation_id": "",
+    "coordinates": [
+      283,
+      139
+    ],
+    "dialog": "none",
+    "source": "device_config_toolbar:Object Dictionary"
+  },
+  "Object Dictionary: Add Sub-Index": {
+    "shortcut": "",
+    "shortcut_verified": false,
+    "menu_path": [
+      "Configure",
+      "Object Dictionary",
+      "Add Sub-Index"
+    ],
+    "automation_id": "",
+    "coordinates": [
+      327,
+      139
+    ],
+    "dialog": "none",
+    "source": "device_config_toolbar:Object Dictionary"
+  },
+  "Object Dictionary: Show Hidden": {
+    "shortcut": "",
+    "shortcut_verified": false,
+    "menu_path": [
+      "Configure",
+      "Object Dictionary",
+      "Show Hidden"
+    ],
+    "automation_id": "",
+    "coordinates": [
+      371,
+      139
+    ],
+    "dialog": "none",
+    "source": "device_config_toolbar:Object Dictionary"
+  },
+  "Object Dictionary: Store / Restore Settings": {
+    "shortcut": "",
+    "shortcut_verified": false,
+    "menu_path": [
+      "Configure",
+      "Object Dictionary",
+      "Store / Restore Settings"
+    ],
+    "automation_id": "",
+    "coordinates": [
+      415,
+      139
+    ],
+    "dialog": "none",
+    "source": "device_config_toolbar:Object Dictionary"
+  },
+  "Object Dictionary: Import from supported file types": {
+    "shortcut": "",
+    "shortcut_verified": false,
+    "menu_path": [
+      "Configure",
+      "Object Dictionary",
+      "Import from supported file types"
+    ],
+    "automation_id": "",
+    "coordinates": [
+      459,
+      139
+    ],
+    "dialog": "none",
+    "source": "device_config_toolbar:Object Dictionary"
+  },
+  "Object Dictionary: Export to supported file types": {
+    "shortcut": "",
+    "shortcut_verified": false,
+    "menu_path": [
+      "Configure",
+      "Object Dictionary",
+      "Export to supported file types"
+    ],
+    "automation_id": "",
+    "coordinates": [
+      497,
+      139
+    ],
+    "dialog": "none",
+    "source": "device_config_toolbar:Object Dictionary"
   },
   "Configure: PDO": {
     "shortcut": "",
@@ -2262,6 +2438,7 @@
       }
     ],
     "labels": [
+      "Library Manager",
       "Network Editor",
       "EPEC_CU1",
       "CAN",

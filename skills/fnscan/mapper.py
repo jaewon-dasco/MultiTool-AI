@@ -57,7 +57,7 @@ def build_function_map(ui_tree: dict, out_path: Path):
             continue
         tab_key = f"Configure: {tab_name}"
         if tab_key not in fmap:
-            fmap[tab_key] = {
+            entry = {
                 "shortcut":          "",
                 "shortcut_verified": False,
                 "menu_path":         ["Configure", tab_name],
@@ -68,5 +68,25 @@ def build_function_map(ui_tree: dict, out_path: Path):
                 "inputs":            tab_data.get("inputs", []),
                 "labels":            tab_data.get("labels", []),
             }
+            tb = tab_data.get("toolbar_buttons")
+            if tb:
+                entry["toolbar_buttons"] = tb
+            fmap[tab_key] = entry
+
+        # OD 탭의 toolbar 버튼은 별도 function_map 항목으로 등록
+        for tb in tab_data.get("toolbar_buttons", []):
+            tip = tb.get("tooltip", "").strip()
+            if not tip: continue
+            key = f"{tab_name}: {tip}"
+            if key not in fmap:
+                fmap[key] = {
+                    "shortcut":          "",
+                    "shortcut_verified": False,
+                    "menu_path":         ["Configure", tab_name, tip],
+                    "automation_id":     "",
+                    "coordinates":       [tb.get("x", 0), tb.get("y", 0)],
+                    "dialog":            "none",
+                    "source":            f"device_config_toolbar:{tab_name}",
+                }
 
     out_path.write_text(json.dumps(fmap, ensure_ascii=False, indent=2), encoding="utf-8")

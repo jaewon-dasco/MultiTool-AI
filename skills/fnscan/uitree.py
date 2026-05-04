@@ -758,6 +758,13 @@ def _collect_device_config_tabs(app, win) -> dict:
                 inputs = _scan_tab_inputs(win)
                 labels = _scan_tab_labels(win)
                 result[label] = {"inputs": inputs, "labels": labels}
+                # OD 탭은 추가로 8개 toolbar 버튼 tooltip 수집
+                if label == "Object Dictionary":
+                    od_btns = _scan_od_toolbar(app, win)
+                    if od_btns:
+                        result[label]["toolbar_buttons"] = od_btns
+                        print(f"  [OK] {label}: inputs={len(inputs)} labels={len(labels)} od_btns={len(od_btns)}")
+                        continue
                 print(f"  [OK] {label}: inputs={len(inputs)} labels={len(labels)}")
             except Exception as e:
                 print(f"  [WARN] {label} 스캔 실패: {e}")
@@ -765,6 +772,89 @@ def _collect_device_config_tabs(app, win) -> dict:
     except Exception as e:
         print(f"  [WARN] device_config 수집 실패: {e}")
     return result
+
+
+def _scan_od_toolbar(app, win) -> list:
+    """OD 탭 상단 8개 toolbar 버튼 hover → tooltip + 좌표 수집
+
+    버튼 [2]/[3]은 행 선택 시에만 활성화되므로 Add Index 후 첫 행 선택해서 풀 라벨 수집."""
+    import pyautogui
+
+    odc = None
+    for elem in win.descendants():
+        if (elem.element_info.automation_id or "") == "OdUserControl":
+            odc = elem; break
+    if not odc:
+        return []
+
+    btns = []
+    for b in win.descendants(control_type="Button"):
+        try:
+            br = b.rectangle()
+            w, h = br.right - br.left, br.bottom - br.top
+            if 30 <= w <= 40 and 30 <= h <= 40 and 115 <= br.top <= 165:
+                btns.append(br)
+        except Exception: pass
+    btns.sort(key=lambda r: r.left)
+    if not btns:
+        return []
+
+    def _hover(cx, cy, anchor):
+        pyautogui.moveTo(*anchor, duration=0.05); time.sleep(0.4)
+        pyautogui.moveTo(cx, cy, duration=0.15); time.sleep(1.4)
+        try:
+            for elem in win.descendants(control_type="ToolTip"):
+                t = (elem.element_info.name or "").strip()
+                if t: return t
+        except Exception: pass
+        return ""
+
+    odr = odc.rectangle()
+    anchor = (odr.left + 1500, odr.top + 700)
+
+    # 1단계: 초기 상태 hover — [0],[1],[4]~[7] 캡처
+    initial = []
+    for br in btns:
+        cx, cy = (br.left + br.right) // 2, (br.top + br.bottom) // 2
+        tt = _hover(cx, cy, anchor)
+        initial.append({"x": cx, "y": cy, "tooltip": tt})
+
+    # 2단계: Add Index 클릭 → 첫 행 선택 → [2]/[3] 재hover
+    try:
+        # [0] = Add Index 가정 (tooltip 검증)
+        if initial[0]["tooltip"] == "Add Index":
+            pyautogui.click(initial[0]["x"], initial[0]["y"]); time.sleep(1.5)
+            # 첫 행 클릭
+            for elem in win.descendants():
+                if (elem.element_info.automation_id or "") == "PART_GridViewVirtualizingPanel":
+                    items_ = list(elem.descendants(control_type="DataItem"))
+                    if items_:
+                        r = items_[0].rectangle()
+                        pyautogui.click((r.left + r.right) // 2, (r.top + r.bottom) // 2)
+                        time.sleep(0.6)
+                    break
+            # [2], [3] 재hover
+            for idx in (2, 3):
+                if idx < len(initial) and not initial[idx]["tooltip"]:
+                    cx, cy = initial[idx]["x"], initial[idx]["y"]
+                    tt = _hover(cx, cy, anchor)
+                    if tt: initial[idx]["tooltip"] = tt
+            # 정리: Ctrl+A + Del
+            from pywinauto import keyboard
+            keyboard.send_keys("^a"); time.sleep(0.3)
+            keyboard.send_keys("{DEL}"); time.sleep(0.6)
+            top = app.top_window()
+            if top.element_info.name != (win.element_info.name or ""):
+                for btn in top.descendants(control_type="Button"):
+                    n = (btn.element_info.name or "").lower()
+                    if any(k in n for k in ("yes", "ok", "예", "확인")):
+                        btn.click_input(); break
+                time.sleep(0.6)
+    except Exception as e:
+        print(f"  [WARN] OD toolbar 활성화 hover 실패: {e}")
+
+    return [{"index": i, "tooltip": tt["tooltip"], "x": tt["x"], "y": tt["y"]}
+            for i, tt in enumerate(initial)]
 
 
 def _collect_device_toolbar(app, win) -> list:

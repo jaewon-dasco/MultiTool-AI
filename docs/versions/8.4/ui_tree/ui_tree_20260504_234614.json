@@ -201,8 +201,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          841,
-          567
+          867,
+          593
         ]
       },
       {
@@ -210,8 +210,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          841,
-          591
+          867,
+          617
         ]
       },
       {
@@ -219,8 +219,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          841,
-          615
+          867,
+          641
         ]
       },
       {
@@ -228,8 +228,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          841,
-          639
+          867,
+          665
         ]
       },
       {
@@ -237,8 +237,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          841,
-          663
+          867,
+          689
         ]
       }
     ],
@@ -248,8 +248,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          783,
-          469
+          809,
+          495
         ]
       },
       {
@@ -257,8 +257,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          823,
-          469
+          849,
+          495
         ]
       },
       {
@@ -266,8 +266,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          853,
-          469
+          879,
+          495
         ]
       }
     ],
@@ -277,8 +277,8 @@
         "shortcut": "",
         "automation_id": "NetworkEditorView_AddDeviceButton",
         "coordinates": [
-          603,
-          416
+          629,
+          442
         ]
       },
       {
@@ -286,8 +286,8 @@
         "shortcut": "",
         "automation_id": "NetworkEditorView_AddSlaveDeviceButton",
         "coordinates": [
-          664,
-          416
+          690,
+          442
         ]
       },
       {
@@ -295,8 +295,8 @@
         "shortcut": "",
         "automation_id": "NetworkEditorView_AddNetworkButton",
         "coordinates": [
-          718,
-          416
+          744,
+          442
         ]
       }
     ],
@@ -1171,7 +1171,6 @@
           }
         ],
         "labels": [
-          "Diagnostics",
           "Network Editor",
           "EPEC_CU1",
           "CAN",
@@ -1291,7 +1290,6 @@
           }
         ],
         "labels": [
-          "Object Dictionary",
           "Network Editor",
           "EPEC_CU1",
           "CAN",
@@ -1319,6 +1317,56 @@
           "Events",
           "ISOBUS",
           "Library Manager"
+        ],
+        "toolbar_buttons": [
+          {
+            "index": 0,
+            "tooltip": "Add Index",
+            "x": 207,
+            "y": 139
+          },
+          {
+            "index": 1,
+            "tooltip": "Add Pre-Defined Index",
+            "x": 245,
+            "y": 139
+          },
+          {
+            "index": 2,
+            "tooltip": "Remove",
+            "x": 283,
+            "y": 139
+          },
+          {
+            "index": 3,
+            "tooltip": "Add Sub-Index",
+            "x": 327,
+            "y": 139
+          },
+          {
+            "index": 4,
+            "tooltip": "Show Hidden",
+            "x": 371,
+            "y": 139
+          },
+          {
+            "index": 5,
+            "tooltip": "Store / Restore Settings",
+            "x": 415,
+            "y": 139
+          },
+          {
+            "index": 6,
+            "tooltip": "Import from supported file types",
+            "x": 459,
+            "y": 139
+          },
+          {
+            "index": 7,
+            "tooltip": "Export to supported file types",
+            "x": 497,
+            "y": 139
+          }
         ]
       },
       "PDO": {
@@ -2009,6 +2057,7 @@
           }
         ],
         "labels": [
+          "Library Manager",
           "Network Editor",
           "EPEC_CU1",
           "CAN",
