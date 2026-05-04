@@ -137,18 +137,20 @@ WPF(.NET) 앱 → UIA 네이티브 지원
 | 2    | 메뉴 경로 | AutomationId 기반 탐색   |
 | 3    | 화면 좌표 | 단축키·메뉴 모두 불가 시 |
 
-### 실행 단계
+### 실행 단계 (구현 상태)
 
-| 단계 | 작업               | 상세                                                                    |
-| ---- | ------------------ | ----------------------------------------------------------------------- |
-| 1    | 버전 탐지          | `Program Files\Epec` 열거 → CHM MD5 비교 → 신규/변경 버전만 진행        |
-| 2    | CHM 추출·파싱      | `hh.exe -decompile` → `chm_extracted/` 저장 → 버전 히스토리·기능명 수집 |
-| 3    | 메뉴바 덤프        | `MultiTool.exe` 실행 → FILE/PROJECT/HELP 메뉴 순회 → 항목 수집          |
-| 4    | 데모 프로젝트 생성 | 기존 스캔용 프로젝트 삭제 → New Project → CU-3606-21 디바이스 추가      |
-| 5    | 컨텍스트 메뉴 수집 | 네트워크·디바이스 우클릭 → hover 메뉴 항목 수집                         |
-| 6    | 단축키 수집        | UIA 읽기 → 검증 → `function_map.json` 기록                              |
-| 7    | 기능 매핑          | 단축키 + 메뉴 경로 + 좌표 + 다이얼로그 구조 수집                        |
-| 8    | 버전 diff          | 이전/현재 `ui_tree.json` 비교 → 변경 항목 재매핑                        |
+| 단계 | 작업                 | 상세                                                                    |
+| ---- | -------------------- | ----------------------------------------------------------------------- |
+| 1    | 버전 탐지            | `Program Files\Epec` 열거 → CHM MD5 비교 → 신규/변경 버전만 진행        |
+| 2    | CHM 추출·파싱        | `hh.exe -decompile` → `chm_extracted/` 저장 → 버전 히스토리·기능명 수집 |
+| 3    | 메뉴바 덤프          | `MultiTool.exe` 실행 → FILE/PROJECT/HELP 메뉴 순회 → 19개 항목 수집     |
+| 4    | 데모 프로젝트 생성   | 기존 ScanDemo 삭제 → Browse 경로 → CU-3606-21 추가 (cascading) → 저장   |
+| 5    | 디바이스 우클릭      | 좌표 기반 우클릭 → 컨텍스트 메뉴 4개 항목 (Clone Unit 등)               |
+| 6    | 디바이스 플로팅 툴바 | 디바이스 클릭 → 🔧📦❌ 아이콘 hover → tooltip 3개 (Configure 등)           |
+| 7    | Network Editor 툴바  | UIA 직접 탐색 → Add Device/Slave Device/Network 3개 좌표                |
+| 8    | Configure 12개 탭    | 디바이스 클릭→Configure→maximize→탭 순회 → 입력 컨트롤·라벨 임베드      |
+| 9    | function_map 생성    | 위 단계 결과 통합 → 41개 기능 매핑                                      |
+| 10   | 버전 diff            | 이전/현재 `function_map.json` 비교 → `diff.json`                        |
 
 ### 스캔용 데모 프로젝트
 
@@ -175,25 +177,40 @@ WPF(.NET) 앱 → UIA 네이티브 지원
 
 ```json
 {
-  "System Export": {
-    "shortcut": "Ctrl+E",
-    "shortcut_verified": true,
-    "menu_path": ["Project", "System Export"],
-    "automation_id": "MenuItemSystemExport",
+  "Save Project": {
+    "shortcut": "Ctrl+S",
+    "shortcut_verified": false,
+    "menu_path": ["FILE", "Save Project"],
+    "automation_id": "",
     "coordinates": [120, 45],
-    "dialog": "none"
+    "dialog": "none",
+    "source": "menubar"
+  },
+  "Configure: CAN": {
+    "shortcut": "",
+    "shortcut_verified": false,
+    "menu_path": ["Configure", "CAN"],
+    "automation_id": "",
+    "coordinates": [],
+    "dialog": "DeviceConfigureView",
+    "source": "device_config",
+    "inputs": [{ "type": "ComboBox", "value": "250", ... }],
+    "labels": ["Bit Rate", "Buffering", ...]
   }
 }
 ```
 
-| 필드                | 설명                                |
-| ------------------- | ----------------------------------- |
-| `shortcut`          | UIA/리소스로 수집, 검증 완료된 것만 |
-| `shortcut_verified` | 실 키 입력 테스트 결과              |
-| `menu_path`         | 2순위 fallback                      |
-| `automation_id`     | 안정적 탐색용 UIA ID                |
-| `coordinates`       | 3순위 fallback, BoundingRect 중심   |
-| `dialog`            | 실행 후 열리는 다이얼로그 UIA 참조  |
+| 필드                | 설명                                                                          |
+| ------------------- | ----------------------------------------------------------------------------- |
+| `shortcut`          | UIA/리소스로 수집, 검증 완료된 것만                                           |
+| `shortcut_verified` | 실 키 입력 테스트 결과                                                        |
+| `menu_path`         | 2순위 fallback                                                                |
+| `automation_id`     | 안정적 탐색용 UIA ID                                                          |
+| `coordinates`       | 3순위 fallback, BoundingRect 중심                                             |
+| `dialog`            | 실행 후 열리는 다이얼로그 UIA 참조                                            |
+| `source`            | `menubar`, `context:device`, `toolbar`, `ne_toolbar`, `device_config` 중 하나 |
+| `inputs`            | (device_config 전용) 탭 내부 입력 컨트롤 + 값 + rect                          |
+| `labels`            | (device_config 전용) 탭 내부 표시 텍스트 (설정 라벨)                          |
 
 ### 스크립트 구성 (`skills/fnscan/`)
 
@@ -244,13 +261,36 @@ WPF(.NET) 앱 → UIA 네이티브 지원
 
 ### 커버리지 체크 ([coverage.py](../skills/fnscan/coverage.py))
 
-`function_map.json` 키 수 vs 매뉴얼 기능 목록(13개) → 비율 계산 → 90% 미만 시 누락 목록 출력
+매뉴얼 기능 16개 vs `function_map.json` → 달성가능 기준 100% (13/13). UIA 미노출 3개 제외.
+
+| 매뉴얼 기능              | 매핑                                 | 상태   |
+| ------------------------ | ------------------------------------ | ------ |
+| New Project ~ Settings   | 메뉴바 직접 매핑                     | ✅ 13개 |
+| Configure Device         | `Configure` (alias)                  | ✅      |
+| Object Dictionary        | `Configure: Object Dictionary` alias | ✅      |
+| Library Manager          | `Configure: Library Manager` alias   | ✅      |
+| Add Device / Add Network | NE 툴바 좌표                         | ✅      |
+| Create CODESYS Project   | 디바이스 플로팅 툴바 tooltip         | ✅      |
+| Export Parameter CSV     | 네트워크 hover 메뉴 — UIA 미노출     | ❌ 제외 |
+| CANdb Export             | 동상                                 | ❌ 제외 |
+| Delete Network           | 동상                                 | ❌ 제외 |
+
+### 수집된 기능 (41개)
+
+| 소스             | 개수 | 항목                                                                                                         |
+| ---------------- | ---- | ------------------------------------------------------------------------------------------------------------ |
+| `menubar`        | 19   | New/Open/Save/Save As/Export Archive/Settings/System Export/...                                              |
+| `context:device` | 4    | Clone Unit, Remove from Project, Change Unit Type, Connect                                                   |
+| `toolbar`        | 3    | Configure, Create CODESYS Project, Delete (디바이스 플로팅 툴바)                                             |
+| `ne_toolbar`     | 3    | Add Device, Add Slave Device, Add Network                                                                    |
+| `device_config`  | 12   | Configure: CAN/CANopen/J1939/NMEA 2000/Address Claiming/Diagnostics/OD/PDO/I,O/Events/ISOBUS/Library Manager |
 
 ### 알려진 제약
 
-| 항목                 | 내용                                                                     |
-| -------------------- | ------------------------------------------------------------------------ |
-| hover 전용 메뉴      | 네트워크·디바이스 우클릭 메뉴 — UIA 트리에 미노출, `pyautogui` 보조 필요 |
-| 다이얼로그 내부 UIA  | 일부 커스텀 WPF 컨트롤은 `automation_id` 없음 → 좌표 fallback            |
-| 버전별 레이아웃 변화 | 메뉴 순서 변경 시 `automation_id` 재수집 필요                            |
-| CHM 없는 버전        | 8.1, 8.2 — CHM 추출 단계 skip, UIA 덤프만 수행                           |
+| 항목                | 내용                                                                                                         |
+| ------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 네트워크 hover 메뉴 | Export Parameter CSV / CANdb Export / Delete Network — UIA 미노출, 단일 디바이스 layout에 네트워크 노드 없음 |
+| WPF Canvas 노드     | 디바이스·네트워크 시각 노드 — UIA 미노출, `pyautogui` 좌표 기반 우클릭                                       |
+| 창 크기             | Configuration view 진입 후 maximize 필요 (12개 탭 전체 가시화)                                               |
+| 디바이스 좌표       | 디폴트 창 크기 기준 — `pane.left + width//4, pane.top + canvas_off + 110`                                    |
+| CHM 없는 버전       | 8.1, 8.2 — CHM 추출 skip, UIA 덤프만                                                                         |

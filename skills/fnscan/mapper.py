@@ -25,11 +25,16 @@ def build_function_map(ui_tree: dict, out_path: Path):
                 "source":            "menubar"
             }
 
-    # 컨텍스트 메뉴 / 플로팅 툴바 항목
+    # 컨텍스트 메뉴 / 플로팅 툴바 / Network Editor 툴바 항목
+    PATH_PREFIX_MAP = {
+        "device":         "context:device",
+        "device_toolbar": "toolbar",
+        "ne_toolbar":     "ne_toolbar",
+    }
     for ctx_type, ctx_items in ui_tree.get("context_menus", {}).items():
         if ctx_type == "_device_config":
-            continue  # 별도 처리 (탭 전체)
-        path_prefix = "toolbar" if ctx_type == "device_toolbar" else f"context:{ctx_type}"
+            continue
+        path_prefix = PATH_PREFIX_MAP.get(ctx_type, f"context:{ctx_type}")
         for item in ctx_items:
             name = item.get("name", "").strip()
             if not name or name.startswith("MultiTool."):

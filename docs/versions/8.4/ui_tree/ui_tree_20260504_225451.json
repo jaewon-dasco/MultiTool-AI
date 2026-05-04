@@ -201,8 +201,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          685,
-          411
+          841,
+          567
         ]
       },
       {
@@ -210,8 +210,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          685,
-          435
+          841,
+          591
         ]
       },
       {
@@ -219,8 +219,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          685,
-          459
+          841,
+          615
         ]
       },
       {
@@ -228,8 +228,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          685,
-          483
+          841,
+          639
         ]
       },
       {
@@ -237,8 +237,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          685,
-          507
+          841,
+          663
         ]
       }
     ],
@@ -248,8 +248,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          627,
-          313
+          783,
+          469
         ]
       },
       {
@@ -257,8 +257,8 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          667,
-          313
+          823,
+          469
         ]
       },
       {
@@ -266,8 +266,37 @@
         "shortcut": "",
         "automation_id": "",
         "coordinates": [
-          697,
-          313
+          853,
+          469
+        ]
+      }
+    ],
+    "ne_toolbar": [
+      {
+        "name": "Add Device",
+        "shortcut": "",
+        "automation_id": "NetworkEditorView_AddDeviceButton",
+        "coordinates": [
+          603,
+          416
+        ]
+      },
+      {
+        "name": "Add Slave Device",
+        "shortcut": "",
+        "automation_id": "NetworkEditorView_AddSlaveDeviceButton",
+        "coordinates": [
+          664,
+          416
+        ]
+      },
+      {
+        "name": "Add Network",
+        "shortcut": "",
+        "automation_id": "NetworkEditorView_AddNetworkButton",
+        "coordinates": [
+          718,
+          416
         ]
       }
     ],
@@ -1262,6 +1291,7 @@
           }
         ],
         "labels": [
+          "Object Dictionary",
           "Network Editor",
           "EPEC_CU1",
           "CAN",
@@ -1522,7 +1552,6 @@
           }
         ],
         "labels": [
-          "ISOBUS",
           "Network Editor",
           "EPEC_CU1",
           "CAN",

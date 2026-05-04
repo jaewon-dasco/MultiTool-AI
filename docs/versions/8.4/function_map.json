@@ -293,8 +293,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      685,
-      411
+      841,
+      567
     ],
     "dialog": "none",
     "source": "context:device"
@@ -308,8 +308,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      685,
-      435
+      841,
+      591
     ],
     "dialog": "none",
     "source": "context:device"
@@ -323,8 +323,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      685,
-      459
+      841,
+      615
     ],
     "dialog": "none",
     "source": "context:device"
@@ -338,8 +338,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      685,
-      483
+      841,
+      639
     ],
     "dialog": "none",
     "source": "context:device"
@@ -353,8 +353,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      627,
-      313
+      783,
+      469
     ],
     "dialog": "none",
     "source": "toolbar"
@@ -368,8 +368,8 @@
     ],
     "automation_id": "",
     "coordinates": [
-      667,
-      313
+      823,
+      469
     ],
     "dialog": "none",
     "source": "toolbar"
@@ -383,11 +383,56 @@
     ],
     "automation_id": "",
     "coordinates": [
-      697,
-      313
+      853,
+      469
     ],
     "dialog": "none",
     "source": "toolbar"
+  },
+  "Add Device": {
+    "shortcut": "",
+    "shortcut_verified": false,
+    "menu_path": [
+      "ne_toolbar",
+      "Add Device"
+    ],
+    "automation_id": "NetworkEditorView_AddDeviceButton",
+    "coordinates": [
+      603,
+      416
+    ],
+    "dialog": "none",
+    "source": "ne_toolbar"
+  },
+  "Add Slave Device": {
+    "shortcut": "",
+    "shortcut_verified": false,
+    "menu_path": [
+      "ne_toolbar",
+      "Add Slave Device"
+    ],
+    "automation_id": "NetworkEditorView_AddSlaveDeviceButton",
+    "coordinates": [
+      664,
+      416
+    ],
+    "dialog": "none",
+    "source": "ne_toolbar"
+  },
+  "Add Network": {
+    "shortcut": "",
+    "shortcut_verified": false,
+    "menu_path": [
+      "ne_toolbar",
+      "Add Network"
+    ],
+    "automation_id": "NetworkEditorView_AddNetworkButton",
+    "coordinates": [
+      718,
+      416
+    ],
+    "dialog": "none",
+    "source": "ne_toolbar"
   },
   "Configure: CAN": {
     "shortcut": "",
@@ -1449,6 +1494,7 @@
       }
     ],
     "labels": [
+      "Object Dictionary",
       "Network Editor",
       "EPEC_CU1",
       "CAN",
@@ -1749,7 +1795,6 @@
       }
     ],
     "labels": [
-      "ISOBUS",
       "Network Editor",
       "EPEC_CU1",
       "CAN",

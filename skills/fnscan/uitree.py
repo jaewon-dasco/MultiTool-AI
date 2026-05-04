@@ -564,14 +564,49 @@ def _collect_context_menus(app, win) -> dict:
     except Exception:
         pass
     result = {
-        "device":         _rclick_collect(app, win, "device"),
-        "device_toolbar": _collect_device_toolbar(app, win),
+        "device":             _rclick_collect(app, win, "device"),
+        "device_toolbar":     _collect_device_toolbar(app, win),
+        "ne_toolbar":         _collect_ne_toolbar(app, win),
     }
     # device_config_tabs는 별도 키로 반환 (mapper에서 다른 처리)
     cfg_tabs = _collect_device_config_tabs(app, win)
     if cfg_tabs:
         result["_device_config"] = cfg_tabs
     return result
+
+
+# ── Network Editor 툴바 버튼 수집 ─────────────────────────────────────────────
+NE_TOOLBAR_BUTTONS = [
+    ("Add Device",       "NetworkEditorView_AddDeviceButton"),
+    ("Add Slave Device", "NetworkEditorView_AddSlaveDeviceButton"),
+    ("Add Network",      "NetworkEditorView_AddNetworkButton"),
+]
+
+
+def _collect_ne_toolbar(app, win) -> list:
+    """Network Editor 툴바의 Add Device / Add Slave Device / Add Network 버튼 위치 수집"""
+    items = []
+    try:
+        win = app.top_window()
+    except Exception: pass
+
+    for label, aid in NE_TOOLBAR_BUTTONS:
+        try:
+            btn_spec = win.child_window(auto_id=aid)
+            btn = btn_spec.wrapper_object()
+            r = btn.rectangle()
+            cx = (r.left + r.right) // 2
+            cy = (r.top + r.bottom) // 2
+            items.append({
+                "name":          label,
+                "shortcut":      "",
+                "automation_id": aid,
+                "coordinates":   [cx, cy]
+            })
+            print(f"  [OK] NE 툴바: {label}")
+        except Exception as e:
+            print(f"  [WARN] NE 툴바 '{label}' 미발견: {e}")
+    return items
 
 
 # ── 디바이스 Configuration 탭 스캔 ────────────────────────────────────────────
