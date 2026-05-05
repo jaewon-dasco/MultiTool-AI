@@ -555,7 +555,7 @@ def _collect_popup(app, top_labels: set) -> list:
                 rect = elem.rectangle()
                 items.append({
                     "name":          label,
-                    "shortcut":      _parse_shortcut(elem.element_info.name),
+                    "shortcut":      _parse_shortcut(elem),
                     "automation_id": elem.element_info.automation_id,
                     "coordinates":   [(rect.left + rect.right) // 2,
                                       (rect.top + rect.bottom) // 2]
@@ -1018,7 +1018,7 @@ def _rclick_collect(app, win, target: str) -> list:
                     cx_m = cy_m = 0
                 items.append({
                     "name":          label,
-                    "shortcut":      _parse_shortcut(mi.element_info.name),
+                    "shortcut":      _parse_shortcut(mi),
                     "automation_id": mi.element_info.automation_id,
                     "coordinates":   [cx_m, cy_m]
                 })
@@ -1049,6 +1049,15 @@ def _get_label(elem) -> str:
     return ""
 
 
-def _parse_shortcut(text: str) -> str:
-    parts = text.split("\t")
-    return parts[1].strip() if len(parts) > 1 else ""
+def _parse_shortcut(elem) -> str:
+    """MenuItem 자식 Text 컨트롤에서 단축키 추출.
+    WPF InputGestureText는 별도 Text 자식으로 렌더링 (예: 'Ctrl + Shift + N')."""
+    label = _get_label(elem)
+    try:
+        for child in elem.children(control_type="Text"):
+            t = (child.element_info.name or "").strip()
+            if t and t != label:
+                return t
+    except Exception:
+        pass
+    return ""

@@ -1,0 +1,2154 @@
+{
+  "name": "MultiTool Creator 8.4",
+  "items": [
+    {
+      "name": "FILE",
+      "shortcut": "",
+      "automation_id": "",
+      "children": [
+        {
+          "name": "New Project",
+          "shortcut": "Ctrl + Shift + N",
+          "automation_id": "",
+          "coordinates": [
+            153,
+            62
+          ]
+        },
+        {
+          "name": "Open Project",
+          "shortcut": "Ctrl + Shift + O",
+          "automation_id": "",
+          "coordinates": [
+            153,
+            86
+          ]
+        },
+        {
+          "name": "Save Project",
+          "shortcut": "Ctrl + S",
+          "automation_id": "",
+          "coordinates": [
+            153,
+            110
+          ]
+        },
+        {
+          "name": "Save As...",
+          "shortcut": "Ctrl + Shift + S",
+          "automation_id": "",
+          "coordinates": [
+            153,
+            134
+          ]
+        },
+        {
+          "name": "Export Project Archive",
+          "shortcut": "Ctrl + Shift + A",
+          "automation_id": "",
+          "coordinates": [
+            153,
+            158
+          ]
+        },
+        {
+          "name": "Recent Projects",
+          "shortcut": "",
+          "automation_id": "",
+          "coordinates": [
+            153,
+            188
+          ]
+        },
+        {
+          "name": "Settings",
+          "shortcut": "Alt + X",
+          "automation_id": "",
+          "coordinates": [
+            153,
+            218
+          ]
+        },
+        {
+          "name": "Device Repository",
+          "shortcut": "",
+          "automation_id": "",
+          "coordinates": [
+            153,
+            248
+          ]
+        },
+        {
+          "name": "Exit",
+          "shortcut": "Alt + F4",
+          "automation_id": "",
+          "coordinates": [
+            153,
+            278
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PROJECT",
+      "shortcut": "",
+      "automation_id": "",
+      "children": [
+        {
+          "name": "Network Editor",
+          "shortcut": "",
+          "automation_id": "",
+          "coordinates": [
+            169,
+            62
+          ]
+        },
+        {
+          "name": "System Export",
+          "shortcut": "Ctrl + Alt + E",
+          "automation_id": "",
+          "coordinates": [
+            169,
+            92
+          ]
+        },
+        {
+          "name": "Upgrade",
+          "shortcut": "Ctrl + Alt + C",
+          "automation_id": "",
+          "coordinates": [
+            169,
+            116
+          ]
+        },
+        {
+          "name": "Import Device",
+          "shortcut": "",
+          "automation_id": "",
+          "coordinates": [
+            169,
+            140
+          ]
+        },
+        {
+          "name": "Export Device",
+          "shortcut": "",
+          "automation_id": "",
+          "coordinates": [
+            169,
+            164
+          ]
+        },
+        {
+          "name": "Preferences",
+          "shortcut": "Ctrl + Alt + O",
+          "automation_id": "",
+          "coordinates": [
+            169,
+            194
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HELP",
+      "shortcut": "",
+      "automation_id": "",
+      "children": [
+        {
+          "name": "MultiTool Creator Help",
+          "shortcut": "F1",
+          "automation_id": "",
+          "coordinates": [
+            240,
+            62
+          ]
+        },
+        {
+          "name": "Epec Programming and Libraries Manual",
+          "shortcut": "",
+          "automation_id": "",
+          "coordinates": [
+            240,
+            86
+          ]
+        },
+        {
+          "name": "Epec MultiTool Simulator Manual",
+          "shortcut": "",
+          "automation_id": "",
+          "coordinates": [
+            240,
+            110
+          ]
+        },
+        {
+          "name": "About MultiTool Creator",
+          "shortcut": "F2",
+          "automation_id": "",
+          "coordinates": [
+            240,
+            140
+          ]
+        }
+      ]
+    }
+  ],
+  "context_menus": {
+    "device": [
+      {
+        "name": "Clone Unit",
+        "shortcut": "",
+        "automation_id": "",
+        "coordinates": [
+          485,
+          264
+        ]
+      },
+      {
+        "name": "Remove from Project",
+        "shortcut": "",
+        "automation_id": "",
+        "coordinates": [
+          485,
+          288
+        ]
+      },
+      {
+        "name": "Change Unit Type",
+        "shortcut": "",
+        "automation_id": "",
+        "coordinates": [
+          485,
+          312
+        ]
+      },
+      {
+        "name": "Connect",
+        "shortcut": "",
+        "automation_id": "",
+        "coordinates": [
+          485,
+          336
+        ]
+      },
+      {
+        "name": "Export Device",
+        "shortcut": "",
+        "automation_id": "",
+        "coordinates": [
+          485,
+          360
+        ]
+      }
+    ],
+    "device_toolbar": [
+      {
+        "name": "Configure",
+        "shortcut": "",
+        "automation_id": "",
+        "coordinates": [
+          467,
+          166
+        ]
+      },
+      {
+        "name": "Create CODESYS Project",
+        "shortcut": "",
+        "automation_id": "",
+        "coordinates": [
+          507,
+          166
+        ]
+      },
+      {
+        "name": "Delete",
+        "shortcut": "",
+        "automation_id": "",
+        "coordinates": [
+          547,
+          166
+        ]
+      }
+    ],
+    "ne_toolbar": [
+      {
+        "name": "Add Device",
+        "shortcut": "",
+        "automation_id": "NetworkEditorView_AddDeviceButton",
+        "coordinates": [
+          290,
+          103
+        ]
+      },
+      {
+        "name": "Add Slave Device",
+        "shortcut": "",
+        "automation_id": "NetworkEditorView_AddSlaveDeviceButton",
+        "coordinates": [
+          351,
+          103
+        ]
+      },
+      {
+        "name": "Add Network",
+        "shortcut": "",
+        "automation_id": "NetworkEditorView_AddNetworkButton",
+        "coordinates": [
+          405,
+          103
+        ]
+      }
+    ],
+    "_device_config": {
+      "CAN": {
+        "inputs": [
+          {
+            "type": "CheckBox",
+            "name": "Short ID Messages",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 296,
+              "T": 172,
+              "R": 956,
+              "B": 188
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "Extended ID Messages",
+            "automation_id": "",
+            "value": "unchecked",
+            "rect": {
+              "L": 296,
+              "T": 198,
+              "R": 956,
+              "B": 214
+            }
+          },
+          {
+            "type": "ComboBox",
+            "name": "",
+            "automation_id": "",
+            "value": "250",
+            "rect": {
+              "L": 296,
+              "T": 225,
+              "R": 956,
+              "B": 247
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "Enabled",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 296,
+              "T": 257,
+              "R": 956,
+              "B": 275
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2275,
+              "T": 1375,
+              "R": 2494,
+              "B": 1383
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "",
+            "value": "100",
+            "rect": {
+              "L": 2517,
+              "T": 1368,
+              "R": 2548,
+              "B": 1390
+            }
+          }
+        ],
+        "labels": [
+          "Network Editor",
+          "EPEC_CU1",
+          "CAN",
+          "No CAN selected, select configurable CAN above.",
+          "CAN 1",
+          "Properties",
+          "Send And Receive",
+          "Bit Rate",
+          "Buffering",
+          "Short ID Messages",
+          "Extended ID Messages",
+          "Enabled",
+          "Protocols",
+          "CANopen",
+          "J1939",
+          "Network Monitoring",
+          "Monitor",
+          "Name / Node-ID",
+          "Consumer Time (ms)",
+          "Mandatory",
+          "J1939",
+          "NMEA 2000",
+          "Address Claiming",
+          "Diagnostics",
+          "Object Dictionary",
+          "PDO",
+          "I/O",
+          "Events",
+          "ISOBUS",
+          "Library Manager"
+        ]
+      },
+      "CANopen": {
+        "inputs": [
+          {
+            "type": "CheckBox",
+            "name": "Short ID Messages",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 296,
+              "T": 172,
+              "R": 956,
+              "B": 188
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "Extended ID Messages",
+            "automation_id": "",
+            "value": "unchecked",
+            "rect": {
+              "L": 296,
+              "T": 198,
+              "R": 956,
+              "B": 214
+            }
+          },
+          {
+            "type": "ComboBox",
+            "name": "",
+            "automation_id": "",
+            "value": "250",
+            "rect": {
+              "L": 296,
+              "T": 225,
+              "R": 956,
+              "B": 247
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "Enabled",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 296,
+              "T": 257,
+              "R": 956,
+              "B": 275
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2275,
+              "T": 1375,
+              "R": 2494,
+              "B": 1383
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "",
+            "value": "100",
+            "rect": {
+              "L": 2517,
+              "T": 1368,
+              "R": 2548,
+              "B": 1390
+            }
+          }
+        ],
+        "labels": [
+          "Network Editor",
+          "EPEC_CU1",
+          "CAN",
+          "No CAN selected, select configurable CAN above.",
+          "CAN 1",
+          "Properties",
+          "Send And Receive",
+          "Bit Rate",
+          "Buffering",
+          "Short ID Messages",
+          "Extended ID Messages",
+          "Enabled",
+          "Protocols",
+          "CANopen",
+          "J1939",
+          "Network Monitoring",
+          "Monitor",
+          "Name / Node-ID",
+          "Consumer Time (ms)",
+          "Mandatory",
+          "J1939",
+          "NMEA 2000",
+          "Address Claiming",
+          "Diagnostics",
+          "Object Dictionary",
+          "PDO",
+          "I/O",
+          "Events",
+          "ISOBUS",
+          "Library Manager"
+        ]
+      },
+      "J1939": {
+        "inputs": [
+          {
+            "type": "CheckBox",
+            "name": "Short ID Messages",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 296,
+              "T": 172,
+              "R": 956,
+              "B": 188
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "Extended ID Messages",
+            "automation_id": "",
+            "value": "unchecked",
+            "rect": {
+              "L": 296,
+              "T": 198,
+              "R": 956,
+              "B": 214
+            }
+          },
+          {
+            "type": "ComboBox",
+            "name": "",
+            "automation_id": "",
+            "value": "250",
+            "rect": {
+              "L": 296,
+              "T": 225,
+              "R": 956,
+              "B": 247
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "Enabled",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 296,
+              "T": 257,
+              "R": 956,
+              "B": 275
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2275,
+              "T": 1375,
+              "R": 2494,
+              "B": 1383
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "",
+            "value": "100",
+            "rect": {
+              "L": 2517,
+              "T": 1368,
+              "R": 2548,
+              "B": 1390
+            }
+          }
+        ],
+        "labels": [
+          "Network Editor",
+          "EPEC_CU1",
+          "CAN",
+          "No CAN selected, select configurable CAN above.",
+          "CAN 1",
+          "Properties",
+          "Send And Receive",
+          "Bit Rate",
+          "Buffering",
+          "Short ID Messages",
+          "Extended ID Messages",
+          "Enabled",
+          "Protocols",
+          "CANopen",
+          "J1939",
+          "Network Monitoring",
+          "Monitor",
+          "Name / Node-ID",
+          "Consumer Time (ms)",
+          "Mandatory",
+          "J1939",
+          "NMEA 2000",
+          "Address Claiming",
+          "Diagnostics",
+          "Object Dictionary",
+          "PDO",
+          "I/O",
+          "Events",
+          "ISOBUS",
+          "Library Manager"
+        ]
+      },
+      "NMEA 2000": {
+        "inputs": [
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2275,
+              "T": 1375,
+              "R": 2494,
+              "B": 1383
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "",
+            "value": "100",
+            "rect": {
+              "L": 2517,
+              "T": 1368,
+              "R": 2548,
+              "B": 1390
+            }
+          }
+        ],
+        "labels": [
+          "Network Editor",
+          "EPEC_CU1",
+          "CAN",
+          "J1939",
+          "NMEA 2000",
+          "No CAN selected, select configurable CAN above.",
+          "CAN 1",
+          "Standard",
+          "User",
+          "Transmit PGN",
+          "Name",
+          "COB-ID",
+          "PGN",
+          "Start Bit",
+          "Length",
+          "Data Type",
+          "Receive PGN",
+          "Name",
+          "COB-ID",
+          "PGN",
+          "Start Bit",
+          "Length",
+          "Data Type",
+          "No Selected Items",
+          "Initialize Now",
+          "Address Claiming",
+          "Diagnostics",
+          "Object Dictionary",
+          "PDO",
+          "I/O",
+          "Events",
+          "ISOBUS",
+          "Library Manager"
+        ]
+      },
+      "Address Claiming": {
+        "inputs": [
+          {
+            "type": "Spinner",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 411,
+              "T": 126,
+              "R": 511,
+              "B": 154
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "textbox",
+            "value": "500 ms",
+            "rect": {
+              "L": 411,
+              "T": 129,
+              "R": 497,
+              "B": 151
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2275,
+              "T": 1375,
+              "R": 2494,
+              "B": 1383
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "",
+            "value": "100",
+            "rect": {
+              "L": 2517,
+              "T": 1368,
+              "R": 2548,
+              "B": 1390
+            }
+          }
+        ],
+        "labels": [
+          "Network Editor",
+          "EPEC_CU1",
+          "CAN",
+          "J1939",
+          "NMEA 2000",
+          "Address Claiming",
+          "No CAN selected, select configurable CAN above.",
+          "CAN 1",
+          "Monitoring Time",
+          "Initialize Now",
+          "Diagnostics",
+          "Object Dictionary",
+          "PDO",
+          "I/O",
+          "Events",
+          "ISOBUS",
+          "Library Manager"
+        ]
+      },
+      "Diagnostics": {
+        "inputs": [
+          {
+            "type": "CheckBox",
+            "name": "Temperature alarm limits",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 216,
+              "T": 156,
+              "R": 487,
+              "B": 206
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "Slider",
+            "value": "",
+            "rect": {
+              "L": 494,
+              "T": 161,
+              "R": 896,
+              "B": 179
+            }
+          },
+          {
+            "type": "Spinner",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 499,
+              "T": 179,
+              "R": 695,
+              "B": 201
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "textbox",
+            "value": "-40",
+            "rect": {
+              "L": 499,
+              "T": 179,
+              "R": 681,
+              "B": 201
+            }
+          },
+          {
+            "type": "Spinner",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 700,
+              "T": 179,
+              "R": 896,
+              "B": 201
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "textbox",
+            "value": "105",
+            "rect": {
+              "L": 700,
+              "T": 179,
+              "R": 882,
+              "B": 201
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "Supply voltage alarm limits",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 216,
+              "T": 207,
+              "R": 487,
+              "B": 257
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "Slider",
+            "value": "",
+            "rect": {
+              "L": 494,
+              "T": 212,
+              "R": 896,
+              "B": 230
+            }
+          },
+          {
+            "type": "Spinner",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 499,
+              "T": 230,
+              "R": 695,
+              "B": 252
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "textbox",
+            "value": "9",
+            "rect": {
+              "L": 499,
+              "T": 230,
+              "R": 681,
+              "B": 252
+            }
+          },
+          {
+            "type": "Spinner",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 700,
+              "T": 230,
+              "R": 896,
+              "B": 252
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "textbox",
+            "value": "33",
+            "rect": {
+              "L": 700,
+              "T": 230,
+              "R": 882,
+              "B": 252
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "REF 5 V alarm limits",
+            "automation_id": "",
+            "value": "unchecked",
+            "rect": {
+              "L": 216,
+              "T": 258,
+              "R": 487,
+              "B": 308
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "Slider",
+            "value": "",
+            "rect": {
+              "L": 494,
+              "T": 263,
+              "R": 896,
+              "B": 281
+            }
+          },
+          {
+            "type": "Spinner",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 499,
+              "T": 281,
+              "R": 695,
+              "B": 303
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "textbox",
+            "value": "4.5",
+            "rect": {
+              "L": 499,
+              "T": 281,
+              "R": 681,
+              "B": 303
+            }
+          },
+          {
+            "type": "Spinner",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 700,
+              "T": 281,
+              "R": 896,
+              "B": 303
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "textbox",
+            "value": "5.5",
+            "rect": {
+              "L": 700,
+              "T": 281,
+              "R": 882,
+              "B": 303
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "REF internal 2.5 V alarm limits",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 216,
+              "T": 309,
+              "R": 487,
+              "B": 359
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "Slider",
+            "value": "",
+            "rect": {
+              "L": 494,
+              "T": 314,
+              "R": 896,
+              "B": 332
+            }
+          },
+          {
+            "type": "Spinner",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 499,
+              "T": 332,
+              "R": 695,
+              "B": 354
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "textbox",
+            "value": "2.0",
+            "rect": {
+              "L": 499,
+              "T": 332,
+              "R": 681,
+              "B": 354
+            }
+          },
+          {
+            "type": "Spinner",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 700,
+              "T": 332,
+              "R": 896,
+              "B": 354
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "textbox",
+            "value": "3.0",
+            "rect": {
+              "L": 700,
+              "T": 332,
+              "R": 882,
+              "B": 354
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "Cycle time alarm limit",
+            "automation_id": "",
+            "value": "unchecked",
+            "rect": {
+              "L": 216,
+              "T": 360,
+              "R": 487,
+              "B": 405
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "Slider",
+            "value": "",
+            "rect": {
+              "L": 494,
+              "T": 367,
+              "R": 896,
+              "B": 375
+            }
+          },
+          {
+            "type": "Spinner",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 700,
+              "T": 377,
+              "R": 896,
+              "B": 400
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "textbox",
+            "value": "30",
+            "rect": {
+              "L": 700,
+              "T": 377,
+              "R": 882,
+              "B": 399
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "5 V reference overload",
+            "automation_id": "",
+            "value": "unchecked",
+            "rect": {
+              "L": 216,
+              "T": 406,
+              "R": 487,
+              "B": 451
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "Error in I/O init",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 216,
+              "T": 452,
+              "R": 487,
+              "B": 497
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 215,
+              "T": 531,
+              "R": 242,
+              "B": 547
+            }
+          },
+          {
+            "type": "ComboBox",
+            "name": "",
+            "automation_id": "",
+            "value": "1",
+            "rect": {
+              "L": 0,
+              "T": 0,
+              "R": 0,
+              "B": 0
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2275,
+              "T": 1375,
+              "R": 2494,
+              "B": 1383
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "",
+            "value": "100",
+            "rect": {
+              "L": 2517,
+              "T": 1368,
+              "R": 2548,
+              "B": 1390
+            }
+          }
+        ],
+        "labels": [
+          "Network Editor",
+          "EPEC_CU1",
+          "CAN",
+          "J1939",
+          "NMEA 2000",
+          "Address Claiming",
+          "Diagnostics",
+          "Reset to Defaults",
+          "G_SystemOK Conditions",
+          "Temperature alarm limits",
+          "°C",
+          "Supply voltage alarm limits",
+          "V",
+          "REF 5 V alarm limits",
+          "V",
+          "REF internal 2.5 V alarm limits",
+          "V",
+          "Cycle time alarm limit",
+          "ms",
+          "5 V reference overload",
+          "Error in I/O init",
+          "Affects",
+          "Control status LED automatically according to system status",
+          "Object Dictionary",
+          "PDO",
+          "I/O",
+          "Events",
+          "ISOBUS",
+          "Library Manager"
+        ]
+      },
+      "Object Dictionary": {
+        "inputs": [
+          {
+            "type": "ComboBox",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2053,
+              "T": 298,
+              "R": 2535,
+              "B": 320
+            }
+          },
+          {
+            "type": "ComboBox",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2053,
+              "T": 330,
+              "R": 2535,
+              "B": 352
+            }
+          },
+          {
+            "type": "ComboBox",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2053,
+              "T": 362,
+              "R": 2535,
+              "B": 384
+            }
+          },
+          {
+            "type": "ComboBox",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2053,
+              "T": 394,
+              "R": 2535,
+              "B": 416
+            }
+          },
+          {
+            "type": "ComboBox",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 0,
+              "T": 0,
+              "R": 0,
+              "B": 0
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2275,
+              "T": 1375,
+              "R": 2494,
+              "B": 1383
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "",
+            "value": "100",
+            "rect": {
+              "L": 2517,
+              "T": 1368,
+              "R": 2548,
+              "B": 1390
+            }
+          }
+        ],
+        "labels": [
+          "Object Dictionary",
+          "Network Editor",
+          "EPEC_CU1",
+          "CAN",
+          "J1939",
+          "NMEA 2000",
+          "Address Claiming",
+          "Diagnostics",
+          "Object Dictionary",
+          "No CAN selected, select configurable CAN above.",
+          "CAN 1",
+          "Index",
+          "Name",
+          "Description",
+          "Data Type",
+          "PDO Mapping",
+          "Minimum",
+          "Default",
+          "Maximum",
+          "Index Properties",
+          "No Index Selected. Select Index.",
+          "Sub-Index Properties",
+          "No Sub-Index Selected. Select Sub-Index.",
+          "PDO",
+          "I/O",
+          "Events",
+          "ISOBUS",
+          "Library Manager"
+        ],
+        "toolbar_buttons": [
+          {
+            "index": 0,
+            "tooltip": "Add Index",
+            "x": 207,
+            "y": 139
+          },
+          {
+            "index": 1,
+            "tooltip": "Add Pre-Defined Index",
+            "x": 245,
+            "y": 139
+          },
+          {
+            "index": 2,
+            "tooltip": "Remove",
+            "x": 283,
+            "y": 139
+          },
+          {
+            "index": 3,
+            "tooltip": "Add Sub-Index",
+            "x": 327,
+            "y": 139
+          },
+          {
+            "index": 4,
+            "tooltip": "Show Hidden",
+            "x": 371,
+            "y": 139
+          },
+          {
+            "index": 5,
+            "tooltip": "Store / Restore Settings",
+            "x": 415,
+            "y": 139
+          },
+          {
+            "index": 6,
+            "tooltip": "Import from supported file types",
+            "x": 459,
+            "y": 139
+          },
+          {
+            "index": 7,
+            "tooltip": "Export to supported file types",
+            "x": 497,
+            "y": 139
+          }
+        ]
+      },
+      "PDO": {
+        "inputs": [
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "EditorSite",
+            "value": "",
+            "rect": {
+              "L": 183,
+              "T": 129,
+              "R": 310,
+              "B": 149
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "DisplayTextInputTextBox",
+            "automation_id": "DisplayText",
+            "value": "",
+            "rect": {
+              "L": 183,
+              "T": 129,
+              "R": 310,
+              "B": 149
+            }
+          },
+          {
+            "type": "ComboBox",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2088,
+              "T": 253,
+              "R": 2496,
+              "B": 275
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2275,
+              "T": 1375,
+              "R": 2494,
+              "B": 1383
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "",
+            "value": "100",
+            "rect": {
+              "L": 2517,
+              "T": 1368,
+              "R": 2548,
+              "B": 1390
+            }
+          }
+        ],
+        "labels": [
+          "Network Editor",
+          "EPEC_CU1",
+          "CAN",
+          "J1939",
+          "NMEA 2000",
+          "Address Claiming",
+          "Diagnostics",
+          "Object Dictionary",
+          "PDO",
+          "No CAN selected, select configurable CAN above.",
+          "CAN 1",
+          "Filter",
+          "Variable",
+          "Size",
+          "HeaderCell_2",
+          "Transmit PDOs",
+          "COB-ID",
+          "Byte 0",
+          "Byte 1",
+          "Byte 2",
+          "Byte 3",
+          "Byte 4",
+          "Byte 5",
+          "Byte 6",
+          "Byte 7",
+          "Receive PDOs",
+          "Is Received",
+          "Transmitter",
+          "COB-ID",
+          "Byte 0",
+          "Byte 1",
+          "Byte 2",
+          "Byte 3",
+          "Byte 4",
+          "Byte 5",
+          "Byte 6",
+          "Byte 7",
+          "Select PDO for Configuration",
+          "I/O",
+          "Events",
+          "ISOBUS",
+          "Library Manager"
+        ]
+      },
+      "I/O": {
+        "inputs": [
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2275,
+              "T": 1375,
+              "R": 2494,
+              "B": 1383
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "",
+            "value": "100",
+            "rect": {
+              "L": 2517,
+              "T": 1368,
+              "R": 2548,
+              "B": 1390
+            }
+          }
+        ],
+        "labels": [
+          "Network Editor",
+          "EPEC_CU1",
+          "CAN",
+          "J1939",
+          "NMEA 2000",
+          "Address Claiming",
+          "Diagnostics",
+          "Object Dictionary",
+          "PDO",
+          "I/O",
+          "Connector / Pin",
+          "Variable Name",
+          "Modes",
+          "1",
+          "Select Pin",
+          "Events",
+          "ISOBUS",
+          "Library Manager"
+        ]
+      },
+      "Events": {
+        "inputs": [
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2275,
+              "T": 1375,
+              "R": 2494,
+              "B": 1383
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "",
+            "value": "100",
+            "rect": {
+              "L": 2517,
+              "T": 1368,
+              "R": 2548,
+              "B": 1390
+            }
+          }
+        ],
+        "labels": [
+          "Network Editor",
+          "EPEC_CU1",
+          "CAN",
+          "J1939",
+          "NMEA 2000",
+          "Address Claiming",
+          "Diagnostics",
+          "Object Dictionary",
+          "PDO",
+          "I/O",
+          "Events",
+          "No CAN selected, select configurable CAN above.",
+          "CAN 1",
+          "Events",
+          "Library Events",
+          "ISOBUS",
+          "Library Manager"
+        ]
+      },
+      "ISOBUS": {
+        "inputs": [
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2275,
+              "T": 1375,
+              "R": 2494,
+              "B": 1383
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "",
+            "value": "100",
+            "rect": {
+              "L": 2517,
+              "T": 1368,
+              "R": 2548,
+              "B": 1390
+            }
+          }
+        ],
+        "labels": [
+          "Network Editor",
+          "EPEC_CU1",
+          "CAN",
+          "J1939",
+          "NMEA 2000",
+          "Address Claiming",
+          "Diagnostics",
+          "Object Dictionary",
+          "PDO",
+          "I/O",
+          "Events",
+          "ISOBUS",
+          "CAN 1",
+          "Protocol",
+          "Virtual Terminal Client",
+          "Task Controller Client",
+          "Tractor ECU Interface",
+          "ISOBUS Diagnostic",
+          "Library Manager"
+        ]
+      },
+      "Library Manager": {
+        "inputs": [
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 153,
+              "R": 220,
+              "B": 168
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 176,
+              "R": 220,
+              "B": 191
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 199,
+              "R": 220,
+              "B": 214
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 222,
+              "R": 220,
+              "B": 237
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 245,
+              "R": 220,
+              "B": 260
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 268,
+              "R": 220,
+              "B": 283
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 291,
+              "R": 220,
+              "B": 306
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 314,
+              "R": 220,
+              "B": 329
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 337,
+              "R": 220,
+              "B": 352
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 360,
+              "R": 220,
+              "B": 375
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 383,
+              "R": 220,
+              "B": 398
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 406,
+              "R": 220,
+              "B": 421
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 429,
+              "R": 220,
+              "B": 444
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 452,
+              "R": 220,
+              "B": 467
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 475,
+              "R": 220,
+              "B": 490
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 498,
+              "R": 220,
+              "B": 513
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 521,
+              "R": 220,
+              "B": 536
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 544,
+              "R": 220,
+              "B": 559
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 567,
+              "R": 220,
+              "B": 582
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 590,
+              "R": 220,
+              "B": 605
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 613,
+              "R": 220,
+              "B": 628
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "unchecked",
+            "rect": {
+              "L": 193,
+              "T": 636,
+              "R": 220,
+              "B": 651
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "unchecked",
+            "rect": {
+              "L": 193,
+              "T": 659,
+              "R": 220,
+              "B": 674
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "unchecked",
+            "rect": {
+              "L": 193,
+              "T": 682,
+              "R": 220,
+              "B": 697
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 705,
+              "R": 220,
+              "B": 720
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 728,
+              "R": 220,
+              "B": 743
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 751,
+              "R": 220,
+              "B": 766
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 774,
+              "R": 220,
+              "B": 789
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 797,
+              "R": 220,
+              "B": 812
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 820,
+              "R": 220,
+              "B": 835
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 843,
+              "R": 220,
+              "B": 858
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 866,
+              "R": 220,
+              "B": 881
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "checked",
+            "rect": {
+              "L": 193,
+              "T": 889,
+              "R": 220,
+              "B": 904
+            }
+          },
+          {
+            "type": "CheckBox",
+            "name": "",
+            "automation_id": "",
+            "value": "unchecked",
+            "rect": {
+              "L": 193,
+              "T": 912,
+              "R": 220,
+              "B": 927
+            }
+          },
+          {
+            "type": "Slider",
+            "name": "",
+            "automation_id": "",
+            "value": "",
+            "rect": {
+              "L": 2275,
+              "T": 1375,
+              "R": 2494,
+              "B": 1383
+            }
+          },
+          {
+            "type": "Edit",
+            "name": "",
+            "automation_id": "",
+            "value": "100",
+            "rect": {
+              "L": 2517,
+              "T": 1368,
+              "R": 2548,
+              "B": 1390
+            }
+          }
+        ],
+        "labels": [
+          "Network Editor",
+          "EPEC_CU1",
+          "CAN",
+          "J1939",
+          "NMEA 2000",
+          "Address Claiming",
+          "Diagnostics",
+          "Object Dictionary",
+          "PDO",
+          "I/O",
+          "Events",
+          "ISOBUS",
+          "Library Manager",
+          "Update All to Latest",
+          "Include",
+          "Library Name",
+          "Current Version",
+          "3000AnalogInputProtection",
+          "1.2.0",
+          "3000CANVXD",
+          "1.5.3",
+          "3000ext",
+          "1.3.0",
+          "3000InterruptSendHandler",
+          "1.1.0",
+          "3000SetTickExt",
+          "1.0.0",
+          "3606int",
+          "1.6.2",
+          "3606specific",
+          "0.0.2",
+          "ADConversion",
+          "1.0.1",
+          "AddressClaiming",
+          "1.1.1",
+          "AI",
+          "1.0.0",
+          "CANopen",
+          "1.6.7",
+          "CANopen_302",
+          "1.0.1",
+          "CANopenCSDO",
+          "1.3.2",
+          "CANopenODSave",
+          "1.4.2",
+          "DataTransfer",
+          "1.0.1",
+          "DigitalOutputDiagnostic",
+          "1.1.1",
+          "EventLog",
+          "1.4.3",
+          "EventLogTransfer",
+          "1.1.0",
+          "ExtraBins",
+          "1.1.0",
+          "FileSys",
+          "1.3.0",
+          "Filters",
+          "1.0.2",
+          "ISOBUS",
+          "1.2.1",
+          "ISOBUS_TC",
+          "1.2.3",
+          "ISOBUS_VT",
+          "1.4.12",
+          "J1939",
+          "1.3.5",
+          "J1939Event",
+          "1.0.1",
+          "JoystickCalibrationAndDiagnostic",
+          "1.3.1",
+          "NetworkManager",
+          "1.3.0",
+          "ProportionalValveControl",
+          "1.0.7",
+          "Ramp",
+          "1.1.0",
+          "SensorCalibrationAndDiagnostic",
+          "1.0.2",
+          "Standard",
+          "1.0.0",
+          "Util",
+          "1.0.0",
+          "Util_no_Real",
+          "1.0.0",
+          "Library Parameters",
+          "No parameters",
+          "Library Version History",
+          "No library selected"
+        ]
+      }
+    }
+  }
+}

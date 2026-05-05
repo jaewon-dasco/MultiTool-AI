@@ -1,7 +1,7 @@
 {
   "New Project": {
-    "shortcut": "",
-    "shortcut_verified": false,
+    "shortcut": "Ctrl + Shift + N",
+    "shortcut_verified": true,
     "menu_path": [
       "FILE",
       "New Project"
@@ -15,8 +15,8 @@
     "source": "menubar"
   },
   "Open Project": {
-    "shortcut": "",
-    "shortcut_verified": false,
+    "shortcut": "Ctrl + Shift + O",
+    "shortcut_verified": true,
     "menu_path": [
       "FILE",
       "Open Project"
@@ -30,7 +30,7 @@
     "source": "menubar"
   },
   "Save Project": {
-    "shortcut": "",
+    "shortcut": "Ctrl + S",
     "shortcut_verified": false,
     "menu_path": [
       "FILE",
@@ -45,8 +45,8 @@
     "source": "menubar"
   },
   "Save As...": {
-    "shortcut": "",
-    "shortcut_verified": false,
+    "shortcut": "Ctrl + Shift + S",
+    "shortcut_verified": true,
     "menu_path": [
       "FILE",
       "Save As..."
@@ -60,8 +60,8 @@
     "source": "menubar"
   },
   "Export Project Archive": {
-    "shortcut": "",
-    "shortcut_verified": false,
+    "shortcut": "Ctrl + Shift + A",
+    "shortcut_verified": true,
     "menu_path": [
       "FILE",
       "Export Project Archive"
@@ -90,8 +90,8 @@
     "source": "menubar"
   },
   "Settings": {
-    "shortcut": "",
-    "shortcut_verified": false,
+    "shortcut": "Alt + X",
+    "shortcut_verified": true,
     "menu_path": [
       "FILE",
       "Settings"
@@ -120,7 +120,7 @@
     "source": "menubar"
   },
   "Exit": {
-    "shortcut": "",
+    "shortcut": "Alt + F4",
     "shortcut_verified": false,
     "menu_path": [
       "FILE",
@@ -150,7 +150,7 @@
     "source": "menubar"
   },
   "System Export": {
-    "shortcut": "",
+    "shortcut": "Ctrl + Alt + E",
     "shortcut_verified": false,
     "menu_path": [
       "PROJECT",
@@ -165,7 +165,7 @@
     "source": "menubar"
   },
   "Upgrade": {
-    "shortcut": "",
+    "shortcut": "Ctrl + Alt + C",
     "shortcut_verified": false,
     "menu_path": [
       "PROJECT",
@@ -210,7 +210,7 @@
     "source": "menubar"
   },
   "Preferences": {
-    "shortcut": "",
+    "shortcut": "Ctrl + Alt + O",
     "shortcut_verified": false,
     "menu_path": [
       "PROJECT",
@@ -225,8 +225,8 @@
     "source": "menubar"
   },
   "MultiTool Creator Help": {
-    "shortcut": "",
-    "shortcut_verified": false,
+    "shortcut": "F1",
+    "shortcut_verified": true,
     "menu_path": [
       "HELP",
       "MultiTool Creator Help"
@@ -270,8 +270,8 @@
     "source": "menubar"
   },
   "About MultiTool Creator": {
-    "shortcut": "",
-    "shortcut_verified": false,
+    "shortcut": "F2",
+    "shortcut_verified": true,
     "menu_path": [
       "HELP",
       "About MultiTool Creator"
@@ -1493,6 +1493,7 @@
       }
     ],
     "labels": [
+      "Object Dictionary",
       "Network Editor",
       "EPEC_CU1",
       "CAN",

@@ -15,7 +15,7 @@ from mapper  import build_function_map
 from diff    import diff_function_maps, print_diff_report
 
 
-def run():
+def run(force: bool = False):
     VERSIONS_DIR.mkdir(parents=True, exist_ok=True)
     installed = get_installed_versions()
     if not installed:
@@ -26,7 +26,7 @@ def run():
         chm     = inst_path / "Resources" / "Manual.chm"
         ver_dir = VERSIONS_DIR / ver
 
-        if not needs_update(ver, chm):
+        if not force and not needs_update(ver, chm):
             print(f"[SKIP] {ver} — 변경 없음")
             continue
 
@@ -74,4 +74,4 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    run(force="--force" in sys.argv)
