@@ -7,3 +7,16 @@
 3. MD 파일 작성 시 `|` 구분자를 세로로 열 정렬한다.
 4. Python `.py`, 쉘 스크립트 등 외부 실행 파일은 프로젝트 내 `skills/` 폴더에 생성한다. (글로벌 공용은 `~/.claude/scripts/`)
 5. MultiTool 프로젝트 파일(`.mtproject`)은 `ROOT/MultiToolProject/프로젝트명/프로젝트명.mtproject` 구조로 위치한다. Python 스크립트에서 경로 참조 시 `glob("*/*.mtproject")`로 탐색한다.
+6. **PROJECT.md 파일 기본 형식은 `Clarify · Context Gather · Plan · Generate · Evaluate` 5섹션을 따른다.** (상세 → 아래)
+
+## PROJECT.md 기본 형식
+
+`PROJECT.md` 파일은 다음 5섹션 구조를 따른다.
+
+| 섹션           | 내용                                           |
+| -------------- | ---------------------------------------------- |
+| Clarify        | 입출력·대상·핵심 기능 — 무엇을 하는가          |
+| Context Gather | 환경·HW·라이브러리·알려진 사실 — 무엇을 아는가 |
+| Plan           | 절차·구조·규칙 — 어떻게 구성하는가             |
+| Generate       | 파라미터 상세값·구현 — 어떻게 만드는가         |
+| Evaluate       | 검증 기준·주의사항 — 어떻게 확인하는가         |
