@@ -41,6 +41,7 @@ def dump_ui_tree(ver: str, out_path: Path):
         time.sleep(2)
         ctx = _collect_context_menus(app2, win2)
         tree["context_menus"] = ctx
+        _run_system_export(app2, win2)
     except Exception as e:
         print(f"  [WARN] 컨텍스트 메뉴 수집 실패: {e}")
         tree["context_menus"] = {}
@@ -49,6 +50,26 @@ def dump_ui_tree(ver: str, out_path: Path):
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(tree, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+# ── System Export (의무) ─────────────────────────────────────────────────────
+def _run_system_export(app, win):
+    """PROJECT > System Export 실행 — .exp 파일 갱신용. 의무 단계."""
+    from pywinauto import keyboard
+    try:
+        win = app.top_window()
+    except Exception:
+        pass
+    try:
+        win.set_focus()
+        time.sleep(0.5)
+        keyboard.send_keys("^%e", pause=0.05)
+        time.sleep(8)
+        keyboard.send_keys("{ESC}")
+        time.sleep(1)
+        print("  [OK] System Export")
+    except Exception as e:
+        print(f"  [WARN] System Export 실패: {e}")
 
 
 # ── WindowSpec 변환 헬퍼 ──────────────────────────────────────────────────────

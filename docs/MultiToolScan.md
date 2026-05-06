@@ -1,13 +1,16 @@
-# FunctionScan
+# MultiToolScan
+
+MultiTool Creator의 UI 정적 매핑(`function_map.json`)과 설정값 → `.exp` 동적 패턴 분석(`docs/exp_patterns/`)을 통합 수행한다. UI scan 후 expscan baseline 캡처는 의무 단계.
 
 ## Clarify
 
-| 항목        | 내용                                                          |
-| ----------- | ------------------------------------------------------------- |
-| 입력        | `*.mtproject` (XML), `Manual.chm` (설치 경로 참조)            |
-| 출력        | 기능 목록 + UI 조작 시퀀스 (단축키, 메뉴 경로, 좌표)          |
-| 자동화 대상 | System Export, Parameter CSV Export, Network 편집, OD 편집 등 |
-| 제약        | MultiTool Creator GUI 기반 — COM/API 없음, UI Automation 사용 |
+| 항목        | 내용                                                                    |
+| ----------- | ----------------------------------------------------------------------- |
+| 입력        | `*.mtproject` (XML), `Manual.chm`, MultiTool 설치 경로                  |
+| 출력 (정적) | `function_map.json` — 기능 목록 + UI 조작 시퀀스 (단축키·메뉴·좌표)     |
+| 출력 (동적) | `docs/exp_patterns/{label}.exp/.diff` + `mapping.json`                  |
+| 자동화 대상 | System Export, Parameter CSV Export, Network 편집, OD 편집, 설정값 변형 |
+| 제약        | MultiTool Creator GUI 기반 — COM/API 없음, UI Automation (pywinauto)    |
 
 ### 스캔 실행 시 버전 확인 (매 실행)
 
@@ -21,6 +24,35 @@
 1. CHM 재추출 → `git diff`로 변경 HTM 파악
 2. UIA 메뉴 트리 덤프 → 이전 덤프와 diff → 좌표 변화 탐지
 3. 변경 항목만 재매핑
+
+### `.exp` 생성 패턴 분석
+
+기능별 설정 변경 → System Export → 생성된 `*.exp`(CODESYS 변수/POU 익스포트) 비교로 **설정값 → 코드 매핑** 도출.
+
+| 단계 | 작업                                                                  |
+| ---- | --------------------------------------------------------------------- |
+| 1    | baseline export (기본 설정) → `baseline.exp` 보관                     |
+| 2    | 단일 설정 변경 (예: `Configure: CAN` Bitrate 250→500, OD 인덱스 추가) |
+| 3    | re-export → `variant.exp`                                             |
+| 4    | `diff baseline.exp variant.exp` → 변경 라인·POU·변수 추출             |
+| 5    | 설정값 → `.exp` 변경 패턴 매핑 누적                                   |
+
+| 분석 대상          | 변경 방식                                  |
+| ------------------ | ------------------------------------------ |
+| Configure: CAN     | Bitrate / Buffering                        |
+| Configure: CANopen | Node ID / Heartbeat                        |
+| OD                 | Index 추가·제거, Sub-Index, Store/Restore  |
+| PDO                | TPDO/RPDO 매핑 추가, Inhibit Time          |
+| I/O / Events       | 입력 컨트롤 단일 변경                      |
+| 디바이스           | Add Device / Clone Unit / Change Unit Type |
+
+| 산출물                                    | 내용                              |
+| ----------------------------------------- | --------------------------------- |
+| `docs/exp_patterns/{feature}_{value}.exp` | 변형별 export 결과 보관           |
+| `docs/exp_patterns/{feature}.diff`        | baseline 대비 차분                |
+| `docs/exp_patterns/mapping.json`          | `{설정값: [.exp 변경 위치·코드]}` |
+
+목적: MultiToolVibeCoding이 `.mtproject` XML + `.exp` 코드를 동시에 예측·검증.
 
 ---
 
@@ -139,18 +171,20 @@ WPF(.NET) 앱 → UIA 네이티브 지원
 
 ### 실행 단계 (구현 상태)
 
-| 단계 | 작업                 | 상세                                                                    |
-| ---- | -------------------- | ----------------------------------------------------------------------- |
-| 1    | 버전 탐지            | `Program Files\Epec` 열거 → CHM MD5 비교 → 신규/변경 버전만 진행        |
-| 2    | CHM 추출·파싱        | `hh.exe -decompile` → `chm_extracted/` 저장 → 버전 히스토리·기능명 수집 |
-| 3    | 메뉴바 덤프          | `MultiTool.exe` 실행 → FILE/PROJECT/HELP 메뉴 순회 → 19개 항목 수집     |
-| 4    | 데모 프로젝트 생성   | 기존 ScanDemo 삭제 → Browse 경로 → CU-3606-21 추가 (cascading) → 저장   |
-| 5    | 디바이스 우클릭      | 좌표 기반 우클릭 → 컨텍스트 메뉴 4개 항목 (Clone Unit 등)               |
-| 6    | 디바이스 플로팅 툴바 | 디바이스 클릭 → 🔧📦❌ 아이콘 hover → tooltip 3개 (Configure 등)           |
-| 7    | Network Editor 툴바  | UIA 직접 탐색 → Add Device/Slave Device/Network 3개 좌표                |
-| 8    | Configure 12개 탭    | 디바이스 클릭→Configure→maximize→탭 순회 → 입력 컨트롤·라벨 임베드      |
-| 9    | function_map 생성    | 위 단계 결과 통합 → 41개 기능 매핑                                      |
-| 10   | 버전 diff            | 이전/현재 `function_map.json` 비교 → `diff.json`                        |
+| 단계 | 작업                 | 상세                                                                           |
+| ---- | -------------------- | ------------------------------------------------------------------------------ |
+| 1    | 버전 탐지            | `Program Files\Epec` 열거 → CHM MD5 비교 → 신규/변경 버전만 진행               |
+| 2    | CHM 추출·파싱        | `hh.exe -decompile` → `chm_extracted/` 저장 → 버전 히스토리·기능명 수집        |
+| 3    | 메뉴바 덤프          | `MultiTool.exe` 실행 → FILE/PROJECT/HELP 메뉴 순회 → 19개 항목 수집            |
+| 4    | 데모 프로젝트 생성   | 기존 ScanDemo 삭제 → Browse 경로 → CU-3606-21 추가 (cascading) → 저장          |
+| 5    | 디바이스 우클릭      | 좌표 기반 우클릭 → 컨텍스트 메뉴 4개 항목 (Clone Unit 등)                      |
+| 6    | 디바이스 플로팅 툴바 | 디바이스 클릭 → 🔧📦❌ 아이콘 hover → tooltip 3개 (Configure 등)                  |
+| 7    | Network Editor 툴바  | UIA 직접 탐색 → Add Device/Slave Device/Network 3개 좌표                       |
+| 8    | Configure 12개 탭    | 디바이스 클릭→Configure→maximize→탭 순회 → 입력 컨트롤·라벨 임베드             |
+| 9    | function_map 생성    | 위 단계 결과 통합 → 49개 기능 매핑                                             |
+| 10   | 버전 diff            | 이전/현재 `function_map.json` 비교 → `diff.json`                               |
+| 11   | System Export        | `^%e` 전송 → `.exp` 갱신 (의무)                                                |
+| 12   | expscan baseline     | `expscan.cmd_capture("baseline")` 자동 호출 → `docs/exp_patterns/baseline.exp` |
 
 ### 스캔용 데모 프로젝트
 
@@ -212,34 +246,49 @@ WPF(.NET) 앱 → UIA 네이티브 지원
 | `inputs`            | (device_config 전용) 탭 내부 입력 컨트롤 + 값 + rect                          |
 | `labels`            | (device_config 전용) 탭 내부 표시 텍스트 (설정 라벨)                          |
 
-### 스크립트 구성 (`skills/fnscan/`)
+### 스크립트 구성
 
-| 스크립트      | 역할                                              |
-| ------------- | ------------------------------------------------- |
-| `version.py`  | 설치 버전 탐지, CHM 해시 비교                     |
-| `chm.py`      | CHM 추출, 버전 히스토리·기능 파싱                 |
-| `uitree.py`   | MultiTool 실행, 메뉴바·컨텍스트 메뉴 수집         |
-| `mapper.py`   | UI 트리 → `function_map.json` 생성                |
-| `diff.py`     | 버전 간 diff, 변경 기능 리포트                    |
-| `verify.py`   | 단축키 일괄 검증, `shortcut_verified` 갱신        |
-| `coverage.py` | 커버리지 체크 (기준 90%)                          |
-| `run.py`      | 전체 순차 실행 진입점 (`py skills/fnscan/run.py`) |
+#### UI scan (`skills/fnscan/`)
+
+| 스크립트      | 역할                                                                         |
+| ------------- | ---------------------------------------------------------------------------- |
+| `version.py`  | 설치 버전 탐지, CHM 해시 비교                                                |
+| `chm.py`      | CHM 추출, 버전 히스토리·기능 파싱                                            |
+| `uitree.py`   | MultiTool 실행, 메뉴바·컨텍스트 메뉴 수집, **System Export 의무 호출**       |
+| `mapper.py`   | UI 트리 → `function_map.json` 생성                                           |
+| `diff.py`     | 버전 간 diff, 변경 기능 리포트                                               |
+| `verify.py`   | 단축키 일괄 검증, `shortcut_verified` 갱신                                   |
+| `coverage.py` | 커버리지 체크 (기준 90%)                                                     |
+| `run.py`      | 전체 진입점 (`py skills/fnscan/run.py`) — 종료 시 expscan baseline 자동 호출 |
+
+#### exp scan (`skills/expscan/`)
+
+| 스크립트 | 역할                                                          |
+| -------- | ------------------------------------------------------------- |
+| `run.py` | capture/diff/mapping/list 서브명령 — `.exp` 캡처 및 차분 분석 |
 
 ---
 
 ## Generate
 
-실행: `py skills/fnscan/run.py`
+실행: `py skills/fnscan/run.py [--force]` — UI scan + System Export + expscan baseline 자동 체이닝
 
-| 파일                                      | 함수                     | 역할                                                   |
-| ----------------------------------------- | ------------------------ | ------------------------------------------------------ |
-| [version.py](../skills/fnscan/version.py) | `get_installed_versions` | `Program Files\Epec` 열거 → `{버전: Path}` 반환        |
-| [version.py](../skills/fnscan/version.py) | `needs_update`           | `meta.json` CHM MD5 비교 → 재처리 여부 판정            |
-| [chm.py](../skills/fnscan/chm.py)         | `extract_chm`            | `hh.exe -decompile` → `chm_extracted/` 저장            |
-| [chm.py](../skills/fnscan/chm.py)         | `parse_version_history`  | `VersionDifferences.htm` 파싱 → `version_history.json` |
-| [uitree.py](../skills/fnscan/uitree.py)   | `dump_ui_tree`           | MultiTool 실행 → UIA 트리 순회 → `ui_tree_{ts}.json`   |
-| [mapper.py](../skills/fnscan/mapper.py)   | `build_function_map`     | UIA 트리 → `function_map.json` (단축키·좌표 포함)      |
-| [diff.py](../skills/fnscan/diff.py)       | `diff_function_maps`     | 이전/현재 `function_map.json` 비교 → `diff.json`       |
+### 핵심 함수
+
+| 파일                                       | 함수                     | 역할                                                   |
+| ------------------------------------------ | ------------------------ | ------------------------------------------------------ |
+| [version.py](../skills/fnscan/version.py)  | `get_installed_versions` | `Program Files\Epec` 열거 → `{버전: Path}` 반환        |
+| [version.py](../skills/fnscan/version.py)  | `needs_update`           | `meta.json` CHM MD5 비교 → 재처리 여부 판정            |
+| [chm.py](../skills/fnscan/chm.py)          | `extract_chm`            | `hh.exe -decompile` → `chm_extracted/` 저장            |
+| [chm.py](../skills/fnscan/chm.py)          | `parse_version_history`  | `VersionDifferences.htm` 파싱 → `version_history.json` |
+| [uitree.py](../skills/fnscan/uitree.py)    | `dump_ui_tree`           | UIA 트리 순회 + System Export → `ui_tree_{ts}.json`    |
+| [uitree.py](../skills/fnscan/uitree.py)    | `_run_system_export`     | `^%e` 전송 → `.exp` 갱신 (의무 단계)                   |
+| [mapper.py](../skills/fnscan/mapper.py)    | `build_function_map`     | UIA 트리 → `function_map.json` (단축키·좌표 포함)      |
+| [diff.py](../skills/fnscan/diff.py)        | `diff_function_maps`     | 이전/현재 `function_map.json` 비교 → `diff.json`       |
+| [run.py](../skills/fnscan/run.py)          | `_run_expscan_baseline`  | `expscan.cmd_capture("baseline")` 자동 호출            |
+| [expscan/run.py](../skills/expscan/run.py) | `cmd_capture(label)`     | `.exp` → `docs/exp_patterns/{label}.exp` 보관          |
+| [expscan/run.py](../skills/expscan/run.py) | `cmd_diff(a, b)`         | unified diff → `{variant}.diff`                        |
+| [expscan/run.py](../skills/expscan/run.py) | `cmd_mapping(v, desc)`   | `mapping.json`에 변형·설명·diff 통계 누적              |
 
 ---
 
@@ -247,13 +296,15 @@ WPF(.NET) 앱 → UIA 네이티브 지원
 
 ### 검증 기준
 
-| 항목           | 기준                                 | 판정 방법                                 |
-| -------------- | ------------------------------------ | ----------------------------------------- |
-| 기능 커버리지  | 매뉴얼 기능 목록 대비 ≥ 90%          | `function_map.json` 키 수 vs 매뉴얼 목록  |
-| 단축키 정확도  | `shortcut_verified: true` 비율 ≥ 80% | `fnscan_verify.py` 일괄 전송·응답 확인    |
-| UIA ID 안정성  | 재실행 시 동일 `automation_id` 유지  | 2회 덤프 diff → 변경된 ID 0개             |
-| 좌표 유효성    | BoundingRect 화면 내 포함            | `rect[0] >= 0 and rect[1] >= 0`           |
-| 버전 diff 누락 | 변경 버전에 diff 리포트 존재         | `docs/versions/{ver}/diff.json` 존재 확인 |
+| 항목                  | 기준                                 | 판정 방법                                  |
+| --------------------- | ------------------------------------ | ------------------------------------------ |
+| 기능 커버리지         | 매뉴얼 기능 목록 대비 ≥ 90%          | `function_map.json` 키 수 vs 매뉴얼 목록   |
+| 단축키 정확도         | `shortcut_verified: true` 비율 ≥ 80% | `verify.py` 일괄 전송·응답 확인            |
+| UIA ID 안정성         | 재실행 시 동일 `automation_id` 유지  | 2회 덤프 diff → 변경된 ID 0개              |
+| 좌표 유효성           | BoundingRect 화면 내 포함            | `rect[0] >= 0 and rect[1] >= 0`            |
+| 버전 diff 누락        | 변경 버전에 diff 리포트 존재         | `docs/versions/{ver}/diff.json` 존재 확인  |
+| **expscan 의무 실행** | UI scan 후 `baseline.exp` 자동 생성  | `docs/exp_patterns/baseline.exp` 존재 확인 |
+| **exp 패턴 매핑**     | 변형마다 mapping.json 엔트리 존재    | `mapping[variant]` + diff 라인 수 ≥ 1      |
 
 ### 단축키 일괄 검증 ([verify.py](../skills/fnscan/verify.py))
 
@@ -275,7 +326,7 @@ WPF(.NET) 앱 → UIA 네이티브 지원
 | CANdb Export             | 동상                                 | ❌ 제외 |
 | Delete Network           | 동상                                 | ❌ 제외 |
 
-### 수집된 기능 (41개)
+### 수집된 기능 (49개)
 
 | 소스             | 개수 | 항목                                                                                                         |
 | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------ |
@@ -284,6 +335,15 @@ WPF(.NET) 앱 → UIA 네이티브 지원
 | `toolbar`        | 3    | Configure, Create CODESYS Project, Delete (디바이스 플로팅 툴바)                                             |
 | `ne_toolbar`     | 3    | Add Device, Add Slave Device, Add Network                                                                    |
 | `device_config`  | 12   | Configure: CAN/CANopen/J1939/NMEA 2000/Address Claiming/Diagnostics/OD/PDO/I,O/Events/ISOBUS/Library Manager |
+| OD toolbar       | 8    | Add Index/Pre-Defined/Remove/Sub-Index/Show Hidden/Store-Restore/Import/Export                               |
+
+### 단축키 검증 (8.4 기준)
+
+| 항목   | 결과 | 비고                                                        |
+| ------ | ---- | ----------------------------------------------------------- |
+| 수집   | 12개 | UIA `MenuItem` 자식 Text 컨트롤에서 `InputGestureText` 추출 |
+| 검증   | 7/12 | 다이얼로그 동반 단축키만 — Save류·Alt+F4 등 제외            |
+| 미검증 | 5개  | Save Project (다이얼로그 미동반) + PROJECT 메뉴 3개         |
 
 ### 알려진 제약
 

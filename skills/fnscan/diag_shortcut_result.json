@@ -1,0 +1,356 @@
+{
+  "FILE": [
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "New Project",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"303\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"Ctrl + Shift + N\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" Value=\"Resources/Icons/icon_16x16_new_project.png\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Commands.OpenCreateNewProjectWindow\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Image"
+        },
+        {
+          "name": "New Project",
+          "control_type": "Text"
+        },
+        {
+          "name": "Ctrl + Shift + N",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Open Project",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"303\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"Ctrl + Shift + O\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" Value=\"Resources/Icons/icon_16x16_open_Project.png\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Commands.OpenExistingProjectCommand\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Image"
+        },
+        {
+          "name": "Open Project",
+          "control_type": "Text"
+        },
+        {
+          "name": "Ctrl + Shift + O",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Save Project",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"303\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"Ctrl + S\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" Value=\"Resources/Icons/icon_16x16_save.png\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Commands.SaveProjectCommand\" /><Property Name=\"CommandParameter\" Value=\"MultiTool.ViewModels.MainWindowViewModel\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Image"
+        },
+        {
+          "name": "Save Project",
+          "control_type": "Text"
+        },
+        {
+          "name": "Ctrl + S",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Save As...",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"303\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"Ctrl + Shift + S\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Commands.SaveAsProjectCommand\" /><Property Name=\"CommandParameter\" Value=\"MultiTool.ViewModels.MainWindowViewModel\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "Save As...",
+          "control_type": "Text"
+        },
+        {
+          "name": "Ctrl + Shift + S",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Export Project Archive",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"303\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"Ctrl + Shift + A\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Commands.ExportProjectArchiveCommand\" /><Property Name=\"CommandParameter\" Value=\"MultiTool.ViewModels.MainWindowViewModel\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "Export Project Archive",
+          "control_type": "Text"
+        },
+        {
+          "name": "Ctrl + Shift + A",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Recent Projects",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"303\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" Value=\"Resources/Icons/icon_16x16_recent_projects.png\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuHeader\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Image"
+        },
+        {
+          "name": "Recent Projects",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Settings",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"303\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"Alt + X\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" Value=\"Resources/Icons/icon_16x16_settings.png\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Commands.OpenSettingsWindowCommand\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Image"
+        },
+        {
+          "name": "Settings",
+          "control_type": "Text"
+        },
+        {
+          "name": "Alt + X",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Device Repository",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"303\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" Value=\"Resources/Icons/icon_repository.png\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Commands.OpenDeviceRepositoryWindowCommand\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Image"
+        },
+        {
+          "name": "Device Repository",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Exit",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"303\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"Alt + F4\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" Value=\"Resources/Icons/icon_16x16_exit.png\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Commands.ExitCommand\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Image"
+        },
+        {
+          "name": "Exit",
+          "control_type": "Text"
+        },
+        {
+          "name": "Alt + F4",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "PROJECT",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"67\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"True\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"TopLevelHeader\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "PROJECT",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "HELP",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"47\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"True\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"TopLevelHeader\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "HELP",
+          "control_type": "Text"
+        }
+      ]
+    }
+  ],
+  "PROJECT": [
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Network Editor",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"253\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" Value=\"Resources/Icons/icon_16x16_editor.png\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuHeader\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Image"
+        },
+        {
+          "name": "Network Editor",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "System Export",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"253\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"Ctrl + Alt + E\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" Value=\"Resources/Icons/icon_16x16_system_export.png\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Base.CommandBase\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Image"
+        },
+        {
+          "name": "System Export",
+          "control_type": "Text"
+        },
+        {
+          "name": "Ctrl + Alt + E",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Upgrade",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"253\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"Ctrl + Alt + C\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" Value=\"Resources/Icons/icon_16x16_upgrade.png\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Commands.ConvertDevicesCommand\" /><Property Name=\"CommandParameter\" Value=\"MultiTool.ViewModels.MainWindowViewModel\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Image"
+        },
+        {
+          "name": "Upgrade",
+          "control_type": "Text"
+        },
+        {
+          "name": "Ctrl + Alt + C",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Import Device",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"253\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Base.CommandBase\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "Import Device",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Export Device",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"253\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Base.CommandBase\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "Export Device",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "Preferences",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"253\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"Ctrl + Alt + O\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"False\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" Value=\"Resources/Icons/icon_16x16_preferences.png\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"SubmenuItem\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" Value=\"MultiTool.Commands.OpenProjectPreferencesCommand\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Image"
+        },
+        {
+          "name": "Preferences",
+          "control_type": "Text"
+        },
+        {
+          "name": "Ctrl + Alt + O",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "FILE",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"41\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"True\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"TopLevelHeader\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "FILE",
+          "control_type": "Text"
+        }
+      ]
+    },
+    {
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "label": "HELP",
+      "automation_id": "",
+      "control_type": "MenuItem",
+      "CurrentHelpText": "RadMenuItem",
+      "CurrentItemStatus": "<?xml version=\"1.0\" encoding=\"utf-16\"?><Properties><Property Name=\"ActualHeight\" Value=\"24\" /><Property Name=\"ActualWidth\" Value=\"47\" /><Property Name=\"DataContext\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"FlowDirection\" Value=\"LeftToRight\" /><Property Name=\"Focusable\" Value=\"True\" /><Property Name=\"HorizontalAlignment\" Value=\"Stretch\" /><Property Name=\"IsFocused\" Value=\"False\" /><Property Name=\"IsVisible\" Value=\"True\" /><Property Name=\"Language\" Value=\"en-us\" /><Property Name=\"Margin\" Value=\"0,0,0,0\" /><Property Name=\"MaxHeight\" Value=\"Infinity\" /><Property Name=\"MaxWidth\" Value=\"Infinity\" /><Property Name=\"MinHeight\" Value=\"0\" /><Property Name=\"MinWidth\" Value=\"0\" /><Property Name=\"Opacity\" Value=\"1\" /><Property Name=\"Tag\" /><Property Name=\"VerticalAlignment\" Value=\"Stretch\" /><Property Name=\"Visibility\" Value=\"Visible\" /><Property Name=\"Background\" Value=\"#00FFFFFF\" /><Property Name=\"BorderBrush\" Value=\"#FFFFFFFF\" /><Property Name=\"BorderThickness\" Value=\"0,0,0,0\" /><Property Name=\"FontFamily\" Value=\"Segoe UI\" /><Property Name=\"FontSize\" Value=\"12\" /><Property Name=\"FontStyle\" Value=\"Normal\" /><Property Name=\"FontWeight\" Value=\"Normal\" /><Property Name=\"Foreground\" Value=\"#FF1E1E1E\" /><Property Name=\"HorizontalContentAlignment\" Value=\"Left\" /><Property Name=\"IsTabStop\" Value=\"True\" /><Property Name=\"Padding\" Value=\"9,3,9,3\" /><Property Name=\"TabIndex\" Value=\"2147483647\" /><Property Name=\"VerticalContentAlignment\" Value=\"Center\" /><Property Name=\"DisplayMemberPath\" Value=\"\" /><Property Name=\"ItemContainerStyle\" Value=\"System.Windows.Style\" /><Property Name=\"ItemContainerStyleSelector\" /><Property Name=\"ItemsPanel\" Value=\"System.Windows.Controls.ItemsPanelTemplate\" /><Property Name=\"ItemsSource\" Value=\"MultiTool.ViewModels.Menu.MenuItemsCollection\" /><Property Name=\"ItemStringFormat\" /><Property Name=\"Header\" Value=\"MultiTool.ViewModels.Menu.MenuItem\" /><Property Name=\"HeaderStringFormat\" /><Property Name=\"InputGestureText\" Value=\"\" /><Property Name=\"IconColumnWidth\" Value=\"28\" /><Property Name=\"IsSuspendingPopupAnimation\" Value=\"True\" /><Property Name=\"DropDownPlacement\" Value=\"Auto\" /><Property Name=\"DropDownHeight\" Value=\"NaN\" /><Property Name=\"DropDownWidth\" Value=\"NaN\" /><Property Name=\"IsCurrent\" Value=\"False\" /><Property Name=\"Icon\" /><Property Name=\"IsCheckable\" Value=\"False\" /><Property Name=\"IsChecked\" Value=\"False\" /><Property Name=\"IsHighlighted\" Value=\"False\" /><Property Name=\"IsSubmenuOpen\" Value=\"False\" /><Property Name=\"Role\" Value=\"TopLevelHeader\" /><Property Name=\"StaysOpenOnClick\" Value=\"False\" /><Property Name=\"IsSeparator\" Value=\"False\" /><Property Name=\"Command\" /><Property Name=\"CommandParameter\" /><Property Name=\"CommandTarget\" /></Properties>",
+      "children": [
+        {
+          "name": "HELP",
+          "control_type": "Text"
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-"""run.py — FunctionScan 전체 순차 실행 진입점"""
+"""run.py — MultiToolScan 전체 순차 실행 진입점 (UI scan + System Export + expscan baseline)"""
 
 import sys
 import json
@@ -71,6 +71,22 @@ def run(force: bool = False):
             "tree_file": str(tree_path)
         }, indent=2), encoding="utf-8")
         print(f"  -> {fmap_path}")
+
+        # 의무: expscan baseline 캡처 (System Export 산출물)
+        _run_expscan_baseline()
+
+
+def _run_expscan_baseline():
+    import importlib.util
+    expscan = Path(__file__).parent.parent / "expscan" / "run.py"
+    if not expscan.exists():
+        print(f"  [WARN] expscan 없음 — skip: {expscan}")
+        return
+    spec = importlib.util.spec_from_file_location("expscan_run", expscan)
+    mod  = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    print("  [RUN] expscan baseline")
+    mod.cmd_capture("baseline")
 
 
 if __name__ == "__main__":
