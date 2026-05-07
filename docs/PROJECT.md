@@ -7,6 +7,31 @@
 | [MultiToolScan.md](MultiToolScan.md)             | UI·exp 통합 스캔 (5섹션)  |
 | [MultiToolVibeCoding.md](MultiToolVibeCoding.md) | 자연어 → MultiTool 자동화 |
 
+## 진행 상황
+
+| 구성 요소                             | 상태                          |
+| ------------------------------------- | ----------------------------- |
+| `skills/fnscan/` UI scan              | done                          |
+| `skills/expscan/` capture·diff·plan   | done (10개 카탈로그)          |
+| `docs/exp_patterns/baseline.exp`      | done                          |
+| `docs/versions/8.4/function_map.json` | done (49개 기능)              |
+| `mapping.json` (variant 매핑 누적)    | framework done, 캡처 0/10     |
+| `skills/vibe/` 실행 코드              | done (selftest 42/42)         |
+| `MultiTool` Skill (SKILL.md)          | done                          |
+| `skills/mtpatch/` XML 패치 모듈       | done (round-trip 검증)        |
+| vibe XML 우회 tool 노출               | done (xml_set_bitrate 등 4종) |
+
+### 다음 작업 순서
+
+| #     | 작업                           | 산출물                                                          |
+| ----- | ------------------------------ | --------------------------------------------------------------- |
+| ~~1~~ | ~~`skills/vibe/` 구현~~        | ~~tools/params/session/verify/agent/run/selftest~~              |
+| ~~2~~ | ~~`MultiTool` SKILL.md~~       | ~~`skills/multitool/SKILL.md` 등록 완료~~                       |
+| ~~3~~ | ~~variant 캡처 프레임워크~~    | ~~expscan plan/validate + 10개 카탈로그~~ (실 캡처 todo)        |
+| ~~4~~ | ~~`.mtproject` XML 패치 모듈~~ | ~~`skills/mtpatch/` + vibe agent xml_* tool~~                   |
+| 5     | (선택) 실 첫 사용 검증         | `pip install anthropic` + 키 → `vibe/run.py "..." --no-execute` |
+| 6     | (선택) 실 variant 캡처 누적    | MultiTool 단일 변경 → System Export → expscan capture 반복      |
+
 ## Clarify
 
 | 항목   | 내용                                                              |
