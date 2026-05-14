@@ -27,17 +27,19 @@ if (-not $running) {
     "[$(Get-Date -Format s)] MultiTool already running" | Out-File -FilePath $LOG -Append -Encoding utf8
 }
 
-# orchestrator 실행 — 06:00까지
-$PY = "py"
-$ARGS = @(
-    "skills\e2e_explorer\orchestrator.py",
-    "--project", $PROJECT,
-    "--until", "05:30",
-    "--interval", "300"
-)
-"[$(Get-Date -Format s)] launching orchestrator $($ARGS -join ' ')" | Out-File -FilePath $LOG -Append -Encoding utf8
+# orchestrator 실행 — 05:30까지
+# PowerShell 5.1에서 native exe의 *>> 리다이렉트는 NativeCommandError 발생 →
+# cmd /c 안에서 리다이렉트 처리하여 PS error stream 우회.
+$ORCH_SCRIPT = Join-Path $ROOT "skills\e2e_explorer\orchestrator.py"
+$CMDLINE = "py `"$ORCH_SCRIPT`" --project `"$PROJECT`" --until 05:30 --interval 300 1>>`"$LOG`" 2>&1"
+"[$(Get-Date -Format s)] launching: $CMDLINE" | Out-File -FilePath $LOG -Append -Encoding utf8
 
-& $PY @ARGS *>> $LOG
+# $env:PYTHONIOENCODING으로 UTF-8 강제 (cp949 인코딩 오류 방지)
+$env:PYTHONIOENCODING = "utf-8"
+$env:PYTHONUTF8 = "1"
 
-"[$(Get-Date -Format s)] nightly_run end (exit=$LASTEXITCODE)" | Out-File -FilePath $LOG -Append -Encoding utf8
-exit $LASTEXITCODE
+& cmd /c $CMDLINE
+$EXIT = $LASTEXITCODE
+
+"[$(Get-Date -Format s)] nightly_run end (exit=$EXIT)" | Out-File -FilePath $LOG -Append -Encoding utf8
+exit $EXIT
