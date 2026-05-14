@@ -2,44 +2,31 @@
 
 ## 관련 문서
 
-| 문서                                             | 내용                      |
-| ------------------------------------------------ | ------------------------- |
-| [MultiToolScan.md](MultiToolScan.md)             | UI·exp 통합 스캔 (5섹션)  |
-| [MultiToolVibeCoding.md](MultiToolVibeCoding.md) | 자연어 → MultiTool 자동화 |
+| 문서                                 | 내용                               |
+| ------------------------------------ | ---------------------------------- |
+| [MultiTool_E2E.md](MultiTool_E2E.md) | E2E 자율 학습 시스템 설계서 (현재) |
 
 ## 진행 상황
 
-| 구성 요소                             | 상태                          |
-| ------------------------------------- | ----------------------------- |
-| `skills/fnscan/` UI scan              | done                          |
-| `skills/expscan/` capture·diff·plan   | done (10개 카탈로그)          |
-| `docs/exp_patterns/baseline.exp`      | done                          |
-| `docs/versions/8.4/function_map.json` | done (49개 기능)              |
-| `mapping.json` (variant 매핑 누적)    | framework done, 캡처 0/10     |
-| `skills/vibe/` 실행 코드              | done (selftest 42/42)         |
-| `MultiTool` Skill (SKILL.md)          | done                          |
-| `skills/mtpatch/` XML 패치 모듈       | done (round-trip 검증)        |
-| vibe XML 우회 tool 노출               | done (xml_set_bitrate 등 4종) |
+| 구성 요소                             | 상태                        |
+| ------------------------------------- | --------------------------- |
+| `docs/exp_patterns/baseline.exp`      | done (참조 자산)            |
+| `docs/versions/8.4/function_map.json` | done (49개 기능, 참조 자산) |
+| 기존 부분 스킬                        | 폐기 — E2E로 통합 예정      |
+| `skills/e2e_explorer/`                | W1 신규 작성 대기           |
 
 ### 다음 작업 순서
 
-| #     | 작업                           | 산출물                                                          |
-| ----- | ------------------------------ | --------------------------------------------------------------- |
-| ~~1~~ | ~~`skills/vibe/` 구현~~        | ~~tools/params/session/verify/agent/run/selftest~~              |
-| ~~2~~ | ~~`MultiTool` SKILL.md~~       | ~~`skills/multitool/SKILL.md` 등록 완료~~                       |
-| ~~3~~ | ~~variant 캡처 프레임워크~~    | ~~expscan plan/validate + 10개 카탈로그~~ (실 캡처 todo)        |
-| ~~4~~ | ~~`.mtproject` XML 패치 모듈~~ | ~~`skills/mtpatch/` + vibe agent xml_* tool~~                   |
-| 5     | (선택) 실 첫 사용 검증         | `pip install anthropic` + 키 → `vibe/run.py "..." --no-execute` |
-| 6     | (선택) 실 variant 캡처 누적    | MultiTool 단일 변경 → System Export → expscan capture 반복      |
+E2E 마일스톤은 [MultiTool_E2E.md](MultiTool_E2E.md) 참조.
 
 ## Clarify
 
-| 항목   | 내용                                                              |
-| ------ | ----------------------------------------------------------------- |
-| 대상   | AI_MutiTool — MultiTool 없이 동작하는 vibecoding 자동화 환경      |
-| 입력   | 자연어 명령                                                       |
-| 출력   | `.mtproject` 변경 + 정합 `.exp` 생성                              |
-| 산출물 | `skills/fnscan` (UI) · `skills/expscan` (exp) · `MultiTool` Skill |
+| 항목   | 내용                                                  |
+| ------ | ----------------------------------------------------- |
+| 대상   | AI_MutiTool — MultiTool E2E 자율 학습 환경            |
+| 입력   | 야간 자율 탐색 + 주간 Claude routine 감독             |
+| 출력   | `.mtproject` 변경 + 정합 `.exp` 자동 생성             |
+| 산출물 | `skills/e2e_explorer/` 단일 통합 스킬 (W1+ 작성 예정) |
 
 ## Context Gather
 
@@ -70,14 +57,14 @@
 
 CoDeSys IEC 61131-3 ST export. `(* @PATH := '...' *)` 메타플래그 + `VAR_GLOBAL [CONSTANT] ... END_VAR` 블록. `(*START - Implicit variables, made by EPEC Parser*)` 마커 이후는 자동 생성. `{Device}_generated.exp` 직접 편집 금지.
 
-### Skill 인프라
+### 참조 자산 (E2E 입력)
 
-| 위치                   | 내용                                         |
-| ---------------------- | -------------------------------------------- |
-| `skills/fnscan/`       | UI scan — version·CHM·UIA·mapper·diff·verify |
-| `skills/expscan/`      | `.exp` capture·diff·mapping                  |
-| `docs/versions/{ver}/` | 버전별 CHM·UIA 덤프·`function_map.json`      |
-| `docs/exp_patterns/`   | baseline·variant `.exp`·`mapping.json`       |
+| 위치                                  | 내용                                    |
+| ------------------------------------- | --------------------------------------- |
+| `docs/versions/8.4/function_map.json` | 49개 기능 사전 — E2E 탐색 시드          |
+| `docs/exp_patterns/baseline.exp`      | `.exp` 골든 — 자기검증 의미적 diff 기준 |
+| `docs/exp_patterns/mapping.json`      | 설정값 → `.exp` 변경 라인 매핑          |
+| `screencapture/*.png`                 | UI 캡처 참고                            |
 
 ### 제약
 
@@ -90,39 +77,67 @@ CoDeSys IEC 61131-3 ST export. `(* @PATH := '...' *)` 메타플래그 + `VAR_GLO
 
 ### 워크플로
 
-자연어 → Intent 파싱 → 매핑 lookup → (miss 시) scan 폴백 → `.mtproject`/`.exp` 변경 → diff 검증
+- **야간 자율 (E2E)**: Task Scheduler 00:00 → Gemma4 + pywinauto + XML utils → KB 누적 → 자기검증
+- **주간 자동 (E2E)**: Claude routine 09:00 → 야간 산출물 검토 → 스킬·지침 개선 + hints 갱신
+- **Sunset**: 자율도 지표 충족 시 Claude routine 자기 비활성화 → skill 단독 운영
+- 상세 → [MultiTool_E2E.md](MultiTool_E2E.md)
 
-### 매핑 소스
+### 단일 스킬 구조
 
-| 소스                                    | 제공                           |
-| --------------------------------------- | ------------------------------ |
-| `docs/versions/{ver}/function_map.json` | 기능 → UI 시퀀스               |
-| `docs/exp_patterns/mapping.json`        | 설정값 변형 → `.exp` 변경 라인 |
+기존 부분 스킬(mtpatch·expscan·multitool)은 모두 폐기. `skills/e2e_explorer/` 단일 통합 스킬로 재구성:
 
-둘 다 존재해야 변경 가능 — 누락 시 `fnscan`/`expscan` 자동 트리거 후 재시도.
+```text
+skills/e2e_explorer/
+  orchestrator.py     야간 의사결정 루프
+  ollama_client.py    Gemma4 HTTP
+  ui_driver.py        pywinauto GUI
+  xml_utils.py        .mtproject read/write/backup
+  exp_validator.py    .exp 파싱·골든 diff
+  kb_store.py         SQLite/JSONL
+```
 
 ## Generate
 
-상세 스키마·코드 → [MultiToolScan.md](MultiToolScan.md), [MultiToolVibeCoding.md](MultiToolVibeCoding.md).
+W1 PoC부터 시작. 상세 진입 명령·인터페이스는 [MultiTool_E2E.md](MultiTool_E2E.md) §마일스톤 참조.
 
-| 명령                                | 동작                                         |
-| ----------------------------------- | -------------------------------------------- |
-| `py skills/fnscan/run.py [--force]` | UI scan + System Export + expscan baseline   |
-| `py skills/expscan/run.py {sub}`    | capture / diff / mapping / list              |
-| MultiTool Skill                     | 자연어 명령 — 매핑 누락 시 위 명령 자동 호출 |
+## E2E 로그 확인 자동 명령
 
-**Skill trigger**: MultiTool 기능명·`.mtproject`/`.exp` 변경 의도·산출물 변경 키워드.
+사용자가 **"로그 확인해줘"**, **"어젯밤 로그 봐줘"**, **"E2E 결과 보여줘"** 같이 야간 사이클 로그 확인을 요청하면 Claude는 즉시 아래 명령을 실행하고 결과를 요약 보고한다.
+
+```powershell
+$DATE = Get-Date -Format "yyyy-MM-dd"
+$BASE = "D:\4_AIProject\4_CoDeSys\AI_MutiTool\logs\e2e\$DATE"
+if (-not (Test-Path $BASE)) {
+    $LATEST = Get-ChildItem "D:\4_AIProject\4_CoDeSys\AI_MutiTool\logs\e2e" -Directory | Sort-Object Name -Descending | Select-Object -First 1
+    $BASE = $LATEST.FullName
+}
+Write-Host "== $BASE =="
+Get-Content "$BASE\summary.md" -ErrorAction SilentlyContinue
+Write-Host "`n== run.log (tail 30) =="
+Get-Content "$BASE\run.log" -Tail 30 -ErrorAction SilentlyContinue
+Write-Host "`n== observations.jsonl 라인 수 =="
+(Get-Content "$BASE\observations.jsonl" -ErrorAction SilentlyContinue | Measure-Object -Line).Lines
+Write-Host "`n== Task Scheduler 상태 =="
+Get-ScheduledTask -TaskName E2E_Nightly,E2E_Nightly_Kill -ErrorAction SilentlyContinue |
+    Select-Object TaskName,State,@{N='LastRun';E={(Get-ScheduledTaskInfo $_).LastRunTime}},@{N='LastResult';E={(Get-ScheduledTaskInfo $_).LastTaskResult}} |
+    Format-Table -AutoSize
+```
+
+보고 형식:
+
+| 항목       | 내용                                                 |
+| ---------- | ---------------------------------------------------- |
+| 사이클일자 | `$BASE` 폴더 일자                                    |
+| 통계       | summary.md의 steps/trees/snapshots/llm_calls/errors  |
+| Task 상태  | LastRun + LastResult (0이면 정상)                    |
+| 이상 신호  | `errors > 0` 또는 `LastResult ≠ 0` 또는 폴더 누락 시 |
 
 ## Evaluate
 
-상세 → [MultiToolScan.md](MultiToolScan.md), [MultiToolVibeCoding.md](MultiToolVibeCoding.md).
-
-| 항목             | 기준                                           |
-| ---------------- | ---------------------------------------------- |
-| 명령 성공        | tool 시퀀스 완료 + `.mtproject` diff 의도 일치 |
-| 매핑 커버리지    | `function_map` lookup hit ≥ 90%                |
-| Scan 폴백        | miss → `fnscan`/`expscan` 자동 트리거 → 재시도 |
-| `.exp` 정합성    | export 재현 시 diff 일치                       |
-| 보호 파일 무결성 | `_generated.exp`·`.pro` 변경 0                 |
-
-**Scan 갱신 트리거**: 신규 버전 / `Manual.chm` MD5 변경 / 매핑 miss / `--force`.
+| 항목             | 기준                                                |
+| ---------------- | --------------------------------------------------- |
+| 야간 1사이클     | 00:00~05:30 무중단 + 05:30 클린 복구                |
+| 주간 routine     | 09:00 자동 트리거 + auto_approve_policy 분류 commit |
+| `.exp` 정합성    | 골든 의미적 diff 0 통과                             |
+| 보호 파일 무결성 | `_generated.exp`·`.pro` 변경 0                      |
+| Sunset 자율도    | [MultiTool_E2E.md](MultiTool_E2E.md) §자율도 지표   |

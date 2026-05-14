@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <MtProject>
-  <Meta Created="2026-04-20 09:58" Modified="2026-04-28 10:02" Exported="2026-04-22 07:35">
+  <Meta Created="2026-04-20 09:58" Modified="2026-05-07 16:54" Exported="2026-04-22 07:35">
     <FileVersion>1.0</FileVersion>
     <SDK>8.4.9308.1081</SDK>
     <Tool>8.4.9308.1109</Tool>
@@ -47,17 +47,21 @@
       <Networks>
         <Network Guid="50de4331-ddb3-4edf-b347-444faa7160b4">
           <Name>NETWORK1</Name>
-          <Bitrate>250</Bitrate>
+          <Bitrate>125</Bitrate>
         </Network>
       </Networks>
       <Devices>
         <Device Guid="57f1a44d-ba6e-4a58-95b3-cb1956c242e2">
           <DeviceTemplate>3606_21.xtmpl</DeviceTemplate>
         </Device>
+        <Device Guid="ec0a32e7-3c7e-4b32-8bc2-d66fd9bc6f91">
+          <DeviceTemplate>3606_21.xtmpl</DeviceTemplate>
+        </Device>
       </Devices>
       <NetworkMappings>
         <Network Guid="50de4331-ddb3-4edf-b347-444faa7160b4">
           <CAN Guid="7cfd98e8-029b-46a8-b6b3-0c4b8955c7ca" />
+          <CAN Guid="5d94d1d2-cea6-4d02-8cae-1842f0181d13" />
         </Network>
       </NetworkMappings>
       <ProcessDataObjectMappings>
@@ -80,6 +84,20 @@
             </TransferProcessDataObject>
           </CAN>
         </Device>
+        <Device Guid="ec0a32e7-3c7e-4b32-8bc2-d66fd9bc6f91">
+          <CAN Guid="5d94d1d2-cea6-4d02-8cae-1842f0181d13">
+            <ReceiveProcessDataObject Guid="cb990efb-a285-45b3-97de-f3ef04a41124" TargetGuid="c747df7a-abce-4da1-bb06-6b6e9e9d2bd4">
+              <CobId>385</CobId>
+              <DataLengthCode>0</DataLengthCode>
+              <IsReceived>true</IsReceived>
+            </ReceiveProcessDataObject>
+            <ReceiveProcessDataObject Guid="b3b81f73-1aad-4db9-9f36-e274ffb98f5d" TargetGuid="6332bc89-e08b-4e63-8275-4a3f90b65c0c">
+              <CobId>0</CobId>
+              <DataLengthCode>0</DataLengthCode>
+              <IsReceived>false</IsReceived>
+            </ReceiveProcessDataObject>
+          </CAN>
+        </Device>
       </ProcessDataObjectMappings>
       <J1939>
         <Messages />
@@ -87,7 +105,16 @@
       <NMEA2000>
         <Messages />
       </NMEA2000>
-      <Monitorings />
+      <Monitorings>
+        <Monitoring Guid="cb6d8036-74db-4d68-9cd9-c118f9eebd3b">
+          <TargetDevice>57f1a44d-ba6e-4a58-95b3-cb1956c242e2</TargetDevice>
+          <TargetCanOpen>7cfd98e8-029b-46a8-b6b3-0c4b8955c7ca</TargetCanOpen>
+        </Monitoring>
+        <Monitoring Guid="357b0bba-a781-4129-8212-4e5354ee3ce4">
+          <TargetDevice>ec0a32e7-3c7e-4b32-8bc2-d66fd9bc6f91</TargetDevice>
+          <TargetCanOpen>5d94d1d2-cea6-4d02-8cae-1842f0181d13</TargetCanOpen>
+        </Monitoring>
+      </Monitorings>
     </MachineType>
   </Project>
   <NetworkEditors>
@@ -101,9 +128,9 @@
     <NetworkEditor Target="0d025f42-f582-4579-b8ce-1ae3d65cce9c">
       <EditorNodes>
         <Node Target="57f1a44d-ba6e-4a58-95b3-cb1956c242e2">
-          <Appearance X="524" Y="125">
+          <Appearance X="524" Y="120">
             <Color>#FFEDEEEE</Color>
-            <Text>CU_3606_21</Text>
+            <Text>CU_3606_21_1</Text>
           </Appearance>
           <EditorNodes>
             <Node>
@@ -119,6 +146,20 @@
             <Color>#FF33CCFF</Color>
             <Text>NETWORK1</Text>
           </Appearance>
+        </Node>
+        <Node Target="ec0a32e7-3c7e-4b32-8bc2-d66fd9bc6f91">
+          <Appearance X="509" Y="301">
+            <Color>#FFEDEEEE</Color>
+            <Text>CU_3606_21_2</Text>
+          </Appearance>
+          <EditorNodes>
+            <Node>
+              <Appearance X="-10" Y="14">
+                <Color>#FF33CCFF</Color>
+                <Text>1</Text>
+              </Appearance>
+            </Node>
+          </EditorNodes>
         </Node>
       </EditorNodes>
     </NetworkEditor>
@@ -539,7 +580,7 @@
     </AccessLevels>
   </Editor>
   <Device Guid="57f1a44d-ba6e-4a58-95b3-cb1956c242e2">
-    <Name>CU_3606_21</Name>
+    <Name>CU_3606_21_1</Name>
     <Id />
     <Attributes>
       <Attribute>
@@ -681,12 +722,12 @@
         <BitRate>250</BitRate>
         <Settings Guid="8505c027-8ef7-442e-99a5-9314d27bc9ae" IsInitialized="true">
           <MessageType>Short</MessageType>
-          <NodeId>1</NodeId>
+          <NodeId>7</NodeId>
           <CodesysNodeId>1</CodesysNodeId>
           <NodeIdOffset>32</NodeIdOffset>
           <TakeNodeIdFromCommParams>false</TakeNodeIdFromCommParams>
           <CreateCsdoInstances>false</CreateCsdoInstances>
-          <HeartbeatInterval>200</HeartbeatInterval>
+          <HeartbeatInterval>1500</HeartbeatInterval>
           <DeviceProfile>405</DeviceProfile>
           <SyncProducer>False</SyncProducer>
           <SyncCycleTime>200</SyncCycleTime>
@@ -697,7 +738,7 @@
           <EMCYProducer>False</EMCYProducer>
           <EMCYConsumer>False</EMCYConsumer>
           <EMCYInhibitTime>0</EMCYInhibitTime>
-          <Buffering>true</Buffering>
+          <Buffering>false</Buffering>
           <ApplicationVersion />
           <SdoQueryEnable>false</SdoQueryEnable>
           <SdoQueryInterval>0</SdoQueryInterval>
@@ -1818,6 +1859,52 @@
                 </ObjectDictionarySubIndex>
               </ObjectDictionarySubIndexes>
             </ObjectDictionaryIndex>
+            <ObjectDictionaryIndex Guid="3970a492-95ef-4df7-81a4-1282fd1e8e2e" SyncGuid="6cafd4f3-34b4-417a-92ad-5148c0816cc0" IsEditable="true" IsAuto="false">
+              <Name>NewU32Var</Name>
+              <Index>2000</Index>
+              <DataType>DWORD</DataType>
+              <VariableType>Parameter</VariableType>
+              <IndexType>SingleVariables</IndexType>
+              <Description />
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="90dd8e45-e209-43dd-8eab-f534d902c344" SyncGuid="57ade418-0458-4871-a08b-9c4d58074ce1">
+                  <Name>Value</Name>
+                  <Index>0</Index>
+                  <DataType>DWORD</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue />
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
+            <ObjectDictionaryIndex Guid="2cebc799-bcb6-42f2-88ab-93e5d4d90ef4" SyncGuid="2fc56808-d21b-4006-879e-278873e82cca" IsEditable="true" IsAuto="false">
+              <Name>TestScenarioVar</Name>
+              <Index>2300</Index>
+              <DataType>DWORD</DataType>
+              <VariableType>Parameter</VariableType>
+              <IndexType>SingleVariables</IndexType>
+              <Description />
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="a10bee7d-393e-4193-a54a-03a652a87bf7" SyncGuid="2141122d-c90c-4d3e-b890-a275a7ee9607">
+                  <Name>Value</Name>
+                  <Index>0</Index>
+                  <DataType>DWORD</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue />
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
           </ObjectDictionary>
           <ProcessDataObjects>
             <TransferProcessDataObject Guid="c747df7a-abce-4da1-bb06-6b6e9e9d2bd4">
@@ -1895,7 +1982,7 @@
           </ParameterHandling>
         </Parameters>
         <J1939>
-          <J1939EnableRequestMessage>false</J1939EnableRequestMessage>
+          <J1939EnableRequestMessage>true</J1939EnableRequestMessage>
           <DM1Producer>false</DM1Producer>
           <NumberOfDTCs>2</NumberOfDTCs>
           <DM2Producer>false</DM2Producer>
@@ -2027,6 +2114,17 @@
           <StartInterval>1000</StartInterval>
           <BusOk>true</BusOk>
           <EnableSimultaneousSlaveConfigurations>false</EnableSimultaneousSlaveConfigurations>
+          <Monitors>
+            <AutoMonitor Guid="cb6d8036-74db-4d68-9cd9-c118f9eebd3b">
+              <IsActive>true</IsActive>
+              <ResetNode>false</ResetNode>
+              <KeepAlive>true</KeepAlive>
+              <IsMandatory>true</IsMandatory>
+              <NoNmtStart>false</NoNmtStart>
+              <ConsumerTime>400</ConsumerTime>
+              <Target>5d94d1d2-cea6-4d02-8cae-1842f0181d13</Target>
+            </AutoMonitor>
+          </Monitors>
         </Monitorings>
         <EventSystem>
           <IsConsumer>false</IsConsumer>
@@ -2386,7 +2484,7 @@
                   </Variable>
                 </RefVariable>
               </Variables>
-              <SelectedModes>4</SelectedModes>
+              <SelectedModes>5</SelectedModes>
             </Pin>
             <Pin Guid="37ce0dc1-e1d8-4edf-8381-7a821cc840a7" IsReadOnly="false">
               <Id>3</Id>
@@ -2598,8 +2696,8 @@
         <DiagnosticsRangeItem Guid="29529b9b-0b05-43a3-a573-1525242a28f5">
           <VariableName>Temperature</VariableName>
           <IsCondition>true</IsCondition>
-          <Minimum>-40</Minimum>
-          <Maximum>105</Maximum>
+          <Minimum>-30</Minimum>
+          <Maximum>85</Maximum>
         </DiagnosticsRangeItem>
         <DiagnosticsRangeItem Guid="8e6b55f2-2471-4545-ac1d-0b213de8cd70">
           <VariableName>SupplyVoltage</VariableName>
@@ -2632,6 +2730,895 @@
           <Maximum>1</Maximum>
         </DiagnosticsRangeItem>
         <DiagnosticsConditionalItem Guid="5fe37c90-2c19-4e07-9843-66b26e893f04">
+          <Name>#lang.SystemDiagnostics.EnableLed#</Name>
+          <VariableName>EnableLed</VariableName>
+          <DataType>BOOL</DataType>
+          <IsReadOnly>false</IsReadOnly>
+          <IsCondition>true</IsCondition>
+          <Value>true</Value>
+          <ValueDefault>true</ValueDefault>
+          <IsConditionDefault>true</IsConditionDefault>
+        </DiagnosticsConditionalItem>
+      </DiagnosticsItems>
+    </Diagnostics>
+    <DataSecurity />
+    <Abstraction>
+      <IsHighLevelAbstraction>false</IsHighLevelAbstraction>
+    </Abstraction>
+    <ConnectedDevices />
+  </Device>
+  <Device Guid="ec0a32e7-3c7e-4b32-8bc2-d66fd9bc6f91">
+    <Name>CU_3606_21_2</Name>
+    <Id>3606</Id>
+    <Attributes>
+      <Attribute>
+        <Name>CodesysKeyword</Name>
+        <Value>3DC41A10</Value>
+      </Attribute>
+      <Attribute>
+        <Name>IsobusExtraBinaryStartAddress</Name>
+        <Value>16#D70030</Value>
+      </Attribute>
+      <Attribute>
+        <Name>IsobusBinaryMakerStartAddress</Name>
+        <Value>14090240</Value>
+      </Attribute>
+    </Attributes>
+    <Metadata>
+      <FileVersion>5.0.45</FileVersion>
+    </Metadata>
+    <CodesysConfiguration>
+      <Version>2.3</Version>
+      <MaxNumberOfCobIds>100</MaxNumberOfCobIds>
+      <MaxNumberOfRequestCallbacks>10</MaxNumberOfRequestCallbacks>
+      <SavedParameterCountPerCycle>50</SavedParameterCountPerCycle>
+      <CodesysExportTemplates>
+        <CodesysExportTemplate>
+          <Filename>{Name}.exp</Filename>
+          <SupportedCodesysVersion>2.3</SupportedCodesysVersion>
+          <Code IOC="Tag">698dd6b0-934a-4221-b719-ff977109d93f</Code>
+        </CodesysExportTemplate>
+      </CodesysExportTemplates>
+    </CodesysConfiguration>
+    <Libraries>
+      <Library Version="1.2.0" IsExported="true">
+        <Name>3000AnalogInputProtection.lib</Name>
+      </Library>
+      <Library Version="1.5.3" IsExported="true">
+        <Name>3000CANVXD.lib</Name>
+      </Library>
+      <Library Version="1.3.0" IsExported="true">
+        <Name>3000ext.lib</Name>
+      </Library>
+      <Library Version="1.3.5" IsExported="true">
+        <Name>J1939.lib</Name>
+      </Library>
+      <Library Version="1.1.0" IsExported="true">
+        <Name>3000InterruptSendHandler.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="true">
+        <Name>3000SetTickExt.lib</Name>
+      </Library>
+      <Library Version="1.6.2" IsExported="true">
+        <Name>3606int.lib</Name>
+      </Library>
+      <Library Version="0.0.2" IsExported="true">
+        <Name>3606specific.lib</Name>
+      </Library>
+      <Library Version="1.0.1" IsExported="true">
+        <Name>ADConversion.lib</Name>
+      </Library>
+      <Library Version="1.1.1" IsExported="true">
+        <Name>AddressClaiming.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="true">
+        <Name>AI.lib</Name>
+      </Library>
+      <Library Version="1.6.7" IsExported="true">
+        <Name>CANopen.lib</Name>
+      </Library>
+      <Library Version="1.3.2" IsExported="true">
+        <Name>CANopenCSDO.lib</Name>
+      </Library>
+      <Library Version="1.4.2" IsExported="true">
+        <Name>CANopenODSave.lib</Name>
+      </Library>
+      <Library Version="1.0.1" IsExported="true">
+        <Name>CANopen_302.lib</Name>
+      </Library>
+      <Library Version="1.0.1" IsExported="true">
+        <Name>DataTransfer.lib</Name>
+      </Library>
+      <Library Version="1.1.1" IsExported="true">
+        <Name>DigitalOutputDiagnostic.lib</Name>
+      </Library>
+      <Library Version="1.4.3" IsExported="true">
+        <Name>EventLog.lib</Name>
+      </Library>
+      <Library Version="1.1.0" IsExported="true">
+        <Name>EventLogTransfer.lib</Name>
+      </Library>
+      <Library Version="1.1.0" IsExported="true">
+        <Name>ExtraBins.lib</Name>
+      </Library>
+      <Library Version="1.3.0" IsExported="true">
+        <Name>FileSys.lib</Name>
+      </Library>
+      <Library Version="1.0.2" IsExported="true">
+        <Name>Filters.lib</Name>
+      </Library>
+      <Library Version="1.2.1" IsExported="false">
+        <Name>ISOBUS.lib</Name>
+      </Library>
+      <Library Version="1.2.3" IsExported="false">
+        <Name>ISOBUS_TC.lib</Name>
+      </Library>
+      <Library Version="1.4.12" IsExported="false">
+        <Name>ISOBUS_VT.lib</Name>
+      </Library>
+      <Library Version="1.0.1" IsExported="true">
+        <Name>J1939Event.lib</Name>
+      </Library>
+      <Library Version="1.3.1" IsExported="true">
+        <Name>JoystickCalibrationAndDiagnostic.lib</Name>
+      </Library>
+      <Library Version="1.3.0" IsExported="true">
+        <Name>NetworkManager.lib</Name>
+      </Library>
+      <Library Version="1.1.0" IsExported="true">
+        <Name>Ramp.lib</Name>
+      </Library>
+      <Library Version="1.0.7" IsExported="true">
+        <Name>ProportionalValveControl.lib</Name>
+      </Library>
+      <Library Version="1.0.2" IsExported="true">
+        <Name>SensorCalibrationAndDiagnostic.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="true">
+        <Name>Standard.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="true">
+        <Name>Util.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="false">
+        <Name>Util_no_Real.lib</Name>
+      </Library>
+    </Libraries>
+    <CANs>
+      <CAN Guid="5d94d1d2-cea6-4d02-8cae-1842f0181d13">
+        <CANNumber>1</CANNumber>
+        <BitRate>125</BitRate>
+        <Settings Guid="dcc37ffb-b57f-4ffb-b15a-50d48f7552b4" IsInitialized="true">
+          <MessageType>Short</MessageType>
+          <NodeId>2</NodeId>
+          <CodesysNodeId>2</CodesysNodeId>
+          <NodeIdOffset>32</NodeIdOffset>
+          <TakeNodeIdFromCommParams>false</TakeNodeIdFromCommParams>
+          <CreateCsdoInstances>false</CreateCsdoInstances>
+          <HeartbeatInterval>200</HeartbeatInterval>
+          <DeviceProfile>405</DeviceProfile>
+          <SyncProducer>False</SyncProducer>
+          <SyncCycleTime>200</SyncCycleTime>
+          <SyncCounter>False</SyncCounter>
+          <SyncCounterMax>240</SyncCounterMax>
+          <SyncCobID>128</SyncCobID>
+          <ConfigurationTimeout>100</ConfigurationTimeout>
+          <EMCYProducer>False</EMCYProducer>
+          <EMCYConsumer>False</EMCYConsumer>
+          <EMCYInhibitTime>0</EMCYInhibitTime>
+          <Buffering>true</Buffering>
+          <ApplicationVersion />
+          <SdoQueryEnable>false</SdoQueryEnable>
+          <SdoQueryInterval>0</SdoQueryInterval>
+          <NoConfiguration>false</NoConfiguration>
+          <DelayBeforeConfiguration>1000</DelayBeforeConfiguration>
+          <ConfigurationStartTimeout>10</ConfigurationStartTimeout>
+          <EDSProductNumber>0</EDSProductNumber>
+          <EDSVendorId>0</EDSVendorId>
+          <SaveConfiguration>false</SaveConfiguration>
+          <SaveIndex>4112</SaveIndex>
+          <SaveSubIndex>1</SaveSubIndex>
+          <SaveTimeout>1000</SaveTimeout>
+          <VerifyMethod>CRC</VerifyMethod>
+          <CRCIndex>8273</CRCIndex>
+          <CRCSubIndex>2</CRCSubIndex>
+          <CRCValidIndex>8273</CRCValidIndex>
+          <CRCValidSubIndex>1</CRCValidSubIndex>
+          <CRCValidValue>1</CRCValidValue>
+          <CRCValidDelay>1000</CRCValidDelay>
+          <UseCRCValidityIndex>false</UseCRCValidityIndex>
+        </Settings>
+        <Parameters>
+          <ObjectDictionary />
+          <ProcessDataObjects />
+          <ParameterHandling>
+            <ParameterHandlingItem>
+              <StartIndex>1000</StartIndex>
+              <EndIndex>FFFF</EndIndex>
+              <IsReadOnly>true</IsReadOnly>
+            </ParameterHandlingItem>
+            <ParameterHandlingItem>
+              <StartIndex>1000</StartIndex>
+              <EndIndex>1FFF</EndIndex>
+              <IsReadOnly>true</IsReadOnly>
+            </ParameterHandlingItem>
+            <ParameterHandlingItem>
+              <StartIndex>2000</StartIndex>
+              <EndIndex>FFFF</EndIndex>
+              <IsReadOnly>true</IsReadOnly>
+            </ParameterHandlingItem>
+            <ParameterHandlingItem>
+              <StartIndex>0</StartIndex>
+              <EndIndex>0</EndIndex>
+              <IsReadOnly>true</IsReadOnly>
+            </ParameterHandlingItem>
+          </ParameterHandling>
+        </Parameters>
+        <J1939>
+          <J1939EnableRequestMessage>false</J1939EnableRequestMessage>
+          <DM1Producer>false</DM1Producer>
+          <NumberOfDTCs>2</NumberOfDTCs>
+          <DM2Producer>false</DM2Producer>
+          <DM2SavingToNonVolatileMemory>false</DM2SavingToNonVolatileMemory>
+          <ManualAddress>0</ManualAddress>
+        </J1939>
+        <ISOBUS IsInitialized="false">
+          <Components>
+            <Component Type="ISOBUS_VT">
+              <IsInitialized>true</IsInitialized>
+              <AefUtGeneration>2</AefUtGeneration>
+              <IsoVersion>3</IsoVersion>
+              <TimeoutForPoolTransfer>40</TimeoutForPoolTransfer>
+              <TxPgnBufferSize>4096</TxPgnBufferSize>
+              <ObjectHandlersMaxCount>50</ObjectHandlersMaxCount>
+              <DatamaskDimensions>480</DatamaskDimensions>
+              <SoftkeyWidth>72</SoftkeyWidth>
+              <SoftkeyHeight>72</SoftkeyHeight>
+              <FunctionalityOptions>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+              </FunctionalityOptions>
+              <AuxNInUse>false</AuxNInUse>
+              <AuxNFunctionGeneration>1</AuxNFunctionGeneration>
+              <AuxTxPgnBufferSize>2048</AuxTxPgnBufferSize>
+              <AuxInputMaxCount>3</AuxInputMaxCount>
+              <AuxNFunctionalityOptions>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+              </AuxNFunctionalityOptions>
+            </Component>
+            <Component Type="ISOBUS_TC">
+              <IsInitialized>false</IsInitialized>
+              <AefTcGeneration>1</AefTcGeneration>
+              <IsoVersion>3</IsoVersion>
+              <TimeoutForPoolTransfer>20</TimeoutForPoolTransfer>
+              <TxPgnBufferSize>255</TxPgnBufferSize>
+              <BAS>
+                <IsSelected>false</IsSelected>
+                <FunctionalityOptions>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                </FunctionalityOptions>
+              </BAS>
+              <GEO>
+                <IsSelected>false</IsSelected>
+                <NumberOfControlChannels>1</NumberOfControlChannels>
+                <FunctionalityOptions>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                </FunctionalityOptions>
+              </GEO>
+              <SC>
+                <IsSelected>false</IsSelected>
+                <NumberOfBooms>1</NumberOfBooms>
+                <NumberOfSections>1</NumberOfSections>
+              </SC>
+            </Component>
+            <Component Type="ISOBUS_TECU">
+              <IsInitialized>false</IsInitialized>
+              <AefGeneration>1</AefGeneration>
+              <InstanceMaxCount>3</InstanceMaxCount>
+              <Class>2</Class>
+            </Component>
+            <Component Type="ISOBUS_DIAGNOSTIC">
+              <IsInitialized>false</IsInitialized>
+              <AefMinGeneration>1</AefMinGeneration>
+              <ProductIdentificationInfo>
+                <Code />
+                <Brand />
+                <Model />
+              </ProductIdentificationInfo>
+              <IsobusComplianceCertification>
+                <ProtocolYear>2026</ProtocolYear>
+                <ProtocolRevision>1</ProtocolRevision>
+                <LaboratoryId>0</LaboratoryId>
+                <LaboratoryType>ISOBUS_LAB_TYPE_SELF</LaboratoryType>
+                <ReferenceNumber>0</ReferenceNumber>
+              </IsobusComplianceCertification>
+              <EcuIdentificationInfo>
+                <PartNumber />
+                <SerialNumber />
+                <Location />
+                <Type />
+                <Manufacturer>Epec Oy</Manufacturer>
+                <Revision />
+              </EcuIdentificationInfo>
+              <SoftwareIdentification>
+                <EcuFwVersion />
+                <ApplicationSwVersion />
+              </SoftwareIdentification>
+            </Component>
+          </Components>
+        </ISOBUS>
+        <AddressClaiming IsInitialized="false" MonitoringTime="500" />
+        <Monitorings Guid="00000000-0000-0000-0000-000000000000">
+          <NmtProtocol>Slave</NmtProtocol>
+          <StartInterval>1000</StartInterval>
+          <BusOk>false</BusOk>
+          <EnableSimultaneousSlaveConfigurations>false</EnableSimultaneousSlaveConfigurations>
+          <Monitors>
+            <AutoMonitor Guid="357b0bba-a781-4129-8212-4e5354ee3ce4">
+              <IsActive>true</IsActive>
+              <ResetNode>false</ResetNode>
+              <KeepAlive>true</KeepAlive>
+              <IsMandatory>true</IsMandatory>
+              <NoNmtStart>false</NoNmtStart>
+              <ConsumerTime>400</ConsumerTime>
+              <Target>7cfd98e8-029b-46a8-b6b3-0c4b8955c7ca</Target>
+            </AutoMonitor>
+          </Monitors>
+        </Monitorings>
+        <EventSystem>
+          <IsConsumer>false</IsConsumer>
+          <Source>0</Source>
+          <LogType />
+          <LogLineCount>0</LogLineCount>
+          <MaxVisibleLogLines>20</MaxVisibleLogLines>
+          <EventLogBufferSize>200</EventLogBufferSize>
+          <LibraryEvents>
+            <LibraryEvent>
+              <Name>DummyEvent</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY1_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY1_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY2_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY2_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY3_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY3_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF5_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF5_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF10_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF10_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_TEMP1_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_TEMP1_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_TEMP2_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_TEMP2_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CYCLE_TIME_HIGH</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF12_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF12_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_PULLUP10_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_PULLUP10_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REFADC_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REFADC_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_RS485H_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_RS485H_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_RS485L_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_RS485L_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN1H_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN1H_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN1L_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN1L_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN2H_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN2H_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN2L_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN2L_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_UPSVOLTAGE_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_UPSVOLTAGE_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF2V5_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF2V5_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF4V5_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF4V5_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN1_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN1_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN2_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN2_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN3_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN3_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN5_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN5_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF3V6_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF3V6_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF7V3_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF7V3_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF2V5PT1000_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF2V5PT1000_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF4V3_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF4V3_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF8V2_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF8V2_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_IO_5V_REF_OVL</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_IO_OUT_ST_ERROR</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_IO_INIT_ERROR</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_IO_AUX_OUTPUT_FAILURE</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+          </LibraryEvents>
+        </EventSystem>
+        <IODiagnosticSystem>
+          <IsConsumer>false</IsConsumer>
+          <IsProducer>false</IsProducer>
+          <ProducerSourceID>0</ProducerSourceID>
+        </IODiagnosticSystem>
+        <IsForwarded>false</IsForwarded>
+        <IsCanOverEthernet>false</IsCanOverEthernet>
+        <CommunicatesWithGuid>00000000-0000-0000-0000-000000000000</CommunicatesWithGuid>
+      </CAN>
+    </CANs>
+    <Ethernets />
+    <IO>
+      <Connectors>
+        <Connector>
+          <Id>1</Id>
+          <Pins>
+            <Pin Guid="55db0dbf-68a0-4553-b132-5f65dc75f286" IsReadOnly="false">
+              <Id>2</Id>
+              <Variable>X1_2</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="3a309306-a9df-4484-b274-28e7debd934e" IsReadOnly="false">
+              <Id>3</Id>
+              <Variable>X1_3</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="05ca6bb1-c352-45eb-a998-dd7e550e300f" IsReadOnly="false">
+              <Id>7</Id>
+              <Variable>X1_7</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="ccc1267e-1d98-4fe2-abe5-46fbbfaaa6ca" IsReadOnly="false">
+              <Id>8</Id>
+              <Variable>X1_8</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="b7d09272-77e3-41f4-a662-0269a2a7cfa1" IsReadOnly="false">
+              <Id>9</Id>
+              <Variable>X1_9</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="a051cbca-17c4-43fd-9937-94b54fc21154" IsReadOnly="false">
+              <Id>10</Id>
+              <Variable>X1_10</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="f1044591-5aec-4755-a3b5-0e010b26b74a" IsReadOnly="false">
+              <Id>11</Id>
+              <Variable>X1_11</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="375c1252-42a5-4e25-a50b-f5fbc24d382d" IsReadOnly="false">
+              <Id>12</Id>
+              <Variable>X1_12</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="a44f8d43-bb5c-4626-9a86-d9031b72f235" IsReadOnly="false">
+              <Id>14</Id>
+              <Variable>X1_14</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="783f6b17-13c8-4833-8be2-2373b0637238" IsReadOnly="false">
+              <Id>15</Id>
+              <Variable>X1_15</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="a36de923-7953-4850-a2f7-27841ddbeb05" IsReadOnly="false">
+              <Id>20</Id>
+              <Variable>X1_20</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="71ffa2d1-9f33-4beb-9ea4-72a9536b0e14" IsReadOnly="false">
+              <Id>21</Id>
+              <Variable>X1_21</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="6ed0419b-09b1-45a6-9baf-f1f1e728860b" IsReadOnly="false">
+              <Id>22</Id>
+              <Variable>X1_22</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="21fc2999-1034-4df2-a32c-e2d0bd4ecc44" IsReadOnly="false">
+              <Id>23</Id>
+              <Variable>X1_23</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="5e04a566-4d55-4515-a21b-8bfda8935c2e" IsReadOnly="false">
+              <Id>25</Id>
+              <Variable>X1_25</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="29f516de-6cb8-4a85-9323-1f00a89aa6fd" IsReadOnly="false">
+              <Id>26</Id>
+              <Variable>X1_26</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="43e490ce-cbb4-4667-85d6-6092244c34fa" IsReadOnly="false">
+              <Id>27</Id>
+              <Variable>X1_27</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="bb242f97-a00a-4332-8e25-19a85960e080" IsReadOnly="false">
+              <Id>31</Id>
+              <Variable>X1_31</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="0c1c7a2c-b74a-41ad-817b-b75b8ac8832b" IsReadOnly="false">
+              <Id>32</Id>
+              <Variable>X1_32</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="9040e17f-fd86-49b0-a291-8743d5a816ca" IsReadOnly="false">
+              <Id>34</Id>
+              <Variable>X1_34</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="65be6f33-ed31-4dfe-b4c5-cecbad933d45" IsReadOnly="false">
+              <Id>35</Id>
+              <Variable>X1_35</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+          </Pins>
+        </Connector>
+      </Connectors>
+    </IO>
+    <Diagnostics>
+      <DiagnosticsItems>
+        <DiagnosticsValueItem Guid="378b1b0b-a388-4ee8-a098-df1d844f108a">
+          <VariableName>G_SystemOk</VariableName>
+          <IsCondition>false</IsCondition>
+          <Value>FALSE</Value>
+        </DiagnosticsValueItem>
+        <DiagnosticsRangeItem Guid="6f0ead5f-aea4-406b-b34c-05213a9feca7">
+          <VariableName>Temperature</VariableName>
+          <IsCondition>true</IsCondition>
+          <Minimum>-40</Minimum>
+          <Maximum>105</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="de4bdfe4-935b-4152-98ac-600804bbe707">
+          <VariableName>SupplyVoltage</VariableName>
+          <IsCondition>true</IsCondition>
+          <Minimum>9</Minimum>
+          <Maximum>33</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="e0ddccec-2157-41ac-9340-bcb29436fae6">
+          <VariableName>Ref5V</VariableName>
+          <IsCondition>false</IsCondition>
+          <Minimum>4.5</Minimum>
+          <Maximum>5.5</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="0b3a4cb3-738b-4633-86c4-6ba24da8eb89">
+          <VariableName>CycleTime</VariableName>
+          <IsCondition>false</IsCondition>
+          <Minimum>18</Minimum>
+          <Maximum>30</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="f60d9a97-4d1d-46ad-8733-de675979b89b">
+          <VariableName>Ref_5V_Overload</VariableName>
+          <IsCondition>false</IsCondition>
+          <Minimum>1</Minimum>
+          <Maximum>1</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="3f914948-f0ee-4e33-8e0e-166606afa8a9">
+          <VariableName>IO Init error</VariableName>
+          <IsCondition>true</IsCondition>
+          <Minimum>1</Minimum>
+          <Maximum>1</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsConditionalItem Guid="edc79d09-3ba9-4d47-bf60-a2e572774239">
           <Name>#lang.SystemDiagnostics.EnableLed#</Name>
           <VariableName>EnableLed</VariableName>
           <DataType>BOOL</DataType>
