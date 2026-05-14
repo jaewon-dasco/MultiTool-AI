@@ -1,0 +1,9 @@
+{
+  "name": "can1_heartbeat",
+  "goal": "Device[1] CAN1 HeartbeatInterval(ms) 변경 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/Settings/HeartbeatInterval",
+  "values": ["1000", "500", "2000", "1500"],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/Settings/HeartbeatInterval",
+  "risk": "low"
+}

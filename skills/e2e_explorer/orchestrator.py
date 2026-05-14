@@ -23,6 +23,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from kb_store import KB
 from observer import snapshot_project
 from ollama_client import OllamaClient
+from sequence_runner import load_sequences, run_sequence
 from ui_driver import dump_tree, is_running, start_multitool, wait_for_window
 
 log = logging.getLogger("orchestrator")
@@ -138,13 +139,104 @@ def run_cycle(
     return stats
 
 
+def run_sequence_cycle(
+    project: Path,
+    until: dt.datetime,
+    no_llm: bool,
+    sequences_dir: Path,
+) -> dict:
+    """시퀀스 모드 — sequences/*.json을 반복 실행하며 관찰 데이터 누적."""
+    kb = KB(KB_ROOT, LOG_ROOT)
+    log.info("sequence cycle date=%s until=%s", kb.cycle_date, until.isoformat())
+
+    system_prompt = PROMPT_PATH.read_text(encoding="utf-8")
+
+    # MultiTool 보장 (UI 트리 캡처용)
+    if not is_running():
+        start_multitool(str(project), wait_seconds=60)
+    else:
+        wait_for_window(30)
+
+    llm = None
+    if not no_llm:
+        llm = OllamaClient()
+        if not llm.health():
+            log.warning("Ollama health check failed — continuing without LLM")
+            llm = None
+
+    seqs = load_sequences(sequences_dir)
+    log.info("loaded %d sequences from %s", len(seqs), sequences_dir)
+    if not seqs:
+        log.error("no sequences found — exiting")
+        return {"seqs_run": 0, "errors": 1}
+
+    stats = {"cycles": 0, "seqs_run": 0, "steps_total": 0, "llm_calls": 0, "errors": 0}
+    obs_dir = kb.cycle_dir / "sequences"
+    obs_dir.mkdir(parents=True, exist_ok=True)
+
+    cycle_idx = 0
+    while _now_in_window(until) and not _stop:
+        log.info("=== cycle %d ===", cycle_idx)
+        for seq in seqs:
+            if _stop or not _now_in_window(until):
+                break
+            try:
+                result = run_sequence(seq, project, obs_dir, snapshot_project)
+                stats["seqs_run"] += 1
+                stats["steps_total"] += len(result.get("steps", []))
+                stats["errors"] += len(result.get("errors", []))
+
+                if llm is not None:
+                    obs_payload = {
+                        "sequence": seq["name"],
+                        "goal": seq.get("goal", ""),
+                        "xpath": seq.get("xpath", ""),
+                        "transitions": [
+                            {"i": s["i"], "old": s["old"], "new": s["new"]}
+                            for s in result["steps"]
+                        ],
+                        "mtproject_excerpt": _excerpt_xml(project, max_chars=4000),
+                    }
+                    r = llm.observe(system_prompt, obs_payload)
+                    stats["llm_calls"] += 1
+                    kb.append_observation({
+                        "cycle": cycle_idx,
+                        "seq_id": result["seq_id"],
+                        "seq_name": seq["name"],
+                        "n_steps": len(result["steps"]),
+                        "llm_content": r["content"],
+                        "llm_thinking_chars": len(r.get("thinking") or ""),
+                    })
+                    log.info("[%s] llm:%s", seq["name"], r["content"][:100])
+                else:
+                    kb.append_observation({
+                        "cycle": cycle_idx,
+                        "seq_id": result["seq_id"],
+                        "seq_name": seq["name"],
+                        "n_steps": len(result["steps"]),
+                    })
+            except Exception as e:
+                log.exception("[%s] sequence failed", seq.get("name", "?"))
+                kb.append_failure({"seq": seq.get("name"), "error": str(e)})
+                stats["errors"] += 1
+        cycle_idx += 1
+        stats["cycles"] = cycle_idx
+        log.info("cycle %d done · stats=%s", cycle_idx, stats)
+
+    kb.write_summary(stats)
+    return stats
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--project", default=str(DEFAULT_PROJECT))
     ap.add_argument("--until", default="06:00", help="HH:MM (오늘 또는 내일)")
     ap.add_argument("--until-minutes", type=int, default=None, help="지금부터 N분")
     ap.add_argument("--interval", type=int, default=300, help="step 간 sleep 초 (기본 5분)")
-    ap.add_argument("--observation-only", action="store_true", help="현재 v0.1은 항상 관찰 전용")
+    ap.add_argument("--observation-only", action="store_true", help="(deprecated, v0.1 호환)")
+    ap.add_argument("--mode", choices=["observe", "sequence"], default="sequence",
+                    help="observe: 동일 화면 반복 관찰 · sequence: XML 시퀀스 학습 (기본)")
+    ap.add_argument("--sequences-dir", default=str(Path(__file__).parent / "sequences"))
     ap.add_argument("--no-llm", action="store_true", help="Gemma 호출 생략")
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args(argv)
@@ -170,13 +262,22 @@ def main(argv: list[str] | None = None) -> int:
         if until <= now:
             until += dt.timedelta(days=1)
 
-    log.info("E2E observer v0.1 starting — until %s", until.isoformat(timespec="seconds"))
-    stats = run_cycle(
-        project=Path(args.project),
-        until=until,
-        interval_seconds=args.interval,
-        no_llm=args.no_llm,
-    )
+    log.info("E2E orchestrator mode=%s starting — until %s",
+             args.mode, until.isoformat(timespec="seconds"))
+    if args.mode == "sequence":
+        stats = run_sequence_cycle(
+            project=Path(args.project),
+            until=until,
+            no_llm=args.no_llm,
+            sequences_dir=Path(args.sequences_dir),
+        )
+    else:
+        stats = run_cycle(
+            project=Path(args.project),
+            until=until,
+            interval_seconds=args.interval,
+            no_llm=args.no_llm,
+        )
     log.info("final stats: %s", stats)
     return 0
 

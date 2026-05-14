@@ -1,0 +1,9 @@
+{
+  "name": "can1_nodeid",
+  "goal": "Device[1] CAN1 NodeId 변경 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/Settings/NodeId",
+  "values": ["16", "100", "127", "7"],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/Settings/NodeId",
+  "risk": "low"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "can1_bitrate",
+  "goal": "Device[1] CAN1 BitRate를 변경하며 .mtproject XML 변화를 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/BitRate",
+  "values": ["500", "1000", "125", "250"],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/BitRate",
+  "risk": "low"
+}
