@@ -239,35 +239,67 @@ prompt:        /review-last-night
 
 ### 마일스톤
 
-| 주차 | 상태 | 작업                                                                                                                                        |
-| ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| 사전 | 완료 | Mac mini Ollama 원격 노출 (Tailscale)                                                                                                       |
-| 사전 | 완료 | `gemma4:26b` 헬스체크 200 OK 확인                                                                                                           |
-| 사전 | 완료 | 추론 ping 테스트 (PONG, 32 tok/s)                                                                                                           |
-| 사전 | 완료 | reasoning 응답 구조 확인 (`content`/`thinking`)                                                                                             |
-| W1   | 대기 | `skills/e2e_explorer/ollama_client.py` (JSON 강제·재시도·keep-alive)                                                                        |
-| W1   | 대기 | `pywinauto`로 MultiTool 컨트롤 트리 dump → JSON 저장                                                                                        |
-| W1   | 대기 | Gemma4에 트리 JSON 전송 → 최상위 메뉴 분류 PoC                                                                                              |
-| W2   | 대기 | KB 스키마 SQLite 생성 + Device 추가 후보 워크플로우 수동 시연 기록                                                                          |
-| W2   | 대기 | XML diff 캡처 → `kb/xml_deltas/` 자동 적재                                                                                                  |
-| W2.5 | 대기 | `observer.py` 구현 + `MultiToolProject/E2EProject/`에서 액션 10건 관찰 페어 누적                                                            |
-| W2.5 | 대기 | 의미적 diff 모듈 (`xml_canonicalize`, `exp_normalize` — Implicit 블록 제외)                                                                 |
-| W3   | 대기 | LangGraph FSM 루프 + 액션 timeout/백트래킹                                                                                                  |
-| W3   | 대기 | 야간 1시간 dry-run + `candidates.jsonl` 생성                                                                                                |
-| W3   | 대기 | `auto_approve_policy.md` 작성 + `/review-last-night` 슬래시 커맨드 작성                                                                     |
-| W3   | 대기 | `schedule` 스킬로 09:00 cron 등록 (`e2e-morning-review`)                                                                                    |
-| W3.5 | 대기 | `pattern_extractor.py` (Gemma 후보 생성) + Claude routine 검증·승급 흐름 구현                                                               |
-| W4   | 대기 | Task Scheduler 00:00 트리거 + 05:30 강제종료 + `-WakeToRun`·`-RestartCount`                                                                 |
-| W4   | 대기 | Hyper-V 스냅샷 자동 복구 스크립트 (`Checkpoint-VM`/`Restore-VMCheckpoint`)                                                                  |
-| W4   | 대기 | `next_night_hints.json` 양방향 채널 구현 (Claude 갱신 → orchestrator 주입)                                                                  |
-| W4   | 대기 | 워치독 (30분 무진전 시 재시작)                                                                                                              |
-| W5   | 대기 | `.exp` 자동 생성·검증·골든 비교 파이프라인                                                                                                  |
-| W5   | 대기 | Claude routine 자동 승급 1건 + 자동 PR 워크플로우                                                                                           |
-| W5.5 | 대기 | `mtproject_writer.py` + `roundtrip_xml.py` — XML 합성 후 MultiTool open/save → 의미적 diff 0 1건 통과                                       |
-| W5.5 | 대기 | `exp_writer.py` + `roundtrip_exp.py` — `.exp` 합성 후 Export 비교 → 의미적 diff 0 1건 통과                                                  |
-| W5.5 | 대기 | `curriculum.py` — 단순→복합 학습 진도 추적, 합성 정확도 일자별 기록                                                                         |
-| W5+  | 대기 | 워크플로우 KB 확장 (CAN·OD·J1939·Heartbeat 등 전 기능)                                                                                      |
-| W6   | 대기 | Sunset 지표 충족 시 09:00 cron 비활성화(`/schedule remove e2e-morning-review`) + skill 단독 운영 전환 + `docs/MultiTool_E2E_sunset.md` 기록 |
+| 주차 | 상태 | 작업                                                                                                                                                          |
+| ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 사전 | 완료 | Mac mini Ollama 원격 노출 (Tailscale)                                                                                                                         |
+| 사전 | 완료 | `gemma4:26b` 헬스체크 200 OK 확인                                                                                                                             |
+| 사전 | 완료 | 추론 ping 테스트 (PONG, 32 tok/s)                                                                                                                             |
+| 사전 | 완료 | reasoning 응답 구조 확인 (`content`/`thinking`)                                                                                                               |
+| W1   | 대기 | `skills/e2e_explorer/ollama_client.py` (JSON 강제·재시도·keep-alive)                                                                                          |
+| W1   | 대기 | `pywinauto`로 MultiTool 컨트롤 트리 dump → JSON 저장                                                                                                          |
+| W1   | 대기 | Gemma4에 트리 JSON 전송 → 최상위 메뉴 분류 PoC                                                                                                                |
+| W2   | 대기 | KB 스키마 SQLite 생성 + Device 추가 후보 워크플로우 수동 시연 기록                                                                                            |
+| W2   | 대기 | XML diff 캡처 → `kb/xml_deltas/` 자동 적재                                                                                                                    |
+| W2.5 | 대기 | `observer.py` 구현 + `MultiToolProject/E2EProject/`에서 액션 10건 관찰 페어 누적                                                                              |
+| W2.5 | 대기 | 의미적 diff 모듈 (`xml_canonicalize`, `exp_normalize` — Implicit 블록 제외)                                                                                   |
+| W3   | 대기 | LangGraph FSM 루프 + 액션 timeout/백트래킹                                                                                                                    |
+| W3   | 대기 | 야간 1시간 dry-run + `candidates.jsonl` 생성                                                                                                                  |
+| W3   | 대기 | `auto_approve_policy.md` 작성 + `/review-last-night` 슬래시 커맨드 작성                                                                                       |
+| W3   | 대기 | `schedule` 스킬로 09:00 cron 등록 (`e2e-morning-review`)                                                                                                      |
+| W3.5 | 대기 | `pattern_extractor.py` (Gemma 후보 생성) + Claude routine 검증·승급 흐름 구현                                                                                 |
+| W4   | 대기 | Task Scheduler 00:00 트리거 + 05:30 강제종료 + `-WakeToRun`·`-RestartCount`                                                                                   |
+| W4   | 대기 | Hyper-V 스냅샷 자동 복구 스크립트 (`Checkpoint-VM`/`Restore-VMCheckpoint`)                                                                                    |
+| W4   | 대기 | `next_night_hints.json` 양방향 채널 구현 (Claude 갱신 → orchestrator 주입)                                                                                    |
+| W4   | 대기 | 워치독 (30분 무진전 시 재시작)                                                                                                                                |
+| W5   | 대기 | `.exp` 자동 생성·검증·골든 비교 파이프라인                                                                                                                    |
+| W5   | 대기 | Claude routine 자동 승급 1건 + 자동 PR 워크플로우                                                                                                             |
+| W5.5 | 대기 | `mtproject_writer.py` + `roundtrip_xml.py` — XML 합성 후 MultiTool open/save → 의미적 diff 0 1건 통과                                                         |
+| W5.5 | 대기 | `exp_writer.py` + `roundtrip_exp.py` — `.exp` 합성 후 Export 비교 → 의미적 diff 0 1건 통과                                                                    |
+| W5.5 | 대기 | `curriculum.py` — 단순→복합 학습 진도 추적, 합성 정확도 일자별 기록                                                                                           |
+| W5+  | 대기 | 워크플로우 KB 확장 (CAN·OD·J1939·Heartbeat 등 전 기능)                                                                                                        |
+| W6   | 대기 | Sunset 지표 충족 시 09:00 cron 비활성화(`/schedule remove e2e-morning-review`) + skill 단독 운영 전환 + `docs/MultiTool_E2E_sunset.md` 기록                   |
+| W7   | 대기 | MultiTool/스키마/CHM 버전 변경 자동 감지 → Sunset 해제 + delta 재학습 (`env_fingerprint.py`·`delta_classifier.py`·`version_migrator.py`·`relearn_trigger.py`) |
+
+### 버전 변경 자동 재학습 (W7)
+
+Sunset 후에도 MultiTool 또는 산출물 포맷이 바뀌면 학습 패턴이 무효화될 수 있다. 매 야간 사이클 시작 시 환경 핑거프린트를 비교하여 변경 감지 → 변경 정도에 따라 자동 재학습 모드 결정.
+
+| 핑거프린트 대상     | 수집 방법                                          |
+| ------------------- | -------------------------------------------------- |
+| MultiTool 버전      | `(Get-Item MultiTool.exe).VersionInfo.FileVersion` |
+| `.mtproject` 스키마 | XML root의 SDK·schema 버전 속성                    |
+| `.exp` 포맷         | `(* @PATH ... *)` 헤더 + EPEC Parser 마커 정규식   |
+| `Manual.chm` 해시   | SHA256                                             |
+| UI 트리 구조        | `kb/controls.sqlite`와 의미적 diff                 |
+
+변경 분류 → 재학습 모드:
+
+| 변경 유형                  | 재학습 범위                               |
+| -------------------------- | ----------------------------------------- |
+| 패치(8.4.1→8.4.2) UI만     | 컨트롤 트리 갱신 (패턴 보존)              |
+| Manual.chm만 변경          | 신규 기능 메뉴 탐색만                     |
+| `.mtproject` 노드 1개 추가 | 해당 XPath 시퀀스만 재학습                |
+| 메이저 버전 (8.4→8.5)      | 전체 재학습 + 기존 패턴 마이그레이션 후보 |
+
+버전별 KB 격리:
+
+```text
+kb/
+  versions/
+    8.4/patterns/
+    8.5/patterns/           ← 진입 시 8.4 복사 후 회귀 테스트
+  shared/observations/      ← 버전 무관 관찰 데이터
+```
 
 ### 디렉토리 예정 구조
 

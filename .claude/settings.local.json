@@ -41,5 +41,18 @@
       "PowerShell(& \"C:\\\\Users\\\\JONE\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python313\\\\python.exe\" -m pip install pillow 2>&1 | Select-String \"Successfully|already\")",
       "PowerShell(Get-ChildItem *)"
     ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"D:/4_AIProject/4_CoDeSys/AI_MutiTool/skills/e2e_explorer/scripts/check_overnight.ps1\""
+          }
+        ]
+      }
+    ]
   }
 }
