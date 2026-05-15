@@ -1,0 +1,13 @@
+{
+  "name": "cds_max_request_cb",
+  "goal": "/MtProject/Device[1]/CodesysConfiguration/MaxNumberOfRequestCallbacks 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CodesysConfiguration/MaxNumberOfRequestCallbacks",
+  "values": [
+    "20",
+    "5",
+    "10"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "CodesysConfiguration/MaxNumberOfRequestCallbacks",
+  "risk": "low"
+}

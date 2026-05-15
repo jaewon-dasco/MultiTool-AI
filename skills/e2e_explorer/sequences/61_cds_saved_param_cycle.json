@@ -1,0 +1,13 @@
+{
+  "name": "cds_saved_param_cycle",
+  "goal": "/MtProject/Device[1]/CodesysConfiguration/SavedParameterCountPerCycle 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CodesysConfiguration/SavedParameterCountPerCycle",
+  "values": [
+    "100",
+    "25",
+    "50"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "CodesysConfiguration/SavedParameterCountPerCycle",
+  "risk": "low"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "pin1_variable_name",
+  "goal": "/MtProject/Device[1]/IO/Connectors/Connector[1]/Pins/Pin[1]/Variable 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/IO/Connectors/Connector[1]/Pins/Pin[1]/Variable",
+  "values": [
+    "TEST_PIN1",
+    "VAVLE_UP"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "IO/Connectors/Connector[1]/Pins/Pin[1]/Variable",
+  "risk": "low"
+}

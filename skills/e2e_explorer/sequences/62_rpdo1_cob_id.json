@@ -1,0 +1,13 @@
+{
+  "name": "rpdo1_cob_id",
+  "goal": "/MtProject/Project/MachineType/ProcessDataObjectMappings/Device[1]/CANs/CAN/ReceiveProcessDataObject[1]/CobId 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Project/MachineType/ProcessDataObjectMappings/Device/CAN/ReceiveProcessDataObject[1]/CobId",
+  "values": [
+    "386",
+    "384",
+    "385"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "ProcessDataObjectMappings/Device[1]/CANs/CAN/ReceiveProcessDataObject[1]/CobId",
+  "risk": "medium"
+}

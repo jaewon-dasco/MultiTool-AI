@@ -1,0 +1,13 @@
+{
+  "name": "rpdo1_dlc",
+  "goal": "/MtProject/Project/MachineType/ProcessDataObjectMappings/Device[1]/CANs/CAN/ReceiveProcessDataObject[1]/DataLengthCode 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Project/MachineType/ProcessDataObjectMappings/Device/CAN/ReceiveProcessDataObject[1]/DataLengthCode",
+  "values": [
+    "1",
+    "8",
+    "0"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "ProcessDataObjectMappings/Device[1]/CANs/CAN/ReceiveProcessDataObject[1]/DataLengthCode",
+  "risk": "medium"
+}

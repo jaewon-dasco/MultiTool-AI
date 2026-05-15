@@ -1,0 +1,13 @@
+{
+  "name": "cds_max_cob_ids",
+  "goal": "/MtProject/Device[1]/CodesysConfiguration/MaxNumberOfCobIds 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CodesysConfiguration/MaxNumberOfCobIds",
+  "values": [
+    "200",
+    "50",
+    "100"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "CodesysConfiguration/MaxNumberOfCobIds",
+  "risk": "low"
+}
