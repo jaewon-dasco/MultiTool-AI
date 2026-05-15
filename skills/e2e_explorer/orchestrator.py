@@ -139,10 +139,15 @@ def run_cycle(
     return stats
 
 
-def _load_verified_xpaths() -> set:
+def _load_verified_xpaths(current_signature: str | None = None) -> set:
     """Read all _candidates*.jsonl in kb/patterns; return set of xpaths with verified=true.
-    These sequences will be skipped to avoid re-validating already-confirmed patterns
-    (per night_cycle_strategy memory 2026-05-15)."""
+
+    If current_signature is provided, only KB entries with matching `verified_against`
+    are counted as verified. Entries with no `verified_against` or mismatched version
+    are treated as STALE — they will be re-validated automatically.
+
+    (per night_cycle_strategy memory 2026-05-15 + version-aware revalidation 2026-05-15)
+    """
     import json
     verified = set()
     pat_dir = KB_ROOT / "patterns"
@@ -155,9 +160,14 @@ def _load_verified_xpaths() -> set:
                 if not line: continue
                 try:
                     obj = json.loads(line)
-                    if obj.get("verified") is True:
-                        xp = obj.get("xpath") or obj.get("xpath_scope")
-                        if xp: verified.add(xp)
+                    if obj.get("verified") is not True:
+                        continue
+                    if current_signature is not None:
+                        sig = obj.get("verified_against")
+                        if sig and sig != current_signature:
+                            continue  # stale, force revalidation
+                    xp = obj.get("xpath") or obj.get("xpath_scope")
+                    if xp: verified.add(xp)
                 except Exception: pass
         except Exception: pass
     return verified
@@ -196,15 +206,28 @@ def run_sequence_cycle(
             log.warning("Ollama health check failed — continuing without LLM")
             llm = None
 
+    # Detect current MultiTool/.mtproject version → KB stale detection
+    try:
+        sys.path.insert(0, str(Path(__file__).parent / "scripts"))
+        from version_detect import get_versions, version_signature
+        versions = get_versions(project)
+        cur_sig = version_signature(versions)
+        log.info("current version signature: %s", cur_sig)
+    except Exception as e:
+        log.warning("version detection failed: %s", e)
+        versions, cur_sig = {}, None
+
     seqs = load_sequences(sequences_dir)
     log.info("loaded %d sequences from %s", len(seqs), sequences_dir)
     if skip_verified:
-        verified = _load_verified_xpaths()
+        verified = _load_verified_xpaths(current_signature=cur_sig)
         before = len(seqs)
         seqs = [s for s in seqs if s.get("xpath") not in verified]
         skipped = before - len(seqs)
         if skipped:
-            log.info("skipping %d verified sequences (xpath already confirmed)", skipped)
+            log.info("skipping %d verified sequences for signature %s", skipped, cur_sig)
+        else:
+            log.info("no verified sequences to skip (signature %s)", cur_sig)
     if not seqs:
         log.error("no sequences left after filtering — exiting")
         return {"seqs_run": 0, "errors": 1}
@@ -281,7 +304,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--max-cycles", type=int, default=5,
                     help="각 시퀀스 최대 반복 횟수 (default 5, night_cycle_strategy 2026-05-15)")
     ap.add_argument("--no-skip-verified", action="store_true",
-                    help="KB verified=true xpath도 검증 (기본은 스킵)")
+                    help="KB verified=true xpath도 검증 (기본은 버전 일치만 스킵)")
+    ap.add_argument("--revalidate-all", action="store_true",
+                    help="모든 verified 무시 + 전체 재실행 (MultiTool 업데이트 후 권장)")
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args(argv)
 
@@ -309,13 +334,14 @@ def main(argv: list[str] | None = None) -> int:
     log.info("E2E orchestrator mode=%s starting — until %s",
              args.mode, until.isoformat(timespec="seconds"))
     if args.mode == "sequence":
+        skip_v = not (args.no_skip_verified or args.revalidate_all)
         stats = run_sequence_cycle(
             project=Path(args.project),
             until=until,
             no_llm=args.no_llm,
             sequences_dir=Path(args.sequences_dir),
             max_cycles=args.max_cycles,
-            skip_verified=not args.no_skip_verified,
+            skip_verified=skip_v,
         )
     else:
         stats = run_cycle(
