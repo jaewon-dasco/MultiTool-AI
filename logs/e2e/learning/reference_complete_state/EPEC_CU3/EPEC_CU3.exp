@@ -1,0 +1,2225 @@
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'Code_Template_globals' *)
+(* @PATH := 'Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL CONSTANT
+	G_MAX_NUMBER_OF_COBIDS:DWORD:=100;
+	G_CANOPEN_NUMBER_OF_LAST_PDO_MAP:WORD:=8;
+	G_CANOPEN_OD_SAVE_MAX_IND_SIZE:WORD:=1020;
+	G_MRAM_AREA_SIZE_FOR_PAR_SYS:DWORD := 16#19000;	(* Size for the area which is used for parameter system. This area is reserved from the beginning of the MRAM area which is reserved for usage for PLCopn application. *)
+END_VAR
+
+VAR_GLOBAL
+(*START - Implicit variables, made by EPEC Parser*)
+	G_HWDiagnostics:HWD_Measurements; (* Function block for HWD_Measurements. *)
+	G_RESET_MODULE:BOOL := FALSE; (* Flag indicates if unit is wanted to reset after current application cycle. Reset actions can be varied between platforms. *)
+	G_AddAllAutoGenEventsToLog:BOOL := TRUE; (* Add all automatically generated events to log. *)
+	G_OffDelayForAutoGenEvents:WORD := 50; (* Off delay for automatically generated events. *)
+	G_OnDelayForAutoGenEvents:WORD := 100; (* On delay for automatically generated events. *)
+	G_LowLimitForParameterSaving:WORD := 900; (* Variable defines low limit for parameter saving [0.01V]. Compared votlage is read from HWD_Measurements function block. If read voltage is smaller than defined value parameter saving is not started. *)
+	G_SystemOk:BOOL:=FALSE;
+	G_TempHighLimit:INT:=1050;
+	G_TempLowLimit:INT:=-400;
+	G_SupplyVoltageHighLimit:INT:=3600;
+	G_SupplyVoltageLowLimit:INT:=900;
+	G_CycleTimeHighLimit:INT:=30;
+	G_Ref5VHighLimit:INT:=550;
+	G_Ref5VLowLimit:INT:=450;
+	G_Ref10VHighLimit:INT:=1050;
+	G_Ref10VLowLimit:INT:=950;
+	G_PullUp10VHighLimit:INT:=1050;
+	G_PullUp10VLowLimit:INT:=950;
+	G_RefADCVHighLimit:INT:=150;
+	G_RefADCVLowLimit:INT:=100;
+
+(*Init Flags*)
+	G_InitEntryReady:BOOL:=FALSE;
+	G_InitFlashReady:BOOL:=FALSE;
+	G_InitIOReady:BOOL:=FALSE;
+	G_InitBusReady:BOOL:=FALSE;
+	G_InitProtocolsCan1Ready:BOOL:=FALSE;
+	G_InitProtocolsCan2Ready:BOOL:=FALSE;
+	G_InitProtocolsCan3Ready:BOOL:=FALSE;
+	G_InitProtocolsCan4Ready:BOOL:=FALSE;
+	G_InitIsobusCan1Ready:BOOL:=FALSE;
+	G_InitIsobusCan2Ready:BOOL:=FALSE;
+	G_InitIsobusCan3Ready:BOOL:=FALSE;
+	G_InitIsobusCan4Ready:BOOL:=FALSE;
+	G_InitEventsReady:BOOL:=FALSE;
+	G_InitExitReady:BOOL:=FALSE;
+	G_ActiveError:BOOL:=FALSE;
+
+
+  	G_CounterRestoreCmdOld:WORD := 0;
+	G_CounterSaveCmdOld:WORD := 0;
+
+	G_ShmUserMRAM:SystemSharedMemRegion;      (* MRAM area used by File system. *)
+	G_FileSysDir:POINTER TO FileSysDirBlock;  (* Pointer to file system block which contains dir. *)
+	G_FileSysKeyWord:DWORD:=16#6D27A7B0;      (* Keyword which is used to check match between file system and Codesys project. *)
+
+(*
+	Pointer G_MramStartAddressForUser and G_MramEndAddressForUser are used to tell user MRAM area which can be freely used.
+	SYSTEM_SHM_MRAM_GET_IEC_AREA return area which is used for PLCopen application. However multitool creates parameter
+	system when it creates Codesys project and this parameter system uses certain amount of this whole MRAM area. Size of
+	the area is defined with global constant G_MRAM_AREA_SIZE_FOR_PAR_SYS:DWORD:= 16#19000.
+*)
+	G_MramInitErrors:INT:=0;										(* Tells possible errors in MRAM init. 0 - success, 1 - Error in block  *)
+	G_MramStartAddressForUser:POINTER TO BYTE;	(* Start address for user MRAM area (=MRAM start + G_MRAM_AREA_SIZE_FOR_PAR_SYS *)
+	G_MramEndAddressForUser:POINTER TO BYTE;	(* End address for user MRAM area (=End of the MRAM *)
+
+
+(*Error codes*)
+	G_FlashInitError:INT;
+	G_SetIdentityError:INT:=0;
+	G_ReadCommsError:INT:=0;
+	G_RS232InitError:INT:=0;
+
+(* Global NodeIds *)
+	G_NodeIds:ARRAY[1..4] OF INT := 3, 3, 3, 3;
+
+
+	G_CAN1_CANopenDevice: CANopenDev;
+	G_CAN1_CANopenDevice_OD: CANopenOD;(*Description of ObjectDictionary*)
+	G_CAN1_CANopenDevice_ODEntrys: ARRAY [1..71] OF CANopenOD_ENTRY;(*ObjectDictionary data*)
+	G_CAN1_CANopenDevice_Protocols:ARRAY [1..5] OF CANopenProtocolEntry;(*Used protocols - NMT, OD, SSDO, SYNC & HBCons always exist*)
+	G_CAN1_CANopenDevice_NMT: CANopenNMT;
+	G_CAN1_CANopenDevice_SSDO: CANopenSSDO;
+	G_CAN1_CANopenDevice_SYNC: CANopenSYNC  := (COBID := 16#80);
+	G_CAN1_CANopenDevice_HBConsumer:CANopenHeartBeatConsumer; (*HeartBeat Consumer protocol*)
+	G_CAN1_CANopenDevice_SaveData:ARRAY [0..3] OF sSaveIndexData :=
+					(StartIndex:=16#1000, EndIndex:=16#FFFF, FileName:='Device1.Par'),
+					(StartIndex:=16#1000, EndIndex:=16#1FFF, FileName:='Device1.Par'),
+					(StartIndex:=16#2000, EndIndex:=16#FFFF, FileName:='Device1.Par'),
+					(StartIndex:=16#0000, EndIndex:=16#0000, FileName:='Device1.Par');
+	G_CAN1_CANopenDevice_SaveSubData1010h:sODSave:= (SubService:=Save,Sub1Count:=0,pNext:=0,NumOfEntrys:=4,SaveIndexData:=0,SaveSigns:=0,NextOD:=0);
+	G_CAN1_CANopenDevice_SaveSigns1010:ARRAY [0..3] OF DWORD;
+
+
+(*Init diagnostics CAN1*)
+	G_CAN1_Diagnostics:CANVXDDiagnostic;
+(*Init monitoring CAN1*)
+	G_CAN1_NetworkManager:NM_NetworkManager;
+	G_CAN1_MonitoredNodes:ARRAY [1..1] OF NM_Node:=
+		( NodeID:=1, ConsumerTime:=400, KeepAlive:=FALSE, Reset:=FALSE, Mandatory:=TRUE );
+
+	G_CAN1_CANopenDevice_HbConsumerNodes:ARRAY [1..1] OF CANopenHeartBeat:=
+		(i_NodeID:=1,i_Time:=T#400ms,i_Next:=0);
+
+	G_CAN1_CSDOinstances:ARRAY [1..127] OF CANopenCSDO:=
+		(i_NodeID:=1,i_Enable:=FALSE,i_Channel:=0);
+(*Init diagnostics CAN2*)
+	G_CAN2_Diagnostics:CANVXDDiagnostic;
+(*Init diagnostics CAN3*)
+	G_CAN3_Diagnostics:CANVXDDiagnostic;
+(*Init diagnostics CAN4*)
+	G_CAN4_Diagnostics:CANVXDDiagnostic;
+
+
+
+
+(*END - Implicit variables, made by EPEC Parser*)
+END_VAR
+(* @OBJECT_END := 'Code_Template_globals' *)
+(* @CONNECTIONS :=Code_Template_globals
+FILENAME:  ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'IO' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+END_VAR
+(* @OBJECT_END := 'IO' *)
+(* @CONNECTIONS :=IO
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'SYSTEM' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	SYSTEM_ProjectInfo:PROJECT_INFO;
+	SYSTEM_FW_VERSION:STRING := 'X.X.X';
+	SYSTEM_ControlUnitType:DWORD := 0; (* Type for control unit. *)
+	SYSTEM_ControlUnitRevision:DWORD := 0; (* Revision for control unit *)
+	SYSTEM_SerialNumber:DWORD := 0; (* Serial number for control unit *)
+	SYSTEM_VendorId:DWORD := 0; (* Vendor-ID which is read from firmware *)
+	SYSTEM_FW_Error_Log:POINTER TO SysErrorLogData; (* Pointer to 5050 FW side error log. This is read-only area, all writings will cause access error. *)
+END_VAR
+(* @OBJECT_END := 'SYSTEM' *)
+(* @CONNECTIONS :=SYSTEM
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'IO_RAW' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	AI_ERRORS AT %IW2048:WORD := 0; (* Error field for AI Errors. *)
+	AI_ARR_TS AT %IW2226:ARRAY [1..50] OF WORD; (* General time stamp array for ADC conversions. *)
+	AI_ARR_INDEX AT %IB4099:BYTE := 0; (* Index for place in latest conversion in conversion arrays. *)
+	AI_RAW_SupplyLogic AT %IW2093:WORD := 0; (* Latest measured raw value for logic supply. *)
+	AI_ARR_SupplyLogic AT %IW4026:ARRAY [1..50] OF WORD; (* Array of  measured raw values for logic supply. *)
+	AI_RAW_SupplyPower1 AT %IW2095:WORD := 0; (* Latest measured raw value for Power supply 1. *)
+	AI_ARR_SupplyPower1 AT %IW4126:ARRAY [1..50] OF WORD; (* Array of  measured raw values for power switch 1. *)
+	AI_RAW_SupplyPower2 AT %IW2064:WORD := 0; (* Latest measured raw value for Power supply 2. *)
+	AI_ARR_SupplyPower2 AT %IW2576:ARRAY [1..50] OF WORD; (* Array of  measured raw values for power switch 2. *)
+	AI_RAW_Ref5V AT %IW2070:WORD := 0; (* Latest measured raw value for Ref 5 V voltage. *)
+	AI_ARR_Ref5V AT %IW2876:ARRAY [1..50] OF WORD; (* Array of  measured raw values for Ref 5 V voltage. *)
+	AI_RAW_Ref10V AT %IW2072:WORD := 0; (* Latest measured raw value for Ref 10 V voltage. *)
+	AI_ARR_Ref10V AT %IW2976:ARRAY [1..50] OF WORD; (* Array of  measured raw values for Ref 10 V voltage. *)
+	AI_RAW_10VPullUpSupply AT %IW2074:WORD := 0; (* Latest measured raw value for 10 V Pull-ups voltage. *)
+	AI_ARR_10VPullUpSupply AT %IW3076:ARRAY [1..50] OF WORD; (* Array of  measured raw values for 10 V Pull-ups voltage. *)
+	AI_RAW_InternADCReference AT %IW2068:WORD := 0; (* Latest measured raw value for ADC reference. *)
+	AI_ARR_InternADCReference AT %IW2776:ARRAY [1..50] OF WORD; (* Array of  measured raw values for ADC reference. *)
+	AI_RAW_PCBTemperature AT %IW2066:WORD := 0; (* Latest measured raw value for PCB temperature. *)
+	AI_ARR_PCBTemperature AT %IW2676:ARRAY [1..50] OF WORD; (* Array of  measured raw values for PCB temperture. *)
+	AI_RAW_CoreTemperature AT %IW2076:WORD := 0; (* Latest measured raw value for PCB temperature. *)
+	AI_ARR_CoreTemperature AT %IW3176:ARRAY [1..50] OF WORD; (* Array of measured raw values for PCB temperture. *)
+	AI_RAW_Power1Pin AT %IW2096:WORD := 0; (* Latest measured value for voltage in pin 2.24 / 2.25. *)
+	AI_ARR_Power1Pin AT %IW4176:ARRAY [1..50] OF WORD; (* Array of  measured raw values for voltage in  pin 2.24 / 2.25. *)
+	AI_RAW_Power2Pin AT %IW2097:WORD := 0; (* Latest measured value for voltage in pin 3.24 / 3.25. *)
+	AI_ARR_Power2Pin AT %IW4226:ARRAY [1..50] OF WORD; (* Array of  measured raw values for voltage in  pin 3.24 / 3.25. *)
+END_VAR
+(* @OBJECT_END := 'IO_RAW' *)
+(* @CONNECTIONS :=IO_RAW
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'IO_INTERNAL' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	AI_SupplyLogic:WORD := 0; (* Filtered supply logic raw value (10 sample mean). *)
+	SUPPLY_Logic:WORD := 0; (* Logic voltage [10 mV]. *)
+	POWER_1_Enable:BOOL := FALSE; (* Disable/Enable power switch 1. *)
+	AI_SupplyPower1:WORD := 0; (* Filtered Power switch 1 voltage raw value (10 sample mean). *)
+	SUPPLY_Power1:WORD := 0; (* Power switch 1 voltage [10 mV]. *)
+	POWER_2_Enable:BOOL := FALSE; (* Disable/Enable power switch 2. *)
+	AI_SupplyPower2:WORD := 0; (* Filtered Power switch 2 voltage raw value (10 sample mean). *)
+	SUPPLY_Power2:WORD := 0; (* Power switch 2 voltage [10 mV]. *)
+	REF_OUT_5V_Enable AT %QX1412.6:BOOL := FALSE; (* Enable for 5 V reference. *)
+	AI_Ref5V:WORD := 0; (* Filtered Ref 5 V voltage raw value (10 sample mean). *)
+	REF_5V:WORD := 0; (* Scaled Ref 5 V voltage  [10 mV]. *)
+	REF_OUT_10V_Enable AT %QX1412.5:BOOL := FALSE; (* Enable for 10 V reference. *)
+	AI_Ref10V:WORD := 0; (* Filtered Ref 10 V voltage raw value (10 sample mean). *)
+	REF_10V:WORD := 0; (* Scaled Ref 10 V voltage [10 mV]. *)
+	AI_10VPullUpSupply:WORD := 0; (* Filtered 10 V Pull-ups voltage raw value (10 sample mean). *)
+	REF_10VPullUpSupply:WORD := 0; (* Scaled 10 V Pull-ups voltage [10 mV]. *)
+	AI_InternADCReference:WORD := 0; (* Filtered ADC reference. raw value (10 sample mean). *)
+	REF_InternADC:WORD := 0; (* ADC reference voltage [10 mV]. *)
+	AI_PCBTemperature:WORD := 0; (* Filtered PCB temperature raw value (10 sample mean). *)
+	TEMP_PCB:INT := 0; (* PCB temperature [0.1 C]. *)
+	AI_CoreTemperature:WORD := 0; (* Filtered core temperature raw value (10 sample mean). *)
+	TEMP_CoreTemperature:INT := 0; (* Core temperature [0.1 C]. *)
+	AI_Power1Pin:WORD := 0; (* Filtered pin 2.24 / 2.25 input voltage value. *)
+	SUPPLY_Power1Pin:WORD := 0; (* Scaled pin 2.24 / 2.25 input voltage value [0.01 V] *)
+	AI_Power2Pin:WORD := 0; (* Filtered pin 3.24 / 3.25 input voltage value. *)
+	SUPPLY_Power2Pin:WORD := 0; (* Scaled pin 3.24 / 3.25 input voltage value [0.01 V] *)
+END_VAR
+(* @OBJECT_END := 'IO_INTERNAL' *)
+(* @CONNECTIONS :=IO_INTERNAL
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'ERRORS' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	ERR_FLAG_IO_INIT:BOOL := FALSE; (* Flag is set true if there is at least one monitored error in I/O init functions. *)
+END_VAR
+(* @OBJECT_END := 'ERRORS' *)
+(* @CONNECTIONS :=ERRORS
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'IO_CONFIG' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	PWFM_ERROR_INIT_X1_12:DINT := 0; (* Pin 1.12 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X1_22:DINT := 0; (* Pin 1.22 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X1_23:DINT := 0; (* Pin 1.23 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X1_29:DINT := 0; (* Pin 1.29 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X1_30:DINT := 0; (* Pin 1.30 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X1_31:DINT := 0; (* Pin 1.31 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X1_32:DINT := 0; (* Pin 1.32 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X1_33:DINT := 0; (* Pin 1.33 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X1_34:DINT := 0; (* Pin 1.34 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X1_35:DINT := 0; (* Pin 1.35 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X2_13:DINT := 0; (* Pin 2.13 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X2_14:DINT := 0; (* Pin 2.14 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X2_28:DINT := 0; (* Pin 2.28 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X2_29:DINT := 0; (* Pin 2.29 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X2_30:DINT := 0; (* Pin 2.30 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X2_31:DINT := 0; (* Pin 2.31 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X2_32:DINT := 0; (* Pin 2.32 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X2_33:DINT := 0; (* Pin 2.33 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X3_26:DINT := 0; (* Pin 3.26 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X3_27:DINT := 0; (* Pin 3.27 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X3_28:DINT := 0; (* Pin 3.28 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X3_29:DINT := 0; (* Pin 3.29 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X3_30:DINT := 0; (* Pin 3.30 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X3_31:DINT := 0; (* Pin 3.31 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X3_32:DINT := 0; (* Pin 3.32 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X3_33:DINT := 0; (* Pin 3.33 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X3_34:DINT := 0; (* Pin 3.34 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_ERROR_INIT_X3_35:DINT := 0; (* Pin 3.35 - Possible init error for PWFM channel init (0 = Success). *)
+
+	PWFM_SET_PU_1_22_and_1_35 AT %QX1410.4:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 1.22 and 1.35 *)
+	PWFM_SET_PU_1_33_and_1_34 AT %QX1410.5:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 1.33 and 1.34 *)
+	PWFM_SET_PU_1_31_and_1_32 AT %QX1410.6:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 1.31 and 1.32 *)
+	PWFM_SET_PU_1_29_and_1_30 AT %QX1410.7:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 1.29 and 1.30 *)
+	PI_SET_PU_2_06_and_2_07 AT %QX1410.0:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 2.6 and 2.7 *)
+	PI_SET_PU_2_08_and_2_09 AT %QX1410.2:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 2.8 and 2.9. *)
+	PI_SET_PU_3_05_and_3_06 AT %QX1412.2:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 3.5 and 3.6. *)
+	PI_SET_PU_3_08_and_3_09 AT %QX1412.0:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 3.8 and 3.9 *)
+	PI_SET_PU_3_11_and_3_12 AT %QX1412.1:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 3.11 and 3.12 *)
+	PI_SET_PU_3_21_and_3_22 AT %QX1412.3:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 3.21 and 3.22 *)
+	PI_SET_PU_1_11_and_3_23 AT %QX1412.4:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 1.11 and 3.23 *)
+	PI_SET_PU_2_16_and_2_17 AT %QX1411.14:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 2.16 and 2.17 *)
+	PI_SET_PU_2_19_and_2_20 AT %QX1411.15:BOOL := FALSE; (* Pin 1000.100 - Pull-up configuration for pins 2.19 and 2.20 *)
+
+	PI_SET_RANGE_2_06_and_2_07 AT %QX1410.1:BOOL := FALSE; (* Pin 1000.101 - Used voltage range. Range configuration for pins 2.6 and 2.7 *)
+	PI_SET_RANGE_2_08_and_2_09 AT %QX1410.3:BOOL := FALSE; (* Pin 1000.101 - Used voltage range. Range configuration for pins 2.8 and 2.9. *)
+
+	G_SupplyVoltageLevel:WORD := 24; (* Pin 1000.102 - System supply voltage level [12/24 V]. Affects the current controller when starting a movement. Should be set to the nominal operating voltage of the system. *)
+END_VAR
+(* @OBJECT_END := 'IO_CONFIG' *)
+(* @CONNECTIONS :=IO_CONFIG
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+
+
+
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'OD1_VAR' *)
+(* @PATH := 'Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	OD_DeviceType_Device1:UDINT:=405;
+	(*Sub0: Information about the device type*)
+	OD_ErrorReg_Device1:USINT:=0;
+	(*Sub0: Error information*)
+	OD_IdentityArray_Device:ARRAY [1..4] OF UDINT;
+	(*Sub1: Vendor ID*)
+	(*Sub2: Product code*)
+	(*Sub3: Revision number*)
+	(*Sub4: Serial number*)
+	OD_CAN1_PDO_DUMMY:BYTE:=0; (*PDO Dummy Variable*)
+	OD_SoftwareInformation:ARRAY [1..10] OF STRING(79):=''; (*Application version informations*)
+	(*Sub1: Application version*)
+	(*Sub2: Additional version information*)
+	(*Sub3: Reserved for future use*)
+	(*Sub4: Reserved for future use*)
+	(*Sub5: Reserved for future use*)
+	(*Sub6: Reserved for future use*)
+	(*Sub7: Reserved for future use*)
+	(*Sub8: Reserved for future use*)
+	(*Sub9: Reserved for future use*)
+	(*Sub10: Reserved for future use*)
+	OD_MACAddress:ARRAY[1..6] OF BYTE:= 6(0);
+	(*Sub1: MAC address byte 1*)
+	(*Sub2: MAC address byte 2*)
+	(*Sub3: MAC address byte 3*)
+	(*Sub4: MAC address byte 4*)
+	(*Sub5: MAC address byte 5*)
+	(*Sub6: MAC address byte 6*)
+	OD_EthernetConfiguration:ARRAY[1..50] OF BYTE:= 50(0);
+	(*Sub1: Ethernet enabled/disabled*)
+	(*Sub2: DHCP on/off*)
+	(*Sub3: Reserved*)
+	(*Sub4: Reserved*)
+	(*Sub5: Reserved*)
+	(*Sub6: Reserved*)
+	(*Sub7: Reserved*)
+	(*Sub8: Reserved*)
+	(*Sub9: Reserved*)
+	(*Sub10: Reserved*)
+	(*Sub11: Reserved*)
+	(*Sub12: Reserved*)
+	(*Sub13: Reserved*)
+	(*Sub14: Reserved*)
+	(*Sub15: Reserved*)
+	(*Sub16: Reserved*)
+	(*Sub17: Reserved*)
+	(*Sub18: Netstatus*)
+	(*Sub19: IP address highest byte*)
+	(*Sub20: IP address 3rd byte*)
+	(*Sub21: IP address 2nd byte*)
+	(*Sub22: IP address lowest byte*)
+	(*Sub23: Gateway highest byte*)
+	(*Sub24: Gateway 3rd byte*)
+	(*Sub25: Gateway 2nd byte*)
+	(*Sub26: Gateway lowest byte*)
+	(*Sub27: Netmask highest byte*)
+	(*Sub28: Netmask 3rd byte*)
+	(*Sub29: Netmask 2nd byte*)
+	(*Sub30: Netmask first byte*)
+	(*Sub31: Reserved*)
+	(*Sub32: Reserved*)
+	(*Sub33: Reserved*)
+	(*Sub34: Reserved*)
+	(*Sub35: Reserved*)
+	(*Sub36: Reserved*)
+	(*Sub37: Reserved*)
+	(*Sub38: Reserved*)
+	(*Sub39: Reserved*)
+	(*Sub40: Reserved*)
+	(*Sub41: Reserved*)
+	(*Sub42: Reserved*)
+	(*Sub43: Reserved*)
+	(*Sub44: Reserved*)
+	(*Sub45: Reserved*)
+	(*Sub46: Reserved*)
+	(*Sub47: Reserved*)
+	(*Sub48: Reserved*)
+	(*Sub49: Reserved*)
+	(*Sub50: Reserved*)
+	OD_CAN1Config:ARRAY[1..10] OF WORD:= 10(0);
+	(*Sub1: CODESYS communication enabled*)
+	(*Sub2: CODESYS communication node-ID*)
+	(*Sub3: Bit rate*)
+	(*Sub4: Cable detection offset for CODESYS node-ID*)
+	(*Sub5: Cable detection offset for PLCopen node-ID*)
+	(*Sub6: Mask for cable detection pins*)
+	(*Sub7: Reserved*)
+	(*Sub8: Reserved*)
+	(*Sub9: Reserved*)
+	(*Sub10: PLCopen application node-ID in CAN1*)
+	OD_CAN2Config:ARRAY[1..10] OF WORD:= 10(0);
+	(*Sub1: CODESYS communication enabled*)
+	(*Sub2: CODESYS communication node-ID*)
+	(*Sub3: Bit rate*)
+	(*Sub4: Reserved*)
+	(*Sub5: Reserved*)
+	(*Sub6: Reserved*)
+	(*Sub7: Reserved*)
+	(*Sub8: Reserved*)
+	(*Sub9: Reserved*)
+	(*Sub10: PLCopen application node-ID in CAN2*)
+	OD_CAN3Config:ARRAY[1..10] OF WORD:= 10(0);
+	(*Sub1: CODESYS communication enabled*)
+	(*Sub2: CODESYS communication node-ID*)
+	(*Sub3: Bit rate*)
+	(*Sub4: Reserved*)
+	(*Sub5: Reserved*)
+	(*Sub6: Reserved*)
+	(*Sub7: Reserved*)
+	(*Sub8: Reserved*)
+	(*Sub9: Reserved*)
+	(*Sub10: PLCopen application node-ID in CAN3*)
+	OD_CAN4Config:ARRAY[1..10] OF WORD:= 10(0);
+	(*Sub1: CODESYS communication enabled*)
+	(*Sub2: CODESYS communication node-ID*)
+	(*Sub3: Bit rate*)
+	(*Sub4: Reserved*)
+	(*Sub5: Reserved*)
+	(*Sub6: Reserved*)
+	(*Sub7: Reserved*)
+	(*Sub8: Reserved*)
+	(*Sub9: Reserved*)
+	(*Sub10: PLCopen application node-ID in CAN4*)
+	OD_Parameter_CSV_unique_ID1:UINT:=16#0000; (*Parameter CSV unique ID*)
+END_VAR
+(* @OBJECT_END := 'OD1_VAR' *)
+(* @CONNECTIONS :=OD1_VAR
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'OD2_VAR' *)
+(* @PATH := 'Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	OD_DeviceType_Device2:UDINT:=405;
+	(*Sub0: Information about the device type*)
+	OD_ErrorReg_Device2:USINT:=0;
+	(*Sub0: Error information*)
+	OD_CAN2_PDO_DUMMY:BYTE:=0; (*PDO Dummy Variable*)
+	OD_Parameter_CSV_unique_ID2:UINT:=16#0000; (*Parameter CSV unique ID*)
+END_VAR
+(* @OBJECT_END := 'OD2_VAR' *)
+(* @CONNECTIONS :=OD2_VAR
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'OD3_VAR' *)
+(* @PATH := 'Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	OD_DeviceType_Device3:UDINT:=405;
+	(*Sub0: Information about the device type*)
+	OD_ErrorReg_Device3:USINT:=0;
+	(*Sub0: Error information*)
+	OD_CAN3_PDO_DUMMY:BYTE:=0; (*PDO Dummy Variable*)
+	OD_Parameter_CSV_unique_ID3:UINT:=16#0000; (*Parameter CSV unique ID*)
+END_VAR
+(* @OBJECT_END := 'OD3_VAR' *)
+(* @CONNECTIONS :=OD3_VAR
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'OD4_VAR' *)
+(* @PATH := 'Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	OD_DeviceType_Device4:UDINT:=405;
+	(*Sub0: Information about the device type*)
+	OD_ErrorReg_Device4:USINT:=0;
+	(*Sub0: Error information*)
+	OD_CAN4_PDO_DUMMY:BYTE:=0; (*PDO Dummy Variable*)
+	OD_Parameter_CSV_unique_ID4:UINT:=16#0000; (*Parameter CSV unique ID*)
+END_VAR
+(* @OBJECT_END := 'OD4_VAR' *)
+(* @CONNECTIONS :=OD4_VAR
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @PATH := '' *)
+(* @SYMFILEFLAGS := '2048' *)
+PROGRAM PLC_PRG
+VAR
+(*
+		Tool version       : '8.4.9308.1109'
+		Xml version        : '5.0.45'
+		Control Unit       : 'EPEC_CU3'
+		Control Unit Type  : '5050'
+		Export Time        : '15.05.2026 11:12.48'
+		Export Path        : 'D:\4_AIProject\4_CoDeSys\AI_MutiTool\MultiToolProject\E2EProject\EPEC_CU3'
+		Project File       : 'D:\4_AIProject\4_CoDeSys\AI_MutiTool\MultiToolProject\E2EProject\DasDemoProject.mtproject'
+		Libraries Path     : 'D:\4_AIProject\4_CoDeSys\AI_MutiTool\MultiToolProject\E2EProject\EPEC_CU3\Libraries'
+*)
+
+
+(* Code template local variables don't remove *)
+CANInitSequencer:BYTE := 0;
+
+END_VAR
+(* @END_DECLARATION := '0' *)
+INITIAL_STEP Init:
+
+INITIAL_STEP Init_Entry:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	SystemParameters.ReadData();
+
+	OD_MACAddress := SystemParameters.o_MAC;
+	OD_EthernetConfiguration := SystemParameters.i_Ethernet;
+	OD_CAN1Config := SystemParameters.i_CAN1;
+
+
+	IO_SET_LED(i_SystemOk:=0, i_RunWithErrors:=0, i_InitState:=1);
+	G_InitEntryReady:=TRUE;
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Entry TO Init_Flash:=
+G_InitEntryReady
+END_TRANSITION
+INITIAL_STEP Init_Flash:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+
+  	(* Get info for MRAM area used for programmer. *)
+  	SYSTEM_SHM_MRAM_GET_IEC_AREA(ADR(G_ShmUserMRAM));
+  	(* Check addresses and divide area between parameter system and are available for user *)
+	IF ((G_ShmUserMRAM.endAddress > 0) AND (G_ShmUserMRAM.startAddress > 0))
+		AND (G_ShmUserMRAM.endAddress > (G_ShmUserMRAM.startAddress + G_MRAM_AREA_SIZE_FOR_PAR_SYS + 100)) THEN
+		(* Init file system for parameters *)
+		FileSysInit(	i_FileSysKey:= G_FileSysKeyword,
+			i_pStart:= G_ShmUserMRAM.startAddress,
+			i_pEnd:= G_ShmUserMRAM.startAddress + G_MRAM_AREA_SIZE_FOR_PAR_SYS - 1,
+			i_BlockSize:= 1024);
+		G_FileSysDir:=G_ShmUserMRAM.startAddress + 1024;
+		(* Set user MRAM pointers, which tells area for freely used by programmer. *)
+		G_MramStartAddressForUser := G_ShmUserMRAM.startAddress + G_MRAM_AREA_SIZE_FOR_PAR_SYS;
+		G_MramEndAddressForUser := G_ShmUserMRAM.endAddress ;
+	ELSE
+		(* Error *)
+		G_MramInitErrors := - 1;
+	END_IF
+
+  G_InitFlashReady:=TRUE;
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Flash TO Init_IO:=
+G_InitFlashReady
+END_TRANSITION
+INITIAL_STEP Init_IO:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+(*IO init:*)
+    (*IO_Init functions*)
+		SysGetProjectInfo(ADR(SYSTEM_ProjectInfo));
+		SystemParameters.ReadData(); (* Read system parameter data *)
+		SYSTEM_FW_VERSION:=SystemParameters.o_SoftwareVersion;
+		SYSTEM_ControlUnitType := SystemParameters.o_ProductCode;
+		SYSTEM_ControlUnitRevision := SystemParameters.o_RevisionNumber;
+		SYSTEM_SerialNumber := SystemParameters.o_SerialNumber;
+		SYSTEM_VendorId := SystemParameters.o_VendorId;
+		(* Get 5050 fw error log pointer *)
+		SystemErrorLog.init();
+		SYSTEM_FW_Error_Log :=  SystemErrorLog.o_ErrorLog;
+		(* Force ref always ON *)
+		REF_OUT_5V_Enable:=TRUE;
+		REF_OUT_10V_Enable:=TRUE;
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 22 Pin 1.11*)
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 9 Pin 1.12*)
+
+    PWFM_ERROR_INIT_X1_12 := IO_PWFM_SET_CONFIG(
+	    i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+    	i_PwfmChn:=9,
+    	i_OverCurrentLimit := 100,
+    	i_SupplyVoltage:=0,
+        i_CoilResistance:=0,
+        i_CorrectionGain:=0,
+        i_DiagnosticTimeDelay:=0);
+   IF NOT ( PWFM_ERROR_INIT_X1_12 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 21 Pin 1.22*)
+
+    PWFM_ERROR_INIT_X1_22 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=21,
+	i_OverCurrentLimit := 0,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+   IF NOT ( PWFM_ERROR_INIT_X1_22 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 10 Pin 1.23*)
+
+    PWFM_ERROR_INIT_X1_23 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=10,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+   IF NOT ( PWFM_ERROR_INIT_X1_23 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 28 Pin 1.29*)
+
+    PWFM_ERROR_INIT_X1_29 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=28,
+	i_OverCurrentLimit :=0,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+   IF NOT ( PWFM_ERROR_INIT_X1_29 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 27 Pin 1.30*)
+
+    PWFM_ERROR_INIT_X1_30 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=27,
+	i_OverCurrentLimit :=0,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+   IF NOT ( PWFM_ERROR_INIT_X1_30 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 26 Pin 1.31*)
+
+    PWFM_ERROR_INIT_X1_31 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=26,
+	i_OverCurrentLimit :=0,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+   IF NOT ( PWFM_ERROR_INIT_X1_31 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 25 Pin 1.32*)
+
+    PWFM_ERROR_INIT_X1_32 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=25,
+	i_OverCurrentLimit :=0,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+   IF NOT ( PWFM_ERROR_INIT_X1_32 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 23 Pin 1.33*)
+
+    PWFM_ERROR_INIT_X1_33 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=23,
+	i_OverCurrentLimit :=0,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+   IF NOT ( PWFM_ERROR_INIT_X1_33 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 24 Pin 1.34*)
+
+    PWFM_ERROR_INIT_X1_34 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=24,
+	i_OverCurrentLimit :=0,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+   IF NOT ( PWFM_ERROR_INIT_X1_34 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 22 Pin 1.35*)
+
+    PWFM_ERROR_INIT_X1_35 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=22,
+	i_OverCurrentLimit :=0,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+   IF NOT ( PWFM_ERROR_INIT_X1_35 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 1 Pin 2.6*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 2 Pin 2.7*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 3 Pin 2.8*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 4 Pin 2.9*)
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 12 Pin 2.13*)
+
+    PWFM_ERROR_INIT_X2_13 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=12,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X2_13 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 11 Pin 2.14*)
+
+    PWFM_ERROR_INIT_X2_14 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=11,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X2_14 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 5 Pin 2.15*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 9 Pin 2.16*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 10 Pin 2.17*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 6 Pin 2.18*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 11 Pin 2.19*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 12 Pin 2.20*)
+
+(*#########################################*)
+(* INIT FOR  SINKING DIGITAL OUTPUT 2.26*)
+
+(*#########################################*)
+(* INIT FOR  SINKING DIGITAL OUTPUT 2.27*)
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 14 Pin 2.28*)
+
+    PWFM_ERROR_INIT_X2_28 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=14,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X2_28 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 13 Pin 2.29*)
+
+    PWFM_ERROR_INIT_X2_29 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=13,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X2_29 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 16 Pin 2.30*)
+
+    PWFM_ERROR_INIT_X2_30 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=16,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X2_30 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 15 Pin 2.31*)
+
+    PWFM_ERROR_INIT_X2_31 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=15,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X2_31 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 18 Pin 2.32*)
+
+    PWFM_ERROR_INIT_X2_32 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=18,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X2_32 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 17 Pin 2.33*)
+
+    PWFM_ERROR_INIT_X2_33 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=17,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X2_33 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR  SINKING DIGITAL OUTPUT 2.34*)
+
+(*#########################################*)
+(* INIT FOR  SINKING DIGITAL OUTPUT 2.35*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 17 Pin 3.5*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 18 Pin 3.6*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 7 Pin 3.7*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 13 Pin 3.8*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 14 Pin 3.9*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 8 Pin 3.10*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 15 Pin 3.11*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 16 Pin 3.12*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 19 Pin 3.21*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 20 Pin 3.22*)
+
+(*##################################################################################*)
+(* INIT FOR PULSE INPUT CHANNEL 21 Pin 3.23*)
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 20 Pin 3.26*)
+
+    PWFM_ERROR_INIT_X3_26 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=20,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X3_26 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 19 Pin 3.27*)
+
+    PWFM_ERROR_INIT_X3_27 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=19,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X3_27 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 2 Pin 3.28*)
+
+    PWFM_ERROR_INIT_X3_28 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=2,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X3_28 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 1 Pin 3.29 *)
+
+    PWFM_ERROR_INIT_X3_29 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=1,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X3_29 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 4 Pin 3.30*)
+
+    PWFM_ERROR_INIT_X3_30 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=4,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X3_30 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 3 Pin 3.31*)
+
+    PWFM_ERROR_INIT_X3_31 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=3,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X3_31 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 6 Pin 3.32*)
+
+    PWFM_ERROR_INIT_X3_32 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=6,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X3_32 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 5 Pin 3.33*)
+
+    PWFM_ERROR_INIT_X3_33 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=5,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X3_33 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 8 Pin 3.34*)
+
+    PWFM_ERROR_INIT_X3_34 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=8,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X3_34 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+(* INIT FOR PWFM CHANNEL 7 Pin 3.35*)
+
+    PWFM_ERROR_INIT_X3_35 := IO_PWFM_SET_CONFIG(
+	i_PwfmMode:=IO_PWFM_MODE_DISABLED,
+	i_PwfmChn:=7,
+	i_OverCurrentLimit := 100,
+	i_SupplyVoltage:=0,
+	i_CoilResistance:=0,
+	i_CorrectionGain:=0,
+	i_DiagnosticTimeDelay:=0);
+    IF NOT ( PWFM_ERROR_INIT_X3_35 = 0 ) THEN
+         ERR_FLAG_IO_INIT := TRUE;
+    END_IF
+
+(*#########################################*)
+
+    (* SET PULL UP CONFIGURATION *)
+
+    PWFM_SET_PU_1_22_and_1_35 := FALSE;
+    PWFM_SET_PU_1_33_and_1_34 := FALSE;
+    PWFM_SET_PU_1_31_and_1_32 := FALSE;
+    PWFM_SET_PU_1_29_and_1_30 := FALSE;
+    PI_SET_PU_2_06_and_2_07 := FALSE;
+    PI_SET_PU_2_08_and_2_09 := FALSE;
+    PI_SET_PU_3_05_and_3_06 := FALSE;
+    PI_SET_PU_3_08_and_3_09 := FALSE;
+    PI_SET_PU_3_11_and_3_12 := FALSE;
+    PI_SET_PU_3_21_and_3_22 := FALSE;
+    PI_SET_PU_1_11_and_3_23 := FALSE;
+    PI_SET_PU_2_16_and_2_17 := FALSE;
+    PI_SET_PU_2_19_and_2_20 := FALSE;
+
+
+(*#########################################*)
+    (* SET Range configuration *)
+    PI_SET_RANGE_2_06_and_2_07 := FALSE;
+    PI_SET_RANGE_2_08_and_2_09 := FALSE;
+
+	(* tag INIT_INIT_IO *)
+
+(*IO-init OK?*)
+	G_InitIOReady:=TRUE;
+END_STEP
+
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_IO TO Init_Bus:=
+G_InitIOReady
+END_TRANSITION
+INITIAL_STEP Init_Bus:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+	CanApiInitSrv();
+
+	CANVXDInitCAN(i_DrvNbr:=0, i_BitRate:=250, i_Flags:=(G_CANVXD_FLAGS_AUTORECOVERY OR G_CANVXD_FLAGS_11BIT_OPTIMIZED));
+
+
+	CANVXDInitCAN(i_DrvNbr:=1, i_BitRate:=500, i_Flags:=(G_CANVXD_FLAGS_AUTORECOVERY OR G_CANVXD_FLAGS_11BIT_OPTIMIZED));
+
+
+	CANVXDInitCAN(i_DrvNbr:=2, i_BitRate:=1000, i_Flags:=(G_CANVXD_FLAGS_AUTORECOVERY OR G_CANVXD_FLAGS_11BIT_OPTIMIZED));
+
+
+	CANVXDInitCAN(i_DrvNbr:=3, i_BitRate:=250, i_Flags:=(G_CANVXD_FLAGS_AUTORECOVERY OR G_CANVXD_FLAGS_11BIT_OPTIMIZED));
+
+
+(*IO-init OK?*)
+	G_InitBusReady:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Bus TO Init_Protocols_Can1:=
+G_InitBusReady
+END_TRANSITION
+
+INITIAL_STEP Init_Protocols_Can1:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*CAN1 INIT*)
+(* Sequencer is used to split init to smaller steps *)
+CASE CANInitSequencer OF
+	0: (* Sequencer step 0*)
+	G_CAN1_CANopenDevice.DrvNbr:=0;(*Connect device to can channel*)
+	G_CAN1_CANopenDevice.NodeID := 3;
+	OD_CAN1Config[10] := 3; (* Node-ID that is not taken from flash *)
+	OD_CAN1Config[3] := 250; (* Bitrate that is not taken from flash *)
+	G_CAN1_CANopenDevice_NMT.NmtState:=127;
+	G_CAN1_CANopenDevice_NMT.HeartBeat.PT:=T#200ms;(*Optional: Change manually heartbeat producer time (default 0=no heartbeat)*)
+	CANopenSystemAddDevice(i_pDev:=ADR(G_CAN1_CANopenDevice));(*Connect device to system*)
+
+(*Initialize OD's datastructures*)
+
+	G_CAN1_CANopenDevice_OD.EntryCount:=SIZEOF(G_CAN1_CANopenDevice_ODEntrys)/SIZEOF(G_CAN1_CANopenDevice_ODEntrys[1]);(*Max entries of given OD(CANopenDeviceODEntrys array)*)
+	G_CAN1_CANopenDevice_OD.InOrder:=FALSE;(*OD isn't in order*)
+	G_CAN1_CANopenDevice_OD.NextFree:=0;(*OD does not have any entries yet*)
+	G_CAN1_CANopenDevice_OD.OD:=ADR(G_CAN1_CANopenDevice_ODEntrys); (*Pointer to OD array*)
+
+
+(*Define NMT protocol*)
+
+	G_CAN1_CANopenDevice_Protocols[1].ProtocolType:=NMT;
+	G_CAN1_CANopenDevice_Protocols[1].Data:=ADR(G_CAN1_CANopenDevice_NMT);
+	G_CAN1_CANopenDevice_Protocols[1].pDevice:=ADR(G_CAN1_CANopenDevice);
+	G_CAN1_CANopenDevice_Protocols[1].Init:=INDEXOF(CANopenNMTCLIENT.Init);
+	G_CAN1_CANopenDevice_Protocols[1].Update:=INDEXOF(CANopenNMTCLIENT.Update);
+	CANopenDeviceAddProtocol(i_pDev:=ADR(G_CAN1_CANopenDevice), i_pProtocol:=ADR(G_CAN1_CANopenDevice_Protocols[1]));(*Add defined protocol to device*)
+
+(*Define SSDO protocol*)
+
+	G_CAN1_CANopenDevice_Protocols[2].ProtocolType:=SSDO;
+	G_CAN1_CANopenDevice_Protocols[2].Data:=ADR(G_CAN1_CANopenDevice_SSDO);
+	G_CAN1_CANopenDevice_Protocols[2].pDevice:=ADR(G_CAN1_CANopenDevice);
+	G_CAN1_CANopenDevice_Protocols[2].Init:=INDEXOF(CANopenSDOServer.Init);
+	G_CAN1_CANopenDevice_Protocols[2].Update:=INDEXOF(CANopenSDOServer.Update);
+	CANopenDeviceAddProtocol(i_pDev:=ADR(G_CAN1_CANopenDevice), i_pProtocol:=ADR(G_CAN1_CANopenDevice_Protocols[2]));(*Add defined protocol to device*)
+
+(*Define OD protocol*)
+
+	G_CAN1_CANopenDevice_Protocols[3].ProtocolType:=OD;
+	G_CAN1_CANopenDevice_Protocols[3].Data:=ADR(G_CAN1_CANopenDevice_OD);
+	G_CAN1_CANopenDevice_Protocols[3].pDevice:=ADR(G_CAN1_CANopenDevice);
+	G_CAN1_CANopenDevice_Protocols[3].Init:=0;
+	G_CAN1_CANopenDevice_Protocols[3].Update:=0;
+	CANopenDeviceAddProtocol(i_pDev:=ADR(G_CAN1_CANopenDevice), i_pProtocol:=ADR(G_CAN1_CANopenDevice_Protocols[3]));(*Add defined protocol to device*)
+
+(*Define SYNC protocol*)
+
+	G_CAN1_CANopenDevice_Protocols[4].ProtocolType:=SYNC;
+	G_CAN1_CANopenDevice_Protocols[4].Data:=ADR(G_CAN1_CANopenDevice_SYNC);
+	G_CAN1_CANopenDevice_Protocols[4].pDevice:=ADR(G_CAN1_CANopenDevice);
+	G_CAN1_CANopenDevice_Protocols[4].Init:=INDEXOF(CANopenSYNCProtocol.Init);
+	G_CAN1_CANopenDevice_Protocols[4].Update:=0;
+	CANopenDeviceAddProtocol(i_pDev:=ADR(G_CAN1_CANopenDevice), i_pProtocol:=ADR(G_CAN1_CANopenDevice_Protocols[4]));(*Add defined protocol to device*)
+
+(*Define HBCons protocol*)
+
+	G_CAN1_CANopenDevice_Protocols[5].ProtocolType:=HBCons;
+	G_CAN1_CANopenDevice_Protocols[5].Data:=ADR(G_CAN1_CANopenDevice_HBConsumer);
+	G_CAN1_CANopenDevice_Protocols[5].pDevice:=ADR(G_CAN1_CANopenDevice);
+	G_CAN1_CANopenDevice_Protocols[5].Init:=INDEXOF(CANopenHBConsumer.Init);
+	G_CAN1_CANopenDevice_Protocols[5].Update:=INDEXOF(CANopenHBConsumer.Update);
+	CANopenDeviceAddProtocol(i_pDev:=ADR(G_CAN1_CANopenDevice), i_pProtocol:=ADR(G_CAN1_CANopenDevice_Protocols[5]));(*Add defined protocol to device*)
+
+
+(* Add monitored nodes *)
+
+
+	CANopenConsumeHB(i_pDevice := ADR(G_CAN1_CANopenDevice), i_pProducer:=ADR(G_CAN1_CANopenDevice_HbConsumerNodes[1]));
+		CANInitSequencer := CANInitSequencer + 1;
+	1: (* Sequencer step 1*)
+(* Init network manager *)
+
+	G_CAN1_NetworkManager.Init(
+		i_ThisIsMaster:=FALSE,
+		i_DrvNbr:=0,
+		i_StartInterval:=1000,
+		i_pMonitoredNodes:=ADR(G_CAN1_MonitoredNodes),
+		i_NumberOfNodes:=1);
+
+(* Init CSDO instance array for bus *)
+
+	CANopen302_SDOManager.Init(i_CanBusNbr:=0,i_NodeId:=3,i_CsdoArrayStart:=ADR(G_CAN1_CSDOinstances),i_CsdoArraySize:=127);
+
+		CANInitSequencer := CANInitSequencer + 1;
+	2: (* Sequencer step 2*)
+(*INIT CAN1 OD*)
+
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0001, OD_DEFTYPE, 0, 0, 16#28, 0, 1, 0);(*typedef U1*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0002, OD_DEFTYPE, 0, 0, 16#28, 0, 8, 0);(*typedef I8*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0003, OD_DEFTYPE, 0, 0, 16#28, 0, 16, 0);(*typedef I16*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0004, OD_DEFTYPE, 0, 0, 16#28, 0, 32, 0);(*typedef I32*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0005, OD_DEFTYPE, 0, 0, 16#28, 0, 8, 0);(*typedef U8*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0006, OD_DEFTYPE, 0, 0, 16#28, 0, 16, 0);(*typedef U16*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0007, OD_DEFTYPE, 0, 0, 16#28, 0, 32, 0);(*typedef U32*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0008, OD_DEFTYPE, 0, 0, 16#28, 0, 32, 0);(*typedef of real*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0009, OD_DEFTYPE, 0, 0, 16#28, 0, 80*8, 0);(*typedef str*)
+
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#1000,
+		i_ObjectCode:=OD_VAR,(*Type of index*)
+		i_NumOfSubids:=0,(*Number of subindexes*)
+		i_TypeSpec:=16#0007,(*Index datatype, either user defined or standard CiA 301*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=0,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_DeviceType_Device1),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#1001,
+		i_ObjectCode:=OD_VAR,(*Type of index*)
+		i_NumOfSubids:=0,(*Number of subindexes*)
+		i_TypeSpec:=16#0005,(*Index datatype, either user defined or standard CiA 301*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=0,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_ErrorReg_Device1),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#100a,
+		i_ObjectCode:=OD_VAR,(*Type of index*)
+		i_NumOfSubids:=0,(*Number of subindexes*)
+		i_TypeSpec:=16#0009,(*Index datatype, either user defined or standard CiA 301*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=0,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(SystemParameters.o_SoftwareVersion),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#1017,
+		i_ObjectCode:=OD_VAR,(*Type of index*)
+		i_NumOfSubids:=0,(*Number of subindexes*)
+		i_TypeSpec:=16#0006,(*Index datatype, either user defined or standard CiA 301*)
+		i_ObjectAccess:=0,
+		i_sub0data:=0,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(G_CAN1_CANopenDevice_NMT.HeartBeat.PT),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#1018,
+		i_ObjectCode:=OD_ARRAY, (*Type of index*)
+		i_NumOfSubids:=4,(*Number of subindexes*)
+		i_TypeSpec:=16#0007,(*Index of 16-bit deftype*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=4,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_IdentityArray_Device),
+		i_CallBackPOU:=0);
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2129,
+		i_ObjectCode:=OD_VAR,(*Type of index*)
+		i_NumOfSubids:=0,(*Number of subindexes*)
+		i_TypeSpec:=16#0005,(*Index datatype, either user defined or standard CiA 301*)
+		i_ObjectAccess:=0,
+		i_sub0data:=0,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_CAN1_PDO_DUMMY),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2130,
+		i_ObjectCode:=OD_ARRAY, (*Type of index*)
+		i_NumOfSubids:=10,(*Number of subindexes*)
+		i_TypeSpec:=16#0009,(*Index of 16-bit deftype*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=10,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_SoftwareInformation),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2140,
+		i_ObjectCode:=OD_ARRAY, (*Type of index*)
+		i_NumOfSubids:=6,(*Number of subindexes*)
+		i_TypeSpec:=16#0005,(*Index of 16-bit deftype*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=6,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_MACAddress),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2141,
+		i_ObjectCode:=OD_ARRAY, (*Type of index*)
+		i_NumOfSubids:=50,(*Number of subindexes*)
+		i_TypeSpec:=16#0005,(*Index of 16-bit deftype*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=50,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_EthernetConfiguration),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2150,
+		i_ObjectCode:=OD_ARRAY, (*Type of index*)
+		i_NumOfSubids:=10,(*Number of subindexes*)
+		i_TypeSpec:=16#0006,(*Index of 16-bit deftype*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=10,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_CAN1Config),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2151,
+		i_ObjectCode:=OD_ARRAY, (*Type of index*)
+		i_NumOfSubids:=10,(*Number of subindexes*)
+		i_TypeSpec:=16#0006,(*Index of 16-bit deftype*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=10,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_CAN2Config),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2152,
+		i_ObjectCode:=OD_ARRAY, (*Type of index*)
+		i_NumOfSubids:=10,(*Number of subindexes*)
+		i_TypeSpec:=16#0006,(*Index of 16-bit deftype*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=10,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_CAN3Config),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2153,
+		i_ObjectCode:=OD_ARRAY, (*Type of index*)
+		i_NumOfSubids:=10,(*Number of subindexes*)
+		i_TypeSpec:=16#0006,(*Index of 16-bit deftype*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=10,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_CAN4Config),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2131,
+		i_ObjectCode:=OD_VAR,(*Type of index*)
+		i_NumOfSubids:=0,(*Number of subindexes*)
+		i_TypeSpec:=16#0006,(*Index datatype, either user defined or standard CiA 301*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=0,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_Parameter_CSV_unique_ID1),
+		i_CallBackPOU:=0);
+
+
+		CANInitSequencer := CANInitSequencer + 1;
+	3:  (* Sequencer step 3*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	4:   (* Sequencer step 4*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	5:   (* Sequencer step 5*)
+(*Initialize OD save*)
+	G_CAN1_CANopenDevice_SaveSubData1010h.SaveSigns := ADR(G_CAN1_CANopenDevice_SaveSigns1010[0]);
+	G_CAN1_CANopenDevice_SaveSubData1010h.SaveIndexData := ADR(G_CAN1_CANopenDevice_SaveData[0]);
+	G_CAN1_CANopenDevice_SaveData[3].CBPOU_SaveAll := INDEXOF(SaveODAll);
+	G_CAN1_CANopenDevice_SaveData[3].CBPOU_DeleteAll := INDEXOF(SaveODDeleteAll);
+	G_CAN1_CANopenDevice_OD.AdditionalData := ADR(G_CAN1_CANopenDevice_SaveSubData1010h);
+	SaveODhndl1010.Init(i_pOD:= ADR(G_CAN1_CANopenDevice_OD));
+	SaveODhndl1011.Init(i_pOD:= ADR(G_CAN1_CANopenDevice_OD));
+	SaveODLoadODLinesByDesc(ADR(G_CAN1_CANopenDevice_OD),0);
+
+	CANopenODReOrg(i_pOD:=ADR(G_CAN1_CANopenDevice_OD));
+
+		CANInitSequencer := CANInitSequencer + 1;
+	ELSE
+		(* Sequencer ready *)
+		G_InitProtocolsCan1Ready:=TRUE;
+		CANInitSequencer := 0;
+END_CASE
+
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Protocols_Can1 TO Init_Protocols_Can2:=
+G_InitProtocolsCan1Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Protocols_Can2:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*CAN2 INIT*)
+(* Sequencer is used to split init to smaller steps *)
+CASE CANInitSequencer OF
+	0: (* Sequencer step 0*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	1: (* Sequencer step 1*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	2: (* Sequencer step 2*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	3:  (* Sequencer step 3*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	4:   (* Sequencer step 4*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	5:   (* Sequencer step 5*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	ELSE
+		(* Sequencer ready *)
+		G_InitProtocolsCan2Ready:=TRUE;
+		CANInitSequencer := 0;
+END_CASE
+
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Protocols_Can2 TO Init_Protocols_Can3:=
+G_InitProtocolsCan2Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Protocols_Can3:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*CAN3 INIT*)
+(* Sequencer is used to split init to smaller steps *)
+CASE CANInitSequencer OF
+	0: (* Sequencer step 0*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	1: (* Sequencer step 1*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	2: (* Sequencer step 2*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	3:  (* Sequencer step 3*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	4:   (* Sequencer step 4*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	5:   (* Sequencer step 5*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	ELSE
+		(* Sequencer ready *)
+		G_InitProtocolsCan3Ready:=TRUE;
+		CANInitSequencer := 0;
+END_CASE
+
+END_STEP
+
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Protocols_Can3 TO Init_Protocols_Can4:=
+G_InitProtocolsCan3Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Protocols_Can4:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*CAN4 INIT*)
+(* Sequencer is used to split init to smaller steps *)
+CASE CANInitSequencer OF
+	0: (* Sequencer step 0*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	1: (* Sequencer step 1*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	2: (* Sequencer step 2*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	3:  (* Sequencer step 3*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	4:   (* Sequencer step 4*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	5:   (* Sequencer step 5*)
+
+		CANInitSequencer := CANInitSequencer + 1;
+	ELSE
+		(* Sequencer ready *)
+		G_InitProtocolsCan4Ready:=TRUE;
+		CANInitSequencer := 0;
+END_CASE
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Protocols_Can4 TO Init_Isobus_Can1:=
+G_InitProtocolsCan4Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Isobus_Can1:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*Initialize ISOBUS for CAN1*)
+
+
+
+	G_InitIsobusCan1Ready:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Isobus_Can1 TO Init_Isobus_Can2:=
+G_InitIsobusCan1Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Isobus_Can2:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*Initialize ISOBUS for CAN2*)
+
+
+
+	G_InitIsobusCan2Ready:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Isobus_Can2 TO Init_Isobus_Can3:=
+G_InitIsobusCan2Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Isobus_Can3:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*Initialize ISOBUS for CAN3*)
+
+
+
+	G_InitIsobusCan3Ready:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Isobus_Can3 TO Init_Isobus_Can4:=
+G_InitIsobusCan3Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Isobus_Can4:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*Initialize ISOBUS for CAN4*)
+
+
+
+	G_InitIsobusCan4Ready:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Isobus_Can4 TO Init_Events:=
+G_InitIsobusCan4Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Events:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+
+	G_InitEventsReady:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Events TO Init_Exit:=
+G_InitEventsReady
+END_TRANSITION
+
+INITIAL_STEP Init_Exit:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+;
+(*Init CANopen variables*)
+	OD_IdentityArray_Device[1] := SystemParameters.o_VendorId; (* Vendor ID *)
+	OD_IdentityArray_Device[2] := SystemParameters.o_ProductCode; (* Module type *)
+	OD_IdentityArray_Device[3] := SystemParameters.o_RevisionNumber; (* Revision number *)
+	OD_IdentityArray_Device[4] := SystemParameters.o_SerialNumber; (* Serial number *)
+(* If at least one CANopen device defined call POU to make CANopen device init. *)
+	CANopenInitDevices();(*Call protocol init functions*)
+
+
+	G_InitExitReady:=TRUE;
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Exit TO Init_Entry:=
+TRUE
+END_TRANSITION
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := 'Don't add own code to this block !!' *)
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init TO (EPEC_In,Application,EPEC_Out):=
+G_InitExitReady
+END_TRANSITION
+
+STEP EPEC_In:
+
+INITIAL_STEP Init_EpecIn:
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_EpecIn TO (IOFilter,Diag,Bus,Other):=
+TRUE
+
+
+END_TRANSITION
+STEP IOFilter:
+;
+(* Update Functions for pin 1.9 *)
+
+(* Update Functions for pin 1.10 *)
+
+(* Update Functions for pin 1.11 *)
+
+(* Update Functions for pin 1.12 *)
+
+(* Update Functions for pin 1.20 *)
+
+(* Update Functions for pin 1.21 *)
+
+(* Update Functions for pin 1.22 *)
+
+(* Update Functions for pin 1.23 *)
+
+(* Update Functions for pin 1.29 *)
+
+(* Update Functions for pin 1.30 *)
+
+(* Update Functions for pin 1.31 *)
+
+(* Update Functions for pin 1.32 *)
+
+(* Update Functions for pin 1.33 *)
+
+(* Update Functions for pin 1.34 *)
+
+(* Update Functions for pin 1.35 *)
+
+(* Update Functions for pin 2.6 *)
+
+(* Update Functions for pin 2.7 *)
+
+(* Update Functions for pin 2.8 *)
+
+(* Update Functions for pin 2.9 *)
+
+(* Update Functions for pin 2.13 *)
+
+(* Update Functions for pin 2.14 *)
+
+(* Update Functions for pin 2.15 *)
+
+(* Update Functions for pin 2.17 *)
+
+(* Update Functions for pin 2.17 *)
+
+(* Update Functions for pin 2.18 *)
+
+(* Update Functions for pin 2.19 *)
+
+(* Update Functions for pin 2.20 *)
+
+(* Update Functions for pin 2.23 *)
+
+(* Update Functions for pin 2.26 *)
+
+(* Update Functions for pin 2.27 *)
+
+(* Update Functions for pin 2.28 *)
+
+(* Update Functions for pin 2.29 *)
+
+(* Update Functions for pin 2.30 *)
+
+(* Update Functions for pin 2.31 *)
+
+(* Update Functions for pin 2.32 *)
+
+(* Update Functions for pin 2.33 *)
+
+(* Update Functions for pin 2.34 *)
+
+(* Update Functions for pin 2.35 *)
+
+(* Update Functions for pin 3.5 *)
+
+(* Update Functions for pin 3.6 *)
+
+(* Update Functions for pin 3.7 *)
+
+(* Update Functions for pin 3.8 *)
+
+(* Update Functions for pin 3.9 *)
+
+(* Update Functions for pin 3.10 *)
+
+(* Update Functions for pin 3.11 *)
+
+(* Update Functions for pin 3.12 *)
+
+(* Update Functions for pin 3.14 *)
+
+(* Update Functions for pin 3.15 *)
+
+(* Update Functions for pin 3.16 *)
+
+(* Update Functions for pin 3.17 *)
+
+(* Update Functions for pin 3.18 *)
+
+(* Update Functions for pin 3.19 *)
+
+(* Update Functions for pin 3.21 *)
+
+(* Update Functions for pin 3.22 *)
+
+(* Update Functions for pin 3.23 *)
+
+(* Update Functions for pin 3.26 *)
+
+(* Update Functions for pin 3.27 *)
+
+(* Update Functions for pin 3.28 *)
+
+(* Update Functions for pin 3.29 *)
+
+(* Update Functions for pin 3.30 *)
+
+(* Update Functions for pin 3.31 *)
+
+(* Update Functions for pin 3.32 *)
+
+(* Update Functions for pin 3.33 *)
+
+(* Update Functions for pin 3.34 *)
+
+(* Update Functions for pin 3.35 *)
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+STEP Diag:
+;
+(* Update functionalities for IO*)
+	(* HW diagnostic *)
+	AI_SupplyLogic := AI_MeanValue(AI_ARR_INDEX,ADR(AI_ARR_SupplyLogic[1]),1,50, 10); (* Filter logic supply raw values*)
+	AI_Ref5V := AI_MeanValue(AI_ARR_INDEX,ADR(AI_ARR_Ref5V[1]),1,50, 10); (* Filter 5V ref raw values. *)
+	AI_Ref10V := AI_MeanValue(AI_ARR_INDEX,ADR(AI_ARR_Ref10V[1]),1,50, 10); (* Filter 10V ref raw values. *)
+	AI_PCBTemperature := AI_MeanValue(AI_ARR_INDEX,ADR(AI_ARR_PCBTemperature[1]), 1,50, 10);
+	AI_SupplyPower1 := AI_MeanValue(AI_ARR_INDEX,ADR(AI_ARR_SupplyPower1[1]), 1,50, 10); (* Filter power switch 1 raw values*)
+	AI_SupplyPower2 := AI_MeanValue(AI_ARR_INDEX,ADR(AI_ARR_SupplyPower2[1]), 1,50, 10); (* Filter power switch 2 raw values*)
+	AI_10VPullUpSupply := AI_MeanValue(AI_ARR_INDEX,ADR(AI_ARR_10VPullUpSupply[1]),1,50, 10);
+	AI_InternADCReference := AI_MeanValue(AI_ARR_INDEX,ADR(AI_ARR_InternADCReference[1]), 1,50, 10);
+	AI_CoreTemperature := AI_MeanValue(AI_ARR_INDEX,ADR(AI_ARR_CoreTemperature[1]), 1,50, 10);
+	AI_Power1Pin := AI_MeanValue(AI_ARR_INDEX,ADR(AI_ARR_Power1Pin[1]), 1,50, 10);
+	AI_Power2Pin := AI_MeanValue(AI_ARR_INDEX,ADR(AI_ARR_Power2Pin[1]), 1,50, 10);
+
+	G_HWDiagnostics(
+		i_SupplyVoltage1:=AI_SupplyLogic,
+		i_SupplyVoltage2:=AI_Power1Pin ,
+		i_SupplyVoltage3:=AI_Power2Pin,
+		i_Ref5V:=AI_Ref5V,
+		i_Ref10V:=AI_Ref10V,
+		i_Pullup10V := AI_10VPullUpSupply,
+		i_RefADC := AI_InternADCReference,
+		i_Temperature1 := AI_CoreTemperature,
+		i_Temperature2 := AI_PCBTemperature,
+		i_SupplyVoltageHighLimit := G_SupplyVoltageHighLimit,
+		i_SupplyVoltageLowLimit := G_SupplyVoltageLowLimit,
+		i_Ref5VHighLimit := G_Ref5VHighLimit,
+		i_Ref5VLowLimit := G_Ref5VLowLimit,
+		i_Ref10VHighLimit := G_Ref10VHighLimit,
+		i_Ref10VLowLimit := G_Ref10VLowLimit,
+		i_PullUp10VHighLimit := G_PullUp10VHighLimit,
+		i_PullUp10VLowLimit := G_PullUp10VLowLimit,
+		i_RefADCVHighLimit := G_RefADCVHighLimit,
+		i_RefADCVLowLimit := G_RefADCVLowLimit,
+		i_TempHighLimit := G_TempHighLimit,
+		i_TempLowLimit := G_TempLowLimit,
+		i_CycleTimeHighLimit := G_CycleTimeHighLimit);
+
+		SUPPLY_Logic := G_HWDiagnostics.o_SupplyVoltage1;
+		SUPPLY_Power1Pin:= G_HWDiagnostics.o_SupplyVoltage2;
+		SUPPLY_Power2Pin := G_HWDiagnostics.o_SupplyVoltage3;
+		REF_10V := G_HWDiagnostics.o_Ref10V;
+		REF_5V := G_HWDiagnostics.o_Ref5V;
+		REF_10VPullUpSupply := G_HWDiagnostics.o_PullUp10V;
+		REF_InternADC := G_HWDiagnostics.o_RefADCV;
+		TEMP_PCB := G_HWDiagnostics.o_Temperature2;
+		TEMP_CoreTemperature := G_HWDiagnostics.o_Temperature1;
+
+		SUPPLY_Power1 := ADC_To_mAorV(AI_SupplyPower1,G_AIType.Supply);
+		SUPPLY_Power2 := ADC_To_mAorV(AI_SupplyPower2,G_AIType.Supply);
+
+
+	(* Update power switches and scale voltages measurement *)
+		SYSTEM_PWR_SWT_SET_STATE(0,BOOL_TO_BYTE(POWER_1_Enable));
+	(* Update power switches *)
+		SYSTEM_PWR_SWT_SET_STATE(1,BOOL_TO_BYTE(POWER_2_Enable));
+
+
+
+
+
+
+
+
+
+(*########################################################*)
+(*This block is created implicit. Don't add own code here.*)
+(*########################################################*)
+
+(* Diagnostics for CAN interfaces *)
+G_CAN1_Diagnostics(i_DrvNbr:=0);
+G_CAN2_Diagnostics(i_DrvNbr:=1);
+G_CAN3_Diagnostics(i_DrvNbr:=2);
+G_CAN4_Diagnostics(i_DrvNbr:=3);
+
+(* CANopen networks management and diagnostics  *)
+G_CAN1_NetworkManager();
+
+
+
+
+(* System Ok conditions *)
+G_SystemOk:=NOT(G_HWDiagnostics.o_Temperature1High) AND
+		NOT(G_HWDiagnostics.o_Temperature1Low) AND
+		NOT(G_HWDiagnostics.o_Temperature2High) AND
+		NOT(G_HWDiagnostics.o_Temperature2Low) AND
+		NOT(G_HWDiagnostics.o_SupplyVoltage1High) AND
+		NOT(G_HWDiagnostics.o_SupplyVoltage1Low) AND
+		NOT(G_HWDiagnostics.o_PullUp10VHigh) AND
+		NOT(G_HWDiagnostics.o_PullUp10VLow) AND
+		NOT(G_HWDiagnostics.o_RefADCVHigh) AND
+		NOT(G_HWDiagnostics.o_RefADCVLow) AND
+		NOT (ERR_FLAG_IO_INIT);
+
+
+
+POWER_1_Enable:=G_SystemOk;
+POWER_2_Enable:=G_SystemOk;
+
+
+
+IO_SET_LED(i_SystemOk:=G_SystemOk, i_RunWithErrors:=G_ActiveError, i_InitState:=NOT(G_InitExitReady));
+
+
+IF G_HWDiagnostics.o_SupplyVoltage1 > G_LowLimitForParameterSaving THEN
+	SaveODBlockActions(FALSE);
+ELSE
+	SaveODBlockActions(TRUE);
+END_IF
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+STEP Bus:
+;
+
+
+	CANVXDCheckMessages();(*Receive CAN-data*)
+	CANopenUpdateDevices();(*Updates data of protocols in devices and send CAN-data*)
+
+	(*Check for nmt reset *)
+	IF G_CAN1_CANopenDevice_NMT.StateChanged THEN
+		IF G_CAN1_CANopenDevice_NMT.LastNmtCommand = 16#81 OR G_CAN1_CANopenDevice_NMT.LastNmtCommand = 16#82 THEN
+			(* If there is NMT reset command for IEC application CANopen device,
+				IEC application is started after IEC cycle in execution. *)
+					G_RESET_MODULE := TRUE;
+		END_IF
+	END_IF
+
+
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+STEP Other:
+;
+
+
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM (IOFilter,Diag,Bus,Other) TO Init_EpecIn:=
+FALSE
+
+
+END_TRANSITION
+
+
+END_STEP
+
+STEP Application:
+INITIAL_STEP Init_Application:
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Application TO Main_Application:=
+TRUE
+END_TRANSITION
+
+STEP Main_Application:
+(* Call user application *)
+    Main();
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Main_Application TO Init_Application:=
+FALSE
+END_TRANSITION
+END_STEP
+
+STEP Epec_Out:
+
+INITIAL_STEP Init_EpecOut:
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_EpecOut TO Other_EpecOut:=
+TRUE
+
+
+END_TRANSITION
+STEP Other_EpecOut:
+(* tag EPEC_OUT_OTHER *)
+
+(* If reset flag is on make reset. For 5050 PLCopen application is reseted. *)
+IF G_RESET_MODULE THEN
+    SYSTEM_RESTART_PLCOPEN_APP(0);
+END_IF
+
+(* Block actions if voltage level is under defined limit *)
+IF G_HWDiagnostics.o_SupplyVoltage1 > G_LowLimitForParameterSaving THEN
+
+    IF	G_CounterRestoreCmdOld <> G_ODSAVE_RESTORE_COMMS_COUNTER THEN
+        (* Restore command given trough CANopen *)
+        G_CounterRestoreCmdOld := G_ODSAVE_RESTORE_COMMS_COUNTER;
+        SystemParameters.RestoreDefaultData();
+    	OD_MACAddress := SystemParameters.o_MAC;
+	OD_EthernetConfiguration := SystemParameters.i_Ethernet;
+	OD_CAN1Config := SystemParameters.i_CAN1;
+
+    END_IF
+
+    IF G_CounterSaveCmdOld <> G_ODSAVE_SAVE_COMMS_COUNTER THEN
+        (* Save command given trough CANopen *)
+        G_CounterSaveCmdOld := G_ODSAVE_SAVE_COMMS_COUNTER;
+
+    	SystemParameters.i_Ethernet := OD_EthernetConfiguration;
+	SystemParameters.i_CAN1 := OD_CAN1Config;
+
+        SystemParameters.WriteData();
+    END_IF
+
+    
+
+END_IF
+
+
+
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Other_EpecOut TO Init_EpecOut:=
+FALSE
+
+
+END_TRANSITION
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+
+TRANSITION FROM (EPEC_In,Application,EPEC_Out) TO Init:=
+FALSE
+END_TRANSITION
+
+END_PROGRAM
+
+MACRO
+MacroName: 'ImportLibs'
+MacroMenu: 'Import Libraries'
+MacroCmd: 'library delete J1939.lib 5050CANVXD.lib 5050ext.lib 5050int.lib 5050specific.lib ADConversion.lib AddressClaiming.lib AI.lib CANopen.lib CANopenCSDO.lib CANopenODSave.lib CANopen_302.lib DataTransfer.lib DigitalOutputDiagnostic.lib EventLog.lib EventLogTransfer.lib FileSys.lib Filters.lib J1939Event.lib JoystickCalibrationAndDiagnostic.lib NetworkManager.lib Ramp.lib ProportionalValveControl.lib SensorCalibrationAndDiagnostic.lib Standard.lib SysLibMem.lib SysLibProjectInfo.lib SysLibRtc.lib Util.lib'
+MacroCmd: 'library add J1939.lib 5050CANVXD.lib 5050ext.lib 5050int.lib 5050specific.lib ADConversion.lib AddressClaiming.lib AI.lib CANopen.lib CANopenCSDO.lib CANopenODSave.lib CANopen_302.lib DataTransfer.lib DigitalOutputDiagnostic.lib EventLog.lib EventLogTransfer.lib FileSys.lib Filters.lib J1939Event.lib JoystickCalibrationAndDiagnostic.lib NetworkManager.lib Ramp.lib ProportionalValveControl.lib SensorCalibrationAndDiagnostic.lib Standard.lib SysLibMem.lib SysLibProjectInfo.lib SysLibRtc.lib Util.lib'
+END_MACRO
+
+
+    
+MACRO
+MacroName: 'ImportMultiTool'
+MacroMenu: 'Import MultiTool'
+MacroCmd: 'file save'
+MacroCmd: 'project import EPEC_CU3.exp' ;Import exp - file generated by MultiTool
+MacroCmd: 'call ImportLibs'
+MacroCmd: 'project clean'
+END_MACRO
+

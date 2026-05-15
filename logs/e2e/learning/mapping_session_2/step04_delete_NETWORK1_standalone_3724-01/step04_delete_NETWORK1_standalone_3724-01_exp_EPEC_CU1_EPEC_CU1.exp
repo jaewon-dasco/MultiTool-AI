@@ -1,0 +1,1332 @@
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'Code_Template_globals' *)
+(* @PATH := 'Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL CONSTANT
+	G_MAX_NUMBER_OF_COBIDS:DWORD:=100;
+	G_CANOPEN_NUMBER_OF_LAST_PDO_MAP:WORD:=8;
+	G_CANOPEN_OD_SAVE_MAX_IND_SIZE:WORD:=1020;
+	G_CANVXD_CAN1_USE_BUFFER:BOOL:=TRUE;
+	G_CANVXD_CAN2_USE_BUFFER:BOOL:=TRUE;
+
+END_VAR
+
+VAR_GLOBAL
+(*START - Implicit variables, made by EPEC Parser*)
+	G_AIBufferOf_SupplyVolt:IO_SET_AI_BUFFER; (* Function block for AI filtering. *)
+	G_AIBufferOf_PcbTemperature:IO_SET_AI_BUFFER; (* Function block for AI filtering. *)
+	G_AIBufferOf_5V_REf:IO_SET_AI_BUFFER; (* Function block for AI filtering. *)
+	G_AIBufferOf_2_5V_REF:IO_SET_AI_BUFFER; (* Function block for AI filtering. *)
+	G_AIBufferOf_AI_Biaserature:IO_SET_AI_BUFFER; (* Function block for AI filtering. *)
+	G_AIBufferOf_PI_BiaS:IO_SET_AI_BUFFER; (* Function block for AI filtering. *)
+	G_HWDiagnostics:HWD_Measurements; (* Function block instance which is used for voltage and temperature monitoring. *)
+	G_AddAllAutoGenEventsToLog:BOOL := TRUE; (* Add all automatically generated events to log. *)
+	G_OffDelayForAutoGenEvents:WORD := 50; (* Off delay for automatically generated events. *)
+	G_OnDelayForAutoGenEvents:WORD := 100; (* On delay for automatically generated events. *)
+	G_LowLimitForParameterSaving:WORD := 900; (* Variable defines low limit for parameter saving [0.01V]. Compared votlage is read from HWD_Measurements function block. If read voltage is smaller than defined value parameter saving is not started. *)
+	G_SystemOk:BOOL:=FALSE;
+	G_TempHighLimit:INT:=1050;
+	G_TempLowLimit:INT:=-400;
+	G_SupplyVoltageHighLimit:INT:=3300;
+	G_SupplyVoltageLowLimit:INT:=900;
+	G_Ref5VHighLimit:INT:=550;
+	G_Ref5VLowLimit:INT:=450;
+	G_RefPiBiasHighLimit:INT:=480;
+	G_RefPiBiasLowLimit:INT:=380;
+	G_RefAiBiasHighLimit:INT:=780;
+	G_RefAiBiasLowLimit:INT:=680;
+	G_Ref2V5HighLimit:INT:=270;
+	G_Ref2V5LowLimit:INT:=230;
+	G_CycleTimeHighLimit:INT:=30;
+
+(*Init Flags*)
+	G_InitEntryReady:BOOL:=FALSE;
+	G_InitFlashReady:BOOL:=FALSE;
+	G_InitIOReady:BOOL:=FALSE;
+	G_InitBusReady:BOOL:=FALSE;
+	G_InitProtocolsCan1Ready:BOOL:=FALSE;
+	G_InitProtocolsCan2Ready:BOOL:=FALSE;
+	G_InitIsobusCan1Ready:BOOL:=FALSE;
+	G_InitIsobusCan2Ready:BOOL:=FALSE;
+	G_InitEventsReady:BOOL:=FALSE;
+	G_InitExitReady:BOOL:=FALSE;
+	G_ActiveError:BOOL:=FALSE;
+
+	G_FileSysDir:POINTER TO FileSysDirBlock;  		(* Pointer to file system block which contains dir. *)
+	G_FileSysKeyWord:DWORD:=16#2D93DFE8;       (* Keyword which is used to check match between file system and Codesys project. *)
+	G_RESET_MODULE:BOOL:=FALSE;						        (* Setting this flag to TRUE, resets module in the end of the application cycle. *)
+
+	G_3720_ErrFileSysInit:DINT:=0;					      (* Possible error code from file system init *)
+	G_3720_ErrFastParamsLoad:INT := 0;				    (* Possible error code when loading fast parameters from NVRAM *)
+	G_3720_ErrParamsLoad:INT := 0;					      (* Possible error code when loading parameter image from NVRAM *)
+	G_3720_NvLoadStarted:BOOL:=FALSE;				      (* Tells that NvLoad has been started. *)
+	G_3720_OldImageChanged:DWORD;					        (* Counter which is used to store latest counter value for RAM image. *)
+	G_3720_CommsSaveOldCnt:WORD;		              (* Variable contains latest value for number od comms save commands. *)
+	G_3720_CommsRestoreOldCnt:WORD;               (* Variable contains latest value for number od comms restore commands. *)
+
+(*Error codes*)
+
+(* Global NodeIds *)
+	G_NodeIds:ARRAY[1..2] OF INT := 1, 1;
+
+
+	G_CAN1_CANopenDevice: CANopenDev;
+	G_CAN1_CANopenDevice_OD: CANopenOD;(*Description of ObjectDictionary*)
+	G_CAN1_CANopenDevice_ODEntrys: ARRAY [1..67] OF CANopenOD_ENTRY;(*ObjectDictionary data*)
+	G_CAN1_CANopenDevice_Protocols:ARRAY [1..5] OF CANopenProtocolEntry;(*Used protocols - NMT, OD, SSDO, SYNC & HBCons always exist*)
+	G_CAN1_CANopenDevice_NMT: CANopenNMT;
+	G_CAN1_CANopenDevice_SSDO: CANopenSSDO;
+	G_CAN1_CANopenDevice_SYNC: CANopenSYNC  := (COBID := 16#80);
+	G_CAN1_CANopenDevice_HBConsumer:CANopenHeartBeatConsumer; (*HeartBeat Consumer protocol*)
+	G_CAN1_CANopenDevice_SaveData:ARRAY [0..3] OF sSaveIndexData :=
+					(StartIndex:=16#1000, EndIndex:=16#FFFF, FileName:='Device1.Par'),
+					(StartIndex:=16#1000, EndIndex:=16#1FFF, FileName:='Device1.Par'),
+					(StartIndex:=16#2000, EndIndex:=16#FFFF, FileName:='Device1.Par'),
+					(StartIndex:=16#0000, EndIndex:=16#0000, FileName:='Device1.Par');
+	G_CAN1_CANopenDevice_SaveSubData1010h:sODSave:= (SubService:=Save,Sub1Count:=0,pNext:=0,NumOfEntrys:=4,SaveIndexData:=0,SaveSigns:=0,NextOD:=0);
+	G_CAN1_CANopenDevice_SaveSigns1010:ARRAY [0..3] OF DWORD;
+
+
+(*Init diagnostics CAN1*)
+	G_CAN1_Diagnostics:CANVXDDiagnostic;
+(*Init monitoring CAN1*)
+	G_CAN1_NetworkManager:NM_NetworkManager;
+(*Init diagnostics CAN2*)
+	G_CAN2_Diagnostics:CANVXDDiagnostic;
+
+
+
+
+(*END - Implicit variables, made by EPEC Parser*)
+END_VAR
+(* @OBJECT_END := 'Code_Template_globals' *)
+(* @CONNECTIONS :=Code_Template_globals
+FILENAME:  ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'IO' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+END_VAR
+(* @OBJECT_END := 'IO' *)
+(* @CONNECTIONS :=IO
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'SYSTEM' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	SYSTEM_FW_VERSION:STRING := 'X.X.X';
+	SYSTEM_ControlUnitType:DWORD := 0; (* Type for control unit. *)
+	SYSTEM_ControlUnitRevision:DWORD := 0; (* Revision for control unit *)
+	SYSTEM_SerialNumber:DWORD := 0; (* Serial number for control unit *)
+	SYSTEM_VendorId:DWORD := 0; (* Vendor-ID which is read from firmware *)
+END_VAR
+(* @OBJECT_END := 'SYSTEM' *)
+(* @CONNECTIONS :=SYSTEM
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'IO_RAW' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	AI_ARR_INDEX_SupplyVolt:BYTE := 0; (* Index which points last added conversion result in array. *)
+	AI_ARR_SupplyVolt:ARRAY [1..50] OF WORD; (* Array of 50 latest conversion values for supply voltage measurement. *)
+	AI_ARR_INDEX_PCBTemperature:BYTE := 0; (* Index which points last added conversion result in array. *)
+	AI_ARR_PCBTemperature:ARRAY [1..50] OF WORD; (* Array of 50 latest conversion values for PCB temperature measurement. *)
+	AI_ARR_INDEX_5V_REF:BYTE := 0; (* Index which points last added conversion result in array. *)
+	AI_ARR_5V_REF:ARRAY [1..50] OF WORD; (* Array of 50 latest conversion values for REF 5V voltage measurement. *)
+	AI_ARR_INDEX_2_5V_REf:BYTE := 0; (* Index which points last added conversion result in array. *)
+	AI_ARR_2_5V_REF:ARRAY [1..50] OF WORD; (* Array of 50 latest conversion values for REF 2.5V voltage measurement. *)
+	AI_ARR_INDEX_AI_Bias:BYTE := 0; (* Index which points last added conversion result in array. *)
+	AI_RAW_AI_Bias AT %IW30:WORD := 0; (* Raw value for 7.3 V reference voltage measurement. *)
+	AI_ARR_AI_Bias:ARRAY [1..50] OF WORD; (* Array of 50 latest conversion values for 7.3V reference voltage measurement. *)
+	AI_ARR_INDEX_PI_Bias:BYTE := 0; (* Index which points last added conversion result in array. *)
+	AI_RAW_PI_Bias AT %IW31:WORD := 0; (* Raw value for 4.3 V reference voltage measurement. *)
+	AI_ARR_PI_Bias:ARRAY [1..50] OF WORD; (* Array of 50 latest conversion values for 4.3V reference voltage measurement. *)
+END_VAR
+(* @OBJECT_END := 'IO_RAW' *)
+(* @CONNECTIONS :=IO_RAW
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'IO_INTERNAL' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	AI_SupplyVolt:WORD := 0; (* Filtered AI value for control unit supply voltage measurement. *)
+	SUPPLY_Volt:WORD := 0; (* Scaled supply voltage [0.01 V] *)
+	AI_PCBTemperature:WORD := 0; (* Filtered AI value for control unit temperature measurement. *)
+	TEMP_PCB:INT := 0; (* Scaled PCB temperature [0.1 C] *)
+	AUX_OUT_Enable AT %QX6.1:BOOL := FALSE; (* Enable variable for auxilary output. *)
+	AUX_OUT_Status AT %IX12.13:BOOL := FALSE; (* Auxilary output status. *)
+	REF_OUT_5V_Enable AT %QX6.2:BOOL := TRUE; (* Enable variable for 5 V reference output. *)
+	AI_5V_REF:WORD := 0; (* Filtered AI value for 5 V reference. *)
+	REF_5V:INT := 0; (* Scaled 5 V reference voltage [0.01 V]. *)
+	AI_2_5V_REF:WORD := 0; (* Filtered AI value for 2.5 V reference. *)
+	REF_2_5V:INT := 0; (* Scaled 2.5 V reference voltage [0.01 V]. *)
+	AI_AI_Bias:WORD := 0; (* Filtered AI value for 7.3V reference voltage. *)
+	AI_BIAS:INT := 0; (* Scaled 7.3V AI reference voltage [0.01 V]. *)
+	AI_PI_Bias:WORD := 0; (* Filtered AI value for 4.3V reference voltage. *)
+	PI_BIAS:INT := 0; (* Scaled 4.3V PI reference voltage [0.01 V]. *)
+	G_NoErrors:BOOL := FALSE; (* No active errors for AI overcurrent protection. *)
+	G_X3_3_OverCurrent:BOOL := FALSE; (* Error status for AI over current protection *)
+	G_X3_4_OverCurrent:BOOL := FALSE; (* Error status for AI over current protection *)
+	G_X3_5_OverCurrent:BOOL := FALSE; (* Error status for AI over current protection *)
+	G_X3_6_OverCurrent:BOOL := FALSE; (* Error status for AI over current protection *)
+	G_X3_7_OverCurrent:BOOL := FALSE; (* Error status for AI over current protection *)
+	G_X3_8_OverCurrent:BOOL := FALSE; (* Error status for AI over current protection *)
+END_VAR
+(* @OBJECT_END := 'IO_INTERNAL' *)
+(* @CONNECTIONS :=IO_INTERNAL
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'ERRORS' *)
+(* @PATH := '\/Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	ERR_FLAG_OUTPUT_ST_INIT:BOOL := FALSE; (* Flag is set true if there is at least one monitored error in output status. *)
+	ERR_FLAG_IO_INIT:BOOL := FALSE; (* Flag is set true if there is at least one monitored error in I/O init functions. *)
+END_VAR
+(* @OBJECT_END := 'ERRORS' *)
+(* @CONNECTIONS :=ERRORS
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+
+
+
+
+
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'OD1_VAR' *)
+(* @PATH := 'Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	OD_DeviceType_Device1:UDINT:=405;
+	(*Sub0: Information about the device type*)
+	OD_ErrorReg_Device1:USINT:=0;
+	(*Sub0: Error information*)
+	OD_IdentityArray_Device:ARRAY [1..4] OF UDINT;
+	(*Sub1: Vendor ID*)
+	(*Sub2: Product code*)
+	(*Sub3: Revision number*)
+	(*Sub4: Serial number*)
+	OD_CAN1_PDO_DUMMY:BYTE:=0; (*PDO Dummy Variable*)
+	OD_SoftwareInformation:ARRAY [1..10] OF STRING(79):=''; (*Application version informations*)
+	(*Sub1: Application version*)
+	(*Sub2: Additional version information*)
+	(*Sub3: Additional version information*)
+	(*Sub4: Additional version information*)
+	(*Sub5: Additional version information*)
+	(*Sub6: Additional version information*)
+	(*Sub7: Additional version information*)
+	(*Sub8: Additional version information*)
+	(*Sub9: Additional version information*)
+	(*Sub10: Additional version information*)
+	OD_G_CAN1_Comms:ARRAY[1..10] OF WORD:= 10(0);
+	(*Sub1: Codesys communication enabled*)
+	(*Sub2: Node id for Codesys communication*)
+	(*Sub3: Bit rate for CAN1*)
+	(*Sub4: Reserved*)
+	(*Sub5: Reserved*)
+	(*Sub6: Reserved*)
+	(*Sub7: Reserved*)
+	(*Sub8: Reserved*)
+	(*Sub9: Reserved*)
+	(*Sub10: Node id for PLCopen application CANopen device*)
+	OD_G_CAN2_Comms:ARRAY[1..10] OF WORD:= 10(0);
+	(*Sub1: Codesys communication enabled*)
+	(*Sub2: Node id for Codesys communication*)
+	(*Sub3: Bit rate for CAN2*)
+	(*Sub4: Reserved*)
+	(*Sub5: Reserved*)
+	(*Sub6: Reserved*)
+	(*Sub7: Reserved*)
+	(*Sub8: Reserved*)
+	(*Sub9: Reserved*)
+	(*Sub10: Node id for PLCopen application CANopen device*)
+	OD_Parameter_CSV_unique_ID1:UINT:=16#0000; (*Parameter CSV unique ID*)
+END_VAR
+(* @OBJECT_END := 'OD1_VAR' *)
+(* @CONNECTIONS :=OD1_VAR
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'OD2_VAR' *)
+(* @PATH := 'Implicit Globals' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	OD_DeviceType_Device2:UDINT:=405;
+	(*Sub0: Information about the device type*)
+	OD_ErrorReg_Device2:USINT:=0;
+	(*Sub0: Error information*)
+	OD_CAN2_PDO_DUMMY:BYTE:=0; (*PDO Dummy Variable*)
+	OD_Parameter_CSV_unique_ID2:UINT:=16#0000; (*Parameter CSV unique ID*)
+END_VAR
+(* @OBJECT_END := 'OD2_VAR' *)
+(* @CONNECTIONS :=OD2_VAR
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @PATH := '' *)
+(* @SYMFILEFLAGS := '2048' *)
+PROGRAM PLC_PRG
+VAR
+(*
+		Tool version       : '8.4.9308.1109'
+		Xml version        : '5.0.47'
+		Control Unit       : 'EPEC_CU1'
+		Control Unit Type  : '3720'
+		Export Time        : '15.05.2026 11:47.26'
+		Export Path        : 'D:\4_AIProject\4_CoDeSys\AI_MutiTool\MultiToolProject\E2EProject\EPEC_CU1'
+		Project File       : 'D:\4_AIProject\4_CoDeSys\AI_MutiTool\MultiToolProject\E2EProject\DasDemoProject.mtproject'
+		Libraries Path     : 'D:\4_AIProject\4_CoDeSys\AI_MutiTool\MultiToolProject\E2EProject\EPEC_CU1\Libraries'
+*)
+
+END_VAR
+(* @END_DECLARATION := '0' *)
+INITIAL_STEP Init:
+
+INITIAL_STEP Init_Entry:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	SystemParameters.ReadData();
+
+	OD_G_CAN1_Comms := SystemParameters.i_CAN1;
+
+	G_InitEntryReady:=TRUE;
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Entry TO Init_Flash:=
+G_InitEntryReady
+END_TRANSITION
+INITIAL_STEP Init_Flash:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+G_InitFlashReady := FALSE;
+
+IF G_3720_NvLoadStarted = FALSE THEN
+	NvRam_3720_Init(i_Enable :=TRUE, i_KeyWordFastParams := G_FileSysKeyWord, i_SizeOfParams := G_3720_PARAM_SIZE, i_SizeOfFastParams := G_3720_FAST_PARAM_SIZE);
+	G_3720_NvLoadStarted := TRUE;
+ELSE
+	NvRam_3720_Init();
+
+	(* Flash init ready exit from block *)
+	IF NvRam_3720_Init.o_InitDone = TRUE THEN
+
+	  G_3720_ErrFastParamsLoad := NvRam_3720_Init.o_ErrorFastParams;
+	  G_3720_ErrParamsLoad := NvRam_3720_Init.o_ErrorParams;
+
+	  FileSysInit(
+			  i_FileSysKey:=G_FileSysKeyWord ,
+			  i_pStart:= ADR(G_3720_ParameterImage[3]) ,                      (* Image contains footer and header. *)
+			  i_pEnd:=  ADR(G_3720_ParameterImage[G_3720_PARAM_SIZE-2]),
+			  i_BlockSize:= G_3720_BLOCK_SIZE_FILE_SYS ,
+			  o_Error=> G_3720_ErrFileSysInit);
+	      G_FileSysDir := G_FileSysFileSystem.Dir;
+		   (* Store old ram image changed counter *)
+		G_3720_OldImageChanged := G_FileSysFileSystem.RamImageChanged;
+		G_InitFlashReady := TRUE;
+	END_IF
+
+END_IF
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Flash TO Init_IO:=
+G_InitFlashReady
+END_TRANSITION
+INITIAL_STEP Init_IO:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+(*IO init:*)
+    (* System inits *)
+SYSTEM_FW_VERSION:=SystemParameters.o_SoftwareVersion;
+SYSTEM_ControlUnitType := SystemParameters.o_ProductCode;
+SYSTEM_ControlUnitRevision := SystemParameters.o_RevisionNumber;
+SYSTEM_SerialNumber := SystemParameters.o_SerialNumber;
+SYSTEM_VendorId := SystemParameters.o_VendorId;
+
+(* Init conversion array for supply voltage measurement *)
+    G_AIBufferOf_SupplyVolt.i_CH:= 12;
+    G_AIBufferOf_SupplyVolt.i_Data := ADR(AI_ARR_SupplyVolt);
+    G_AIBufferOf_SupplyVolt.i_Length := SIZEOF(AI_ARR_SupplyVolt);
+    G_AIBufferOf_SupplyVolt();
+
+(* Init conversion array for PCB temperature measurement *)
+    G_AIBufferOf_PcbTemperature.i_CH:= 10;
+    G_AIBufferOf_PcbTemperature.i_Data := ADR(AI_ARR_PCBTemperature);
+    G_AIBufferOf_PcbTemperature.i_Length := SIZEOF(AI_ARR_PCBTemperature);
+    G_AIBufferOf_PcbTemperature();
+
+ (* Init conversion array for 5V reference *)
+    G_AIBufferOf_5V_REf.i_CH:= 11;
+    G_AIBufferOf_5V_REf.i_Data := ADR(AI_ARR_5V_REF);
+    G_AIBufferOf_5V_REf.i_Length := SIZEOF(AI_ARR_5V_REF);
+    G_AIBufferOf_5V_REf();
+
+(* Init conversion array for 2.5V reference *)
+    G_AIBufferOf_2_5V_REF.i_CH:= 13;
+    G_AIBufferOf_2_5V_REF.i_Data := ADR(AI_ARR_2_5V_REF);
+    G_AIBufferOf_2_5V_REF.i_Length := SIZEOF(AI_ARR_2_5V_REF);
+    G_AIBufferOf_2_5V_REF();
+
+(* Init conversion array for AI bias *)
+    G_AIBufferOf_AI_Biaserature.i_CH:= 14;
+    G_AIBufferOf_AI_Biaserature.i_Data := ADR(AI_ARR_AI_Bias);
+    G_AIBufferOf_AI_Biaserature.i_Length := SIZEOF(AI_ARR_AI_Bias);
+    G_AIBufferOf_AI_Biaserature();
+
+(* Init conversion array for PI bias *)
+    G_AIBufferOf_PI_BiaS.i_CH:= 15;
+    G_AIBufferOf_PI_BiaS.i_Data := ADR(AI_ARR_PI_Bias);
+    G_AIBufferOf_PI_BiaS.i_Length := SIZEOF(AI_ARR_PI_Bias);
+    G_AIBufferOf_PI_BiaS();
+
+
+
+(* Configurations for pin 1.1 *)
+
+(* Configurations for pin 1.2 *)
+
+(* Configurations for pin 1.7 *)
+
+(* Configurations for pin 1.8 *)
+
+(* Configurations for pin 1.9 *)
+
+(* Configurations for pin 1_11 *)
+
+(* Configurations for pin 1.13 *)
+
+(* Configurations for pin 1.15 *)
+
+(* Configurations for pin 1.16 *)
+
+(* Configurations for pin 1.18 *)
+
+(* Configurations for pin 1.19 *)
+
+(* Configurations for pin 1.23 *)
+
+(* Configurations for pin 2_1 *)
+
+(* Configurations for pin 2_2 *)
+
+(* Configurations for pin 2_7 *)
+
+(* Configurations for pin 2_8 *)
+
+(* Configurations for pin 2_9 *)
+
+(* Configurations for pin 2_11 *)
+
+(* Configurations for pin 2_13 *)
+
+(* Configurations for pin 2_15 *)
+
+(* Configurations for pin 2_16 *)
+
+(* Configurations for pin 2_18 *)
+
+(* Configurations for pin 2_19 *)
+
+(* Configurations for pin 2_23 *)
+
+
+(* Configurations for pin 3.14 *)
+
+
+(* Configurations for pin 3.14 *)
+
+
+(* Configurations for pin 3_17 *)
+
+
+(* Configurations for pin 3_18 *)
+
+
+(* Configurations for pin 3_19 *)
+
+
+(* Configurations for pin 3_20 *)
+
+
+(* Configurations for pin 3_21 *)
+
+
+(* Configurations for pin 3_22 *)
+
+
+(* Configurations for pin 3_23 *)
+
+	AIP_InputProtection_3720(); (* 3720 Analog overcurrent input protection init *)
+
+(*IO-init OK?*)
+	G_InitIOReady:=TRUE;
+END_STEP
+
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_IO TO Init_Bus:=
+G_InitIOReady
+END_TRANSITION
+INITIAL_STEP Init_Bus:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+	CANVXDInitCAN(i_DrvNbr:=0, i_BitRate:=250, i_Flags:=(G_CANVXD_FLAGS_AUTORECOVERY OR G_CANVXD_FLAGS_11BIT_OPTIMIZED));
+
+
+	CANVXDInitCAN(i_DrvNbr:=1, i_BitRate:=250, i_Flags:=(G_CANVXD_FLAGS_AUTORECOVERY OR G_CANVXD_FLAGS_11BIT_OPTIMIZED));
+
+
+(*IO-init OK?*)
+	G_InitBusReady:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Bus TO Init_Protocols_Can1:=
+G_InitBusReady
+END_TRANSITION
+
+INITIAL_STEP Init_Protocols_Can1:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*CAN1 INIT*)
+
+	G_CAN1_CANopenDevice.DrvNbr:=0;(*Connect device to can channel*)
+	G_CAN1_CANopenDevice.NodeID := 1;
+	OD_G_CAN1_Comms[10] := 1; (* Node-ID that is not taken from flash *)
+	OD_G_CAN1_Comms[3] := 250; (* Bitrate that is not taken from flash *)
+	G_CAN1_CANopenDevice_NMT.NmtState:=5;
+	G_CAN1_CANopenDevice_NMT.HeartBeat.PT:=T#200ms;(*Optional: Change manually heartbeat producer time (default 0=no heartbeat)*)
+	CANopenSystemAddDevice(i_pDev:=ADR(G_CAN1_CANopenDevice));(*Connect device to system*)
+
+(*Initialize OD's datastructures*)
+
+	G_CAN1_CANopenDevice_OD.EntryCount:=SIZEOF(G_CAN1_CANopenDevice_ODEntrys)/SIZEOF(G_CAN1_CANopenDevice_ODEntrys[1]);(*Max entries of given OD(CANopenDeviceODEntrys array)*)
+	G_CAN1_CANopenDevice_OD.InOrder:=FALSE;(*OD isn't in order*)
+	G_CAN1_CANopenDevice_OD.NextFree:=0;(*OD does not have any entries yet*)
+	G_CAN1_CANopenDevice_OD.OD:=ADR(G_CAN1_CANopenDevice_ODEntrys); (*Pointer to OD array*)
+
+
+(*Define NMT protocol*)
+
+	G_CAN1_CANopenDevice_Protocols[1].ProtocolType:=NMT;
+	G_CAN1_CANopenDevice_Protocols[1].Data:=ADR(G_CAN1_CANopenDevice_NMT);
+	G_CAN1_CANopenDevice_Protocols[1].pDevice:=ADR(G_CAN1_CANopenDevice);
+	G_CAN1_CANopenDevice_Protocols[1].Init:=INDEXOF(CANopenNMTCLIENT.Init);
+	G_CAN1_CANopenDevice_Protocols[1].Update:=INDEXOF(CANopenNMTCLIENT.Update);
+	CANopenDeviceAddProtocol(i_pDev:=ADR(G_CAN1_CANopenDevice), i_pProtocol:=ADR(G_CAN1_CANopenDevice_Protocols[1]));(*Add defined protocol to device*)
+
+(*Define SSDO protocol*)
+
+	G_CAN1_CANopenDevice_Protocols[2].ProtocolType:=SSDO;
+	G_CAN1_CANopenDevice_Protocols[2].Data:=ADR(G_CAN1_CANopenDevice_SSDO);
+	G_CAN1_CANopenDevice_Protocols[2].pDevice:=ADR(G_CAN1_CANopenDevice);
+	G_CAN1_CANopenDevice_Protocols[2].Init:=INDEXOF(CANopenSDOServer.Init);
+	G_CAN1_CANopenDevice_Protocols[2].Update:=INDEXOF(CANopenSDOServer.Update);
+	CANopenDeviceAddProtocol(i_pDev:=ADR(G_CAN1_CANopenDevice), i_pProtocol:=ADR(G_CAN1_CANopenDevice_Protocols[2]));(*Add defined protocol to device*)
+
+(*Define OD protocol*)
+
+	G_CAN1_CANopenDevice_Protocols[3].ProtocolType:=OD;
+	G_CAN1_CANopenDevice_Protocols[3].Data:=ADR(G_CAN1_CANopenDevice_OD);
+	G_CAN1_CANopenDevice_Protocols[3].pDevice:=ADR(G_CAN1_CANopenDevice);
+	G_CAN1_CANopenDevice_Protocols[3].Init:=0;
+	G_CAN1_CANopenDevice_Protocols[3].Update:=0;
+	CANopenDeviceAddProtocol(i_pDev:=ADR(G_CAN1_CANopenDevice), i_pProtocol:=ADR(G_CAN1_CANopenDevice_Protocols[3]));(*Add defined protocol to device*)
+
+(*Define SYNC protocol*)
+
+	G_CAN1_CANopenDevice_Protocols[4].ProtocolType:=SYNC;
+	G_CAN1_CANopenDevice_Protocols[4].Data:=ADR(G_CAN1_CANopenDevice_SYNC);
+	G_CAN1_CANopenDevice_Protocols[4].pDevice:=ADR(G_CAN1_CANopenDevice);
+	G_CAN1_CANopenDevice_Protocols[4].Init:=INDEXOF(CANopenSYNCProtocol.Init);
+	G_CAN1_CANopenDevice_Protocols[4].Update:=0;
+	CANopenDeviceAddProtocol(i_pDev:=ADR(G_CAN1_CANopenDevice), i_pProtocol:=ADR(G_CAN1_CANopenDevice_Protocols[4]));(*Add defined protocol to device*)
+
+(*Define HBCons protocol*)
+
+	G_CAN1_CANopenDevice_Protocols[5].ProtocolType:=HBCons;
+	G_CAN1_CANopenDevice_Protocols[5].Data:=ADR(G_CAN1_CANopenDevice_HBConsumer);
+	G_CAN1_CANopenDevice_Protocols[5].pDevice:=ADR(G_CAN1_CANopenDevice);
+	G_CAN1_CANopenDevice_Protocols[5].Init:=INDEXOF(CANopenHBConsumer.Init);
+	G_CAN1_CANopenDevice_Protocols[5].Update:=INDEXOF(CANopenHBConsumer.Update);
+	CANopenDeviceAddProtocol(i_pDev:=ADR(G_CAN1_CANopenDevice), i_pProtocol:=ADR(G_CAN1_CANopenDevice_Protocols[5]));(*Add defined protocol to device*)
+
+
+
+
+(* Init network manager *)
+
+	G_CAN1_NetworkManager.Init(
+		i_ThisIsMaster:=TRUE,
+		i_DrvNbr:=0,
+		i_StartInterval:=1000,
+		i_pMonitoredNodes:=0,
+		i_NumberOfNodes:=0);
+
+
+(*INIT CAN1 OD*)
+
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0001, OD_DEFTYPE, 0, 0, 16#28, 0, 1, 0);(*typedef U1*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0002, OD_DEFTYPE, 0, 0, 16#28, 0, 8, 0);(*typedef I8*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0003, OD_DEFTYPE, 0, 0, 16#28, 0, 16, 0);(*typedef I16*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0004, OD_DEFTYPE, 0, 0, 16#28, 0, 32, 0);(*typedef I32*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0005, OD_DEFTYPE, 0, 0, 16#28, 0, 8, 0);(*typedef U8*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0006, OD_DEFTYPE, 0, 0, 16#28, 0, 16, 0);(*typedef U16*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0007, OD_DEFTYPE, 0, 0, 16#28, 0, 32, 0);(*typedef U32*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0008, OD_DEFTYPE, 0, 0, 16#28, 0, 32, 0);(*typedef of real*)
+	CANopenODAddLine(ADR(G_CAN1_CANopenDevice_OD), 16#0009, OD_DEFTYPE, 0, 0, 16#28, 0, 80*8, 0);(*typedef str*)
+
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#1000,
+		i_ObjectCode:=OD_VAR,(*Type of index*)
+		i_NumOfSubids:=0,(*Number of subindexes*)
+		i_TypeSpec:=16#0007,(*Index datatype, either user defined or standard CiA 301*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=0,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_DeviceType_Device1),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#1001,
+		i_ObjectCode:=OD_VAR,(*Type of index*)
+		i_NumOfSubids:=0,(*Number of subindexes*)
+		i_TypeSpec:=16#0005,(*Index datatype, either user defined or standard CiA 301*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=0,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_ErrorReg_Device1),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#100a,
+		i_ObjectCode:=OD_VAR,(*Type of index*)
+		i_NumOfSubids:=0,(*Number of subindexes*)
+		i_TypeSpec:=16#0009,(*Index datatype, either user defined or standard CiA 301*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=0,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(SystemParameters.o_SoftwareVersion),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#1017,
+		i_ObjectCode:=OD_VAR,(*Type of index*)
+		i_NumOfSubids:=0,(*Number of subindexes*)
+		i_TypeSpec:=16#0006,(*Index datatype, either user defined or standard CiA 301*)
+		i_ObjectAccess:=0,
+		i_sub0data:=0,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(G_CAN1_CANopenDevice_NMT.HeartBeat.PT),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#1018,
+		i_ObjectCode:=OD_ARRAY, (*Type of index*)
+		i_NumOfSubids:=4,(*Number of subindexes*)
+		i_TypeSpec:=16#0007,(*Index of 16-bit deftype*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=4,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_IdentityArray_Device),
+		i_CallBackPOU:=0);
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2129,
+		i_ObjectCode:=OD_VAR,(*Type of index*)
+		i_NumOfSubids:=0,(*Number of subindexes*)
+		i_TypeSpec:=16#0005,(*Index datatype, either user defined or standard CiA 301*)
+		i_ObjectAccess:=0,
+		i_sub0data:=0,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_CAN1_PDO_DUMMY),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2130,
+		i_ObjectCode:=OD_ARRAY, (*Type of index*)
+		i_NumOfSubids:=10,(*Number of subindexes*)
+		i_TypeSpec:=16#0009,(*Index of 16-bit deftype*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=10,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_SoftwareInformation),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2150,
+		i_ObjectCode:=OD_ARRAY, (*Type of index*)
+		i_NumOfSubids:=10,(*Number of subindexes*)
+		i_TypeSpec:=16#0006,(*Index of 16-bit deftype*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=10,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_G_CAN1_Comms),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2151,
+		i_ObjectCode:=OD_ARRAY, (*Type of index*)
+		i_NumOfSubids:=10,(*Number of subindexes*)
+		i_TypeSpec:=16#0006,(*Index of 16-bit deftype*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=10,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_G_CAN2_Comms),
+		i_CallBackPOU:=0);
+
+	CANopenODAddLine(
+		i_pOD:=ADR(G_CAN1_CANopenDevice_OD),(*Address of Object dictionary where index will be added*)
+		i_index:=16#2131,
+		i_ObjectCode:=OD_VAR,(*Type of index*)
+		i_NumOfSubids:=0,(*Number of subindexes*)
+		i_TypeSpec:=16#0006,(*Index datatype, either user defined or standard CiA 301*)
+		i_ObjectAccess:=G_CANOPEN_OD_ACCESS_NOWRITE OR G_CANOPEN_OD_ACCESS_SUB0NOWRITE,
+		i_sub0data:=0,(*Value of subindex0 in array or (def)struct*)
+		i_pIndexData:=ADR(OD_Parameter_CSV_unique_ID1),
+		i_CallBackPOU:=0);
+
+
+
+
+
+
+
+(*Initialize OD save*)
+	G_CAN1_CANopenDevice_SaveSubData1010h.SaveSigns := ADR(G_CAN1_CANopenDevice_SaveSigns1010[0]);
+	G_CAN1_CANopenDevice_SaveSubData1010h.SaveIndexData := ADR(G_CAN1_CANopenDevice_SaveData[0]);
+	G_CAN1_CANopenDevice_SaveData[3].CBPOU_SaveAll := INDEXOF(SaveODAll);
+	G_CAN1_CANopenDevice_SaveData[3].CBPOU_DeleteAll := INDEXOF(SaveODDeleteAll);
+	G_CAN1_CANopenDevice_OD.AdditionalData := ADR(G_CAN1_CANopenDevice_SaveSubData1010h);
+	SaveODhndl1010.Init(i_pOD:= ADR(G_CAN1_CANopenDevice_OD));
+	SaveODhndl1011.Init(i_pOD:= ADR(G_CAN1_CANopenDevice_OD));
+	SaveODLoadODLinesByDesc(ADR(G_CAN1_CANopenDevice_OD),0);
+
+	CANopenODReOrg(i_pOD:=ADR(G_CAN1_CANopenDevice_OD));
+
+
+	G_InitProtocolsCan1Ready:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Protocols_Can1 TO Init_Protocols_Can2:=
+G_InitProtocolsCan1Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Protocols_Can2:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*CAN2 INIT*)
+
+
+
+
+
+
+
+
+
+
+
+
+
+	G_InitProtocolsCan2Ready:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Protocols_Can2 TO Init_Isobus_Can1:=
+G_InitProtocolsCan2Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Isobus_Can1:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*Initialize ISOBUS for CAN1*)
+
+
+
+	G_InitIsobusCan1Ready:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Isobus_Can1 TO Init_Isobus_Can2:=
+G_InitIsobusCan1Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Isobus_Can2:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+(*Initialize ISOBUS for CAN2*)
+
+
+
+	G_InitIsobusCan2Ready:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Isobus_Can2 TO Init_Events:=
+G_InitIsobusCan2Ready
+END_TRANSITION
+
+INITIAL_STEP Init_Events:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+	;
+
+
+	G_InitEventsReady:=TRUE;
+END_STEP
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Events TO Init_Exit:=
+G_InitEventsReady
+END_TRANSITION
+
+INITIAL_STEP Init_Exit:
+(*#############################################*)
+(*This block is created implicit. Don't add own code to here.*)
+(*#############################################*)
+;
+(*Init CANopen variables*)
+	OD_IdentityArray_Device[1] := SystemParameters.o_VendorId; (* Vendor ID *)
+	OD_IdentityArray_Device[2] := SystemParameters.o_ProductCode; (* Module type *)
+	OD_IdentityArray_Device[3] := SystemParameters.o_RevisionNumber; (* Revision number *)
+	OD_IdentityArray_Device[4] := SystemParameters.o_SerialNumber; (* Serial number *)
+(* If at least one CANopen device defined call POU to make CANopen device init. *)
+	CANopenInitDevices();(*Call protocol init functions*)
+
+
+
+	G_InitExitReady:=TRUE;
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Exit TO Init_Entry:=
+TRUE
+END_TRANSITION
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := 'Don't add own code to this block !!' *)
+
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init TO (EPEC_In,Application,EPEC_Out):=
+G_InitExitReady
+END_TRANSITION
+
+STEP EPEC_In:
+
+INITIAL_STEP Init_EpecIn:
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_EpecIn TO (IOFilter,Diag,Bus,Other):=
+TRUE
+
+
+END_TRANSITION
+STEP IOFilter:
+;
+(* Update Functions for pin 1.1 *)
+
+(* Update Functions for pin 2.23 *)
+
+(* Update Functions for pin 1.7 *)
+
+(* Update Functions for pin 1.8 *)
+
+(* Update Functions for pin 1.9 *)
+
+(* Update Functions for pin 1_11 *)
+
+(* Update Functions for pin 1.13 *)
+
+(* Update Functions for pin 1.13 *)
+
+(* Update Functions for pin 1.13 *)
+
+(* Update Functions for pin 1.13 *)
+
+(* Update Functions for pin 1.13 *)
+
+(* Update Functions for pin 1.13 *)
+
+(* Update Functions for pin 2_1 *)
+
+(* Update Functions for pin 2_2 *)
+
+(* Update Functions for pin 2_7 *)
+
+(* Update Functions for pin 2_8 *)
+
+(* Update Functions for pin 2_9 *)
+
+(* Update Functions for pin 2_11 *)
+
+(* Update Functions for pin 2_13 *)
+
+(* Update Functions for pin 2_15 *)
+
+(* Update Functions for pin 2_16 *)
+
+(* Update Functions for pin 2_18 *)
+
+(* Update Functions for pin 2_19 *)
+
+(* Update Functions for pin 2_23 *)
+
+(* Update Functions for pin 3.14 *)
+
+(* Update Functions for pin 3.16 *)
+
+(* Update Functions for pin 3_17 *)
+
+(* Update Functions for pin 3_18 *)
+
+(* Update Functions for pin 3_19 *)
+
+(* Update Functions for pin 3_20 *)
+
+(* Update Functions for pin 3_21 *)
+
+(* Update Functions for pin 3_22 *)
+
+(* Update Functions for pin 3_23 *)
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+STEP Diag:
+
+(* Mean filtering for supply voltage measurement *)
+    AI_ARR_INDEX_SupplyVolt:= WORD_TO_BYTE(G_AIBufferOf_SupplyVolt.o_Write);
+    AI_SupplyVolt:=AI_MeanValue(
+                i_LatestBufferIndex := AI_ARR_INDEX_SupplyVolt,
+                i_pBuffer := G_AIBufferOf_SupplyVolt.i_Data,
+                i_FirstIndex := 0,
+                i_SizeOfBuffer := 50,
+                i_Samples := 10);
+
+(* Mean filtering for PCB temperature measurement *)
+    AI_ARR_INDEX_PCBTemperature:= WORD_TO_BYTE(G_AIBufferOf_PcbTemperature.o_Write);
+    AI_PCBTemperature:=AI_MeanValue(
+                i_LatestBufferIndex := AI_ARR_INDEX_PCBTemperature,
+                i_pBuffer := G_AIBufferOf_PcbTemperature.i_Data,
+                i_FirstIndex := 0,
+                i_SizeOfBuffer := 50,
+                i_Samples := 10);
+
+(* Mean filtering for 5V reference measurement *)
+    AI_ARR_INDEX_5V_REF:= WORD_TO_BYTE(G_AIBufferOf_5V_REf.o_Write);
+    AI_5V_REF:=AI_MeanValue(
+                i_LatestBufferIndex := AI_ARR_INDEX_5V_REF,
+                i_pBuffer := G_AIBufferOf_5V_REf.i_Data,
+                i_FirstIndex := 0,
+                i_SizeOfBuffer := 50,
+                i_Samples := 10);
+
+(* Mean filtering for 2.5V reference measurement *)
+    AI_ARR_INDEX_2_5V_REf:= WORD_TO_BYTE(G_AIBufferOf_2_5V_REF.o_Write);
+    AI_2_5V_REF:=AI_MeanValue(
+                i_LatestBufferIndex := AI_ARR_INDEX_2_5V_REf,
+                i_pBuffer := G_AIBufferOf_2_5V_REF.i_Data,
+                i_FirstIndex := 0,
+                i_SizeOfBuffer := 50,
+                i_Samples := 10);
+
+(* Mean filtering for AI bias measurement *)
+    AI_ARR_INDEX_AI_Bias:= WORD_TO_BYTE(G_AIBufferOf_AI_Biaserature.o_Write);
+    AI_AI_Bias:=AI_MeanValue(
+                i_LatestBufferIndex := AI_ARR_INDEX_AI_Bias,
+                i_pBuffer := G_AIBufferOf_AI_Biaserature.i_Data,
+                i_FirstIndex := 0,
+                i_SizeOfBuffer := 50,
+                i_Samples := 10);
+
+(* Mean filtering for PI bias measurement *)
+    AI_ARR_INDEX_PI_Bias:= WORD_TO_BYTE(G_AIBufferOf_PI_BiaS.o_Write);
+    AI_PI_Bias:=AI_MeanValue(
+                i_LatestBufferIndex := AI_ARR_INDEX_PI_Bias,
+                i_pBuffer := G_AIBufferOf_PI_BiaS.i_Data,
+                i_FirstIndex := 0,
+                i_SizeOfBuffer := 50,
+                i_Samples := 10);
+
+(* Diagnostic *)
+G_HWDiagnostics(
+    i_SupplyVoltage := AI_SupplyVolt,
+    i_Ref5V := AI_5V_REF,
+    i_Ref2V5 := AI_2_5V_REF,
+    i_Ref4V3 := AI_PI_Bias,
+    i_Ref7V3 := AI_AI_Bias,
+    i_Temperature := AI_PCBTemperature,
+	i_SupplyVoltageHighLimit:=G_SupplyVoltageHighLimit,
+	i_SupplyVoltageLowLimit:=G_SupplyVoltageLowLimit,
+	i_Ref5VHighLimit:=G_Ref5VHighLimit,
+	i_Ref5VLowLimit:=G_Ref5VLowLimit,
+	i_Ref2V5HighLimit:=G_Ref2V5HighLimit,
+	i_Ref2V5LowLimit:=G_Ref2V5LowLimit,
+	i_Ref4V3HighLimit:=G_RefPiBiasHighLimit,
+	i_Ref4V3LowLimit:=G_RefPiBiasLowLimit,
+	i_Ref7V3HighLimit:=G_RefAiBiasHighLimit,
+	i_Ref7V3LowLimit:=G_RefAiBiasLowLimit,
+	i_TempHighLimit:=G_TempHighLimit,
+	i_TempLowLimit:=G_TempLowLimit,
+	i_CycleTimeHighLimit:=G_CycleTimeHighLimit);
+
+    TEMP_PCB := G_HWDiagnostics.o_Temperature;
+    SUPPLY_Volt := G_HWDiagnostics.o_SupplyVoltage;
+    REF_5V := G_HWDiagnostics.o_Ref5V;
+    REF_2_5V := G_HWDiagnostics.o_Ref2V5;
+    PI_BIAS := G_HWDiagnostics.o_Ref4V3;
+    AI_BIAS := G_HWDiagnostics.o_Ref7V3;
+
+
+
+
+
+
+
+
+
+(*########################################################*)
+(*This block is created implicit. Don't add own code here.*)
+(*########################################################*)
+
+(* Diagnostics for CAN interfaces *)
+G_CAN1_Diagnostics(i_DrvNbr:=0);
+G_CAN2_Diagnostics(i_DrvNbr:=1);
+
+(* CANopen networks management and diagnostics  *)
+
+
+
+(* System Ok conditions *)
+G_SystemOk:=NOT(G_HWDiagnostics.o_TemperatureHigh) AND
+		NOT(G_HWDiagnostics.o_TemperatureLow) AND
+		NOT(G_HWDiagnostics.o_SupplyVoltageHigh) AND
+		NOT(G_HWDiagnostics.o_SupplyVoltageLow) AND
+		NOT(G_HWDiagnostics.o_Ref4V3High) AND
+		NOT(G_HWDiagnostics.o_Ref4V3Low) AND
+		NOT(G_HWDiagnostics.o_Ref7V3High) AND
+		NOT(G_HWDiagnostics.o_Ref7V3Low) AND
+		NOT(G_HWDiagnostics.o_Ref2V5High) AND
+		NOT(G_HWDiagnostics.o_Ref2V5Low) AND
+		NOT(G_HWDiagnostics.o_CycleTimeHigh) AND
+		NOT (ERR_FLAG_IO_INIT);
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+STEP Bus:
+;
+
+
+	CANVXDCheckMessages();(*Receive CAN-data*)
+	CANopenUpdateDevices();(*Updates data of protocols in devices and send CAN-data*)
+
+	(*Check for nmt reset *)
+	IF G_CAN1_CANopenDevice_NMT.StateChanged THEN
+		IF G_CAN1_CANopenDevice_NMT.LastNmtCommand = 16#81 OR G_CAN1_CANopenDevice_NMT.LastNmtCommand = 16#82 THEN
+			(* If there is NMT reset command for IEC application CANopen device,
+				IEC application is started after IEC cycle in execution. *)
+					G_RESET_MODULE := TRUE;
+		END_IF
+	END_IF
+
+
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+STEP Other:
+
+
+
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM (IOFilter,Diag,Bus,Other) TO Init_EpecIn:=
+FALSE
+
+
+END_TRANSITION
+
+
+END_STEP
+
+STEP Application:
+INITIAL_STEP Init_Application:
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_Application TO Main_Application:=
+TRUE
+END_TRANSITION
+
+STEP Main_Application:
+(* Call user application *)
+    Main();
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Main_Application TO Init_Application:=
+FALSE
+END_TRANSITION
+END_STEP
+
+STEP Epec_Out:
+
+INITIAL_STEP Init_EpecOut:
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Init_EpecOut TO Other_EpecOut:=
+TRUE
+
+
+END_TRANSITION
+STEP Other_EpecOut:
+
+
+NvRam_3720_Save();
+
+IF NvRam_3720_Save.o_Busy = FALSE THEN
+	SaveOdBlockActions(i_StateForActions := FALSE);
+END_IF
+
+(* Check reset request only if there is no data store going on. Exception is if error counter is bigger than 10 *)
+IF G_RESET_MODULE AND NvRam_3720_Save.o_Busy = FALSE THEN
+	(* Reset control unit *)
+	SYSTEM_RESTART_PLCOPEN_APP(0);
+END_IF
+
+(* Block actions if voltage level is under defined limit *)
+IF G_HWDiagnostics.o_SupplyVoltage > G_LowLimitForParameterSaving THEN
+
+    (* Check if fast parameters are necessary to save *)
+    IF G_3720_FastParamsSave = TRUE AND NvRam_3720_Save.o_Busy = FALSE THEN
+        G_3720_FastParamsSave := FALSE;
+        NvRam_3720_Save(
+            i_SaveFastParamsStart:= TRUE,
+            i_TimeOutValue:= G_3720_NVRAM_SAVE_MAX_TIME,
+            i_SizeOfParams := G_3720_PARAM_SIZE,
+            i_SizeOfFastParams := G_3720_FAST_PARAM_SIZE);
+    END_IF
+
+    (* If RAM image is changed nvram copying is always started again from begin. *)
+    IF G_3720_OldImageChanged <> G_FileSysFileSystem.RamImageChanged AND G_3720_CopyNvRam.o_Busy = FALSE THEN
+        SaveOdBlockActions(i_StateForActions := TRUE);
+        G_3720_OldImageChanged := G_FileSysFileSystem.RamImageChanged;
+        NvRam_3720_Save(
+            i_SaveParamsStart:= TRUE,
+            i_TimeOutValue:= G_3720_NVRAM_SAVE_MAX_TIME,
+            i_SizeOfParams := G_3720_PARAM_SIZE,
+            i_SizeOfFastParams := G_3720_FAST_PARAM_SIZE);
+    END_IF
+
+    (* Check if it is necessary to save communication parameters *)
+    IF G_3720_CommsSaveOldCnt <> G_ODSAVE_SAVE_COMMS_COUNTER THEN
+    	SystemParameters.i_CAN1 := OD_G_CAN1_Comms;
+
+        SystemParameters.WriteData();
+        G_3720_CommsSaveOldCnt := G_ODSAVE_SAVE_COMMS_COUNTER;
+    END_IF
+
+    (* Check if it is necessary to restor communication parameters *)
+    IF G_3720_CommsRestoreOldCnt <> G_ODSAVE_RESTORE_COMMS_COUNTER THEN
+        (* Restore communication parameters *)
+        SystemParameters.RestoreDefaultData();
+    	OD_G_CAN1_Comms := SystemParameters.i_CAN1;
+
+        G_3720_CommsRestoreOldCnt := G_ODSAVE_RESTORE_COMMS_COUNTER;
+    END_IF
+
+END_IF
+
+(* Overcurrent protection for mA AI inputs *)
+
+AIP_InputProtection_3720(
+	o_NoErrors				=> G_NoErrors,
+	o_X3_3_OverCurrent 		=>	G_X3_3_OverCurrent,
+	o_X3_4_OverCurrent		=>  G_X3_4_OverCurrent,
+	o_X3_5_OverCurrent	    =>  G_X3_5_OverCurrent,
+	o_X3_6_OverCurrent		=>	G_X3_6_OverCurrent,
+	o_X3_7_OverCurrent		=>  G_X3_7_OverCurrent,
+    o_X3_8_OverCurrent      =>  G_X3_8_OverCurrent);
+
+
+
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+TRANSITION FROM Other_EpecOut TO Init_EpecOut:=
+FALSE
+
+
+END_TRANSITION
+
+
+END_STEP
+(* @SFCMAXTIME := '' *)
+(* @SFCMINTIME := '' *)
+(* @SFCCOMMENT := '' *)
+
+TRANSITION FROM (EPEC_In,Application,EPEC_Out) TO Init:=
+FALSE
+END_TRANSITION
+
+END_PROGRAM
+
+MACRO
+MacroName: 'ImportLibs'
+MacroMenu: 'Import Libraries'
+MacroCmd: 'library delete 3000AnalogInputProtection.lib 3000CANVXD.lib 3000ext.lib J1939.lib 3000InterruptSendHandler.lib 3000SetTickExt.lib 3720int.lib 3720specific.lib ADConversion.lib AddressClaiming.lib AI.lib CANopen.lib CANopenCSDO.lib CANopenODSave.lib CANopen_302.lib DataTransfer.lib DigitalOutputDiagnostic.lib EventLog.lib EventLogTransfer.lib ExtraBins.lib FileSys.lib Filters.lib J1939Event.lib JoystickCalibrationAndDiagnostic.lib NetworkManager.lib Ramp.lib ProportionalValveControl.lib SensorCalibrationAndDiagnostic.lib Standard.lib Util.lib'
+MacroCmd: 'library add 3000AnalogInputProtection.lib 3000CANVXD.lib 3000ext.lib J1939.lib 3000InterruptSendHandler.lib 3000SetTickExt.lib 3720int.lib 3720specific.lib ADConversion.lib AddressClaiming.lib AI.lib CANopen.lib CANopenCSDO.lib CANopenODSave.lib CANopen_302.lib DataTransfer.lib DigitalOutputDiagnostic.lib EventLog.lib EventLogTransfer.lib ExtraBins.lib FileSys.lib Filters.lib J1939Event.lib JoystickCalibrationAndDiagnostic.lib NetworkManager.lib Ramp.lib ProportionalValveControl.lib SensorCalibrationAndDiagnostic.lib Standard.lib Util.lib'
+END_MACRO
+
+
+    
+MACRO
+MacroName: 'ImportMultiTool'
+MacroMenu: 'Import MultiTool'
+MacroCmd: 'file save'
+MacroCmd: 'project import EPEC_CU1.exp' ;Import exp - file generated by MultiTool
+MacroCmd: 'call ImportLibs'
+MacroCmd: 'project clean'
+END_MACRO
+
