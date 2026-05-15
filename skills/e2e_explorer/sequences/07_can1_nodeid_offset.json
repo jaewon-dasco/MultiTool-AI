@@ -1,0 +1,9 @@
+{
+  "name": "can1_nodeid_offset",
+  "goal": "Device[1] CAN1 NodeIdOffset 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/Settings/NodeIdOffset",
+  "values": ["64", "128", "16", "32"],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/Settings/NodeIdOffset",
+  "risk": "low"
+}

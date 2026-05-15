@@ -139,13 +139,45 @@ def run_cycle(
     return stats
 
 
+def _load_verified_xpaths() -> set:
+    """Read all _candidates*.jsonl in kb/patterns; return set of xpaths with verified=true.
+    These sequences will be skipped to avoid re-validating already-confirmed patterns
+    (per night_cycle_strategy memory 2026-05-15)."""
+    import json
+    verified = set()
+    pat_dir = KB_ROOT / "patterns"
+    if not pat_dir.exists():
+        return verified
+    for fp in pat_dir.glob("*.jsonl"):
+        try:
+            for line in fp.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if not line: continue
+                try:
+                    obj = json.loads(line)
+                    if obj.get("verified") is True:
+                        xp = obj.get("xpath") or obj.get("xpath_scope")
+                        if xp: verified.add(xp)
+                except Exception: pass
+        except Exception: pass
+    return verified
+
+
 def run_sequence_cycle(
     project: Path,
     until: dt.datetime,
     no_llm: bool,
     sequences_dir: Path,
+    max_cycles: int = 5,
+    skip_verified: bool = True,
 ) -> dict:
-    """시퀀스 모드 — sequences/*.json을 반복 실행하며 관찰 데이터 누적."""
+    """시퀀스 모드 — sequences/*.json을 max_cycles회까지 반복 실행하며 관찰 데이터 누적.
+
+    night_cycle_strategy (2026-05-15) 적용:
+    - 시나리오당 반복은 최대 5회 (결정성 확인용)
+    - KB에서 verified=true 처리된 xpath는 자동 제외
+    - 남는 시간은 새 시드 시나리오 탐색에 사용 (수동 추가)
+    """
     kb = KB(KB_ROOT, LOG_ROOT)
     log.info("sequence cycle date=%s until=%s", kb.cycle_date, until.isoformat())
 
@@ -166,17 +198,25 @@ def run_sequence_cycle(
 
     seqs = load_sequences(sequences_dir)
     log.info("loaded %d sequences from %s", len(seqs), sequences_dir)
+    if skip_verified:
+        verified = _load_verified_xpaths()
+        before = len(seqs)
+        seqs = [s for s in seqs if s.get("xpath") not in verified]
+        skipped = before - len(seqs)
+        if skipped:
+            log.info("skipping %d verified sequences (xpath already confirmed)", skipped)
     if not seqs:
-        log.error("no sequences found — exiting")
+        log.error("no sequences left after filtering — exiting")
         return {"seqs_run": 0, "errors": 1}
+    log.info("running %d sequences × max %d cycles", len(seqs), max_cycles)
 
     stats = {"cycles": 0, "seqs_run": 0, "steps_total": 0, "llm_calls": 0, "errors": 0}
     obs_dir = kb.cycle_dir / "sequences"
     obs_dir.mkdir(parents=True, exist_ok=True)
 
     cycle_idx = 0
-    while _now_in_window(until) and not _stop:
-        log.info("=== cycle %d ===", cycle_idx)
+    while _now_in_window(until) and not _stop and cycle_idx < max_cycles:
+        log.info("=== cycle %d/%d ===", cycle_idx + 1, max_cycles)
         for seq in seqs:
             if _stop or not _now_in_window(until):
                 break
@@ -238,6 +278,10 @@ def main(argv: list[str] | None = None) -> int:
                     help="observe: 동일 화면 반복 관찰 · sequence: XML 시퀀스 학습 (기본)")
     ap.add_argument("--sequences-dir", default=str(Path(__file__).parent / "sequences"))
     ap.add_argument("--no-llm", action="store_true", help="Gemma 호출 생략")
+    ap.add_argument("--max-cycles", type=int, default=5,
+                    help="각 시퀀스 최대 반복 횟수 (default 5, night_cycle_strategy 2026-05-15)")
+    ap.add_argument("--no-skip-verified", action="store_true",
+                    help="KB verified=true xpath도 검증 (기본은 스킵)")
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args(argv)
 
@@ -270,6 +314,8 @@ def main(argv: list[str] | None = None) -> int:
             until=until,
             no_llm=args.no_llm,
             sequences_dir=Path(args.sequences_dir),
+            max_cycles=args.max_cycles,
+            skip_verified=not args.no_skip_verified,
         )
     else:
         stats = run_cycle(

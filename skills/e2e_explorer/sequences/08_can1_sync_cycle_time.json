@@ -1,0 +1,9 @@
+{
+  "name": "can1_sync_cycle_time",
+  "goal": "Device[1] CAN1 SyncCycleTime 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/Settings/SyncCycleTime",
+  "values": ["100", "500", "1000", "200"],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/Settings/SyncCycleTime",
+  "risk": "low"
+}
