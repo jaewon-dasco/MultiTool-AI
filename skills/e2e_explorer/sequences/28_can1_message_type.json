@@ -1,0 +1,12 @@
+{
+  "name": "can1_message_type",
+  "goal": "Device[1] CAN1 Settings.MessageType 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/Settings/MessageType",
+  "values": [
+    "Extended",
+    "Short"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/Settings/MessageType",
+  "risk": "low"
+}

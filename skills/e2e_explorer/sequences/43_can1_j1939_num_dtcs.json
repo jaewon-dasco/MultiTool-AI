@@ -1,0 +1,13 @@
+{
+  "name": "can1_j1939_num_dtcs",
+  "goal": "Device[1] CAN1 J1939.NumberOfDTCs 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/J1939/NumberOfDTCs",
+  "values": [
+    "1",
+    "4",
+    "2"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/J1939/NumberOfDTCs",
+  "risk": "low"
+}

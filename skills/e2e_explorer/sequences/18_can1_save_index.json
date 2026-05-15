@@ -1,0 +1,13 @@
+{
+  "name": "can1_save_index",
+  "goal": "Device[1] CAN1 Settings.SaveIndex 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/Settings/SaveIndex",
+  "values": [
+    "4113",
+    "4096",
+    "4112"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/Settings/SaveIndex",
+  "risk": "low"
+}
