@@ -32,15 +32,23 @@ def deselect_diagram(win):
     mouse.click(button="left", coords=(x, y))
     time.sleep(0.8)
 
-def find_floating_toolbar_buttons(win, min_x=300):
-    """Find the 3 small unnamed buttons of the device floating toolbar.
-    Returns list sorted by left coordinate (wrench, cube, X order).
+def find_floating_toolbar_buttons(win, min_x=300, kind="device"):
+    """Find unnamed buttons of an entity's floating toolbar.
+    kind='device' → 3 buttons ~28x28 (wrench, cube, X).
+    kind='network' → 5 buttons ~38-66 wide, ~50-55 tall (Events, CSV Editor, Export, Import DBC, X).
+    Returns list sorted by left coordinate (rightmost is Delete X).
     """
+    if kind == "device":
+        w_lo, w_hi, h_lo, h_hi, max_top = 25, 32, 25, 32, 999
+    else:  # network
+        w_lo, w_hi, h_lo, h_hi, max_top = 33, 70, 45, 60, 250
     out = []
     for b in win.descendants(control_type="Button"):
         try:
             r = b.rectangle()
-            if 25 <= r.width() <= 32 and 25 <= r.height() <= 32 and r.left > min_x and b.window_text() == "" and not b.automation_id():
+            if (w_lo <= r.width() <= w_hi and h_lo <= r.height() <= h_hi
+                and r.left > min_x and r.top < max_top
+                and b.window_text() == "" and not b.automation_id()):
                 out.append(b)
         except Exception: pass
     out.sort(key=lambda b: b.rectangle().left)

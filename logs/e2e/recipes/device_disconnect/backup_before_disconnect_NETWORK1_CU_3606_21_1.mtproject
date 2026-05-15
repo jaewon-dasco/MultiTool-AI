@@ -1,0 +1,3902 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MtProject>
+  <Meta Created="2026-04-20 09:58" Modified="2026-05-07 16:54" Exported="2026-04-22 07:35">
+    <FileVersion>1.0</FileVersion>
+    <SDK>8.4.9308.1081</SDK>
+    <Tool>8.4.9308.1109</Tool>
+    <User>RNDLABTOP-J1\JONE</User>
+  </Meta>
+  <Project>
+    <Preferences>
+      <EventLevels>
+        <EventLevel>
+          <Name>Alarm</Name>
+          <Level>0</Level>
+          <IsLogging>true</IsLogging>
+          <HasPopup>true</HasPopup>
+          <PopupAck>true</PopupAck>
+          <PopupLifetime>0</PopupLifetime>
+          <SymbolPath />
+        </EventLevel>
+        <EventLevel>
+          <Name>Warning</Name>
+          <Level>1</Level>
+          <IsLogging>true</IsLogging>
+          <HasPopup>true</HasPopup>
+          <PopupAck>false</PopupAck>
+          <PopupLifetime>5</PopupLifetime>
+          <SymbolPath />
+        </EventLevel>
+        <EventLevel>
+          <Name>Notification</Name>
+          <Level>2</Level>
+          <IsLogging>true</IsLogging>
+          <HasPopup>true</HasPopup>
+          <PopupAck>false</PopupAck>
+          <PopupLifetime>5</PopupLifetime>
+          <SymbolPath />
+        </EventLevel>
+      </EventLevels>
+      <ODArrayStartIndex>1</ODArrayStartIndex>
+      <ODSaveMaxIndexSize>1020</ODSaveMaxIndexSize>
+      <ProjectKey>nEppfhtF9oAhTXx</ProjectKey>
+      <SystemVersion>1.0.13</SystemVersion>
+      <AutomaticallyAssingnNMTmaster>true</AutomaticallyAssingnNMTmaster>
+    </Preferences>
+    <MachineType Name="Default" Guid="0d025f42-f582-4579-b8ce-1ae3d65cce9c">
+      <Networks>
+        <Network Guid="50de4331-ddb3-4edf-b347-444faa7160b4">
+          <Name>NETWORK1</Name>
+          <Bitrate>500</Bitrate>
+        </Network>
+      </Networks>
+      <Devices>
+        <Device Guid="57f1a44d-ba6e-4a58-95b3-cb1956c242e2">
+          <DeviceTemplate>3606_21.xtmpl</DeviceTemplate>
+        </Device>
+        <Device Guid="ec0a32e7-3c7e-4b32-8bc2-d66fd9bc6f91">
+          <DeviceTemplate>3606_21.xtmpl</DeviceTemplate>
+        </Device>
+      </Devices>
+      <NetworkMappings>
+        <Network Guid="50de4331-ddb3-4edf-b347-444faa7160b4">
+          <CAN Guid="7cfd98e8-029b-46a8-b6b3-0c4b8955c7ca" />
+          <CAN Guid="5d94d1d2-cea6-4d02-8cae-1842f0181d13" />
+        </Network>
+      </NetworkMappings>
+      <ProcessDataObjectMappings>
+        <Device Guid="57f1a44d-ba6e-4a58-95b3-cb1956c242e2">
+          <CAN Guid="7cfd98e8-029b-46a8-b6b3-0c4b8955c7ca">
+            <TransferProcessDataObject Guid="c747df7a-abce-4da1-bb06-6b6e9e9d2bd4">
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="17490521-007b-4d1d-87dc-99c6f9fc44e3" Index="0" />
+                <ObjectDictionarySubIndex Guid="a1e12ce7-7421-4cea-8aff-dfb54befdb6e" Index="2" />
+                <ObjectDictionarySubIndex Guid="5317959a-642b-4209-97d0-dbc5b69806ce" Index="4" />
+                <ObjectDictionarySubIndex Guid="c7390da5-c464-4193-ad18-73eb7fb39e86" Index="5" />
+              </ObjectDictionarySubIndexes>
+            </TransferProcessDataObject>
+            <TransferProcessDataObject Guid="6332bc89-e08b-4e63-8275-4a3f90b65c0c">
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="61a3ae4d-40f5-4f65-9040-9e92d19b024c" Index="0" />
+                <ObjectDictionarySubIndex Guid="935f3e08-90ed-4cd8-86b0-ebcad4eec775" Index="2" />
+                <ObjectDictionarySubIndex Guid="e749fcd7-002e-4ace-939b-e53739fdf2b0" Index="4" />
+              </ObjectDictionarySubIndexes>
+            </TransferProcessDataObject>
+          </CAN>
+        </Device>
+        <Device Guid="ec0a32e7-3c7e-4b32-8bc2-d66fd9bc6f91">
+          <CAN Guid="5d94d1d2-cea6-4d02-8cae-1842f0181d13">
+            <ReceiveProcessDataObject Guid="06ab7608-ca62-4d4b-a812-698e12206e56" TargetGuid="c747df7a-abce-4da1-bb06-6b6e9e9d2bd4">
+              <CobId>0</CobId>
+              <DataLengthCode>0</DataLengthCode>
+              <IsReceived>true</IsReceived>
+            </ReceiveProcessDataObject>
+            <ReceiveProcessDataObject Guid="7dde7bdd-0098-426a-980b-92fcc1c05afe" TargetGuid="6332bc89-e08b-4e63-8275-4a3f90b65c0c">
+              <CobId>0</CobId>
+              <DataLengthCode>0</DataLengthCode>
+              <IsReceived>false</IsReceived>
+            </ReceiveProcessDataObject>
+          </CAN>
+        </Device>
+      </ProcessDataObjectMappings>
+      <J1939>
+        <Messages />
+      </J1939>
+      <NMEA2000>
+        <Messages />
+      </NMEA2000>
+      <Monitorings>
+        <Monitoring Guid="8d19d01e-a8bf-47b3-a6c6-69c118113351">
+          <TargetDevice>57f1a44d-ba6e-4a58-95b3-cb1956c242e2</TargetDevice>
+          <TargetCanOpen>7cfd98e8-029b-46a8-b6b3-0c4b8955c7ca</TargetCanOpen>
+        </Monitoring>
+        <Monitoring Guid="01dcafd7-de8d-485e-9df2-178d647c9fde">
+          <TargetDevice>ec0a32e7-3c7e-4b32-8bc2-d66fd9bc6f91</TargetDevice>
+          <TargetCanOpen>5d94d1d2-cea6-4d02-8cae-1842f0181d13</TargetCanOpen>
+        </Monitoring>
+      </Monitorings>
+    </MachineType>
+  </Project>
+  <NetworkEditors>
+    <ZoomLevel>1</ZoomLevel>
+    <Background>
+      <ImageData />
+      <ImageWidth>0</ImageWidth>
+      <ImageHeigth>0</ImageHeigth>
+      <Location>LeftTop</Location>
+    </Background>
+    <NetworkEditor Target="0d025f42-f582-4579-b8ce-1ae3d65cce9c">
+      <EditorNodes>
+        <Node Target="57f1a44d-ba6e-4a58-95b3-cb1956c242e2">
+          <Appearance X="524" Y="120">
+            <Color>#FFEDEEEE</Color>
+            <Text>CU_3606_21_1</Text>
+          </Appearance>
+          <EditorNodes>
+            <Node>
+              <Appearance X="-10" Y="40">
+                <Color>#FF33CCFF</Color>
+                <Text>1</Text>
+              </Appearance>
+            </Node>
+          </EditorNodes>
+        </Node>
+        <Node Target="ec0a32e7-3c7e-4b32-8bc2-d66fd9bc6f91">
+          <Appearance X="509" Y="301">
+            <Color>#FFEDEEEE</Color>
+            <Text>CU_3606_21_2</Text>
+          </Appearance>
+          <EditorNodes>
+            <Node>
+              <Appearance X="-10" Y="14">
+                <Color>#FF33CCFF</Color>
+                <Text>1</Text>
+              </Appearance>
+            </Node>
+          </EditorNodes>
+        </Node>
+        <Node Target="50de4331-ddb3-4edf-b347-444faa7160b4">
+          <Appearance X="274" Y="114">
+            <Color>#FF33CCFF</Color>
+            <Text>NETWORK1</Text>
+          </Appearance>
+        </Node>
+      </EditorNodes>
+    </NetworkEditor>
+  </NetworkEditors>
+  <Editor>
+    <Networks>
+      <Network Guid="50de4331-ddb3-4edf-b347-444faa7160b4" Name="NETWORK1">
+        <ParameterFileTargetPath>/opt/user/userapp/</ParameterFileTargetPath>
+        <Data>
+          <Items>
+            <Group Guid="00000000-0000-0000-0000-000000000000" Name="AngleSensor" IsBinded="false" IsExpanded="false" IsSelected="true">
+              <Items>
+                <Parameter Guid="f5d922b6-02e0-4db5-8581-7531797504db" IsBinded="true" Name="HighSensorValue">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>0.01V</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="b58d5f9e-cc1f-447e-843b-f4ff6d1e7d7a" IsBinded="true" Name="LowSensorValue">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>0.01V</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="7979b4ba-7f25-41f9-8ede-326f7d4e6bde" IsBinded="true" Name="HighCalibratedValue">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText />
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="fed86a85-5f08-45a6-9627-bf4bada479a1" IsBinded="true" Name="LowCalibratedValue">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText />
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="01fc0598-ea31-4830-bf6b-a24d91fb5470" IsBinded="true" Name="SensorValueErrorLimitHigh">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>0.01V</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="d6021a96-6bc6-4bfe-90b7-f01dc262787f" IsBinded="true" Name="SensorValueErrorLimitLow">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>0.01V</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="3eb7ce02-d30b-4c04-8a05-90634f3bfa2b" IsBinded="true" Name="CalibratedValueAlarmLimitHigh">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText />
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="36658b85-6282-4b3b-82fe-15d22c7f15c1" IsBinded="true" Name="CalibratedValueWarningLimitHigh">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText />
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="bec0cb1c-d860-46ed-b403-c5d7d1b8b24c" IsBinded="true" Name="CalibratedValueWarningLimitLow">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText />
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="76474bbb-8784-49a6-8a76-cb72f187fc1f" IsBinded="true" Name="CalibratedValueAlarmLimitLow">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText />
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="2c0fa602-48f1-4c3d-b93f-c53ca986a7e5" IsBinded="true" Name="EnableSensorValueErrors">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>T/F</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="c766b5b3-7348-4dfc-9566-28e3e7895c2b" IsBinded="true" Name="EnableCalibratedValueHighAlarm">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>T/F</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="b6a80208-6b61-47ee-839d-5c44d91f2243" IsBinded="true" Name="EnableCalibratedValueHighWarning">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>T/F</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="1efbd7be-2504-4e05-b375-38eff2a41766" IsBinded="true" Name="EnableCalibratedValueLowWarning">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>T/F</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="18658acb-de77-4302-8040-aa97812ac808" IsBinded="true" Name="EnableCalibratedValueLowAlarm">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>T/F</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="18c35a0d-3549-47ad-9897-0ca377b173a5" IsBinded="true" Name="ErrorDelay">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>ms</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+              </Items>
+            </Group>
+            <Group Guid="00000000-0000-0000-0000-000000000000" Name="UpDnPairValve" IsBinded="false" IsExpanded="false" IsSelected="true">
+              <Items>
+                <Parameter Guid="2da9ad40-40fd-4f2e-af31-4059cb039276" IsBinded="true" Name="PosDirMaxCurrent">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>mA</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="da6ec273-130d-4b9b-9ebd-a2aadf877f42" IsBinded="true" Name="PosDirMinCurrent">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>mA</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="4666403b-c301-488c-9122-0ad27fee76ea" IsBinded="true" Name="NegDirMaxCurrent">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>mA</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="e7da5026-9630-4e22-923e-42d264ff30b9" IsBinded="true" Name="NegDirMinCurrent">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>mA</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="ffebb9b9-f31b-4599-8cc0-737dff44db68" IsBinded="true" Name="PosDirAscendRamp">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>ms</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="d47cb938-66d3-4069-9569-3626d871389b" IsBinded="true" Name="PosDirDescendRamp">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>ms</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="bd56aaa5-9b24-4aa8-99c4-2aac0a48d640" IsBinded="true" Name="NegDirAscendRamp">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>ms</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="6ae11480-85d7-41f2-8b4c-6d4110204fd6" IsBinded="true" Name="NegDirDescendRamp">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>ms</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="23cf99e0-240a-49dc-b77c-f4f804cd8fcf" IsBinded="true" Name="PosDirAttenuationAmount">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>%</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="a210e19f-8edc-4960-901c-e84e23219eef" IsBinded="true" Name="NegDirAttenuationAmount">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>%</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="6111d42f-ef15-4c4b-9569-b05c6b387c23" IsBinded="true" Name="EnableCounterControl">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>T/F</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+              </Items>
+            </Group>
+            <Group Guid="00000000-0000-0000-0000-000000000000" Name="UpDnJoystick" IsBinded="false" IsExpanded="false" IsSelected="true">
+              <Items>
+                <Parameter Guid="fbfdd4ca-cb9a-4b51-9016-c67b3550c74d" IsBinded="true" Name="MaxPosition">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>0.1%</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="26381eb3-9955-4f92-8dc2-4507164f588f" IsBinded="true" Name="MidPosition">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>0.1%</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="b1beee1b-f8df-4513-9da5-7a0d63b9c26e" IsBinded="true" Name="MinPosition">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>0.1%</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="ad8e06b8-e735-4962-9a2a-470cb180bf3e" IsBinded="true" Name="Deadband">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>%</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="0dd88dbc-b7ad-490a-bd36-e435631b98b7" IsBinded="true" Name="ProgressionPosDir">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText />
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="1687f8c4-6510-4aa8-9808-a1c2d29d6f75" IsBinded="true" Name="ProgressionNegDir">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText />
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="5588abee-7eb2-46b1-a686-063b52a52f9c" IsBinded="true" Name="ErrorTolerance">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>0.1%</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="914c99e4-1581-4c78-83e5-b2cc88f37399" IsBinded="true" Name="ErrorDelay">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText>ms</InfoText>
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+              </Items>
+            </Group>
+            <Group Guid="00000000-0000-0000-0000-000000000000" Name="Regulation" IsBinded="false" IsExpanded="false" IsSelected="true">
+              <Items>
+                <Parameter Guid="67753912-6bb5-40a3-950f-d4d34722f899" IsBinded="true" Name="ValveUpLimit">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText />
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+                <Parameter Guid="03596224-d3ae-4390-aa84-70528591107d" IsBinded="true" Name="ValveDnLimit">
+                  <Unit />
+                  <Steps>1</Steps>
+                  <Decimals>0</Decimals>
+                  <InfoText />
+                  <ReadAccess>3</ReadAccess>
+                  <WriteAccess>3</WriteAccess>
+                  <ValueTexts />
+                  <IsSelected>true</IsSelected>
+                </Parameter>
+              </Items>
+            </Group>
+          </Items>
+        </Data>
+      </Network>
+    </Networks>
+    <AccessLevels>
+      <AccessLevel>
+        <Name>Hidden</Name>
+        <Level>-1</Level>
+      </AccessLevel>
+      <AccessLevel>
+        <Name>Admin</Name>
+        <Level>1</Level>
+      </AccessLevel>
+      <AccessLevel>
+        <Name>Service</Name>
+        <Level>2</Level>
+      </AccessLevel>
+      <AccessLevel>
+        <Name>Operator</Name>
+        <Level>3</Level>
+      </AccessLevel>
+    </AccessLevels>
+  </Editor>
+  <Device Guid="57f1a44d-ba6e-4a58-95b3-cb1956c242e2">
+    <Name>CU_3606_21_1</Name>
+    <Id />
+    <Attributes>
+      <Attribute>
+        <Name>CodesysKeyword</Name>
+        <Value>70F8E809</Value>
+      </Attribute>
+      <Attribute>
+        <Name>IsobusExtraBinaryStartAddress</Name>
+        <Value>16#D70030</Value>
+      </Attribute>
+      <Attribute>
+        <Name>IsobusBinaryMakerStartAddress</Name>
+        <Value>14090240</Value>
+      </Attribute>
+    </Attributes>
+    <Metadata>
+      <FileVersion>5.0.45</FileVersion>
+    </Metadata>
+    <CodesysConfiguration>
+      <Version>2.3</Version>
+      <MaxNumberOfCobIds>100</MaxNumberOfCobIds>
+      <MaxNumberOfRequestCallbacks>10</MaxNumberOfRequestCallbacks>
+      <SavedParameterCountPerCycle>50</SavedParameterCountPerCycle>
+      <CodesysExportTemplates>
+        <CodesysExportTemplate>
+          <Filename>{Name}.exp</Filename>
+          <SupportedCodesysVersion>2.3</SupportedCodesysVersion>
+          <Code IOC="Tag">698dd6b0-934a-4221-b719-ff977109d93f</Code>
+        </CodesysExportTemplate>
+      </CodesysExportTemplates>
+    </CodesysConfiguration>
+    <Libraries>
+      <Library Version="1.2.0" IsExported="true">
+        <Name>3000AnalogInputProtection.lib</Name>
+      </Library>
+      <Library Version="1.5.3" IsExported="true">
+        <Name>3000CANVXD.lib</Name>
+      </Library>
+      <Library Version="1.3.0" IsExported="true">
+        <Name>3000ext.lib</Name>
+      </Library>
+      <Library Version="1.3.5" IsExported="true">
+        <Name>J1939.lib</Name>
+      </Library>
+      <Library Version="1.1.0" IsExported="true">
+        <Name>3000InterruptSendHandler.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="true">
+        <Name>3000SetTickExt.lib</Name>
+      </Library>
+      <Library Version="1.6.2" IsExported="true">
+        <Name>3606int.lib</Name>
+      </Library>
+      <Library Version="0.0.2" IsExported="true">
+        <Name>3606specific.lib</Name>
+      </Library>
+      <Library Version="1.0.1" IsExported="true">
+        <Name>ADConversion.lib</Name>
+      </Library>
+      <Library Version="1.1.1" IsExported="true">
+        <Name>AddressClaiming.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="true">
+        <Name>AI.lib</Name>
+      </Library>
+      <Library Version="1.6.7" IsExported="true">
+        <Name>CANopen.lib</Name>
+      </Library>
+      <Library Version="1.3.2" IsExported="true">
+        <Name>CANopenCSDO.lib</Name>
+      </Library>
+      <Library Version="1.4.2" IsExported="true">
+        <Name>CANopenODSave.lib</Name>
+      </Library>
+      <Library Version="1.0.1" IsExported="true">
+        <Name>CANopen_302.lib</Name>
+      </Library>
+      <Library Version="1.0.1" IsExported="true">
+        <Name>DataTransfer.lib</Name>
+      </Library>
+      <Library Version="1.1.1" IsExported="true">
+        <Name>DigitalOutputDiagnostic.lib</Name>
+      </Library>
+      <Library Version="1.4.3" IsExported="true">
+        <Name>EventLog.lib</Name>
+      </Library>
+      <Library Version="1.1.0" IsExported="true">
+        <Name>EventLogTransfer.lib</Name>
+      </Library>
+      <Library Version="1.1.0" IsExported="true">
+        <Name>ExtraBins.lib</Name>
+      </Library>
+      <Library Version="1.3.0" IsExported="true">
+        <Name>FileSys.lib</Name>
+      </Library>
+      <Library Version="1.0.2" IsExported="true">
+        <Name>Filters.lib</Name>
+      </Library>
+      <Library Version="1.2.1" IsExported="false">
+        <Name>ISOBUS.lib</Name>
+      </Library>
+      <Library Version="1.2.3" IsExported="false">
+        <Name>ISOBUS_TC.lib</Name>
+      </Library>
+      <Library Version="1.4.12" IsExported="false">
+        <Name>ISOBUS_VT.lib</Name>
+      </Library>
+      <Library Version="1.0.1" IsExported="true">
+        <Name>J1939Event.lib</Name>
+      </Library>
+      <Library Version="1.3.1" IsExported="true">
+        <Name>JoystickCalibrationAndDiagnostic.lib</Name>
+      </Library>
+      <Library Version="1.3.0" IsExported="true">
+        <Name>NetworkManager.lib</Name>
+      </Library>
+      <Library Version="1.1.0" IsExported="true">
+        <Name>Ramp.lib</Name>
+      </Library>
+      <Library Version="1.0.7" IsExported="true">
+        <Name>ProportionalValveControl.lib</Name>
+      </Library>
+      <Library Version="1.0.2" IsExported="true">
+        <Name>SensorCalibrationAndDiagnostic.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="true">
+        <Name>Standard.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="true">
+        <Name>Util.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="false">
+        <Name>Util_no_Real.lib</Name>
+      </Library>
+    </Libraries>
+    <CANs>
+      <CAN Guid="7cfd98e8-029b-46a8-b6b3-0c4b8955c7ca">
+        <CANNumber>1</CANNumber>
+        <BitRate>500</BitRate>
+        <Settings Guid="8505c027-8ef7-442e-99a5-9314d27bc9ae" IsInitialized="true">
+          <MessageType>Short</MessageType>
+          <NodeId>7</NodeId>
+          <CodesysNodeId>1</CodesysNodeId>
+          <NodeIdOffset>32</NodeIdOffset>
+          <TakeNodeIdFromCommParams>false</TakeNodeIdFromCommParams>
+          <CreateCsdoInstances>false</CreateCsdoInstances>
+          <HeartbeatInterval>1500</HeartbeatInterval>
+          <DeviceProfile>405</DeviceProfile>
+          <SyncProducer>False</SyncProducer>
+          <SyncCycleTime>200</SyncCycleTime>
+          <SyncCounter>False</SyncCounter>
+          <SyncCounterMax>240</SyncCounterMax>
+          <SyncCobID>128</SyncCobID>
+          <ConfigurationTimeout>100</ConfigurationTimeout>
+          <EMCYProducer>False</EMCYProducer>
+          <EMCYConsumer>False</EMCYConsumer>
+          <EMCYInhibitTime>0</EMCYInhibitTime>
+          <Buffering>false</Buffering>
+          <ApplicationVersion />
+          <SdoQueryEnable>false</SdoQueryEnable>
+          <SdoQueryInterval>0</SdoQueryInterval>
+          <NoConfiguration>false</NoConfiguration>
+          <DelayBeforeConfiguration>1000</DelayBeforeConfiguration>
+          <ConfigurationStartTimeout>10</ConfigurationStartTimeout>
+          <EDSProductNumber>0</EDSProductNumber>
+          <EDSVendorId>0</EDSVendorId>
+          <SaveConfiguration>false</SaveConfiguration>
+          <SaveIndex>4112</SaveIndex>
+          <SaveSubIndex>1</SaveSubIndex>
+          <SaveTimeout>1000</SaveTimeout>
+          <VerifyMethod>CRC</VerifyMethod>
+          <CRCIndex>8273</CRCIndex>
+          <CRCSubIndex>2</CRCSubIndex>
+          <CRCValidIndex>8273</CRCValidIndex>
+          <CRCValidSubIndex>1</CRCValidSubIndex>
+          <CRCValidValue>1</CRCValidValue>
+          <CRCValidDelay>1000</CRCValidDelay>
+          <UseCRCValidityIndex>false</UseCRCValidityIndex>
+        </Settings>
+        <Parameters>
+          <ObjectDictionary>
+            <ObjectDictionaryIndex Guid="3970a492-95ef-4df7-81a4-1282fd1e8e2e" SyncGuid="6cafd4f3-34b4-417a-92ad-5148c0816cc0" IsEditable="true" IsAuto="false">
+              <Name>NewU32Var</Name>
+              <Index>2000</Index>
+              <DataType>DWORD</DataType>
+              <VariableType>Parameter</VariableType>
+              <IndexType>SingleVariables</IndexType>
+              <Description />
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="90dd8e45-e209-43dd-8eab-f534d902c344" SyncGuid="57ade418-0458-4871-a08b-9c4d58074ce1">
+                  <Name>Value</Name>
+                  <Index>1</Index>
+                  <DataType>DWORD</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>4294967295</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
+            <ObjectDictionaryIndex Guid="bd5a0510-5653-472b-b265-77b4deffa2b8" SyncGuid="d8d7f67f-318b-4a13-b53f-1aa61aee263c" IsEditable="true" IsAuto="false">
+              <Name>UpDnJoystick</Name>
+              <Index>2200</Index>
+              <DataType>BYTE</DataType>
+              <VariableType>Parameter</VariableType>
+              <IndexType>Record</IndexType>
+              <Description />
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="fbfdd4ca-cb9a-4b51-9016-c67b3550c74d" SyncGuid="d493b0c6-7e0d-427f-9369-f52cb47d3eaf">
+                  <Name>MaxPosition</Name>
+                  <Index>1</Index>
+                  <DataType>UINT</DataType>
+                  <Description>0.1%</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>900</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="26381eb3-9955-4f92-8dc2-4507164f588f" SyncGuid="30eea6cd-eb32-4931-a86a-de7d0318c923">
+                  <Name>MidPosition</Name>
+                  <Index>2</Index>
+                  <DataType>UINT</DataType>
+                  <Description>0.1%</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>500</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="b1beee1b-f8df-4513-9da5-7a0d63b9c26e" SyncGuid="90630bc8-820b-4bd6-9c12-1742c281f167">
+                  <Name>MinPosition</Name>
+                  <Index>3</Index>
+                  <DataType>UINT</DataType>
+                  <Description>0.1%</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>100</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="ad8e06b8-e735-4962-9a2a-470cb180bf3e" SyncGuid="7dde307a-899e-48a5-8f04-c1b8d77796f8">
+                  <Name>Deadband</Name>
+                  <Index>4</Index>
+                  <DataType>BYTE</DataType>
+                  <Description>%</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>3</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>100</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="0dd88dbc-b7ad-490a-bd36-e435631b98b7" SyncGuid="b477e20f-efee-4956-8149-c5d7020d5ec7">
+                  <Name>ProgressionPosDir</Name>
+                  <Index>5</Index>
+                  <DataType>BYTE</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>100</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="1687f8c4-6510-4aa8-9808-a1c2d29d6f75" SyncGuid="9ce7eb37-fb5e-4617-9708-a97e32ba3a28">
+                  <Name>ProgressionNegDir</Name>
+                  <Index>6</Index>
+                  <DataType>BYTE</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>100</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="5588abee-7eb2-46b1-a686-063b52a52f9c" SyncGuid="2bf74db2-d15f-4267-b3a4-a3c699a83324">
+                  <Name>ErrorTolerance</Name>
+                  <Index>7</Index>
+                  <DataType>INT</DataType>
+                  <Description>0.1%</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-1</Minimum>
+                    <Maximum>500</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="914c99e4-1581-4c78-83e5-b2cc88f37399" SyncGuid="6249324f-3969-4047-bb6f-86787713c7ec">
+                  <Name>ErrorDelay</Name>
+                  <Index>8</Index>
+                  <DataType>UINT</DataType>
+                  <Description>ms</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>500</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>65535</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
+            <ObjectDictionaryIndex Guid="038bfb03-710a-4087-92e2-58acc99f20fb" SyncGuid="0fbd7d72-2701-4a3e-9ab6-728bd9a8aeef" IsEditable="true" IsAuto="false">
+              <Name>AngleSensor</Name>
+              <Index>2201</Index>
+              <DataType>BYTE</DataType>
+              <VariableType>Parameter</VariableType>
+              <IndexType>Record</IndexType>
+              <Description />
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="f5d922b6-02e0-4db5-8581-7531797504db" SyncGuid="8d8bc496-0abb-4005-b376-96cb5b3adffe">
+                  <Name>HighSensorValue</Name>
+                  <Index>1</Index>
+                  <DataType>UINT</DataType>
+                  <Description>0.01V</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>450</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="b58d5f9e-cc1f-447e-843b-f4ff6d1e7d7a" SyncGuid="fb3a1940-8920-4fb5-9c20-64427f38bb92">
+                  <Name>LowSensorValue</Name>
+                  <Index>2</Index>
+                  <DataType>UINT</DataType>
+                  <Description>0.01V</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>50</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="7979b4ba-7f25-41f9-8ede-326f7d4e6bde" SyncGuid="a8602be7-1b2f-4428-a3b4-e9e34a67ecd7">
+                  <Name>HighCalibratedValue</Name>
+                  <Index>3</Index>
+                  <DataType>INT</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>1800</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-32768</Minimum>
+                    <Maximum>32767</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="fed86a85-5f08-45a6-9627-bf4bada479a1" SyncGuid="5d58e51a-0438-42d8-bf23-8e76903d4d35">
+                  <Name>LowCalibratedValue</Name>
+                  <Index>4</Index>
+                  <DataType>INT</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>-1800</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-32768</Minimum>
+                    <Maximum>32767</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="01fc0598-ea31-4830-bf6b-a24d91fb5470" SyncGuid="39396ee9-e28a-4c1c-83ed-a1021d0f54ee">
+                  <Name>SensorValueErrorLimitHigh</Name>
+                  <Index>5</Index>
+                  <DataType>UINT</DataType>
+                  <Description>0.01V</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>480</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="d6021a96-6bc6-4bfe-90b7-f01dc262787f" SyncGuid="d9a7afd3-5b58-4da1-aab5-fc62487a1589">
+                  <Name>SensorValueErrorLimitLow</Name>
+                  <Index>6</Index>
+                  <DataType>UINT</DataType>
+                  <Description>0.01V</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>20</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="3eb7ce02-d30b-4c04-8a05-90634f3bfa2b" SyncGuid="aaa89ad1-d7da-4ec0-9e04-5446bd24be8f">
+                  <Name>CalibratedValueAlarmLimitHigh</Name>
+                  <Index>7</Index>
+                  <DataType>INT</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>900</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-32768</Minimum>
+                    <Maximum>32767</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="36658b85-6282-4b3b-82fe-15d22c7f15c1" SyncGuid="1829c038-4b5a-4f8e-bc03-145f68df6370">
+                  <Name>CalibratedValueWarningLimitHigh</Name>
+                  <Index>8</Index>
+                  <DataType>INT</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>450</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-32768</Minimum>
+                    <Maximum>32767</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="bec0cb1c-d860-46ed-b403-c5d7d1b8b24c" SyncGuid="7985978f-ae2f-44c7-b905-269be5fe7e5f">
+                  <Name>CalibratedValueWarningLimitLow</Name>
+                  <Index>9</Index>
+                  <DataType>INT</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>-450</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-32768</Minimum>
+                    <Maximum>32767</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="76474bbb-8784-49a6-8a76-cb72f187fc1f" SyncGuid="03e9314e-36c2-439e-bc56-188b934fd665">
+                  <Name>CalibratedValueAlarmLimitLow</Name>
+                  <Index>A</Index>
+                  <DataType>INT</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>-900</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-32768</Minimum>
+                    <Maximum>32767</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="2c0fa602-48f1-4c3d-b93f-c53ca986a7e5" SyncGuid="04974e1d-a4cd-42cf-b36e-30c1c1fe75ac">
+                  <Name>EnableSensorValueErrors</Name>
+                  <Index>B</Index>
+                  <DataType>BOOL</DataType>
+                  <Description>T/F</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>1</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="c766b5b3-7348-4dfc-9566-28e3e7895c2b" SyncGuid="3638bd33-3ff0-471e-b2ac-1ed5ce21a28c">
+                  <Name>EnableCalibratedValueHighAlarm</Name>
+                  <Index>C</Index>
+                  <DataType>BOOL</DataType>
+                  <Description>T/F</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>1</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="b6a80208-6b61-47ee-839d-5c44d91f2243" SyncGuid="53659f44-83e3-4e38-a407-d45b163f8f06">
+                  <Name>EnableCalibratedValueHighWarning</Name>
+                  <Index>D</Index>
+                  <DataType>BOOL</DataType>
+                  <Description>T/F</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>1</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="1efbd7be-2504-4e05-b375-38eff2a41766" SyncGuid="e632ed0c-5f26-435d-acda-7c05253599ad">
+                  <Name>EnableCalibratedValueLowWarning</Name>
+                  <Index>E</Index>
+                  <DataType>BOOL</DataType>
+                  <Description>T/F</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>1</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="18658acb-de77-4302-8040-aa97812ac808" SyncGuid="39d20650-0f08-4093-9f8b-080bd873c9fd">
+                  <Name>EnableCalibratedValueLowAlarm</Name>
+                  <Index>F</Index>
+                  <DataType>BOOL</DataType>
+                  <Description>T/F</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>1</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="18c35a0d-3549-47ad-9897-0ca377b173a5" SyncGuid="88d0bfe1-c95a-4491-966b-8c088e340264">
+                  <Name>ErrorDelay</Name>
+                  <Index>10</Index>
+                  <DataType>UINT</DataType>
+                  <Description>ms</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>1000</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>65535</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
+            <ObjectDictionaryIndex Guid="48850c47-0140-4c93-8c3e-b0e0e143d70a" SyncGuid="d14b5270-8132-46bf-a838-b9f3ad6e0145" IsEditable="true" IsAuto="false">
+              <Name>UpDnPairValve</Name>
+              <Index>2202</Index>
+              <DataType>BYTE</DataType>
+              <VariableType>Parameter</VariableType>
+              <IndexType>Record</IndexType>
+              <Description />
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="2da9ad40-40fd-4f2e-af31-4059cb039276" SyncGuid="bd5d45a6-7118-41d7-a2fe-b6dc7c2e0ea3">
+                  <Name>PosDirMaxCurrent</Name>
+                  <Index>1</Index>
+                  <DataType>UINT</DataType>
+                  <Description>mA</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>150</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="da6ec273-130d-4b9b-9ebd-a2aadf877f42" SyncGuid="2173db9d-ba4d-4578-8724-7c1ef71b1ec3">
+                  <Name>PosDirMinCurrent</Name>
+                  <Index>2</Index>
+                  <DataType>UINT</DataType>
+                  <Description>mA</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>30</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="4666403b-c301-488c-9122-0ad27fee76ea" SyncGuid="92456e16-ce66-4b1c-9ad8-bd735f60f795">
+                  <Name>NegDirMaxCurrent</Name>
+                  <Index>3</Index>
+                  <DataType>UINT</DataType>
+                  <Description>mA</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>150</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="e7da5026-9630-4e22-923e-42d264ff30b9" SyncGuid="eb87dddc-fe5f-4154-9f0e-f5199a0fdfc6">
+                  <Name>NegDirMinCurrent</Name>
+                  <Index>4</Index>
+                  <DataType>UINT</DataType>
+                  <Description>mA</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>30</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="ffebb9b9-f31b-4599-8cc0-737dff44db68" SyncGuid="562f1746-2e51-4f5f-98f1-243d2a49d718">
+                  <Name>PosDirAscendRamp</Name>
+                  <Index>5</Index>
+                  <DataType>UINT</DataType>
+                  <Description>ms</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>300</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="d47cb938-66d3-4069-9569-3626d871389b" SyncGuid="288d650f-073a-48c1-ba06-e4a1fdb3fd9d">
+                  <Name>PosDirDescendRamp</Name>
+                  <Index>6</Index>
+                  <DataType>UINT</DataType>
+                  <Description>ms</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>300</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="bd56aaa5-9b24-4aa8-99c4-2aac0a48d640" SyncGuid="b6a841b1-6dcb-4a28-b698-3a781876a8ae">
+                  <Name>NegDirAscendRamp</Name>
+                  <Index>7</Index>
+                  <DataType>UINT</DataType>
+                  <Description>ms</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>300</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="6ae11480-85d7-41f2-8b4c-6d4110204fd6" SyncGuid="c5952d3e-daae-4dd0-bcdf-b79710da2e5d">
+                  <Name>NegDirDescendRamp</Name>
+                  <Index>8</Index>
+                  <DataType>UINT</DataType>
+                  <Description>ms</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>300</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1000</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="23cf99e0-240a-49dc-b77c-f4f804cd8fcf" SyncGuid="e590f1c9-71f3-4fe8-a42d-b9d5bc4adcf8">
+                  <Name>PosDirAttenuationAmount</Name>
+                  <Index>9</Index>
+                  <DataType>BYTE</DataType>
+                  <Description>%</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>100</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="a210e19f-8edc-4960-901c-e84e23219eef" SyncGuid="80d65333-6460-4b90-bed6-0c4d6826aaef">
+                  <Name>NegDirAttenuationAmount</Name>
+                  <Index>A</Index>
+                  <DataType>BYTE</DataType>
+                  <Description>%</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>100</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="6111d42f-ef15-4c4b-9569-b05c6b387c23" SyncGuid="f63d00c0-55df-44fc-98ac-b62eeb89d9f1">
+                  <Name>EnableCounterControl</Name>
+                  <Index>B</Index>
+                  <DataType>BOOL</DataType>
+                  <Description>T/F</Description>
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>1</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>1</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
+            <ObjectDictionaryIndex Guid="850a1f9a-edea-4a50-a91b-b5780950b0d2" SyncGuid="51dfd986-b922-4976-9d2c-2e328181b871" IsEditable="true" IsAuto="false">
+              <Name>Regulation</Name>
+              <Index>2204</Index>
+              <DataType>BYTE</DataType>
+              <VariableType>Parameter</VariableType>
+              <IndexType>Record</IndexType>
+              <Description />
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="67753912-6bb5-40a3-950f-d4d34722f899" SyncGuid="b414a927-f4eb-482d-b99c-39d5c245af64">
+                  <Name>ValveUpLimit</Name>
+                  <Index>1</Index>
+                  <DataType>INT</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-180</Minimum>
+                    <Maximum>180</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="03596224-d3ae-4390-aa84-70528591107d" SyncGuid="f48c5119-dccb-415b-baa1-740c3772cae0">
+                  <Name>ValveDnLimit</Name>
+                  <Index>2</Index>
+                  <DataType>INT</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-180</Minimum>
+                    <Maximum>180</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
+            <ObjectDictionaryIndex Guid="2cebc799-bcb6-42f2-88ab-93e5d4d90ef4" SyncGuid="2fc56808-d21b-4006-879e-278873e82cca" IsEditable="true" IsAuto="false">
+              <Name>TestScenarioVar</Name>
+              <Index>2300</Index>
+              <DataType>DWORD</DataType>
+              <VariableType>Parameter</VariableType>
+              <IndexType>SingleVariables</IndexType>
+              <Description />
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="a10bee7d-393e-4193-a54a-03a652a87bf7" SyncGuid="2141122d-c90c-4d3e-b890-a275a7ee9607">
+                  <Name>Value</Name>
+                  <Index>1</Index>
+                  <DataType>DWORD</DataType>
+                  <Description />
+                  <PdoMappable>false</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>4294967295</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
+            <ObjectDictionaryIndex Guid="13954035-1d6a-404a-8b7d-bf6e63b31e68" SyncGuid="e6d716fb-d5a5-48af-a452-7acf220ee5a6" IsEditable="true" IsAuto="true">
+              <Name>AUTO_of_Type_WORD</Name>
+              <Index>5FDF</Index>
+              <DataType>WORD</DataType>
+              <VariableType>RAM</VariableType>
+              <IndexType>SingleVariables</IndexType>
+              <Description>Automatically created WORD variables</Description>
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="61a3ae4d-40f5-4f65-9040-9e92d19b024c" SyncGuid="d4b9fcbd-79ce-4df7-a49a-7a0186958040">
+                  <Name>ValveUpPWM</Name>
+                  <Index>1</Index>
+                  <DataType>WORD</DataType>
+                  <Description />
+                  <PdoMappable>true</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>65535</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="935f3e08-90ed-4cd8-86b0-ebcad4eec775" SyncGuid="0e87c574-eba4-4b25-8fdb-8bef722b0305">
+                  <Name>ValveDnPWM</Name>
+                  <Index>2</Index>
+                  <DataType>WORD</DataType>
+                  <Description />
+                  <PdoMappable>true</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>65535</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="e749fcd7-002e-4ace-939b-e53739fdf2b0" SyncGuid="b8eba049-addb-455e-96f8-79a3e58ff086">
+                  <Name>FeedbackCurrent</Name>
+                  <Index>3</Index>
+                  <DataType>WORD</DataType>
+                  <Description />
+                  <PdoMappable>true</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>65535</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
+            <ObjectDictionaryIndex Guid="d9786765-f537-4ef1-9934-456b13d67fbc" SyncGuid="842fb72a-5d13-49a3-a463-7d06d6bff947" IsEditable="true" IsAuto="true">
+              <Name>AUTO_of_Type_INT</Name>
+              <Index>5FEF</Index>
+              <DataType>INT</DataType>
+              <VariableType>RAM</VariableType>
+              <IndexType>SingleVariables</IndexType>
+              <Description>Automatically created INT variables</Description>
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="a1e12ce7-7421-4cea-8aff-dfb54befdb6e" SyncGuid="ac995993-2d38-4deb-9989-a8751d3bdbea">
+                  <Name>SensorMeter</Name>
+                  <Index>1</Index>
+                  <DataType>INT</DataType>
+                  <Description />
+                  <PdoMappable>true</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-32768</Minimum>
+                    <Maximum>32767</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="17490521-007b-4d1d-87dc-99c6f9fc44e3" SyncGuid="141a66c7-4f92-47f4-81d1-e28e668edb36">
+                  <Name>Joystick</Name>
+                  <Index>2</Index>
+                  <DataType>INT</DataType>
+                  <Description />
+                  <PdoMappable>true</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-32768</Minimum>
+                    <Maximum>32767</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
+            <ObjectDictionaryIndex Guid="918fcd96-a60e-43f7-99e3-749e7b6c8913" SyncGuid="806272d4-aea0-4cdf-987d-b950c86b811b" IsEditable="true" IsAuto="true">
+              <Name>AUTO_of_Type_BYTE</Name>
+              <Index>5FFF</Index>
+              <DataType>BYTE</DataType>
+              <VariableType>RAM</VariableType>
+              <IndexType>SingleVariables</IndexType>
+              <Description>Automatically created BYTE variables</Description>
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="37de1492-2447-4057-81f7-b440d267e336" SyncGuid="1a598303-ea94-4d87-a48e-7e24c7978c9b">
+                  <Name>Ctrl</Name>
+                  <Index>1</Index>
+                  <DataType>BYTE</DataType>
+                  <Description />
+                  <PdoMappable>true</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>255</Maximum>
+                  </ObjectDictionaryValue>
+                  <Bits>
+                    <Generate>True</Generate>
+                    <Variables>
+                      <Bit Guid="feeb642b-5524-46f2-bee0-f6a1292dd84d">
+                        <Name>Ctrl_JogCalibration</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[0]</Description>
+                      </Bit>
+                      <Bit Guid="a97825da-fc00-4bff-a753-3fe2d2cb30f1">
+                        <Name>Ctrl_Bit1</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[1]</Description>
+                      </Bit>
+                      <Bit Guid="25b8e7ca-8447-46f3-b0b5-d7a9ae0c116c">
+                        <Name>Ctrl_Bit2</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[2]</Description>
+                      </Bit>
+                      <Bit Guid="9af607d5-3395-48a7-8319-7da5797d69bd">
+                        <Name>Ctrl_Bit3</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[3]</Description>
+                      </Bit>
+                      <Bit Guid="5dfba44f-60fd-4862-a0c2-501b07d4984a">
+                        <Name>Ctrl_Bit4</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[4]</Description>
+                      </Bit>
+                      <Bit Guid="055ae940-26a9-4152-997e-0bbbfa2a5100">
+                        <Name>Ctrl_Bit5</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[5]</Description>
+                      </Bit>
+                      <Bit Guid="f09672d8-d7b8-4757-9626-859eea19a370">
+                        <Name>Ctrl_Bit6</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[6]</Description>
+                      </Bit>
+                      <Bit Guid="4d3f4f49-ce00-4e3f-8bfc-e4344d2ee1e1">
+                        <Name>Ctrl_Bit7</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[7]</Description>
+                      </Bit>
+                    </Variables>
+                  </Bits>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="5317959a-642b-4209-97d0-dbc5b69806ce" SyncGuid="d0ede4a1-c68d-4470-8e57-77ffdef1ff96">
+                  <Name>DigitalInput</Name>
+                  <Index>2</Index>
+                  <DataType>BYTE</DataType>
+                  <Description />
+                  <PdoMappable>true</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>255</Maximum>
+                  </ObjectDictionaryValue>
+                  <Bits>
+                    <Generate>True</Generate>
+                    <Variables>
+                      <Bit Guid="8e9013ea-d99c-4359-88af-2d1c5560188e">
+                        <Name>SwitchFoot</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[0]</Description>
+                      </Bit>
+                      <Bit Guid="5bef368e-b485-4fe5-b45f-41ba1a3e84bf">
+                        <Name>SwitchEmergency</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[1]</Description>
+                      </Bit>
+                      <Bit Guid="fc956f93-7137-4a5d-b5ca-e941ad1f4626">
+                        <Name>DigitalInput_Bit2</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[2]</Description>
+                      </Bit>
+                      <Bit Guid="ce22dc58-1310-4a4c-bc45-af9c7cef370c">
+                        <Name>DigitalInput_Bit3</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[3]</Description>
+                      </Bit>
+                      <Bit Guid="46cf41c9-0d55-4f11-beed-92fec2fcc6f8">
+                        <Name>DigitalInput_Bit4</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[4]</Description>
+                      </Bit>
+                      <Bit Guid="0a325ead-2766-4af6-9ac1-c065c9810848">
+                        <Name>DigitalInput_Bit5</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[5]</Description>
+                      </Bit>
+                      <Bit Guid="f0be3743-bb34-435e-bf81-e9096576f339">
+                        <Name>DigitalInput_Bit6</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[6]</Description>
+                      </Bit>
+                      <Bit Guid="fce3fef4-110c-4e0d-932d-e5a9ea0cdb8b">
+                        <Name>DigitalInput_Bit7</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[7]</Description>
+                      </Bit>
+                    </Variables>
+                  </Bits>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="c7390da5-c464-4193-ad18-73eb7fb39e86" SyncGuid="fba6829e-e5ad-4a46-89e7-c3ded0ea5fba">
+                  <Name>DigitalOutput</Name>
+                  <Index>3</Index>
+                  <DataType>BYTE</DataType>
+                  <Description />
+                  <PdoMappable>true</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>255</Maximum>
+                  </ObjectDictionaryValue>
+                  <Bits>
+                    <Generate>True</Generate>
+                    <Variables>
+                      <Bit Guid="b2f6b9b1-2e4f-4209-aa22-806478654a7a">
+                        <Name>LED1</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[0]</Description>
+                      </Bit>
+                      <Bit Guid="075cdecb-c474-4d86-a653-9e27f640fb9d">
+                        <Name>LED2</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[1]</Description>
+                      </Bit>
+                      <Bit Guid="ba6e40ef-d48b-451d-a320-1d19795b5000">
+                        <Name>DigitalOutput_Bit2</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[2]</Description>
+                      </Bit>
+                      <Bit Guid="d910cc2d-b384-4ed6-b948-6026f635b329">
+                        <Name>DigitalOutput_Bit3</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[3]</Description>
+                      </Bit>
+                      <Bit Guid="10f2d820-84fd-4940-9d54-336c1c7581ef">
+                        <Name>DigitalOutput_Bit4</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[4]</Description>
+                      </Bit>
+                      <Bit Guid="67701d95-9d01-4f7d-bf59-e802be657100">
+                        <Name>DigitalOutput_Bit5</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[5]</Description>
+                      </Bit>
+                      <Bit Guid="958908ab-3329-4036-a8c3-913a8be6af09">
+                        <Name>DigitalOutput_Bit6</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[6]</Description>
+                      </Bit>
+                      <Bit Guid="63716e20-690c-4677-9a7c-c74424858371">
+                        <Name>DigitalOutput_Bit7</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[7]</Description>
+                      </Bit>
+                    </Variables>
+                  </Bits>
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
+          </ObjectDictionary>
+          <ProcessDataObjects>
+            <TransferProcessDataObject Guid="c747df7a-abce-4da1-bb06-6b6e9e9d2bd4">
+              <Name>TPDO1</Name>
+              <CobId>187</CobId>
+              <CobIdType>Default</CobIdType>
+              <DefaultCobIdIndex>0</DefaultCobIdIndex>
+              <DataLengthCode>6</DataLengthCode>
+              <EventTimer>300</EventTimer>
+              <InhibitTime>100</InhibitTime>
+              <TransmissionType>Async</TransmissionType>
+              <TransmitterTransmissionType>Async</TransmitterTransmissionType>
+              <ResetTimeout>0</ResetTimeout>
+              <SyncCount>1</SyncCount>
+              <TransmitterSyncCount>1</TransmitterSyncCount>
+              <IsExtendedCobId>false</IsExtendedCobId>
+              <SyncGuid>eb1b55d0-37bc-4586-97ae-02872c499e15</SyncGuid>
+            </TransferProcessDataObject>
+            <TransferProcessDataObject Guid="6332bc89-e08b-4e63-8275-4a3f90b65c0c">
+              <Name>TPDO2</Name>
+              <CobId>287</CobId>
+              <CobIdType>Default</CobIdType>
+              <DefaultCobIdIndex>1</DefaultCobIdIndex>
+              <DataLengthCode>6</DataLengthCode>
+              <EventTimer>300</EventTimer>
+              <InhibitTime>100</InhibitTime>
+              <TransmissionType>Async</TransmissionType>
+              <TransmitterTransmissionType>Async</TransmitterTransmissionType>
+              <ResetTimeout>0</ResetTimeout>
+              <SyncCount>1</SyncCount>
+              <TransmitterSyncCount>1</TransmitterSyncCount>
+              <IsExtendedCobId>false</IsExtendedCobId>
+              <SyncGuid>f497642f-245c-4df3-9dce-9af5a3c53392</SyncGuid>
+            </TransferProcessDataObject>
+            <ReceiveProcessDataObject Guid="0e292a7d-c8aa-47b2-ab65-b1312cf50dd9">
+              <Name>RPDO1</Name>
+              <CobId>200</CobId>
+              <CobIdType>Manual</CobIdType>
+              <DataLengthCode>1</DataLengthCode>
+              <EventTimer>300</EventTimer>
+              <InhibitTime>10</InhibitTime>
+              <Mappings>
+                <Mapping Guid="37de1492-2447-4057-81f7-b440d267e336" Index="0" />
+              </Mappings>
+              <ResetTimeout>1000</ResetTimeout>
+              <TransmissionType>Async</TransmissionType>
+              <TransmitterTransmissionType>FromRPDO</TransmitterTransmissionType>
+              <SyncCount>1</SyncCount>
+              <TransmitterSyncCount>1</TransmitterSyncCount>
+              <IsExtendedCobId>false</IsExtendedCobId>
+              <SyncGuid>940288d7-cdf5-447f-a938-ce5656093b2b</SyncGuid>
+            </ReceiveProcessDataObject>
+          </ProcessDataObjects>
+          <ParameterHandling>
+            <ParameterHandlingItem>
+              <StartIndex>1000</StartIndex>
+              <EndIndex>FFFF</EndIndex>
+              <IsReadOnly>true</IsReadOnly>
+            </ParameterHandlingItem>
+            <ParameterHandlingItem>
+              <StartIndex>1000</StartIndex>
+              <EndIndex>1FFF</EndIndex>
+              <IsReadOnly>true</IsReadOnly>
+            </ParameterHandlingItem>
+            <ParameterHandlingItem>
+              <StartIndex>2000</StartIndex>
+              <EndIndex>FFFF</EndIndex>
+              <IsReadOnly>true</IsReadOnly>
+            </ParameterHandlingItem>
+            <ParameterHandlingItem>
+              <StartIndex>0</StartIndex>
+              <EndIndex>0</EndIndex>
+              <IsReadOnly>true</IsReadOnly>
+            </ParameterHandlingItem>
+          </ParameterHandling>
+        </Parameters>
+        <J1939>
+          <J1939EnableRequestMessage>true</J1939EnableRequestMessage>
+          <DM1Producer>false</DM1Producer>
+          <NumberOfDTCs>2</NumberOfDTCs>
+          <DM2Producer>false</DM2Producer>
+          <DM2SavingToNonVolatileMemory>false</DM2SavingToNonVolatileMemory>
+          <ManualAddress>0</ManualAddress>
+        </J1939>
+        <ISOBUS IsInitialized="false">
+          <Components>
+            <Component Type="ISOBUS_VT">
+              <IsInitialized>true</IsInitialized>
+              <AefUtGeneration>2</AefUtGeneration>
+              <IsoVersion>3</IsoVersion>
+              <TimeoutForPoolTransfer>40</TimeoutForPoolTransfer>
+              <TxPgnBufferSize>4096</TxPgnBufferSize>
+              <ObjectHandlersMaxCount>50</ObjectHandlersMaxCount>
+              <DatamaskDimensions>480</DatamaskDimensions>
+              <SoftkeyWidth>72</SoftkeyWidth>
+              <SoftkeyHeight>72</SoftkeyHeight>
+              <FunctionalityOptions>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+              </FunctionalityOptions>
+              <AuxNInUse>false</AuxNInUse>
+              <AuxNFunctionGeneration>1</AuxNFunctionGeneration>
+              <AuxTxPgnBufferSize>2048</AuxTxPgnBufferSize>
+              <AuxInputMaxCount>3</AuxInputMaxCount>
+              <AuxNFunctionalityOptions>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+              </AuxNFunctionalityOptions>
+            </Component>
+            <Component Type="ISOBUS_TC">
+              <IsInitialized>false</IsInitialized>
+              <AefTcGeneration>1</AefTcGeneration>
+              <IsoVersion>3</IsoVersion>
+              <TimeoutForPoolTransfer>20</TimeoutForPoolTransfer>
+              <TxPgnBufferSize>255</TxPgnBufferSize>
+              <BAS>
+                <IsSelected>false</IsSelected>
+                <FunctionalityOptions>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                </FunctionalityOptions>
+              </BAS>
+              <GEO>
+                <IsSelected>false</IsSelected>
+                <NumberOfControlChannels>1</NumberOfControlChannels>
+                <FunctionalityOptions>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                </FunctionalityOptions>
+              </GEO>
+              <SC>
+                <IsSelected>false</IsSelected>
+                <NumberOfBooms>1</NumberOfBooms>
+                <NumberOfSections>1</NumberOfSections>
+              </SC>
+            </Component>
+            <Component Type="ISOBUS_TECU">
+              <IsInitialized>false</IsInitialized>
+              <AefGeneration>1</AefGeneration>
+              <InstanceMaxCount>3</InstanceMaxCount>
+              <Class>2</Class>
+            </Component>
+            <Component Type="ISOBUS_DIAGNOSTIC">
+              <IsInitialized>false</IsInitialized>
+              <AefMinGeneration>1</AefMinGeneration>
+              <ProductIdentificationInfo>
+                <Code />
+                <Brand />
+                <Model />
+              </ProductIdentificationInfo>
+              <IsobusComplianceCertification>
+                <ProtocolYear>2026</ProtocolYear>
+                <ProtocolRevision>1</ProtocolRevision>
+                <LaboratoryId>0</LaboratoryId>
+                <LaboratoryType>ISOBUS_LAB_TYPE_SELF</LaboratoryType>
+                <ReferenceNumber>0</ReferenceNumber>
+              </IsobusComplianceCertification>
+              <EcuIdentificationInfo>
+                <PartNumber />
+                <SerialNumber />
+                <Location />
+                <Type />
+                <Manufacturer>Epec Oy</Manufacturer>
+                <Revision />
+              </EcuIdentificationInfo>
+              <SoftwareIdentification>
+                <EcuFwVersion />
+                <ApplicationSwVersion />
+              </SoftwareIdentification>
+            </Component>
+          </Components>
+        </ISOBUS>
+        <AddressClaiming IsInitialized="false" MonitoringTime="500" />
+        <Monitorings Guid="00000000-0000-0000-0000-000000000000">
+          <NmtProtocol>Master</NmtProtocol>
+          <StartInterval>1000</StartInterval>
+          <BusOk>true</BusOk>
+          <EnableSimultaneousSlaveConfigurations>false</EnableSimultaneousSlaveConfigurations>
+          <Monitors>
+            <AutoMonitor Guid="8d19d01e-a8bf-47b3-a6c6-69c118113351">
+              <IsActive>true</IsActive>
+              <ResetNode>false</ResetNode>
+              <KeepAlive>true</KeepAlive>
+              <IsMandatory>true</IsMandatory>
+              <NoNmtStart>false</NoNmtStart>
+              <ConsumerTime>400</ConsumerTime>
+              <Target>5d94d1d2-cea6-4d02-8cae-1842f0181d13</Target>
+            </AutoMonitor>
+          </Monitors>
+        </Monitorings>
+        <EventSystem>
+          <IsConsumer>false</IsConsumer>
+          <Source>0</Source>
+          <LogType />
+          <LogLineCount>0</LogLineCount>
+          <MaxVisibleLogLines>20</MaxVisibleLogLines>
+          <EventLogBufferSize>200</EventLogBufferSize>
+          <LibraryEvents>
+            <LibraryEvent>
+              <Name>DummyEvent</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY1_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY1_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY2_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY2_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY3_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY3_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF5_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF5_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF10_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF10_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_TEMP1_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_TEMP1_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_TEMP2_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_TEMP2_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CYCLE_TIME_HIGH</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF12_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF12_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_PULLUP10_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_PULLUP10_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REFADC_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REFADC_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_RS485H_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_RS485H_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_RS485L_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_RS485L_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN1H_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN1H_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN1L_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN1L_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN2H_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN2H_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN2L_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN2L_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_UPSVOLTAGE_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_UPSVOLTAGE_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF2V5_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF2V5_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF4V5_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF4V5_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN1_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN1_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN2_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN2_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN3_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN3_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN5_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN5_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF3V6_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF3V6_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF7V3_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF7V3_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF2V5PT1000_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF2V5PT1000_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF4V3_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF4V3_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF8V2_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF8V2_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_IO_5V_REF_OVL</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_IO_OUT_ST_ERROR</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_IO_INIT_ERROR</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_IO_AUX_OUTPUT_FAILURE</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+          </LibraryEvents>
+        </EventSystem>
+        <IODiagnosticSystem>
+          <IsConsumer>false</IsConsumer>
+          <IsProducer>false</IsProducer>
+          <ProducerSourceID>0</ProducerSourceID>
+        </IODiagnosticSystem>
+        <IsForwarded>false</IsForwarded>
+        <IsCanOverEthernet>false</IsCanOverEthernet>
+        <CommunicatesWithGuid>00000000-0000-0000-0000-000000000000</CommunicatesWithGuid>
+      </CAN>
+    </CANs>
+    <Ethernets />
+    <IO>
+      <Connectors>
+        <Connector>
+          <Id>1</Id>
+          <Pins>
+            <Pin Guid="5dcff122-86e0-4a83-ad9d-1aa5a1b22335" IsReadOnly="false">
+              <Id>2</Id>
+              <Variable>VAVLE_UP</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="37ce0dc1-e1d8-4edf-8381-7a821cc840a7" IsReadOnly="false">
+              <Id>3</Id>
+              <Variable>VAVLE_DN</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables>
+                <RefVariable Modes="4, 24">
+                  <Variable>
+                    <Name>pwmX1_3_Frequency</Name>
+                    <Value>140</Value>
+                  </Variable>
+                </RefVariable>
+              </Variables>
+              <SelectedModes>4</SelectedModes>
+            </Pin>
+            <Pin Guid="c4cadfc5-32f8-40ed-b7d7-77c9fd16baba" IsReadOnly="false">
+              <Id>7</Id>
+              <Variable>LED1</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+              <SelectedModes>3</SelectedModes>
+            </Pin>
+            <Pin Guid="4691220e-ed39-4baa-9d43-13bcc90fe715" IsReadOnly="false">
+              <Id>8</Id>
+              <Variable>LED2</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+              <SelectedModes>3</SelectedModes>
+            </Pin>
+            <Pin Guid="32b62bf6-33a6-495a-950d-d900e6e7a9db" IsReadOnly="false">
+              <Id>9</Id>
+              <Variable>X1_9</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="75e37498-b844-4b32-a95c-a56b238be728" IsReadOnly="false">
+              <Id>10</Id>
+              <Variable>X1_10</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="a87c812e-7376-4c20-9068-879c23e23da0" IsReadOnly="false">
+              <Id>11</Id>
+              <Variable>X1_11</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="9e9343e2-5429-490f-b232-9996b09e074d" IsReadOnly="false">
+              <Id>12</Id>
+              <Variable>X1_12</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="576366cf-3303-4d15-8625-4ed77ebb662f" IsReadOnly="false">
+              <Id>14</Id>
+              <Variable>SW_FOOT</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables>
+                <RefVariable Modes="2">
+                  <Variable>
+                    <Name>diX1_14_DebounceDelay</Name>
+                    <Value>30</Value>
+                  </Variable>
+                </RefVariable>
+                <RefVariable Modes="2">
+                  <Variable>
+                    <Name>diX1_14_DebounceType</Name>
+                    <VariableName>DebounceFilterType</VariableName>
+                    <Value>0</Value>
+                  </Variable>
+                </RefVariable>
+              </Variables>
+              <SelectedModes>2</SelectedModes>
+            </Pin>
+            <Pin Guid="682a02c9-a3c7-4785-af69-1016e36857d9" IsReadOnly="false">
+              <Id>15</Id>
+              <Variable>SW_EMERGENCY</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables>
+                <RefVariable Modes="2">
+                  <Variable>
+                    <Name>diX1_15_DebounceDelay</Name>
+                    <Value>30</Value>
+                  </Variable>
+                </RefVariable>
+                <RefVariable Modes="2">
+                  <Variable>
+                    <Name>diX1_15_DebounceType</Name>
+                    <VariableName>DebounceFilterType</VariableName>
+                    <Value>0</Value>
+                  </Variable>
+                </RefVariable>
+              </Variables>
+              <SelectedModes>2</SelectedModes>
+            </Pin>
+            <Pin Guid="0b459e93-2ce2-4455-b0ee-ce763a859744" IsReadOnly="false">
+              <Id>20</Id>
+              <Variable>JOYSTICK_MV</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables>
+                <RefVariable Modes="7">
+                  <Variable>
+                    <Name>aiX1_20AiMode</Name>
+                    <Value>0</Value>
+                  </Variable>
+                </RefVariable>
+                <RefVariable Modes="7">
+                  <Variable>
+                    <Name>aiX1_20AiFiltSamp</Name>
+                    <Value>10</Value>
+                  </Variable>
+                </RefVariable>
+              </Variables>
+              <SelectedModes>7</SelectedModes>
+            </Pin>
+            <Pin Guid="47936530-67da-49f6-8cc1-ab8660538c1a" IsReadOnly="false">
+              <Id>21</Id>
+              <Variable>SENSOR_MV</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables>
+                <RefVariable Modes="7">
+                  <Variable>
+                    <Name>aiX1_21AiMode</Name>
+                    <Value>0</Value>
+                  </Variable>
+                </RefVariable>
+                <RefVariable Modes="7">
+                  <Variable>
+                    <Name>aiX1_21AiFiltSamp</Name>
+                    <Value>10</Value>
+                  </Variable>
+                </RefVariable>
+              </Variables>
+              <SelectedModes>7</SelectedModes>
+            </Pin>
+            <Pin Guid="00fbd3d0-6385-4d32-941f-1eb64c182cf2" IsReadOnly="false">
+              <Id>22</Id>
+              <Variable>VALVE_UPDN_CURRENT</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables>
+                <RefVariable Modes="22">
+                  <Variable>
+                    <Name>aiX1_22AiFiltSamp</Name>
+                    <Value>10</Value>
+                  </Variable>
+                </RefVariable>
+              </Variables>
+              <SelectedModes>22</SelectedModes>
+            </Pin>
+            <Pin Guid="845f3f69-da4e-4dbf-8b0e-7fa3039bade0" IsReadOnly="false">
+              <Id>23</Id>
+              <Variable>X1_23</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="446e6ab8-ac3c-421c-859b-31f6632f39d9" IsReadOnly="false">
+              <Id>25</Id>
+              <Variable>X1_25</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="db1e4585-5ac3-4958-a9ee-2f9d7474e41a" IsReadOnly="false">
+              <Id>26</Id>
+              <Variable>X1_26</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="4eb63634-eed3-4cda-a796-dc634fa93095" IsReadOnly="false">
+              <Id>27</Id>
+              <Variable>X1_27</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="6b05d4f3-206d-47a7-96da-9d0c0cb2582b" IsReadOnly="false">
+              <Id>31</Id>
+              <Variable>X1_31</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="8efdc249-1621-4ccf-a830-a839976b8071" IsReadOnly="false">
+              <Id>32</Id>
+              <Variable>X1_32</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="b0fe2c2f-6297-4e8e-91ff-93c3c57ca86e" IsReadOnly="false">
+              <Id>34</Id>
+              <Variable>X1_34</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="82a61e0b-e0e7-4ac3-8921-7cf484d568e6" IsReadOnly="false">
+              <Id>35</Id>
+              <Variable>X1_35</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+          </Pins>
+        </Connector>
+      </Connectors>
+    </IO>
+    <Diagnostics>
+      <DiagnosticsItems>
+        <DiagnosticsValueItem Guid="3668ee78-10da-44c7-a482-470103b74076">
+          <VariableName>G_SystemOk</VariableName>
+          <IsCondition>false</IsCondition>
+          <Value>FALSE</Value>
+        </DiagnosticsValueItem>
+        <DiagnosticsRangeItem Guid="29529b9b-0b05-43a3-a573-1525242a28f5">
+          <VariableName>Temperature</VariableName>
+          <IsCondition>true</IsCondition>
+          <Minimum>-30</Minimum>
+          <Maximum>85</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="8e6b55f2-2471-4545-ac1d-0b213de8cd70">
+          <VariableName>SupplyVoltage</VariableName>
+          <IsCondition>true</IsCondition>
+          <Minimum>9</Minimum>
+          <Maximum>33</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="da266743-8731-455d-b482-5bac7014708b">
+          <VariableName>Ref5V</VariableName>
+          <IsCondition>false</IsCondition>
+          <Minimum>4.5</Minimum>
+          <Maximum>5.5</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="7243c498-a009-4454-9ae9-17120f78f48c">
+          <VariableName>CycleTime</VariableName>
+          <IsCondition>false</IsCondition>
+          <Minimum>18</Minimum>
+          <Maximum>30</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="ecd79e37-0930-46e9-940e-46027810963d">
+          <VariableName>Ref_5V_Overload</VariableName>
+          <IsCondition>false</IsCondition>
+          <Minimum>1</Minimum>
+          <Maximum>1</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="740da9c9-da67-4099-8c6a-77fbcda26aac">
+          <VariableName>IO Init error</VariableName>
+          <IsCondition>true</IsCondition>
+          <Minimum>1</Minimum>
+          <Maximum>1</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsConditionalItem Guid="5fe37c90-2c19-4e07-9843-66b26e893f04">
+          <Name>#lang.SystemDiagnostics.EnableLed#</Name>
+          <VariableName>EnableLed</VariableName>
+          <DataType>BOOL</DataType>
+          <IsReadOnly>false</IsReadOnly>
+          <IsCondition>true</IsCondition>
+          <Value>true</Value>
+          <ValueDefault>true</ValueDefault>
+          <IsConditionDefault>true</IsConditionDefault>
+        </DiagnosticsConditionalItem>
+      </DiagnosticsItems>
+    </Diagnostics>
+    <DataSecurity />
+    <Abstraction>
+      <IsHighLevelAbstraction>false</IsHighLevelAbstraction>
+    </Abstraction>
+    <ConnectedDevices />
+  </Device>
+  <Device Guid="ec0a32e7-3c7e-4b32-8bc2-d66fd9bc6f91">
+    <Name>CU_3606_21_2</Name>
+    <Id>3606</Id>
+    <Attributes>
+      <Attribute>
+        <Name>CodesysKeyword</Name>
+        <Value>3DC41A10</Value>
+      </Attribute>
+      <Attribute>
+        <Name>IsobusExtraBinaryStartAddress</Name>
+        <Value>16#D70030</Value>
+      </Attribute>
+      <Attribute>
+        <Name>IsobusBinaryMakerStartAddress</Name>
+        <Value>14090240</Value>
+      </Attribute>
+    </Attributes>
+    <Metadata>
+      <FileVersion>5.0.45</FileVersion>
+    </Metadata>
+    <CodesysConfiguration>
+      <Version>2.3</Version>
+      <MaxNumberOfCobIds>100</MaxNumberOfCobIds>
+      <MaxNumberOfRequestCallbacks>10</MaxNumberOfRequestCallbacks>
+      <SavedParameterCountPerCycle>50</SavedParameterCountPerCycle>
+      <CodesysExportTemplates>
+        <CodesysExportTemplate>
+          <Filename>{Name}.exp</Filename>
+          <SupportedCodesysVersion>2.3</SupportedCodesysVersion>
+          <Code IOC="Tag">698dd6b0-934a-4221-b719-ff977109d93f</Code>
+        </CodesysExportTemplate>
+      </CodesysExportTemplates>
+    </CodesysConfiguration>
+    <Libraries>
+      <Library Version="1.2.0" IsExported="true">
+        <Name>3000AnalogInputProtection.lib</Name>
+      </Library>
+      <Library Version="1.5.3" IsExported="true">
+        <Name>3000CANVXD.lib</Name>
+      </Library>
+      <Library Version="1.3.0" IsExported="true">
+        <Name>3000ext.lib</Name>
+      </Library>
+      <Library Version="1.3.5" IsExported="true">
+        <Name>J1939.lib</Name>
+      </Library>
+      <Library Version="1.1.0" IsExported="true">
+        <Name>3000InterruptSendHandler.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="true">
+        <Name>3000SetTickExt.lib</Name>
+      </Library>
+      <Library Version="1.6.2" IsExported="true">
+        <Name>3606int.lib</Name>
+      </Library>
+      <Library Version="0.0.2" IsExported="true">
+        <Name>3606specific.lib</Name>
+      </Library>
+      <Library Version="1.0.1" IsExported="true">
+        <Name>ADConversion.lib</Name>
+      </Library>
+      <Library Version="1.1.1" IsExported="true">
+        <Name>AddressClaiming.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="true">
+        <Name>AI.lib</Name>
+      </Library>
+      <Library Version="1.6.7" IsExported="true">
+        <Name>CANopen.lib</Name>
+      </Library>
+      <Library Version="1.3.2" IsExported="true">
+        <Name>CANopenCSDO.lib</Name>
+      </Library>
+      <Library Version="1.4.2" IsExported="true">
+        <Name>CANopenODSave.lib</Name>
+      </Library>
+      <Library Version="1.0.1" IsExported="true">
+        <Name>CANopen_302.lib</Name>
+      </Library>
+      <Library Version="1.0.1" IsExported="true">
+        <Name>DataTransfer.lib</Name>
+      </Library>
+      <Library Version="1.1.1" IsExported="true">
+        <Name>DigitalOutputDiagnostic.lib</Name>
+      </Library>
+      <Library Version="1.4.3" IsExported="true">
+        <Name>EventLog.lib</Name>
+      </Library>
+      <Library Version="1.1.0" IsExported="true">
+        <Name>EventLogTransfer.lib</Name>
+      </Library>
+      <Library Version="1.1.0" IsExported="true">
+        <Name>ExtraBins.lib</Name>
+      </Library>
+      <Library Version="1.3.0" IsExported="true">
+        <Name>FileSys.lib</Name>
+      </Library>
+      <Library Version="1.0.2" IsExported="true">
+        <Name>Filters.lib</Name>
+      </Library>
+      <Library Version="1.2.1" IsExported="false">
+        <Name>ISOBUS.lib</Name>
+      </Library>
+      <Library Version="1.2.3" IsExported="false">
+        <Name>ISOBUS_TC.lib</Name>
+      </Library>
+      <Library Version="1.4.12" IsExported="false">
+        <Name>ISOBUS_VT.lib</Name>
+      </Library>
+      <Library Version="1.0.1" IsExported="true">
+        <Name>J1939Event.lib</Name>
+      </Library>
+      <Library Version="1.3.1" IsExported="true">
+        <Name>JoystickCalibrationAndDiagnostic.lib</Name>
+      </Library>
+      <Library Version="1.3.0" IsExported="true">
+        <Name>NetworkManager.lib</Name>
+      </Library>
+      <Library Version="1.1.0" IsExported="true">
+        <Name>Ramp.lib</Name>
+      </Library>
+      <Library Version="1.0.7" IsExported="true">
+        <Name>ProportionalValveControl.lib</Name>
+      </Library>
+      <Library Version="1.0.2" IsExported="true">
+        <Name>SensorCalibrationAndDiagnostic.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="true">
+        <Name>Standard.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="true">
+        <Name>Util.lib</Name>
+      </Library>
+      <Library Version="1.0.0" IsExported="false">
+        <Name>Util_no_Real.lib</Name>
+      </Library>
+    </Libraries>
+    <CANs>
+      <CAN Guid="5d94d1d2-cea6-4d02-8cae-1842f0181d13">
+        <CANNumber>1</CANNumber>
+        <BitRate>500</BitRate>
+        <Settings Guid="dcc37ffb-b57f-4ffb-b15a-50d48f7552b4" IsInitialized="true">
+          <MessageType>Short</MessageType>
+          <NodeId>2</NodeId>
+          <CodesysNodeId>2</CodesysNodeId>
+          <NodeIdOffset>32</NodeIdOffset>
+          <TakeNodeIdFromCommParams>false</TakeNodeIdFromCommParams>
+          <CreateCsdoInstances>false</CreateCsdoInstances>
+          <HeartbeatInterval>200</HeartbeatInterval>
+          <DeviceProfile>405</DeviceProfile>
+          <SyncProducer>False</SyncProducer>
+          <SyncCycleTime>200</SyncCycleTime>
+          <SyncCounter>False</SyncCounter>
+          <SyncCounterMax>240</SyncCounterMax>
+          <SyncCobID>128</SyncCobID>
+          <ConfigurationTimeout>100</ConfigurationTimeout>
+          <EMCYProducer>False</EMCYProducer>
+          <EMCYConsumer>False</EMCYConsumer>
+          <EMCYInhibitTime>0</EMCYInhibitTime>
+          <Buffering>true</Buffering>
+          <ApplicationVersion />
+          <SdoQueryEnable>false</SdoQueryEnable>
+          <SdoQueryInterval>0</SdoQueryInterval>
+          <NoConfiguration>false</NoConfiguration>
+          <DelayBeforeConfiguration>1000</DelayBeforeConfiguration>
+          <ConfigurationStartTimeout>10</ConfigurationStartTimeout>
+          <EDSProductNumber>0</EDSProductNumber>
+          <EDSVendorId>0</EDSVendorId>
+          <SaveConfiguration>false</SaveConfiguration>
+          <SaveIndex>4112</SaveIndex>
+          <SaveSubIndex>1</SaveSubIndex>
+          <SaveTimeout>1000</SaveTimeout>
+          <VerifyMethod>CRC</VerifyMethod>
+          <CRCIndex>8273</CRCIndex>
+          <CRCSubIndex>2</CRCSubIndex>
+          <CRCValidIndex>8273</CRCValidIndex>
+          <CRCValidSubIndex>1</CRCValidSubIndex>
+          <CRCValidValue>1</CRCValidValue>
+          <CRCValidDelay>1000</CRCValidDelay>
+          <UseCRCValidityIndex>false</UseCRCValidityIndex>
+        </Settings>
+        <Parameters>
+          <ObjectDictionary>
+            <ObjectDictionaryIndex Guid="17597907-2665-4580-ad83-4e90534b2e34" SyncGuid="5c8aee9d-7662-462a-8ca9-8def910f5915" IsEditable="true" IsAuto="true">
+              <Name>AUTO_of_Type_INT</Name>
+              <Index>5FEF</Index>
+              <DataType>INT</DataType>
+              <VariableType>RAM</VariableType>
+              <IndexType>SingleVariables</IndexType>
+              <Description>Automatically created INT variables</Description>
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="ca5619c5-51b9-4c3f-9c53-3efc3b19a955" SyncGuid="74484d91-d782-46c6-8b2d-d206c65aa43d">
+                  <Name>CU_3606_21_1_Joystick</Name>
+                  <Index>1</Index>
+                  <DataType>INT</DataType>
+                  <Description />
+                  <PdoMappable>true</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-32768</Minimum>
+                    <Maximum>32767</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="64fff14b-3441-475d-821c-5d91b82dd9ec" SyncGuid="14f81ef8-6c85-4116-9cb3-9ed777efdce5">
+                  <Name>CU_3606_21_1_SensorMeter</Name>
+                  <Index>2</Index>
+                  <DataType>INT</DataType>
+                  <Description />
+                  <PdoMappable>true</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>-32768</Minimum>
+                    <Maximum>32767</Maximum>
+                  </ObjectDictionaryValue>
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
+            <ObjectDictionaryIndex Guid="94b4a33c-e734-4401-9a48-1edb1416ee3d" SyncGuid="23208c71-f069-494b-85ec-43646098cb34" IsEditable="true" IsAuto="true">
+              <Name>AUTO_of_Type_BYTE</Name>
+              <Index>5FFF</Index>
+              <DataType>BYTE</DataType>
+              <VariableType>RAM</VariableType>
+              <IndexType>SingleVariables</IndexType>
+              <Description>Automatically created BYTE variables</Description>
+              <UseChecksum>false</UseChecksum>
+              <ObjectDictionarySubIndexes>
+                <ObjectDictionarySubIndex Guid="fe987019-32ac-43ba-9651-1f4689c40d67" SyncGuid="b322ce72-4a47-4f49-94e5-b83d23122fef">
+                  <Name>CU_3606_21_1_DigitalInput</Name>
+                  <Index>1</Index>
+                  <DataType>BYTE</DataType>
+                  <Description />
+                  <PdoMappable>true</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>255</Maximum>
+                  </ObjectDictionaryValue>
+                  <Bits>
+                    <Generate>True</Generate>
+                    <Variables>
+                      <Bit Guid="2e0ea1f1-c0ea-4ee7-973e-76f4dc433994">
+                        <Name>CU_3606_21_1_SwitchFoot</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[0]</Description>
+                      </Bit>
+                      <Bit Guid="c22a9be2-73a0-4279-8e02-ce7b0cffd18b">
+                        <Name>CU_3606_21_1_SwitchEmergency</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[1]</Description>
+                      </Bit>
+                      <Bit Guid="6c4c6f9e-9d4f-45d5-a4fd-1f31d546cf29">
+                        <Name>CU_3606_21_1_DigitalInput_Bit2</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[2]</Description>
+                      </Bit>
+                      <Bit Guid="2c089070-19cd-41a1-8556-8228ace43052">
+                        <Name>CU_3606_21_1_DigitalInput_Bit3</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[3]</Description>
+                      </Bit>
+                      <Bit Guid="484972f9-6cab-43de-ab3c-3a1d09260b31">
+                        <Name>CU_3606_21_1_DigitalInput_Bit4</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[4]</Description>
+                      </Bit>
+                      <Bit Guid="8f66728c-83cb-4138-a8f8-ce1d5b7cc09c">
+                        <Name>CU_3606_21_1_DigitalInput_Bit5</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[5]</Description>
+                      </Bit>
+                      <Bit Guid="2aaaf2f3-011b-4757-92da-13db74041a82">
+                        <Name>CU_3606_21_1_DigitalInput_Bit6</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[6]</Description>
+                      </Bit>
+                      <Bit Guid="4a47c745-6fe4-4e4b-898e-4807a8f6e93d">
+                        <Name>CU_3606_21_1_DigitalInput_Bit7</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[7]</Description>
+                      </Bit>
+                    </Variables>
+                  </Bits>
+                </ObjectDictionarySubIndex>
+                <ObjectDictionarySubIndex Guid="c1a4d415-837c-4d6a-83f8-e7ac37684769" SyncGuid="192b1a21-7320-4dab-b148-d6c5abadf92d">
+                  <Name>CU_3606_21_1_DigitalOutput</Name>
+                  <Index>2</Index>
+                  <DataType>BYTE</DataType>
+                  <Description />
+                  <PdoMappable>true</PdoMappable>
+                  <ForceWrite>false</ForceWrite>
+                  <AccessType>RW</AccessType>
+                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+                  <IsAtDefaultValue>true</IsAtDefaultValue>
+                  <ObjectDictionaryValue>
+                    <Default>0</Default>
+                    <NewValue>0</NewValue>
+                    <Minimum>0</Minimum>
+                    <Maximum>255</Maximum>
+                  </ObjectDictionaryValue>
+                  <Bits>
+                    <Generate>True</Generate>
+                    <Variables>
+                      <Bit Guid="01bbd21c-5334-49b3-8815-5d1f6b053d16">
+                        <Name>CU_3606_21_1_LED1</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[0]</Description>
+                      </Bit>
+                      <Bit Guid="96d78203-7691-4d0b-aa88-4b5e42c78f1b">
+                        <Name>CU_3606_21_1_LED2</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[1]</Description>
+                      </Bit>
+                      <Bit Guid="1bda55ab-a66b-4a9a-9d85-6286ca8b261e">
+                        <Name>CU_3606_21_1_DigitalOutput_Bit2</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[2]</Description>
+                      </Bit>
+                      <Bit Guid="ce845453-6798-4b07-8954-749c3b475cdf">
+                        <Name>CU_3606_21_1_DigitalOutput_Bit3</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[3]</Description>
+                      </Bit>
+                      <Bit Guid="c290b145-67bd-4725-8335-db226d7728df">
+                        <Name>CU_3606_21_1_DigitalOutput_Bit4</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[4]</Description>
+                      </Bit>
+                      <Bit Guid="aa7879af-0692-4a28-9620-073f059e82a6">
+                        <Name>CU_3606_21_1_DigitalOutput_Bit5</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[5]</Description>
+                      </Bit>
+                      <Bit Guid="4f252cf0-a3c2-4054-ac7e-d231365f11b5">
+                        <Name>CU_3606_21_1_DigitalOutput_Bit6</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[6]</Description>
+                      </Bit>
+                      <Bit Guid="dd8db3c7-cefa-46ba-b401-12a66f62aada">
+                        <Name>CU_3606_21_1_DigitalOutput_Bit7</Name>
+                        <ObjectDictionaryValue>
+                          <Default>0</Default>
+                          <NewValue>0</NewValue>
+                          <Minimum>0</Minimum>
+                          <Maximum>1</Maximum>
+                        </ObjectDictionaryValue>
+                        <Description>Bit[7]</Description>
+                      </Bit>
+                    </Variables>
+                  </Bits>
+                </ObjectDictionarySubIndex>
+              </ObjectDictionarySubIndexes>
+            </ObjectDictionaryIndex>
+          </ObjectDictionary>
+          <ProcessDataObjects />
+          <ParameterHandling>
+            <ParameterHandlingItem>
+              <StartIndex>1000</StartIndex>
+              <EndIndex>FFFF</EndIndex>
+              <IsReadOnly>true</IsReadOnly>
+            </ParameterHandlingItem>
+            <ParameterHandlingItem>
+              <StartIndex>1000</StartIndex>
+              <EndIndex>1FFF</EndIndex>
+              <IsReadOnly>true</IsReadOnly>
+            </ParameterHandlingItem>
+            <ParameterHandlingItem>
+              <StartIndex>2000</StartIndex>
+              <EndIndex>FFFF</EndIndex>
+              <IsReadOnly>true</IsReadOnly>
+            </ParameterHandlingItem>
+            <ParameterHandlingItem>
+              <StartIndex>0</StartIndex>
+              <EndIndex>0</EndIndex>
+              <IsReadOnly>true</IsReadOnly>
+            </ParameterHandlingItem>
+          </ParameterHandling>
+        </Parameters>
+        <J1939>
+          <J1939EnableRequestMessage>false</J1939EnableRequestMessage>
+          <DM1Producer>false</DM1Producer>
+          <NumberOfDTCs>2</NumberOfDTCs>
+          <DM2Producer>false</DM2Producer>
+          <DM2SavingToNonVolatileMemory>false</DM2SavingToNonVolatileMemory>
+          <ManualAddress>0</ManualAddress>
+        </J1939>
+        <ISOBUS IsInitialized="false">
+          <Components>
+            <Component Type="ISOBUS_VT">
+              <IsInitialized>true</IsInitialized>
+              <AefUtGeneration>2</AefUtGeneration>
+              <IsoVersion>3</IsoVersion>
+              <TimeoutForPoolTransfer>40</TimeoutForPoolTransfer>
+              <TxPgnBufferSize>4096</TxPgnBufferSize>
+              <ObjectHandlersMaxCount>50</ObjectHandlersMaxCount>
+              <DatamaskDimensions>480</DatamaskDimensions>
+              <SoftkeyWidth>72</SoftkeyWidth>
+              <SoftkeyHeight>72</SoftkeyHeight>
+              <FunctionalityOptions>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+              </FunctionalityOptions>
+              <AuxNInUse>false</AuxNInUse>
+              <AuxNFunctionGeneration>1</AuxNFunctionGeneration>
+              <AuxTxPgnBufferSize>2048</AuxTxPgnBufferSize>
+              <AuxInputMaxCount>3</AuxInputMaxCount>
+              <AuxNFunctionalityOptions>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+                <Option>false</Option>
+              </AuxNFunctionalityOptions>
+            </Component>
+            <Component Type="ISOBUS_TC">
+              <IsInitialized>false</IsInitialized>
+              <AefTcGeneration>1</AefTcGeneration>
+              <IsoVersion>3</IsoVersion>
+              <TimeoutForPoolTransfer>20</TimeoutForPoolTransfer>
+              <TxPgnBufferSize>255</TxPgnBufferSize>
+              <BAS>
+                <IsSelected>false</IsSelected>
+                <FunctionalityOptions>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                </FunctionalityOptions>
+              </BAS>
+              <GEO>
+                <IsSelected>false</IsSelected>
+                <NumberOfControlChannels>1</NumberOfControlChannels>
+                <FunctionalityOptions>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                  <Option>false</Option>
+                </FunctionalityOptions>
+              </GEO>
+              <SC>
+                <IsSelected>false</IsSelected>
+                <NumberOfBooms>1</NumberOfBooms>
+                <NumberOfSections>1</NumberOfSections>
+              </SC>
+            </Component>
+            <Component Type="ISOBUS_TECU">
+              <IsInitialized>false</IsInitialized>
+              <AefGeneration>1</AefGeneration>
+              <InstanceMaxCount>3</InstanceMaxCount>
+              <Class>2</Class>
+            </Component>
+            <Component Type="ISOBUS_DIAGNOSTIC">
+              <IsInitialized>false</IsInitialized>
+              <AefMinGeneration>1</AefMinGeneration>
+              <ProductIdentificationInfo>
+                <Code />
+                <Brand />
+                <Model />
+              </ProductIdentificationInfo>
+              <IsobusComplianceCertification>
+                <ProtocolYear>2026</ProtocolYear>
+                <ProtocolRevision>1</ProtocolRevision>
+                <LaboratoryId>0</LaboratoryId>
+                <LaboratoryType>ISOBUS_LAB_TYPE_SELF</LaboratoryType>
+                <ReferenceNumber>0</ReferenceNumber>
+              </IsobusComplianceCertification>
+              <EcuIdentificationInfo>
+                <PartNumber />
+                <SerialNumber />
+                <Location />
+                <Type />
+                <Manufacturer>Epec Oy</Manufacturer>
+                <Revision />
+              </EcuIdentificationInfo>
+              <SoftwareIdentification>
+                <EcuFwVersion />
+                <ApplicationSwVersion />
+              </SoftwareIdentification>
+            </Component>
+          </Components>
+        </ISOBUS>
+        <AddressClaiming IsInitialized="false" MonitoringTime="500" />
+        <Monitorings Guid="00000000-0000-0000-0000-000000000000">
+          <NmtProtocol>Slave</NmtProtocol>
+          <StartInterval>1000</StartInterval>
+          <BusOk>false</BusOk>
+          <EnableSimultaneousSlaveConfigurations>false</EnableSimultaneousSlaveConfigurations>
+          <Monitors>
+            <AutoMonitor Guid="01dcafd7-de8d-485e-9df2-178d647c9fde">
+              <IsActive>true</IsActive>
+              <ResetNode>false</ResetNode>
+              <KeepAlive>true</KeepAlive>
+              <IsMandatory>true</IsMandatory>
+              <NoNmtStart>false</NoNmtStart>
+              <ConsumerTime>400</ConsumerTime>
+              <Target>7cfd98e8-029b-46a8-b6b3-0c4b8955c7ca</Target>
+            </AutoMonitor>
+          </Monitors>
+        </Monitorings>
+        <EventSystem>
+          <IsConsumer>false</IsConsumer>
+          <Source>0</Source>
+          <LogType />
+          <LogLineCount>0</LogLineCount>
+          <MaxVisibleLogLines>20</MaxVisibleLogLines>
+          <EventLogBufferSize>200</EventLogBufferSize>
+          <LibraryEvents>
+            <LibraryEvent>
+              <Name>DummyEvent</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY1_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY1_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY2_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY2_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY3_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY3_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF5_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF5_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF10_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF10_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_TEMP1_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_TEMP1_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_TEMP2_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_TEMP2_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CYCLE_TIME_HIGH</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF12_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF12_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_PULLUP10_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_PULLUP10_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REFADC_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REFADC_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_RS485H_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_RS485H_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_RS485L_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_RS485L_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN1H_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN1H_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN1L_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN1L_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN2H_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN2H_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN2L_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CAN2L_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_UPSVOLTAGE_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_UPSVOLTAGE_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF2V5_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF2V5_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF4V5_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF4V5_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_SUPPLY_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN1_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN1_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN2_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN2_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN3_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN3_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN5_CURRENT_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_CONN5_CURRENT_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF3V6_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF3V6_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF7V3_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF7V3_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF2V5PT1000_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF2V5PT1000_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF4V3_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF4V3_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF8V2_HIGH_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_HWD_REF8V2_LOW_LIMIT</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_IO_5V_REF_OVL</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_IO_OUT_ST_ERROR</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_IO_INIT_ERROR</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+            <LibraryEvent>
+              <Name>EL_IO_AUX_OUTPUT_FAILURE</Name>
+              <IsLogging>true</IsLogging>
+              <HasPopup>false</HasPopup>
+            </LibraryEvent>
+          </LibraryEvents>
+        </EventSystem>
+        <IODiagnosticSystem>
+          <IsConsumer>false</IsConsumer>
+          <IsProducer>false</IsProducer>
+          <ProducerSourceID>0</ProducerSourceID>
+        </IODiagnosticSystem>
+        <IsForwarded>false</IsForwarded>
+        <IsCanOverEthernet>false</IsCanOverEthernet>
+        <CommunicatesWithGuid>00000000-0000-0000-0000-000000000000</CommunicatesWithGuid>
+      </CAN>
+    </CANs>
+    <Ethernets />
+    <IO>
+      <Connectors>
+        <Connector>
+          <Id>1</Id>
+          <Pins>
+            <Pin Guid="55db0dbf-68a0-4553-b132-5f65dc75f286" IsReadOnly="false">
+              <Id>2</Id>
+              <Variable>X1_2</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="3a309306-a9df-4484-b274-28e7debd934e" IsReadOnly="false">
+              <Id>3</Id>
+              <Variable>X1_3</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="05ca6bb1-c352-45eb-a998-dd7e550e300f" IsReadOnly="false">
+              <Id>7</Id>
+              <Variable>X1_7</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="ccc1267e-1d98-4fe2-abe5-46fbbfaaa6ca" IsReadOnly="false">
+              <Id>8</Id>
+              <Variable>X1_8</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="b7d09272-77e3-41f4-a662-0269a2a7cfa1" IsReadOnly="false">
+              <Id>9</Id>
+              <Variable>X1_9</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="a051cbca-17c4-43fd-9937-94b54fc21154" IsReadOnly="false">
+              <Id>10</Id>
+              <Variable>X1_10</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="f1044591-5aec-4755-a3b5-0e010b26b74a" IsReadOnly="false">
+              <Id>11</Id>
+              <Variable>X1_11</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="375c1252-42a5-4e25-a50b-f5fbc24d382d" IsReadOnly="false">
+              <Id>12</Id>
+              <Variable>X1_12</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="a44f8d43-bb5c-4626-9a86-d9031b72f235" IsReadOnly="false">
+              <Id>14</Id>
+              <Variable>X1_14</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="783f6b17-13c8-4833-8be2-2373b0637238" IsReadOnly="false">
+              <Id>15</Id>
+              <Variable>X1_15</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="a36de923-7953-4850-a2f7-27841ddbeb05" IsReadOnly="false">
+              <Id>20</Id>
+              <Variable>X1_20</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="71ffa2d1-9f33-4beb-9ea4-72a9536b0e14" IsReadOnly="false">
+              <Id>21</Id>
+              <Variable>X1_21</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="6ed0419b-09b1-45a6-9baf-f1f1e728860b" IsReadOnly="false">
+              <Id>22</Id>
+              <Variable>X1_22</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="21fc2999-1034-4df2-a32c-e2d0bd4ecc44" IsReadOnly="false">
+              <Id>23</Id>
+              <Variable>X1_23</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="5e04a566-4d55-4515-a21b-8bfda8935c2e" IsReadOnly="false">
+              <Id>25</Id>
+              <Variable>X1_25</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="29f516de-6cb8-4a85-9323-1f00a89aa6fd" IsReadOnly="false">
+              <Id>26</Id>
+              <Variable>X1_26</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="43e490ce-cbb4-4667-85d6-6092244c34fa" IsReadOnly="false">
+              <Id>27</Id>
+              <Variable>X1_27</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="bb242f97-a00a-4332-8e25-19a85960e080" IsReadOnly="false">
+              <Id>31</Id>
+              <Variable>X1_31</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="0c1c7a2c-b74a-41ad-817b-b75b8ac8832b" IsReadOnly="false">
+              <Id>32</Id>
+              <Variable>X1_32</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="9040e17f-fd86-49b0-a291-8743d5a816ca" IsReadOnly="false">
+              <Id>34</Id>
+              <Variable>X1_34</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+            <Pin Guid="65be6f33-ed31-4dfe-b4c5-cecbad933d45" IsReadOnly="false">
+              <Id>35</Id>
+              <Variable>X1_35</Variable>
+              <CanBeModeless>true</CanBeModeless>
+              <Variables />
+            </Pin>
+          </Pins>
+        </Connector>
+      </Connectors>
+    </IO>
+    <Diagnostics>
+      <DiagnosticsItems>
+        <DiagnosticsValueItem Guid="378b1b0b-a388-4ee8-a098-df1d844f108a">
+          <VariableName>G_SystemOk</VariableName>
+          <IsCondition>false</IsCondition>
+          <Value>FALSE</Value>
+        </DiagnosticsValueItem>
+        <DiagnosticsRangeItem Guid="6f0ead5f-aea4-406b-b34c-05213a9feca7">
+          <VariableName>Temperature</VariableName>
+          <IsCondition>true</IsCondition>
+          <Minimum>-40</Minimum>
+          <Maximum>105</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="de4bdfe4-935b-4152-98ac-600804bbe707">
+          <VariableName>SupplyVoltage</VariableName>
+          <IsCondition>true</IsCondition>
+          <Minimum>9</Minimum>
+          <Maximum>33</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="e0ddccec-2157-41ac-9340-bcb29436fae6">
+          <VariableName>Ref5V</VariableName>
+          <IsCondition>false</IsCondition>
+          <Minimum>4.5</Minimum>
+          <Maximum>5.5</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="0b3a4cb3-738b-4633-86c4-6ba24da8eb89">
+          <VariableName>CycleTime</VariableName>
+          <IsCondition>false</IsCondition>
+          <Minimum>18</Minimum>
+          <Maximum>30</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="f60d9a97-4d1d-46ad-8733-de675979b89b">
+          <VariableName>Ref_5V_Overload</VariableName>
+          <IsCondition>false</IsCondition>
+          <Minimum>1</Minimum>
+          <Maximum>1</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsRangeItem Guid="3f914948-f0ee-4e33-8e0e-166606afa8a9">
+          <VariableName>IO Init error</VariableName>
+          <IsCondition>true</IsCondition>
+          <Minimum>1</Minimum>
+          <Maximum>1</Maximum>
+        </DiagnosticsRangeItem>
+        <DiagnosticsConditionalItem Guid="edc79d09-3ba9-4d47-bf60-a2e572774239">
+          <Name>#lang.SystemDiagnostics.EnableLed#</Name>
+          <VariableName>EnableLed</VariableName>
+          <DataType>BOOL</DataType>
+          <IsReadOnly>false</IsReadOnly>
+          <IsCondition>true</IsCondition>
+          <Value>true</Value>
+          <ValueDefault>true</ValueDefault>
+          <IsConditionDefault>true</IsConditionDefault>
+        </DiagnosticsConditionalItem>
+      </DiagnosticsItems>
+    </Diagnostics>
+    <DataSecurity />
+    <Abstraction>
+      <IsHighLevelAbstraction>false</IsHighLevelAbstraction>
+    </Abstraction>
+    <ConnectedDevices />
+  </Device>
+</MtProject>
