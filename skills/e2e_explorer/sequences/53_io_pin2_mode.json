@@ -1,0 +1,13 @@
+{
+  "name": "io_pin2_mode",
+  "goal": "Device[1] IO.Connectors.Connector[1].Pins.Pin[1].SelectedModes 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/IO/Connectors/Connector[1]/Pins/Pin[1]/SelectedModes",
+  "values": [
+    "3",
+    "4",
+    "5"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/IO/Connectors/Connector[1]/Pins/Pin[1]/SelectedModes",
+  "risk": "medium"
+}

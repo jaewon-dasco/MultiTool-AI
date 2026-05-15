@@ -1,0 +1,13 @@
+{
+  "name": "diag1_ref5v_min",
+  "goal": "Device[1] Diagnostics.DiagnosticsItems.DiagnosticsRangeItem[3].Minimum 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/Diagnostics/DiagnosticsItems/DiagnosticsRangeItem[3]/Minimum",
+  "values": [
+    "4.6",
+    "4.4",
+    "4.5"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/Diagnostics/DiagnosticsItems/DiagnosticsRangeItem[3]/Minimum",
+  "risk": "low"
+}

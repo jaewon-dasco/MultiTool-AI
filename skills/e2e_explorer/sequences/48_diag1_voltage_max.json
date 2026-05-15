@@ -1,0 +1,13 @@
+{
+  "name": "diag1_voltage_max",
+  "goal": "Device[1] Diagnostics.DiagnosticsItems.DiagnosticsRangeItem[2].Maximum 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/Diagnostics/DiagnosticsItems/DiagnosticsRangeItem[2]/Maximum",
+  "values": [
+    "32",
+    "35",
+    "33"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/Diagnostics/DiagnosticsItems/DiagnosticsRangeItem[2]/Maximum",
+  "risk": "low"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "od1_description",
+  "goal": "Device[1] CANs.CAN.Parameters.ObjectDictionary.ObjectDictionaryIndex[1].Description 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/Parameters/ObjectDictionary/ObjectDictionaryIndex[1]/Description",
+  "values": [
+    "test_desc",
+    ""
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/Parameters/ObjectDictionary/ObjectDictionaryIndex[1]/Description",
+  "risk": "low"
+}

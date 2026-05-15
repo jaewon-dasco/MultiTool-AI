@@ -1,0 +1,13 @@
+{
+  "name": "diag1_temp_max",
+  "goal": "Device[1] Diagnostics.DiagnosticsItems.DiagnosticsRangeItem[1].Maximum 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/Diagnostics/DiagnosticsItems/DiagnosticsRangeItem[1]/Maximum",
+  "values": [
+    "80",
+    "90",
+    "85"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/Diagnostics/DiagnosticsItems/DiagnosticsRangeItem[1]/Maximum",
+  "risk": "low"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "diag1_voltage_min",
+  "goal": "Device[1] Diagnostics.DiagnosticsItems.DiagnosticsRangeItem[2].Minimum 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/Diagnostics/DiagnosticsItems/DiagnosticsRangeItem[2]/Minimum",
+  "values": [
+    "10",
+    "8",
+    "9"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/Diagnostics/DiagnosticsItems/DiagnosticsRangeItem[2]/Minimum",
+  "risk": "low"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "od_2000_data_type",
+  "goal": "Device[1] CANs.CAN.Parameters.ObjectDictionary.ObjectDictionaryIndex[8].DataType 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/Parameters/ObjectDictionary/ObjectDictionaryIndex[8]/DataType",
+  "values": [
+    "WORD",
+    "INT",
+    "DWORD"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/Parameters/ObjectDictionary/ObjectDictionaryIndex[8]/DataType",
+  "risk": "medium"
+}
