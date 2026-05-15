@@ -1,0 +1,9 @@
+{
+  "name": "can1_config_timeout",
+  "goal": "Device[1] CAN1 ConfigurationTimeout 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/Settings/ConfigurationTimeout",
+  "values": ["200", "50", "500", "100"],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/Settings/ConfigurationTimeout",
+  "risk": "low"
+}

@@ -1,0 +1,594 @@
+--- 
++++ 
+@@ -1 +1 @@
+-<?xml version='1.0' encoding='utf-8'?>
++﻿<?xml version="1.0" encoding="utf-8"?>
+@@ -50 +50 @@
+-          <Bitrate>125</Bitrate>
++          <Bitrate>250</Bitrate>
+@@ -63 +62,0 @@
+-          <CAN Guid="7cfd98e8-029b-46a8-b6b3-0c4b8955c7ca" />
+@@ -88,12 +87 @@
+-          <CAN Guid="5d94d1d2-cea6-4d02-8cae-1842f0181d13">
+-            <ReceiveProcessDataObject Guid="cb990efb-a285-45b3-97de-f3ef04a41124" TargetGuid="c747df7a-abce-4da1-bb06-6b6e9e9d2bd4">
+-              <CobId>385</CobId>
+-              <DataLengthCode>0</DataLengthCode>
+-              <IsReceived>true</IsReceived>
+-            </ReceiveProcessDataObject>
+-            <ReceiveProcessDataObject Guid="b3b81f73-1aad-4db9-9f36-e274ffb98f5d" TargetGuid="6332bc89-e08b-4e63-8275-4a3f90b65c0c">
+-              <CobId>0</CobId>
+-              <DataLengthCode>0</DataLengthCode>
+-              <IsReceived>false</IsReceived>
+-            </ReceiveProcessDataObject>
+-          </CAN>
++          <CAN Guid="5d94d1d2-cea6-4d02-8cae-1842f0181d13" />
+@@ -108,10 +96 @@
+-      <Monitorings>
+-        <Monitoring Guid="cb6d8036-74db-4d68-9cd9-c118f9eebd3b">
+-          <TargetDevice>57f1a44d-ba6e-4a58-95b3-cb1956c242e2</TargetDevice>
+-          <TargetCanOpen>7cfd98e8-029b-46a8-b6b3-0c4b8955c7ca</TargetCanOpen>
+-        </Monitoring>
+-        <Monitoring Guid="357b0bba-a781-4129-8212-4e5354ee3ce4">
+-          <TargetDevice>ec0a32e7-3c7e-4b32-8bc2-d66fd9bc6f91</TargetDevice>
+-          <TargetCanOpen>5d94d1d2-cea6-4d02-8cae-1842f0181d13</TargetCanOpen>
+-        </Monitoring>
+-      </Monitorings>
++      <Monitorings />
+@@ -144,6 +122,0 @@
+-        <Node Target="50de4331-ddb3-4edf-b347-444faa7160b4">
+-          <Appearance X="274" Y="114">
+-            <Color>#FF33CCFF</Color>
+-            <Text>NETWORK1</Text>
+-          </Appearance>
+-        </Node>
+@@ -163,0 +137,6 @@
++        <Node Target="50de4331-ddb3-4edf-b347-444faa7160b4">
++          <Appearance X="274" Y="114">
++            <Color>#FF33CCFF</Color>
++            <Text>NETWORK1</Text>
++          </Appearance>
++        </Node>
+@@ -171,390 +150 @@
+-        <Data>
+-          <Items>
+-            <Group Guid="00000000-0000-0000-0000-000000000000" Name="AngleSensor" IsBinded="false" IsExpanded="false" IsSelected="true">
+-              <Items>
+-                <Parameter Guid="f5d922b6-02e0-4db5-8581-7531797504db" IsBinded="true" Name="HighSensorValue">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>0.01V</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="b58d5f9e-cc1f-447e-843b-f4ff6d1e7d7a" IsBinded="true" Name="LowSensorValue">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>0.01V</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="7979b4ba-7f25-41f9-8ede-326f7d4e6bde" IsBinded="true" Name="HighCalibratedValue">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText />
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="fed86a85-5f08-45a6-9627-bf4bada479a1" IsBinded="true" Name="LowCalibratedValue">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText />
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="01fc0598-ea31-4830-bf6b-a24d91fb5470" IsBinded="true" Name="SensorValueErrorLimitHigh">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>0.01V</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="d6021a96-6bc6-4bfe-90b7-f01dc262787f" IsBinded="true" Name="SensorValueErrorLimitLow">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>0.01V</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="3eb7ce02-d30b-4c04-8a05-90634f3bfa2b" IsBinded="true" Name="CalibratedValueAlarmLimitHigh">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText />
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="36658b85-6282-4b3b-82fe-15d22c7f15c1" IsBinded="true" Name="CalibratedValueWarningLimitHigh">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText />
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="bec0cb1c-d860-46ed-b403-c5d7d1b8b24c" IsBinded="true" Name="CalibratedValueWarningLimitLow">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText />
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="76474bbb-8784-49a6-8a76-cb72f187fc1f" IsBinded="true" Name="CalibratedValueAlarmLimitLow">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText />
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="2c0fa602-48f1-4c3d-b93f-c53ca986a7e5" IsBinded="true" Name="EnableSensorValueErrors">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>T/F</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="c766b5b3-7348-4dfc-9566-28e3e7895c2b" IsBinded="true" Name="EnableCalibratedValueHighAlarm">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>T/F</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="b6a80208-6b61-47ee-839d-5c44d91f2243" IsBinded="true" Name="EnableCalibratedValueHighWarning">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>T/F</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="1efbd7be-2504-4e05-b375-38eff2a41766" IsBinded="true" Name="EnableCalibratedValueLowWarning">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>T/F</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="18658acb-de77-4302-8040-aa97812ac808" IsBinded="true" Name="EnableCalibratedValueLowAlarm">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>T/F</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="18c35a0d-3549-47ad-9897-0ca377b173a5" IsBinded="true" Name="ErrorDelay">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>ms</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-              </Items>
+-            </Group>
+-            <Group Guid="00000000-0000-0000-0000-000000000000" Name="UpDnPairValve" IsBinded="false" IsExpanded="false" IsSelected="true">
+-              <Items>
+-                <Parameter Guid="2da9ad40-40fd-4f2e-af31-4059cb039276" IsBinded="true" Name="PosDirMaxCurrent">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>mA</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="da6ec273-130d-4b9b-9ebd-a2aadf877f42" IsBinded="true" Name="PosDirMinCurrent">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>mA</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="4666403b-c301-488c-9122-0ad27fee76ea" IsBinded="true" Name="NegDirMaxCurrent">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>mA</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="e7da5026-9630-4e22-923e-42d264ff30b9" IsBinded="true" Name="NegDirMinCurrent">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>mA</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="ffebb9b9-f31b-4599-8cc0-737dff44db68" IsBinded="true" Name="PosDirAscendRamp">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>ms</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="d47cb938-66d3-4069-9569-3626d871389b" IsBinded="true" Name="PosDirDescendRamp">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>ms</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="bd56aaa5-9b24-4aa8-99c4-2aac0a48d640" IsBinded="true" Name="NegDirAscendRamp">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>ms</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="6ae11480-85d7-41f2-8b4c-6d4110204fd6" IsBinded="true" Name="NegDirDescendRamp">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>ms</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="23cf99e0-240a-49dc-b77c-f4f804cd8fcf" IsBinded="true" Name="PosDirAttenuationAmount">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>%</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="a210e19f-8edc-4960-901c-e84e23219eef" IsBinded="true" Name="NegDirAttenuationAmount">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>%</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="6111d42f-ef15-4c4b-9569-b05c6b387c23" IsBinded="true" Name="EnableCounterControl">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>T/F</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-              </Items>
+-            </Group>
+-            <Group Guid="00000000-0000-0000-0000-000000000000" Name="UpDnJoystick" IsBinded="false" IsExpanded="false" IsSelected="true">
+-              <Items>
+-                <Parameter Guid="fbfdd4ca-cb9a-4b51-9016-c67b3550c74d" IsBinded="true" Name="MaxPosition">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>0.1%</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="26381eb3-9955-4f92-8dc2-4507164f588f" IsBinded="true" Name="MidPosition">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>0.1%</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="b1beee1b-f8df-4513-9da5-7a0d63b9c26e" IsBinded="true" Name="MinPosition">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>0.1%</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="ad8e06b8-e735-4962-9a2a-470cb180bf3e" IsBinded="true" Name="Deadband">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>%</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="0dd88dbc-b7ad-490a-bd36-e435631b98b7" IsBinded="true" Name="ProgressionPosDir">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText />
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="1687f8c4-6510-4aa8-9808-a1c2d29d6f75" IsBinded="true" Name="ProgressionNegDir">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText />
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="5588abee-7eb2-46b1-a686-063b52a52f9c" IsBinded="true" Name="ErrorTolerance">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>0.1%</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="914c99e4-1581-4c78-83e5-b2cc88f37399" IsBinded="true" Name="ErrorDelay">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText>ms</InfoText>
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-              </Items>
+-            </Group>
+-            <Group Guid="00000000-0000-0000-0000-000000000000" Name="Regulation" IsBinded="false" IsExpanded="false" IsSelected="true">
+-              <Items>
+-                <Parameter Guid="67753912-6bb5-40a3-950f-d4d34722f899" IsBinded="true" Name="ValveUpLimit">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText />
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-                <Parameter Guid="03596224-d3ae-4390-aa84-70528591107d" IsBinded="true" Name="ValveDnLimit">
+-                  <Unit />
+-                  <Steps>1</Steps>
+-                  <Decimals>0</Decimals>
+-                  <InfoText />
+-                  <ReadAccess>3</ReadAccess>
+-                  <WriteAccess>3</WriteAccess>
+-                  <ValueTexts />
+-                  <IsSelected>true</IsSelected>
+-                </Parameter>
+-              </Items>
+-            </Group>
+-          </Items>
+-        </Data>
++        <Data />
+@@ -722 +312 @@
+-        <BitRate>250</BitRate>
++        <BitRate>500</BitRate>
+@@ -764,0 +355,28 @@
++            <ObjectDictionaryIndex Guid="3970a492-95ef-4df7-81a4-1282fd1e8e2e" SyncGuid="6cafd4f3-34b4-417a-92ad-5148c0816cc0" IsEditable="true" IsAuto="false">
++              <Name>NewU32Var</Name>
++              <Index>2000</Index>
++              <DataType>DWORD</DataType>
++              <VariableType>Parameter</VariableType>
++              <IndexType>SingleVariables</IndexType>
++              <Description />
++              <UseChecksum>false</UseChecksum>
++              <ObjectDictionarySubIndexes>
++                <ObjectDictionarySubIndex Guid="90dd8e45-e209-43dd-8eab-f534d902c344" SyncGuid="57ade418-0458-4871-a08b-9c4d58074ce1">
++                  <Name>Value</Name>
++                  <Index>1</Index>
++                  <DataType>DWORD</DataType>
++                  <Description />
++                  <PdoMappable>false</PdoMappable>
++                  <ForceWrite>false</ForceWrite>
++                  <AccessType>RW</AccessType>
++                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
++                  <IsAtDefaultValue>true</IsAtDefaultValue>
++                  <ObjectDictionaryValue>
++                    <Default>0</Default>
++                    <NewValue>0</NewValue>
++                    <Minimum>0</Minimum>
++                    <Maximum>4294967295</Maximum>
++                  </ObjectDictionaryValue>
++                </ObjectDictionarySubIndex>
++              </ObjectDictionarySubIndexes>
++            </ObjectDictionaryIndex>
+@@ -1433,0 +1052,28 @@
++                  </ObjectDictionaryValue>
++                </ObjectDictionarySubIndex>
++              </ObjectDictionarySubIndexes>
++            </ObjectDictionaryIndex>
++            <ObjectDictionaryIndex Guid="2cebc799-bcb6-42f2-88ab-93e5d4d90ef4" SyncGuid="2fc56808-d21b-4006-879e-278873e82cca" IsEditable="true" IsAuto="false">
++              <Name>TestScenarioVar</Name>
++              <Index>2300</Index>
++              <DataType>DWORD</DataType>
++              <VariableType>Parameter</VariableType>
++              <IndexType>SingleVariables</IndexType>
++              <Description />
++              <UseChecksum>false</UseChecksum>
++              <ObjectDictionarySubIndexes>
++                <ObjectDictionarySubIndex Guid="a10bee7d-393e-4193-a54a-03a652a87bf7" SyncGuid="2141122d-c90c-4d3e-b890-a275a7ee9607">
++                  <Name>Value</Name>
++                  <Index>1</Index>
++                  <DataType>DWORD</DataType>
++                  <Description />
++                  <PdoMappable>false</PdoMappable>
++                  <ForceWrite>false</ForceWrite>
++                  <AccessType>RW</AccessType>
++                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
++                  <IsAtDefaultValue>true</IsAtDefaultValue>
++                  <ObjectDictionaryValue>
++                    <Default>0</Default>
++                    <NewValue>0</NewValue>
++                    <Minimum>0</Minimum>
++                    <Maximum>4294967295</Maximum>
+@@ -1862,46 +1507,0 @@
+-            <ObjectDictionaryIndex Guid="3970a492-95ef-4df7-81a4-1282fd1e8e2e" SyncGuid="6cafd4f3-34b4-417a-92ad-5148c0816cc0" IsEditable="true" IsAuto="false">
+-              <Name>NewU32Var</Name>
+-              <Index>2000</Index>
+-              <DataType>DWORD</DataType>
+-              <VariableType>Parameter</VariableType>
+-              <IndexType>SingleVariables</IndexType>
+-              <Description />
+-              <UseChecksum>false</UseChecksum>
+-              <ObjectDictionarySubIndexes>
+-                <ObjectDictionarySubIndex Guid="90dd8e45-e209-43dd-8eab-f534d902c344" SyncGuid="57ade418-0458-4871-a08b-9c4d58074ce1">
+-                  <Name>Value</Name>
+-                  <Index>0</Index>
+-                  <DataType>DWORD</DataType>
+-                  <Description />
+-                  <PdoMappable>false</PdoMappable>
+-                  <ForceWrite>false</ForceWrite>
+-                  <AccessType>RW</AccessType>
+-                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+-                  <IsAtDefaultValue>true</IsAtDefaultValue>
+-                  <ObjectDictionaryValue />
+-                </ObjectDictionarySubIndex>
+-              </ObjectDictionarySubIndexes>
+-            </ObjectDictionaryIndex>
+-            <ObjectDictionaryIndex Guid="2cebc799-bcb6-42f2-88ab-93e5d4d90ef4" SyncGuid="2fc56808-d21b-4006-879e-278873e82cca" IsEditable="true" IsAuto="false">
+-              <Name>TestScenarioVar</Name>
+-              <Index>2300</Index>
+-              <DataType>DWORD</DataType>
+-              <VariableType>Parameter</VariableType>
+-              <IndexType>SingleVariables</IndexType>
+-              <Description />
+-              <UseChecksum>false</UseChecksum>
+-              <ObjectDictionarySubIndexes>
+-                <ObjectDictionarySubIndex Guid="a10bee7d-393e-4193-a54a-03a652a87bf7" SyncGuid="2141122d-c90c-4d3e-b890-a275a7ee9607">
+-                  <Name>Value</Name>
+-                  <Index>0</Index>
+-                  <DataType>DWORD</DataType>
+-                  <Description />
+-                  <PdoMappable>false</PdoMappable>
+-                  <ForceWrite>false</ForceWrite>
+-                  <AccessType>RW</AccessType>
+-                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+-                  <IsAtDefaultValue>true</IsAtDefaultValue>
+-                  <ObjectDictionaryValue />
+-                </ObjectDictionarySubIndex>
+-              </ObjectDictionarySubIndexes>
+-            </ObjectDictionaryIndex>
+@@ -1912 +1512 @@
+-              <CobId>181</CobId>
++              <CobId>187</CobId>
+@@ -1928 +1528 @@
+-              <CobId>281</CobId>
++              <CobId>287</CobId>
+@@ -2117,11 +1716,0 @@
+-          <Monitors>
+-            <AutoMonitor Guid="cb6d8036-74db-4d68-9cd9-c118f9eebd3b">
+-              <IsActive>true</IsActive>
+-              <ResetNode>false</ResetNode>
+-              <KeepAlive>true</KeepAlive>
+-              <IsMandatory>true</IsMandatory>
+-              <NoNmtStart>false</NoNmtStart>
+-              <ConsumerTime>400</ConsumerTime>
+-              <Target>5d94d1d2-cea6-4d02-8cae-1842f0181d13</Target>
+-            </AutoMonitor>
+-          </Monitors>
+@@ -2479,9 +2068 @@
+-              <Variables>
+-                <RefVariable Modes="4, 24">
+-                  <Variable>
+-                    <Name>pwmX1_2_Frequency</Name>
+-                    <Value>140</Value>
+-                  </Variable>
+-                </RefVariable>
+-              </Variables>
+-              <SelectedModes>5</SelectedModes>
++              <Variables />
+@@ -2890 +2471 @@
+-        <BitRate>125</BitRate>
++        <BitRate>250</BitRate>
+@@ -3090,11 +2670,0 @@
+-          <Monitors>
+-            <AutoMonitor Guid="357b0bba-a781-4129-8212-4e5354ee3ce4">
+-              <IsActive>true</IsActive>
+-              <ResetNode>false</ResetNode>
+-              <KeepAlive>true</KeepAlive>
+-              <IsMandatory>true</IsMandatory>
+-              <NoNmtStart>false</NoNmtStart>
+-              <ConsumerTime>400</ConsumerTime>
+-              <Target>7cfd98e8-029b-46a8-b6b3-0c4b8955c7ca</Target>
+-            </AutoMonitor>
+-          </Monitors>

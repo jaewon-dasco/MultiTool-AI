@@ -1,0 +1,12 @@
+{
+  "name": "can1_no_configuration",
+  "goal": "Device[1] CAN1 Settings.NoConfiguration 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/Settings/NoConfiguration",
+  "values": [
+    "true",
+    "false"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/Settings/NoConfiguration",
+  "risk": "low"
+}

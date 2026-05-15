@@ -139,13 +139,55 @@ def run_cycle(
     return stats
 
 
+def _load_verified_xpaths(current_signature: str | None = None) -> set:
+    """Read all _candidates*.jsonl in kb/patterns; return set of xpaths with verified=true.
+
+    If current_signature is provided, only KB entries with matching `verified_against`
+    are counted as verified. Entries with no `verified_against` or mismatched version
+    are treated as STALE — they will be re-validated automatically.
+
+    (per night_cycle_strategy memory 2026-05-15 + version-aware revalidation 2026-05-15)
+    """
+    import json
+    verified = set()
+    pat_dir = KB_ROOT / "patterns"
+    if not pat_dir.exists():
+        return verified
+    for fp in pat_dir.glob("*.jsonl"):
+        try:
+            for line in fp.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if not line: continue
+                try:
+                    obj = json.loads(line)
+                    if obj.get("verified") is not True:
+                        continue
+                    if current_signature is not None:
+                        sig = obj.get("verified_against")
+                        if sig and sig != current_signature:
+                            continue  # stale, force revalidation
+                    xp = obj.get("xpath") or obj.get("xpath_scope")
+                    if xp: verified.add(xp)
+                except Exception: pass
+        except Exception: pass
+    return verified
+
+
 def run_sequence_cycle(
     project: Path,
     until: dt.datetime,
     no_llm: bool,
     sequences_dir: Path,
+    max_cycles: int = 5,
+    skip_verified: bool = True,
 ) -> dict:
-    """시퀀스 모드 — sequences/*.json을 반복 실행하며 관찰 데이터 누적."""
+    """시퀀스 모드 — sequences/*.json을 max_cycles회까지 반복 실행하며 관찰 데이터 누적.
+
+    night_cycle_strategy (2026-05-15) 적용:
+    - 시나리오당 반복은 최대 5회 (결정성 확인용)
+    - KB에서 verified=true 처리된 xpath는 자동 제외
+    - 남는 시간은 새 시드 시나리오 탐색에 사용 (수동 추가)
+    """
     kb = KB(KB_ROOT, LOG_ROOT)
     log.info("sequence cycle date=%s until=%s", kb.cycle_date, until.isoformat())
 
@@ -164,19 +206,40 @@ def run_sequence_cycle(
             log.warning("Ollama health check failed — continuing without LLM")
             llm = None
 
+    # Detect current MultiTool/.mtproject version → KB stale detection
+    try:
+        sys.path.insert(0, str(Path(__file__).parent / "scripts"))
+        from version_detect import get_versions, version_signature
+        versions = get_versions(project)
+        cur_sig = version_signature(versions)
+        log.info("current version signature: %s", cur_sig)
+    except Exception as e:
+        log.warning("version detection failed: %s", e)
+        versions, cur_sig = {}, None
+
     seqs = load_sequences(sequences_dir)
     log.info("loaded %d sequences from %s", len(seqs), sequences_dir)
+    if skip_verified:
+        verified = _load_verified_xpaths(current_signature=cur_sig)
+        before = len(seqs)
+        seqs = [s for s in seqs if s.get("xpath") not in verified]
+        skipped = before - len(seqs)
+        if skipped:
+            log.info("skipping %d verified sequences for signature %s", skipped, cur_sig)
+        else:
+            log.info("no verified sequences to skip (signature %s)", cur_sig)
     if not seqs:
-        log.error("no sequences found — exiting")
+        log.error("no sequences left after filtering — exiting")
         return {"seqs_run": 0, "errors": 1}
+    log.info("running %d sequences × max %d cycles", len(seqs), max_cycles)
 
     stats = {"cycles": 0, "seqs_run": 0, "steps_total": 0, "llm_calls": 0, "errors": 0}
     obs_dir = kb.cycle_dir / "sequences"
     obs_dir.mkdir(parents=True, exist_ok=True)
 
     cycle_idx = 0
-    while _now_in_window(until) and not _stop:
-        log.info("=== cycle %d ===", cycle_idx)
+    while _now_in_window(until) and not _stop and cycle_idx < max_cycles:
+        log.info("=== cycle %d/%d ===", cycle_idx + 1, max_cycles)
         for seq in seqs:
             if _stop or not _now_in_window(until):
                 break
@@ -238,6 +301,12 @@ def main(argv: list[str] | None = None) -> int:
                     help="observe: 동일 화면 반복 관찰 · sequence: XML 시퀀스 학습 (기본)")
     ap.add_argument("--sequences-dir", default=str(Path(__file__).parent / "sequences"))
     ap.add_argument("--no-llm", action="store_true", help="Gemma 호출 생략")
+    ap.add_argument("--max-cycles", type=int, default=5,
+                    help="각 시퀀스 최대 반복 횟수 (default 5, night_cycle_strategy 2026-05-15)")
+    ap.add_argument("--no-skip-verified", action="store_true",
+                    help="KB verified=true xpath도 검증 (기본은 버전 일치만 스킵)")
+    ap.add_argument("--revalidate-all", action="store_true",
+                    help="모든 verified 무시 + 전체 재실행 (MultiTool 업데이트 후 권장)")
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args(argv)
 
@@ -265,11 +334,14 @@ def main(argv: list[str] | None = None) -> int:
     log.info("E2E orchestrator mode=%s starting — until %s",
              args.mode, until.isoformat(timespec="seconds"))
     if args.mode == "sequence":
+        skip_v = not (args.no_skip_verified or args.revalidate_all)
         stats = run_sequence_cycle(
             project=Path(args.project),
             until=until,
             no_llm=args.no_llm,
             sequences_dir=Path(args.sequences_dir),
+            max_cycles=args.max_cycles,
+            skip_verified=skip_v,
         )
     else:
         stats = run_cycle(

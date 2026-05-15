@@ -1,0 +1,13 @@
+{
+  "name": "can1_eds_product_number",
+  "goal": "Device[1] CAN1 Settings.EDSProductNumber 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/Settings/EDSProductNumber",
+  "values": [
+    "1234",
+    "5678",
+    "0"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/Settings/EDSProductNumber",
+  "risk": "low"
+}

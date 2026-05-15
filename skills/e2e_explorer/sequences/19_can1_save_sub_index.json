@@ -1,0 +1,13 @@
+{
+  "name": "can1_save_sub_index",
+  "goal": "Device[1] CAN1 Settings.SaveSubIndex 변경 시 XML 변화 관찰",
+  "xpath": "/MtProject/Device[1]/CANs/CAN/Settings/SaveSubIndex",
+  "values": [
+    "2",
+    "3",
+    "1"
+  ],
+  "restore_on_finish": true,
+  "expected_node_path": "Device[1]/CANs/CAN/Settings/SaveSubIndex",
+  "risk": "low"
+}

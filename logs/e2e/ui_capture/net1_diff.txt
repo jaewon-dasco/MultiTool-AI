@@ -1,0 +1,434 @@
+--- 
++++ 
+@@ -1 +1 @@
+-<?xml version='1.0' encoding='utf-8'?>
++﻿<?xml version="1.0" encoding="utf-8"?>
+@@ -50 +50 @@
+-          <Bitrate>125</Bitrate>
++          <Bitrate>500</Bitrate>
+@@ -89,2 +89,2 @@
+-            <ReceiveProcessDataObject Guid="cb990efb-a285-45b3-97de-f3ef04a41124" TargetGuid="c747df7a-abce-4da1-bb06-6b6e9e9d2bd4">
+-              <CobId>385</CobId>
++            <ReceiveProcessDataObject Guid="6363752a-3e23-4c40-b81d-c7cbd9a64d39" TargetGuid="c747df7a-abce-4da1-bb06-6b6e9e9d2bd4">
++              <CobId>0</CobId>
+@@ -94 +94 @@
+-            <ReceiveProcessDataObject Guid="b3b81f73-1aad-4db9-9f36-e274ffb98f5d" TargetGuid="6332bc89-e08b-4e63-8275-4a3f90b65c0c">
++            <ReceiveProcessDataObject Guid="1b5a7f91-fe3f-419d-85da-afc28b7cb0ff" TargetGuid="6332bc89-e08b-4e63-8275-4a3f90b65c0c">
+@@ -109 +109 @@
+-        <Monitoring Guid="cb6d8036-74db-4d68-9cd9-c118f9eebd3b">
++        <Monitoring Guid="90c77e4e-8228-4056-9567-47f24c6684ad">
+@@ -113 +113 @@
+-        <Monitoring Guid="357b0bba-a781-4129-8212-4e5354ee3ce4">
++        <Monitoring Guid="64a7bb91-5143-4638-baf2-fb7af0987c75">
+@@ -144,6 +143,0 @@
+-        <Node Target="50de4331-ddb3-4edf-b347-444faa7160b4">
+-          <Appearance X="274" Y="114">
+-            <Color>#FF33CCFF</Color>
+-            <Text>NETWORK1</Text>
+-          </Appearance>
+-        </Node>
+@@ -162,0 +157,6 @@
++        </Node>
++        <Node Target="50de4331-ddb3-4edf-b347-444faa7160b4">
++          <Appearance X="274" Y="114">
++            <Color>#FF33CCFF</Color>
++            <Text>NETWORK1</Text>
++          </Appearance>
+@@ -722 +722 @@
+-        <BitRate>250</BitRate>
++        <BitRate>500</BitRate>
+@@ -764,0 +765,28 @@
++            <ObjectDictionaryIndex Guid="3970a492-95ef-4df7-81a4-1282fd1e8e2e" SyncGuid="6cafd4f3-34b4-417a-92ad-5148c0816cc0" IsEditable="true" IsAuto="false">
++              <Name>NewU32Var</Name>
++              <Index>2000</Index>
++              <DataType>DWORD</DataType>
++              <VariableType>Parameter</VariableType>
++              <IndexType>SingleVariables</IndexType>
++              <Description />
++              <UseChecksum>false</UseChecksum>
++              <ObjectDictionarySubIndexes>
++                <ObjectDictionarySubIndex Guid="90dd8e45-e209-43dd-8eab-f534d902c344" SyncGuid="57ade418-0458-4871-a08b-9c4d58074ce1">
++                  <Name>Value</Name>
++                  <Index>1</Index>
++                  <DataType>DWORD</DataType>
++                  <Description />
++                  <PdoMappable>false</PdoMappable>
++                  <ForceWrite>false</ForceWrite>
++                  <AccessType>RW</AccessType>
++                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
++                  <IsAtDefaultValue>true</IsAtDefaultValue>
++                  <ObjectDictionaryValue>
++                    <Default>0</Default>
++                    <NewValue>0</NewValue>
++                    <Minimum>0</Minimum>
++                    <Maximum>4294967295</Maximum>
++                  </ObjectDictionaryValue>
++                </ObjectDictionarySubIndex>
++              </ObjectDictionarySubIndexes>
++            </ObjectDictionaryIndex>
+@@ -1433,0 +1462,28 @@
++                  </ObjectDictionaryValue>
++                </ObjectDictionarySubIndex>
++              </ObjectDictionarySubIndexes>
++            </ObjectDictionaryIndex>
++            <ObjectDictionaryIndex Guid="2cebc799-bcb6-42f2-88ab-93e5d4d90ef4" SyncGuid="2fc56808-d21b-4006-879e-278873e82cca" IsEditable="true" IsAuto="false">
++              <Name>TestScenarioVar</Name>
++              <Index>2300</Index>
++              <DataType>DWORD</DataType>
++              <VariableType>Parameter</VariableType>
++              <IndexType>SingleVariables</IndexType>
++              <Description />
++              <UseChecksum>false</UseChecksum>
++              <ObjectDictionarySubIndexes>
++                <ObjectDictionarySubIndex Guid="a10bee7d-393e-4193-a54a-03a652a87bf7" SyncGuid="2141122d-c90c-4d3e-b890-a275a7ee9607">
++                  <Name>Value</Name>
++                  <Index>1</Index>
++                  <DataType>DWORD</DataType>
++                  <Description />
++                  <PdoMappable>false</PdoMappable>
++                  <ForceWrite>false</ForceWrite>
++                  <AccessType>RW</AccessType>
++                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
++                  <IsAtDefaultValue>true</IsAtDefaultValue>
++                  <ObjectDictionaryValue>
++                    <Default>0</Default>
++                    <NewValue>0</NewValue>
++                    <Minimum>0</Minimum>
++                    <Maximum>4294967295</Maximum>
+@@ -1862,46 +1917,0 @@
+-            <ObjectDictionaryIndex Guid="3970a492-95ef-4df7-81a4-1282fd1e8e2e" SyncGuid="6cafd4f3-34b4-417a-92ad-5148c0816cc0" IsEditable="true" IsAuto="false">
+-              <Name>NewU32Var</Name>
+-              <Index>2000</Index>
+-              <DataType>DWORD</DataType>
+-              <VariableType>Parameter</VariableType>
+-              <IndexType>SingleVariables</IndexType>
+-              <Description />
+-              <UseChecksum>false</UseChecksum>
+-              <ObjectDictionarySubIndexes>
+-                <ObjectDictionarySubIndex Guid="90dd8e45-e209-43dd-8eab-f534d902c344" SyncGuid="57ade418-0458-4871-a08b-9c4d58074ce1">
+-                  <Name>Value</Name>
+-                  <Index>0</Index>
+-                  <DataType>DWORD</DataType>
+-                  <Description />
+-                  <PdoMappable>false</PdoMappable>
+-                  <ForceWrite>false</ForceWrite>
+-                  <AccessType>RW</AccessType>
+-                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+-                  <IsAtDefaultValue>true</IsAtDefaultValue>
+-                  <ObjectDictionaryValue />
+-                </ObjectDictionarySubIndex>
+-              </ObjectDictionarySubIndexes>
+-            </ObjectDictionaryIndex>
+-            <ObjectDictionaryIndex Guid="2cebc799-bcb6-42f2-88ab-93e5d4d90ef4" SyncGuid="2fc56808-d21b-4006-879e-278873e82cca" IsEditable="true" IsAuto="false">
+-              <Name>TestScenarioVar</Name>
+-              <Index>2300</Index>
+-              <DataType>DWORD</DataType>
+-              <VariableType>Parameter</VariableType>
+-              <IndexType>SingleVariables</IndexType>
+-              <Description />
+-              <UseChecksum>false</UseChecksum>
+-              <ObjectDictionarySubIndexes>
+-                <ObjectDictionarySubIndex Guid="a10bee7d-393e-4193-a54a-03a652a87bf7" SyncGuid="2141122d-c90c-4d3e-b890-a275a7ee9607">
+-                  <Name>Value</Name>
+-                  <Index>0</Index>
+-                  <DataType>DWORD</DataType>
+-                  <Description />
+-                  <PdoMappable>false</PdoMappable>
+-                  <ForceWrite>false</ForceWrite>
+-                  <AccessType>RW</AccessType>
+-                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
+-                  <IsAtDefaultValue>true</IsAtDefaultValue>
+-                  <ObjectDictionaryValue />
+-                </ObjectDictionarySubIndex>
+-              </ObjectDictionarySubIndexes>
+-            </ObjectDictionaryIndex>
+@@ -1912 +1922 @@
+-              <CobId>181</CobId>
++              <CobId>187</CobId>
+@@ -1928 +1938 @@
+-              <CobId>281</CobId>
++              <CobId>287</CobId>
+@@ -2118 +2128 @@
+-            <AutoMonitor Guid="cb6d8036-74db-4d68-9cd9-c118f9eebd3b">
++            <AutoMonitor Guid="90c77e4e-8228-4056-9567-47f24c6684ad">
+@@ -2479,9 +2489 @@
+-              <Variables>
+-                <RefVariable Modes="4, 24">
+-                  <Variable>
+-                    <Name>pwmX1_2_Frequency</Name>
+-                    <Value>140</Value>
+-                  </Variable>
+-                </RefVariable>
+-              </Variables>
+-              <SelectedModes>5</SelectedModes>
++              <Variables />
+@@ -2890 +2892 @@
+-        <BitRate>125</BitRate>
++        <BitRate>500</BitRate>
+@@ -2932 +2934,262 @@
+-          <ObjectDictionary />
++          <ObjectDictionary>
++            <ObjectDictionaryIndex Guid="561c2af4-bf9c-4231-bb19-6e4e21f75bbd" SyncGuid="eb58842d-da5f-4730-817a-f081477fa84d" IsEditable="true" IsAuto="true">
++              <Name>AUTO_of_Type_INT</Name>
++              <Index>5FEF</Index>
++              <DataType>INT</DataType>
++              <VariableType>RAM</VariableType>
++              <IndexType>SingleVariables</IndexType>
++              <Description>Automatically created INT variables</Description>
++              <UseChecksum>false</UseChecksum>
++              <ObjectDictionarySubIndexes>
++                <ObjectDictionarySubIndex Guid="15db6578-eb92-4bb7-9546-ea044b6c33da" SyncGuid="b4845e50-bd0d-4829-abef-e982f759886e">
++                  <Name>CU_3606_21_1_Joystick</Name>
++                  <Index>1</Index>
++                  <DataType>INT</DataType>
++                  <Description />
++                  <PdoMappable>true</PdoMappable>
++                  <ForceWrite>false</ForceWrite>
++                  <AccessType>RW</AccessType>
++                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
++                  <IsAtDefaultValue>true</IsAtDefaultValue>
++                  <ObjectDictionaryValue>
++                    <Default>0</Default>
++                    <NewValue>0</NewValue>
++                    <Minimum>-32768</Minimum>
++                    <Maximum>32767</Maximum>
++                  </ObjectDictionaryValue>
++                </ObjectDictionarySubIndex>
++                <ObjectDictionarySubIndex Guid="5938140c-02bd-4e79-a7fe-a88c6634cbe7" SyncGuid="91b20970-6be7-4066-938f-a4d8173afc94">
++                  <Name>CU_3606_21_1_SensorMeter</Name>
++                  <Index>2</Index>
++                  <DataType>INT</DataType>
++                  <Description />
++                  <PdoMappable>true</PdoMappable>
++                  <ForceWrite>false</ForceWrite>
++                  <AccessType>RW</AccessType>
++                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
++                  <IsAtDefaultValue>true</IsAtDefaultValue>
++                  <ObjectDictionaryValue>
++                    <Default>0</Default>
++                    <NewValue>0</NewValue>
++                    <Minimum>-32768</Minimum>
++                    <Maximum>32767</Maximum>
++                  </ObjectDictionaryValue>
++                </ObjectDictionarySubIndex>
++              </ObjectDictionarySubIndexes>
++            </ObjectDictionaryIndex>
++            <ObjectDictionaryIndex Guid="cb33c7d0-3f4a-4199-a136-b364700e997b" SyncGuid="18f934e9-37ab-471b-b98c-7e035457a62d" IsEditable="true" IsAuto="true">
++              <Name>AUTO_of_Type_BYTE</Name>
++              <Index>5FFF</Index>
++              <DataType>BYTE</DataType>
++              <VariableType>RAM</VariableType>
++              <IndexType>SingleVariables</IndexType>
++              <Description>Automatically created BYTE variables</Description>
++              <UseChecksum>false</UseChecksum>
++              <ObjectDictionarySubIndexes>
++                <ObjectDictionarySubIndex Guid="16f7a90e-31e6-43eb-b61f-d50fc97fe296" SyncGuid="e7609ba9-3ea9-40ae-af68-9e728c572cbd">
++                  <Name>CU_3606_21_1_DigitalInput</Name>
++                  <Index>1</Index>
++                  <DataType>BYTE</DataType>
++                  <Description />
++                  <PdoMappable>true</PdoMappable>
++                  <ForceWrite>false</ForceWrite>
++                  <AccessType>RW</AccessType>
++                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
++                  <IsAtDefaultValue>true</IsAtDefaultValue>
++                  <ObjectDictionaryValue>
++                    <Default>0</Default>
++                    <NewValue>0</NewValue>
++                    <Minimum>0</Minimum>
++                    <Maximum>255</Maximum>
++                  </ObjectDictionaryValue>
++                  <Bits>
++                    <Generate>True</Generate>
++                    <Variables>
++                      <Bit Guid="c852355b-b355-4129-af36-4caced1b4c03">
++                        <Name>CU_3606_21_1_SwitchFoot</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[0]</Description>
++                      </Bit>
++                      <Bit Guid="20ee44ec-e7bb-4b43-b968-7584e5db3e21">
++                        <Name>CU_3606_21_1_SwitchEmergency</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[1]</Description>
++                      </Bit>
++                      <Bit Guid="b9243712-858b-4bd9-9ec1-36445b39514a">
++                        <Name>CU_3606_21_1_DigitalInput_Bit2</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[2]</Description>
++                      </Bit>
++                      <Bit Guid="753ad83a-c78e-4003-987f-6858ee5ecdfc">
++                        <Name>CU_3606_21_1_DigitalInput_Bit3</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[3]</Description>
++                      </Bit>
++                      <Bit Guid="065f2daf-d4ff-4913-8ad3-218a8d1f6831">
++                        <Name>CU_3606_21_1_DigitalInput_Bit4</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[4]</Description>
++                      </Bit>
++                      <Bit Guid="c4efdd58-0b14-4ba2-96de-c816d28b5cea">
++                        <Name>CU_3606_21_1_DigitalInput_Bit5</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[5]</Description>
++                      </Bit>
++                      <Bit Guid="6d927223-32d4-46cd-99ee-4017c9b281c2">
++                        <Name>CU_3606_21_1_DigitalInput_Bit6</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[6]</Description>
++                      </Bit>
++                      <Bit Guid="7fd12311-f00e-4242-a6a1-55fba3e197c5">
++                        <Name>CU_3606_21_1_DigitalInput_Bit7</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[7]</Description>
++                      </Bit>
++                    </Variables>
++                  </Bits>
++                </ObjectDictionarySubIndex>
++                <ObjectDictionarySubIndex Guid="2cd9f9aa-f0f0-4ba6-831d-c2440b2f3b20" SyncGuid="bf98e14b-6b2a-4418-b708-4922855ca87e">
++                  <Name>CU_3606_21_1_DigitalOutput</Name>
++                  <Index>2</Index>
++                  <DataType>BYTE</DataType>
++                  <Description />
++                  <PdoMappable>true</PdoMappable>
++                  <ForceWrite>false</ForceWrite>
++                  <AccessType>RW</AccessType>
++                  <AccessTypeRWMapping>ALL</AccessTypeRWMapping>
++                  <IsAtDefaultValue>true</IsAtDefaultValue>
++                  <ObjectDictionaryValue>
++                    <Default>0</Default>
++                    <NewValue>0</NewValue>
++                    <Minimum>0</Minimum>
++                    <Maximum>255</Maximum>
++                  </ObjectDictionaryValue>
++                  <Bits>
++                    <Generate>True</Generate>
++                    <Variables>
++                      <Bit Guid="aa9fa476-b449-45e1-ada1-29febd2aed60">
++                        <Name>CU_3606_21_1_LED1</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[0]</Description>
++                      </Bit>
++                      <Bit Guid="cb123683-01b9-473f-8f83-53b4e1afb6c4">
++                        <Name>CU_3606_21_1_LED2</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[1]</Description>
++                      </Bit>
++                      <Bit Guid="bfce6cbc-7b2d-4769-a5af-bd2cd7fd8bc6">
++                        <Name>CU_3606_21_1_DigitalOutput_Bit2</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[2]</Description>
++                      </Bit>
++                      <Bit Guid="12b6020e-7a18-4eb6-8eca-a3e87cba3a2b">
++                        <Name>CU_3606_21_1_DigitalOutput_Bit3</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[3]</Description>
++                      </Bit>
++                      <Bit Guid="4755ea71-537b-4d6c-a89e-d82f9e85a58b">
++                        <Name>CU_3606_21_1_DigitalOutput_Bit4</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[4]</Description>
++                      </Bit>
++                      <Bit Guid="fdf8a8c9-dc4f-4e24-ac30-17acc3940a57">
++                        <Name>CU_3606_21_1_DigitalOutput_Bit5</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[5]</Description>
++                      </Bit>
++                      <Bit Guid="7033959f-f2c5-4bbc-99c3-fbd180a84a75">
++                        <Name>CU_3606_21_1_DigitalOutput_Bit6</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[6]</Description>
++                      </Bit>
++                      <Bit Guid="584b857f-8b15-4d8f-9af9-638053eead23">
++                        <Name>CU_3606_21_1_DigitalOutput_Bit7</Name>
++                        <ObjectDictionaryValue>
++                          <Default>0</Default>
++                          <NewValue>0</NewValue>
++                          <Minimum>0</Minimum>
++                          <Maximum>1</Maximum>
++                        </ObjectDictionaryValue>
++                        <Description>Bit[7]</Description>
++                      </Bit>
++                    </Variables>
++                  </Bits>
++                </ObjectDictionarySubIndex>
++              </ObjectDictionarySubIndexes>
++            </ObjectDictionaryIndex>
++          </ObjectDictionary>
+@@ -3091 +3354 @@
+-            <AutoMonitor Guid="357b0bba-a781-4129-8212-4e5354ee3ce4">
++            <AutoMonitor Guid="64a7bb91-5143-4638-baf2-fb7af0987c75">
