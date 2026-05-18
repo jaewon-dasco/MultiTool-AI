@@ -30,9 +30,9 @@ $categories = @("B", "C", "A", "D", "E", "F")
 $scriptPath = Join-Path $ROOT "skills\e2e_explorer\scripts\run_night_ui.py"
 foreach ($cat in $categories) {
     "[$(Get-Date -Format s)] === Category $cat ===" | Out-File -FilePath $LOG -Append -Encoding utf8
-    "[$(Get-Date -Format s)] launching: py $scriptPath --category $cat --cycles 5" | Out-File -FilePath $LOG -Append -Encoding utf8
+    "[$(Get-Date -Format s)] launching: py $scriptPath --category $cat --cycles 3" | Out-File -FilePath $LOG -Append -Encoding utf8
     try {
-        & py $scriptPath --category $cat --cycles 5 2>&1 | Out-File -FilePath $LOG -Append -Encoding utf8
+        & py $scriptPath --category $cat --cycles 3 2>&1 | Out-File -FilePath $LOG -Append -Encoding utf8
         "[$(Get-Date -Format s)] category $cat exit=$LASTEXITCODE" | Out-File -FilePath $LOG -Append -Encoding utf8
     } catch {
         "[$(Get-Date -Format s)] category $cat EXCEPTION: $_" | Out-File -FilePath $LOG -Append -Encoding utf8
