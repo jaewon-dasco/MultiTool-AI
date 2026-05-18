@@ -304,7 +304,8 @@ def run_one_seed(seed: dict, label: str, value: str,
                 action = {"ok": r["ok"], "kind": "device_panel_x_button",
                           "action": f"disconnect {target}"}
             else:
-                action = ocr_helpers.set_field_auto(label, value, expected_kind=expected_kind)
+                action = ocr_helpers.set_field_auto(label, value, expected_kind=expected_kind,
+                                                     table_column=seed.get("table_column"))
         result["detected_kind"] = action.get("kind")
         result["action"] = action.get("action")
         if not action["ok"]:

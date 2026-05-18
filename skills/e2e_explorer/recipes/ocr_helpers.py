@@ -308,7 +308,8 @@ def fuzzy_label_match(items: list, label_target: str, threshold: float = 0.4):
 
 
 def set_field_auto(label_target: str, value: str, offset_x: int = DEFAULT_OFFSET_X,
-                   value_match: str = "startswith", expected_kind: str = None) -> dict:
+                   value_match: str = "startswith", expected_kind: str = None,
+                   table_column: str = None) -> dict:
     """라벨 옆 컨트롤 종류별 액션 수행.
 
     expected_kind:
@@ -317,8 +318,43 @@ def set_field_auto(label_target: str, value: str, offset_x: int = DEFAULT_OFFSET
       - 'checkbox': 라벨 좌측 ~20px 클릭으로 토글
       - 'radio': 라벨 좌측 ~15px 클릭
       - None: 자동 감지 (detect_control_kind)
+
+    table_column: 표 셀 진입 — row_marker=label, column_marker=table_column으로
+    행/열 교차점 클릭 후 값 입력. label 우측 인접 컨트롤이 아닌 다른 열을 타겟할 때 사용.
     """
     result = {"ok": False, "kind": expected_kind, "action": None, "label": label_target, "value": value}
+
+    # 표 셀 모드 — row(label) × column(table_column) 교차점 클릭
+    if table_column:
+        coords = click_table_cell(label_target, table_column)
+        if not coords:
+            result["kind"] = "unknown"; result["action"] = f"table_cell_not_found row={label_target!r} col={table_column!r}"
+            return result
+        time.sleep(0.5)
+        if expected_kind == "combobox":
+            # 셀 클릭 후 ComboBox 펼침 — value 항목 OCR + 클릭, 없으면 type+Enter
+            ocr_after = ocr_screen()
+            v_lo = value.lower()
+            cands = [it for it in ocr_after if v_lo in it["text"].lower()]
+            if cands:
+                cands.sort(key=lambda it: it["y"])
+                mouse.click(coords=(cands[0]["xc"], cands[0]["yc"]))
+                time.sleep(0.5)
+                result["ok"] = True; result["action"] = f"table.combobox '{cands[0]['text']}' @ row={label_target} col={table_column}"
+                return result
+            send_keys(value, with_spaces=True); time.sleep(0.2)
+            send_keys("{ENTER}"); time.sleep(0.4)
+            result["ok"] = True; result["action"] = f"table.combobox.type_search row={label_target} col={table_column}"
+            return result
+        # numeric_or_text (default for table cells)
+        send_keys("^a"); time.sleep(0.1)
+        send_keys("{DELETE}"); time.sleep(0.1)
+        if value:
+            send_keys(value, with_spaces=True); time.sleep(0.2)
+        send_keys("{TAB}"); time.sleep(0.4)
+        result["kind"] = "numeric_or_text"
+        result["ok"] = True; result["action"] = f"table.numeric.tab_commit val={value!r} row={label_target} col={table_column}"
+        return result
 
     ocr = ocr_screen()
     item = fuzzy_label_match(ocr, label_target)
