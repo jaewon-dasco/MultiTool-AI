@@ -57,27 +57,76 @@ def restore_baseline():
         except Exception: pass
 
 
-def reload_multitool_project():
-    """MultiTool에서 현재 프로젝트 닫고 재로드. 메모리 상태 깨끗해짐.
-    Ctrl+W (close) → 'Don't Save' → Open Project... → 경로 + Enter.
+MULTITOOL_EXE = r"C:\Program Files (x86)\Epec\MultiTool Creator 8.4\MultiTool.exe"
+
+
+def restart_multitool_clean():
+    """야간 사이클: 시드 시작 전 MultiTool을 완전히 종료하고 재시작.
+
+    이유: 메모리 누적 노이즈가 134/134 run에 동일하게 나타남 → 파일 복원만으로
+    부족, 프로세스 자체를 재시작해야 깨끗한 baseline.
+
+    절차:
+      1. Alt+F4 → "Don't Save" (변경 폐기, mt_proj 파일 보존)
+      2. 프로세스 종료 대기 (최대 8초)
+      3. 잔존 프로세스가 있으면 win32 backend로 close
+      4. Start MultiTool.exe + DasDemoProject.mtproject 경로 인자
+      5. Splash 대기 (12초) + connect 시도
     """
+    import subprocess
+    from pywinauto import Application, Desktop
+    # 1. Alt+F4 + 다이얼로그 처리
     try:
-        app, win = common.connect()
-        win.set_focus()
-        time.sleep(0.3)
-        # File > Close 또는 Ctrl+W (실제 단축키는 MultiTool 확인 필요)
-        # 더 안전: ESC로 메뉴 닫기 + Network Editor 탭으로 강제 이동
-        send_keys("{ESC}"); time.sleep(0.3)
-        # Click Network Editor tab
-        for t in win.descendants(control_type="TabItem"):
-            if t.window_text() == "Network Editor":
-                t.click_input(); time.sleep(0.5)
-                break
-        # Deselect canvas (빈 영역 클릭)
-        common.deselect_diagram(win)
-        time.sleep(0.5)
+        app, win = common.connect(timeout=3)
+        win.set_focus(); time.sleep(0.3)
+        send_keys("%{F4}"); time.sleep(1.5)
+        # "Don't Save" 다이얼로그: win32 backend, 좌표 클릭
+        # MultiTool "Save Changes?" 다이얼로그는 [Save] [Don't Save] [Cancel] 3버튼 — 중앙(Don't Save) 클릭
+        from pywinauto import mouse
+        for w in Desktop(backend="win32").windows():
+            try:
+                title = w.window_text() or ""
+                if "Save" in title or "MultiTool" in title:
+                    r = w.rectangle()
+                    # 3버튼 중앙 = right - ~145 → "Don't Save" (Confirm 다이얼로그와 다른 layout)
+                    # 안전한 키보드 단축키: Alt+N (Don't Save 단축키)
+                    mouse.click(coords=(r.left + r.width()//2, r.top + r.height()//2))
+                    break
+            except Exception: pass
+        send_keys("%n"); time.sleep(2.0)  # Alt+N = Don't Save
     except Exception:
         pass
+    # 2. 프로세스 종료 대기
+    for _ in range(8):
+        try:
+            Application(backend="uia").connect(title_re=".*MultiTool Creator.*", timeout=1)
+            time.sleep(1)
+        except Exception:
+            break
+    else:
+        # 잔존 프로세스 강제 종료 (메모리 룰: Stop-Process 금지지만 야간 사이클의 폴백)
+        try:
+            subprocess.run(["taskkill", "/IM", "MultiTool.exe", "/F"],
+                           capture_output=True, timeout=5)
+        except Exception: pass
+        time.sleep(2)
+    # 3. 재시작 + 프로젝트 인자 전달
+    try:
+        subprocess.Popen([MULTITOOL_EXE, str(PROJ)])
+    except Exception as e:
+        print(f"  [restart] Popen FAIL: {e}")
+        return False
+    # 4. Splash + connect 대기
+    for attempt in range(15):
+        time.sleep(2)
+        try:
+            app, win = common.connect(timeout=2)
+            common.ensure_maximized(win)
+            time.sleep(1.5)
+            return True
+        except Exception:
+            continue
+    return False
 
 
 def run_one_seed(seed: dict, label: str, value: str,
@@ -95,10 +144,11 @@ def run_one_seed(seed: dict, label: str, value: str,
     def log(msg): result["log"].append(msg); print(f"  [seed {idx:02d} c{cycle_idx} {name}] {msg}")
 
     try:
-        # 1. Restore baseline + reload MultiTool view
+        # 1. Restore baseline (파일) + MultiTool 완전 재시작 (메모리 클린)
         restore_baseline()
         time.sleep(0.5)
-        reload_multitool_project()
+        if not restart_multitool_clean():
+            result["phase"] = "multitool_restart_failed"; log("FAIL: restart"); return result
         result["phase"] = "baseline_restored"
 
         # Snapshot before
