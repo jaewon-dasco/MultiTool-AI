@@ -1,0 +1,10 @@
+[
+  {"idx": 1, "name": "bit_rate",                      "label": "Bit Rate",                  "value": "500 kbit/s", "tab": "CAN", "expected_kind": "combobox"},
+  {"idx": 2, "name": "application_node_id",           "label": "Application Node-ID",       "value": "5",          "tab": "CAN", "expected_kind": "numeric_or_text"},
+  {"idx": 3, "name": "codesys_node_id",                "label": "Codesys Node-ID",           "value": "5",          "tab": "CAN", "expected_kind": "numeric_or_text"},
+  {"idx": 4, "name": "application_version_string",     "label": "Application Version String", "value": "1.0",       "tab": "CAN", "expected_kind": "numeric_or_text"},
+  {"idx": 5, "name": "nmt_protocol_slave",             "label": "Slave",                      "value": "",          "tab": "CAN", "expected_kind": "radio"},
+  {"idx": 6, "name": "monitoring_start_interval",      "label": "Monitoring Start Interval", "value": "2000",       "tab": "CAN", "expected_kind": "numeric_or_text"},
+  {"idx": 7, "name": "network_status_uncheck",         "label": "Is a Condition for the G_SystemOk Variable", "value": "false", "tab": "CAN", "expected_kind": "checkbox"},
+  {"idx": 8, "name": "buffering_enable",               "label": "Enabled",                    "value": "true",       "tab": "CAN", "expected_kind": "checkbox"}
+]

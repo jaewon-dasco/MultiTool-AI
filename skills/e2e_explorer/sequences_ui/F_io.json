@@ -1,0 +1,5 @@
+[
+  {"idx": 50, "name": "io_pin1_mode_change",     "label": "VAVLE_UP",   "value": "Digital Input", "tab": "I/O", "expected_kind": "combobox", "table_column": "Modes"},
+  {"idx": 51, "name": "io_pin1_variable_name",   "label": "VAVLE_UP",   "value": "TEST_PIN1",     "tab": "I/O", "expected_kind": "numeric_or_text", "table_column": "Variable Name"},
+  {"idx": 52, "name": "io_pin2_mode_change",     "label": "VAVLE_DN",   "value": "Digital Output","tab": "I/O", "expected_kind": "combobox", "table_column": "Modes"}
+]

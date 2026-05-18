@@ -1,0 +1,14 @@
+{
+  "_comment": "환경별 설정 오버라이드. 이 파일을 config.json으로 복사·수정하면 코드 변경 없이 작동.",
+
+  "root": "D:\\4_AIProject\\4_CoDeSys\\AI_MutiTool",
+  "project_file": "D:\\4_AIProject\\4_CoDeSys\\AI_MutiTool\\MultiToolProject\\E2EProject\\DasDemoProject.mtproject",
+  "multitool_exe": "C:\\Program Files (x86)\\Epec\\MultiTool Creator 8.4\\MultiTool.exe",
+
+  "ollama_url": "https://macmini.tailed5292.ts.net:11434",
+  "ollama_model": "gemma4:26b",
+  "ollama_timeout": 300,
+
+  "ocr_lang": "en-US",
+  "max_cycles_default": 5
+}

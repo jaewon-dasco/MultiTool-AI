@@ -1,0 +1,7 @@
+[
+  {"idx": 40, "name": "pdo_add_tx",          "label": "Add Transmit",    "value": "", "tab": "PDO", "expected_kind": "toolbar_action"},
+  {"idx": 41, "name": "pdo_remove_tx",       "label": "Remove",          "value": "", "tab": "PDO", "expected_kind": "toolbar_action", "target": "transmit"},
+  {"idx": 42, "name": "pdo_add_rx",          "label": "Add Receive",     "value": "", "tab": "PDO", "expected_kind": "toolbar_action"},
+  {"idx": 43, "name": "pdo_remove_rx",       "label": "Remove",          "value": "", "tab": "PDO", "expected_kind": "toolbar_action", "target": "receive"},
+  {"idx": 44, "name": "pdo_variable_remove", "label": "Remove",          "value": "", "tab": "PDO", "expected_kind": "table_link", "target": "first_variable"}
+]

@@ -13,8 +13,14 @@ from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_excep
 
 log = logging.getLogger(__name__)
 
-DEFAULT_BASE = "https://macmini.tailed5292.ts.net:11434"
-DEFAULT_MODEL = "gemma4:26b"
+# Default values; config.py 또는 ENV로 오버라이드 가능 (E2E_OLLAMA_URL, E2E_OLLAMA_MODEL).
+try:
+    from . import config as _cfg
+    DEFAULT_BASE = _cfg.get("ollama_url")
+    DEFAULT_MODEL = _cfg.get("ollama_model")
+except Exception:
+    DEFAULT_BASE = "https://macmini.tailed5292.ts.net:11434"
+    DEFAULT_MODEL = "gemma4:26b"
 
 
 class OllamaClient:
