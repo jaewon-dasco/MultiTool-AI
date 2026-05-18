@@ -1,5 +1,5 @@
 [
-  {"idx": 1, "name": "bit_rate",                      "label": "Bit Rate",                  "value": "500 kbit/s", "tab": "CAN", "expected_kind": "combobox"},
+  {"idx": 1, "name": "bit_rate",                      "label": "Bit Rate|ait Rate|Rate",    "value": "500", "tab": "CAN", "expected_kind": "combobox"},
   {"idx": 2, "name": "application_node_id",           "label": "Application Node-ID",       "value": "5",          "tab": "CAN", "expected_kind": "numeric_or_text"},
   {"idx": 3, "name": "codesys_node_id",                "label": "Codesys Node-ID",           "value": "5",          "tab": "CAN", "expected_kind": "numeric_or_text"},
   {"idx": 4, "name": "application_version_string",     "label": "Application Version String", "value": "1.0",       "tab": "CAN", "expected_kind": "numeric_or_text"},

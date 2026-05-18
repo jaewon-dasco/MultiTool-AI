@@ -273,28 +273,38 @@ def detect_control_kind(label_target: str, offset_x: int = DEFAULT_OFFSET_X) -> 
             "click_coords": coords}
 
 
-def fuzzy_label_match(items: list, label_target: str, threshold: float = 0.6):
-    """OCR 오인식 보완. label_target 단어 일부가 잡힌 라인 중 가장 가까운 것."""
-    t = label_target.lower()
-    t_words = set(re.findall(r"\w+", t))
-    best = None; best_score = 0
-    for it in items:
-        o = it["text"].lower()
-        if t == o: return it
-        if t in o:
-            score = 0.9 + (len(t) / max(len(o), 1)) * 0.1
-            if score > best_score: best_score = score; best = it; continue
-        o_words = set(re.findall(r"\w+", o))
-        if not t_words: continue
-        overlap = len(t_words & o_words) / len(t_words)
-        # 글자 부분 일치 (Bit Rate ↔ ait Rate)
-        if overlap < 0.5:
-            char_overlap = sum(1 for w in t_words if any(w[-3:] in ow or w[:3] in ow for ow in o_words))
-            if char_overlap > 0:
-                overlap = max(overlap, char_overlap / len(t_words) * 0.7)
-        if overlap > best_score and overlap >= threshold:
-            best_score = overlap; best = it
-    return best
+def fuzzy_label_match(items: list, label_target: str, threshold: float = 0.4):
+    """OCR 오인식 보완. label_target 단어 일부가 잡힌 라인 중 가장 가까운 것.
+
+    label_target에 '|' 포함 시 alternatives로 분리 ('Bit Rate|ait Rate')."""
+    candidates_target = label_target.split("|") if "|" in label_target else [label_target]
+    overall_best = None; overall_score = 0
+    for lt in candidates_target:
+        t = lt.lower().strip()
+        t_words = set(re.findall(r"\w+", t))
+        for it in items:
+            o = it["text"].lower()
+            if t == o: return it
+            if t in o:
+                score = 0.9 + (len(t) / max(len(o), 1)) * 0.1
+                if score > overall_score: overall_score = score; overall_best = it; continue
+            o_words = set(re.findall(r"\w+", o))
+            if not t_words: continue
+            overlap = len(t_words & o_words) / len(t_words)
+            # 글자 부분 일치 — last 2/3 chars (Bit Rate ↔ ait Rate, Send Receive ↔ end eceive)
+            if overlap < 0.7:
+                # 각 target word의 마지막 3글자가 OCR 라인 어디든 있으면 점수 가산
+                tail_hits = 0; head_hits = 0
+                for w in t_words:
+                    if len(w) >= 3:
+                        if any(w[-3:] in ow for ow in o_words): tail_hits += 1
+                        if any(w[:3] in ow for ow in o_words): head_hits += 1
+                if t_words:
+                    char_score = max(tail_hits, head_hits) / len(t_words) * 0.75
+                    overlap = max(overlap, char_score)
+            if overlap > overall_score and overlap >= threshold:
+                overall_score = overlap; overall_best = it
+    return overall_best
 
 
 def set_field_auto(label_target: str, value: str, offset_x: int = DEFAULT_OFFSET_X,

@@ -25,13 +25,18 @@ if (-not $running) {
 $env:PYTHONIOENCODING = "utf-8"
 $env:PYTHONUTF8 = "1"
 
-# 순서대로 각 카테고리 5 cycle
+# 순서대로 각 카테고리 5 cycle (PS 5.1 호환 — cmd /c 대신 직접 호출)
 $categories = @("B", "C", "A", "D", "E", "F")
+$scriptPath = Join-Path $ROOT "skills\e2e_explorer\scripts\run_night_ui.py"
 foreach ($cat in $categories) {
     "[$(Get-Date -Format s)] === Category $cat ===" | Out-File -FilePath $LOG -Append -Encoding utf8
-    $cmd = "py `"$ROOT\skills\e2e_explorer\scripts\run_night_ui.py`" --category $cat --cycles 5"
-    "[$(Get-Date -Format s)] launching: $cmd" | Out-File -FilePath $LOG -Append -Encoding utf8
-    cmd /c "$cmd 1>>`"$LOG`" 2>&1"
+    "[$(Get-Date -Format s)] launching: py $scriptPath --category $cat --cycles 5" | Out-File -FilePath $LOG -Append -Encoding utf8
+    try {
+        & py $scriptPath --category $cat --cycles 5 2>&1 | Out-File -FilePath $LOG -Append -Encoding utf8
+        "[$(Get-Date -Format s)] category $cat exit=$LASTEXITCODE" | Out-File -FilePath $LOG -Append -Encoding utf8
+    } catch {
+        "[$(Get-Date -Format s)] category $cat EXCEPTION: $_" | Out-File -FilePath $LOG -Append -Encoding utf8
+    }
 }
 
 "[$(Get-Date -Format s)] night_ui_run end" | Out-File -FilePath $LOG -Append -Encoding utf8

@@ -1,5 +1,18 @@
 [
-  {"idx": 50, "name": "io_pin1_mode_change",     "label": "VAVLE_UP",   "value": "Digital Input", "tab": "I/O", "expected_kind": "combobox", "table_column": "Modes"},
-  {"idx": 51, "name": "io_pin1_variable_name",   "label": "VAVLE_UP",   "value": "TEST_PIN1",     "tab": "I/O", "expected_kind": "numeric_or_text", "table_column": "Variable Name"},
-  {"idx": 52, "name": "io_pin2_mode_change",     "label": "VAVLE_DN",   "value": "Digital Output","tab": "I/O", "expected_kind": "combobox", "table_column": "Modes"}
+  {"idx": 50, "name": "io_pin1_mode_change",   "label": "VAVLE_UP",          "value": "Digital Input",  "tab": "I/O", "expected_kind": "combobox",        "table_column": "Modes"},
+  {"idx": 51, "name": "io_pin1_variable_name", "label": "VAVLE_UP",          "value": "TEST_PIN1",      "tab": "I/O", "expected_kind": "numeric_or_text", "table_column": "Variable Name"},
+  {"idx": 52, "name": "io_pin2_mode_change",   "label": "VAVLE_DN",          "value": "Digital Output", "tab": "I/O", "expected_kind": "combobox",        "table_column": "Modes"},
+  {"idx": 53, "name": "io_pin2_variable_name", "label": "VAVLE_DN",          "value": "TEST_PIN2",      "tab": "I/O", "expected_kind": "numeric_or_text", "table_column": "Variable Name"},
+  {"idx": 54, "name": "io_pin3_mode_change",   "label": "LED1",              "value": "Digital Output", "tab": "I/O", "expected_kind": "combobox",        "table_column": "Modes"},
+  {"idx": 55, "name": "io_pin3_variable_name", "label": "LED1",              "value": "TEST_LED1",      "tab": "I/O", "expected_kind": "numeric_or_text", "table_column": "Variable Name"},
+  {"idx": 56, "name": "io_pin4_mode_change",   "label": "LED2",              "value": "Digital Output", "tab": "I/O", "expected_kind": "combobox",        "table_column": "Modes"},
+  {"idx": 57, "name": "io_pin4_variable_name", "label": "LED2",              "value": "TEST_LED2",      "tab": "I/O", "expected_kind": "numeric_or_text", "table_column": "Variable Name"},
+  {"idx": 58, "name": "io_pin5_mode_change",   "label": "X1_9",              "value": "Digital Input",  "tab": "I/O", "expected_kind": "combobox",        "table_column": "Modes"},
+  {"idx": 59, "name": "io_pin5_variable_name", "label": "X1_9",              "value": "TEST_PIN5",      "tab": "I/O", "expected_kind": "numeric_or_text", "table_column": "Variable Name"},
+  {"idx": 65, "name": "io_pin6_mode_change",   "label": "X1_10",             "value": "Digital Input",  "tab": "I/O", "expected_kind": "combobox",        "table_column": "Modes"},
+  {"idx": 66, "name": "io_pin6_variable_name", "label": "X1_10",             "value": "TEST_PIN6",      "tab": "I/O", "expected_kind": "numeric_or_text", "table_column": "Variable Name"},
+  {"idx": 67, "name": "io_pin7_mode_change",   "label": "X1_11",             "value": "Digital Input",  "tab": "I/O", "expected_kind": "combobox",        "table_column": "Modes"},
+  {"idx": 68, "name": "io_pin7_variable_name", "label": "X1_11",             "value": "TEST_PIN7",      "tab": "I/O", "expected_kind": "numeric_or_text", "table_column": "Variable Name"},
+  {"idx": 69, "name": "io_pin8_mode_change",   "label": "X1_12",             "value": "Digital Input",  "tab": "I/O", "expected_kind": "combobox",        "table_column": "Modes"},
+  {"idx": 70, "name": "io_pin8_variable_name", "label": "X1_12",             "value": "TEST_PIN8",      "tab": "I/O", "expected_kind": "numeric_or_text", "table_column": "Variable Name"}
 ]

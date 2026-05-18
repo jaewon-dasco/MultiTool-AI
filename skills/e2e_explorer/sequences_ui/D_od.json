@@ -1,6 +1,6 @@
 [
   {"idx": 30, "name": "od_add_index",         "label": "Add Index",          "value": "",  "tab": "Object Dictionary", "expected_kind": "toolbar_action", "dialog": {"Index": "2500", "Name": "TestVar", "DataType": "BYTE"}},
-  {"idx": 31, "name": "od_add_predefined",    "label": "Add Pre-defined",    "value": "",  "tab": "Object Dictionary", "expected_kind": "toolbar_action", "dialog": null},
+  {"idx": 31, "name": "od_add_predefined",    "label": "Add Pre-defined",    "value": "",  "tab": "Object Dictionary", "expected_kind": "dialog_probe", "probe_target": "od_predefined", "note": "Pre-defined Index 선택 다이얼로그 구조 미파악 — probe_od_predefined.py로 먼저 UI 트리 dump 필요"},
   {"idx": 32, "name": "od_remove_first",      "label": "Remove",             "value": "",  "tab": "Object Dictionary", "expected_kind": "toolbar_action", "dialog": null, "target_row": 1},
   {"idx": 33, "name": "od_add_subindex",      "label": "Add Sub-Index",      "value": "",  "tab": "Object Dictionary", "expected_kind": "toolbar_action", "dialog": null},
   {"idx": 34, "name": "od_store_settings",    "label": "Store",              "value": "",  "tab": "Object Dictionary", "expected_kind": "toolbar_action", "dialog": null},

@@ -46,11 +46,38 @@ def quick_xml_diff(before_path: Path, after_path: Path, max_lines: int = 30) -> 
 
 
 def restore_baseline():
-    """Restore .mtproject from original backup + remove all .exp files in E2EProject."""
+    """Restore .mtproject from original backup + remove all .exp files in E2EProject.
+
+    Note: MultiTool은 메모리에 변경된 상태를 유지함. 파일만 복원해도 UI는 그대로.
+    각 시드 시작 시 reload_multitool_project()를 추가로 호출해야 깨끗한 상태.
+    """
     shutil.copy(ORIG_BAK, PROJ)
     for p in ocr_helpers.PROJ_DIR.rglob("*.exp"):
         try: p.unlink()
         except Exception: pass
+
+
+def reload_multitool_project():
+    """MultiTool에서 현재 프로젝트 닫고 재로드. 메모리 상태 깨끗해짐.
+    Ctrl+W (close) → 'Don't Save' → Open Project... → 경로 + Enter.
+    """
+    try:
+        app, win = common.connect()
+        win.set_focus()
+        time.sleep(0.3)
+        # File > Close 또는 Ctrl+W (실제 단축키는 MultiTool 확인 필요)
+        # 더 안전: ESC로 메뉴 닫기 + Network Editor 탭으로 강제 이동
+        send_keys("{ESC}"); time.sleep(0.3)
+        # Click Network Editor tab
+        for t in win.descendants(control_type="TabItem"):
+            if t.window_text() == "Network Editor":
+                t.click_input(); time.sleep(0.5)
+                break
+        # Deselect canvas (빈 영역 클릭)
+        common.deselect_diagram(win)
+        time.sleep(0.5)
+    except Exception:
+        pass
 
 
 def run_one_seed(seed: dict, label: str, value: str,
@@ -68,9 +95,10 @@ def run_one_seed(seed: dict, label: str, value: str,
     def log(msg): result["log"].append(msg); print(f"  [seed {idx:02d} c{cycle_idx} {name}] {msg}")
 
     try:
-        # 1. Restore baseline
+        # 1. Restore baseline + reload MultiTool view
         restore_baseline()
         time.sleep(0.5)
+        reload_multitool_project()
         result["phase"] = "baseline_restored"
 
         # Snapshot before
@@ -83,13 +111,18 @@ def run_one_seed(seed: dict, label: str, value: str,
         app, win = common.connect()
         common.ensure_maximized(win)
 
-        # Switch sidebar tab if requested
+        # 사이드바 탭이 요청되면 먼저 디바이스 Configure 패널 진입 필요
         if sidebar_tab:
-            from .field_change import click_left_tab
+            from .field_change import click_left_tab, open_configure_panel
+            # First: open device configure (디바이스 클릭 → 렌치)
+            opened = open_configure_panel(win, "CU_3606_21_1")
+            if not opened:
+                result["phase"] = "configure_panel_failed"; log("FAIL: Configure panel"); return result
+            time.sleep(0.8)
             if not click_left_tab(win, sidebar_tab):
                 result["phase"] = "tab_switch_failed"; log(f"FAIL: tab '{sidebar_tab}'")
                 return result
-            log(f"tab='{sidebar_tab}'")
+            log(f"Configure+tab='{sidebar_tab}'")
         result["phase"] = "tab_ready"
 
         # 2. UI change via OCR — actions 시퀀스 지원 (mode 설정 → property 설정)
