@@ -110,22 +110,65 @@ def restart_multitool_clean():
                            capture_output=True, timeout=5)
         except Exception: pass
         time.sleep(2)
-    # 3. 재시작 + 프로젝트 인자 전달
+    # 3. 재시작 (인자 전달이 무시되므로 StartPage 거쳐 Open Project 자동화)
     try:
-        subprocess.Popen([MULTITOOL_EXE, str(PROJ)])
+        subprocess.Popen([MULTITOOL_EXE])
     except Exception as e:
         print(f"  [restart] Popen FAIL: {e}")
         return False
     # 4. Splash + connect 대기
+    win = None
     for attempt in range(15):
         time.sleep(2)
         try:
             app, win = common.connect(timeout=2)
             common.ensure_maximized(win)
             time.sleep(1.5)
-            return True
+            break
         except Exception:
             continue
+    if win is None:
+        print("  [restart] connect FAIL after 30s")
+        return False
+    # 5. 프로젝트 이미 로드되었는지(디바이스 Hyperlink 존재) 확인
+    try:
+        if common.find_hyperlink(win, "CU_3606_21_1"):
+            return True
+    except Exception: pass
+    # 6. StartPage의 'Open Project...' Hyperlink 클릭 → 경로 입력 → Enter
+    open_link = None
+    try:
+        for h in win.descendants(control_type="Hyperlink"):
+            try:
+                if "Open Project" in h.window_text():
+                    open_link = h; break
+            except Exception: pass
+    except Exception: pass
+    if open_link is None:
+        print("  [restart] Open Project Hyperlink not found")
+        return False
+    try:
+        if hasattr(open_link, "invoke"): open_link.invoke()
+        else: open_link.click_input()
+    except Exception as e:
+        print(f"  [restart] open_link click FAIL: {e}")
+        return False
+    time.sleep(2.0)
+    # File dialog: path + Enter
+    send_keys(str(PROJ).replace(" ", "{SPACE}"), pause=0.02)
+    time.sleep(0.5)
+    send_keys("{ENTER}")
+    time.sleep(8)
+    # 7. 로드 확인 — 디바이스 hyperlink 보이면 OK
+    try:
+        app, win = common.connect(timeout=3)
+        common.ensure_maximized(win)
+        for _ in range(8):
+            if common.find_hyperlink(win, "CU_3606_21_1"):
+                return True
+            time.sleep(1.5)
+    except Exception: pass
+    print("  [restart] project load verification FAIL")
     return False
 
 
