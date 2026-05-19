@@ -71,13 +71,16 @@ Network Editor → 디바이스 hyperlink invoke → floating toolbar 렌치 →
 
 ## 알려진 함정
 
-| 함정                                           | 회피                                                       |
-| ---------------------------------------------- | ---------------------------------------------------------- |
-| Save 부수효과 (Guid·CobId 리셋 등 28건 노이즈) | per-seed MultiTool 재시작 + baseline 정합화                |
-| 네트워크 BitRate 강제 동기화                   | device 단독 BitRate 변경 차단됨, NETWORK 노드에서만 가능   |
-| Configure 패널 floating toolbar 일반 트리 부재 | rect + size 필터로 식별                                    |
-| WPF MessageBox UIA 미노출                      | win32 backend + 좌표 클릭 (right-145=Yes, right-30=Cancel) |
-| `Stop-Process MultiTool` 직접 사용             | Alt+F4 → "Don't Save" 우선, taskkill은 폴백                |
+| 함정                                           | 상태    | 회피                                                       |
+| ---------------------------------------------- | ------- | ---------------------------------------------------------- |
+| Save 부수효과 (Guid·CobId 리셋 등 28건 노이즈) | 완화 중 | per-seed MultiTool 재시작 + baseline 정합화 (미진행)       |
+| 네트워크 BitRate 강제 동기화                   | 해결    | device 단독 BitRate 변경 차단됨, NETWORK 노드에서만 가능   |
+| Configure 패널 floating toolbar 일반 트리 부재 | 해결    | rect + size 필터로 식별                                    |
+| WPF MessageBox UIA 미노출                      | 해결    | win32 backend + 좌표 클릭 (right-145=Yes, right-30=Cancel) |
+| `Stop-Process MultiTool` 직접 사용             | 해결    | Alt+F4 → "Don't Save" 우선, taskkill은 폴백                |
+| WPF DataGrid `mouse.click(coords)` silent fail | 해결    | UIA `click_input()` 강제 (위 "Click 메서드 선택")          |
+| MultiTool 단일 인스턴스 + CLI 인자 무시        | 해결    | Open Project Hyperlink invoke + send_keys 경로로 우회      |
+| OCR I/O 핀 변수명 미감지                       | 해결    | UIA 트리 직접 탐색 (`io_pin_recipe.py`)                    |
 
 ## 디바이스 템플릿 (권위 소스)
 
@@ -114,9 +117,21 @@ print(d["pins"][2]["ui_labels"])   # → ['DI', 'DO', 'PWM', 'PI1 PW', ..., 'Ste
 
 새 UI 패턴 만나면 동일 패턴(probe → JSON dump → 분석)으로 먼저 탐색 후 recipe 구현.
 
+## SCHEDULE.md 운영
+
+[docs/SCHEDULE.md](../../docs/SCHEDULE.md) — 작업 히스토리·진행·남은 항목 추적. 다음 시점에 갱신한다.
+
+| 시점         | 갱신 내용                                              |
+| ------------ | ------------------------------------------------------ |
+| 작업 시작    | "진행 중" 표에 항목 추가, 상태 명시                    |
+| 작업 완료    | "진행 중"에서 제거 → "완료" 표 상단에 commit 함께 기록 |
+| 새 작업 발견 | "남은 작업" 표에 우선순위(★ 1~3) 부여 후 추가          |
+| 블로커 발생  | 본 문서 "알려진 함정" 표에 추가 (SCHEDULE에는 미기재)  |
+
 ## 참조
 
 - 시드 정의: `sequences_ui/{A,B,C,D,E,F}_*.json`
 - 시드 실행: `recipes/seed_runner_ui.py` (`run_one_seed`)
 - I/O 핀 모드: `recipes/io_pin_recipe.py`
 - OCR 헬퍼: `recipes/ocr_helpers.py`
+- 작업 스케줄: [docs/SCHEDULE.md](../../docs/SCHEDULE.md)

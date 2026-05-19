@@ -47,26 +47,8 @@
 | ★    | 미정 (probe) | Variable Name 변경 경로 탐색 (핀 우클릭/더블클릭 → 다이얼로그)                                | F: +8 시드 추가                      | 1h probe + 2h 구현 |
 | ★    | 확장         | 다른 디바이스 시드(3720, 5050, 6807) 일반화                                                   | 디바이스별 ×8 시드                   | 1h × 3종           |
 
-## 알려진 블로커·이슈
-
-| 이슈                                           | 상태    | 비고                                        |
-| ---------------------------------------------- | ------- | ------------------------------------------- |
-| Save 부수효과 28건 노이즈                      | 완화 중 | restart로 일부 해소, baseline 정합화 미진행 |
-| WPF DataGrid `mouse.click(coords)` silent fail | 해결    | UIA `click_input()` 강제 (multitool_e2e.md) |
-| MultiTool 단일 인스턴스 + 인자 무시            | 해결    | Open Project 자동화로 우회                  |
-| OCR I/O 핀 변수명 미감지                       | 해결    | UIA 트리 직접 탐색으로 우회                 |
-
-## 갱신 프로토콜
-
-| 시점         | 갱신 내용                                              |
-| ------------ | ------------------------------------------------------ |
-| 작업 시작    | "진행 중" 표에 항목 추가, 상태 명시                    |
-| 작업 완료    | "진행 중"에서 제거 → "완료" 표 상단에 commit 함께 기록 |
-| 새 작업 발견 | "남은 작업" 표에 우선순위(★ 1~3) 부여 후 추가          |
-| 블로커 발생  | "알려진 블로커" 표에 추가, 회피 방안 기재              |
-
 ## 참조
 
-- 운영 지침: [skills/e2e_explorer/multitool_e2e.md](../skills/e2e_explorer/multitool_e2e.md)
+- 운영 지침·알려진 함정·갱신 프로토콜: [skills/e2e_explorer/multitool_e2e.md](../skills/e2e_explorer/multitool_e2e.md)
 - 프로젝트 정의: [docs/PROJECT.md](PROJECT.md)
 - 작업 단위 task: [docs/tasks/](tasks/)
