@@ -107,15 +107,35 @@ print(d["pins"][2]["ui_labels"])   # → ['DI', 'DO', 'PWM', 'PI1 PW', ..., 'Ste
 
 ## probe 스크립트 위치
 
-| 스크립트                  | 목적                                |
-| ------------------------- | ----------------------------------- |
-| `probe_io_panel.py`       | I/O 탭 OCR 가시성 검증              |
-| `probe_io_uia.py`         | I/O 탭 UIA 트리 dump                |
-| `probe_io_pin_click.py`   | 셀 클릭 후 컨트롤 변화 dump         |
-| `probe_io_collapse_v2.py` | 커넥터 chevron expand/collapse 검증 |
-| `probe_od_predefined.py`  | OD Pre-defined 다이얼로그 트리 dump |
+| 스크립트                      | 목적                                                  |
+| ----------------------------- | ----------------------------------------------------- |
+| `probe_io_panel.py`           | I/O 탭 OCR 가시성 검증                                |
+| `probe_io_uia.py`             | I/O 탭 UIA 트리 dump                                  |
+| `probe_io_pin_click.py`       | 셀 클릭 후 컨트롤 변화 dump                           |
+| `probe_io_collapse_v2.py`     | 커넥터 chevron expand/collapse 검증                   |
+| `probe_io_variable_name.py`   | 핀 셀 우클릭/더블클릭/F2 결과 비교 — Edit 진입 경로   |
+| `probe_od_predefined.py`      | OD Pre-defined 다이얼로그 트리 dump                   |
+| `probe_od_dialog.py`          | OD 탭 toolbar 버튼 식별 시도                          |
+| `probe_od_toolbar_all.py`     | OD 탭 모든 toolbar Button 위치 + 인접 Text dump       |
+| `probe_od_buttons_id.py`      | OD toolbar 6 unnamed Button의 auto_id/class 확인      |
+| `probe_od_click_btn1.py`      | OD toolbar Button[idx] 클릭 → 다이얼로그 등장 검증    |
+| `probe_network_node.py`       | NETWORK 노드 선택 후 floating toolbar + UIA 변화 dump |
+| `probe_network_panel_dump.py` | NETWORK 선택 후 좌측 패널 전체 dump (속성 위치)       |
+| `probe_network_bitrate_*.py`  | Bit Rate 라벨 인접 컨트롤 식별 (수평/수직)            |
+| `probe_net_toolbar.py`        | Network Editor 상단 toolbar Button/Hyperlink 식별     |
 
 새 UI 패턴 만나면 동일 패턴(probe → JSON dump → 분석)으로 먼저 탐색 후 recipe 구현.
+
+## 발견된 UI 패턴
+
+| 패턴                         | 사용 위치                                 | 핸들러                                                          |
+| ---------------------------- | ----------------------------------------- | --------------------------------------------------------------- |
+| 라벨 우측 인접 컨트롤 (수평) | CAN Settings, J1939, Diagnostics          | `set_field_auto` (OCR + fuzzy_label_match)                      |
+| 라벨 아래 컨트롤 (수직)      | NETWORK 노드 좌측 패널 (Bit Rate)         | `network_property.find_label_below_control`                     |
+| 표 행/열 교차점              | Diagnostics Min/Max, I/O Modes 컬럼       | `set_field_auto(table_column=)` → `click_table_cell`            |
+| WPF DataGrid Button cell     | I/O Modes (DI/DO/PWM/Step Motor)          | `io_pin_recipe.set_pin_mode` (UIA click_input)                  |
+| 셀 더블클릭 → 우측 Edit      | I/O Variable Name                         | `io_pin_recipe.set_pin_variable_name`                           |
+| Toolbar action + dialog      | A/D 카테고리 (Add Device, OD Pre-defined) | `toolbar_action_with_dialog` (✗ 미해결, 다이얼로그 자동화 필요) |
 
 ## SCHEDULE.md 운영
 
