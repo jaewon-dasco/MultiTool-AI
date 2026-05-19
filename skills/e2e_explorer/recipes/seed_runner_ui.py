@@ -309,6 +309,11 @@ def run_one_seed(seed: dict, label: str, value: str,
                 from .io_pin_recipe import set_pin_mode
                 action = set_pin_mode(win, pin_id=label, mode_short=value,
                                        connector=seed.get("connector", "1"))
+            elif expected_kind == "network_property":
+                # NETWORK 노드 속성 변경 — 현재 BitRate만 지원
+                from .network_property import set_network_bitrate
+                target = seed.get("target_network", "NETWORK1")
+                action = set_network_bitrate(win, network_name=target, value=value)
             else:
                 action = ocr_helpers.set_field_auto(label, value, expected_kind=expected_kind,
                                                      table_column=seed.get("table_column"))
