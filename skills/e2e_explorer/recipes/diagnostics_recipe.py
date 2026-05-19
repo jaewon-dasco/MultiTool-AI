@@ -21,22 +21,26 @@ def find_alarm_row(win, label_keyword: str):
     return None, None
 
 
-def find_minmax_edits(win, row_rect, min_x_min=400, min_x_max=700, max_x_min=700, max_x_max=900):
-    """행 y범위 내 Edit 컨트롤 2개 (Min, Max). y_mid가 row 범위 안에 있는 Edit."""
+def find_minmax_edits(win, row_rect, x_min=400, x_max=900):
+    """행 y범위 내 Edit 컨트롤 2개 (Min, Max). 같은 y의 Edit을 좌→우 정렬 후
+    첫 번째=Min, 두 번째=Max로 할당.
+
+    이전 버그(2026-05-19 야간 검증): x 범위 분기(min_x_max=700, max_x_min=700)에서
+    경계값 left=700 Edit이 min 분기로 들어가 Max를 영원히 None으로 남김.
+    """
     y_mid = (row_rect.top + row_rect.bottom) // 2
-    min_edit = None; max_edit = None
+    candidates = []
     for e in win.descendants(control_type="Edit"):
         try:
             r = e.rectangle()
             r_y = (r.top + r.bottom) // 2
             if abs(r_y - y_mid) > 20: continue
-            if min_x_min <= r.left <= min_x_max:
-                if min_edit is None or r.left < min_edit.rectangle().left:
-                    min_edit = e
-            elif max_x_min <= r.left <= max_x_max:
-                if max_edit is None or r.left < max_edit.rectangle().left:
-                    max_edit = e
+            if x_min <= r.left <= x_max:
+                candidates.append((e, r.left))
         except Exception: pass
+    candidates.sort(key=lambda x: x[1])
+    min_edit = candidates[0][0] if len(candidates) >= 1 else None
+    max_edit = candidates[1][0] if len(candidates) >= 2 else None
     return min_edit, max_edit
 
 
