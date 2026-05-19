@@ -1,5 +1,12 @@
 # PROJECT
 
+## 저장소
+
+| 항목       | 값                                             |
+| ---------- | ---------------------------------------------- |
+| GitHub URL | <https://github.com/jaewon-dasco/MultiTool-AI> |
+| 브랜치     | `master`                                       |
+
 ## 관련 문서
 
 | 문서                                                                            | 내용                                       |
