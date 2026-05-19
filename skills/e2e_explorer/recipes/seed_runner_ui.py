@@ -314,6 +314,11 @@ def run_one_seed(seed: dict, label: str, value: str,
                 from .io_pin_recipe import set_pin_variable_name
                 action = set_pin_variable_name(win, pin_id=label, new_name=value,
                                                 connector=seed.get("connector", "1"))
+            elif expected_kind == "diagnostics_minmax":
+                # Diagnostics alarm limit — CheckBox 행 찾고 Min/Max Edit
+                from .diagnostics_recipe import set_alarm_limit
+                which = seed.get("table_column", "Min")  # Min or Max
+                action = set_alarm_limit(win, label_keyword=label, which=which, value=value)
             elif expected_kind == "network_property":
                 # NETWORK 노드 속성 변경 — 현재 BitRate만 지원
                 from .network_property import set_network_bitrate

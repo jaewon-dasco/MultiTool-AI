@@ -1,10 +1,10 @@
 [
-  {"idx": 20, "name": "diag_temp_min",     "label": "Temperature",   "value": "-25", "tab": "Diagnostics", "expected_kind": "numeric_or_text", "table_column": "Minimum"},
-  {"idx": 21, "name": "diag_temp_max",     "label": "Temperature",   "value": "90",  "tab": "Diagnostics", "expected_kind": "numeric_or_text", "table_column": "Maximum"},
-  {"idx": 22, "name": "diag_voltage_min",  "label": "SupplyVoltage", "value": "10",  "tab": "Diagnostics", "expected_kind": "numeric_or_text", "table_column": "Minimum"},
-  {"idx": 23, "name": "diag_voltage_max",  "label": "SupplyVoltage", "value": "32",  "tab": "Diagnostics", "expected_kind": "numeric_or_text", "table_column": "Maximum"},
-  {"idx": 24, "name": "diag_ref5v_min",    "label": "Ref5V",         "value": "4.6", "tab": "Diagnostics", "expected_kind": "numeric_or_text", "table_column": "Minimum"},
-  {"idx": 25, "name": "diag_ref5v_max",    "label": "Ref5V",         "value": "5.4", "tab": "Diagnostics", "expected_kind": "numeric_or_text", "table_column": "Maximum"},
-  {"idx": 26, "name": "diag_cycle_min",    "label": "CycleTime",     "value": "20",  "tab": "Diagnostics", "expected_kind": "numeric_or_text", "table_column": "Minimum"},
-  {"idx": 27, "name": "diag_cycle_max",    "label": "CycleTime",     "value": "25",  "tab": "Diagnostics", "expected_kind": "numeric_or_text", "table_column": "Maximum"}
+  {"idx": 20, "name": "diag_temp_min",     "label": "Temperature",        "value": "-25", "tab": "Diagnostics", "expected_kind": "diagnostics_minmax", "table_column": "Min"},
+  {"idx": 21, "name": "diag_temp_max",     "label": "Temperature",        "value": "90",  "tab": "Diagnostics", "expected_kind": "diagnostics_minmax", "table_column": "Max"},
+  {"idx": 22, "name": "diag_voltage_min",  "label": "Supply voltage",     "value": "10",  "tab": "Diagnostics", "expected_kind": "diagnostics_minmax", "table_column": "Min"},
+  {"idx": 23, "name": "diag_voltage_max",  "label": "Supply voltage",     "value": "32",  "tab": "Diagnostics", "expected_kind": "diagnostics_minmax", "table_column": "Max"},
+  {"idx": 24, "name": "diag_ref5v_min",    "label": "REF 5 V",            "value": "4.6", "tab": "Diagnostics", "expected_kind": "diagnostics_minmax", "table_column": "Min"},
+  {"idx": 25, "name": "diag_ref5v_max",    "label": "REF 5 V",            "value": "5.4", "tab": "Diagnostics", "expected_kind": "diagnostics_minmax", "table_column": "Max"},
+  {"idx": 26, "name": "diag_cycle_max",    "label": "Cycle time",         "value": "25",  "tab": "Diagnostics", "expected_kind": "diagnostics_minmax", "table_column": "Max"},
+  {"idx": 27, "name": "diag_ref25_min",    "label": "REF internal 2.5 V", "value": "2.2", "tab": "Diagnostics", "expected_kind": "diagnostics_minmax", "table_column": "Min"}
 ]
