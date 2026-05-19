@@ -1,22 +1,24 @@
 # EPEC CoDeSys Project — Claude Code Guide
 
-## 공통 지침
+글로벌 공통 지침(`~/.claude/CLAUDE.md`) 상속. 충돌 시 본 파일이 우선.
 
-1. 글로벌 지침(`~/.claude/CLAUDE.md`)과 상호 보완하여 동기화한다. 충돌 시 로컬 우선.
-2. **MD 파일 작성·수정 시 토큰 소모량 최소화 필수** — 글로벌 지침의 MD 작성 요령을 기본값으로 적용하고, `md_file_skill.py`로 표 열 정렬을 자동 교정한다.
-3. MD 파일 작성 시 `|` 구분자를 세로로 열 정렬한다.
-4. Python `.py`, 쉘 스크립트 등 외부 실행 파일은 프로젝트 내 `skills/` 폴더에 생성한다. (글로벌 공용은 `~/.claude/scripts/`)
-5. MultiTool 프로젝트 파일(`.mtproject`)은 `ROOT/MultiToolProject/프로젝트명/프로젝트명.mtproject` 구조로 위치한다. Python 스크립트에서 경로 참조 시 `glob("*/*.mtproject")`로 탐색한다.
-6. **PROJECT.md 파일 기본 형식은 `Clarify · Context Gather · Plan · Generate · Evaluate` 5섹션을 따른다.** (상세 → 아래)
+## 환경
 
-## PROJECT.md 기본 형식
+| 항목   | 값                                              |
+| ------ | ----------------------------------------------- |
+| 대상   | MultiTool Creator 8.4 (Epec) E2E 자동화         |
+| 채널   | UI Automation (pywinauto) — API 없음            |
+| 산출물 | `.mtproject` XML + CoDeSys `.exp` 변수 export   |
+| 의존성 | Python 3.13 (pywinauto, winocr, Pillow), Ollama |
 
-`PROJECT.md` 파일은 다음 5섹션 구조를 따른다.
+## 프로젝트 특화 규칙
 
-| 섹션           | 내용                                           |
-| -------------- | ---------------------------------------------- |
-| Clarify        | 입출력·대상·핵심 기능 — 무엇을 하는가          |
-| Context Gather | 환경·HW·라이브러리·알려진 사실 — 무엇을 아는가 |
-| Plan           | 절차·구조·규칙 — 어떻게 구성하는가             |
-| Generate       | 파라미터 상세값·구현 — 어떻게 만드는가         |
-| Evaluate       | 검증 기준·주의사항 — 어떻게 확인하는가         |
+- `.py`·쉘 스크립트는 프로젝트 내 `skills/` 폴더에 생성 (글로벌 공용 스크립트는 `~/.claude/scripts/`)
+- MultiTool 프로젝트 파일(`.mtproject`)은 `ROOT/MultiToolProject/<이름>/<이름>.mtproject` 구조. Python 경로 참조 시 `glob("*/*.mtproject")`
+- E2E UI 자동화 운영 규칙은 [skills/e2e_explorer/multitool_e2e.md](skills/e2e_explorer/multitool_e2e.md) 단일 권위 문서 참조 (Click 메서드 매트릭스·세션 종료 의무·OCR vs UIA 등)
+
+## 참조
+
+- [docs/PROJECT.md](docs/PROJECT.md) — 정의서 (5섹션)
+- [docs/SCHEDULE.md](docs/SCHEDULE.md) — 작업 스케줄
+- [skills/e2e_explorer/multitool_e2e.md](skills/e2e_explorer/multitool_e2e.md) — E2E 운영 지침
