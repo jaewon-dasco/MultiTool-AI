@@ -319,6 +319,11 @@ def run_one_seed(seed: dict, label: str, value: str,
                 from .diagnostics_recipe import set_alarm_limit
                 which = seed.get("table_column", "Min")  # Min or Max
                 action = set_alarm_limit(win, label_keyword=label, which=which, value=value)
+            elif expected_kind == "od_toolbar":
+                # OD toolbar 액션 — action_name 키로 OD_ACTION_MAP 분기
+                from .od_recipe import execute_od_action
+                action_name = seed.get("od_action") or label.lower().replace(" ", "_").replace("-", "_")
+                action = execute_od_action(win, action_name)
             elif expected_kind == "pdo_toolbar":
                 # PDO Transmit/Receive Add/Remove — 헤더 옆 인덱스 기반
                 from .pdo_recipe import pdo_add, pdo_remove_or_select_and_remove
