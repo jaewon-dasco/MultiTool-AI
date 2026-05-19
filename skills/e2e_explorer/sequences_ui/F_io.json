@@ -78,5 +78,85 @@
     "expected_kind": "io_mode_button",
     "connector": "1",
     "note": "X1_12 → mode DO (지원: ['DI', 'DO', 'PWM', 'PI1 PW', 'PI1 PC', 'PI1 Freq', 'PI1+Rst', 'PI2 PC', 'PI2+Rst', 'Step Motor'])"
+  },
+  {
+    "idx": 80,
+    "name": "io_pin1_2_var_name",
+    "label": "1.2",
+    "value": "TEST_PIN1_2",
+    "tab": "I/O",
+    "expected_kind": "io_variable_name",
+    "connector": "1",
+    "note": "X1_2 → TEST_PIN1_2"
+  },
+  {
+    "idx": 81,
+    "name": "io_pin1_3_var_name",
+    "label": "1.3",
+    "value": "TEST_PIN1_3",
+    "tab": "I/O",
+    "expected_kind": "io_variable_name",
+    "connector": "1",
+    "note": "X1_3 → TEST_PIN1_3"
+  },
+  {
+    "idx": 82,
+    "name": "io_pin1_7_var_name",
+    "label": "1.7",
+    "value": "TEST_PIN1_7",
+    "tab": "I/O",
+    "expected_kind": "io_variable_name",
+    "connector": "1",
+    "note": "X1_7 → TEST_PIN1_7"
+  },
+  {
+    "idx": 83,
+    "name": "io_pin1_8_var_name",
+    "label": "1.8",
+    "value": "TEST_PIN1_8",
+    "tab": "I/O",
+    "expected_kind": "io_variable_name",
+    "connector": "1",
+    "note": "X1_8 → TEST_PIN1_8"
+  },
+  {
+    "idx": 84,
+    "name": "io_pin1_9_var_name",
+    "label": "1.9",
+    "value": "TEST_PIN1_9",
+    "tab": "I/O",
+    "expected_kind": "io_variable_name",
+    "connector": "1",
+    "note": "X1_9 → TEST_PIN1_9"
+  },
+  {
+    "idx": 85,
+    "name": "io_pin1_10_var_name",
+    "label": "1.10",
+    "value": "TEST_PIN1_10",
+    "tab": "I/O",
+    "expected_kind": "io_variable_name",
+    "connector": "1",
+    "note": "X1_10 → TEST_PIN1_10"
+  },
+  {
+    "idx": 86,
+    "name": "io_pin1_11_var_name",
+    "label": "1.11",
+    "value": "TEST_PIN1_11",
+    "tab": "I/O",
+    "expected_kind": "io_variable_name",
+    "connector": "1",
+    "note": "X1_11 → TEST_PIN1_11"
+  },
+  {
+    "idx": 87,
+    "name": "io_pin1_12_var_name",
+    "label": "1.12",
+    "value": "TEST_PIN1_12",
+    "tab": "I/O",
+    "expected_kind": "io_variable_name",
+    "connector": "1",
+    "note": "X1_12 → TEST_PIN1_12"
   }
 ]

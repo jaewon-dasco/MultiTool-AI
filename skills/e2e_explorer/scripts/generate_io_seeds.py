@@ -24,6 +24,7 @@ def main():
     # 각 핀마다 선호 모드 순환 (DI/DO/PWM)
     rotation = ["DI", "DO", "PWM"]
     seeds = []
+    # Block 1: io_mode_button (idx 50~)
     for i, pid in enumerate(pin_ids):
         info = d["pins"].get(pid)
         if not info:
@@ -43,11 +44,27 @@ def main():
             "note": f"{info['variable']} → mode {chosen} (지원: {info['ui_labels']})"
         })
 
+    # Block 2: io_variable_name (idx 80~) — 핀 셀 더블클릭 → 우측 Edit
+    for i, pid in enumerate(pin_ids):
+        info = d["pins"].get(pid)
+        if not info: continue
+        new_name = f"TEST_PIN{connector}_{pid}"
+        seeds.append({
+            "idx": 80 + i,
+            "name": f"io_pin{connector}_{pid}_var_name",
+            "label": f"{connector}.{pid}",
+            "value": new_name,
+            "tab": "I/O",
+            "expected_kind": "io_variable_name",
+            "connector": str(connector),
+            "note": f"{info['variable']} → {new_name}"
+        })
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(seeds, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Generated {len(seeds)} seeds → {OUT}")
     for s in seeds:
-        print(f"  idx={s['idx']:2d} pin={s['label']:5s} value={s['value']}  ({s['note']})")
+        print(f"  idx={s['idx']:2d} kind={s['expected_kind']:18s} pin={s['label']:5s} value={s['value']}")
 
 
 if __name__ == "__main__":

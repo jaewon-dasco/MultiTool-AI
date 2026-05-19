@@ -309,6 +309,11 @@ def run_one_seed(seed: dict, label: str, value: str,
                 from .io_pin_recipe import set_pin_mode
                 action = set_pin_mode(win, pin_id=label, mode_short=value,
                                        connector=seed.get("connector", "1"))
+            elif expected_kind == "io_variable_name":
+                # I/O 핀 변수명 변경 — 셀 더블클릭 → 우측 Edit (label=핀번호, value=새 이름)
+                from .io_pin_recipe import set_pin_variable_name
+                action = set_pin_variable_name(win, pin_id=label, new_name=value,
+                                                connector=seed.get("connector", "1"))
             elif expected_kind == "network_property":
                 # NETWORK 노드 속성 변경 — 현재 BitRate만 지원
                 from .network_property import set_network_bitrate

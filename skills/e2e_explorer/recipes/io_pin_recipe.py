@@ -80,6 +80,62 @@ def list_mode_buttons(win, pin_rect, modes_col_x_min: int = 410) -> list:
     return out
 
 
+def set_pin_variable_name(win, pin_id: str, new_name: str,
+                           connector: str = CONNECTOR_DEFAULT) -> dict:
+    """핀 셀 더블클릭 → 우측 패널 Edit에서 Variable Name 변경.
+
+    동작 (2026-05-19 probe_io_variable_name 검증):
+    - 핀 행의 Variable Name 컬럼 셀(x=284-418) 더블클릭
+    - 우측 패널(x=1374+, y=125 부근)에 Edit 컨트롤 등장 (현재 값 채워져 있음)
+    - Edit click_input → Ctrl+A → DELETE → new_name → ENTER
+    """
+    from pywinauto import mouse
+    from pywinauto.keyboard import send_keys
+
+    result = {"ok": False, "kind": "io_variable_name", "action": None,
+              "pin": pin_id, "value": new_name}
+
+    if not expand_connector(win, connector):
+        result["action"] = "expand_connector_failed"; return result
+    pin_rect = find_pin_row_rect(win, pin_id)
+    if pin_rect is None:
+        result["action"] = f"pin_row_not_found pin={pin_id}"; return result
+
+    # Variable Name 컬럼 셀 중앙 (probe 기반: x 284-418)
+    vn_cx = (284 + 418) // 2
+    vn_cy = (pin_rect.top + pin_rect.bottom) // 2
+    mouse.double_click(coords=(vn_cx, vn_cy))
+    time.sleep(0.8)
+
+    # 우측 패널 Edit 찾기 — y는 핀 행과 무관하게 우측 패널 y=125 부근, name=현재 변수명
+    target_edit = None
+    for e in win.descendants(control_type="Edit"):
+        try:
+            r = e.rectangle()
+            if r.left >= 1300 and r.top < 200 and r.width() > 200:
+                # 가장 위의 Edit (Variable Name 위치 가정)
+                if target_edit is None or e.rectangle().top < target_edit.rectangle().top:
+                    target_edit = e
+        except Exception: pass
+
+    if target_edit is None:
+        result["action"] = "variable_name_edit_not_found"; return result
+
+    try:
+        target_edit.click_input()
+        time.sleep(0.3)
+        send_keys("^a"); time.sleep(0.1)
+        send_keys("{DELETE}"); time.sleep(0.1)
+        send_keys(new_name, with_spaces=True); time.sleep(0.2)
+        send_keys("{ENTER}"); time.sleep(0.4)
+        result["ok"] = True
+        result["action"] = f"io_var_name.set '{new_name}' @ pin={pin_id}"
+        return result
+    except Exception as e:
+        result["action"] = f"exception: {e}"
+        return result
+
+
 def set_pin_mode(win, pin_id: str, mode_short: str, connector: str = CONNECTOR_DEFAULT) -> dict:
     """핀 모드 버튼 클릭. mode_short: 버튼 이름 (예: 'DI','DO','AI','AO','GND')."""
     result = {"ok": False, "kind": "io_mode_button", "action": None, "pin": pin_id, "mode": mode_short}
