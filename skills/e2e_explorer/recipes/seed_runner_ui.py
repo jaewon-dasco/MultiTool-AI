@@ -319,6 +319,15 @@ def run_one_seed(seed: dict, label: str, value: str,
                 from .diagnostics_recipe import set_alarm_limit
                 which = seed.get("table_column", "Min")  # Min or Max
                 action = set_alarm_limit(win, label_keyword=label, which=which, value=value)
+            elif expected_kind == "pdo_toolbar":
+                # PDO Transmit/Receive Add/Remove — 헤더 옆 인덱스 기반
+                from .pdo_recipe import pdo_add, pdo_remove_or_select_and_remove
+                direction = seed.get("direction", "Tx")  # Tx or Rx
+                op = seed.get("operation", "Add")  # Add or Remove
+                if op == "Remove":
+                    action = pdo_remove_or_select_and_remove(win, direction=direction)
+                else:
+                    action = pdo_add(win, direction=direction)
             elif expected_kind == "network_property":
                 # NETWORK 노드 속성 변경 — 현재 BitRate만 지원
                 from .network_property import set_network_bitrate
