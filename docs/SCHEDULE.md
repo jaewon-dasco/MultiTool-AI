@@ -5,31 +5,31 @@
 | 항목          | 값                                         |
 | ------------- | ------------------------------------------ |
 | 최근 갱신     | 2026-05-19                                 |
-| 현재 단계     | dry 분석 완료, 야간 재실행 대기            |
+| 현재 단계     | dry 분석 완료, 야간 재실행 대기              |
 | 진행률        | 14/23 (60.9%)                              |
 | 마지막 commit | `98bd556` night_ui_review + morning_review |
 
 ## 진행 중
 
 | #   | 시작 | 작업   | 상태 | 비고                |
-| --- | ---- | ------ | ---- | ------------------- |
+| --- | ---- | ------ | ---- | ------------------ |
 | —   | —    | (없음) | —    | 다음 항목 선택 대기 |
 
 ## 완료 (최근 → 과거)
 
-| 일자       | 작업                                                     | 결과 | Commit    |
+| 일자       | 작업                                                      | 결과 | Commit    |
 | ---------- | -------------------------------------------------------- | ---- | --------- |
 | 2026-05-19 | night_ui_review.py + morning_review 2026-05-19 dry 분석  | ✓    | `98bd556` |
-| 2026-05-19 | SCHEDULE 남은 작업 표에 예상시간 컬럼 추가               | ✓    | `bdf7bbb` |
-| 2026-05-19 | Baseline 정합화 — Save 노이즈 28→3건 (89%↓, 실 노이즈 0) | ✓    | `e2d7363` |
-| 2026-05-19 | CLAUDE.md 글로벌 중복 제거 + 슬림화                      | ✓    | `af601ae` |
-| 2026-05-19 | 디바이스 템플릿 XML 파서 + F_io.json 자동 생성           | ✓    | `dbc5312` |
-| 2026-05-19 | io_pin UIA recipe + WPF DataGrid 가이드 문서화           | ✓    | `a8c8250` |
-| 2026-05-19 | set_field_auto에 table_column 인자 추가                  | ✓    | `16b2b6c` |
-| 2026-05-19 | restart 후 Open Project 자동화 추가                      | ✓    | `f7fcabe` |
-| 2026-05-19 | 야간 cycles 5→3 (재시작 페널티 반영)                     | ✓    | `eb42eaa` |
-| 2026-05-19 | per-seed MultiTool 재시작으로 baseline 노이즈 제거       | △    | `3cfda60` |
-| 2026-05-18 | IO/Network/OD 시드 확장 + 야간 framework 보완            | ✓    | `1313b4a` |
+| 2026-05-19 | SCHEDULE 남은 작업 표에 예상시간 컬럼 추가                 | ✓    | `bdf7bbb` |
+| 2026-05-19 | Baseline 정합화 — Save 노이즈 28→3건 (89%↓, 실 노이즈 0)   | ✓    | `e2d7363` |
+| 2026-05-19 | CLAUDE.md 글로벌 중복 제거 + 슬림화                        | ✓    | `af601ae` |
+| 2026-05-19 | 디바이스 템플릿 XML 파서 + F_io.json 자동 생성             | ✓    | `dbc5312` |
+| 2026-05-19 | io_pin UIA recipe + WPF DataGrid 가이드 문서화            | ✓    | `a8c8250` |
+| 2026-05-19 | set_field_auto에 table_column 인자 추가                   | ✓    | `16b2b6c` |
+| 2026-05-19 | restart 후 Open Project 자동화 추가                       | ✓    | `f7fcabe` |
+| 2026-05-19 | 야간 cycles 5→3 (재시작 페널티 반영)                      | ✓    | `eb42eaa` |
+| 2026-05-19 | per-seed MultiTool 재시작으로 baseline 노이즈 제거        | △    | `3cfda60` |
+| 2026-05-18 | IO/Network/OD 시드 확장 + 야간 framework 보완             | ✓    | `1313b4a` |
 | 2026-05-18 | night-UI framework + API portability                     | ✓    | `23b2001` |
 | 2026-05-17 | Phase 3 시드 65건 + marathon_status + morning_review     | ✓    | `71909ba` |
 | 2026-05-16 | marathon mode (45h continuous) + Phase 2 시드            | ✓    | `58b87eb` |
@@ -40,16 +40,16 @@
 
 우선순위(★★★ 최상 ~ ★ 최하) → 관련도(앞 작업의 결과를 활용하는 흐름) 순으로 정렬.
 
-| 우선 | 분류         | 작업                                                                                | 예상시간 |
-| ---- | ------------ | ----------------------------------------------------------------------------------- | -------- |
-| ★★★  | 회복 검증    | 야간 사이클 재실행 — io_pin recipe + 디바이스 템플릿 + clean baseline 통합 검증     | 3~4h     |
-| ★★   | 핸들러 구현  | `network_property` 핸들러 — NETWORK 노드 BitRate 변경 (A: net_bitrate_change 0→3)   | 2h       |
-| ★★   | 핸들러 구현  | `dialog_probe` 실 핸들러 승격 — Pre-defined Index 자동화 (D: od_add_predefined 0→3) | 2h       |
-| ★★   | 디버그       | A 카테고리 `toolbar_action_with_dialog` 디버그 (net_add_device/slave 0/3, A: 6→12)  | 2h       |
-| ★★   | 디버그       | D 카테고리 OD dialog 처리 (od_remove/store/restore/import/export, D: 9→24)          | 3h       |
-| ★    | 디버그       | E 카테고리 PDO 일부 실패 (pdo_remove_tx/rx, E: 9→15)                                | 1h       |
-| ★    | 미정 (probe) | Variable Name 변경 경로 probe (핀 우클릭/더블클릭 → 다이얼로그, F: +8 시드)         | 3h       |
-| ★    | 확장         | 다른 디바이스 시드 일반화 (3720, 5050, 6807 — 각 8 시드)                            | 3h       |
+| 우선    | 분류         | 작업                                                                               | 예상시간 |
+| ------ | ------------ | ---------------------------------------------------------------------------------- | -------- |
+| ★★★  | 회복 검증     | 야간 사이클 재실행 — io_pin recipe + 디바이스 템플릿 + clean baseline 통합 검증       | 3~4h     |
+| ★★    | 핸들러 구현   | `network_property` 핸들러 — NETWORK 노드 BitRate 변경 (A: net_bitrate_change 0→3)   | 2h       |
+| ★★    | 핸들러 구현   | `dialog_probe` 실 핸들러 승격 — Pre-defined Index 자동화 (D: od_add_predefined 0→3) | 2h       |
+| ★★    | 디버그        | A 카테고리 `toolbar_action_with_dialog` 디버그 (net_add_device/slave 0/3, A: 6→12)  | 2h       |
+| ★★    | 디버그        | D 카테고리 OD dialog 처리 (od_remove/store/restore/import/export, D: 9→24)          | 3h       |
+| ★      | 디버그        | E 카테고리 PDO 일부 실패 (pdo_remove_tx/rx, E: 9→15)                                | 1h       |
+| ★      | 미정 (probe)  | Variable Name 변경 경로 probe (핀 우클릭/더블클릭 → 다이얼로그, F: +8 시드)           | 3h       |
+| ★      | 확장          | 다른 디바이스 시드 일반화 (3720, 5050, 6807 — 각 8 시드)                             | 3h       |
 
 ## 참조
 
