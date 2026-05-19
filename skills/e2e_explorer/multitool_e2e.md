@@ -32,7 +32,7 @@ Get-Process | Where-Object { $_.ProcessName -like 'MultiTool*' } | Stop-Process 
 
 ### 패널 진입 순서
 
-```
+```text
 Network Editor → 디바이스 hyperlink invoke → floating toolbar 렌치 → Configure 패널 → 좌측 탭(CAN/J1939/Diagnostics/IO/...)
 ```
 
@@ -78,6 +78,29 @@ Network Editor → 디바이스 hyperlink invoke → floating toolbar 렌치 →
 | Configure 패널 floating toolbar 일반 트리 부재 | rect + size 필터로 식별                                    |
 | WPF MessageBox UIA 미노출                      | win32 backend + 좌표 클릭 (right-145=Yes, right-30=Cancel) |
 | `Stop-Process MultiTool` 직접 사용             | Alt+F4 → "Don't Save" 우선, taskkill은 폴백                |
+
+## 디바이스 템플릿 (권위 소스)
+
+I/O 핀별 지원 모드, 기본값, 변수명은 디바이스 XML에 정의되어 있다.
+
+```text
+C:\Program Files (x86)\Epec\MultiTool Creator 8.4\Resources\Config\Devices\<model>.xml
+```
+
+| 요소                                  | 의미                                                         |
+| ------------------------------------- | ------------------------------------------------------------ |
+| `IO/Modes/Mode`                       | 모드 코드(2/3/4/7/...) → 이름(`#lang.IO.Mode.Di#` 등) 매핑   |
+| `Pin/Id` + `Variable`                 | 핀 번호 + 기본 변수명 (X1_2, X1_3, ...)                      |
+| `Pin/Scripts//TagCode/SupportedModes` | 해당 핀이 노출하는 모드 코드 (UNION으로 핀당 mode 집합 확정) |
+| `Pin/DefaultMode`                     | 핀 초기 모드 코드                                            |
+
+**활용**: `recipes/device_modes.py`로 파싱 → `pick_mode_for_pin()`로 valid mode 선택 → `scripts/generate_io_seeds.py`로 F_io.json 자동 생성. 시드 작성 시 mode 값을 추측하지 말고 항상 디바이스 템플릿에서 가져온다.
+
+```python
+from skills.e2e_explorer.recipes.device_modes import load_device, pick_mode_for_pin
+d = load_device("3606_21")
+print(d["pins"][2]["ui_labels"])   # → ['DI', 'DO', 'PWM', 'PI1 PW', ..., 'Step Motor']
+```
 
 ## probe 스크립트 위치
 
