@@ -38,18 +38,18 @@
 
 우선순위(★★★ 최상 ~ ★ 최하) → 관련도(앞 작업의 결과를 활용하는 흐름) 순으로 정렬.
 
-| 우선 | 분류         | 작업                                                                                |
-| ---- | ------------ | ----------------------------------------------------------------------------------- |
-| ★★★  | 회복 검증    | 야간 사이클 재실행 — io_pin recipe + 디바이스 템플릿 + clean baseline 통합 검증     |
-| ★★★  | 회복 검증    | morning_review — 누적 results.jsonl에서 ML signal 추출 (의도 변경 식별)             |
-| ★★   | 디버그       | C 카테고리 재검증 — table_column fix 후 Min/Max 값이 실제로 변경되는지 확인         |
-| ★★   | 핸들러 구현  | `network_property` 핸들러 — NETWORK 노드 BitRate 변경 (A: net_bitrate_change 0→3)   |
-| ★★   | 핸들러 구현  | `dialog_probe` 실 핸들러 승격 — Pre-defined Index 자동화 (D: od_add_predefined 0→3) |
-| ★★   | 디버그       | A 카테고리 `toolbar_action_with_dialog` 디버그 (net_add_device/slave 0/3, A: 6→12)  |
-| ★★   | 디버그       | D 카테고리 OD dialog 처리 (od_remove/store/restore/import/export, D: 9→24)          |
-| ★    | 디버그       | E 카테고리 PDO 일부 실패 (pdo_remove_tx/rx, E: 9→15)                                |
-| ★    | 미정 (probe) | Variable Name 변경 경로 probe (핀 우클릭/더블클릭 → 다이얼로그, F: +8 시드)         |
-| ★    | 확장         | 다른 디바이스 시드 일반화 (3720, 5050, 6807 — 각 8 시드)                            |
+| 우선 | 분류         | 작업                                                                                | 예상시간 |
+| ---- | ------------ | ----------------------------------------------------------------------------------- | -------- |
+| ★★★  | 회복 검증    | 야간 사이클 재실행 — io_pin recipe + 디바이스 템플릿 + clean baseline 통합 검증     | 3~4h     |
+| ★★★  | 회복 검증    | morning_review — 누적 results.jsonl에서 ML signal 추출 (의도 변경 식별)             | 30분     |
+| ★★   | 디버그       | C 카테고리 재검증 — table_column fix 후 Min/Max 값이 실제로 변경되는지 확인         | 1h       |
+| ★★   | 핸들러 구현  | `network_property` 핸들러 — NETWORK 노드 BitRate 변경 (A: net_bitrate_change 0→3)   | 2h       |
+| ★★   | 핸들러 구현  | `dialog_probe` 실 핸들러 승격 — Pre-defined Index 자동화 (D: od_add_predefined 0→3) | 2h       |
+| ★★   | 디버그       | A 카테고리 `toolbar_action_with_dialog` 디버그 (net_add_device/slave 0/3, A: 6→12)  | 2h       |
+| ★★   | 디버그       | D 카테고리 OD dialog 처리 (od_remove/store/restore/import/export, D: 9→24)          | 3h       |
+| ★    | 디버그       | E 카테고리 PDO 일부 실패 (pdo_remove_tx/rx, E: 9→15)                                | 1h       |
+| ★    | 미정 (probe) | Variable Name 변경 경로 probe (핀 우클릭/더블클릭 → 다이얼로그, F: +8 시드)         | 3h       |
+| ★    | 확장         | 다른 디바이스 시드 일반화 (3720, 5050, 6807 — 각 8 시드)                            | 3h       |
 
 ## 참조
 
