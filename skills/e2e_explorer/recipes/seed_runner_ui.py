@@ -18,7 +18,8 @@ from . import common, ocr_helpers
 from pywinauto.keyboard import send_keys
 
 PROJ = Path(r"d:\4_AIProject\4_CoDeSys\AI_MutiTool\MultiToolProject\E2EProject\DasDemoProject.mtproject")
-ORIG_BAK = Path(r"d:\4_AIProject\4_CoDeSys\AI_MutiTool\MultiToolProject\E2EProject\DasDemoProject.mtproject.bak.ui_exp_20260515_103230")
+ORIG_BAK = Path(r"d:\4_AIProject\4_CoDeSys\AI_MutiTool\MultiToolProject\E2EProject\DasDemoProject.mtproject.bak.clean_baseline")
+# 2026-05-19: 노이즈 28건 → 0건 정합 baseline (MultiTool 로드 직후 save한 결과). 이전 ui_exp_20260515_103230는 pre-save 상태로 첫 save에서 13696B 자동 정합 변경 유발했음.
 RUN_ROOT = Path(r"d:\4_AIProject\4_CoDeSys\AI_MutiTool\logs\e2e\night_ui")
 
 
