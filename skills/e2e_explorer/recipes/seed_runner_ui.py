@@ -303,6 +303,11 @@ def run_one_seed(seed: dict, label: str, value: str,
                 r = device_disconnect_from_network("NETWORK1", target, save=False)
                 action = {"ok": r["ok"], "kind": "device_panel_x_button",
                           "action": f"disconnect {target}"}
+            elif expected_kind == "io_mode_button":
+                # I/O 핀 모드 변경 — UIA 기반 (label=핀번호, value=모드short)
+                from .io_pin_recipe import set_pin_mode
+                action = set_pin_mode(win, pin_id=label, mode_short=value,
+                                       connector=seed.get("connector", "1"))
             else:
                 action = ocr_helpers.set_field_auto(label, value, expected_kind=expected_kind,
                                                      table_column=seed.get("table_column"))
