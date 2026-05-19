@@ -10,12 +10,16 @@
 
 ## 진행 상황
 
-| 구성 요소                             | 상태                        |
-| ------------------------------------- | --------------------------- |
-| `docs/exp_patterns/baseline.exp`      | done (참조 자산)            |
-| `docs/versions/8.4/function_map.json` | done (49개 기능, 참조 자산) |
-| 기존 부분 스킬                        | 폐기 — E2E로 통합 예정      |
-| `skills/e2e_explorer/`                | W1 신규 작성 대기           |
+| 구성 요소                                      | 상태                                                                                  |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `docs/exp_patterns/baseline.exp`               | done (참조 자산)                                                                      |
+| `docs/versions/8.4/function_map.json`          | done (49개 기능, 참조 자산)                                                           |
+| 기존 부분 스킬                                 | 폐기 — E2E로 통합됨                                                                   |
+| `skills/e2e_explorer/recipes/`                 | active — 5개 핸들러 (set_field_auto·io_pin·io_var_name·network_property·device_modes) |
+| `skills/e2e_explorer/sequences_ui/`            | active — A/B/C/D/E/F 6 카테고리 51 시드                                               |
+| `MultiToolProject/E2EProject/*.clean_baseline` | done — Save 노이즈 28→0 정합 baseline                                                 |
+| 야간 사이클 (night_ui_run.ps1)                 | 매일 12:52 (변동)·6h Task Scheduler 자동 실행                                         |
+| 통계 분석 (night_ui_review.py)                 | active — signal/noise + intent 추출 자동 보고                                         |
 
 ### 다음 작업 순서
 
