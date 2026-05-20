@@ -69,10 +69,16 @@ def pdo_remove_or_select_and_remove(win, direction: str, value: str = None) -> d
     result = {"ok": False, "kind": "pdo_toolbar", "action": None,
               "direction": direction, "remove_action": "Remove"}
 
-    # 1. 첫 행 선택
+    # 1. 첫 행 선택 (없으면 Add 선행)
     row_info = find_first_pdo_row(win, direction)
     if row_info is None:
-        result["action"] = f"{direction}_no_data_row"; return result
+        add_res = pdo_add(win, direction)
+        if not add_res.get("ok"):
+            result["action"] = f"{direction}_no_data_row_add_failed"; return result
+        time.sleep(0.8)
+        row_info = find_first_pdo_row(win, direction)
+        if row_info is None:
+            result["action"] = f"{direction}_add_succeeded_but_row_missing"; return result
     row, rrect = row_info
     try:
         row.click_input()

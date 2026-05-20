@@ -39,6 +39,9 @@ def find_minmax_edits(win, row_rect, x_min=400, x_max=900):
                 candidates.append((e, r.left))
         except Exception: pass
     candidates.sort(key=lambda x: x[1])
+    if len(candidates) == 1:
+        # 'Cycle time' 등 단일 Edit 행: Max only.
+        return None, candidates[0][0]
     min_edit = candidates[0][0] if len(candidates) >= 1 else None
     max_edit = candidates[1][0] if len(candidates) >= 2 else None
     return min_edit, max_edit
