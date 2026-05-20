@@ -319,6 +319,11 @@ def run_one_seed(seed: dict, label: str, value: str,
                 from .diagnostics_recipe import set_alarm_limit
                 which = seed.get("table_column", "Min")  # Min or Max
                 action = set_alarm_limit(win, label_keyword=label, which=which, value=value)
+            elif expected_kind == "eds_add_slave":
+                # EDS 파일 등록 — Add Slave Device → Generic → 파일 다이얼로그
+                from .eds_recipe import add_slave_from_eds, DEFAULT_EDS_PATH
+                eds_path = seed.get("eds_path", DEFAULT_EDS_PATH)
+                action = add_slave_from_eds(win, eds_path=eds_path)
             elif expected_kind == "od_toolbar":
                 # OD toolbar 액션 — action_name 키로 OD_ACTION_MAP 분기
                 from .od_recipe import execute_od_action

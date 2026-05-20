@@ -4,5 +4,7 @@
   {"idx": 62, "name": "net_add_network",      "label": "Add Network",        "value": "", "tab": null, "expected_kind": "toolbar_action"},
   {"idx": 63, "name": "net_system_export",    "label": "System Export",      "value": "", "tab": null, "expected_kind": "shortcut", "shortcut": "^%e"},
   {"idx": 64, "name": "net_disconnect_device", "label": "Disconnect",        "value": "", "tab": null, "expected_kind": "device_panel_x_button", "target": "CU_3606_21_1"},
-  {"idx": 71, "name": "net_bitrate_change",   "label": "Bit Rate|ait Rate|Rate", "value": "500", "tab": null, "expected_kind": "network_property", "target_network": "NETWORK1"}
+  {"idx": 71, "name": "net_bitrate_change",   "label": "Bit Rate|ait Rate|Rate", "value": "500", "tab": null, "expected_kind": "network_property", "target_network": "NETWORK1"},
+  {"idx": 72, "name": "net_add_slave_eds",    "label": "Add Slave (Generic EDS)", "value": "GC44_Epec.eds", "tab": null, "expected_kind": "eds_add_slave",
+   "eds_path": "C:\\Program Files (x86)\\Epec\\MultiTool Creator 8.4\\Resources\\Config\\SlaveDeviceTemplates\\Eds\\GC44_Epec.eds"}
 ]

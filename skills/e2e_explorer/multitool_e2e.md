@@ -137,6 +137,30 @@ print(d["pins"][2]["ui_labels"])   # → ['DI', 'DO', 'PWM', 'PI1 PW', ..., 'Ste
 | 셀 더블클릭 → 우측 Edit      | I/O Variable Name                         | `io_pin_recipe.set_pin_variable_name`                           |
 | Toolbar action + dialog      | A/D 카테고리 (Add Device, OD Pre-defined) | `toolbar_action_with_dialog` (✗ 미해결, 다이얼로그 자동화 필요) |
 
+## EDS (타사 슬레이브) 등록 흐름
+
+CANopen 슬레이브 디바이스를 EDS/DCF/XDD/XDC 파일로 MultiTool에 등록.
+
+### 1. Add Slave Device (Generic) — 신규 등록
+
+Network Editor toolbar의 **2nd DropDownPart** (`(361, 85)` 가설) 클릭 → 메뉴 등장 → **"Generic" Text** (rect `[388, 353, 495, 369]`) 클릭 → 파일 다이얼로그 `Select file for added generic unit` (win32 #32770) 등장 → EDS 경로 send_keys + Enter → 디바이스 등록.
+
+핸들러: [`recipes/eds_recipe.py`](recipes/eds_recipe.py) — `add_slave_from_eds(win, eds_path)`. 시드: `A_network.json#net_add_slave_eds`. 매뉴얼 출처: `ProjectTopics/topic200031.htm` ("Adding Generic/Responder Devices").
+
+### 2. Import EDS to Existing Device — OD/PDO 덮어쓰기
+
+기존 디바이스 Configure → Object Dictionary 탭 → CAN channel 선택 → **Import 아이콘** (OD toolbar idx 4, tooltip="Import from supported file types") → 파일 다이얼로그 → EDS 선택 → OD/PDO 설정 로드 (기존 덮어쓰기, hidden OD index 제외).
+
+핸들러: `od_recipe.execute_od_action('import')` (toolbar idx 4 click만 구현, 파일 다이얼로그 자동 fill은 추후). 매뉴얼 출처: `ProjectTopics/7_3_Load_EDS_Load_DCF.htm`.
+
+### 자산
+
+| 위치                                                                                | 내용                                 |
+| ----------------------------------------------------------------------------------- | ------------------------------------ |
+| `Resources/Config/SlaveDeviceTemplates/Eds/`                                        | 기본 제공 EDS (GC44_Epec, GL84_Epec) |
+| `Resources/Config/SlaveDeviceTemplates/*.xml`                                       | 미리 등록된 슬레이브 XML 정의        |
+| `Resources/Config/SlaveDeviceTemplates/DummyDevice.xtmpl` / `generic_Default.xtmpl` | 빈 슬레이브 템플릿                   |
+
 ## SCHEDULE.md 운영
 
 [docs/SCHEDULE.md](../../docs/SCHEDULE.md) — 작업 히스토리·진행·남은 항목 추적. 다음 시점에 갱신한다.
