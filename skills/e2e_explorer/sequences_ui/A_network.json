@@ -1,6 +1,6 @@
 [
   {"idx": 60, "name": "net_add_device",       "label": "Add Device",         "value": "", "tab": null, "expected_kind": "toolbar_action_with_dialog", "dialog": {"model": "CU_3606_21", "cds": "2.3"}},
-  {"idx": 61, "name": "net_add_slave_device", "label": "Add Slave Device",   "value": "", "tab": null, "expected_kind": "toolbar_action_with_dialog", "dialog": {"model": "CU_3606_21", "cds": "2.3"}},
+  {"idx": 61, "name": "net_add_slave_device", "label": "Add Slave Device",   "value": "", "tab": null, "expected_kind": "toolbar_action_with_dialog", "dialog": {"model": "GC44", "slave": true}},
   {"idx": 62, "name": "net_add_network",      "label": "Add Network",        "value": "", "tab": null, "expected_kind": "toolbar_action"},
   {"idx": 63, "name": "net_system_export",    "label": "System Export",      "value": "", "tab": null, "expected_kind": "shortcut", "shortcut": "^%e"},
   {"idx": 64, "name": "net_disconnect_device", "label": "Disconnect",        "value": "", "tab": null, "expected_kind": "device_panel_x_button", "target": "CU_3606_21_1"},

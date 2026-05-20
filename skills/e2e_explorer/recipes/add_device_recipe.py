@@ -68,6 +68,23 @@ def select_column_item(win, column_x_range, target_text: str, timeout: float = 3
     return False
 
 
+def _select_column_item_startswith(win, column_x_range, prefix: str, timeout: float = 2.0):
+    """컬럼 텍스트가 prefix로 시작하는 항목 클릭 (정확 일치 fallback)."""
+    x_min, x_max = column_x_range
+    t0 = time.time()
+    while time.time() - t0 < timeout:
+        for t in win.descendants(control_type="Text"):
+            try:
+                txt = (t.window_text() or "").strip()
+                if txt.startswith(prefix):
+                    tr = t.rectangle()
+                    if x_min <= tr.left <= x_max and tr.top > 140:
+                        t.click_input(); time.sleep(0.6); return True
+            except Exception: pass
+        time.sleep(0.3)
+    return False
+
+
 def select_first_in_column(win, column_x_range, timeout: float = 2.0):
     """컬럼의 첫 ListItem 클릭 (기본값 선택 용)."""
     x_min, x_max = column_x_range
@@ -121,29 +138,37 @@ def add_device_via_dropdown(win, model: str, cds: str = "2.3",
     except Exception as e:
         result["action"] = f"dropdown_click_exception: {e}"; return result
 
-    # 2. Product family
-    fam = family or infer_family(model)
-    if not fam:
-        send_keys("{ESC}")
-        result["action"] = f"family_inference_failed model={model}"; return result
-    if not select_column_item(win, COLUMN_X["family"], fam):
-        send_keys("{ESC}")
-        result["action"] = f"family_not_found '{fam}'"; return result
+    # Slave dropdown: 3 컬럼 (Device / Functional Version), family·cds 없음
+    # Master dropdown: 4 컬럼 (Product family / Device / Functional Version / CODESYS Version)
+    if not slave:
+        # 2. Product family
+        fam = family or infer_family(model)
+        if not fam:
+            send_keys("{ESC}")
+            result["action"] = f"family_inference_failed model={model}"; return result
+        if not select_column_item(win, COLUMN_X["family"], fam):
+            send_keys("{ESC}")
+            result["action"] = f"family_not_found '{fam}'"; return result
+        time.sleep(1.5)  # Device 컬럼 동적 로드 대기
 
-    # 3. Device (model)
-    if not select_column_item(win, COLUMN_X["device"], model):
-        send_keys("{ESC}")
-        result["action"] = f"device_not_found '{model}'"; return result
+    # 3. Device (model) — 정확 일치 후 prefix 매칭 fallback
+    device_col = COLUMN_X["device"] if not slave else (326, 509)
+    if not select_column_item(win, device_col, model, timeout=4.0):
+        if not _select_column_item_startswith(win, device_col, model, timeout=2.0):
+            send_keys("{ESC}")
+            result["action"] = f"device_not_found '{model}'"; return result
 
     # 4. Functional Version (기본 첫 항목)
-    if not select_first_in_column(win, COLUMN_X["func"]):
+    func_col = COLUMN_X["func"] if not slave else (510, 624)
+    if not select_first_in_column(win, func_col):
         send_keys("{ESC}")
         result["action"] = "func_version_not_found"; return result
 
-    # 5. CODESYS Version
-    if not select_column_item(win, COLUMN_X["cds"], cds):
-        send_keys("{ESC}")
-        result["action"] = f"cds_not_found '{cds}'"; return result
+    # 5. CODESYS Version (master만)
+    if not slave:
+        if not select_column_item(win, COLUMN_X["cds"], cds):
+            send_keys("{ESC}")
+            result["action"] = f"cds_not_found '{cds}'"; return result
 
     # 6. 디바이스가 자동 추가됨 (별도 OK 버튼 없음)
     time.sleep(2.0)

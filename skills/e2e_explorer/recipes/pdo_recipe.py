@@ -68,7 +68,7 @@ def find_first_pdo_row(win, direction: str):
     for d in win.descendants(control_type="DataItem"):
         try:
             r = d.rectangle()
-            if header_rect.bottom < r.top < header_rect.bottom + 200 and r.height() > 5:
+            if header_rect.bottom < r.top < header_rect.bottom + 400 and r.height() > 5:
                 return d, r
         except Exception: pass
     return None
@@ -88,8 +88,8 @@ def pdo_remove_or_select_and_remove(win, direction: str, value: str = None) -> d
         add_res = pdo_add(win, direction)
         if not add_res.get("ok"):
             result["action"] = f"{direction}_no_data_row_add_failed"; return result
-        # Add 후 렌더링 지연 대응 — 최대 5초까지 0.5s 폴링
-        for _ in range(10):
+        # Add 후 렌더링 지연 대응 — 최대 10초까지 0.5s 폴링
+        for _ in range(20):
             time.sleep(0.5)
             row_info = find_first_pdo_row(win, direction)
             if row_info is not None: break
