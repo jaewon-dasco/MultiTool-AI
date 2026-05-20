@@ -84,6 +84,7 @@ def device_disconnect_from_network(network: str, device: str, save: bool = True,
     log(f"clicking X at {target_x.rectangle()}")
     target_x.click_input()
     time.sleep(1.5)
+    result["clicked"] = True
 
     # Some MultiTool versions show a confirm dialog for disconnect, others silent
     dr = common.dismiss_dialog_if_any(timeout=2, accept=True)
@@ -96,7 +97,11 @@ def device_disconnect_from_network(network: str, device: str, save: bool = True,
     result["after_sha"] = hashlib.sha256(PROJ.read_bytes()).hexdigest()[:16]
     result["size_delta"] = PROJ.stat().st_size - before_size
     log(f"after sha={result['after_sha']} delta={result['size_delta']:+d}")
-    result["ok"] = result["before_sha"] != result["after_sha"]
+    if save:
+        result["ok"] = result["before_sha"] != result["after_sha"]
+    else:
+        # save=False 경로(seed_runner)에서는 파일 변경이 일어나지 않음 → 클릭 성공으로 판정
+        result["ok"] = bool(result.get("clicked"))
     return result
 
 
