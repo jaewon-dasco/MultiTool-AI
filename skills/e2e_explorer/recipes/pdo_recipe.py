@@ -1,21 +1,34 @@
 """PDO 탭 toolbar 액션 — Transmit/Receive PDOs 섹션별 Add/Remove.
 
-probe_pdo_toolbar 검증 (2026-05-19):
-- "Transmit PDOs" / "Receive PDOs" Text 라벨이 섹션 헤더
-- 각 헤더 y범위 우측에 3개 Button (이름 없음)
-- 좌→우 정렬 시: 인덱스 0=Add, 1=Remove (Tx/Rx)
-- 버튼 자체엔 name·auto_id 없음 → 좌표/인덱스 기반 식별 필수
+사용자 검증 (2026-05-20):
+- PDO toolbar 버튼은 라벨이 노출됨: "Add Transmit PDO" / "Remove Transmit PDO"
+  / "Add Receive PDO" / "Remove Receive PDO"
+- 이름 매칭이 1차, 위치 기반은 fallback
 """
 import time
 from . import common
 
 
 SECTIONS = {"Tx": "Transmit PDOs", "Rx": "Receive PDOs"}
+DIRECTION_FULL = {"Tx": "Transmit", "Rx": "Receive"}
 
 
 def find_pdo_toolbar_button(win, direction: str, action: str):
     """direction: 'Tx' or 'Rx'. action: 'Add' or 'Remove'.
-    반환: (button, rect) 또는 (None, None)."""
+    반환: (button, rect) 또는 (None, None).
+    1차: 버튼 name == "{action} {Transmit|Receive} PDO" 매칭
+    2차: 섹션 헤더 우측 좌→우 인덱스(0=Add, 1=Remove) fallback"""
+    full_dir = DIRECTION_FULL.get(direction)
+    if not full_dir: return None, None
+    target_name = f"{action} {full_dir} PDO"
+
+    for b in win.descendants(control_type="Button"):
+        try:
+            if (b.window_text() or "").strip() == target_name:
+                return b, b.rectangle()
+        except Exception: pass
+
+    # Fallback: 좌표/인덱스 기반
     header_text = SECTIONS.get(direction)
     if not header_text: return None, None
     header_rect = None
