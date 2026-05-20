@@ -2,13 +2,13 @@
 
 작업 히스토리·진행 상태·남은 항목 추적용. 작업 시작/완료 시 본 파일을 갱신한다.
 
-| 항목          | 값                                            |
-| ------------- | --------------------------------------------- |
-| 최근 갱신     | 2026-05-20 21:00                              |
-| 현재 단계     | Add Device 4-column ListMenu recipe 작성      |
-| 진행률        | 28/29 (96.6%)                                 |
-| 마지막 commit | `8d8f7fa` Add Device 4-column ListMenu 자동화 |
-| 야간 실행     | 매일 18:00 (Task Scheduler) · Kill 00:00      |
+| 항목          | 값                                       |
+| ------------- | ---------------------------------------- |
+| 최근 갱신     | 2026-05-21 04:30                         |
+| 현재 단계     | 야간 5~7차 정체 94% — 수동 probe 필요    |
+| 진행률        | 30/32 (93.8%)                            |
+| 마지막 commit | `4895135` Slave fam 변수 NameError 회피  |
+| 야간 실행     | 매일 18:00 (Task Scheduler) · Kill 00:00 |
 
 ## 진행 중
 
@@ -20,6 +20,10 @@
 
 | 일자       | 작업                                                     | 결과 | Commit    |
 | ---------- | -------------------------------------------------------- | ---- | --------- |
+| 2026-05-21 | 야간 5~7차 OK 93.6→94.5% (정체) — 동일 9 fails           | △    | (실행)    |
+| 2026-05-21 | Slave fam 변수 NameError 회피                            | ✓    | `4895135` |
+| 2026-05-21 | Slave func boundary + Device contains fallback           | ✓    | `fe90f0b` |
+| 2026-05-21 | Add Device polling + Slave 분기 + pdo 폴링 강화          | △    | `5b245cb` |
 | 2026-05-20 | Add Device/Slave 4-column ListMenu recipe + dispatcher   | ✓    | `8d8f7fa` |
 | 2026-05-20 | 야간 4차 — OK 94.2% (147/156), diag/disconnect 회복      | ✓    | (실행)    |
 | 2026-05-20 | pdo Add 후 행 렌더링 폴링 + 검색 영역 확장 (3 재수정)    | ✓    | `59d3ac6` |
@@ -61,7 +65,8 @@
 
 | 우선 | 분류       | 작업                                                                                      | 예상시간 |
 | ---- | ---------- | ----------------------------------------------------------------------------------------- | -------- |
-| ★★★  | 회복 검증  | 야간 5차 — Add Device + pdo 폴링 fix 통합 검증 (94% → ~98% 목표)                          | 3h       |
+| ★★★  | 수동 probe | Add Device family 클릭 후 Device 컬럼 텍스트 capture (UI 실시간 확인 필요)                | 30분     |
+| ★★★  | 수동 probe | PDO Add 후 row 검색 실패 — control_type/y 범위 재확인                                     | 30분     |
 | ★★   | 다이얼로그 | OD Pre-defined Index inline panel 선택 자동화 (od_add_predefined 0→3)                     | 2h       |
 | ★★   | 다이얼로그 | OD Add Index / Import / Export / Store-Restore 다이얼로그 자동화 (D +4 시드)              | 3h       |
 | ★★   | 확장       | EDS 파일 등록 + 타사 슬레이브 PDO 통신 자동 설정 (Add Slave Device → EDS → 네트워크 연결) | 4h       |
