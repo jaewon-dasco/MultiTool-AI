@@ -270,27 +270,17 @@ def run_one_seed(seed: dict, label: str, value: str,
                 action = {"ok": ok, "kind": "toolbar_action",
                           "action": f"toolbar.click '{label}'"}
             elif expected_kind == "toolbar_action_with_dialog":
-                ok = ocr_helpers.click_toolbar_button(win, label)
-                action = {"ok": ok, "kind": "toolbar_action_with_dialog",
-                          "action": f"toolbar.click '{label}' + dialog"}
-                if ok and seed.get("dialog"):
-                    time.sleep(1.5)
-                    # 다이얼로그 처리 — 정확한 title은 모르므로 첫 발견 dialog
-                    from pywinauto import Desktop
-                    dlg_info = None
-                    for w in Desktop(backend="win32").windows():
-                        try:
-                            t = w.window_text() or ""
-                            if t and "MultiTool Creator" not in t and len(t) < 80:
-                                dlg_info = {"hwnd": w.handle, "rect": w.rectangle(), "window": w}
-                                break
-                        except Exception: pass
-                    if dlg_info:
-                        fill_result = ocr_helpers.fill_dialog_form(dlg_info, seed["dialog"])
-                        action["dialog_fill"] = fill_result
-                        # OK 또는 확인 클릭
-                        ocr_helpers.click_dialog_button(dlg_info, "OK") or ocr_helpers.click_dialog_button(dlg_info, "Yes")
-                        time.sleep(1)
+                # Add Device / Add Slave Device — 4-column ListMenu (probe_add_device_dropdown)
+                if seed.get("dialog") and label in ("Add Device", "Add Slave Device"):
+                    from .add_device_recipe import add_device_via_dropdown
+                    dlg = seed["dialog"]
+                    action = add_device_via_dropdown(
+                        win, model=dlg.get("model", ""), cds=dlg.get("cds", "2.3"),
+                        family=dlg.get("family"), slave=(label == "Add Slave Device"))
+                else:
+                    ok = ocr_helpers.click_toolbar_button(win, label)
+                    action = {"ok": ok, "kind": "toolbar_action_with_dialog",
+                              "action": f"toolbar.click '{label}' + dialog"}
             elif expected_kind == "shortcut":
                 send_keys(seed.get("shortcut", "")); time.sleep(1)
                 action = {"ok": True, "kind": "shortcut", "action": f"sent '{seed['shortcut']}'"}
