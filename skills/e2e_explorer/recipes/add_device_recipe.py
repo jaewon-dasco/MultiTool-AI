@@ -195,5 +195,6 @@ def add_device_via_dropdown(win, model: str, cds: str = "2.3",
     # 6. 디바이스가 자동 추가됨 (별도 OK 버튼 없음)
     time.sleep(2.0)
     result["ok"] = True
-    result["action"] = f"add_{'slave_' if slave else ''}device {model}/{cds}/{fam}"
+    suffix = f"/{cds}/{fam}" if not slave else ""
+    result["action"] = f"add_{'slave_' if slave else ''}device {model}{suffix}"
     return result
