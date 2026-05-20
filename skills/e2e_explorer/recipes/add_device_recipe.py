@@ -68,6 +68,26 @@ def select_column_item(win, column_x_range, target_text: str, timeout: float = 3
     return False
 
 
+def _select_column_item_contains(win, column_x_range, substring: str, timeout: float = 2.0):
+    """컬럼 텍스트가 substring을 포함하는 항목 클릭. 모델명 변형 대응(공백/하이픈)."""
+    x_min, x_max = column_x_range
+    # 모델 비교 시 영숫자만 비교
+    sub_norm = "".join(c for c in substring if c.isalnum()).upper()
+    t0 = time.time()
+    while time.time() - t0 < timeout:
+        for t in win.descendants(control_type="Text"):
+            try:
+                txt = (t.window_text() or "").strip()
+                txt_norm = "".join(c for c in txt if c.isalnum()).upper()
+                if sub_norm and sub_norm in txt_norm:
+                    tr = t.rectangle()
+                    if x_min <= tr.left <= x_max and tr.top > 140:
+                        t.click_input(); time.sleep(0.6); return True
+            except Exception: pass
+        time.sleep(0.3)
+    return False
+
+
 def _select_column_item_startswith(win, column_x_range, prefix: str, timeout: float = 2.0):
     """컬럼 텍스트가 prefix로 시작하는 항목 클릭 (정확 일치 fallback)."""
     x_min, x_max = column_x_range
@@ -151,16 +171,18 @@ def add_device_via_dropdown(win, model: str, cds: str = "2.3",
             result["action"] = f"family_not_found '{fam}'"; return result
         time.sleep(1.5)  # Device 컬럼 동적 로드 대기
 
-    # 3. Device (model) — 정확 일치 후 prefix 매칭 fallback
+    # 3. Device (model) — 정확 일치 → prefix → contains 매칭 fallback
     device_col = COLUMN_X["device"] if not slave else (326, 509)
     if not select_column_item(win, device_col, model, timeout=4.0):
         if not _select_column_item_startswith(win, device_col, model, timeout=2.0):
-            send_keys("{ESC}")
-            result["action"] = f"device_not_found '{model}'"; return result
+            if not _select_column_item_contains(win, device_col, model, timeout=2.0):
+                send_keys("{ESC}")
+                result["action"] = f"device_not_found '{model}'"; return result
 
-    # 4. Functional Version (기본 첫 항목)
-    func_col = COLUMN_X["func"] if not slave else (510, 624)
-    if not select_first_in_column(win, func_col):
+    # 4. Functional Version (기본 첫 항목) — Slave는 List.left=509
+    func_col = COLUMN_X["func"] if not slave else (508, 625)
+    time.sleep(1.0)  # Device 선택 후 Functional Version 렌더 대기
+    if not select_first_in_column(win, func_col, timeout=4.0):
         send_keys("{ESC}")
         result["action"] = "func_version_not_found"; return result
 
