@@ -24,9 +24,10 @@ DEVICE = "CU_3606_21_1"
 TAB = "Object Dictionary"
 TOOLBAR_LABEL = "Add Pre-defined"
 OUT = ROOT / "logs" / "probe_od_predefined.json"
+TREE_LIMIT = 800  # 인라인 패널 전체 캡처용 상향
 
 
-def walk(ctrl, depth=0, out=None, limit=300):
+def walk(ctrl, depth=0, out=None, limit=TREE_LIMIT):
     if out is None: out = []
     if len(out) >= limit: return out
     try:
@@ -90,9 +91,13 @@ def main():
         print(f"FAIL: tab '{TAB}'"); return 1
     time.sleep(1.5)
 
-    if not click_toolbar_button(win, TOOLBAR_LABEL):
-        print(f"FAIL: toolbar '{TOOLBAR_LABEL}'"); return 1
-    time.sleep(1.5)
+    # OD toolbar 버튼은 name 비어있어 라벨 fallback 불가 → od_recipe idx 1 사용 (선택 전 = Add Pre-defined)
+    from skills.e2e_explorer.recipes.od_recipe import click_od_toolbar_idx
+    r = click_od_toolbar_idx(win, idx=1, after_row_select=False)
+    if not r.get("ok"):
+        print(f"FAIL: od_toolbar[1] click — {r.get('action')}"); return 1
+    print(f"clicked OD toolbar idx=1 (Add Pre-defined)")
+    time.sleep(2.0)
 
     dlg = find_dialog(app)
     if not dlg:
