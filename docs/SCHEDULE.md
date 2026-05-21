@@ -74,8 +74,9 @@
 
 | 우선 | 분류       | 작업                                                                                      | 예상시간 |
 | ---- | ---------- | ----------------------------------------------------------------------------------------- | -------- |
-| ★★★  | 회복 검증  | 야간 9차 실행 (수동) — Add Device + PDO fix 통합 OK% ~100% 목표                           | 1h       |
-| ★★   | 다이얼로그 | OD Pre-defined Index inline panel 선택 자동화 (od_add_predefined 0→3, probe 후 recipe)    | 2h       |
+| ★★★  | OD probe   | OD toolbar 버튼 클릭 활성화 진단 (idx=0/1 click ok=True지만 dialog 미등장 — 8.4 layout)   | 2h       |
+| ★★   | 다이얼로그 | OD Add Index — Variable/Array/Record 3종 타입 시드 (사용자 요청, OD probe 후)             | 3h       |
+| ★★   | 다이얼로그 | OD Pre-defined Index inline panel 선택 자동화 (probe 후 recipe)                           | 2h       |
 | ★★   | 다이얼로그 | OD Add Index / Import / Export / Store-Restore 다이얼로그 자동화 (D +4 시드)              | 3h       |
 | ★★   | 확장       | EDS 파일 등록 + 타사 슬레이브 PDO 통신 자동 설정 (Add Slave Device → EDS → 네트워크 연결) | 4h       |
 | ★    | 확장       | 다른 디바이스 시드 일반화 (3720, 5050, 6807 — 각 8 시드)                                  | 3h       |
