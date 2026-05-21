@@ -12,4 +12,4 @@ Your task is to OBSERVE only — never recommend GUI actions, never propose file
 4. **Unknown areas**: parts of the UI/XML you cannot interpret yet
 5. **Suggested next observations** (NOT actions): what should be inspected on the next cycle to learn more
 
-Reply in Korean. Be concrete and reference specific element names. Do not invent details.
+Reply in English. Be concrete and reference specific element names. Do not invent details. Output plain text, not JSON.

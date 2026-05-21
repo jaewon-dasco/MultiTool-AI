@@ -8,9 +8,9 @@ ENV:
   E2E_ROOT                : project root directory
   E2E_PROJECT_FILE        : .mtproject path
   E2E_MULTITOOL_EXE       : MultiTool.exe path
-  E2E_OLLAMA_URL          : Mac mini Gemma endpoint
-  E2E_OLLAMA_MODEL        : model tag
-  E2E_OLLAMA_TIMEOUT      : seconds
+  E2E_OLLAMA_URL          : Mac mini Ollama endpoint
+  E2E_OLLAMA_MODEL        : model tag (current: qwen3.5:27b)
+  E2E_OLLAMA_TIMEOUT      : seconds (recommended 300+ for 27B Q4 vision)
 """
 import os, json
 from pathlib import Path
@@ -24,7 +24,7 @@ _HARDCODED_DEFAULTS = {
     "multitool_exe": r"C:\Program Files (x86)\Epec\MultiTool Creator 8.4\MultiTool.exe",
     "multitool_manual_chm": r"C:\Program Files (x86)\Epec\MultiTool Creator 8.4\Resources\Manual.chm",
     "ollama_url": "https://macmini.tailed5292.ts.net:11434",
-    "ollama_model": "gemma4:26b",
+    "ollama_model": "qwen3.5:27b",
     "ollama_timeout": 300,
     "ocr_lang": "en-US",
     "max_cycles_default": 5,

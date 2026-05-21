@@ -1,6 +1,7 @@
-"""Mac mini 원격 Ollama gemma4:26b 클라이언트.
+"""Mac mini remote Ollama client (current model: qwen3.5:27b).
 
-JSON 강제·재시도·keep-alive 8h. v0.1 관찰 모드에서 사용.
+JSON enforcement, retry, keep-alive 8h. Used in v0.1 observation mode.
+2026-05-21: gemma4:26b → qwen3.5:27b. English prompts preferred for latency.
 """
 from __future__ import annotations
 
@@ -20,7 +21,7 @@ try:
     DEFAULT_MODEL = _cfg.get("ollama_model")
 except Exception:
     DEFAULT_BASE = "https://macmini.tailed5292.ts.net:11434"
-    DEFAULT_MODEL = "gemma4:26b"
+    DEFAULT_MODEL = "qwen3.5:27b"
 
 
 class OllamaClient:
@@ -62,9 +63,9 @@ class OllamaClient:
         json_mode: bool = False,
         temperature: float = 0.2,
     ) -> dict[str, Any]:
-        """Gemma4 chat API 호출.
+        """Ollama chat API call (English prompts recommended for latency).
 
-        반환: {content, thinking, raw}
+        Returns: {content, thinking, raw}
         """
         payload = {
             "model": self.model,
@@ -89,14 +90,18 @@ class OllamaClient:
         }
 
     def observe(self, system_prompt: str, observation: dict) -> dict[str, Any]:
-        """관찰 모드 전용 — 시스템 프롬프트 + JSON 관찰 데이터 → Gemma 응답."""
+        """Observation mode — system prompt + JSON observation data → model response.
+
+        Note: prompts are expected to be in English (qwen3.5:27b — Korean responses
+        are ~3-5× slower due to tokenization. See gemma_vision_helper docstring.)
+        """
         obs_text = json.dumps(observation, ensure_ascii=False)[:50000]
         return self.chat(
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": obs_text},
             ],
-            json_mode=False,  # reasoning + 자연어 응답 허용
+            json_mode=False,  # allow reasoning + natural language
             temperature=0.3,
         )
 

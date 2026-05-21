@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
-"""Gemma vision helper — DESIGN DRAFT (not yet executed in recipes).
+"""Vision helper — DESIGN DRAFT (not yet executed in recipes).
 
 Use case:
 - Recipe needs a UI element's coordinate that pywinauto can't reliably find
   (e.g. diagram nodes that have no UIA text label).
-- Send current screenshot + intent to Mac mini Gemma4:26b for vision inference.
-- Gemma returns proposed (x, y) and reasoning.
+- Send current screenshot + intent to Mac mini Qwen3.5 27B for vision inference.
+- Model returns proposed (x, y) and reasoning.
 - Caller validates by clicking + checking expected side effect (XML sha change,
   floating toolbar appearance, etc.).
-- On success, cache the (intent → coord) mapping in KB so next runs skip Gemma.
+- On success, cache the (intent → coord) mapping in KB so next runs skip the LLM.
 
-Trade-offs (2026-05-15 실측):
-- Single Gemma vision call ≈ 70~120+ seconds (gemma4:26b on Mac mini).
-- Use sparingly: 1회 학습 → recipe로 영구화. 매 액션마다 호출 금지.
+Trade-offs (2026-05-21 measured):
+- Single vision call ≈ 150~180s (qwen3.5:27b Q4_K_M on Mac mini 32GB).
+- Use sparingly: one-time learning → persist as recipe. Do not call per action.
 
 Endpoint: https://macmini.tailed5292.ts.net:11434/api/generate
-Model:    gemma4:26b (verified vision-capable 2026-05-15)
+Model:    qwen3.5:27b (verified vision-capable 2026-05-21, replaced gemma4:26b)
 """
 import base64
 import json
@@ -28,8 +28,8 @@ import urllib3
 urllib3.disable_warnings()
 
 OLLAMA_URL = "https://macmini.tailed5292.ts.net:11434/api/generate"
-MODEL = "gemma4:26b"
-DEFAULT_TIMEOUT = 300  # 5 minutes - vision inference is slow
+MODEL = "qwen3.5:27b"
+DEFAULT_TIMEOUT = 600  # 10 minutes - 27B vision inference is slow
 
 
 def query_gemma_vision(
@@ -38,16 +38,17 @@ def query_gemma_vision(
     schema_hint: str = '{"action": "<verb>", "x": <int>, "y": <int>, "reason": "<short>"}',
     timeout: int = DEFAULT_TIMEOUT,
 ) -> dict:
-    """Send screenshot + intent to Gemma, ask for structured action.
+    """Send screenshot + intent to the vision model, request structured action.
 
+    Function name kept for backward compatibility; backend is now Qwen3.5 27B.
     Returns dict {ok, raw_response, parsed: dict | None, error}.
     """
     img_b64 = base64.b64encode(Path(image_path).read_bytes()).decode()
     prompt = (
-        f"역할: 너는 GUI 자동화 도우미야.\n"
-        f"의도: {intent}\n"
-        f"제약: 화면을 보고 정확한 픽셀 좌표를 알려줘. "
-        f"응답은 반드시 다음 JSON 스키마만 출력 (다른 텍스트 금지): {schema_hint}"
+        f"Role: You are a GUI automation assistant.\n"
+        f"Intent: {intent}\n"
+        f"Constraint: Look at the screenshot and return precise pixel coordinates. "
+        f"Reply with ONLY this JSON schema, no other text: {schema_hint}"
     )
     payload = {
         "model": MODEL,
