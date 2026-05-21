@@ -54,7 +54,12 @@ def find_pdo_toolbar_button(win, direction: str, action: str):
 
 
 def find_first_pdo_row(win, direction: str):
-    """Tx/Rx 섹션 첫 데이터 행 찾기. 헤더 y 직후의 DataItem 또는 COB-ID 값이 있는 첫 행."""
+    """Tx/Rx 섹션 첫 데이터 행 찾기.
+
+    probe_pdo_add_rx (2026-05-21): 새로 추가된 행은 'ListItem' 타입
+    (name='Epec.MT.Impl.ObjectDictionary.UserRpdo' 등). DataItem 우선 검색 후
+    ListItem fallback. y범위: header bottom +5~+400px.
+    """
     header_text = SECTIONS.get(direction)
     if not header_text: return None
     header_rect = None
@@ -64,11 +69,19 @@ def find_first_pdo_row(win, direction: str):
                 header_rect = t.rectangle(); break
         except Exception: pass
     if header_rect is None: return None
-    # Header bottom 이후 ~50px 내의 DataItem
+    y_min, y_max = header_rect.bottom, header_rect.bottom + 400
+    # 1차: DataItem (기존 Tx 행 등)
     for d in win.descendants(control_type="DataItem"):
         try:
             r = d.rectangle()
-            if header_rect.bottom < r.top < header_rect.bottom + 400 and r.height() > 5:
+            if y_min < r.top < y_max and r.height() > 5:
+                return d, r
+        except Exception: pass
+    # 2차: ListItem (UserRpdo/UserTpdo 추가된 행)
+    for d in win.descendants(control_type="ListItem"):
+        try:
+            r = d.rectangle()
+            if y_min < r.top < y_max and r.height() > 5 and r.width() > 100:
                 return d, r
         except Exception: pass
     return None
