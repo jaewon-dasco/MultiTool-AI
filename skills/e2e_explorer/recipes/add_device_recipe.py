@@ -133,10 +133,19 @@ def select_first_in_column(win, column_x_range, timeout: float = 2.0):
 
 COLUMN_X = {
     "family":  (265, 427),
-    "device":  (425, 587),   # probe_add_device_column2: Text x=485, ListItem 427~587
-    "func":    (476, 589),
-    "cds":     (590, 696),
+    "device":  (425, 587),   # Text x=485
+    "func":    (590, 900),   # probe_add_device_cds: Text x=596 '3606-21' (변형)
+    "cds":     (590, 696),   # legacy — 실제 dropdown엔 CDS 컬럼 없음 (3-column)
 }
+
+
+def extract_variant(model: str) -> str:
+    """'CU_3606_21' → '3606-21' (Functional Version 텍스트 매칭용)."""
+    import re
+    m = re.search(r'(\d{3,4})[_-](\d{1,3})', model)
+    if m:
+        return f"{m.group(1)}-{m.group(2)}"
+    return ""
 
 
 def add_device_via_dropdown(win, model: str, cds: str = "2.3",
@@ -184,18 +193,29 @@ def add_device_via_dropdown(win, model: str, cds: str = "2.3",
                 send_keys("{ESC}")
                 result["action"] = f"device_not_found '{model}'"; return result
 
-    # 4. Functional Version (기본 첫 항목) — Slave는 List.left=509
+    # 4. Functional Version — Master는 변형 매칭 ('3606-21'), Slave는 첫 항목
     func_col = COLUMN_X["func"] if not slave else (508, 625)
     time.sleep(1.0)  # Device 선택 후 Functional Version 렌더 대기
-    if not select_first_in_column(win, func_col, timeout=4.0):
-        send_keys("{ESC}")
-        result["action"] = "func_version_not_found"; return result
-
-    # 5. CODESYS Version (master만)
     if not slave:
-        if not select_column_item(win, COLUMN_X["cds"], cds):
+        variant = extract_variant(model)  # 'CU_3606_21' → '3606-21'
+        clicked = False
+        if variant:
+            clicked = select_column_item(win, func_col, variant, timeout=4.0)
+            if not clicked:
+                clicked = _select_column_item_contains(win, func_col, variant, timeout=2.0)
+        if not clicked:
+            clicked = select_first_in_column(win, func_col, timeout=2.0)
+        if not clicked:
             send_keys("{ESC}")
-            result["action"] = f"cds_not_found '{cds}'"; return result
+            result["action"] = f"func_version_not_found variant='{variant}'"; return result
+    else:
+        if not select_first_in_column(win, func_col, timeout=4.0):
+            send_keys("{ESC}")
+            result["action"] = "func_version_not_found"; return result
+
+    # 5. CDS 컬럼 없음 (probe_add_device_cds: 3-column dropdown).
+    # 시드의 cds 필드는 무시 — Func Version 클릭 후 디바이스 자동 추가.
+    _ = cds  # 시그니처 호환 유지
 
     # 6. 디바이스가 자동 추가됨 (별도 OK 버튼 없음)
     time.sleep(2.0)
