@@ -81,18 +81,26 @@ def _apply_one_seed_ui_only(win, seed: dict, current_tab_ref: list) -> dict:
             action = set_alarm_limit(win, label_keyword=label,
                                      which=seed.get("which", "Max"), value=value)
         elif expected_kind == "network_property":
-            from .network_property import set_network_property
-            action = set_network_property(win, network=seed.get("target_network", "NETWORK1"),
-                                          field_label=label, value=value)
+            from .network_property import set_network_bitrate
+            target = seed.get("target_network", "NETWORK1")
+            action = set_network_bitrate(win, target, value)
         elif expected_kind == "device_panel_x_button":
             from .device_disconnect import device_disconnect_from_network
             target = seed.get("target", "CU_3606_21_1")
             rr = device_disconnect_from_network("NETWORK1", target, save=False)
             action = {"ok": rr["ok"], "kind": "device_panel_x_button",
                       "action": f"disconnect {target}"}
+        elif expected_kind == "eds_add_slave":
+            from .eds_recipe import add_slave_from_eds, DEFAULT_EDS_PATH
+            eds_path = seed.get("eds_path", DEFAULT_EDS_PATH)
+            action = add_slave_from_eds(win, eds_path=eds_path)
+        elif expected_kind == "table_link":
+            ok = ocr_helpers.click_toolbar_button(win, label) is not None
+            action = {"ok": ok, "kind": "table_link", "action": "table link click"}
         elif expected_kind == "od_toolbar":
             from .od_recipe import execute_od_action
-            action = execute_od_action(win, seed.get("action_name", "add_index"))
+            action_name = seed.get("od_action") or label.lower().replace(" ", "_").replace("-", "_")
+            action = execute_od_action(win, action_name)
         elif expected_kind == "pdo_toolbar":
             from .pdo_recipe import pdo_add, pdo_remove_or_select_and_remove
             d = seed.get("direction", "Tx"); op = seed.get("operation", "Add")
