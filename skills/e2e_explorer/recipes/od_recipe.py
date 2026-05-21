@@ -11,14 +11,17 @@ import time
 from . import common
 
 
-TOOLBAR_X_MIN = 260
+TOOLBAR_X_MIN = 220     # probe_od_all_buttons (2026-05-21): 첫 버튼 left=227
 TOOLBAR_X_MAX = 700
 TOOLBAR_Y_MIN = 105
 TOOLBAR_Y_MAX = 165
 
 
-def find_od_toolbar_buttons(win):
-    """OD toolbar 6개 Button을 좌→우 순으로 반환."""
+def find_od_toolbar_buttons(win, only_enabled: bool = False):
+    """OD toolbar Button들을 좌→우 순으로 반환.
+
+    only_enabled=True 시 활성화된 버튼만 반환 (행 선택에 따라 동적).
+    """
     btns = []
     for b in win.descendants(control_type="Button"):
         try:
@@ -26,6 +29,10 @@ def find_od_toolbar_buttons(win):
             if (TOOLBAR_X_MIN < r.left < TOOLBAR_X_MAX
                 and TOOLBAR_Y_MIN < r.top < TOOLBAR_Y_MAX
                 and 10 < r.width() < 80):
+                if only_enabled:
+                    try:
+                        if not b.is_enabled(): continue
+                    except Exception: pass
                 btns.append((b, r))
         except Exception: pass
     btns.sort(key=lambda x: x[1].left)
