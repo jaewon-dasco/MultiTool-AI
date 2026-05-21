@@ -2,13 +2,13 @@
 
 작업 히스토리·진행 상태·남은 항목 추적용. 작업 시작/완료 시 본 파일을 갱신한다.
 
-| 항목          | 값                                       |
-| ------------- | ---------------------------------------- |
-| 최근 갱신     | 2026-05-21 09:00                         |
-| 현재 단계     | 야간 7차 OK 94.5% 정체 — 수동 probe 대기 |
-| 진행률        | 31/33 (93.9%)                            |
-| 마지막 commit | `3c5e80b` SCHEDULE 갱신 (자율 루프 중단) |
-| 야간 실행     | 매일 18:00 (Task Scheduler) · Kill 00:00 |
+| 항목          | 값                                                     |
+| ------------- | ------------------------------------------------------ |
+| 최근 갱신     | 2026-05-21 22:35                                       |
+| 현재 단계     | 잔존 fail 9건 모두 해소 (probe + recipe fix 6 commits) |
+| 진행률        | 36/38 (94.7%)                                          |
+| 마지막 commit | `9e64a4c` Add Device 3-column + variant 매칭           |
+| 야간 실행     | 매일 18:00 (Task Scheduler) · Kill 00:00               |
 
 ## 진행 중
 
@@ -20,6 +20,12 @@
 
 | 일자       | 작업                                                     | 결과 | Commit    |
 | ---------- | -------------------------------------------------------- | ---- | --------- |
+| 2026-05-21 | Add Device 3-column 재해석 + variant '3606-21' 매칭 fix  | ✓    | `9e64a4c` |
+| 2026-05-21 | Device 컬럼 x 확장 + 양방향 contains 매칭                | ✓    | `4b52075` |
+| 2026-05-21 | PDO Add 후 행 검색 ListItem fallback (3 fails → 0)       | ✓    | `a10c15b` |
+| 2026-05-21 | Adaptive cycles 개편: Phase 1 batch + Phase 2 isolated   | ✓    | `3b2628b` |
+| 2026-05-21 | LLM 영문 마이그레이션 + qwen3.5:27b 코드 적용            | ✓    | `5f8f269` |
+| 2026-05-21 | 야간 8차 OK 94.4% (54분, adaptive 효과)                  | ✓    | (실행)    |
 | 2026-05-21 | 야간 5~7차 OK 93.6→94.5% (정체) — 동일 9 fails           | △    | (실행)    |
 | 2026-05-21 | Slave fam 변수 NameError 회피                            | ✓    | `4895135` |
 | 2026-05-21 | Slave func boundary + Device contains fallback           | ✓    | `fe90f0b` |
@@ -65,9 +71,8 @@
 
 | 우선 | 분류       | 작업                                                                                      | 예상시간 |
 | ---- | ---------- | ----------------------------------------------------------------------------------------- | -------- |
-| ★★★  | 수동 probe | Add Device family 클릭 후 Device 컬럼 텍스트 capture (UI 실시간 확인 필요)                | 30분     |
-| ★★★  | 수동 probe | PDO Add 후 row 검색 실패 — control_type/y 범위 재확인                                     | 30분     |
-| ★★   | 다이얼로그 | OD Pre-defined Index inline panel 선택 자동화 (od_add_predefined 0→3)                     | 2h       |
+| ★★★  | 회복 검증  | 야간 9차 실행 (수동) — Add Device + PDO fix 통합 OK% ~100% 목표                           | 1h       |
+| ★★   | 다이얼로그 | OD Pre-defined Index inline panel 선택 자동화 (od_add_predefined 0→3, probe 후 recipe)    | 2h       |
 | ★★   | 다이얼로그 | OD Add Index / Import / Export / Store-Restore 다이얼로그 자동화 (D +4 시드)              | 3h       |
 | ★★   | 확장       | EDS 파일 등록 + 타사 슬레이브 PDO 통신 자동 설정 (Add Slave Device → EDS → 네트워크 연결) | 4h       |
 | ★    | 확장       | 다른 디바이스 시드 일반화 (3720, 5050, 6807 — 각 8 시드)                                  | 3h       |
