@@ -69,17 +69,22 @@ def select_column_item(win, column_x_range, target_text: str, timeout: float = 3
 
 
 def _select_column_item_contains(win, column_x_range, substring: str, timeout: float = 2.0):
-    """컬럼 텍스트가 substring을 포함하는 항목 클릭. 모델명 변형 대응(공백/하이픈)."""
+    """컬럼 텍스트가 substring을 포함 OR substring이 텍스트를 포함하는 항목 클릭.
+
+    probe_add_device_column2 (2026-05-21):
+    - Device 컬럼 텍스트는 모델 prefix만 ('3606', '3720' 등), 시드 model은 'CU_3606_21'
+    - 양방향 부분 매칭 필요 ('3606' in 'CU360621' 또는 역방향)
+    """
     x_min, x_max = column_x_range
-    # 모델 비교 시 영숫자만 비교
     sub_norm = "".join(c for c in substring if c.isalnum()).upper()
     t0 = time.time()
     while time.time() - t0 < timeout:
         for t in win.descendants(control_type="Text"):
             try:
                 txt = (t.window_text() or "").strip()
+                if not txt: continue
                 txt_norm = "".join(c for c in txt if c.isalnum()).upper()
-                if sub_norm and sub_norm in txt_norm:
+                if sub_norm and txt_norm and (sub_norm in txt_norm or txt_norm in sub_norm):
                     tr = t.rectangle()
                     if x_min <= tr.left <= x_max and tr.top > 140:
                         t.click_input(); time.sleep(0.6); return True
@@ -128,7 +133,7 @@ def select_first_in_column(win, column_x_range, timeout: float = 2.0):
 
 COLUMN_X = {
     "family":  (265, 427),
-    "device":  (428, 475),
+    "device":  (425, 587),   # probe_add_device_column2: Text x=485, ListItem 427~587
     "func":    (476, 589),
     "cds":     (590, 696),
 }
