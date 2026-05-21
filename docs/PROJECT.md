@@ -90,7 +90,7 @@ CoDeSys IEC 61131-3 ST export. `(* @PATH := '...' *)` 메타플래그 + `VAR_GLO
 
 ### 워크플로
 
-- **야간 자율 (E2E)**: Task Scheduler 00:00 → Gemma4 + pywinauto + XML utils → KB 누적 → 자기검증
+- **야간 자율 (E2E)**: Task Scheduler 00:00 → Qwen3.5 + pywinauto + XML utils → KB 누적 → 자기검증
 - **주간 자동 (E2E)**: Claude routine 09:00 → 야간 산출물 검토 → 스킬·지침 개선 + hints 갱신
 - **Sunset**: 자율도 지표 충족 시 Claude routine 자기 비활성화 → skill 단독 운영
 - 상세 → [MultiTool_E2E.md](MultiTool_E2E.md)
@@ -102,7 +102,7 @@ CoDeSys IEC 61131-3 ST export. `(* @PATH := '...' *)` 메타플래그 + `VAR_GLO
 ```text
 skills/e2e_explorer/
   orchestrator.py     야간 의사결정 루프
-  ollama_client.py    Gemma4 HTTP
+  ollama_client.py    Qwen3.5 HTTP
   ui_driver.py        pywinauto GUI
   xml_utils.py        .mtproject read/write/backup
   exp_validator.py    .exp 파싱·골든 diff

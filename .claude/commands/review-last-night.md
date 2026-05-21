@@ -15,12 +15,12 @@ ls -td logs/e2e/2026-* 2>/dev/null | head -1
 
 ## 2. 검토 대상
 
-| 파일 | 역할 |
-| ---- | ---- |
-| `summary.md` | 사이클 통계 |
-| `observations.jsonl` | Gemma 관찰 응답 누적 |
-| `sequences/<seq_id>/summary.json` | 각 시퀀스 step 트레이스 |
-| `snapshots/` | `.mtproject`·`.exp` 스냅샷 파일들 |
+| 파일                              | 역할                              |
+| --------------------------------- | --------------------------------- |
+| `summary.md`                      | 사이클 통계                       |
+| `observations.jsonl`              | Qwen3.5 관찰 응답 누적            |
+| `sequences/<seq_id>/summary.json` | 각 시퀀스 step 트레이스           |
+| `snapshots/`                      | `.mtproject`·`.exp` 스냅샷 파일들 |
 
 ## 3. 분석 항목
 
@@ -28,7 +28,7 @@ ls -td logs/e2e/2026-* 2>/dev/null | head -1
 
 1. **결정성**: 같은 transition을 반복했을 때 `.mtproject` sha256이 동일한가
 2. **.exp 영향**: XML 변경이 `.exp` 파일을 변화시켰는가 (sha256 비교)
-3. **Gemma 응답 일관성**: 동일 시퀀스의 N회 응답 중 핵심 패턴 식별
+3. **Qwen3.5 응답 일관성**: 동일 시퀀스의 N회 응답 중 핵심 패턴 식별
 4. **실패율**: errors 필드 합계
 
 ## 4. 산출물 (자동 작성)
@@ -49,7 +49,7 @@ ls -td logs/e2e/2026-* 2>/dev/null | head -1
 - can1_bitrate: .exp 변화 없음 (Export 트리거 없음 — 예상)
 - ...
 
-## Gemma 관찰 요지
+## Qwen3.5 관찰 요지
 - 시퀀스별 핵심 표현 추출
 
 ## 다음 야간 제안 (next_night_hints 후보)

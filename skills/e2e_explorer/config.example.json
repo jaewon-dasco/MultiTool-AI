@@ -6,8 +6,9 @@
   "multitool_exe": "C:\\Program Files (x86)\\Epec\\MultiTool Creator 8.4\\MultiTool.exe",
 
   "ollama_url": "https://macmini.tailed5292.ts.net:11434",
-  "ollama_model": "gemma4:26b",
+  "ollama_model": "qwen3.5:27b",
   "ollama_timeout": 300,
+  "_model_note": "2026-05-21 gemma4:26b → qwen3.5:27b 전환. Q4_K_M 17.4GB. capabilities: completion+vision+tools+thinking.",
 
   "ocr_lang": "en-US",
   "max_cycles_default": 5
