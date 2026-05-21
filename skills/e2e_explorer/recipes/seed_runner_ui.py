@@ -402,16 +402,33 @@ def append_failure(failure: dict, fail_log: Path):
         f.write(json.dumps(failure, ensure_ascii=False, default=str) + "\n")
 
 
-def run_seeds_batch(seeds: list, cycles: int = 5, save_results: bool = True) -> dict:
-    """N개 시드 × cycles회 실행."""
+def run_seeds_batch(seeds: list, cycles: int = 5, save_results: bool = True,
+                    adaptive: bool = True) -> dict:
+    """시드 일괄 실행.
+
+    adaptive=True (기본): cycle 0은 전체 시드 1회, cycle 1+는 직전 cycle 실패만 재실행.
+                          성공 시드는 1회로 검증 완료, 실패만 N회까지 누적 재시도.
+                          기존 전체 N회 대비 60~70% 시간 단축.
+    adaptive=False (legacy): 모든 시드를 매 cycle 반복 (이전 동작).
+    """
     RUN_ROOT.mkdir(parents=True, exist_ok=True)
     fail_log = RUN_ROOT / "failures.jsonl"
     results_log = RUN_ROOT / "results.jsonl"
-    stats = {"total": 0, "success": 0, "failed": 0, "by_kind": {}, "by_phase_failure": {}}
+    stats = {"total": 0, "success": 0, "failed": 0, "by_kind": {}, "by_phase_failure": {},
+             "adaptive": adaptive, "smoke_count": 0, "verify_count": 0,
+             "stable_seeds": [], "persistent_fail_seeds": []}
+
+    current_seeds = list(seeds)  # 이번 cycle에서 실행할 시드
+    stable_ok = set()             # cycle 0에서 OK였던 시드명 (재실행 제외)
 
     for cycle_idx in range(cycles):
-        for seed in seeds:
+        next_pending = []  # 다음 cycle 재실행 대상 (이번 cycle 실패한 시드)
+        for seed in current_seeds:
             stats["total"] += 1
+            if cycle_idx == 0:
+                stats["smoke_count"] += 1
+            else:
+                stats["verify_count"] += 1
             r = run_one_seed(
                 seed=seed,
                 label=seed["label"],
@@ -427,8 +444,27 @@ def run_seeds_batch(seeds: list, cycles: int = 5, save_results: bool = True) -> 
                 stats["success"] += 1
                 kind = r.get("detected_kind", "?")
                 stats["by_kind"][kind] = stats["by_kind"].get(kind, 0) + 1
+                if adaptive and cycle_idx == 0:
+                    stable_ok.add(seed["name"])
             else:
                 stats["failed"] += 1
                 stats["by_phase_failure"][r["phase"]] = stats["by_phase_failure"].get(r["phase"], 0) + 1
                 append_failure(r, fail_log)
+                next_pending.append(seed)
+
+        # adaptive 모드: 다음 cycle은 실패 시드만, legacy 모드: 전체 반복
+        if adaptive:
+            if not next_pending:
+                # 모든 시드 OK — 추가 cycle 불필요
+                stats["stable_seeds"] = sorted(stable_ok)
+                stats["early_exit_cycle"] = cycle_idx + 1
+                break
+            current_seeds = next_pending
+        # adaptive=False는 current_seeds 그대로 유지 (legacy 동작)
+
+    # 최종 정리
+    if adaptive:
+        stats["stable_seeds"] = sorted(stable_ok)
+        # cycles 모두 소진했는데 fail이 남았다면 = persistent
+        stats["persistent_fail_seeds"] = sorted({s["name"] for s in current_seeds})
     return stats

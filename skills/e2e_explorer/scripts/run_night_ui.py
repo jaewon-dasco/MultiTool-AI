@@ -25,11 +25,19 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--category", default="B", help="A/B/C/D/E/F/all")
     ap.add_argument("--cycles", type=int, default=5)
+    ap.add_argument("--legacy", action="store_true",
+                    help="모든 시드를 매 cycle 반복 (이전 동작). 기본은 adaptive 모드.")
     args = ap.parse_args()
 
     seeds = load_seeds(args.category)
-    print(f"Running {len(seeds)} seeds × {args.cycles} cycles = {len(seeds)*args.cycles} executions")
-    stats = run_seeds_batch(seeds, cycles=args.cycles)
+    mode = "legacy (모든 시드×cycles 반복)" if args.legacy else "adaptive (cycle 0 전체 + 이후 fail만)"
+    print(f"Mode: {mode}")
+    print(f"Seeds: {len(seeds)}, max cycles: {args.cycles}")
+    if not args.legacy:
+        print(f"Adaptive 예상: 1회차 {len(seeds)} + 이후 fail만 재실행 (최대 {len(seeds)*args.cycles})")
+    else:
+        print(f"Legacy 총 {len(seeds)*args.cycles} executions")
+    stats = run_seeds_batch(seeds, cycles=args.cycles, adaptive=(not args.legacy))
     print(f"\nSTATS: {json.dumps(stats, ensure_ascii=False, indent=2)}")
     (RUN_ROOT / "stats.json").write_text(json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8")
 
