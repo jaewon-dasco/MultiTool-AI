@@ -26,18 +26,20 @@ def main():
     ap.add_argument("--category", default="B", help="A/B/C/D/E/F/all")
     ap.add_argument("--cycles", type=int, default=5)
     ap.add_argument("--legacy", action="store_true",
-                    help="모든 시드를 매 cycle 반복 (이전 동작). 기본은 adaptive 모드.")
+                    help="모든 시드를 매 cycle 반복 (Phase 1 batch 건너뜀, 이전 동작).")
     args = ap.parse_args()
 
     seeds = load_seeds(args.category)
-    mode = "legacy (모든 시드×cycles 반복)" if args.legacy else "adaptive (cycle 0 전체 + 이후 fail만)"
-    print(f"Mode: {mode}")
-    print(f"Seeds: {len(seeds)}, max cycles: {args.cycles}")
-    if not args.legacy:
-        print(f"Adaptive 예상: 1회차 {len(seeds)} + 이후 fail만 재실행 (최대 {len(seeds)*args.cycles})")
+    if args.legacy:
+        print(f"Mode: legacy (모든 시드×cycles 반복)")
+        print(f"Seeds: {len(seeds)}, cycles: {args.cycles}, total: {len(seeds)*args.cycles}")
     else:
-        print(f"Legacy 총 {len(seeds)*args.cycles} executions")
-    stats = run_seeds_batch(seeds, cycles=args.cycles, adaptive=(not args.legacy))
+        from skills.e2e_explorer.recipes.verified_store import split_by_verified
+        bs, iso = split_by_verified(seeds)
+        print(f"Mode: Phase 1 batch + Phase 2 isolated")
+        print(f"Phase 1: {len(bs)} verified seeds (batch, 1 session, 1 save, 1 export)")
+        print(f"Phase 2: {len(iso)} unverified seeds × up to {args.cycles} isolated cycles")
+    stats = run_seeds_batch(seeds, cycles=args.cycles, legacy=args.legacy)
     print(f"\nSTATS: {json.dumps(stats, ensure_ascii=False, indent=2)}")
     (RUN_ROOT / "stats.json").write_text(json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8")
 

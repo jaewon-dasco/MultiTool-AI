@@ -403,32 +403,81 @@ def append_failure(failure: dict, fail_log: Path):
 
 
 def run_seeds_batch(seeds: list, cycles: int = 5, save_results: bool = True,
-                    adaptive: bool = True) -> dict:
-    """시드 일괄 실행.
+                    legacy: bool = False) -> dict:
+    """시드 일괄 실행 — Phase 1 batch + Phase 2 isolated 구조.
 
-    adaptive=True (기본): cycle 0은 전체 시드 1회, cycle 1+는 직전 cycle 실패만 재실행.
-                          성공 시드는 1회로 검증 완료, 실패만 N회까지 누적 재시도.
-                          기존 전체 N회 대비 60~70% 시간 단축.
-    adaptive=False (legacy): 모든 시드를 매 cycle 반복 (이전 동작).
+    Phase 1 (smoke_batch): verified_seeds.json 기반으로 verified 시드들을
+      한 세션에서 일괄 적용 → 한 번 Save → 한 번 Export → 종료 (regression test).
+      Batch 통과 시 verified 유지, fail 시 해당 시드 demote (Phase 2로 이동).
+
+    Phase 2 (isolated): unverified + Phase 1 fail 시드만 기존 방식
+      (시드마다 restart/save/export/diff). cycles 만큼 재시도, OK 시 promote.
+
+    legacy=True: Phase 1 건너뛰고 모든 시드를 isolated 반복 (이전 동작).
     """
+    from .verified_store import load_verified, save_verified, split_by_verified, promote, demote
+    from .smoke_batch import run_smoke_batch
+
     RUN_ROOT.mkdir(parents=True, exist_ok=True)
     fail_log = RUN_ROOT / "failures.jsonl"
     results_log = RUN_ROOT / "results.jsonl"
     stats = {"total": 0, "success": 0, "failed": 0, "by_kind": {}, "by_phase_failure": {},
-             "adaptive": adaptive, "smoke_count": 0, "verify_count": 0,
-             "stable_seeds": [], "persistent_fail_seeds": []}
+             "legacy": legacy, "phase1_batch": None, "phase2_isolated": {},
+             "verified_promoted": [], "verified_demoted": []}
 
-    current_seeds = list(seeds)  # 이번 cycle에서 실행할 시드
-    stable_ok = set()             # cycle 0에서 OK였던 시드명 (재실행 제외)
+    if legacy:
+        isolated_seeds = list(seeds)
+        verified_store = {}
+    else:
+        verified_store = load_verified()
+        batch_seeds, isolated_seeds = split_by_verified(seeds, verified_store)
+        # Phase 1
+        if batch_seeds:
+            batch_result = run_smoke_batch(batch_seeds)
+            stats["phase1_batch"] = {
+                "n_seeds": batch_result["n_seeds"],
+                "batch_ok": batch_result["batch_ok"],
+                "save_ok": batch_result["save_ok"],
+                "export_ok": batch_result["export_ok"],
+                "failed_seed_names": batch_result["failed_seed_names"],
+                "duration": batch_result["duration"],
+            }
+            stats["total"] += batch_result["n_seeds"]
+            if batch_result["batch_ok"]:
+                # 전체 verified 유지 — pass_count += 1 (안정성 누적)
+                stats["success"] += batch_result["n_seeds"]
+                for s in batch_seeds:
+                    promote(s["name"], verified_store)
+            else:
+                # 실패한 시드만 demote → isolated로 이동
+                failed_names = set(batch_result["failed_seed_names"])
+                # Save/Export 실패면 전체 demote (격리 못함)
+                if not batch_result["save_ok"] or not batch_result["export_ok"]:
+                    failed_names |= {s["name"] for s in batch_seeds}
+                    stats["phase1_batch"]["save_export_demoted_all"] = True
+                for name in failed_names:
+                    demote(name, verified_store)
+                    stats["verified_demoted"].append(name)
+                # 통과한 시드는 promote, 실패는 isolated로
+                passed_in_batch = [s for s in batch_seeds if s["name"] not in failed_names]
+                stats["success"] += len(passed_in_batch)
+                for s in passed_in_batch:
+                    promote(s["name"], verified_store)
+                isolated_seeds = isolated_seeds + [s for s in batch_seeds if s["name"] in failed_names]
+                stats["failed"] += len(failed_names)
+
+    # Phase 2: isolated retry
+    current_seeds = list(isolated_seeds)
+    seeds_by_name = {s["name"]: s for s in seeds}
+    isolated_stats = {"cycles_run": 0, "per_cycle": []}
 
     for cycle_idx in range(cycles):
-        next_pending = []  # 다음 cycle 재실행 대상 (이번 cycle 실패한 시드)
+        if not current_seeds:
+            break
+        cycle_summary = {"cycle": cycle_idx, "n": len(current_seeds), "ok": 0, "fail": 0}
+        next_pending = []
         for seed in current_seeds:
             stats["total"] += 1
-            if cycle_idx == 0:
-                stats["smoke_count"] += 1
-            else:
-                stats["verify_count"] += 1
             r = run_one_seed(
                 seed=seed,
                 label=seed["label"],
@@ -442,29 +491,32 @@ def run_seeds_batch(seeds: list, cycles: int = 5, save_results: bool = True,
                                        ensure_ascii=False, default=str) + "\n")
             if r["ok"]:
                 stats["success"] += 1
+                cycle_summary["ok"] += 1
                 kind = r.get("detected_kind", "?")
                 stats["by_kind"][kind] = stats["by_kind"].get(kind, 0) + 1
-                if adaptive and cycle_idx == 0:
-                    stable_ok.add(seed["name"])
+                if not legacy:
+                    promote(seed["name"], verified_store)
+                    stats["verified_promoted"].append(seed["name"])
             else:
                 stats["failed"] += 1
+                cycle_summary["fail"] += 1
                 stats["by_phase_failure"][r["phase"]] = stats["by_phase_failure"].get(r["phase"], 0) + 1
                 append_failure(r, fail_log)
                 next_pending.append(seed)
+                if not legacy:
+                    demote(seed["name"], verified_store)
+        isolated_stats["per_cycle"].append(cycle_summary)
+        isolated_stats["cycles_run"] = cycle_idx + 1
+        if not next_pending:
+            isolated_stats["early_exit"] = True
+            break
+        current_seeds = next_pending
 
-        # adaptive 모드: 다음 cycle은 실패 시드만, legacy 모드: 전체 반복
-        if adaptive:
-            if not next_pending:
-                # 모든 시드 OK — 추가 cycle 불필요
-                stats["stable_seeds"] = sorted(stable_ok)
-                stats["early_exit_cycle"] = cycle_idx + 1
-                break
-            current_seeds = next_pending
-        # adaptive=False는 current_seeds 그대로 유지 (legacy 동작)
+    isolated_stats["persistent_fail_seeds"] = sorted({s["name"] for s in current_seeds})
+    stats["phase2_isolated"] = isolated_stats
 
-    # 최종 정리
-    if adaptive:
-        stats["stable_seeds"] = sorted(stable_ok)
-        # cycles 모두 소진했는데 fail이 남았다면 = persistent
-        stats["persistent_fail_seeds"] = sorted({s["name"] for s in current_seeds})
+    if not legacy:
+        save_verified(verified_store)
+        stats["verified_final"] = {k: v for k, v in verified_store.items() if v > 0}
+
     return stats
