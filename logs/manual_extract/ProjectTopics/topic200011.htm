@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="topic-status" content="Sent for Review"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Using Diagnostics</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta name="rh-index-keywords" content="Using Diagnostics"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Using Diagnostics</h1>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" data-condition="Others:EpecSpecific" style="margin-left: 5.4pt;" width="850">
+    <colgroup>
+      <col style="width: 7.768%;"/>
+      <col width="784"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 56.85pt;">
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="InlineBodyText26" style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="Note" style="mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">S Series Safety Control Unit code template differs in variable names and conditions described in this chapter:</span></p>
+          <ul class="p-Note" style="margin-top: 0cm;">
+            <li class="p-Note" style="margin-left: 0cm; mso-list: l0 level1 lfo1;">
+              <p class="Note" style="mso-fareast-font-family: &#39;Times New Roman&#39;;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Code template has separate status flags for non-safety and safety application.</span></p>
+            </li>
+            <li class="p-Note" style="margin-left: 0cm; mso-list: l0 level1 lfo1;">
+              <p class="Note" style="mso-fareast-font-family: &#39;Times New Roman&#39;;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Hardware diagnostics is implemented by <i>SafeSSeriesHardware</i> library and it always affects safety application’s status flag.</span></p>
+            </li>
+            <li class="p-Note" style="margin-left: 0cm; mso-list: l0 level1 lfo1;">
+              <p class="Note" style="mso-fareast-font-family: &#39;Times New Roman&#39;;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Network status always affects non-safety system OK status.</span></p>
+            </li>
+            <li class="p-Note" style="margin-left: 0cm; mso-list: l0 level1 lfo1;">
+              <p class="Note" style="mso-fareast-font-family: &#39;Times New Roman&#39;;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Non-safety and safety application’s status flags both automatically affect LED-control (application override possible)</span></p>
+            </li>
+            <li class="p-Note" style="margin-left: 0cm; mso-list: l0 level1 lfo1;">
+              <p class="Note" style="mso-fareast-font-family: &#39;Times New Roman&#39;;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Output group is NOT automatically controlled on by code template</span></p>
+            </li>
+          </ul>
+          <p class="Note" style="mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">For more information on using S-Series HW diagnostics and code template, see <i>Epec Programming and Libraries Manual</i>.</span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p>To define the conditions for device diagnostics, select the <span style="font-weight: bold;">Diagnostics</span> tab. In this tab, the hardware measurement alarm limits can be set and selected as a condition for the global <span style="font-style: italic;">G_SystemOk</span> variable. The available diagnostic information depends on the hardware type.</p>
+  <p> </p>
+  <p><img alt="" border="0" height="729" src="../assets/images/MultiTool/Used/Diagnostics.jpg" style="border: none; cursor: nesw-resize;" title="" width="959"/></p>
+  <p> </p>
+  <p>In addition to the selections on <span style="font-weight: bold;">Diagnostics</span> tab, the <span style="font-weight: bold;">Network Status</span> can be selected to be a condition for <span style="font-style: italic;">G_SystemOk</span> variable on the <span style="font-weight: bold;">CAN</span> tab. (See the following picture)</p>
+  <p> </p>
+  <p style="background-color: Transparent;"><img alt="" border="0" src="../assets/images/MultiTool/Used/G_SystemOk2.jpg" style="border: none;" title=""/></p>
+  <p> </p>
+  <p><span data-keyref="SoftwareName">MultiTool Creator</span> generates a global variable <span style="font-style: italic;">G_SystemOk</span> to the CODESYS code template. The selected alarm limits and error flags are conditions for the boolean <span style="font-style: italic;">G_SystemOk</span> variable. The condition for the <span style="font-style: italic;">G_SystemOk</span> variable can be found from <span style="font-style: italic;">PLC_PRG &gt; EPEC_In &gt; Diag_Action.</span> In case the device has separate power switches for outputs, it is possible to define that they are enabled according to the <span style="font-style: italic;">G_SystemOk</span> variable state. Also, the status LED can automatically be controlled according to the system status in devices that have LED.</p>
+  <p> </p>
+  <p><img alt="" border="0" src="../assets/images/MultiTool/Used/G_SystemOk.jpg" style="border: none;" title=""/></p>
+  <p> </p>
+  <p>The following table lists the possible options for different platforms:</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="MsoNormalTable" style="border-collapse: collapse; mso-border-alt: solid windowtext .5pt; 
+		 mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt; 
+		 mso-border-insideh: .5pt solid windowtext; mso-border-insidev: .5pt solid windowtext; 
+		 left: 0px; top: 1041px; height: 698px;" width="1306">
+    <colgroup>
+      <col style="width: 28.497%;"/>
+      <col style="width: 71.503%;"/>
+    </colgroup>
+    <tbody>
+      <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes;">
+        <td style="border: solid 1pt #000000; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonOtsikko"><b style="mso-bidi-font-weight: normal;"><span style="mso-ansi-language: FI;">Diagnostic Item</span></b></p>
+        </td>
+        <td style="border-top: solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko"><b style="mso-bidi-font-weight: normal;"><span style="mso-ansi-language: FI;">Description</span></b></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 1;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">Temperature alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">Monitors the device&#39;s internal temperature. Rises error if the temperature is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 2;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">CPU temperature alarm limits</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">Monitors the processor core temperature. Rises error if the temperature is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 2;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">PCB temperature alarm limits</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">Monitors the circuit board temperature. Rises error if the temperature is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 2;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">Supply voltage alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">Monitors the device&#39;s supply voltage. Rises error if the voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 3;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">Output status error in init</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span>Checks the status of the digital output pin when the system is initialized. In case of an error, a global flag</span> <span style="font-style: italic;">ERR_FLAG_OUTPUT_ST_INIT</span> <span>is set TRUE. This diagnostic is run for pins with</span></p>
+          <p class="TaulukonSisalto"><span>- pull-down to voltage</span></p>
+          <p class="TaulukonSisalto"><span>- configurable pull-up and pull-up is disabled</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 4;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">Error in IO init</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto" style="font-style: normal;">Checks errors in I/O configuration when the system is initialized. In case of an error, a global flag <span style="font-style: italic;">ERR_FLAG_IO_INIT</span> is set to TRUE.</p>
+        </td>
+      </tr>
+      
+      <tr style="mso-yfti-irow: 5;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">Cycle time alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">Monitors the application cycle time. Rises error if the cycle time is outside of the defined limit.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 6;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">REF 5 volt alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">Monitors the device&#39;s 5V reference voltage. Rises error if the voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 7;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">REF 10V alarm limits</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">Monitors the device&#39;s 10V reference voltage. Rises error if the voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 7;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">REF 12 volt alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">Monitors the device&#39;s 12V reference voltage. Rises error if the voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 8;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">REF internal 4.5 volt alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">Monitors the</span> device&#39;s <span style="mso-ansi-language: FI;">internal 4.5V reference voltage.</span> Rises error if the voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 9;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">REF internal 2.5 volt alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">Monitors the</span> device&#39;s <span style="mso-ansi-language: FI;">internal 2.5V reference voltage.</span> Rises error if the voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 10;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">5V reference overload</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span>Monitors the output current of the 5V reference voltage. Rises an overload flag</span> <span style="font-style: italic;">REF_OUT_5V_OVERLOAD</span> <span>if the current exceeds the maximum output current.</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 11;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">Pull-up 10V alarm limits</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">Monitors the device&#39;s 10V pull-up voltage. Rises error if the voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 11;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">RefADCV alarm limits</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">Monitors the device&#39;s AD converter reference voltage. Rises error if the voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 11;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">5V VAN alarm limits</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">Monitors the device&#39;s AD converter supply voltage (S-Series). Rises error if the voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 11;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">Auxiliary output failure</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span>Monitors the status of auxiliary output. If error detected, a flag <em>AUX_OUT_FAULT</em> is set TRUE.</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 12;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">UPS voltage alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">Monitors the device&#39;s UPS voltage. Rises error if the voltage is outside of the defined limits.</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 13;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">RS485 high line alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: FI;">Monitors the device&#39;s RS485 high line voltage. Rises error if voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 14;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">RS485 low line alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: FI;">Monitors the device&#39;s RS485 low line voltage. Rises error if voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 15;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">CAN1 high line alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: FI;">Monitors the device&#39;s CAN1 high line voltage. Rises error if voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 16;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">CAN1 low line alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: FI;">Monitors the device&#39;s CAN1 low line voltage. Rises error if voltage is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 17;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">CAN2 high line alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: FI;">Monitors the device&#39;s CAN2 high line voltage. Rises error if voltage is outside of the defined limits. </p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 18;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">CAN2 low line alarm limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: FI;">Monitors the device&#39;s CAN2 low line voltage. Rises error if voltage is outside of the defined limits. </p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 19;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">Connector 1 current limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: FI;">Monitors the device&#39;s connector 1 current. Rises error if current is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 20;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">Connector 2 current limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: FI;">Monitors the device&#39;s connector 2 current .Rises error if current is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 21;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">Connector 3 current limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: FI;">Monitors the device&#39;s connector 3 current. Rises error if current is outside of the defined limits.</p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 22; mso-yfti-lastrow: yes;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: FI;">Connector 5 current limits</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: FI;">Monitors the device&#39;s connector 5 current. Rises error if current is outside of the defined limits.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <h2>Resetting Default Values</h2>
+  <p>To reset all values to their defaults, select <span style="font-weight: bold;">Reset to Defaults</span> icon <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_ResetToDefaults.jpg" style="border: none;" title=""/>.  </p>
+  <p> </p>
+  <h2>I/O Diagnostics</h2>
+  <h3>I/O Diagnostic Producer</h3>
+  <p><img alt="" border="0" height="144" src="../assets/images/MultiTool/Used/IODiagnostic.jpg" style="border: none; cursor: nwse-resize;" title="" width="366"/></p>
+  <p> </p>
+  <p><strong>I/O Diagnostics Producer</strong> selection enables the possibility to transfer control unit I/O pin values to CANmoon/I/O diagnostic consumer unit, which can show the values in numerical or graphical format. See more information from <span style="font-style: italic;">Epec CANmoon manual</span>.</p>
+  <p>It is also possible select the CAN bus which is used for  I/O diagnostics.</p>
+  <p> </p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="737">
+    <colgroup>
+      <col style="width: 8.146%;"/>
+      <col width="677"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="InlineBodyText" style="font-weight: bold;"><span><img alt="" border="0" height="42" src="../assets/images/image006.jpg" title="" width="42"/></span></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="InlineBodyText3" style="text-align: left; font-weight: normal; 
+			 background-color: Transparent;">If <span style="font-weight: bold;">I/O Diagnosics Producer</span> selection is enabled, CANopen protocol needs to be initialized on the selected CAN bus.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="737">
+    <colgroup>
+      <col style="width: 8.146%;"/>
+      <col width="677"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="InlineBodyText" style="font-weight: bold;"><span><img alt="" border="0" height="42" src="../assets/images/image006.jpg" title="" width="42"/></span></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="InlineBodyText3" style="text-align: left; font-weight: normal; 
+			 background-color: Transparent;"><span style="font-weight: bold;">I/O Diagnostics</span> section is only visible in CODESYS 3.5 units whose device description contains <span style="font-style: italic;">IODiagnostic</span> and <span style="font-style: italic;">IODiagnosticTransfer</span> libraries.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <h3>I/O Diagnostic Consumer</h3>
+  <p><img height="199" src="../assets/images/MultiTool/Used/IoDiagnosticConsumer.png" width="450"/></p>
+  <p> </p>
+  <p><strong>I/O Diagnostics Consumer</strong> selection enables the possibility to receive control unit I/O pin values which can be shown for example in I/O diagnostic window.</p>
+  <p> </p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" style="vertical-align: top;" width="883">
+    <colgroup>
+      <col style="width: 6.43%;"/>
+      <col style="width: 92.525%;"/>
+    </colgroup>
+    <tbody>
+      <tr style="vertical-align: top;">
+        <td style="width: 6.43%; padding-right: 10px; padding-left: 10px;"><span><img alt="" border="0" height="42" src="../assets/images/image006.jpg" title="" width="42"/></span></td>
+        <td style="padding-right: 10px; padding-left: 10px;">
+          <p class="Note"><strong>I/O Diagnostic consumer</strong> selection in only visible in CODESYS 3.5 units whose device description contains IODiagnostic library version 1.0.0.5 or newer. </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" style="vertical-align: top;" width="883">
+    <colgroup>
+      <col style="width: 6.43%;"/>
+      <col style="width: 92.525%;"/>
+    </colgroup>
+    <tbody>
+      <tr style="vertical-align: top;">
+        <td style="width: 6.43%; padding-right: 10px; padding-left: 10px;"><span><img alt="" border="0" height="42" src="../assets/images/image006.jpg" title="" width="42"/></span></td>
+        <td style="padding-right: 10px; padding-left: 10px;">
+          <p>See <span style="font-style: italic;">Epec Programming and Libraries Manual, How to I/O diagnostic consumer </span>for more information.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200011.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

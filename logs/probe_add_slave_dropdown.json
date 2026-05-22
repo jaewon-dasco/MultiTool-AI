@@ -1,0 +1,566 @@
+{
+  "drops_count": 2,
+  "new_controls": [
+    {
+      "d": 1,
+      "type": "Window",
+      "name": "",
+      "rect": [
+        326,
+        121,
+        624,
+        452
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        327,
+        122,
+        623,
+        451
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Text",
+      "name": "Device",
+      "rect": [
+        399,
+        127,
+        437,
+        143
+      ]
+    },
+    {
+      "d": 3,
+      "type": "List",
+      "name": "",
+      "rect": [
+        327,
+        148,
+        509,
+        451
+      ]
+    },
+    {
+      "d": 4,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,Epec.MT.Models.Templates.IDeviceTemp",
+      "rect": [
+        327,
+        147,
+        508,
+        201
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        331,
+        150,
+        379,
+        198
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Text",
+      "name": "GC44",
+      "rect": [
+        385,
+        182,
+        480,
+        198
+      ]
+    },
+    {
+      "d": 4,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,Epec.MT.Models.Templates.IDeviceTemp",
+      "rect": [
+        327,
+        201,
+        508,
+        255
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        331,
+        204,
+        379,
+        252
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Text",
+      "name": "GL84",
+      "rect": [
+        385,
+        236,
+        480,
+        252
+      ]
+    },
+    {
+      "d": 4,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,Epec.MT.Models.Templates.IDeviceTemp",
+      "rect": [
+        327,
+        255,
+        508,
+        315
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        327,
+        255,
+        508,
+        315
+      ]
+    },
+    {
+      "d": 6,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        335,
+        261,
+        383,
+        309
+      ]
+    },
+    {
+      "d": 6,
+      "type": "Text",
+      "name": "Dummy",
+      "rect": [
+        388,
+        293,
+        495,
+        309
+      ]
+    },
+    {
+      "d": 4,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,Epec.MT.Models.Templates.IDeviceTemp",
+      "rect": [
+        327,
+        315,
+        508,
+        392
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        327,
+        315,
+        508,
+        375
+      ]
+    },
+    {
+      "d": 6,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        335,
+        321,
+        383,
+        369
+      ]
+    },
+    {
+      "d": 6,
+      "type": "Text",
+      "name": "Generic",
+      "rect": [
+        388,
+        353,
+        495,
+        369
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Text",
+      "name": "User Devices",
+      "rect": [
+        327,
+        375,
+        508,
+        393
+      ]
+    },
+    {
+      "d": 4,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,Epec.MT.Models.Templates.IDeviceTemp",
+      "rect": [
+        327,
+        392,
+        508,
+        452
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        327,
+        392,
+        508,
+        452
+      ]
+    },
+    {
+      "d": 6,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        335,
+        398,
+        383,
+        446
+      ]
+    },
+    {
+      "d": 6,
+      "type": "Text",
+      "name": "UCD Encoder Series",
+      "rect": [
+        388,
+        430,
+        495,
+        446
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Text",
+      "name": "Functional Version",
+      "rect": [
+        514,
+        127,
+        618,
+        143
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        509,
+        148,
+        623,
+        451
+      ]
+    },
+    {
+      "d": 4,
+      "type": "List",
+      "name": "",
+      "rect": [
+        509,
+        148,
+        623,
+        451
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        327,
+        122,
+        623,
+        451
+      ]
+    },
+    {
+      "d": 10,
+      "type": "Text",
+      "name": "Device",
+      "rect": [
+        399,
+        127,
+        437,
+        143
+      ]
+    },
+    {
+      "d": 10,
+      "type": "List",
+      "name": "",
+      "rect": [
+        327,
+        148,
+        509,
+        451
+      ]
+    },
+    {
+      "d": 11,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,Epec.MT.Models.Templates.IDeviceTemp",
+      "rect": [
+        327,
+        147,
+        508,
+        201
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        331,
+        150,
+        379,
+        198
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "GC44",
+      "rect": [
+        385,
+        182,
+        480,
+        198
+      ]
+    },
+    {
+      "d": 11,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,Epec.MT.Models.Templates.IDeviceTemp",
+      "rect": [
+        327,
+        201,
+        508,
+        255
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        331,
+        204,
+        379,
+        252
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "GL84",
+      "rect": [
+        385,
+        236,
+        480,
+        252
+      ]
+    },
+    {
+      "d": 11,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,Epec.MT.Models.Templates.IDeviceTemp",
+      "rect": [
+        327,
+        255,
+        508,
+        315
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        327,
+        255,
+        508,
+        315
+      ]
+    },
+    {
+      "d": 13,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        335,
+        261,
+        383,
+        309
+      ]
+    },
+    {
+      "d": 13,
+      "type": "Text",
+      "name": "Dummy",
+      "rect": [
+        388,
+        293,
+        495,
+        309
+      ]
+    },
+    {
+      "d": 11,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,Epec.MT.Models.Templates.IDeviceTemp",
+      "rect": [
+        327,
+        315,
+        508,
+        392
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        327,
+        315,
+        508,
+        375
+      ]
+    },
+    {
+      "d": 13,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        335,
+        321,
+        383,
+        369
+      ]
+    },
+    {
+      "d": 13,
+      "type": "Text",
+      "name": "Generic",
+      "rect": [
+        388,
+        353,
+        495,
+        369
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "User Devices",
+      "rect": [
+        327,
+        375,
+        508,
+        393
+      ]
+    },
+    {
+      "d": 11,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,Epec.MT.Models.Templates.IDeviceTemp",
+      "rect": [
+        327,
+        392,
+        508,
+        452
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        327,
+        392,
+        508,
+        452
+      ]
+    },
+    {
+      "d": 13,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        335,
+        398,
+        383,
+        446
+      ]
+    },
+    {
+      "d": 13,
+      "type": "Text",
+      "name": "UCD Encoder Series",
+      "rect": [
+        388,
+        430,
+        495,
+        446
+      ]
+    },
+    {
+      "d": 10,
+      "type": "Text",
+      "name": "Functional Version",
+      "rect": [
+        514,
+        127,
+        618,
+        143
+      ]
+    },
+    {
+      "d": 10,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        509,
+        148,
+        623,
+        451
+      ]
+    },
+    {
+      "d": 11,
+      "type": "List",
+      "name": "",
+      "rect": [
+        509,
+        148,
+        623,
+        451
+      ]
+    }
+  ]
+}

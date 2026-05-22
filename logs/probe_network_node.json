@@ -1,0 +1,524 @@
+{
+  "new_items": [
+    {
+      "depth": 8,
+      "class": "TextBlock",
+      "name": "Name",
+      "ctrl_type": "Text",
+      "rect": [
+        14,
+        214,
+        230,
+        231
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "TextBox",
+      "name": "NETWORK1",
+      "ctrl_type": "Edit",
+      "rect": [
+        12,
+        233,
+        232,
+        253
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "TextBlock",
+      "name": "Bit Rate",
+      "ctrl_type": "Text",
+      "rect": [
+        14,
+        265,
+        230,
+        282
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "RadComboBox",
+      "name": "",
+      "ctrl_type": "ComboBox",
+      "rect": [
+        12,
+        284,
+        232,
+        306
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "TextBlock",
+      "name": "Devices",
+      "ctrl_type": "Text",
+      "rect": [
+        14,
+        318,
+        230,
+        335
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "Image",
+      "name": "",
+      "ctrl_type": "Image",
+      "rect": [
+        15,
+        340,
+        39,
+        364
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "TextBlock",
+      "name": "7",
+      "ctrl_type": "Text",
+      "rect": [
+        47,
+        344,
+        54,
+        360
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "TextBlock",
+      "name": "CU_3606_21_1",
+      "ctrl_type": "Text",
+      "rect": [
+        59,
+        343,
+        218,
+        360
+      ]
+    },
+    {
+      "depth": 9,
+      "class": "Hyperlink",
+      "name": "CU_3606_21_1",
+      "ctrl_type": "Hyperlink",
+      "rect": [
+        59,
+        343,
+        141,
+        360
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "Button",
+      "name": "",
+      "ctrl_type": "Button",
+      "rect": [
+        218,
+        345,
+        232,
+        359
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "Image",
+      "name": "",
+      "ctrl_type": "Image",
+      "rect": [
+        15,
+        370,
+        39,
+        394
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "TextBlock",
+      "name": "2",
+      "ctrl_type": "Text",
+      "rect": [
+        47,
+        374,
+        54,
+        390
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "TextBlock",
+      "name": "CU_3606_21_2",
+      "ctrl_type": "Text",
+      "rect": [
+        59,
+        373,
+        218,
+        390
+      ]
+    },
+    {
+      "depth": 9,
+      "class": "Hyperlink",
+      "name": "CU_3606_21_2",
+      "ctrl_type": "Hyperlink",
+      "rect": [
+        59,
+        373,
+        141,
+        390
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "Button",
+      "name": "",
+      "ctrl_type": "Button",
+      "rect": [
+        218,
+        375,
+        232,
+        389
+      ]
+    },
+    {
+      "depth": 8,
+      "class": "RadToolBar",
+      "name": "",
+      "ctrl_type": "ToolBar",
+      "rect": [
+        595,
+        132,
+        989,
+        189
+      ]
+    },
+    {
+      "depth": 9,
+      "class": "RadToggleButton",
+      "name": "PART_DropdownButton",
+      "ctrl_type": "Button",
+      "rect": [
+        979,
+        132,
+        989,
+        189
+      ]
+    },
+    {
+      "depth": 9,
+      "class": "RadColorPicker",
+      "name": "",
+      "ctrl_type": "Custom",
+      "rect": [
+        612,
+        149,
+        659,
+        171
+      ]
+    },
+    {
+      "depth": 10,
+      "class": "RadSplitButton",
+      "name": "#FF33CCFF",
+      "ctrl_type": "Custom",
+      "rect": [
+        612,
+        149,
+        659,
+        171
+      ]
+    },
+    {
+      "depth": 11,
+      "class": "RadButton",
+      "name": "#FF33CCFF",
+      "ctrl_type": "Button",
+      "rect": [
+        612,
+        149,
+        644,
+        171
+      ]
+    },
+    {
+      "depth": 11,
+      "class": "RadToggleButton",
+      "name": "DropDownPart",
+      "ctrl_type": "Button",
+      "rect": [
+        643,
+        149,
+        659,
+        171
+      ]
+    },
+    {
+      "depth": 9,
+      "class": "RadToolBarSeparator",
+      "name": "",
+      "ctrl_type": "Separator",
+      "rect": [
+        666,
+        135,
+        668,
+        186
+      ]
+    },
+    {
+      "depth": 9,
+      "class": "RadButton",
+      "name": "",
+      "ctrl_type": "Button",
+      "rect": [
+        675,
+        133,
+        713,
+        188
+      ]
+    },
+    {
+      "depth": 10,
+      "class": "Image",
+      "name": "",
+      "ctrl_type": "Image",
+      "rect": [
+        682,
+        141,
+        706,
+        165
+      ]
+    },
+    {
+      "depth": 10,
+      "class": "TextBlock",
+      "name": "Events",
+      "ctrl_type": "Text",
+      "rect": [
+        677,
+        165,
+        711,
+        181
+      ]
+    },
+    {
+      "depth": 9,
+      "class": "RadButton",
+      "name": "",
+      "ctrl_type": "Button",
+      "rect": [
+        723,
+        133,
+        783,
+        188
+      ]
+    },
+    {
+      "depth": 10,
+      "class": "Image",
+      "name": "",
+      "ctrl_type": "Image",
+      "rect": [
+        741,
+        141,
+        765,
+        165
+      ]
+    },
+    {
+      "depth": 10,
+      "class": "TextBlock",
+      "name": "CSV Editor",
+      "ctrl_type": "Text",
+      "rect": [
+        725,
+        165,
+        781,
+        181
+      ]
+    },
+    {
+      "depth": 9,
+      "class": "RadToolBarSeparator",
+      "name": "",
+      "ctrl_type": "Separator",
+      "rect": [
+        790,
+        135,
+        792,
+        186
+      ]
+    },
+    {
+      "depth": 9,
+      "class": "RadSplitButton",
+      "name": "",
+      "ctrl_type": "Custom",
+      "rect": [
+        799,
+        133,
+        852,
+        188
+      ]
+    },
+    {
+      "depth": 10,
+      "class": "RadButton",
+      "name": "ButtonPart",
+      "ctrl_type": "Button",
+      "rect": [
+        799,
+        133,
+        837,
+        188
+      ]
+    },
+    {
+      "depth": 11,
+      "class": "ExportIcon",
+      "name": "",
+      "ctrl_type": "Custom",
+      "rect": [
+        806,
+        141,
+        830,
+        165
+      ]
+    },
+    {
+      "depth": 11,
+      "class": "TextBlock",
+      "name": "Export",
+      "ctrl_type": "Text",
+      "rect": [
+        801,
+        165,
+        835,
+        181
+      ]
+    },
+    {
+      "depth": 10,
+      "class": "RadToggleButton",
+      "name": "DropDownPart",
+      "ctrl_type": "Button",
+      "rect": [
+        836,
+        133,
+        852,
+        188
+      ]
+    },
+    {
+      "depth": 9,
+      "class": "RadButton",
+      "name": "",
+      "ctrl_type": "Button",
+      "rect": [
+        858,
+        134,
+        924,
+        187
+      ]
+    },
+    {
+      "depth": 10,
+      "class": "ImportIcon",
+      "name": "",
+      "ctrl_type": "Custom",
+      "rect": [
+        879,
+        140,
+        903,
+        164
+      ]
+    },
+    {
+      "depth": 10,
+      "class": "TextBlock",
+      "name": "Import DBC",
+      "ctrl_type": "Text",
+      "rect": [
+        860,
+        164,
+        922,
+        180
+      ]
+    },
+    {
+      "depth": 9,
+      "class": "RadToolBarSeparator",
+      "name": "",
+      "ctrl_type": "Separator",
+      "rect": [
+        927,
+        135,
+        929,
+        186
+      ]
+    },
+    {
+      "depth": 9,
+      "class": "RadButton",
+      "name": "",
+      "ctrl_type": "Button",
+      "rect": [
+        936,
+        133,
+        974,
+        188
+      ]
+    },
+    {
+      "depth": 10,
+      "class": "Image",
+      "name": "",
+      "ctrl_type": "Image",
+      "rect": [
+        943,
+        141,
+        967,
+        165
+      ]
+    },
+    {
+      "depth": 10,
+      "class": "TextBlock",
+      "name": "Delete",
+      "ctrl_type": "Text",
+      "rect": [
+        938,
+        165,
+        972,
+        181
+      ]
+    }
+  ],
+  "bitrate_hits": [
+    {
+      "depth": 8,
+      "class": "TextBlock",
+      "name": "Bit Rate",
+      "ctrl_type": "Text",
+      "rect": [
+        14,
+        265,
+        230,
+        282
+      ]
+    }
+  ],
+  "right_forms": [
+    {
+      "depth": 1,
+      "class": "TextBox",
+      "name": "100",
+      "ctrl_type": "Edit",
+      "rect": [
+        2517,
+        1368,
+        2548,
+        1390
+      ]
+    }
+  ]
+}

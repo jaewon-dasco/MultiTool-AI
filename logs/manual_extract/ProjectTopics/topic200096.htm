@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+    <meta name="generator" content="Adobe RoboHelp 2022"/>
+    <title>Changing Unit Type</title>
+    <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+  <body>
+    <h1>Changing Unit Type</h1>
+    <p>This topic describes how to change the unit type.</p>
+    <p> </p>
+    <p>First, go to the Network Editor. To start <span style="font-style: italic;">Change Unit Type Wizard</span>, right-click the unit to be changed and select <span style="font-weight: bold;">Change Unit Type</span>. <span style="font-style: italic;">Change Unit Type Wizard, Step 1/4 dialog</span> opens.</p>
+    <p> </p>
+    <p><img alt="" border="0" src="../assets/images/MultiTool/Epec/ChangeUnitType.png" style="border: none;" title=""/></p>
+    <p> </p>
+    <p>This selection is not possible for slave units or J1939 units.</p>
+    <p> </p>
+    <h2>Change Unit Type Wizard, Step 1/4</h2>
+    <p>To change the unit type starts from the wizard step 1. This dialog is divided to two groups:</p>
+    <p> </p>
+    <p>    Old type: shows the unit to be changed. The unit details and features currently in use are listed.</p>
+    <p>    New type: the target unit type is selected from the menu. The new type must be selected in able to continue to the next step of the wizard.</p>
+    <p> </p>
+    <p> </p>
+    <p><img alt="" border="0" src="../assets/images/MultiTool/Epec/Wizard1_4.JPG" style="border: none;" title=""/></p>
+    <p> </p>
+    <p>When the new type  is selected:</p>
+    <ul class="p">
+      <li class="p">
+        <p>    Image of the selected unit is shown with some basic information</p>
+      </li>
+      <li class="p">
+        <p>    Green text “New unit type selected successfully.” is shown</p>
+      </li>
+      <li class="p">
+        <p>    Yellow warning text informs of any limitations the new type could have. For example, yellow text stating <span style="font-style: italic;">Not enough PWM pins in selected unit type! </span>is a warning that<span style="font-style: italic;"> </span>some of the pin settings might be lost after the type is changed.</p>
+      </li>
+      <li class="p">
+        <p>    Next button is enabled.</p>
+      </li>
+    </ul>
+    <p> </p>
+    <p><img src="../assets/images/MultiTool/Epec/wizard2_4.JPG"/></p>
+    <p> </p>
+    <p>Proceed to wizard step 2 by selecting <span style="font-weight: bold;">Next</span><span>.</span></p>
+    <p> </p>
+    <p> </p>
+    <h2>Change Unit Type Wizard, Step 2/4</h2>
+    <p>In step 2, CAN buses from the old unit can be assigned to the new unit. For example, if CAN 1 from the old unit is assigned to CAN 2 in the new unit, CAN 2 in the new unit is connected to the same networks and has the same protocols as CAN 1 in the old unit.</p>
+    <p> </p>
+    <p>The old unit shows information about what netwok the CAN is connected to and what protocols are in use.</p>
+    <p> </p>
+    <p>When step 2 opens, CAN buses are automatically assigned to best possible CANs in new unit type. Connection lines can be removed by selecting <span style="font-weight: bold;">Clear assignment</span>. By selecting <span style="font-weight: bold;">Automatic assignment</span> connections are automatically made.</p>
+    <p>If there are no assignments between CAN nodes, all the CAN settings from the old type are lost.</p>
+    <p> </p>
+    <p><img alt="" border="0" src="../assets/images/MultiTool/Epec/wizard2_4CANbus.JPG" style="border: none;" title=""/></p>
+    <p> </p>
+    <p>There are two other ways to create assignments between the old unit and new unit CAN buses:</p>
+    <ul class="p">
+      <li class="p">
+        <p>    Select one of the CAN nodes from the old or new unit, then select the CAN node from the other unit.</p>
+      </li>
+      <li class="p">
+        <p>    Drag and drop from one CAN node to another.</p>
+      </li>
+    </ul>
+    <p> </p>
+    <p> </p>
+    <p>Existing connections can be removed by three different ways:</p>
+    <ul class="p">
+      <li class="p">
+        <p>    Press the right button of the mouse just over the connection line to open the context menu and select <span style="font-weight: bold;">Unassign CAN bus</span>.</p>
+      </li>
+      <li class="p">
+        <p>    Select the connection line by selecting it and then <span style="font-weight: bold;">Delete. </span>Several lines can be selected using<span style="font-weight: bold;"> Shift</span> or<span style="font-weight: bold;"> Ctrl.</span></p>
+      </li>
+      <li class="p">
+        <p>    Select <span style="font-weight: bold;">Clear assignment</span> to remove all connection lines at once.</p>
+      </li>
+    </ul>
+    <p> </p>
+    <p>Proceed to wizard step 3 by selecting <span style="font-weight: bold;">Next</span>. To return to the previous page, select <span style="font-weight: bold;">Previous</span>.</p>
+    <p> </p>
+    <h2>Change Unit Type Wizard, Step 3/4</h2>
+    <p>Step 3 allows the assignments of I/O pins. For example, if there is an assignment between pins, after changing the type, new unit I/O pin will have the same settings as the old pin had (mode in use, variable name and comment is copied, etc.).</p>
+    <p>When step 3 is opened and the old type and new type have the same functional version, I/O pins are automatically assigned. Assignments can be done by selecting <span style="font-weight: bold;">Automatic assignment</span>. Connection lines are removed by selecting <span style="font-weight: bold;">Clear assingment</span>.</p>
+    <p> </p>
+    <p><img src="../assets/images/MultiTool/Epec/Wizard3_4._IOpins1JPG.JPG"/></p>
+    <p> </p>
+    <p>There are three kind of connections that the wizard recognizes between I/O pins:</p>
+    <ul class="p">
+      <li class="p">
+        <p>Green: pins are fully compatible.</p>
+      </li>
+      <li class="p">
+        <p>Yellow: pins are partly compatible. Some to the setting may not be copied to new type.</p>
+      </li>
+      <li class="p">
+        <p>Red: pins are not compatible. Settings are not copied. For example, in the following picture, the new type pin X1.22 FB will be not used andthe old unit X1.15 – DO pin settings will be lost.</p>
+      </li>
+    </ul>
+    <p> </p>
+    <p style="margin-left: 40px;"><img alt="" border="0" src="../assets/images/MultiTool/Used/Wizard3_4._IOpins2JPG.JPG" style="border: none;" title=""/></p>
+    <p style="margin-left: 40px;"> </p>
+    <p style="margin-left: 0px;">There are two other ways to create assignments between old units and new unit I/O pins:</p>
+    <ul class="p">
+      <li class="p">
+        <p style="margin-left: 0px;">    Select one of the I/O pins from the old type or new type. Then select the I/O pin from the other type.</p>
+      </li>
+      <li class="p">
+        <p style="margin-left: 0px;">    Drag and drop from I/O pin to another. Dropping is possible also to the pin that is out of the dialog when dragging starts. When moving mouse cursor to the edge of the I/O pin area, the view is scrolling.</p>
+      </li>
+    </ul>
+    <p style="margin-left: 0px;"> </p>
+    <p style="margin-left: 0px;">Existing connections can be removed by three different ways.</p>
+    <ul class="p">
+      <li class="p">
+        <p style="margin-left: 0px;">    Press the right button of the mouse just over the connection line to open context menu and select <span style="font-weight: bold;">Unassign IO connection</span>.</p>
+      </li>
+      <li class="p">
+        <p style="margin-left: 0px;">    Select connection line by selecting it and then <span style="font-weight: bold;">Delete</span>. Several lines can be selected using<span style="font-weight: bold;"> Shift</span> or<span style="font-weight: bold;"> Ctrl. </span>Selections can be removed by selecting <span style="font-weight: bold;">Esc</span><span>.</span></p>
+      </li>
+      <li class="p">
+        <p style="margin-left: 0px;">    Select <span style="font-weight: bold;">Clear assignment</span> to remove all connection lines at once.</p>
+      </li>
+    </ul>
+    <p> </p>
+    <p><span class="NormalTextRun  BCX2 SCXW26548864"> </span>Connectors can be expanded/collapsed by selecting the black triangle. When the connector is collapsed it&#39;s pins and connection lines are hidden.</p>
+    <p><img alt="" border="0" src="../assets/images/MultiTool/Used/Wizard3_4._IOpins3JPG.JPG" style="border: none;" title=""/></p>
+    <p> </p>
+    <h2>Change Unit Type Wizard, Step 4/4</h2>
+    <p>Step 4 is a summary page of the wizard. It provides an overview of what changes were defined in the wizard and what is left to do after the unit type is changed.</p>
+    <p> </p>
+    <p>The summary page text can be copied to the clipboard by pressing the right mouse button over the text and selecting<span style="font-weight: bold;"> Copy to clipboard</span>.</p>
+    <p> </p>
+    <p><img src="../assets/images/MultiTool/Epec/Wizard4_4.JPG"/></p>
+    <p style="margin-left: 0px;"> </p>
+    <p style="margin-left: 0px;">Close Wizard by selecting <span style="font-weight: bold;">Done</span>. After this, the old unit does not exist in the <span lang="EN-US" style="mso-bidi-font-family: &#39;Times New Roman&#39;; 
+														 mso-bidi-theme-font: minor-bidi; 
+														 mso-ascii-theme-font: minor-latin; 
+														 mso-fareast-font-family: Calibri; 
+														 mso-fareast-theme-font: minor-latin; 
+														 mso-hansi-theme-font: minor-latin; 
+														 mso-bidi-language: AR-SA;" xml:lang="EN-US"><span data-keyref="SoftwareName">MultiTool Creator</span></span> project. A successful change can be read from the output.</p>
+    <p style="margin-left: 0px;"> </p>
+    <p style="margin-left: 0px;"><img alt="" border="0" src="../assets/images/MultiTool/Epec/output_changeSuccessful.png" style="border: none;" title=""/></p>
+    <p style="margin-left: 0px;"> </p>
+    <p style="margin-left: 0px;"> </p>
+    <h4>See also</h4>
+    <p style="margin-left: 0px; font-style: italic;">Epec Programming &amp; Libraries Manual &gt; Programming &gt; How to change unit type</p>
+    <p style="margin-left: 0px;"> </p>
+    <p style="margin-left: 0px;"> </p>
+  
+</body></html>

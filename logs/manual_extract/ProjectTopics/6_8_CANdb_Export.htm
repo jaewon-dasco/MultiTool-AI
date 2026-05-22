@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>6.8 CANdb Export</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta name="rh-index-keywords" content="Exporting CAN Database (CANdb)"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Exporting CAN Database (CANdb)</h1>
+  <p> </p>
+  <p>This function exports database(s) to be used, for example, in Epec CANmoon or Vector CANalyzer tool. The database contains all the defined PDO, J1939 and/or NMEA2000 messages in the network, depending on the selections made inthe DBC export window. </p>
+  <p class="InlineNormal" style="margin-left: 0px;"> </p>
+  <p class="InlineNormal" style="margin-left: 0px;"><span lang="EN-GB" xml:lang="EN-GB">The CAN Database files are exported on</span> <span lang="EN-GB" style="font-weight: bold;" xml:lang="EN-GB">System Export</span><span lang="EN-GB" xml:lang="EN-GB">. .dbc files are generated based on the J1939, NMEA2000, and CANopen protocols in a network. A separate .dbc file is created for each protocol, along with a merged file that includes all the J1939, NMEA2000 and CANopen messages across the entire network. </span></p>
+  <p class="InlineNormal"> </p>
+  <p>To manually export a CAN database:</p>
+  <p> </p>
+  <p class="p">1. Select a network</p>
+  <p class="p"> </p>
+  <p class="p">2. Select <span style="font-weight: bold;">Export &gt; Export CAN Database</span> from the hover menu</p>
+  <p style="margin-left: 40px;"><br/>
+    <img alt="" border="0" src="../assets/images/MultiTool/Used/ExportCANdb.jpg" style="border: none;"/>
+  </p>
+  <p> </p>
+  <p class="p"> </p>
+  <p class="p">3. Select messages to be exported and select <strong>OK</strong>.</p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/ExportMessagesToDBC.png"/></p>
+  <p> </p>
+  <p>4. Select a folder from the file explorer where the DBC(s) will be exported. </p>
+  <p> </p>
+  <p>If there is only one type of messages in the network, the file explorer opens instead of the export messages window. </p>
+  <h2>Using CAN Database</h2>
+  <p> </p>
+  <p>To use the exported file in Vector CANalyzer, select <span style="font-weight: bold;">Associate database</span> in Vector CANalyzer and browse the exported file. When diagnosing the CAN bus traffic, the variables included in PDOs are displayed with the variable names defined in <span data-keyref="SoftwareName">MultiTool Creator</span>.</p>
+  <p> </p>
+  <p data-condition="Others:EpecSpecific">To use the exported file in Epec CANmoon, refer to CANmoon manual (software &amp; manual available from Epec&#39;s Extranet).</p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">6_8_CANdb_Export.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

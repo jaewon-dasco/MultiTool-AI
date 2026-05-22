@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Using GlobE</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta name="rh-index-keywords" content="Using Remote Management (GlobE)"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Using GlobE</h1>
+  <p>Epec GlobE is a remote management service that can be used for managing, monitoring and logging machine and fleet data.</p>
+  <p>The devices that support the Epec GlobE have:</p>
+  <ul class="p">
+    <li class="p">
+      <p>icon <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_globe.png" style="border: none;" title=""/>in <span style="font-weight: bold;">Add Device</span> drop-down menu and on the <span style="font-weight: bold;">Device Properties</span></p>
+    </li>
+    <li class="p">
+      <p>the <span style="font-weight: bold;">GlobE</span> tab on the device configuration</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p> </p>
+  <p>To send data to GlobE:</p>
+  <p> </p>
+  <p>Data must be in the object dictionary of a device that supports GlobE. Typically this means variables that the device receives from the CANopen bus. To receive data, the device has to be in the same CAN network with the other CANopen devices.</p>
+  <p> </p>
+  <p>1. Add the device that supports GlobE <a href="6_3_Add_Module.htm">Adding, Editing and Deleting Device</a></p>
+  <p> </p>
+  <p>2. Connect the device to the network <a href="6_7_Edit_Networks.htm">Adding, Editing and Deleting Network</a></p>
+  <p> </p>
+  <p>3. Configure PDO messages <a href="7_9_4_TPDO.htm">Transmitting and Receiving PDOs</a></p>
+  <p> </p>
+  <p>4. Select the <strong>GlobE</strong> tab and configure GlobE settings:</p>
+  <ul class="p" style="list-style-type: disc;">
+    <li class="p">
+      <p><span style="font-weight: bold;">Machine Type</span> (used for selecting a correct machine template in Epec GlobE or creating a new one if a template with the given name doesn&#39;t exist)</p>
+    </li>
+    <li class="p">
+      <p>GlobE <span style="font-weight: bold;">Account Identifier</span> (provided by Epec)</p>
+    </li>
+    <li class="p">
+      <p><span style="font-weight: bold;">Send Interval</span> (interval for sending the data to Epec GlobE server)</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p>5. Select the signals from which to collect the history data:</p>
+  <ul class="p" style="list-style-type: disc;">
+    <li class="p">
+      <p>Click the <img alt="" border="0" src="../assets/images/MultiTool/Used/FilterIcon.jpg" style="border: none;" title=""/> icon to select which OD variables are shown on the list</p>
+    </li>
+  </ul>
+  <ul class="p" style="list-style-type: disc;">
+    <li class="p">
+      <p>Also the device&#39;s RAM, Retain and RetainPersistent variables that are in it&#39;s OD will be shown on the list. Parameter variables can be sent to Epec GlobE in a .csv file. First, two extra columns (<em>RemoteReadAccess</em> and <em>RemoteWriteAccess</em>) needs to be added in <span style="font-weight: bold;">CSV Editor.</span> Insert value <em>1</em> to the added columns to make the parameters visible in Epec GlobE. Then include the .csv file in the application software package that is downloaded to the remote device.</p>
+    </li>
+    <li class="p">
+      <p>To send data from the system&#39;s other devices to Epec GlobE, send the data in PDO message to remote device. The data must be received by the remote device to be shown on the list in <span style="font-weight: bold;">GlobE</span> view.</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p>6. Set the configurations for the different signals if needed:</p>
+  <ul class="p" style="list-style-type: disc;">
+    <li class="p" style="color: #c0c0c0;">
+      <p style="margin-left: 40px;"><span style="font-weight: bold;">CAN Number</span>: Remote device&#39;s CAN bus (not editable)</p>
+    </li>
+    <li class="p" style="color: #c0c0c0;">
+      <p style="margin-left: 40px;"><span style="font-weight: bold;">Variable Name</span>: Variable&#39;s name (not editable)</p>
+    </li>
+    <li class="p">
+      <p style="margin-left: 40px;"><span style="font-weight: bold;">Send</span>: Select the box to collect the variable&#39;s history data</p>
+    </li>
+    <li class="p">
+      <p style="margin-left: 40px;"><span style="font-weight: bold;">Hide</span>: Select the box to exclude the variable from the <span style="font-weight: bold;">System Export</span> CSV file</p>
+    </li>
+    <li class="p">
+      <p style="margin-left: 40px;"><span style="font-weight: bold;">Decimals</span>: Accuracy</p>
+    </li>
+    <li class="p">
+      <p style="margin-left: 40px;"><span style="font-weight: bold;">Unit</span>: The used measurement unit (for example ms, text only)</p>
+    </li>
+    <li class="p">
+      <p style="margin-left: 40px;"><span style="font-weight: bold;">Interval</span>: Logging interval in minutes and seconds (mm:ss)</p>
+    </li>
+    <li class="p" style="color: #c0c0c0;">
+      <p style="margin-left: 40px;"><span style="font-weight: bold;">Connection</span>: Defines the connection quality for sending the data (Low = data is sent even if the connection is poor) - not in use yet</p>
+    </li>
+    <li class="p">
+      <p style="margin-left: 40px;"><span style="font-weight: bold;">GUI Text</span>: User interface text for Epec GlobE</p>
+    </li>
+  </ul>
+  <p style="margin-left: 0px;"> </p>
+  <p style="margin-left: 0px;">7. Create the project</p>
+  <p> </p>
+  <p>To edit the data logging interval levels, select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_edit_intervals.png" style="border: none;" title=""/> icon.</p>
+  <p> </p>
+  <p>To export the signal list to a CSV file, select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_export_globe_signals.png" style="border: none;" title=""/> icon. The file is automatically created also in <span style="font-weight: bold;">System Export</span>. The CSV file defines which variables are visible in Epec GlobE and their order.</p>
+  <p> </p>
+  <p> </p>
+  <p>The configurable properties for GlobE are defined in the following table:</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="800">
+    <colgroup>
+      <col style="width: 23.572%;"/>
+      <col style="width: 73.206%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-top: Solid 1px #000000; 
+			 border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonOtsikko">Property</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Machine Type</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p>Defines the machine type. The machine type is used for selecting a correct machine template in Epec GlobE or creating a new one if a template with the given name doesn&#39;t exist</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Account Identifier</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Unique account ID for every GlobE customer (Epec provides these once the account is registered)</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Send Interval</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">The interval for sending the data to Epec GlobE server</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p>Configurations for remotely sent variables are defined in the following table:</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="800">
+    <colgroup>
+      <col style="width: 23.572%;"/>
+      <col style="width: 73.206%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-top: Solid 1px #000000; 
+			 border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonOtsikko">Property</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">CAN Channel</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">The CAN channel of the variable. Not editable.</p>
+          <p class="TaulukonSisalto">The possible icon in front of the CAN channel number indicates</p>
+          <p class="TaulukonSisalto"><img alt="" border="0" src="../assets/images/MultiTool/Used/Remote_TPDO.jpg" style="border: none;" title=""/> TPDO,</p>
+          <p class="TaulukonSisalto"><img alt="" border="0" src="../assets/images/MultiTool/Used/Remote_RPDO.jpg" style="border: none;" title=""/> RPDO and</p>
+          <p class="TaulukonSisalto"><img alt="" border="0" src="../assets/images/MultiTool/Used/Remote_RAM.jpg" style="border: none;" title=""/> RAM variables.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Variable Name</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">The RAM, Retain or RetainPersistent variable name that can be sent through GlobE. Not editable.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Send</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Select this to collect variable&#39;s history data</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Hide</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Select this to exclude the variable from the <span style="font-weight: bold;">System Export</span> CSV file</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Decimals</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Variable value accuracy</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Unit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">The used measurement unit (for example, ms or V).</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Interval</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="text-align: justify;">Variable&#39;s logging interval [mm:ss].</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Connection</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Defines the connection quality for sending the data. Selecting <span style="font-style: italic;">Low</span> means that the data is sent even if the connection is poor. (Not in use yet)</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">GUI Text</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">User interface text for Epec GlobE server.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p>See also,</p>
+  <ul class="p">
+    <li class="p" style="font-style: normal;">
+      <p><span style="font-style: italic;">Epec Programming and Libraries Manual &gt; Programming &gt; Programming 6000/X Series Units &gt; Getting Started with GlobE</span></p>
+    </li>
+  </ul>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200008.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

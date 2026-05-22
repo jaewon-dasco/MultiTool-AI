@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Defining CAN and SAE J1939/NMEA 2000</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta name="rh-index-keywords" content="Defining CAN and SAE J1939"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Defining CAN and SAE J1939/NMEA 2000</h1>
+  <p> </p>
+  <p>Configurations for SAE J1939 communication protocol are done in <span style="font-weight: bold;">CAN</span> and <span style="font-weight: bold;">J1939</span> tabs.  </p>
+  <p><a class="dropspot" href="javascript:TextPopup(this)" id="a1"><span data-open-text="true" data-skip-index="true">NMEA 2000</span></a> messages are defined in NMEA 2000 tab.</p>
+  <div id="POPUP569919320" style="display: none;">
+    <p>NMEA 2000 is communication protocol for marine industry. It is based
+      on SAE J1939 protocol, but it defines own messages. It contains also
+      own transfer method “NMEA 2000 fast packet” for multi-frame parameter
+      groups. The fast packet transfer is implemented in Epec J1939 library.
+    </p>
+    <p><span data-keyref="SoftwareName">MultiTool Creator</span>’s
+      offers possibility to configure NMEA 2000 rx and tx PGNs for <span data-keyref="ManufacturerName">Epec</span> control units. </p>
+  </div>
+  <p> </p>
+  <p>This topic describes</p>
+  <ul class="p">
+    <li class="p">
+      <p><a href="#General_J1939_Settings">J1939 General Settings</a></p>
+    </li>
+    <li class="p">
+      <p>the needed actions to configure a device to <a href="#receive_and_transmit_J1939_messages">receive and transmit J1939 or NMEA 2000 messages</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#J1939_Message_Properties_">J1939 Message Properties</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#NMEA_2000_Message_Properties">NMEA 2000 Message Properties</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#PGN_variable_configuration">Configurable properties for PGN variables</a></p>
+    </li>
+  </ul>
+  <p> </p>
+  <h2><a id="General_J1939_Settings"></a>J1939 General Settings</h2>
+  <p>J1939 general settings are defined in CAN tab&#39;s J1939 subtab. Currently it contains only one setting.</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 56.85pt;">
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66">
+          <p class="InlineBodyText26" style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" width="43"/></p>
+        </td>
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501">
+          <p class="Note"> </p>
+          <p class="Note">Supported features are product specific depending on the used libraries. In CODESYS 3.5, device description defines the used library.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p><img src="../assets/images/MultiTool/Creator/CanJ1939.png"/></p>
+  <p> </p>
+  <p>First select the <span style="font-weight: bold;">CAN</span> channel from the tabs and then select <span style="font-weight: bold;">J1939</span> subtab.</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt; left: 0px; top: 952px; 
+		 height: 100px;" width="1000">
+    <colgroup>
+      <col width="203"/>
+      <col width="761"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 14px;">
+        <td style="border: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Property</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 82px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p>Request Message (PGN 0xEA00) Receiving</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Enable J1939 Request Message receiving. Should be enabled if some other device uses Request PGN message to request specific PGN transmission from this unit.</p>
+          <p class="TaulukonSisalto">Note! Selection is enabled automatically if Address Claiming is defined to use.  </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">Max number of request callbacks</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">The maximum number of request callbacks that are allowed</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">DM1 producer</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Enables DM1 producer (currently active)</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">Number of DTCs</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">The maximum number of simultaneousely active Diagnostic Trouble Codes. </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">DM2 producer</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Enables DM2 producer (history)</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">DM2 saving to non volatile memory</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Enables saving DM2 to non volatile memory</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">Source</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Source address to use for the DM producer</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto">Manual Address</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">If <strong>Source</strong> is sent to manual address, this field defines the address.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <h2><a id="Receive_and_Transmit_J1939_Messages" name="Receive_and_Transmit_J1939_Messages">Receive and Transmit J1939 or NMEA 2000 Messages</a></h2>
+  <p>1. Add a J1939/NMEA 2000 device. To add the J1939/NMEA 2000 device, select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_add_J1939device.png" style="border: none;" title=""/>  icon on the <span style="font-weight: bold;">Network Editor</span>.</p>
+  <p style="margin-left: 0px;"><img alt="" border="0" src="../assets/images/MultiTool/Used/AddJ1939Device.jpg" style="border: none;" title=""/></p>
+  <p style="margin-left: 0px;"> </p>
+  <p style="margin-left: 0px;">2. Selecting the created J1939/NMEA 2000 device opens <span style="font-weight: bold;">J1939 Device Properties</span> on the left. Give a descriptive name and J1939/NMEA 2000 address for the device.</p>
+  <p style="margin-left: 0px;"> </p>
+  <p style="margin-left: 0px;"><img alt="" border="0" src="../assets/images/MultiTool/Used/J1939DevProp2.JPG" style="border: none;" title=""/></p>
+  <p style="margin-left: 0px;"> </p>
+  <p style="margin-left: 0px;"><span>If the J1939 device uses Address Claiming protocol double click the J1939 device to open the <a href="topic200208.htm">configuration window</a>. Note that the configuration window is available only if J1939/NMEA 2000 device is connected to a network which contains at least one programmable unit with Address Claiming procol support.</span></p>
+  <p style="margin-left: 0px;"> </p>
+  <p style="margin-left: 0px;">3. Add the J1939/NMEA 2000 device into network if not already added.</p>
+  <p style="margin-left: 0px;"><img alt="" border="0" src="../assets/images/MultiTool/Used/J1939AddToNetwork.jpg" style="border: none;" title=""/></p>
+  <p style="margin-left: 0px;"> </p>
+  <p>4. Configure the CAN bus</p>
+  <p> </p>
+  <p style="margin-left: 0px;">Since the J1939 protocol uses extended identifiers (29 bit) in messages, make sure that the device has <span style="font-weight: bold;">CAN &gt; Send and Receive &gt;</span> <span style="font-weight: bold;">Extended ID Messages</span> property selected for the <span style="font-weight: bold;">CAN</span> channel.</p>
+  <p style="margin-left: 0px;">CODESYS 3.5 programmable devices always receive both <span style="font-weight: bold;">Short</span> and <span style="font-weight: bold;">Extended ID</span> messages.</p>
+  <p style="margin-left: 40px;"> </p>
+  <p>5. After the CAN configuration, J1939 PGN messages can be configured to be transmitted or received on the J1939 tab. To add a receive PGN,</p>
+  <ul class="p">
+    <li class="p">
+      <p>Select the <span style="font-weight: bold;">J1939</span> tab and the correct <span style="font-weight: bold;">CAN</span> channel</p>
+    </li>
+    <li class="p">
+      <p>The PGN messages are listed on the left. Select the PGN message from the <span style="font-weight: bold;">Standard</span> list (in this example <span style="font-style: italic;">ET1</span>). <span style="font-weight: bold;">User</span> list contains the user specific list, directory paths for the list is defined in <a href="topic200016.htm" style="font-style: italic;">Settings</a>.</p>
+    </li>
+    <li class="p">
+      <p>Drag and drop the selected PGN message to the <span style="font-weight: bold;">Receive PGN</span> table, see the following picture</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p style="margin-left: 40px;"><img alt="" border="0" src="../assets/images/MultiTool/Used/J1939_transmit_drag.jpg" style="border: none;" title=""/></p>
+  <p> </p>
+  <ul class="p">
+    <li class="p">
+      <p>Select a PGN from the <span style="font-weight: bold;">Receive PGN</span> table and make the configurations to the <span style="font-weight: bold;">J1939 Message Properties</span> on the right side. To receive a message (in this example <span style="font-style: italic;">ET1</span>) from the <span style="font-style: italic;">Engine</span> device, define <span style="font-style: italic;">Engine</span> to be the <span style="font-weight: bold;">Source</span> on the <span style="font-weight: bold;">J1939 Message Properties</span>.</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p style="margin-left: 40px;"><img alt="" border="0" src="../assets/images/MultiTool/Used/J1939.JPG" style="border: none;" title=""/></p>
+  <p> </p>
+  <p> </p>
+  <p>6. NMEA 2000 PGN messages can be configured to be transmitted or received on the NMEA 2000 tab.</p>
+  <ul class="p">
+    <li class="p">
+      <p>Select the <span style="font-weight: bold;">NMEA 2000 </span>tab and the correct <span style="font-weight: bold;">CAN</span> channel</p>
+    </li>
+    <li class="p">
+      <p>The PGN messages can be selected same way than in J1939 tab. Select the PGN message from the list and drag and drop the selected PGN message to the <span style="font-weight: bold;">Receive PGN</span> or to the <span style="font-weight: bold;">Transmit PGN</span> table.</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p> </p>
+  <p><img alt="" border="0" src="../assets/images/MultiTool/Used/NMEA2000.jpg" style="border: none;"/></p>
+  <p> </p>
+  <h2><a id="User_PGN_Sets" name="User_PGN_Sets">User PGN Sets</a></h2>
+  <p><span style="font-weight: bold;">User</span> list contains the user specified list, directory paths for the list is defined in <a href="topic200016.htm" style="font-style: italic;">Settings</a>. Both J1939 and NMEA 2000 have own user PGN sets.</p>
+  <p> </p>
+  <p>To create user PGN sets:</p>
+  <ol class="p">
+    <li class="p">
+      <p>Select messages from <span style="font-weight: bold;">Transmit PGN</span> or <span style="font-weight: bold;">Receive PGN</span> table (press CTRL to select multiple messages)</p>
+    </li>
+    <li class="p">
+      <p>Right-click and select <span style="font-weight: bold;">Add to PGN Set.</span><br/>
+        <img alt="" border="0" src="../assets/images/MultiTool/Used/AddPGNSet.jpg" style="border: none;" title=""/>
+      </p>
+    </li>
+    <li class="p">
+      <p>Select a set or give a name for a new set and click <span style="font-weight: bold;">OK</span></p>
+    </li>
+    <li class="p">
+      <p>For a new PGN Set: <span data-keyref="SoftwareName">MultiTool Creator</span> creates a new PGN file to the default directory given in <a href="topic200016.htm" style="font-style: italic;">Settings</a>.</p>
+    </li>
+  </ol>
+  <p style="margin-left: 40px;">For existing PGN Set: The messages are added to the end of the set.</p>
+  <p> </p>
+  <p>The xml file for a PGN set can also be created manually.</p>
+  <p> </p>
+  <p>It is possible drag-and-drop complete PGN sets from <span style="font-weight: bold;">User</span> list to <span style="font-weight: bold;">Transmit PGN</span> or <span style="font-weight: bold;">Receive PGN</span> table</p>
+  <p> </p>
+  <h2><a id="J1939_Message_Properties_" name="J1939_Message_Properties_">J1939 Message Properties</a></h2>
+  <p>The <span style="font-weight: bold;">J1939 Message Properties</span> are described in the following table:</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt; left: 0px; top: 1837px; 
+		 height: 803px;" width="1000">
+    <colgroup>
+      <col style="width: 20%;"/>
+      <col style="width: 80%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">J1939 Message Property</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Name</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Full name of the PGN.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Short Name</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Short name of the PGN to be used as an identifier in the PGN list. The short name has to be unique.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Cycle Time (ms)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Cycle time can be selected from range 0-65535 ms. Cycle Time 0 ms means that the message is not automatically sent.</p>
+          <p>When configuring</p>
+          <p>- a transmit PGN, the cycle time defines the time that must elapse between two consecutive messages.</p>
+          <p>- a receive PGN, the cycle time defines the monitoring interval for the messages by multiplying the given cycle time by three. For example if the given cycle time is 100 ms, the device waits for 300 ms before giving a time out flag.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">COB-ID</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Shows the whole message ID that contains the given <span style="font-weight: bold;">Priority</span>, <span style="font-weight: bold;">Data Page</span>, <span style="font-weight: bold;">PDU Format</span>, <span style="font-weight: bold;">PDU Specific/Destination address</span>.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Priority (hex)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Select a priority for the message. Number 0 is the highest priority and 7 the lowest.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Data Page</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>This doubles the number of possible parameter groups that can be represented by the identifier.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">PDU Format</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>The <span style="font-weight: bold;">PDU Format</span> (PDUF) defines whether the message is transmitted with a destination address or if the message is always transmitted as a broadcast message. The interpretation of the <span style="font-weight: bold;">PDU Specific</span> (PDUS) field depends on the <span style="font-weight: bold;">PDU Format</span> value. If the PDUF value is</p>
+          <ul class="p">
+            <li class="p">
+              <p>&lt;   F0h (0-EFh), the message is addressable (PDU1) and the PDUS field contains the Destination Address (DA)</p>
+            </li>
+            <li class="p">
+              <p>&gt;= F0h (F0-FFh), the message is broadcast (PDU2) and the PDUS field contains a Group Extension (GE)</p>
+            </li>
+          </ul>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">PDU Specific</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>The interpretation of the <span style="font-weight: bold;">PDU Specific</span> (PDUS) field depends on the <span style="font-weight: bold;">PDU Format</span> (PDUF) value. If the PDUF value is</p>
+          <ul class="p">
+            <li class="p">
+              <p>&lt;   F0h (0-EFh), the message is addressable (PDU1) and the PDUS field contains the Destination Address (DA)</p>
+            </li>
+            <li class="p">
+              <p>&gt;= F0h (F0-FFh), the message is broadcast (PDU2) and the PDUS field contains a Group Extension (GE)</p>
+            </li>
+          </ul>
+          <p> </p>
+        </td>
+      </tr>
+      
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Destination</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Select the destination of the message from the <span style="font-weight: bold;">Destination</span> drop-down list.</p>
+          <p>In case of a</p>
+          <ul class="p">
+            <li class="p">
+              <p>Transmit PGN message, the drop-down list contains J1939 devices that are added to the network and <span style="font-weight: bold;">Broadcast</span> address (255).  Entries can be added to the list by adding J1939 devices to the network. The selection in the drop-down list shows the name of the source device and also the address number in parentheses. The device names have to be valid variable names. Duplicates are not allowed.</p>
+            </li>
+            <li class="p">
+              <p>Receive PGN message, the <span style="font-weight: bold;">Destination</span> can be selected to be &quot;Manual Address&quot; or one of the Address Claimings defined in <a href="topic200207.htm">Address Claiming page</a>.  In case the &quot;Manual Address&quot;<span style="font-weight: bold;"> </span>is selected from the drop down list the destination address is defined in <span style="font-weight: bold;">Manual Address </span>field (value from 0 to 255). In case the Address Claiming is used the destination address is defined according the Address Claiming Procedure. Note that the destination address is significant only if the message is addressable (see. PDU format field).</p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Source</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Select the source of the message from the <span style="font-weight: bold;">Source</span> drop-down list.</p>
+          <p>In case of a</p>
+          <ul class="p">
+            <li class="p">
+              <p>Transmit PGN message, the <span style="font-weight: bold;">Source</span> can be selected to be &quot;Manual Address&quot; or one of the Address Claimings defined in <a href="topic200207.htm">Address Claiming page</a>.  In case the &quot;Manual Address&quot;<span style="font-weight: bold;"> </span>is selected from the drop down list the source address is defined in <span style="font-weight: bold;">Manual Address </span>field (value from 0 to 254). In case the Address Claiming is used the source address is defined according the Address Claiming Procedure.</p>
+            </li>
+            <li class="p">
+              <p>Receive PGN message, the <span style="font-weight: bold;">Source</span> is selected from the Source drop-down list. The list contains J1939 devices that are added to the network. Entries can be added to the list by adding J1939 devices to the network. The selection in the drop-down list shows the name of the source device and also the address number in parentheses. The device names have to be valid variable names. Duplicates are not allowed.</p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Manual Address</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>In case of a</p>
+          <ul class="p">
+            <li class="p">
+              <p>Transmit PGN message, select the correct source address according to the J1939 device specification. The field is disabled if the Address Claiming is used.</p>
+            </li>
+            <li class="p">
+              <p>Receive PGN message, select the correct destination address according to the J1939 device specification. The field is disabled if the Address Claiming is used.</p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Generate SPNs to fill 8 bytes</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">If selected, dummy variables are created to make the PGN 8 bytes long.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Set unused bits to 1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">If selected, all bits of the dummy variables are set to 1. </p>
+        </td>
+      </tr>
+      
+      
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko"><span>Variable Alignment</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p><span style="font-weight: bold;">Variable Alignment</span> diagram indicates if some of the variables are overlapping each other. Adjust the <span style="font-weight: bold;">Start Bit</span> or <span style="font-weight: bold;">Length</span> if needed to prevent overlapping.</p>
+          <p> </p>
+          <p><img alt="" border="0" height="317" src="../assets/images/MultiTool/Used/PGN_overlapping.jpg" style="border: none;" title="" width="600"/></p>
+          <p> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <h2><a id="NMEA_2000_Message_Properties"></a>NMEA 2000 Message Properties</h2>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt; left: 0px; top: 1837px; 
+		 height: 803px;" width="1000">
+    <colgroup>
+      <col style="width: 20%;"/>
+      <col style="width: 80%;"/>
+    </colgroup>
+    <tbody>
+      <tr class="rh-cursor-column">
+        <td style="border: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">NMEA 2000 Message Property</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Name</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Full name of the PGN.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Cycle Time (ms)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Cycle time can be selected from range 0-65535 ms. Cycle Time 0 ms means that the message is not automatically sent.</p>
+          <p>When configuring</p>
+          <p>- a transmit PGN, the cycle time defines the time that must elapse between two consecutive messages.</p>
+          <p>- a receive PGN, the cycle time defines the monitoring interval for the messages by multiplying the given cycle time by three. For example if the given cycle time is 100 ms, the device waits for 300 ms before giving a time out flag.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">COB-ID</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Shows the whole message ID that contains the given <span style="font-weight: bold;">Priority</span>, <span style="font-weight: bold;">Data Page</span>, <span style="font-weight: bold;">PDU Format</span>, <span style="font-weight: bold;">PDU Specific/Destination address</span>.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Priority (hex)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Select a priority for the message. Number 0 is the highest priority and 7 the lowest.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Data Page</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>This doubles the number of possible parameter groups that can be represented by the identifier.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Fast Packet Transfer</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>NMEA 2000 fast transfer protocol selection.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">PDU Format</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>The <span style="font-weight: bold;">PDU Format</span> (PDUF) defines whether the message is transmitted with a destination address or if the message is always transmitted as a broadcast message. The interpretation of the <span style="font-weight: bold;">PDU Specific</span> (PDUS) field depends on the <span style="font-weight: bold;">PDU Format</span> value. If the PDUF value is</p>
+          <ul class="p">
+            <li class="p">
+              <p>&lt;   F0h (0-EFh), the message is addressable (PDU1) and the PDUS field contains the Destination Address (DA)</p>
+            </li>
+            <li class="p">
+              <p>&gt;= F0h (F0-FFh), the message is broadcast (PDU2) and the PDUS field contains a Group Extension (GE)</p>
+            </li>
+          </ul>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">PDU Specific</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>The interpretation of the <span style="font-weight: bold;">PDU Specific</span> (PDUS) field depends on the <span style="font-weight: bold;">PDU Format</span> (PDUF) value. If the PDUF value is</p>
+          <ul class="p">
+            <li class="p">
+              <p>&lt;   F0h (0-EFh), the message is addressable (PDU1) and the PDUS field contains the Destination Address (DA)</p>
+            </li>
+            <li class="p">
+              <p>&gt;= F0h (F0-FFh), the message is broadcast (PDU2) and the PDUS field contains a Group Extension (GE)</p>
+            </li>
+          </ul>
+          <p> </p>
+        </td>
+      </tr>
+      
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Destination</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Select the destination of the message from the <span style="font-weight: bold;">Destination</span> drop-down list.</p>
+          <p>In case of a</p>
+          <ul class="p">
+            <li class="p">
+              <p>Transmit PGN message, the drop-down list contains J1939 devices that are added to the network and <span style="font-weight: bold;">Broadcast</span> address (255).  Entries can be added to the list by adding J1939 devices to the network. The selection in the drop-down list shows the name of the source device and also the address number in parentheses. The device names have to be valid variable names. Duplicates are not allowed.</p>
+            </li>
+            <li class="p">
+              <p>Receive PGN message, the <span style="font-weight: bold;">Destination</span> can be selected to be &quot;Manual Address&quot; or one of the Address Claimings defined in <a href="topic200207.htm">Address Claiming page</a>.  In case the &quot;Manual Address&quot;<span style="font-weight: bold;"> </span>is selected from the drop down list the destination address is defined in <span style="font-weight: bold;">Manual Address </span>field (value from 0 to 255). In case the Address Claiming is used the destination address is defined according the Address Claiming Procedure. Note that the destination address is significant only if the message is addressable (see. PDU format field).</p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Source</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Select the source of the message from the <span style="font-weight: bold;">Source</span> drop-down list.</p>
+          <p>In case of a</p>
+          <ul class="p">
+            <li class="p">
+              <p>Transmit PGN message, the <span style="font-weight: bold;">Source</span> can be selected to be &quot;Manual Address&quot; or one of the Address Claimings defined in <a href="topic200207.htm">Address Claiming page</a>.  In case the &quot;Manual Address&quot;<span style="font-weight: bold;"> </span>is selected from the drop down list the source address is defined in <span style="font-weight: bold;">Manual Address </span>field (value from 0 to 254). In case the Address Claiming is used the source address is defined according the Address Claiming Procedure.</p>
+            </li>
+            <li class="p">
+              <p>Receive PGN message, the <span style="font-weight: bold;">Source</span> is selected from the Source drop-down list. The list contains J1939 devices that are added to the network. Entries can be added to the list by adding J1939 devices to the network. The selection in the drop-down list shows the name of the source device and also the address number in parentheses. The device names have to be valid variable names. Duplicates are not allowed.</p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Manual Address</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>In case of a</p>
+          <ul class="p">
+            <li class="p">
+              <p>Transmit PGN message, select the correct source address according to the J1939 device specification. The field is disabled if the Address Claiming is used.</p>
+            </li>
+            <li class="p">
+              <p>Receive PGN message, select the correct destination address according to the J1939 device specification. The field is disabled if the Address Claiming is used.</p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      
+      
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko"><span>Variable Alignment</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p><span style="font-weight: bold;">Variable Alignment</span> diagram indicates if some of the variables are overlapping each other. Adjust the <span style="font-weight: bold;">Start Bit</span> or <span style="font-weight: bold;">Length</span> if needed to prevent overlapping.</p>
+          <p> </p>
+          <p><img alt="" border="0" height="317" src="../assets/images/MultiTool/Used/PGN_overlapping.jpg" style="border: none;" title="" width="600"/></p>
+          <p> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <h2>Adding PGN manually</h2>
+  <p>Transmit and Receive PGNs can also be added manually:</p>
+  <ol class="p">
+    <li class="p" style="list-style: decimal;">
+      <p>Select<img alt="" border="0" src="../assets/images/MultiTool/Used/icon_add_tx.png" style="border: none;" title=""/> icon from <span style="font-weight: bold;">Transmit PGN</span> section or <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_add_rx.png" style="border: none;" title=""/> icon from <span style="font-weight: bold;">Receive PGN</span> section</p>
+    </li>
+    <li class="p">
+      <p>Select the added PGN and define the <span style="font-weight: bold;">Message Properties</span></p>
+    </li>
+    <li class="p">
+      <p>Add PGN variables by selecting <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_AddVariable.JPG" style="border: none;" title=""/>  icon.</p>
+    </li>
+  </ol>
+  <p> </p>
+  <h2><a id="PGN_variable_configuration" name="PGN_variable_configuration">PGN variable configuration</a></h2>
+  <p style="background-color: Transparent;"><span style="background-color: Transparent;">To add a new variable into a PGN, select the message and select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_AddVariable.JPG" style="border: none;" title=""/> icon.</span> The configurable properties for PGN variables are described in the following table:</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt; left: 0px; top: 2704px; 
+		 height: 106px;" width="1000">
+    <colgroup>
+      <col style="width: 20%;"/>
+      <col style="width: 80%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonOtsikko">PGN variable properties</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto" style="font-weight: bold;">Name</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">Variable name used in <span data-keyref="CODESYS">CODESYS</span> with the prefix J1939_</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto" style="font-weight: bold;">Start Bit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">The variable&#39;s defined start bit.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto" style="font-weight: bold;">Length (bits)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">Variable&#39;s length in bits.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto" style="font-weight: bold;">Data Type</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">Variable type. The variable type selection depends on the given bit length.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <h2>Removing PGN</h2>
+  <p style="background-color: Transparent;">To remove a PGN message, select the PGN and press <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_delete.png" style="border: none;" title=""/> icon or click <span style="font-style: italic;">DELETE</span>.</p>
+  <p style="background-color: Transparent;"> </p>
+  <p style="background-color: Transparent;"> </p>
+  <p style="background-color: Transparent;"> </p>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200010.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+  <script type="text/javascript" language="JavaScript1.2"></script>
+
+<script type="text/javascript" class="rh-hide">//<![CDATA[
+
+if( typeof( TextPopupInit ) != 'function' ) TextPopupInit = new Function();
+TextPopupInit('a1', 'POPUP569919320');
+
+//]]></script></body></html>

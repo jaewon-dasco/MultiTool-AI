@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Configuring CANopen Slave Devices / Generic Devices</title>
+  <link rel="stylesheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta name="rh-index-keywords" content="Configuring CANopen Slave Devices"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Configuring CANopen slave Devices / Generic Devices</h1>
+  <p>This topic describes CANopen slave configuration of generic devices in <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span></span>. CANopen slaves, such as sensors and actuators, are devices that have configurable input and output interface as well as communication parameters. A CANopen slave device defines the slave&#39;s input and output behavior with SDO messages. Usually, the input data from the CANopen slave is transferred via transmit PDO messages (TPDO) and depending on the device, it’s also possible to define RPDOs.</p>
+  <p> </p>
+  <p>To configure the slave device, an EDS or a DCF file is needed. These file types are defined by CANopen standard (CiA DS306 and CiA DS311). The EDS (Electronic Data Sheet) file describes the communication behavior and object dictionary of a non-configured CANopen device. The DCF (Device Configuration File) file is an extended EDS file including more specific details for a specific network, such as node-ID, baud rate and other parameter values.</p>
+  <p> </p>
+  <p>When using CANopen slaves with <span data-keyref="ManufacturerName">Epec</span> devices, it is possible to define the PDOs of slave devices in <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span></span>. When the system starts slave a slave device is rebooted, the master device is able to write the PDO mappings and communication parameters to the slave device. It is also possible to define the OD index of the slave device to be configured as well.</p>
+  <p data-condition="Others:EpecSpecific"> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" data-condition="Others:EpecSpecific" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 57px;">
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt;" width="66">
+          <p class="InlineBodyText26" style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt;" width="501">
+          <p class="Note" data-condition="Others:EpecSpecific">For further information about configuring Epec CANopen slave devices, see<span style="font-style: italic;"> <a data-condition="Others:EpecSpecific" href="topic200012.htm">Configuring Epec CANoslavelave Units</a></span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <h2>Required Steps</h2>
+  <p>To configure a slave device, add a <span style="font-weight: bold;">slave</span> device and a programmable <span data-keyref="ManufacturerName">Epec</span> device to the <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>project. Then, add both of the devices to the same network (<a href="6_7_Edit_Networks.htm" style="font-style: italic;">Adding, Editing and Deleting Network</a>).</p>
+  <p> </p>
+  <h3>Slave Device General Settings</h3>
+  <p>To select the <span data-keyref="ManufacturerName">Epec</span> device that configures the slave device, double-click the slave device and select the <span data-keyref="ManufacturerName">Epec</span> device listed in the <span style="font-weight: bold;">Configured by</span> drop-down menu. The network should contain only one unit as an NMT master and by default, that unit has been selected to configure the slave unit. <span style="font-weight: bold;">Configured by</span><span> drop down menu only contains units where NMT protocol has been set to the NMT master.</span></p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" style="border: Solid 1px #000000; margin-left: 40px;" width="82.111%">
+    <colgroup>
+      <col style="width: 14.249%;"/>
+      <col style="width: 85.751%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Setting</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">No configuration</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">No configuration is written to the slave from the <span style="font-weight: bold;">Configured by</span><span> unit, even if configuration is made to the slave unit.</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Configuration timeout</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">The timeout for configuring one object dictionary index.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Save configuration</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Save configurations to slave unit&#39;s nonvolatile memory.</p>
+          <p class="TaulukonSisalto">This expedites the system&#39;s boot up because the slave needs to be configured only when the desired configuration is changed or the slave unit is changed to another one.</p>
+          <p class="TaulukonSisalto">Selecting save configuration enables <strong>Verify method</strong> selection*</p>
+          <p class="TaulukonSisalto">If verify method selections is not supported, the CRC verification is in use. </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Save index</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">slave&#39;s OD Index used to save configuration.*</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Save timeout</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Timeout for the response from slave unit to save SDO command.*</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Verify method</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Configuration&#39;s verification method*. Default CRC.</p>
+          <ul class="Disc">
+            <li class="TaulukonSisalto">
+              <p class="TaulukonSisalto"><span>CRC: </span>Note that this functionality can be used only if the slave unit supports CRC calculation. This means that after the received save command, it calculates CRC from its own configuration and sets the CRC value available to the OD</p>
+            </li>
+            <li class="TaulukonSisalto">
+              <p class="TaulukonSisalto">Readback: Configuration is verified by using SDO read to check that the OD index values are the same as required by configuration*</p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">CRC index</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">slave&#39;s OD index which contains its CRC.*</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">CRC delay</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Delay after save command before the CRC validity or CRC value is read from slave.*</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Use CRC validity index</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">slave unit supports CRC valid index.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">CRC valid index</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">slave unit OD index which contains its CRC validity value.*</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">CRC valid value</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Value in CRC valid index when CRC is valid.*</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Enable SDO Query</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Enables the sending of consecutive SDO queries to node, to determine its presence.*</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">SDO query interval</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Interval time (ms) for consecutive SDO queries.*</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Delay before configuration</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Delay (ms) that configuration waits after reset before operation.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Configuration start timeout</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Delay time (s) of BusNotOk error. Possible SDO polling is also stopped after delay.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Hearbeat producer time</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">This can be adjusted and is automatically edited to the slave object dictionary and added to the slave configuration list.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-left: 40px;">*visible if the selected master unit supports these features.</p>
+  <p style="margin-left: 40px;"> </p>
+  <p style="margin-left: 40px;"><img src="../assets/images/MultiTool_Creator_responder_example.png"/></p>
+  <h3>Object Dictionary</h3>
+  <p>The <span style="font-weight: bold;">Object Dictionary</span> tab is divided into two views. The left side is the slave device&#39;s OD and the right side is the configuration list. The configuration list contains all the indexes that the master unit is writing to the slave. Indexes can be added to the configuration by either drag &amp; drop from OD or selecting indexes from OD then selecting <span style="font-weight: bold;"><img alt="" border="0" height="40" src="../assets/images/MultiTool/Epec/Addod.JPG" style="border: none;" title="" width="45"/></span> between the OD and configuration list.</p>
+  <p> </p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Creator/SlaveOD.png"/></p>
+  <h3>Configuration List</h3>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 55px;">
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66">
+          <p class="InlineBodyText26" style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501">
+          <p class="Note">It is recommended to configure <a href="#PDO_Messages" style="font-style: italic;">PDO_Messages</a> using the PDO tab.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p>The configuration list contains user added indexes in black color and automatically added indexes (etc. PDO configuration) in gray color. Automatically added indexes are hidden by default.</p>
+  <p> </p>
+  <p>Select <span style="font-weight: bold;">Show All </span><span>to automatically </span>bring added indexes to visible. The order of the configuration indexes can be changed by drag and drop.</p>
+  <p> </p>
+  <p><span style="font-weight: bold;">Configure all</span> adds all indexes that have write access to the configuration list if not already there.</p>
+  <p>By selecting <span style="font-weight: bold;">Configure all </span>again, all indexes from the configuration list are removed that have not been edited.</p>
+  <p> </p>
+  <p><img alt="" border="0" height="170" src="../assets/images/MultiTool/Epec/ConfigurationList.JPG" style="border: none;" title="" width="625"/></p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" style="border: Solid 1px #000000; margin-left: 40px;" width="93.811%">
+    <colgroup>
+      <col style="width: 2.132%;"/>
+      <col style="width: 7.086%;"/>
+      <col style="width: 90.782%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Icon</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonOtsikko">Short Description</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonSisalto" style="text-align: center;"><img alt="" border="0" height="42" src="../assets/images/MultiTool/Epec/Addod.JPG" style="border: none;" title="" width="46"/></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Add Index</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto"> Adds selected index(es) from OD to the Configuration list</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonSisalto" style="text-align: center;"><img alt="" border="0" height="48" src="../assets/images/MultiTool/Epec/icon_remove_index.JPG" style="border: none;" title="" width="45"/></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Remove Index</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Removes selected index(es) from the Configuration list</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonSisalto" style="text-align: center;"><img alt="" border="0" height="31" src="../assets/images/MultiTool/Epec/icon_show_hidden_configuration.JPG" style="border: none;" title="" width="50"/></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Show Hidden</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Shows all configuration lines including all automatically added indexes, etc. PDO configurations</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonSisalto" style="text-align: center;"><img alt="" border="0" height="40" src="../assets/images/MultiTool/Epec/icon_configure_all.JPG" style="border: none;" title="" width="44"/></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Configure All</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Toggle button adds all indexes from OD that has write access to the configuration list, if it is not already there.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" style="border: Solid 1px #000000; margin-left: 40px;" width="82.111%">
+    <colgroup>
+      <col style="width: 14.249%;"/>
+      <col style="width: 85.751%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Property</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Line</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Order number of the configuration index</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Index/Subindex</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Index and subindex number of the configuration index</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Description of the index</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Minimum</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Minimum value of the index from the OD</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Value</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Value that is written to the slave unit</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Maximum</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Maximum value of the index from the OD</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">If error</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">If error is enabled only if the master supports it.</p>
+          <p class="TaulukonSisalto">Continue: If error happens continue to the next line</p>
+          <p class="TaulukonSisalto">Jump: If error happens jump to another line if configuration</p>
+          <p class="TaulukonSisalto">Abort: If error happens configuration is aborted</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Next line</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Next line points out the line number where configuration will continue in case of error.<span style="display: none;"> </span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Verify</p>
+        </td>
+        <td style="border-bottom:Solid 1px #000000;border-right:Solid 1px #000000;vertical-align:top;">
+          <p class="TaulukonSisalto">If verify method readback is selected, the OD index verification can be selected. Default TRUE (except PDO/SRDO disabling and PDO/SRDO mappings disabling steps in automatically generated configurations).</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <h3><a id="PDO_Messages"></a>PDO Messages</h3>
+  <p>PDO settings can be defined in the <span style="font-weight: bold;">PDO</span> tab. This view shows all the PDOs that are defined in EDS and PDO can not be removed. Also, the <span style="font-weight: bold;">Event Time</span>, <span style="font-weight: bold;">Inhibit Time</span> and <span style="font-weight: bold;">Transmission Type</span> are configurable in the PDO tab. The master device writes the PDO mappings and configurations to the slave device upon startup if Write configuration is set ON for the PDO.</p>
+  <p> </p>
+  <p>The PDOs sent by the slave device can be received by either the master or any other device on the bus by selecting the receiving device on <span style="font-weight: bold;">Received By</span> list. The master unit is automatically set to receive all enabled PDOs from the slave. PDOs received by the slave device are automatically added to the master device&#39;s transmit PDOs, but they can be changed there. For more information, see section <a href="7_9_4_TPDO.htm" style="font-style: italic;">Transmitting and Receiving PDOs</a>.</p>
+  <p> </p>
+  <p>Variables on the left side are color coded according to where the variable can be mapped. Read only indexes are colored as green and can only be mapped to TPDO. Write only indexes are colored as light blue and can mapped only to RPDO. Read and write indexes color is purple and can be mapped both TPDO and RPDO.</p>
+  <p> </p>
+  <p><img alt="" border="0" height="581" src="../assets/images/MultiTool/Used/PDOmessageSlave.JPG" style="border: none; cursor: nesw-resize;" title="" width="1191"/></p>
+  <p>In slave devices, the RPDO settings are also Transmitter settings that affect transmitter that has been selected to send the message.</p>
+  <h2> </h2>
+  <h2>SRDO messages</h2>
+  <p>SRDO settings can be defined in the <span style="font-weight: bold;">SRDO</span> tab. This view shows all the SRDOs that are defined in EDS and SRDO can not be removed. Also, the <strong>Information Direction, Refresh Time, Safety Cycle Time, SR Validation time</strong> are configurable in the SRDO tab. The master device writes the SRDO mappings and configurations to the slave device upon startup if Write configuration is set ON for the SRDO.</p>
+  <p> </p>
+  <p>The SRDOs sent by the slave device can be received by either the master or any other device on the bus by selecting the receiving device on <span style="font-weight: bold;">Received By</span> list. The master unit is automatically set to receive all enabled SRDOs from the slave. SRDOs received by the slave device are automatically added to the master device&#39;s transmit SRDOs, but they can be changed there. For more information, see section <em><a href="topic200202.htm">Transmitting and Receiving SRDOs</a></em> .</p>
+  <p> </p>
+  <p>Variables on the left side are color coded according to where the variable can be mapped. Read only indexes are colored as green and can only be mapped to TxSRDO. Write only indexes are colored as light blue and can mapped only to RxSRDO. Read and write indexes color is purple and can be mapped both TxSRDO and RxSRDO.&#39;</p>
+  <p> </p>
+  <p>Variables can be dragged and dropped to SRDO messages. Note that a plain variable and an inverted variable must be added to each SRDO message. </p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/SRDO_GenericVariables.png"/></p>
+  <h2>CODESYS Code Template</h2>
+  <p style="background-color: Transparent;">The slave configurations can be found from global variable folder <span style="font-style: italic;">slave_Configurations</span> in Codesys 2.3 and from <span style="font-style: italic;">xx_ slave_Configurations</span> variable list in Codesys 3.5.  The slave configurations include a configuration list for each slave device. The slave device is automatically configured by the application once the slave device is started up.</p>
+  <p> </p>
+  <p> </p>
+  <h2>Slaves with Extension Modules</h2>
+  <p>If the added slave device is a modular slave that includes extensions, a popup window opens, where the user has to select which extensions are in use in their unit.</p>
+  <p> </p>
+  <p><img alt="" border="0" src="../assets/images/MultiTool/Epec/ImportEDSModularSlave.PNG" style="border: none;" title=""/></p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200017.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

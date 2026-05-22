@@ -1,0 +1,1951 @@
+{
+  "total": 175,
+  "by_type": {
+    "Window": 1,
+    "Image": 17,
+    "Button": 40,
+    "TitleBar": 1,
+    "Menu": 1,
+    "MenuItem": 3,
+    "Text": 38,
+    "ProgressBar": 1,
+    "Custom": 4,
+    "Tab": 6,
+    "TabItem": 13,
+    "ToolBar": 1,
+    "Pane": 1,
+    "CheckBox": 8,
+    "Slider": 6,
+    "Thumb": 14,
+    "Spinner": 9,
+    "Edit": 10,
+    "ComboBox": 1
+  },
+  "tree": [
+    {
+      "d": 0,
+      "type": "Window",
+      "name": "DasDemoProject - MultiTool Creator 8.4",
+      "rect": [
+        -8,
+        -8,
+        2568,
+        1400
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        2,
+        4,
+        18,
+        20
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        26,
+        1,
+        50,
+        25
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        27,
+        2,
+        49,
+        24
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        56,
+        1,
+        80,
+        25
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        57,
+        2,
+        79,
+        24
+      ]
+    },
+    {
+      "d": 1,
+      "type": "TitleBar",
+      "name": "WindowTitle",
+      "rect": [
+        1222,
+        5,
+        1433,
+        21
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Button",
+      "name": "minimizeButton",
+      "rect": [
+        2495,
+        0,
+        2517,
+        22
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Button",
+      "name": "maximizeButton",
+      "rect": [
+        2517,
+        0,
+        2539,
+        22
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Button",
+      "name": "closeButton",
+      "rect": [
+        2539,
+        0,
+        2561,
+        22
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Menu",
+      "name": "Rad Menu",
+      "rect": [
+        0,
+        26,
+        2560,
+        50
+      ]
+    },
+    {
+      "d": 2,
+      "type": "MenuItem",
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "rect": [
+        0,
+        26,
+        41,
+        50
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Text",
+      "name": "FILE",
+      "rect": [
+        10,
+        30,
+        31,
+        46
+      ]
+    },
+    {
+      "d": 2,
+      "type": "MenuItem",
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "rect": [
+        41,
+        26,
+        108,
+        50
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Text",
+      "name": "PROJECT",
+      "rect": [
+        51,
+        30,
+        98,
+        46
+      ]
+    },
+    {
+      "d": 2,
+      "type": "MenuItem",
+      "name": "MultiTool.ViewModels.Menu.MenuItem",
+      "rect": [
+        108,
+        26,
+        155,
+        50
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Text",
+      "name": "HELP",
+      "rect": [
+        118,
+        30,
+        145,
+        46
+      ]
+    },
+    {
+      "d": 1,
+      "type": "ProgressBar",
+      "name": "System.Windows.Controls.StackPanel",
+      "rect": [
+        0,
+        50,
+        2560,
+        1367
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Custom",
+      "name": "radDocking",
+      "rect": [
+        0,
+        55,
+        2560,
+        1367
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Tab",
+      "name": "Auto Hide Area (Left)",
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Tab",
+      "name": "Auto Hide Area (Top)",
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Tab",
+      "name": "Auto Hide Area (Right)",
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Tab",
+      "name": "Auto Hide Area (Bottom)",
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Custom",
+      "name": "Rad Split Container",
+      "rect": [
+        1,
+        56,
+        2559,
+        1366
+      ]
+    },
+    {
+      "d": 4,
+      "type": "Tab",
+      "name": "Pane Group Base",
+      "rect": [
+        1,
+        56,
+        2559,
+        1366
+      ]
+    },
+    {
+      "d": 5,
+      "type": "TabItem",
+      "name": "Network Editor",
+      "rect": [
+        1,
+        56,
+        116,
+        76
+      ]
+    },
+    {
+      "d": 6,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        98,
+        58,
+        114,
+        74
+      ]
+    },
+    {
+      "d": 6,
+      "type": "Text",
+      "name": "Network Editor",
+      "rect": [
+        6,
+        58,
+        89,
+        74
+      ]
+    },
+    {
+      "d": 5,
+      "type": "TabItem",
+      "name": "CU_3606_21_1",
+      "rect": [
+        116,
+        56,
+        222,
+        76
+      ]
+    },
+    {
+      "d": 6,
+      "type": "Button",
+      "name": "Hide",
+      "rect": [
+        204,
+        58,
+        220,
+        74
+      ]
+    },
+    {
+      "d": 6,
+      "type": "Text",
+      "name": "CU_3606_21_1",
+      "rect": [
+        121,
+        58,
+        195,
+        74
+      ]
+    },
+    {
+      "d": 6,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        2,
+        78,
+        2558,
+        1365
+      ]
+    },
+    {
+      "d": 7,
+      "type": "Tab",
+      "name": "",
+      "rect": [
+        2,
+        78,
+        2558,
+        1365
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        182,
+        177,
+        222
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        186,
+        48,
+        218
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "CAN",
+      "rect": [
+        58,
+        194,
+        84,
+        211
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        222,
+        177,
+        262
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        226,
+        48,
+        258
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "J1939",
+      "rect": [
+        58,
+        234,
+        91,
+        251
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        262,
+        177,
+        302
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        266,
+        48,
+        298
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "NMEA 2000",
+      "rect": [
+        58,
+        274,
+        126,
+        291
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        302,
+        177,
+        342
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        18,
+        306,
+        46,
+        338
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "Address Claiming",
+      "rect": [
+        58,
+        314,
+        158,
+        331
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        342,
+        177,
+        382
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        346,
+        48,
+        378
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "Diagnostics",
+      "rect": [
+        58,
+        354,
+        124,
+        371
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        174,
+        78,
+        2557,
+        1364
+      ]
+    },
+    {
+      "d": 10,
+      "type": "ToolBar",
+      "name": "",
+      "rect": [
+        175,
+        79,
+        2555,
+        119
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Button",
+      "name": "PART_DropdownButton",
+      "rect": [
+        2545,
+        79,
+        2555,
+        119
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        188,
+        81,
+        331,
+        117
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        190,
+        83,
+        222,
+        115
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "Reset to Defaults",
+      "rect": [
+        227,
+        91,
+        324,
+        108
+      ]
+    },
+    {
+      "d": 10,
+      "type": "Pane",
+      "name": "",
+      "rect": [
+        174,
+        120,
+        2556,
+        1359
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Text",
+      "name": "G_SystemOK Conditions",
+      "rect": [
+        190,
+        126,
+        2540,
+        156
+      ]
+    },
+    {
+      "d": 11,
+      "type": "CheckBox",
+      "name": "Temperature alarm limits",
+      "rect": [
+        216,
+        156,
+        487,
+        206
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "Temperature alarm limits",
+      "rect": [
+        237,
+        173,
+        368,
+        189
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Slider",
+      "name": "",
+      "rect": [
+        494,
+        161,
+        896,
+        179
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        514,
+        161,
+        536,
+        179
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        536,
+        167,
+        542,
+        174
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        542,
+        169,
+        802,
+        172
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        802,
+        167,
+        808,
+        174
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        808,
+        161,
+        876,
+        179
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Spinner",
+      "name": "",
+      "rect": [
+        499,
+        179,
+        695,
+        201
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Edit",
+      "name": "-30",
+      "rect": [
+        499,
+        179,
+        681,
+        201
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        681,
+        179,
+        695,
+        190
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        681,
+        190,
+        695,
+        201
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Spinner",
+      "name": "",
+      "rect": [
+        700,
+        179,
+        896,
+        201
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Edit",
+      "name": "85",
+      "rect": [
+        700,
+        179,
+        882,
+        201
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        882,
+        179,
+        896,
+        190
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        882,
+        190,
+        896,
+        201
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Text",
+      "name": "°C",
+      "rect": [
+        910,
+        173,
+        923,
+        189
+      ]
+    },
+    {
+      "d": 11,
+      "type": "CheckBox",
+      "name": "Supply voltage alarm limits",
+      "rect": [
+        216,
+        207,
+        487,
+        257
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "Supply voltage alarm limits",
+      "rect": [
+        237,
+        224,
+        380,
+        240
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Slider",
+      "name": "",
+      "rect": [
+        494,
+        212,
+        896,
+        230
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        514,
+        212,
+        609,
+        230
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        609,
+        218,
+        615,
+        225
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        615,
+        220,
+        870,
+        223
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        870,
+        218,
+        876,
+        225
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Spinner",
+      "name": "",
+      "rect": [
+        499,
+        230,
+        695,
+        252
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Edit",
+      "name": "9",
+      "rect": [
+        499,
+        230,
+        681,
+        252
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        681,
+        230,
+        695,
+        241
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        681,
+        241,
+        695,
+        252
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Spinner",
+      "name": "",
+      "rect": [
+        700,
+        230,
+        896,
+        252
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Edit",
+      "name": "33",
+      "rect": [
+        700,
+        230,
+        882,
+        252
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        882,
+        230,
+        896,
+        241
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        882,
+        241,
+        896,
+        252
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Text",
+      "name": "V",
+      "rect": [
+        910,
+        224,
+        918,
+        240
+      ]
+    },
+    {
+      "d": 11,
+      "type": "CheckBox",
+      "name": "REF 5 V alarm limits",
+      "rect": [
+        216,
+        258,
+        487,
+        308
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "REF 5 V alarm limits",
+      "rect": [
+        237,
+        275,
+        341,
+        291
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Slider",
+      "name": "",
+      "rect": [
+        494,
+        263,
+        896,
+        281
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        514,
+        263,
+        672,
+        281
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        672,
+        269,
+        678,
+        276
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        678,
+        271,
+        712,
+        274
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        712,
+        269,
+        718,
+        276
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        718,
+        263,
+        876,
+        281
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Spinner",
+      "name": "",
+      "rect": [
+        499,
+        281,
+        695,
+        303
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Edit",
+      "name": "4.5",
+      "rect": [
+        499,
+        281,
+        681,
+        303
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        681,
+        281,
+        695,
+        292
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        681,
+        292,
+        695,
+        303
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Spinner",
+      "name": "",
+      "rect": [
+        700,
+        281,
+        896,
+        303
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Edit",
+      "name": "5.5",
+      "rect": [
+        700,
+        281,
+        882,
+        303
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        882,
+        281,
+        896,
+        292
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        882,
+        292,
+        896,
+        303
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Text",
+      "name": "V",
+      "rect": [
+        910,
+        275,
+        918,
+        291
+      ]
+    },
+    {
+      "d": 11,
+      "type": "CheckBox",
+      "name": "Cycle time alarm limit",
+      "rect": [
+        216,
+        309,
+        487,
+        354
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "Cycle time alarm limit",
+      "rect": [
+        237,
+        323,
+        351,
+        339
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Slider",
+      "name": "",
+      "rect": [
+        494,
+        316,
+        896,
+        324
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        494,
+        317,
+        613,
+        324
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        613,
+        317,
+        619,
+        324
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        619,
+        317,
+        896,
+        324
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Spinner",
+      "name": "",
+      "rect": [
+        700,
+        326,
+        896,
+        349
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Edit",
+      "name": "30",
+      "rect": [
+        700,
+        326,
+        882,
+        348
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        882,
+        326,
+        896,
+        338
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        882,
+        338,
+        896,
+        349
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Text",
+      "name": "ms",
+      "rect": [
+        910,
+        323,
+        926,
+        339
+      ]
+    },
+    {
+      "d": 11,
+      "type": "CheckBox",
+      "name": "5 V reference overload",
+      "rect": [
+        216,
+        355,
+        487,
+        400
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "5 V reference overload",
+      "rect": [
+        237,
+        369,
+        357,
+        385
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Text",
+      "name": "",
+      "rect": [
+        910,
+        369,
+        911,
+        385
+      ]
+    },
+    {
+      "d": 11,
+      "type": "CheckBox",
+      "name": "Error in I/O init",
+      "rect": [
+        216,
+        401,
+        487,
+        446
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "Error in I/O init",
+      "rect": [
+        237,
+        415,
+        316,
+        431
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Text",
+      "name": "",
+      "rect": [
+        910,
+        415,
+        911,
+        431
+      ]
+    },
+    {
+      "d": 11,
+      "type": "CheckBox",
+      "name": "REF internal 2.5 V alarm limits",
+      "rect": [
+        216,
+        447,
+        487,
+        497
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "REF internal 2.5 V alarm limits",
+      "rect": [
+        237,
+        464,
+        393,
+        480
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Slider",
+      "name": "",
+      "rect": [
+        494,
+        452,
+        896,
+        470
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        514,
+        452,
+        543,
+        470
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        543,
+        458,
+        549,
+        465
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        549,
+        460,
+        564,
+        463
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        564,
+        458,
+        570,
+        465
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        570,
+        452,
+        876,
+        470
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Spinner",
+      "name": "",
+      "rect": [
+        499,
+        470,
+        695,
+        492
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Edit",
+      "name": "2.0",
+      "rect": [
+        499,
+        470,
+        681,
+        492
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        681,
+        470,
+        695,
+        481
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        681,
+        481,
+        695,
+        492
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Spinner",
+      "name": "",
+      "rect": [
+        700,
+        470,
+        896,
+        492
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Edit",
+      "name": "3.0",
+      "rect": [
+        700,
+        470,
+        882,
+        492
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        882,
+        470,
+        896,
+        481
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        882,
+        481,
+        896,
+        492
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Text",
+      "name": "V",
+      "rect": [
+        910,
+        464,
+        918,
+        480
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Text",
+      "name": "Affects",
+      "rect": [
+        190,
+        498,
+        2540,
+        528
+      ]
+    },
+    {
+      "d": 11,
+      "type": "CheckBox",
+      "name": "",
+      "rect": [
+        215,
+        531,
+        242,
+        547
+      ]
+    },
+    {
+      "d": 11,
+      "type": "Text",
+      "name": "Control status LED automatically according to system status",
+      "rect": [
+        242,
+        531,
+        2550,
+        547
+      ]
+    },
+    {
+      "d": 10,
+      "type": "ComboBox",
+      "name": "",
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        382,
+        177,
+        422
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        386,
+        48,
+        418
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "Object Dictionary",
+      "rect": [
+        58,
+        394,
+        158,
+        411
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        422,
+        177,
+        462
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        426,
+        48,
+        458
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "PDO",
+      "rect": [
+        58,
+        434,
+        84,
+        451
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        462,
+        177,
+        502
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        466,
+        48,
+        498
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "I/O",
+      "rect": [
+        58,
+        474,
+        76,
+        491
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        502,
+        177,
+        542
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        506,
+        48,
+        538
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "Events",
+      "rect": [
+        58,
+        514,
+        95,
+        531
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        542,
+        177,
+        582
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        546,
+        48,
+        578
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "ISOBUS",
+      "rect": [
+        58,
+        554,
+        101,
+        571
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        582,
+        177,
+        622
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        586,
+        48,
+        618
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "Library Manager",
+      "rect": [
+        58,
+        594,
+        152,
+        611
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        3,
+        1368,
+        29,
+        1393
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        8,
+        1372,
+        24,
+        1388
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Text",
+      "name": "",
+      "rect": [
+        43,
+        1373,
+        2251,
+        1388
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Button",
+      "name": "-",
+      "rect": [
+        2264,
+        1368,
+        2272,
+        1390
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Text",
+      "name": "-",
+      "rect": [
+        2264,
+        1363,
+        2272,
+        1390
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Slider",
+      "name": "",
+      "rect": [
+        2275,
+        1375,
+        2494,
+        1383
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        2275,
+        1375,
+        2377,
+        1383
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        2377,
+        1375,
+        2381,
+        1383
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        2381,
+        1375,
+        2494,
+        1383
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Button",
+      "name": "+",
+      "rect": [
+        2497,
+        1368,
+        2511,
+        1390
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Text",
+      "name": "+",
+      "rect": [
+        2497,
+        1363,
+        2511,
+        1390
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Edit",
+      "name": "100",
+      "rect": [
+        2517,
+        1368,
+        2548,
+        1390
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Text",
+      "name": "%",
+      "rect": [
+        2548,
+        1371,
+        2558,
+        1387
+      ]
+    }
+  ]
+}

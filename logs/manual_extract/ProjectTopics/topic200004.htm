@@ -1,0 +1,2054 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+    <meta name="generator" content="Adobe RoboHelp 2022"/>
+    <title>Create CODESYS project</title>
+    <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+  <body>
+    <h1>Create <span data-keyref="CODESYS">CODESYS</span> project</h1>
+    <p> </p>
+    
+    <p class="InlineBodyText4"> </p>
+    <p>To create a <span data-keyref="CODESYS">CODESYS</span> project:</p>
+    <ol start="1" style="list-style: decimal;">
+      <li class="p-InlineBodyText22">
+        <p>Right-click the unit and select <span style="font-weight: bold;">Create <span data-keyref="CODESYS">CODESYS</span> project</span> or click <span style="font-weight: bold;"><img src="../assets/images/MultiTool/Used/CreateCODESYS.jpg" alt="" style="border: none;" border="0"/></span> <span style="background-color: #ffff00;">on the ribbon</span></p>
+      </li>
+      <li class="p-InlineBodyText19">
+        <p>MultiTool opens the CODESYS template project, imports the configurations to it and saves the project with a control unit name. Note that CODESYS tries to open the previously saved project and for this reason may show error dialogs. Error dialogs need to be acknowledged before importing can be done.</p>
+      </li>
+      <li class="p-InlineBodyText19">
+        <p>Add Main POU to the project in <span data-keyref="CODESYS">CODESYS</span>.</p>
+      </li>
+      <li class="p-InlineBodyText19">
+        <p>Build and login.</p>
+      </li>
+    </ol>
+    <p> </p>
+    <p>For more information on creating a <span data-keyref="CODESYS">CODESYS</span> project, refer to topics <a href="4_Quick_Start_Guide.htm#4_Quick_Start_Guide">Quick Start Guide</a> and <a href="topic200038.htm">Updating MultiTool Configurations to CODESYS Project</a>.</p>
+    <p> </p>
+    <p> </p>
+    <table class="TableGrid" style="margin-left: 5.4pt; left: 0px; top: 135px;" cellspacing="0" width="583" cellpadding="1">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="77">
+            <p class="InlineBodyText"><img src="../assets/images/image006.jpg" alt="" width="42" height="42" border="0"/></p>
+          </td>
+          <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="698">
+            <p class="InlineBodyText3" style="text-align: left;">Read-only files, such as libraries from version control, are not overwritten in System Export.</p>
+            <p class="InlineBodyText3" style="text-align: left;"> </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p style="background-color: #ffff00;"><span style="background-color: #ffff00;">Vanhat kappaleet:</span></p>
+    <h1>Code Template Structure</h1>
+    <p><span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>automatically creates a code template for CODESYS project when <span style="font-weight: bold;">Create CODESYS Project</span> is selected. The code template contains all variable definitions and initialization needed for programming the device.</p>
+    <p>This topic briefly introduces the code template parts:</p>
+    <ul style="list-style: disc;">
+      <li>
+        <p><a href="#PLC_PRG" style="font-style: normal;">PLC_PRG</a>,</p>
+      </li>
+      <li>
+        <p><a href="#_Implicit__Globals">Global variables</a> and</p>
+      </li>
+      <li>
+        <p><a href="#Data__Unit__Types">Data types</a></p>
+      </li>
+    </ul>
+    <p> </p>
+    <h2><a name="PLC_PRG" id="PLC_PRG">PLC_PRG</a></h2>
+    <p>The <span style="font-style: italic;">PLC_PRG</span> is the main POU of a CODESYS project. <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>automatically generates <span style="font-style: italic;">PLC_PRG</span> for the CODESYS project and it will always be overwritten when changes done in <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>are imported to the CODESYS project. For this reason, the user application code should never be added to <span style="font-style: italic;">PLC_PRG</span>.</p>
+    <p> </p>
+    <p>For the user application code, create a new POU called <span style="font-style: italic;">Main</span>. This will be the entry point of the user application. The code template automatically calls the <span style="font-style: italic;">Main</span> program in the <span style="font-style: italic;">PLC_PRG&#39;s</span> action Application. It is not overwritten by <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span></span>. If the <span style="font-style: italic;">Main</span> POU is missing from the application, the CODESYS build command gives an error. The code template in CODESYS 3.5 projects includes a Main POU that is made with ST language. To make the Main POU with another programming language, delete the Main POU and make a new one. </p>
+    <p> </p>
+    <p data-condition="Others:CODESYS_35_Specific">The CODESYS 3.5 <span style="font-weight: bold;" data-condition="Others:CODESYS_35_Specific">Device tree</span> in the following image includes all project objects on the same view:</p>
+    <p data-condition="Others:CODESYS_35_Specific"> </p>
+    <p data-condition="Others:CODESYS_35_Specific"><img src="../assets/images/MultiTool/Used/DeviceTree35.JPG" alt="" style="border: none;" border="0" data-condition="Others:CODESYS_35_Specific"/></p>
+    <p> </p>
+    <p>CODESYS 2.3 code template is divided to the <span style="font-weight: bold;">POU</span>s, <span style="font-weight: bold;">Data types</span> and <span style="font-weight: bold;">Resources</span> tabs.</p>
+    <p> </p>
+    <p><img src="../assets/images/MultiTool/Used/PLC_PRG_Structure23.JPG" alt="" style="border: none;" border="0"/></p>
+    <p> </p>
+    <p> </p>
+    <p>The <span style="font-style: italic;">PLC_PRG</span> is divided into four actions: <span style="font-style: italic;">Init, </span><span style="font-style: italic; 
+	 text-transform: uppercase;"><span data-keyref="ManufacturerName">Epec</span></span><span style="font-style: italic;">_In, Application</span> and <span style="font-style: italic; 
+	 text-transform: uppercase;"><span data-keyref="ManufacturerName">Epec</span></span><span style="font-style: italic;">_Out</span>.</p>
+    <p> </p>
+    <p class="MsoNormal" style="margin-bottom: .0001pt; line-height: normal; 
+	 mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">The</span> <span lang="EN-US" xml:lang="EN-US" style="font-style: italic;">Init</span> <span lang="EN-US" xml:lang="EN-US">action is run on each program cycle until all initializations are done. The initialization phase is divided into several steps to minimize the needed time of each program cycle. After the initialization phase,</span> <span style="font-style: italic; 
+												 text-transform: uppercase;"><span data-keyref="ManufacturerName">Epec</span></span><span lang="EN-US" xml:lang="EN-US" style="font-style: italic;">_In, Application</span> <span lang="EN-US" xml:lang="EN-US">and</span> <span style="font-style: italic; 
+														 text-transform: uppercase;"><span data-keyref="ManufacturerName">Epec</span></span><span lang="EN-US" xml:lang="EN-US" style="font-style: italic;">_Out</span> <span lang="EN-US" xml:lang="EN-US">actions are run on each program cycle.</span></p>
+    <p> </p>
+    <p> </p>
+    <table class="MsoTableGrid" style="border: Solid 1px #000000; border-collapse: collapse; 
+		 mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 1184; 
+		 mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;" cellspacing="0" width="100%" cellpadding="1">
+      <colgroup>
+        <col style="width: 11.83%;"/>
+        <col style="width: 31.475%;"/>
+        <col style="width: 56.695%;"/>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td style="border: Solid 1px #000000;">
+            <p style="font-weight: bold;">PLC_PRGs action</p>
+          </td>
+          <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p style="font-weight: bold;">Sub-action</p>
+          </td>
+          <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p style="font-weight: bold;">Description</p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="7" style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>Init</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Init_Entry</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Reads system parameters</p>
+            <p>Contains call of the user POU</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Init_Flash</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Initializes non volatile memory</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Init_IO</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>I/O initialization functions</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Init_Bus</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Initializes CANVXD library instance for each CAN</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Init_Protocols_CANx (*)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>CAN protocol initializations for each CAN bus, including CANopen and SAE J1939</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Init_Events</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Initializations for Events</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Init_Exit</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Initializes the identity object (1018h)</p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="4" style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p><span style="text-transform: uppercase;"><span data-keyref="ManufacturerName">Epec</span></span>_In</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>IO_Filter</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Filters I/O pin raw values</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Diag</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>CAN bus diagnostics</p>
+            <p>HWD_Diagnostic instance call</p>
+            <p>G_SystemOk  variable handling</p>
+            <p>LED handling</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Bus</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Updates CAN buffers</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Other</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Reserved for future use</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>Application</p>
+          </td>
+          <td colspan="2" style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Only contains call for the user application <span style="font-style: italic;">Main</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p><span style="text-transform: uppercase;"><span data-keyref="ManufacturerName">Epec</span></span>_Out</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Other</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>All functions that are needed to run at the end of the program cycle, such as</p>
+            <p>- analogue input protection</p>
+            <p>- parameter saving</p>
+            <p>- resetting the control device if needed (NMT reset)</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>IOHandleOutputs(**)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Copies data from variables which are used in application for the IO to variables defined in description file. This copying sets actual IO to wanted state.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p style="mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">* CAN bus consecutive numbering, typically 1=CAN1, 2=CAN2 etc.</span></p>
+    <p>** only in CODESYS 3.5 version</p>
+    <p> </p>
+    <h2><a id="_Implicit__Globals"></a>(Implicit) Globals</h2>
+    <p><span data-keyref="SoftwareName">MultiTool Creator</span> generates global variable and function block instance definitions to <span style="font-style: italic;">(Implicit) Globals</span> lists. These variables and instances can be used, for example, for diagnosing CAN bus and hardware. Code template calls these function blocks automatically. Code template global definitions can be found from</p>
+    <ol style="list-style: decimal;">
+      <li style="font-size: 10pt;">
+        <p>the <span style="font-weight: bold;">Resources</span> tab in CODESYS 2.3 or</p>
+      </li>
+      <li style="font-size: 10pt;">
+        <p>the <span style="font-weight: bold;">Device tree</span> in CODESYS 3.5 (<span style="font-style: italic;">CodeTemplate &gt; Globals</span>)</p>
+      </li>
+    </ol>
+    <p> </p>
+    <p>Variable definitions are divided into several global lists, defined in the table below.</p>
+    <p> </p>
+    <table class="MsoNormalTable" style="border: Solid 1px #000000;" cellspacing="0" width="100%" cellpadding="1">
+      <colgroup>
+        <col width="179"/>
+        <col width="1114"/>
+      </colgroup>
+      <tbody>
+        <tr style="height: 20px;">
+          <td style="border: Solid 1px #000000;">
+            <p style="font-weight: bold;">Global variable list</p>
+          </td>
+          <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p style="font-weight: bold;">Description</p>
+          </td>
+        </tr>
+        <tr style="height: 21px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p style="background-color: Transparent;">Code_Template_constants(**)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p class="TaulukonSisalto">Constant definitions</p>
+          </td>
+        </tr>
+        <tr style="height: 83px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>Code_Template_Globals</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>All variable definitions and function block instances needed in code template, such as init phase booleans</p>
+            <p>- CANopen instance and array definitions</p>
+            <p>Variables that might be needed in application, such as G_SystemOk boolean, HWD_Measurements instance and limit definitions.</p>
+          </td>
+        </tr>
+        <tr style="height: 19px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>ERRORS</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Error variables</p>
+          </td>
+        </tr>
+        <tr style="height: 19px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>EVENTS</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Event source addresses and data initialization.</p>
+          </td>
+        </tr>
+        <tr style="height: 19px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>IO</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>I/O pin variables that are needed when developing an application</p>
+          </td>
+        </tr>
+        <tr style="height: 35px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>IO_RAW</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Non scaled raw values of I/O pins.</p>
+            <p>Not needed in normal use, since the code template filters and scales the values before writing them to I/O variables.</p>
+          </td>
+        </tr>
+        <tr style="height: 83px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>IO_CONFIG</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>I/O pin configurations, such as</p>
+            <p>- input pull up configurations</p>
+            <p>- pulse input range selections</p>
+            <p>- input mode selections (mA/V)</p>
+            <p>- output mode selections</p>
+          </td>
+        </tr>
+        <tr style="height: 63px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>IO_INTERNAL</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Internal I/O</p>
+            <p>- Scaled and filtered voltage and temperature measurements</p>
+            <p>- Reference output enable variables</p>
+            <p>- Overcurrent error statuses for AI pins</p>
+          </td>
+        </tr>
+        <tr style="height: 67px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>J1939 (optional)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>J1939 library instance</p>
+            <p>Global variable definitions</p>
+            <p>- J1939_CANx(*) variable for each CAN bus that uses J1939</p>
+            <p>- Variable type is a structure defined in the application</p>
+          </td>
+        </tr>
+        <tr style="height: 19px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>ODx_VAR (*)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>OD variables whose variable type is RAM, retain or retain persistent.</p>
+          </td>
+        </tr>
+        <tr style="height: 19px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>ODx_PAR (*)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>OD variables whose variable type is Parameter</p>
+          </td>
+        </tr>
+        <tr style="height: 19px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>ODx_CANI (*)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Variables of received PDOs (RPDO)</p>
+          </td>
+        </tr>
+        <tr style="height: 19px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>ODx_CANO (*)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Variables of transmitted PDOs (TPDO)</p>
+          </td>
+        </tr>
+        <tr style="height: 19px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>SYSTEM</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>Project information, such as device type, serial number, firmware version, 5050 FW error log.</p>
+          </td>
+        </tr>
+        <tr style="height: 19px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>HMI</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>HMI related variables, such as 2040 soft button states</p>
+          </td>
+        </tr>
+        <tr style="height: 19px;">
+          <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+            <p>slave Configurations (folder)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+            <p>This folder includes a global variable list for each slave device</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p>* OD&#39;s consecutive numbering, typically 1=CAN1, 2=CAN2 etc.</p>
+    <p>** only in CODESYS 3.5 version</p>
+    <p> </p>
+    <p> </p>
+    <h2><a name="Data__Unit__Types" id="Data__Unit__Types">Data (Unit) Types</a></h2>
+    <p><span data-keyref="SoftwareName">MultiTool Creator</span> creates structures and/or enumerations for</p>
+    <ul style="list-style: disc;">
+      <li>
+        <p>J1939 receive and transmit PGNs</p>
+      </li>
+      <li>
+        <p>Pre-defined indexes</p>
+      </li>
+      <li>
+        <p>User defined record indexes</p>
+      </li>
+      <li>
+        <p>Events</p>
+      </li>
+    </ul>
+    <p> </p>
+    <p>In CODESYS 2.3, structures and enumerations can be found from the <span style="font-weight: bold;">Data types</span> tab.</p>
+    <p> </p>
+    <p><img src="../assets/images/image20.gif" alt="" style="border: none;" border="0"/></p>
+    <p> </p>
+    <p data-condition="Others:CODESYS_35_Specific">In CODESYS 3.5, Data unit types (DUT) can be found from the <span style="font-weight: bold;" data-condition="Others:CODESYS_35_Specific">Device tree</span>. Enumerations are placed into the <span style="font-weight: bold;" data-condition="Others:CODESYS_35_Specific">Enums</span> and structures into the <span style="font-weight: bold;" data-condition="Others:CODESYS_35_Specific">Structs</span> folder.</p>
+    <p data-condition="Others:CODESYS_35_Specific"> </p>
+    <p data-condition="Others:CODESYS_35_Specific"><img src="../assets/images/MultiTool/Used/DeviceTree35_2.JPG" alt="" style="border: none;" border="0" data-condition="Others:CODESYS_35_Specific"/></p>
+    <p data-condition="Others:CODESYS_35_Specific"> </p>
+    <p> </p>
+    <p> </p>
+    <h1>Variable Prefixes</h1>
+    <p><span data-keyref="SoftwareName">MultiTool Creator</span> generates global variable lists to CODESYS project. These variable lists include variables for I/O pins, CAN communication and hardware measurement data.</p>
+    <p>The variable names include prefixes to provide more information about variable type or for what purpose it is used.</p>
+    <p> </p>
+    
+    <table style="border: Solid 1px #000000;" cellspacing="0" width="81.148%" cellpadding="1">
+      <colgroup>
+        <col width="182"/>
+        <col width="234"/>
+        <col width="382"/>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td style="border: Solid 1px #000000; vertical-align: top; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonOtsikko"><span>Global Variable List</span></p>
+          </td>
+          <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonOtsikko">Prefix</p>
+          </td>
+          <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonOtsikko">Description</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">Code_Template_Globals</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>G_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>Global variables that the code template uses</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">Code_Template_Constants (**)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>G_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>Global constant definitions</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">CANx_EVENTS</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>E_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Application specific events</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">ERRORS (**)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto" style="background-color: Transparent;">ERR_FLAG_IO_AI_OVER_CURRENT_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Error flag that is set to TRUE in case of over current for AI pin in mA mode.</p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="25" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">IO</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>AI_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>AI input&#39;s filtered A/D converter (ADC) value</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>AIPU_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>AI input&#39;s pull-up voltage&#39;s filtered ADC value</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>DI_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p style="margin-right: 0px;">Debounce filtered DI value</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>DO_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>DO output state</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>DOS_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>DO output status (DI) information</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWM_RATIO_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWM pulse ratio</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>FB_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>Low side current measurement&#39;s filtered ADC value</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWFM_CM_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>PWFM output&#39;s high side current measurement value</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWFM_CR_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Current request to firmware&#39;s current controller</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWFM_STEPREQ_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Step motor&#39;s step count request</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWFM_STEPLEFT_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Remaining steps for step motor&#39;s</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWFM_STEPRESET_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Step motor&#39;s step count request reset, stops the pulse generation</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWFM_OVERCURRENT_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>PWFM output&#39;s overcurrent alarm</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWFM_FORCECCRATIO_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Current controller&#39;s forced <span>pulse ratio, bypasses the current controller and uses value in variable PWFM_RATIO_</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWFM_UPDCCPAR_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>Recalculates current controller parameters</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWFM_OPENCIRCUIT_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Current controller&#39;s broken/open circuit alarm</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWFM_RATIO_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>PWFM output&#39;s pulse ratio</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWFM_FREQ_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>PWFM output&#39;s frequency</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p style="background-color: Transparent;">AI_ERRORS</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p style="background-color: Transparent;"><span>AI converter&#39;s errors bit mask</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>FI_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Pulse input frequency (channel A if 2 channels)</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PI_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Pulse input&#39;s counter value (channel A if 2 channels)</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PW_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>Pulse input&#39;s pulse width</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p style="font-size: 10pt; font-family: Arial, sans-serif;">OVP_RESET_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p style="font-size: 10pt; font-family: Arial, sans-serif;"><span style="line-height: 115%; mso-fareast-font-family: Calibri; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;">Control flag for overvoltage protection reset</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p style="font-size: 10pt; font-family: Arial, sans-serif;">OVP_STATE_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p style="font-size: 10pt; font-family: Arial, sans-serif;"><span style="line-height: 115%; mso-fareast-font-family: Calibri; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;">Status flag for overvoltage</span> protection</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p style="font-size: 10pt; 
+															 font-family: Arial, sans-serif;">FET_ST_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p style="font-size: 10pt; 
+															 font-family: Arial, sans-serif;"><span style="line-height: 115%; mso-fareast-font-family: Calibri; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;">Status of the FET.</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="8" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">IO_RAW</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>AI_RAW_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>AI input&#39;s latest unfiltered ADC value</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>AI_ARR_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Buffer of AI input unfiltered ADC samples</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p style="background-color: Transparent;">AI_ARR_INDEX_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>Index of latest AI input sample in AI_ARR_ buffer</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>AI_ARR_TS_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p style="background-color: Transparent;"><span>Buffer/table of AI samples&#39; timestamps</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>AIPU_RAW_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>AI input&#39;s pull-up voltage&#39;s latest unfiltered ADC value</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>AIPU_ARR_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Buffer of AI input pull-up voltage&#39;s unfiltered ADC samples</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p style="background-color: Transparent;">DI_RAW_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>DI input&#39;s unfiltered value</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p style="background-color: Transparent;">FB_RAW_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Latest unfiltered value for low side current measurement</p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="8" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">IO_CONFIG</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p style="background-color: Transparent;">AI_SET_mA_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>AI input&#39;s configuration into mA input</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>AI_SET_PU_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>AI input&#39;s pull-up configuration</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p style="background-color: Transparent;">PWFM_SET_PU_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>PWFM output&#39;s pull-up configuration</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p style="background-color: Transparent;">PWFM_ERROR_INIT_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PWFM init error (0 = no error)</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>PWFM_MODE_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>PWFM output&#39;s active mode (read only)</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>PI_ERROR_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>Pulse <span>input initialization error code</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p style="background-color: Transparent;">PI_SET_PU_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Pulse input&#39;s pull-up configuration</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p style="background-color: Transparent;">PI_SET_RANGE_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Pulse input voltage range configuration</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">IO_<span style="line-height: 115%; 
+												 mso-fareast-font-family: Calibri; 
+												 mso-bidi-font-family: &#39;Times New Roman&#39;; 
+												 mso-ansi-language: FI; 
+												 mso-fareast-language: EN-US; 
+												 mso-bidi-language: AR-SA;">INTERNAL</span></p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>POWER_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p>Power switch control</p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">ODx_CANI (*)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>CANI_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Variable received in PDO message (from a device not included in the MultiTool project)</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>CANI_<span style="font-style: italic;">UnitName</span>_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Variable received in PDO message (from a device included in the MultiTool project) <span style="font-style: italic;">UnitName</span> depends on the device name that the message is received from</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">ODx_CANO (*)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>CANO_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>Variable transmitted in PDO message</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">ODx_PAR (*)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>PAR_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>OD variable stored in non-volatile memory, so called application parameter</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">ODx_VAR (*)</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>OD_</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p>- parameter stored in volatile memory (RAM parameter) and  defined in OD</p>
+            <p>- retain and persistent variable defined in OD</p>
+            <p>- all the other OD variables that do not belong any of the other ODx groups mentioned above</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p>x<span lang="EN-US" xml:lang="EN-US">* CAN bus consecutive numbering, typically 1=CAN1, 2=CAN2 etc.</span></p>
+    <p data-condition="Others:CODESYS_35_Specific">x** only in CODESYS 3.5 version</p>
+    <p> </p>
+    <h1>Fixed Variable Names</h1>
+    <p> </p>
+    <p>Some of the variables <span data-keyref="SoftwareName">MultiTool Creator</span> creates for the CODESYS project have fixed names. These variables provide information about hardware and are not user configurable.</p>
+    <p>The following table lists fixed reserved variable names:</p>
+    <p> </p>
+    <table style="border-left-style: Solid; border-left-width: 1px; border-right-style: Solid; 
+		 border-right-width: 1px; border-top-style: Solid; border-top-width: 1px; 
+		 border-bottom-style: Solid; border-bottom-width: 1px;" cellspacing="0" width="75%" cellpadding="1">
+      <colgroup>
+        <col style="width: 16.958%;"/>
+        <col style="width: 23.649%;"/>
+        <col style="width: 59.394%;"/>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td style="border: Solid 1px #000000; vertical-align: top; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonOtsikko"><span>Global variable list</span></p>
+          </td>
+          <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+            <p style="font-weight: bold;"><span>Variable name</span></p>
+          </td>
+          <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+            <p style="font-weight: bold;"><span>Description</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">ERRORS</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">ERR_FLAG_OUTPUT_ST_INIT</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Boolean variable for diagnostics that indicates a voltage in a pin when the device is started up and the pin is defined to DO (digital output) mode</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto"><span style="line-height: 115%; mso-fareast-font-family: Calibri; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;">ERR_FLAG_IO_INIT</span></p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Boolean variable for indicating error(s) in I/O initialization functions when the device is started up</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">IO</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ERRORS</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Error flag field of the AD conversions</p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="48" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonOtsikko">IO_INTERNAL</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">AI_SupplyLogic</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered ADC value of Logic supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SUPPLY_Logic</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered Logic supply voltage value [10 mv]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_SupplyPower1</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Filtered ADC value of Power1 supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SUPPLY_Power1</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered Power1 supply voltage value [10 mv]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ Power1Pin</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Power1 supply voltage (filtered unscaled value)</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SUPPLY_ Power1Pin</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Filtered Power1 supply voltage value [10 mv]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_SupplyPower2</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered ADC value of Power2 supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SUPPLY_Power2</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Filtered Power2 supply voltage value [10 mv]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SUPPLY_Power2Pin</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Filtered ADC value of Power2 operating voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ Power2Pin</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Power2 supply voltage (filtered unscaled value)</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_Ref5V</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered ADC value of 5 V reference voltage output</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">REF_5V</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered 5 V reference voltage output value [10 mv]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_Ref10V</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered ADC value of 10 V reference voltage output</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">REF_10V</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered 10 V reference voltage output value [10 mv]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_InternADCReference</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered ADC value of AD converter&#39;s reference voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">REF_InternalADC</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered AD converter&#39;s reference voltage value [10 mv]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_10VPullUpSupply</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered ADC value of 10 V pull-ups’ supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">REF_10VPullUpSupply</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered 10 V pull-ups’ supply voltage value [10 mv]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_CoreTemperature</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered core temperature ADC value</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">TEMP_Core</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Device&#39;s internal core temperature [Celsius]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ PCBTemperature</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered ADC value of device&#39;s internal PCB temperature</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">TEMP_PCB</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Device&#39;s internal PCB temperature [Celsius]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">REF_OUT_5V_Enable</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Enables the 5 V reference outputs</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">REF_OUT_5V_OK</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Status of 5 V REF outputs. TRUE = output OK.</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">REF_OUT_10V_Enable</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Enables the 10 V reference outputs</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">POWER_1_Enable</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Enables the outputs that are supplied by Power1 supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">POWER_2_Enable</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Enables the outputs that are supplied by Power2 supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SYSTEM_FWErrorLog</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Pointer to 5050 firmware error log (Read only).</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_SupplyVolt</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered ADC value of device supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SUPPLY_Volt</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered voltage value of device supply voltage [10 mv]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SUPPLY_Cur</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Supply current [mA]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_Ref12V</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Filtered ADC value of 12 V reference voltage output</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">REF_12V</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Filtered voltage value of 12 V reference voltage output [10 mv]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">RS485_H_ST_CHN0</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">H-bus status of RS485 channel 0</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">RS485_H_AI_CHN0</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">H-bus AI measurement of RS485 channel 0</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">RS485_L_ST_CHN0</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">L-bus status of RS485 channel 0</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">RS485_L_AI_CHN0</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">L-bus AI measurement of RS485 channel 0</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">POWER_CONX_ENABLE</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Boolean variable which is used to connect power to connector X.</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">CAN_CONX_CANX_ENABLE</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Enables CAN bus X in connector X.</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">REF_OUT_5V_FAULT</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto"><span style="line-height: 115%; 
+		 mso-fareast-font-family: Calibri; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;">Fault flag for 5 V reference output. TRUE means overload situation.</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AUX_OUT_FAULT</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto"><span style="line-height: 115%; 
+		 mso-fareast-font-family: Calibri; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;">Fault flag for auxiliary output</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">OVP_OCCURED</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto"><span style="line-height: 115%; 
+		 mso-fareast-font-family: Calibri; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;">OVP (Overvoltage Protection) situation has occurred at least once.</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">OVP_STATE</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto"><span style="line-height: 115%; 
+		 mso-fareast-font-family: Calibri; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;">Current OVP (Overvoltage Protection) state</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">OVP_RESET</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto"><span style="line-height: 115%; 
+		 mso-fareast-font-family: Calibri; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;">Control flag for OVP (Overvoltage Protection)  reset</span></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">UPS_Volt</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">UPS voltage level [mV]</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">PWM_BacklightPWMValue</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Backlight PWM value</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SENSOR_LightSensorValue</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Light sensor value</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">CLK_ClockSpeed</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Microcontroller clock speed (MHz)</p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="22" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonOtsikko">IO_RAW</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ARR_INDEX</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Index of the latest sample in AI_ARR_ buffers of analog inputs and measurements.</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ARR_TS</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Buffer of AI conversion samples&#39; timestamps</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_RAW_SupplyLogic</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Latest unfiltered ADC value of Logic’s supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ARR_SupplyLogic</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Buffer of unfiltered ADC samples of Logic’s supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_RAW_SupplyPower1</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Latest unfiltered ADC value of Power1 supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ARR_SupplyPower1</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Buffer of unfiltered ADC samples of Power1 supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_RAW_ Power1Pin</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Latest unfiltered ADC value of Power1&#39;s operating voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ARR_ Power1Pin</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Buffer of unfiltered ADC samples of Power1 operating voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_RAW_SupplyPower2</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Latest unfiltered ADC value of Power2 supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ARR_SupplyPower2</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Buffer of unfiltered ADC samples of Power2 supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_RAW_Ref5V</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Latest unfiltered ADC value of 5V reference voltage output</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ARR_Ref5V</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Buffer of unfiltered ADC samples of 5V reference voltage output</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_RAW_Ref10V</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Latest unfiltered ADC value of 10V reference voltage output</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ARR_Ref10V</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Buffer of unfiltered ADC samples of 10V reference voltage output</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_RAW_InternADCReference</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Latest unfiltered ADC value of internal AD converter reference voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ARR_ InternADCReference</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Buffer of unfiltered ADC samples of internal AD converter reference voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_RAW_10VPullUpSupply</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Latest unfiltered ADC value of internal 10 V pull-ups’ supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ARR_ 10VPullUpSupply</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Buffer of unfiltered ADC samples of internal 10 V pull-ups’ supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_RAW_CoreTemperature</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Latest unfiltered ADC value of  device&#39;s internal core temperature</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ARR_ CoreTemperature</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Buffer of unfiltered ADC samples of device&#39;s internal core temperature</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_RAW_PCBTemperature</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Latest unfiltered ADC value of device&#39;s internal PCB temperature</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">AI_ARR_ PCBTemperature</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Buffer of unfiltered ADC samples of device&#39;s internal PCB temperature</p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="7" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">SYSTEM</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SYSTEM_NVRAM_Use_2040</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">NVRAM usage</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SYSTEM_FW_Version</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Firmware version info</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SYSTEM_VendorId</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Vendor ID which is read from the firmware</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SYSTEM_ProjectInfo</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto"><span data-keyref="CODESYS">CODESYS</span> application project info</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SYSTEM_ControlUnitType</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Device&#39;s type. 32-bit number</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SYSTEM_ControlUnitRevision</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Device&#39;s hardware revision. 32-bit number</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">SYSTEM_SerialNumber</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Device&#39;s serial number. 32-bit number</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p> </p>
+    <div data-region="footer">
+      <p style="color: #c0c0c0; font-style: italic;"><span style="color: #c0c0c0; 
+														 font-style: italic;"><span>Epec Oy reserves all rights for improvements without prior notice.</span></span></p>
+      <p style="color: #c0c0c0;"> </p>
+      <p style="color: #c0c0c0;"><span>Source file <span data-format="default" data-field="file">topic200004.htm</span></span></p>
+      <p style="color: #c0c0c0;"><span>Last updated <span data-format="D-MMM-YYYY" data-field="date">25-Jun-2025</span></span></p>
+    </div>
+  
+</body></html>

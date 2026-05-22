@@ -1,0 +1,441 @@
+{
+  "phases": [
+    {
+      "action": "right_click",
+      "new_controls": [],
+      "menus": []
+    },
+    {
+      "action": "double_click",
+      "new_controls": [
+        {
+          "d": 10,
+          "type": "Pane",
+          "name": "",
+          "rect": [
+            1368,
+            78,
+            2556,
+            1364
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Button",
+          "name": "Show Description",
+          "rect": [
+            2452,
+            84,
+            2550,
+            107
+          ]
+        },
+        {
+          "d": 12,
+          "type": "Text",
+          "name": "Show Description",
+          "rect": [
+            2455,
+            88,
+            2547,
+            104
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Text",
+          "name": "Variable Name",
+          "rect": [
+            1374,
+            108,
+            2550,
+            125
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Edit",
+          "name": "VAVLE_UP",
+          "rect": [
+            1374,
+            125,
+            2550,
+            148
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Text",
+          "name": "Comment",
+          "rect": [
+            1374,
+            148,
+            2550,
+            165
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Edit",
+          "name": "",
+          "rect": [
+            1374,
+            165,
+            2550,
+            188
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Group",
+          "name": "Modes",
+          "rect": [
+            1374,
+            198,
+            2550,
+            252
+          ]
+        },
+        {
+          "d": 12,
+          "type": "Text",
+          "name": "Modes",
+          "rect": [
+            1385,
+            198,
+            1421,
+            214
+          ]
+        },
+        {
+          "d": 12,
+          "type": "Button",
+          "name": "DI",
+          "rect": [
+            1385,
+            220,
+            1427,
+            240
+          ]
+        },
+        {
+          "d": 13,
+          "type": "Text",
+          "name": "DI",
+          "rect": [
+            1400,
+            222,
+            1412,
+            238
+          ]
+        },
+        {
+          "d": 12,
+          "type": "Button",
+          "name": "DO",
+          "rect": [
+            1437,
+            220,
+            1484,
+            240
+          ]
+        },
+        {
+          "d": 13,
+          "type": "Text",
+          "name": "DO",
+          "rect": [
+            1452,
+            222,
+            1469,
+            238
+          ]
+        },
+        {
+          "d": 12,
+          "type": "Button",
+          "name": "PWM",
+          "rect": [
+            1494,
+            220,
+            1553,
+            240
+          ]
+        },
+        {
+          "d": 13,
+          "type": "Text",
+          "name": "PWM",
+          "rect": [
+            1509,
+            222,
+            1538,
+            238
+          ]
+        },
+        {
+          "d": 12,
+          "type": "Button",
+          "name": "Step Motor",
+          "rect": [
+            1563,
+            220,
+            1653,
+            240
+          ]
+        },
+        {
+          "d": 13,
+          "type": "Text",
+          "name": "Step Motor",
+          "rect": [
+            1578,
+            222,
+            1638,
+            238
+          ]
+        }
+      ],
+      "edits": [
+        {
+          "d": 11,
+          "type": "Edit",
+          "name": "VAVLE_UP",
+          "rect": [
+            1374,
+            125,
+            2550,
+            148
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Edit",
+          "name": "",
+          "rect": [
+            1374,
+            165,
+            2550,
+            188
+          ]
+        }
+      ]
+    },
+    {
+      "action": "click+F2",
+      "new_controls": [
+        {
+          "d": 10,
+          "type": "Pane",
+          "name": "",
+          "rect": [
+            1368,
+            78,
+            2556,
+            1364
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Button",
+          "name": "Show Description",
+          "rect": [
+            2452,
+            84,
+            2550,
+            107
+          ]
+        },
+        {
+          "d": 12,
+          "type": "Text",
+          "name": "Show Description",
+          "rect": [
+            2455,
+            88,
+            2547,
+            104
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Text",
+          "name": "Variable Name",
+          "rect": [
+            1374,
+            108,
+            2550,
+            125
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Edit",
+          "name": "VAVLE_UP",
+          "rect": [
+            1374,
+            125,
+            2550,
+            148
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Text",
+          "name": "Comment",
+          "rect": [
+            1374,
+            148,
+            2550,
+            165
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Edit",
+          "name": "",
+          "rect": [
+            1374,
+            165,
+            2550,
+            188
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Group",
+          "name": "Modes",
+          "rect": [
+            1374,
+            198,
+            2550,
+            252
+          ]
+        },
+        {
+          "d": 12,
+          "type": "Text",
+          "name": "Modes",
+          "rect": [
+            1385,
+            198,
+            1421,
+            214
+          ]
+        },
+        {
+          "d": 12,
+          "type": "Button",
+          "name": "DI",
+          "rect": [
+            1385,
+            220,
+            1427,
+            240
+          ]
+        },
+        {
+          "d": 13,
+          "type": "Text",
+          "name": "DI",
+          "rect": [
+            1400,
+            222,
+            1412,
+            238
+          ]
+        },
+        {
+          "d": 12,
+          "type": "Button",
+          "name": "DO",
+          "rect": [
+            1437,
+            220,
+            1484,
+            240
+          ]
+        },
+        {
+          "d": 13,
+          "type": "Text",
+          "name": "DO",
+          "rect": [
+            1452,
+            222,
+            1469,
+            238
+          ]
+        },
+        {
+          "d": 12,
+          "type": "Button",
+          "name": "PWM",
+          "rect": [
+            1494,
+            220,
+            1553,
+            240
+          ]
+        },
+        {
+          "d": 13,
+          "type": "Text",
+          "name": "PWM",
+          "rect": [
+            1509,
+            222,
+            1538,
+            238
+          ]
+        },
+        {
+          "d": 12,
+          "type": "Button",
+          "name": "Step Motor",
+          "rect": [
+            1563,
+            220,
+            1653,
+            240
+          ]
+        },
+        {
+          "d": 13,
+          "type": "Text",
+          "name": "Step Motor",
+          "rect": [
+            1578,
+            222,
+            1638,
+            238
+          ]
+        }
+      ],
+      "edits": [
+        {
+          "d": 11,
+          "type": "Edit",
+          "name": "VAVLE_UP",
+          "rect": [
+            1374,
+            125,
+            2550,
+            148
+          ]
+        },
+        {
+          "d": 11,
+          "type": "Edit",
+          "name": "",
+          "rect": [
+            1374,
+            165,
+            2550,
+            188
+          ]
+        }
+      ]
+    }
+  ]
+}

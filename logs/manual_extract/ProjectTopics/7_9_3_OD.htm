@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="Originator" content="ImportDoc"/>
+  <meta name="OriginalFile" content="MultiTool_Tech_simple2.doc"/>
+  <meta name="topic-check-list" content="Ran Smart Index"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>OD</title>
+  <link rel="stylesheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <style type="text/css">
+    /*<![CDATA[*/
+    A:visited {
+      color: #800080;
+    }
+    A:link {
+      color: #0000ff;
+    }
+    /*]]>*/
+  </style>
+  <meta name="rh-index-keywords" content="Using Object Dictionary (OD),PDO Mapping,Edit Bits,Bit field configuration,ODs"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body lang="FI" xml:lang="FI">
+  <h1>Using Object Dictionary (OD)</h1>
+  <p>The Object Dictionary is the most important part of any CANopen device, the interface between the application and CAN bus. This topic describes the <span style="font-weight: bold;">Object Dictionary</span> tab functionality, such as</p>
+  <ul class="p">
+    <li class="p">
+      <p>Actions</p>
+    </li>
+    <li class="p">
+      <p><a href="#Configurable_Properties_for_Index_and_Sub-Index">Configurable Properties for Index and Sub-Index</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#Checksum">Using Checksum</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#Tips_and_Tricks">Tips and Tricks</a></p>
+    </li>
+  </ul>
+  <p> </p>
+  <p>To add an index,</p>
+  <ol class="p">
+    <li class="p">
+      <p>select the CAN channel from the tabs</p>
+    </li>
+    <li class="p">
+      <p>select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_add_index.png" style="border: none;" title=""/> icon to add new index</p>
+      <ul class="p">
+        <li class="p">
+          <p>or <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_add_predefined_index.png" style="border: none;" title=""/> icon to add a pre-defined index</p>
+        </li>
+      </ul>
+    </li>
+    <li class="p">
+      <p>select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_add_sub-index.png" style="border: none;" title=""/> icon to add a sub-index to the selected index</p>
+    </li>
+  </ol>
+  <p> </p>
+  <p>To delete an index or sub-index, select the index and select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_remove_files.png" style="border: none;" title=""/> icon.</p>
+  <p> </p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Creator/Od.png"/></p>
+  <p> </p>
+  <p>All the actions on the <span style="font-weight: bold;">Object Dictionary</span> tab are described in the following table:</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="800">
+    <colgroup>
+      <col style="width: 4.162%;"/>
+      <col style="width: 183px;"/>
+      <col style="width: 577px;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="text-align: center;">Icon</p>
+        </td>
+        <td style="border-top: 1px solid rgb(0, 0, 0); border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonOtsikko">Short Description</p>
+        </td>
+        <td style="border-top: 1px solid rgb(0, 0, 0); border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="text-align: center;"><img alt="" border="0" src="../assets/images/MultiTool/Used/icon_add_index.png" style="border: none;" title=""/></p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="font-weight: bold;">Add Index</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Adds an index to the Object Dictionary</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="text-align: center;"><img alt="" border="0" src="../assets/images/MultiTool/Used/icon_add_sub-index.png" style="border: none;" title=""/></p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="font-weight: bold;">Add Sub-Index</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Adds a sub-index to the selected index</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="text-align: center;"><img alt="" border="0" src="../assets/images/MultiTool/Used/icon_add_predefined_index.png" style="border: none;" title=""/></p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="font-weight: bold;">Add Pre-Defined Index</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p>Pre-defined indexes idea is to reduce the time that is needed for parameter definitions for often used functions and/or libraries. The pre-defined index is a set of parameters including descriptive variable names, preselected value ranges and default values. When a predefined index is added, the value range and default value configuration can be fine-tuned to fit the project.</p>
+          <p> </p>
+          <p><span data-keyref="SoftwareName">MultiTool Creator</span> includes predefined indexes containing all the needed sub-indexes for the following <span data-keyref="ManufacturerName">Epec</span> libraries:</p>
+          <ul class="p">
+            <li class="p">
+              <p>SensorCalibrationAndDiagnostic</p>
+            </li>
+            <li class="p">
+              <p>JoysticCalibrationAndDiagnostic</p>
+            </li>
+            <li class="p">
+              <p>ProportionalValveControl</p>
+            </li>
+          </ul>
+          <p> </p>
+          <p>You can also create your own pre-defined indexes, see <span><a href="#Creating_PDIs__pre-defined_indexes_" style="font-style: italic;">Creating PDIs</a></span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="text-align: center;"><img alt="" border="0" src="../assets/images/MultiTool/Used/icon_remove_files.png" style="border: none;" title=""/></p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="font-weight: bold;">Delete Index</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">To delete an index or sub-index, select the row and select <span style="font-weight: bold;">Delete Index</span>.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="text-align: center;"><img alt="" border="0" src="../assets/images/MultiTool/Used/icon_show_hidden.png" style="border: none;" title=""/></p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="font-weight: bold;">Show Hidden</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">When the <span style="font-weight: bold;">Show Hidden</span> icon is selected, the device&#39;s automatically generated indexes (for example, manufacturer specific indexes and communication parameters) are shown in the list. These indexes are not editable. Automatically generated indexes depend on the device type.</p>
+          <p class="TaulukonSisalto">For more information, see section <a href="topic200041.htm" style="font-style: italic;">Default OD Indexes</a>.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="text-align: center;"><img alt="" border="0" src="../assets/images/MultiTool/Used/icon_store_restore.JPG" style="border: none;" title=""/></p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="font-weight: bold;">Store/Restore Settings</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-right: 118px;">The application specific store (1010h) and restore (1011h) sub-indexes can be defined by <span style="font-weight: bold;">Store/Restore Settings.</span></p>
+          <p style="margin-right: 118px;">To add sub-indexes to <span style="font-weight: bold;">Store/Restore Settings</span>, select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_store_restore_add_subindex.JPG" style="border: none;" title=""/> icon. Then, define the index range to <span style="font-weight: bold;">Start</span> and <span style="font-weight: bold;">End Index</span>.</p>
+          <p style="margin-right: 118px;">To delete a sub-index from <span style="font-weight: bold;">Store/Restore Settings</span>, select the sub-index and then the icon <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_store_restore_remove_subindex.JPG" style="border: none;" title=""/>.</p>
+          <p style="margin-right: 118px;"> </p>
+          <p style="margin-right: 118px;">For more information, see section <a href="topic200085.htm" style="font-style: italic;">Using Non-Volatile Memory</a>.</p>
+          <p style="margin-right: 118px;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;"><img height="26" src="../assets/images/MultiTool/Epec/ImportFile.png" style="cursor: nesw-resize;" width="32"/>
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="font-weight: bold;">Import </p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Imports an EDS/DCF/XDD/XDC/XML file that describes the communication behavior and object dictionary of a CANopen device.</p>
+          <p class="TaulukonSisalto">For more information, see section <em><a href="7_3_Load_EDS_Load_DCF.htm#h">Importing EDS / DCF / XDD / XDC / XML</a></em> </p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto" style="text-align: center;"><img src="../assets/images/MultiTool/Creator/icon_tpdo.png"/></p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="font-weight: bold;">Export </p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); padding: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Exports an EDS/DCF/XDD/XDC/XML file.</p>
+          <p class="TaulukonSisalto">For more information, see section <em><a href="7.4_Export_EDS_DCF.htm#h">Exporting EDS / DCF / XDD / XDC / XML</a></em></p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <h2><a id="Configurable_Properties_for_Index_and_Sub-Index" name="Configurable_Properties_for_Index_and_Sub-Index">Configurable Properties for Index and Sub-Index</a></h2>
+  <p> </p>
+  <p>The index and sub-index properties are described in the following table:</p>
+  <p class="InlineNormal"> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="1000">
+    <colgroup>
+      <col style="width: 18.28%;"/>
+      <col width="449"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Property</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;" width="449">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Name</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="TaulukonSisalto">The name of the index. In case the index type is <span style="font-weight: bold;">ArrayOf</span> or <span style="font-weight: bold;">Record</span>, this is also the variable&#39;s name. No duplicates allowed.</p>
+          <p class="TaulukonSisalto">The index name can be changed from the <span style="font-weight: bold;">Index Properties</span> or directly from the index table.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; width: 18.28%; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Index</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="TaulukonSisalto">The index number in hexadecimal format. The index number can be changed from the index table. No duplicates allowed. Indexes between 5FFFh-5FB0h are reserved.</p>
+          <p class="TaulukonSisalto">The sub-index number is in decimal format. Then sub-index number can be changed by drag-and-drop.</p>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto" style="background-color: Transparent;">Variable types are represented by the following icons:</p>
+          <table cellpadding="1" cellspacing="0" style="border-collapse:collapse;" width="27.607%">
+            <colgroup>
+              <col style="width: 23.507%;"/>
+              <col style="width: 76.493%;"/>
+            </colgroup>
+            <tbody>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto"><img alt="" border="0" height="19" src="../assets/images/MultiTool/Epec/icon_ram.png" style="border: none;" title="" width="23"/></p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">RAM</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto"><img alt="" border="0" src="../assets/images/MultiTool/Epec/icon_parameter.png" style="border: none;" title="" width="25"/></p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">Parameters</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto"><img alt="" border="0" src="../assets/images/MultiTool/Epec/icon_retain.png" style="border: none;" title=""/></p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">Retain</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto"><img alt="" border="0" src="../assets/images/MultiTool/Epec/icon_retain_persistent.png" style="border: none;" title="" width="19"/></p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">Retain Persistent</p>
+                </td>
+              </tr>
+              <tr>
+                <td data-condition="Others:EpecSpecific">
+                  <p class="TaulukonSisalto"><img alt="" border="0" src="../assets/images/MultiTool/Epec/icon_safety_parameter.png" style="border: none;" title=""/></p>
+                </td>
+                <td data-condition="Others:EpecSpecific">
+                  <p class="TaulukonSisalto">Safety Parameter</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; width: 18.28%; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko"><span>Variable</span> Type</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="TaulukonSisalto">The possible variable types are:</p>
+          <p class="TaulukonSisalto"><span style="font-weight: bold;">- RAM:</span> Variables exist only in the device’s RAM memory, on reboot the values return to default</p>
+          <p class="TaulukonSisalto"><span style="font-weight: bold;">- Parameter:</span> A variable can be saved to the device’s non volatile memory</p>
+          <p class="TaulukonSisalto"><span style="font-weight: bold;">- Retain(*):</span> Automatically written to the non-volatile memory, The value returns to default when a new application is downloaded. Supported for <span style="font-weight: bold;">ArrayOf</span> and <span style="font-weight: bold;">Record</span> index types.</p>
+          <p class="TaulukonSisalto"><span style="font-weight: bold;">- Retain Persistent(*):</span> Automatically written to the non-volatile memory, the value is retained even if a new application is downloaded to the device. Supported for <span style="font-weight: bold;">ArrayOf</span> and <span style="font-weight: bold;">Record</span> index types.</p>
+          <p class="TaulukonSisalto"><span style="font-weight: bold;">- Safety Parameters(*): </span>A variable can be saved to the device&#39;s non-volatile memory. Authentication is required to adjust safety parameters. Parameter validity is checked during every boot-up.</p>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto" style="font-weight: bold;">* The variable type possibilities depends on the hardware</p>
+          <p class="TaulukonSisalto" style="font-weight: bold;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; width: 18.28%; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Access Type</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="TaulukonSisalto">Defines the access type to variables through CAN bus: Read only (RO), Write only (WO), Read and write (RW). Read only variables can still be written in the application.</p>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto"><span data-keyref="SoftwareName">MultiTool Creator</span> does not restrict the use of access types but CANopen standard does. According to the standard</p>
+          <p class="TaulukonSisalto">- the OD variables that can be mapped to transmit PDO can have only access types RO, CONST and RWR</p>
+          <p class="TaulukonSisalto">- receive PDO supports only types WO and RWW</p>
+          <p class="TaulukonSisalto">- RWR and RWW are used for objects that can be read and written via SDO</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; width: 18.28%; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko"><span>Index</span> Type</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="TaulukonSisalto">The index types are</p>
+          <p class="TaulukonSisalto">- <span style="font-weight: bold;">Var</span>: The index has only the sub-index 0. The sub-index has it&#39;s own variable name.</p>
+          <p class="TaulukonSisalto"><span style="font-weight: bold;">- SingleVariables</span>: All sub-indexes have their own variable name. The index type is the same for all sub-indexes.</p>
+          <p class="TaulukonSisalto">- <span style="font-weight: bold;">ArrayOf</span>: The index name defines the name of the array, sub-indexes are array cells, for example &lt;<span style="font-style: italic;">Name&gt;[ArrayIndex]</span>. The <span style="font-weight: bold;">Data Type</span> is the same for all sub-indexes.</p>
+          <p class="TaulukonSisalto">- <span style="font-weight: bold;">Record</span>: The index name defines the variable name of a structure instance, sub-indexes are variables in the structure. Sub-indexes can be of different <span style="font-weight: bold;">Data Type</span>s. The variables can be referenced in CODESYS using the following format <span style="font-style: italic;">&lt;Name&gt;.&lt;Variable Name&gt;</span></p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; width: 18.28%; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Data Type</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="TaulukonSisalto"><span style="font-weight: bold;">Data Type</span> can be changed from the index table or from the <span style="font-weight: bold;">Index Properties</span>, depending on the <span style="font-weight: bold;">Index Type</span>. The <b>Data Type <span style="font-weight: normal;">is one of</span></b> <span data-keyref="CODESYS">CODESYS</span>&#39; variable types:</p>
+          <p class="TaulukonSisalto"> </p>
+          <table cellpadding="1" cellspacing="0" class="TableGrid" style="height: 325px; left: 0px; top: 37px;" width="566">
+            <colgroup>
+              <col style="width: 25%;"/>
+              <col style="width: 25%;"/>
+              <col style="width: 25%;"/>
+              <col style="width: 25%;"/>
+            </colgroup>
+            <tbody>
+              <tr>
+                <td>
+                  <p class="TaulukonOtsikko">Data Type</p>
+                </td>
+                <td>
+                  <p class="TaulukonOtsikko">Lower limit</p>
+                </td>
+                <td>
+                  <p class="TaulukonOtsikko">Upper limit</p>
+                </td>
+                <td>
+                  <p class="TaulukonOtsikko">Memory space</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">SINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">-128 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">127 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">8 Bit </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">INT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">-32768 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32767 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">16 Bit </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">DINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">-2147483648 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">2147483647 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32 Bit </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">BYTE</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">255</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">8 Bit </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">WORD</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">65535 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">16 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">DWORD</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">4294967295 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">USINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">255</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">8 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">UDINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">4294967295 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">UINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">65535 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">16 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">REAL</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">1.175494351e-38 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">3.402823466e+38 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32 Bit</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto">A STRING type variable are initialized as STRING(79), 79 characters long variables. STRING type variables cannot be mapped into PDO.</p>
+          <p class="TaulukonSisalto">A BOOL type variable can have values TRUE or FALSE, 8 bits of memory space will be reserved. BOOL type variables cannot be mapped into PDO.</p>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto">If a safety parameter is selected, BOOL or STRING data types cannot be used.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; width: 18.28%; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Checksum</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="TaulukonSisalto"><span style="font-weight: bold;">Checksum</span> is selectable only if the <span style="font-weight: bold;">Variable Type</span> is <span style="font-weight: bold;">Parameter</span>. Select the <span style="font-weight: bold;">Checksum</span> to calculate the checksum for the parameters. For more information, see section <a href="#Checksum" style="font-style: italic;">Checksum</a>.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; width: 18.28%; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Bits</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="TaulukonSisalto">When <span style="font-weight: bold;">Bits</span> is selected, the bit variables are generated to <span data-keyref="CODESYS">CODESYS</span> code according to selected <span style="font-weight: bold;">Data Type</span>. The variable names for the bits can be edited from the index table. Bit variable has the following editable properties:<span style="font-weight: bold;"> Name</span>, <span style="font-weight: bold;">Description</span> and <span style="font-weight: bold;">Default</span>.</p>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto"><span style="font-weight: bold;">Bits</span> is not selectable if the <span style="font-weight: bold;">Data Type</span> is BOOL.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; width: 18.28%; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="TaulukonSisalto">The <span style="font-weight: bold;">Description</span> is shown in <span data-keyref="CODESYS">CODESYS</span> as a comment text associated with the variable name. The <span style="font-weight: bold;">Description</span> can be added/changed from the index table.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; width: 18.28%; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">PDO Mapping</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="TaulukonSisalto">When <span style="font-weight: bold;">PDO Mapping</span> is selected from the index table, the variable can be mapped to transmit and receive PDO(s). <span style="font-weight: bold;">PDO Mapping</span> is selectable for RAM, Retain or RetainPersistent <span style="font-weight: bold;">Variable Type</span>s. BOOL and STRING types cannot be mapped in to a PDO.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; width: 18.28%; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Minimum</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="InlineNormal">Value range minimum for the variable that can be edited from the index table. This value does not affect to <span data-keyref="CODESYS">CODESYS</span>, it is used in the parameter CSV file.</p>
+          <p class="InlineNormal">For more information, see section <a href="topic200086.htm" style="font-style: italic;">Editing CSV</a>.</p>
+          <p class="InlineNormal"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; width: 18.28%; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Default</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="InlineNormal">The variable’s default value is used in the <span data-keyref="CODESYS">CODESYS</span> as a variable’s initial value.</p>
+          <p class="InlineNormal"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; width: 18.28%; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Maximum</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;" width="449">
+          <p class="InlineNormal">Value range maximum for the variable that can be edited from the index table. This value does not affect to <span data-keyref="CODESYS">CODESYS</span>, it is used in the parameter CSV file.</p>
+          <p class="InlineNormal">For more information, see section <a href="topic200086.htm" style="font-style: italic;">Editing CSV</a>.</p>
+          <p class="InlineNormal"> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="InlineNormal"> </p>
+  <p> </p>
+  <h2><a id="Checksum" name="Checksum">Checksum</a></h2>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 56.85pt;">
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66">
+          <p><img alt="" border="0" height="42" src="../assets/images/image006.jpg" title="" width="42"/></p>
+        </td>
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501">
+          <p>The checksum indexes are always linked to only one CANopen device.</p>
+          <p>It is not possible, for example, to read the checksum from CANopen device1 through CANopen device2. This kind of linking can be implemented in the application code manually, it is not automatically supported by <span data-keyref="SoftwareName">MultiTool Creator</span>.</p>
+          <p> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>To use checksum calculation, select the <span style="font-weight: bold;">Checksum</span> property from the <span style="font-weight: bold;">Index Properties</span> for all indexes that are used to calculate the checksum.</p>
+  <p> </p>
+  <p>The Object Dictionary indexes 2050h and 2051h are reserved for the checksum calculation. The 2050h index contains the indexes from which the checksum is calculated. The 2051h index contains the information about checksum calculation result and the checksum value.</p>
+  <p> </p>
+  <p>The definitions for these indexes can be found from CODESYS code template global variables, for example <span style="font-style: italic;">OD1_VAR</span>. The following example has three indexes from which the checksum is calculated and the OD1_VAR has the following definitions:</p>
+  <ul class="p">
+    <li class="p">
+      <p>OD_Device1_ChkSum_Indices: ARRAY[1..3] OF WORD := [16#2201, 16#2202, 16#2200];</p>
+    </li>
+    <li class="p">
+      <p>OD_Device1_ChkSum_Status: ARRAY[1..2] OF WORD := [0, 0];</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p>In case the checksum calculation is used, the function <span style="font-style: italic;">SaveODCalcCrc</span> call is added to the code template&#39;s protocol init (<span style="font-style: italic;">PLC_PRG &gt; Init_Protocols_CanX</span>) for each CAN channel that has a selection for the checksum calculation.</p>
+  <p> </p>
+  
+  
+  
+  
+  <p> </p>
+  <h2><a id="Tips_and_Tricks" name="Tips_and_Tricks">Tips and Tricks</a></h2>
+  <h3>Drag-and-Drop</h3>
+  <p>Drag-and-drop can be used to reorganize the <span style="font-weight: bold;">Object Dictionary</span> items.</p>
+  <p> </p>
+  <h3>Creating an Array</h3>
+  <p>To create an array to the <span style="font-weight: bold;">Object Dictionary</span> tab:</p>
+  <ol class="p">
+    <li class="p">
+      <p>Add an index</p>
+    </li>
+    <li class="p">
+      <p>On the <span style="font-weight: bold;">Name</span> column, give the array <span style="font-style: italic;">&lt;ArrayName&gt;</span>, for example <span style="font-style: italic;">TestArray</span></p>
+    </li>
+  </ol>
+  <p style="margin-left: 40px;">Then, add the size of the array either</p>
+  <ol style="list-style: decimal;">
+    <li style="list-style: none; display: inline;">
+      <ul class="p">
+        <li class="p" style="list-style: disc;">
+          <p>either by giving the amount of array indexes between square brackets <span style="font-style: italic;">&lt;ArrayName&gt;[AmountOfArrayIndexes]</span> , for example <span style="font-style: italic;">TestArray[20]</span> (**)</p>
+        </li>
+        <li class="p" style="list-style: disc;">
+          <p>or defining start and end array index <span style="font-style: italic;">&lt;ArrayName&gt;[StartIndex..EndIndex]</span>, for example <span style="font-style: italic;">TestArray[0..10]</span></p>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <ol class="p" start="3">
+    <li class="p">
+      <p>Click <span style="font-weight: bold;">ENTER</span> and <span data-keyref="SoftwareName">MultiTool Creator</span> asks if the index type can be changed from <span style="font-weight: bold;">SingleVariables</span> to <span style="font-weight: bold;">ArrayOf</span></p>
+    </li>
+    <li class="p">
+      <p>Select <span style="font-weight: bold;">OK</span></p>
+    </li>
+    <li class="p">
+      <p>The index will be updated according to the selection</p>
+    </li>
+  </ol>
+  <p> </p>
+  <p style="font-style: italic;">** Note that when using this method for array definition, the <span style="font-weight: bold;">Project &gt; Preferences</span> <span style="font-weight: bold;">&gt;</span> <span style="font-weight: bold;">Default Array Start Index</span> selection has an affect to the array start index.</p>
+  <p> </p>
+  <h3>Creating a Record</h3>
+  <p>To create a record to the <span style="font-weight: bold;">Object Dictionary</span> tab:</p>
+  <ol class="p">
+    <li class="p">
+      <p>Add an index and open it</p>
+    </li>
+    <li class="p">
+      <p>On the <span style="font-weight: bold;">Name</span> column, give the record name <span style="font-style: italic;">&lt;RecordName&gt;</span> , for example <span style="font-style: italic;">TestRecord</span></p>
+    </li>
+  </ol>
+  <p style="margin-left: 40px;">Then, add the first record member <span style="font-style: italic;">&lt;RecordName&gt;.&lt;MemberVariable&gt;</span></p>
+  <ol class="p" start="3">
+    <li class="p">
+      <p>Click <span style="font-weight: bold;">ENTER</span> and <span data-keyref="SoftwareName">MultiTool Creator</span> asks if the index type can be changed from <span style="font-weight: bold;">SingleVariables</span> to <span style="font-weight: bold;">Record</span></p>
+    </li>
+    <li class="p">
+      <p>Select <span style="font-weight: bold;">OK</span></p>
+    </li>
+    <li class="p">
+      <p>The index will be updated according to the selection</p>
+    </li>
+    <li class="p">
+      <p>Pressing <span style="font-weight: bold;">ENTER</span> adds more sub-indexes easily</p>
+    </li>
+  </ol>
+  <p> </p>
+  <p> </p>
+  <h3><a id="Creating_PDIs__pre-defined_indexes_" name="Creating_PDIs__pre-defined_indexes_">Creating PDIs (pre-defined indexes)</a></h3>
+  <p>To create user PDIs:</p>
+  <ol class="p">
+    <li class="p">
+      <p>Select OD indexes (press CTRL to select multiple indexes)</p>
+    </li>
+    <li class="p">
+      <p>Right-click and select <span style="font-weight: bold;">Create PDI Set.</span></p>
+    </li>
+    <li class="p">
+      <p>Give a name for the new set and click <span style="font-weight: bold;">Save.</span></p>
+    </li>
+  </ol>
+  <p> </p>
+  <p>All the PDI sets saved in the directories given in <a href="topic200016.htm" style="font-style: italic;">Settings</a>, are shown when clicking <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_add_predefined_index.png" style="border: none;" title=""/></p>
+  <p> </p>
+  <p>The xml file for a PDI set can also be created manually.</p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">7_9_3_OD.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

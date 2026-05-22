@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Transmitting and Receiving SRDOs</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Transmitting and Receiving SRDOs</h1>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 46px;">
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; background-color: Transparent;" width="66">
+          <p class="Caution" style="font-size: 10pt;"><img alt="" border="0" height="42" src="../assets/images/image006.jpg" title="" width="42"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt;" width="501">
+          <p class="Note">The SRDO tab is only available for devices that support CANopen Safety. CANopen Safety protocal has to be initialized in the CAN tab</p>
+          <p class="Note"> </p>
+          <p class="Note"><img alt="" border="0" src="../assets/images/MultiTool/Epec/initialize_srdo.png" style="border: none;" title=""/></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p>This topic describes how the transmit and receive SRDO messages are added and configured</p>
+  <ul class="p">
+    <li class="p">
+      <p><a href="#Adding__Editing_and_Deleting_PDOs">Adding, Editing and Deleting SRDOs</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#PDO_Message_Properties_">SRDO Message Properties</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#Receiving_PDOs">Receiving SRDOs</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#Variable_Properties">Variable Properties</a></p>
+    </li>
+  </ul>
+  <p> </p>
+  <p> </p>
+  <h2><a id="Adding__Editing_and_Deleting_PDOs" name="Adding__Editing_and_Deleting_PDOs">Adding, Editing and Deleting SRDOs</a></h2>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;">To add an SRDO message: </p>
+  <ol class="p">
+    <li class="p">
+      <p style="mso-ansi-language: EN-US;">Select the CAN channel from the tabs</p>
+    </li>
+    <li class="p">
+      <p style="mso-ansi-language: EN-US;">Then select<img alt="" border="0" src="../assets/images/MultiTool/Epec/icon_add_transmit.png" style="border: none;" title=""/> icon from the <span style="font-weight: bold;">Transmit SRDOs</span> section or <img alt="" border="0" src="../assets/images/MultiTool/Epec/icon_add_srdo.png" style="border: none;" title=""/>icon from the <span style="font-weight: bold;">Receive SRDOs</span> section for manually added receive SRDO</p>
+    </li>
+  </ol>
+  <ol class="p" start="3">
+    <li class="p">
+      <p style="mso-ansi-language: EN-US;">Then add the variables that should be transmitted.</p>
+    </li>
+  </ol>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;">To delete a SRDO message:</p>
+  <ol class="p">
+    <li class="p">
+      <p style="mso-ansi-language: EN-US;">Select the SRDO message</p>
+    </li>
+    <li class="p">
+      <p style="mso-ansi-language: EN-US;">Then select <img alt="" border="0" src="../assets/images/MultiTool/Epec/icon_add_receive.png" style="border: none;" title=""/> icon from the <span style="font-weight: bold;">Transmit SRDOs</span> section or <img alt="" border="0" src="../assets/images/MultiTool/Epec/icon_delete_srdo.png" style="border: none;" title=""/> icon from the <span style="font-weight: bold;">Receive SRDOs</span> section</p>
+    </li>
+  </ol>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;">Variables can be added to SRDO messages directly on the SRDO tab. <span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">These variables are automatically added to the</span><span style="mso-ansi-language: EN-US;"> </span><span lang="EN-US" style="mso-ansi-language: EN-US; 
+				 font-weight: bold;" xml:lang="EN-US">Object Dictionary</span><span style="mso-ansi-language: EN-US;"> </span><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">as RAM parameters.</span></p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p> </p>
+  <p>To add an <span style="font-weight: bold;">SRDO Variable:</span></p>
+  <ol class="p" style="background-color: Transparent;">
+    <li class="p" style="background-color: Transparent;">
+      <p>Open the device&#39;s <span style="font-weight: bold;">SRDO</span> tab and select the correct CAN channel</p>
+    </li>
+    <li class="p" style="background-color: Transparent;">
+      <p>Add an <span style="font-weight: bold;">SRDO</span></p>
+    </li>
+    <li class="p" style="background-color: Transparent;">
+      <p>Start typing a variable name and press <span style="font-weight: bold;">ENTER</span></p>
+    </li>
+    <li class="p" style="background-color: Transparent;">
+      <p>A dialog box opens (see the image below). A description of the variable can be added. Select the <span style="font-weight: bold;">Data Type</span> and click <span style="font-weight: bold;">Create New Variable. </span></p>
+    </li>
+  </ol>
+  <p> </p>
+  <p style="font-weight: bold; margin-left: 40px;"><img alt="" border="0" src="../assets/images/MultiTool/Epec/new_variable.png" style="border: none; cursor: nesw-resize;" title=""/></p>
+  <p style="font-weight: bold; margin-left: 40px;"> </p>
+  <ol class="p" start="5">
+    <li class="p">
+      <p style="mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">The created</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">SRDO Variable</span> <span lang="EN-US" xml:lang="EN-US">is automatically added to</span> <span lang="EN-US" xml:lang="EN-US">the</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Object Dictionary</span></p>
+    </li>
+  </ol>
+  <p> </p>
+  <p> </p>
+  <h2><a id="PDO_Message_Properties_" name="PDO_Message_Properties_">SRDO Message Properties</a></h2>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="635">
+    <colgroup>
+      <col style="width: 10.4%;"/>
+      <col width="569"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 56.85pt;">
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="InlineBodyText26" style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="Note">SRDO Properties are always configured in the device where the SRDO message is created:</p>
+          <ul class="p-Note">
+            <li class="p-Note">
+              <p class="Note">Selecting <span style="font-weight: bold;">Received By</span> device(s) for<span style="font-weight: bold;"> Transmit SRDOs</span> automatically generates them to the receivers&#39; <span style="font-weight: bold;">Receive SRDOs</span> list</p>
+            </li>
+            <li class="p-Note">
+              <p class="Note">Selecting <span style="font-weight: bold;">Transmitter</span> device for<span style="font-weight: bold;"> Receive SRDOs</span> automatically generates them to the transmitters&#39; <span style="font-weight: bold;">Transmit SRDOs</span> list</p>
+            </li>
+          </ul>
+          <p class="Note"> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p>The following table describes the configurable fields of each SRDO.</p>
+  <p>Fields with grey background are hidden by default. Click <span style="font-weight: bold;">Advanced..</span> to show them in PDO Properties section.</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" style="left: 0px; top: 1438px;" width="1000">
+    <colgroup>
+      <col style="width: 20%;"/>
+      <col style="width: 80%;"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 20px;">
+        <td style="border: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Property</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto"><strong>SRDO Number</strong></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #D6D6D6">
+          <p class="TaulukonSisalto"><strong>COB-ID</strong></p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #D6D6D6">
+          <p class="TaulukonSisalto">COB-ID (Communication Object ID) is an unique identifier for an SRDO messag. MultiTool Creator automatically assigns the COB-ID according to the SRDO number.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #D6D6D6">
+          <p class="TaulukonSisalto"><strong>COB-ID Inverted</strong></p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #D6D6D6">
+          <p class="TaulukonSisalto">COB-ID for the redundant message that is used to validate the SRDO message. MultiTool Creator Automatically assigns the COB-ID according to the SRDO number.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #D6D6D6">
+          <p class="TaulukonSisalto"><strong>DLC</strong></p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #D6D6D6">
+          <p class="TaulukonSisalto">Data Length Code, the length of the data field in bytes.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #D6D6D6">
+          <p class="TaulukonSisalto"><strong>Refresh Time</strong></p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #D6D6D6">
+          <p class="TaulukonSisalto">Transmission rate of the SRDO message.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #D6D6D6">
+          <p class="TaulukonSisalto"><strong>Safety Cycle Time</strong></p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #D6D6D6">
+          <p class="TaulukonSisalto">Monitors the cyclic transmission rate.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #D6D6D6">
+          <p class="TaulukonSisalto"><strong>SR Validation Time</strong></p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #D6D6D6">
+          <p class="TaulukonSisalto">Maximum time between the plain and the inverted SRDO message. </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <h2><a id="Receiving_PDOs" name="Receiving_PDOs">Receiving SRDOs</a></h2>
+  <h4>Received By</h4>
+  <p>When configuring a transmit SRDO, the <span style="font-weight: bold;">Received By</span> setting can be used to define the devices that receive the SRDO. The <span style="font-weight: bold;">Received By</span> list shows all the devices in the same network. To view the settings of a unit, select the unit name listed under<span style="font-weight: bold;"> Received By</span>.</p>
+  <p> </p>
+  <p>Selecting the devices from the <span style="font-weight: bold;">Received By</span> list adds</p>
+  <ul class="p">
+    <li class="p">
+      <p>the transmit SRDO to be received by the other device(s)</p>
+    </li>
+    <li class="p">
+      <p>the SRDO variables to the receiving device&#39;s OD</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p>For example,</p>
+  <ul class="p">
+    <li class="p">
+      <p>Transmit SRDO is added to the Frame device on the <span style="font-weight: bold;">SRDO</span> tab</p>
+    </li>
+    <li class="p">
+      <p>in the SRDO&#39;s <span style="font-weight: bold;">Received By</span> settings, Cabin device is selected (see the following image)</p>
+    </li>
+  </ul>
+  <p style="margin-left: 40px;"><img alt="" border="0" src="../assets/images/MultiTool/Used/ReceivedBy.png" style="border: none;" title=""/></p>
+  <ul class="p">
+    <li class="p">
+      <p>on the Cabin <span style="font-weight: bold;">Configuration</span> &gt; <span style="font-weight: bold;">SRDO</span> tab, the Frame SRDO is listed to the <span style="font-weight: bold;">Receive SRDOs</span> table</p>
+    </li>
+    <li class="p">
+      <p>Also, the Frame SRDO variables (<span style="font-style: italic;">JoystickX, Buttons)</span> are automatically added to the Cabin OD with the prefix <span style="font-style: italic;">Frame_</span></p>
+    </li>
+  </ul>
+  <p> </p>
+  <p style="font-style: italic; margin-left: 40px;"> </p>
+  <h4>Receive SRDOs List</h4>
+  <p>The <span style="font-weight: bold;">Receive SRDOs</span> section on the <span style="font-weight: bold;">SRDO</span> tab lists all the SRDOs that are transmitted on the same network. The first column in the list shows the following information:</p>
+  <ul class="p">
+    <li class="p">
+      <p>The SRDO number</p>
+    </li>
+    <li class="p">
+      <p>if checked, the message is received</p>
+    </li>
+    <li class="p">
+      <p>The name of the transmitter</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p>All other columns are variables that are included in the SRDO message.</p>
+  <p> </p>
+  <p> </p>
+  <h2><a id="Variable_Properties" name="Variable_Properties">Variable Properties</a></h2>
+  <p>The <span style="font-weight: bold;">Variable Properties</span> show the variable definition: <span style="font-weight: bold;">Name, Data Type</span> and <span style="font-weight: bold;">Description</span> selection.</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" style="left: 0px; top: 1438px;" width="1000">
+    <colgroup>
+      <col style="width: 20%;"/>
+      <col style="width: 80%;"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 20px;">
+        <td style="border: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Property</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Name</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Name of the SRDO variable.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">DataType</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">The <b>Data Type <span style="font-weight: normal;">is one of</span></b> <span data-keyref="CODESYS">CODESYS</span>&#39; variable types:</p>
+          <p class="TaulukonSisalto"> </p>
+          <table cellpadding="1" cellspacing="0" class="TableGrid" style="height: 325px; left: 0px; top: 37px;" width="566">
+            <colgroup>
+              <col style="width: 25%;"/>
+              <col style="width: 25%;"/>
+              <col style="width: 25%;"/>
+              <col style="width: 25%;"/>
+            </colgroup>
+            <tbody>
+              <tr>
+                <td>
+                  <p class="TaulukonOtsikko">Data Type</p>
+                </td>
+                <td>
+                  <p class="TaulukonOtsikko">Lower limit</p>
+                </td>
+                <td>
+                  <p class="TaulukonOtsikko">Upper limit</p>
+                </td>
+                <td>
+                  <p class="TaulukonOtsikko">Memory space</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">SINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">-128 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">127 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">8 Bit </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">INT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">-32768 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32767 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">16 Bit </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">DINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">-2147483648 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">2147483647 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32 Bit </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">BYTE</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">255</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">8 Bit </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">WORD</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">65535 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">16 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">DWORD</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">4294967295 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">USINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">255</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">8 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">UDINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">4294967295 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">UINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">65535 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">16 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">REAL</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">1.175494351e-38 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">3.402823466e+38 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32 Bit</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto">STRING type variables cannot be mapped into SRDO.</p>
+          <p class="TaulukonSisalto">BOOL type variables cannot be mapped into SRDO.</p>
+          <p class="TaulukonSisalto">REAL type variables cannot be mapped into SRDO.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr style="height: 7px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>A description of the variable, defined by the user.</p>
+          <p> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200202.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

@@ -1,0 +1,148 @@
+{
+  "candidates": [
+    {
+      "idx": 0,
+      "type": "Button",
+      "rect": [
+        265,
+        121,
+        301,
+        157
+      ],
+      "name": "",
+      "tooltip": null
+    },
+    {
+      "idx": 1,
+      "type": "Image",
+      "rect": [
+        267,
+        123,
+        299,
+        155
+      ],
+      "name": "",
+      "tooltip": null
+    },
+    {
+      "idx": 2,
+      "type": "Button",
+      "rect": [
+        309,
+        121,
+        345,
+        157
+      ],
+      "name": "",
+      "tooltip": null
+    },
+    {
+      "idx": 3,
+      "type": "Image",
+      "rect": [
+        311,
+        123,
+        343,
+        155
+      ],
+      "name": "",
+      "tooltip": null
+    },
+    {
+      "idx": 4,
+      "type": "Button",
+      "rect": [
+        353,
+        121,
+        389,
+        157
+      ],
+      "name": "",
+      "tooltip": "Show Hidden"
+    },
+    {
+      "idx": 5,
+      "type": "Image",
+      "rect": [
+        355,
+        123,
+        387,
+        155
+      ],
+      "name": "",
+      "tooltip": "Show Hidden"
+    },
+    {
+      "idx": 6,
+      "type": "Button",
+      "rect": [
+        397,
+        121,
+        433,
+        157
+      ],
+      "name": "",
+      "tooltip": "Store / Restore Settings"
+    },
+    {
+      "idx": 7,
+      "type": "Image",
+      "rect": [
+        399,
+        123,
+        431,
+        155
+      ],
+      "name": "",
+      "tooltip": "Store / Restore Settings"
+    },
+    {
+      "idx": 8,
+      "type": "Button",
+      "rect": [
+        441,
+        121,
+        477,
+        157
+      ],
+      "name": "",
+      "tooltip": "Import from supported file types"
+    },
+    {
+      "idx": 9,
+      "type": "Image",
+      "rect": [
+        443,
+        123,
+        475,
+        155
+      ],
+      "name": "",
+      "tooltip": "Import from supported file types"
+    },
+    {
+      "idx": 10,
+      "type": "Button",
+      "rect": [
+        479,
+        121,
+        515,
+        157
+      ],
+      "name": "",
+      "tooltip": "Export to supported file types"
+    },
+    {
+      "idx": 11,
+      "type": "Image",
+      "rect": [
+        481,
+        123,
+        513,
+        155
+      ],
+      "name": "",
+      "tooltip": "Export to supported file types"
+    }
+  ]
+}

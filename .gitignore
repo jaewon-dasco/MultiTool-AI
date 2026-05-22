@@ -35,3 +35,9 @@ skills/e2e_explorer/kb/
 
 # MultiTool 백업 파일
 *.mtproject.bak.*
+
+# Claude Code 런타임
+.claude/scheduled_tasks.lock
+
+# MultiTool 게이트웨이/세션 파일
+*.gw

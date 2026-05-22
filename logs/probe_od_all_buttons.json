@@ -1,0 +1,439 @@
+{
+  "buttons": [
+    {
+      "name": "minimizeButton",
+      "auto_id": "minimizeButton",
+      "rect": [
+        2495,
+        0,
+        2517,
+        22
+      ],
+      "size": [
+        22,
+        22
+      ],
+      "enabled": true
+    },
+    {
+      "name": "maximizeButton",
+      "auto_id": "maximizeButton",
+      "rect": [
+        2517,
+        0,
+        2539,
+        22
+      ],
+      "size": [
+        22,
+        22
+      ],
+      "enabled": true
+    },
+    {
+      "name": "closeButton",
+      "auto_id": "closeButton",
+      "rect": [
+        2539,
+        0,
+        2561,
+        22
+      ],
+      "size": [
+        22,
+        22
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        26,
+        1,
+        50,
+        25
+      ],
+      "size": [
+        24,
+        24
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        56,
+        1,
+        80,
+        25
+      ],
+      "size": [
+        24,
+        24
+      ],
+      "enabled": true
+    },
+    {
+      "name": "Hide",
+      "auto_id": "RadPaneCloseButton",
+      "rect": [
+        204,
+        58,
+        220,
+        74
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "enabled": true
+    },
+    {
+      "name": "PART_DropdownButton",
+      "auto_id": "PART_DropdownButton",
+      "rect": [
+        2545,
+        119,
+        2555,
+        159
+      ],
+      "size": [
+        10,
+        40
+      ],
+      "enabled": false
+    },
+    {
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        189,
+        121,
+        225,
+        157
+      ],
+      "size": [
+        36,
+        36
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        227,
+        121,
+        263,
+        157
+      ],
+      "size": [
+        36,
+        36
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        265,
+        121,
+        301,
+        157
+      ],
+      "size": [
+        36,
+        36
+      ],
+      "enabled": false
+    },
+    {
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        309,
+        121,
+        345,
+        157
+      ],
+      "size": [
+        36,
+        36
+      ],
+      "enabled": false
+    },
+    {
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        353,
+        121,
+        389,
+        157
+      ],
+      "size": [
+        36,
+        36
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        397,
+        121,
+        433,
+        157
+      ],
+      "size": [
+        36,
+        36
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        441,
+        121,
+        477,
+        157
+      ],
+      "size": [
+        36,
+        36
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        479,
+        121,
+        515,
+        157
+      ],
+      "size": [
+        36,
+        36
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "PART_ExpandButton",
+      "rect": [
+        176,
+        189,
+        198,
+        215
+      ],
+      "size": [
+        22,
+        26
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "PART_ExpandButton",
+      "rect": [
+        176,
+        215,
+        198,
+        241
+      ],
+      "size": [
+        22,
+        26
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "PART_ExpandButton",
+      "rect": [
+        176,
+        241,
+        198,
+        267
+      ],
+      "size": [
+        22,
+        26
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "PART_ExpandButton",
+      "rect": [
+        176,
+        267,
+        198,
+        293
+      ],
+      "size": [
+        22,
+        26
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "PART_ExpandButton",
+      "rect": [
+        176,
+        293,
+        198,
+        319
+      ],
+      "size": [
+        22,
+        26
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "PART_ExpandButton",
+      "rect": [
+        176,
+        319,
+        198,
+        345
+      ],
+      "size": [
+        22,
+        26
+      ],
+      "enabled": true
+    },
+    {
+      "name": "Close",
+      "auto_id": "PART_CloseButton",
+      "rect": [
+        1455,
+        453,
+        1473,
+        478
+      ],
+      "size": [
+        18,
+        25
+      ],
+      "enabled": true
+    },
+    {
+      "name": "OK (Use Selected)",
+      "auto_id": "OKButton",
+      "rect": [
+        1219,
+        914,
+        1324,
+        936
+      ],
+      "size": [
+        105,
+        22
+      ],
+      "enabled": true
+    },
+    {
+      "name": "Cancel (Use Original)",
+      "auto_id": "CancelButton",
+      "rect": [
+        1344,
+        914,
+        1464,
+        936
+      ],
+      "size": [
+        120,
+        22
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        3,
+        1368,
+        29,
+        1393
+      ],
+      "size": [
+        26,
+        25
+      ],
+      "enabled": true
+    },
+    {
+      "name": "-",
+      "auto_id": "",
+      "rect": [
+        2264,
+        1368,
+        2272,
+        1390
+      ],
+      "size": [
+        8,
+        22
+      ],
+      "enabled": true
+    },
+    {
+      "name": "+",
+      "auto_id": "",
+      "rect": [
+        2497,
+        1368,
+        2511,
+        1390
+      ],
+      "size": [
+        14,
+        22
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "LargeDecreaseButton",
+      "rect": [
+        2275,
+        1375,
+        2377,
+        1383
+      ],
+      "size": [
+        102,
+        8
+      ],
+      "enabled": true
+    },
+    {
+      "name": "",
+      "auto_id": "LargeIncreaseButton",
+      "rect": [
+        2381,
+        1375,
+        2494,
+        1383
+      ],
+      "size": [
+        113,
+        8
+      ],
+      "enabled": true
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+<meta name="generator" content="Adobe RoboHelp 2022"/>
+<title>Using Events</title>
+<link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+<meta name="rh-index-keywords" content="Using Events"/><meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+
+<body>
+<h1>Using Events</h1>
+<p>The purpose of the Event system is to send control system event information, 
+ such as alarms, warnings and notifications, from <span data-keyref="ManufacturerName">Epec</span> 
+ devices to event consumer device. The event consumer can be an <span data-keyref="ManufacturerName">Epec</span> device that is able 
+ to log event information. This means that the event consumer has to have 
+ non-volatile memory or a file system (for example, <span data-keyref="6000XSeries">6000/X Series</span> 
+ <span data-condition="Others:EpecSpecific">or 5050 </span>device). 
+ </p>
+<p> </p>
+<p>The Event system uses CANopen PDO protocol to transfer information from 
+ event producer to event consumer. Every event producer has their own events 
+ that are transmitted to event consumer. Event consumer can also have its 
+ own events. Once the event consumer has been selected and events are created 
+ to the event producer devices, event PDOs are created. One PDO is added 
+ to Transmit PDOs and another one to Receive PDOs.</p>
+<p> </p>
+<p style="background-color: transparent;">To add a new event, select <img src="../assets/images/MultiTool/Used/icon_add_event.png" alt="" title="" style="border: none;" border="0"/> icon. To delete an event, select<img src="../assets/images/MultiTool/Used/icon_remove_event.png" alt="" title="" style="border: none;" border="0"/> icon.</p>
+<p style="background-color: transparent;"> </p>
+<p style="background-color: transparent;">To export list of events into 
+ a PDF or Excel file, press CTRL + SHIFT + S in Network Events view when 
+ any of the events are selected. </p>
+<p style="background-color: transparent;">.</p>
+<p>To search events, press CTRL + F.</p>
+<p style="background-color: transparent;"> </p>
+<p style="background-color: transparent;">For an event, it is possible 
+ to configure the following properties:</p>
+<p style="background-color: transparent;"> </p>
+<table style="vertical-align: Center; cellspacing=0: &#39;padding-left:&#39; 2px; 
+		 padding-top: 2px; padding-right: 2px; padding-bottom: 2px; left: 0px; 
+		 top: 2155px;" cellspacing="0" width="1243" cellpadding="1">
+	<colgroup><col width="167"/>
+	<col width="1061"/>
+	</colgroup><tbody><tr style="vertical-align: center;">
+		<td padding-left:="" padding-top:="" padding-right:="" padding-bottom:="" style="border: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko"><span>Configuration</span></p></td>
+		<td padding-left:="" padding-top:="" padding-right:="" padding-bottom:="" style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko"><span>Description</span></p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko">Identifier</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto">Numeric 
+		 identification value for the event. Drag-and-drop to change the 
+		 <span style="font-weight: bold;">Identifier.</span></p>
+		<p class="TaulukonSisalto"> </p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td padding-left:="" padding-top:="" padding-right:="" padding-bottom:="" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko">Variable</p></td>
+		<td padding-left:="" padding-top:="" padding-right:="" padding-bottom:="" style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto">Enumeration 
+		 name that is used in CODESYS to trigger the event.</p>
+		<p class="TaulukonSisalto"> </p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko">Level</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p>Level that also 
+		 defines the priority for the event. By default, <span data-keyref="SoftwareName">MultiTool Creator</span> has three event 
+		 levels: Alarm, Notification and Warning.</p>
+		<p>To add or edit levels, select <span style="font-weight: bold;">Open 
+		 Event Levels.</span></p>
+		<p> </p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko">Log</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto">Defines 
+		 whether the data is written to a log or not</p>
+		<p class="TaulukonSisalto"> </p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko">Popup</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p>Defines whether 
+		 the event triggers a pop-up or not</p>
+		<p> </p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko">Default Text</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto">Includes 
+		 the event description text</p>
+		<p class="TaulukonSisalto"> </p></td>
+	</tr>
+</tbody></table>
+<p style="background-color: transparent;"> </p>
+<p style="background-color: transparent;"> </p>
+<p style="background-color: transparent;">Possible <span style="font-weight: bold;">Event 
+ System Properties</span> are described in the following table:</p>
+<p style="background-color: transparent;"> </p>
+<table style="vertical-align: Center; cellspacing=0: &#39;padding-left:&#39; 2px; 
+		 padding-top: 2px; padding-right: 2px; padding-bottom: 2px; left: 0px; 
+		 top: 2155px;" cellspacing="0" width="1243" cellpadding="1">
+	<colgroup><col width="167"/>
+	<col width="1061"/>
+	</colgroup><tbody><tr style="vertical-align: center;">
+		<td padding-left:="" padding-top:="" padding-right:="" padding-bottom:="" style="border: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko"><span>Configuration</span></p></td>
+		<td padding-left:="" padding-top:="" padding-right:="" padding-bottom:="" style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p style="font-weight: bold;"><span>Description</span></p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko">Is Event Consumer</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto">Selecting 
+		 <span style="font-weight: bold;">Is</span> <span style="font-weight: bold;">Event 
+		 Consumer</span> to define the device as event consumer.</p>
+		<p class="TaulukonSisalto"> </p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td padding-left:="" padding-top:="" padding-right:="" padding-bottom:="" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko">Log Type</p></td>
+		<td padding-left:="" padding-top:="" padding-right:="" padding-bottom:="" style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto">Select 
+		 where the event log is stored. Enabled only if <span style="font-weight: bold;">Is</span> 
+		 <span style="font-weight: bold;">Event Consumer</span> is selected.</p>
+		<p class="TaulukonSisalto"> </p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko">Log Line Count</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto">Define 
+		 how many rows are reserved for the event log. Enabled only if 
+		 <span style="font-weight: bold;">Is</span> <span style="font-weight: bold;">Event 
+		 Consumer</span> is selected.</p>
+		<p class="TaulukonSisalto"> </p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonOtsikko">Max Visible Log Lines</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto">Defines 
+		 the maximum amount of event rows shown in the event log view. 
+		 Affects only when a new CODESYS project is created.</p>
+		<p class="TaulukonSisalto"> </p></td>
+	</tr>
+</tbody></table>
+<p style="background-color: transparent;"> </p>
+<p style="background-color: transparent;"> </p>
+<h2>Network Events</h2>
+<p style="background-color: transparent;">To view all the events in the 
+ network, select <span style="font-weight: bold;">Open Network Events.</span> 
+ This view shows the configuration for the event consumer and also a list 
+ of all network events.</p>
+<p style="background-color: transparent;"> </p>
+<p style="background-color: transparent;">To add a new event, select <img src="../assets/images/MultiTool/Used/icon_pick_source.png" alt="" title="" style="border: none;" border="0"/> icon to pick the source device 
+ of the event. The event will be added to this device and it will also 
+ be seen on the device&#39;s <span style="font-weight: bold;">Event</span> 
+ tab.</p>
+<p style="background-color: transparent;">To delete an existing event, 
+ select the event and then select <img src="../assets/images/MultiTool/Used/icon_remove_row.png" alt="" title="" style="border: none;" border="0"/> icon.</p>
+<p style="background-color: transparent;">To view and/or edit event levels, 
+ select <img src="../assets/images/MultiTool/Used/icon_open_event_levels.png" alt="" title="" style="border: none;" border="0"/> icon.</p>
+<p style="background-color: transparent;"> </p>
+<p style="background-color: transparent;"> </p>
+<h2>Editing Event Levels</h2>
+<p class="TaulukonSisalto">To view and/or edit event levels, select <span style="font-weight: bold;">Open Event Levels</span> and the <span style="font-weight: bold;">Project Preferences</span> is opened.</p>
+<p class="TaulukonSisalto"><span style="background-color: transparent;">To 
+ add a new event level, select <img src="../assets/images/MultiTool/Used/icon_store_restore_add_subindex.JPG" alt="" title="" style="border: none;" border="0"/> icon.</span></p>
+<p class="TaulukonSisalto">To delete an event level, select the event level 
+ and then select <img src="../assets/images/MultiTool/Used/icon_remove_row.png" alt="" title="" style="border: none;" border="0"/> 
+ icon.</p>
+<p class="TaulukonSisalto">To reset to default event levels, select <img src="../assets/images/MultiTool/Used/icon_reset_to_defaults.png" alt="" title="" style="border: none;" border="0"/>icon.</p>
+<p class="TaulukonSisalto"> </p>
+<p class="TaulukonSisalto"> </p>
+<p class="TaulukonSisalto">Each event level has the following configuration 
+ possibilities:</p>
+<p style="background-color: transparent;"> </p>
+<table style="vertical-align: Center; cellspacing=0: &#39;padding-left:&#39; 2px; 
+		 padding-top: 2px; padding-right: 2px; padding-bottom: 2px; left: 0px; 
+		 top: 2155px;" cellspacing="0" width="1243" cellpadding="1">
+	<colgroup><col width="167"/>
+	<col width="1061"/>
+	</colgroup><tbody><tr style="vertical-align: center;">
+		<td padding-left:="" padding-top:="" padding-right:="" padding-bottom:="" style="border: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p style="font-weight: bold;">Property</p></td>
+		<td padding-left:="" padding-top:="" padding-right:="" padding-bottom:="" style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p style="font-weight: bold;"><span>Description</span></p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto" style="font-weight: bold;">Level</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto">Numeric 
+		 value for the level that also defines event priority (0 = highest 
+		 priority). <span lang="EN-US" xml:lang="EN-US" style="mso-ansi-language: EN-US;">The 
+		 maximum amount of event levels is 255.</span></p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td padding-left:="" padding-top:="" padding-right:="" padding-bottom:="" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto" style="font-weight: bold;">Name</p></td>
+		<td padding-left:="" padding-top:="" padding-right:="" padding-bottom:="" style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto">Symbolic 
+		 event name</p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto" style="font-weight: bold;">Log</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto">Defines 
+		 whether the data is written to a log or not</p></td>
+	</tr>
+	<tr style="vertical-align: center;">
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 2px; 
+			 padding-right: 2px; padding-top: 2px; padding-bottom: 2px;"><p class="TaulukonSisalto" style="font-weight: bold;">Pop-up</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 2px; padding-right: 2px; 
+			 padding-top: 2px; padding-bottom: 2px;"><p>Defines whether 
+		 the event triggers a pop-up or not</p></td>
+	</tr>
+</tbody></table>
+<p style="background-color: transparent;"> </p>
+<p style="background-color: transparent;"> </p>
+<h2>Library Events</h2>
+<p style="background-color: transparent;"><span style="font-weight: bold;">Library 
+ Event</span>s tab lists all the library events. Define which events will 
+ be logged to consumer&#39;s event log and which events will trigger a pop-up 
+ action. Log must be selected in order to select pop-up.</p>
+<p style="background-color: transparent;"> </p>
+<p> </p>
+<p>See also,</p>
+<ul class="p">
+	<li style="font-style: italic;" class="p"><p><a href="topic200009.htm">Editing 
+	 Network Events</a></p></li>
+	<li style="font-style: italic;" class="p"><p><a href="topic200036.htm">Event 
+	 System and Automatically Generated Events</a></p></li>
+	<li style="font-style: italic;" class="p"><p><span data-condition="Others:EpecSpecific">Epec 
+	 </span>Programming and Libraries Manual &gt; Libraries &gt; 
+	 Common Libraries for Control Units &gt; Event Log</p></li>
+</ul>
+<p> </p>
+<p> </p>
+<div data-region="footer">
+	<p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> 
+	 reserves all rights for improvements without prior notice.</p>
+	<p style="color: #c0c0c0;"> </p>
+	<p style="color: #c0c0c0;"><span>Source file <span data-format="default" data-field="file">topic200015.htm</span></span></p>
+	<p style="color: #c0c0c0;"><span>Last updated <span data-format="D-MMM-YYYY" data-field="date">25-Jun-2025</span></span></p>
+</div>
+
+
+</body></html>

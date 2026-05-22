@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Importing CAN DataBase (CANdb)</title>
+  <meta name="topic-status" content="Draft"/>
+  <link rel="stylesheet" type="text/css" href="assets/css/Topics/MultiTool.css"/>
+  <link rel="stylesheet" type="text/css" href="assets/css/MultiTool.css"/>
+  <link rel="stylesheet" type="text/css" href="../assets/css/MultiTool.css"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Importing CAN Database (CANdb)</h1>
+  <p>The DBC import feature allows J1939, NMEA2000, or CANopen messages to be imported to the MultiTool Creator Network. Transmitters and receivers are defined for the messages during this process. It is possible to navigate back and forth between steps in the wizard as needed.</p>
+  <p> </p>
+  <p>To start the CAN Database importing process:</p>
+  <p> </p>
+  <p>1. Select the network</p>
+  <p> </p>
+  <p>2. Select <strong>Import DBC</strong></p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/SelectImportDBC.png"/></p>
+  <p> </p>
+  <p>3. Select the DBC file from the File Explorer</p>
+  <p> </p>
+  <p><strong></strong>The DBC import wizard opens. </p>
+  <h2>DBC Import Wizard, Step 1/5</h2>
+  <p>A summary of the selected DBC file is displayed in the first window of the DBC import wizard. ECUs, messages, and signals defined within the DBC file can be reviewed. The message type can be selected from the top left side of the view, with supported message types including J1939, NMEA2000, and CANopen.  </p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/DBCimportWizard1.png"/></p>
+  <p>Proceed to wizard step 2 by selecting <strong>Next</strong><strong></strong>.</p>
+  <h2>DBC Import Wizard, Step 2/5</h2>
+  <p>If any ECUs are defined in the DBC file, they are shown in the second window of the DBC import Wizard. In this step, the DBC defined ECUs are connected to the devices in the network. If the DBC file specifies transmitters or receivers for any messages, this step enables an <strong>Automatic Assignment</strong> button, simplifying steps 3 and 4 by making assignments easier. </p>
+  <p> </p>
+  <p>The specifics of this step vary slightly, depending on the message type: CANopen, J1939 or NMEA2000 messages.</p>
+  <p> </p>
+  <h3>CANopen messages</h3>
+  <p>The right side of the view, displays a list of all devices in the network. </p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/DBCimportWizard2CANopen.png"/></p>
+  <p> </p>
+  <h3>J1939 or NMEA 2000 messages</h3>
+  <p>The top list shows all Address Claims in the network.</p>
+  <p> </p>
+  <p>The bottom list displays all J1939/NMEA2000 devices in the network. </p>
+  <p><br/>
+     </p>
+  <p><img src="../assets/images/MultiTool/Epec/DBCimportWizard2J1939.png"/></p>
+  <p> </p>
+  <p>To add additional Address Claims or J1939 devices to these lists, click the <img src="../assets/images/MultiTool/Epec/icon_plus_sign.png"/> icon at the top of each list. After adding a new Address Claim, assign it to a device by double-clicking the Select Device cell and select the desired device.</p>
+  <p> </p>
+  <p>Newly created Address Claims or J1939 devices can be removed by selecting the <img src="../assets/images/MultiTool/Epec/icon_delete.png"/>icon.</p>
+  <p> </p>
+  <p> </p>
+  <p>DBC ECUs can be connected to devices in two ways:</p>
+  <p> </p>
+  <ul class="Disc">
+    <li>
+      <p>Drag and drop the selected ECU onto the desired device or address claim (or)</p>
+    </li>
+    <li>
+      <p>Double-click the DBC ECU cell and select and ECU from the list. </p>
+    </li>
+  </ul>
+  <p> </p>
+  <p>To remove and ECU connection, select the row containing the ECU, the press the <strong>Delete</strong> key on your keyboard or select the <img src="../assets/images/MultiTool/Epec/icon_remove_connection.png"/> icon at the top of the list.</p>
+  <p> </p>
+  <p>At the bottom of the view, there is a button labeled <strong>Automatic Assignment</strong>. This button becomes available if any of the ECU names match the device names. Selecting <strong>Automatic Assignment</strong> automatically connects the ECUs to their corresponding devices based on theses name matches. </p>
+  <p> </p>
+  <p>Proceed to wizard step 3 by selecting <strong>Next</strong>. </p>
+  <p> </p>
+  <p> </p>
+  <h2>DBC Import Wizard, Step 3/5</h2>
+  <p paraeid="{b8b2939a-e6f7-4628-ab17-ba818e14679e}{245}" paraid="862687259"><span data-contrast="auto"><span>In Step 3, transmitters are assigned to the message(s). The list on the left displays all messages for which the selected device can be assigned as the transmitter. The selected device can be changed by choosing a different </span><span>option</span><span> from the dropdown menu in the center of the view.</span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{b8b2939a-e6f7-4628-ab17-ba818e14679e}{251}" paraid="843368843"> </p>
+  <p paraeid="{b8b2939a-e6f7-4628-ab17-ba818e14679e}{251}" paraid="843368843"><span data-contrast="auto"><span>To define a transmitter for the message(s):</span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{b8b2939a-e6f7-4628-ab17-ba818e14679e}{251}" paraid="843368843"> </p>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{2}" paraid="426992580"><span data-contrast="auto"><span>1. Select the transmitter device from the dropdown menu</span></span></p>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{2}" paraid="426992580"> </p>
+  <p><img src="../assets/images/MultiTool/Epec/DBCimportWizard3selectTransmitter.png"/></p>
+  <p> </p>
+  <p> </p>
+  <p>2. Select the message(s) that the device should transmit.</p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/DBCimportWizard3selectMessages.png"/></p>
+  <p> </p>
+  <p>3. Select the <img src="../assets/images/MultiTool/Epec/icon_selectDBC.png"/> icon at the top of the list, or drag and drop the selected message(s) into the list on the right. </p>
+  <p> </p>
+  <p> <img src="../assets/images/MultiTool/Epec/DBCimportWizard3assigntransmitter.png"/> </p>
+  <p> </p>
+  <p>Once a transmitter is assigned to the selected message(s), those will appear in the list on the right side of the view. </p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/DBCimportWizard3selectedMessages.png"/></p>
+  <p> </p>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{65}" paraid="544221067"><span data-contrast="auto"><span>If the DBC file defines a transmitter for any messages, and ECUs</span><span> were connected</span><span> in Step 2, the <strong>Auto Assignment</strong> button will be available. Selecting</span><span> this button allows the wizard to automatically assign </span><span>transmitter</span><span>s</span><span> based on the DBC file.</span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{83}" paraid="801362506"> </p>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{83}" paraid="801362506"><span data-contrast="auto"><span>Proceed to wizard step </span><span>4</span><span> by selecting </span></span><strong><span data-contrast="auto"><span>Next</span></span></strong><span data-contrast="auto"><span>.</span></span><span data-ccp-props="{}"> </span></p>
+  <p> </p>
+  <p> </p>
+  <h2>DBC Import, Step 4/5</h2>
+  <p>In step 4, Receivers are assigned to message(s). <span data-contrast="auto"><span>The list on the left displays all messages for which the selected device can be assigned as the receiver. The selected device can be changed by choosing a different </span><span>option</span><span> from the dropdown menu in the center of the view.</span></span><span data-ccp-props="{}"> </span></p>
+  <p> </p>
+  <p paraeid="{b8b2939a-e6f7-4628-ab17-ba818e14679e}{251}" paraid="843368843"><span data-contrast="auto"><span>To define a receiver for the message(s)s:</span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{b8b2939a-e6f7-4628-ab17-ba818e14679e}{251}" paraid="843368843"> </p>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{2}" paraid="426992580"><span data-contrast="auto"><span>1. Select the receiver device from the dropdown menu</span></span></p>
+  <p> </p>
+  <p>2. Select the message(s) that the device should receive.</p>
+  <p> </p>
+  <p>3. Select the <img src="../assets/images/MultiTool/Epec/icon_selectDBC.png"/> icon at the top of the list, or drag and drop the selected message(s) into the list on the right. </p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/DBCimportWizard4selectReceiver.png"/></p>
+  <p> </p>
+  <p> </p>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{149}" paraid="2133915364"><span data-contrast="auto"><span>If the DBC file defines receivers for any messages, and the ECUs were connected in Step 2, the <strong>Auto Assignment</strong> button will be available. Selecting this button allows the wizard to automatically assign receivers based on the DBC file.</span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{155}" paraid="1778771212"> </p>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{155}" paraid="1778771212"><span data-contrast="auto"><span>Proceed to wizard step </span><span>5</span><span> by selecting </span></span><strong><span data-contrast="auto"><span>Next</span></span></strong></p>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{155}" paraid="1778771212"> </p>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{155}" paraid="1778771212"> </p>
+  <h2 paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{155}" paraid="1778771212"><strong><span data-contrast="auto"><span>DBC Import, Step 5/5</span></span></strong><span data-ccp-props="{}"> </span></h2>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{179}" paraid="1191201577"><span data-contrast="auto"><span>Step 5 provides a summary of the import process, giving an overview of the messages that are about to be imported. The view </span><span>contains</span><span> two lists:</span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{179}" paraid="1191201577"> </p>
+  <ul class="Disc">
+    <li paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{185}" paraid="758264940">
+      <p><span data-contrast="auto"><span>On the left side, </span><span>is a list of the</span><span> messages that will be imported to the devices. Select the Plus icon next to a message to view more detailed information about it.</span></span><span data-ccp-props="{}"> </span></p>
+    </li>
+    <li paraeid="{b5404aa5-4136-48d3-91e2-87936613a227}{195}" paraid="1013202846">
+      <p><span data-contrast="auto"><span>On the right side, there is a list of messages defined in the DBC file that are not being imported to devices. To view the </span><span>reason why</span><span> a message is not being imported, select the Plus icon next to it.</span></span><span data-ccp-props="{}"> </span></p>
+    </li>
+  </ul>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/DBCimportWizard5.png"/></p>
+  <p> </p>
+  <p>To complete the process, select <strong>Done</strong> to close the wizard. Afterward, all messages will be assigned to their respective devices. </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+
+</body></html>

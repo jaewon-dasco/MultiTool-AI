@@ -1,0 +1,1060 @@
+{
+  "header_rect": [
+    388,
+    756,
+    466,
+    773
+  ],
+  "before": [
+    {
+      "type": "ListItem",
+      "name": "Epec.MT.Impl.ObjectDictionary.UserRpdo",
+      "auto_id": "",
+      "rect": [
+        371,
+        815,
+        1988,
+        841
+      ],
+      "size": [
+        1617,
+        26
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowControl",
+      "rect": [
+        910,
+        815,
+        1988,
+        840
+      ],
+      "size": [
+        1078,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        910,
+        815,
+        1045,
+        840
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1045,
+        815,
+        1180,
+        840
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1180,
+        815,
+        1315,
+        840
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1315,
+        815,
+        1450,
+        840
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1450,
+        815,
+        1585,
+        840
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Is Received",
+      "auto_id": "",
+      "rect": [
+        380,
+        792,
+        494,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Transmitter",
+      "auto_id": "",
+      "rect": [
+        515,
+        792,
+        763,
+        808
+      ],
+      "size": [
+        248,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "COB-ID",
+      "auto_id": "",
+      "rect": [
+        784,
+        792,
+        898,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Byte 0",
+      "auto_id": "",
+      "rect": [
+        919,
+        792,
+        1033,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Byte 1",
+      "auto_id": "",
+      "rect": [
+        1054,
+        792,
+        1168,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Byte 2",
+      "auto_id": "",
+      "rect": [
+        1189,
+        792,
+        1303,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Byte 3",
+      "auto_id": "",
+      "rect": [
+        1324,
+        792,
+        1438,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Byte 4",
+      "auto_id": "",
+      "rect": [
+        1459,
+        792,
+        1573,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Ctrl",
+      "auto_id": "tb",
+      "rect": [
+        968,
+        819,
+        987,
+        835
+      ],
+      "size": [
+        19,
+        16
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        910,
+        815,
+        1044,
+        840
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1045,
+        815,
+        1179,
+        840
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1180,
+        815,
+        1314,
+        840
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1315,
+        815,
+        1449,
+        840
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1450,
+        815,
+        1584,
+        840
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        3,
+        1368,
+        29,
+        1393
+      ],
+      "size": [
+        26,
+        25
+      ]
+    }
+  ],
+  "after_final": [
+    {
+      "type": "ListItem",
+      "name": "Epec.MT.Impl.ObjectDictionary.UserRpdo",
+      "auto_id": "",
+      "rect": [
+        371,
+        815,
+        1988,
+        841
+      ],
+      "size": [
+        1617,
+        26
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "Epec.MT.Impl.ObjectDictionary.UserRpdo",
+      "auto_id": "",
+      "rect": [
+        371,
+        841,
+        1988,
+        867
+      ],
+      "size": [
+        1617,
+        26
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowControl",
+      "rect": [
+        910,
+        815,
+        1988,
+        840
+      ],
+      "size": [
+        1078,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        910,
+        815,
+        1045,
+        840
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1045,
+        815,
+        1180,
+        840
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1180,
+        815,
+        1315,
+        840
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1315,
+        815,
+        1450,
+        840
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1450,
+        815,
+        1585,
+        840
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowControl",
+      "rect": [
+        910,
+        841,
+        1988,
+        866
+      ],
+      "size": [
+        1078,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        910,
+        841,
+        1045,
+        866
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1045,
+        841,
+        1180,
+        866
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1180,
+        841,
+        1315,
+        866
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1315,
+        841,
+        1450,
+        866
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1450,
+        841,
+        1585,
+        866
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Is Received",
+      "auto_id": "",
+      "rect": [
+        380,
+        792,
+        494,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Transmitter",
+      "auto_id": "",
+      "rect": [
+        515,
+        792,
+        763,
+        808
+      ],
+      "size": [
+        248,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "COB-ID",
+      "auto_id": "",
+      "rect": [
+        784,
+        792,
+        898,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Byte 0",
+      "auto_id": "",
+      "rect": [
+        919,
+        792,
+        1033,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Byte 1",
+      "auto_id": "",
+      "rect": [
+        1054,
+        792,
+        1168,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Byte 2",
+      "auto_id": "",
+      "rect": [
+        1189,
+        792,
+        1303,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Byte 3",
+      "auto_id": "",
+      "rect": [
+        1324,
+        792,
+        1438,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Byte 4",
+      "auto_id": "",
+      "rect": [
+        1459,
+        792,
+        1573,
+        808
+      ],
+      "size": [
+        114,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "Ctrl",
+      "auto_id": "tb",
+      "rect": [
+        968,
+        819,
+        987,
+        835
+      ],
+      "size": [
+        19,
+        16
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        910,
+        815,
+        1044,
+        840
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1045,
+        815,
+        1179,
+        840
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1180,
+        815,
+        1314,
+        840
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1315,
+        815,
+        1449,
+        840
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1450,
+        815,
+        1584,
+        840
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        910,
+        841,
+        1044,
+        866
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1045,
+        841,
+        1179,
+        866
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1180,
+        841,
+        1314,
+        866
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1315,
+        841,
+        1449,
+        866
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1450,
+        841,
+        1584,
+        866
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "",
+      "auto_id": "",
+      "rect": [
+        3,
+        1368,
+        29,
+        1393
+      ],
+      "size": [
+        26,
+        25
+      ]
+    }
+  ],
+  "new_controls": [
+    {
+      "type": "ListItem",
+      "name": "Epec.MT.Impl.ObjectDictionary.UserRpdo",
+      "auto_id": "",
+      "rect": [
+        371,
+        841,
+        1988,
+        867
+      ],
+      "size": [
+        1617,
+        26
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowControl",
+      "rect": [
+        910,
+        841,
+        1988,
+        866
+      ],
+      "size": [
+        1078,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        910,
+        841,
+        1045,
+        866
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1045,
+        841,
+        1180,
+        866
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1180,
+        841,
+        1315,
+        866
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1315,
+        841,
+        1450,
+        866
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "auto_id": "PdoRowItemControl",
+      "rect": [
+        1450,
+        841,
+        1585,
+        866
+      ],
+      "size": [
+        135,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        910,
+        841,
+        1044,
+        866
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1045,
+        841,
+        1179,
+        866
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1180,
+        841,
+        1314,
+        866
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1315,
+        841,
+        1449,
+        866
+      ],
+      "size": [
+        134,
+        25
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "Toggle",
+      "auto_id": "Toggle",
+      "rect": [
+        1450,
+        841,
+        1584,
+        866
+      ],
+      "size": [
+        134,
+        25
+      ]
+    }
+  ],
+  "snapshots_n": [
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34,
+    34
+  ]
+}

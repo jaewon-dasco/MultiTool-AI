@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="Originator" content="ImportDoc"/>
+  <meta name="OriginalFile" content="MultiTool_Tech_simple2.doc"/>
+  <meta name="topic-check-list" content="Ran Smart Index"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>CAN</title>
+  <link rel="stylesheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <style type="text/css">
+    /*
+      <![CDATA[*/
+    A:visited {
+      color: #800080;
+    }
+    A:link {
+      color: #0000ff;
+    }
+    /*]]>*/
+  </style>
+  <meta name="rh-index-keywords" content="Defining CAN and CANopen,NodeID,CANopen,COB,Cable Detection,Node,Baud Rate,Heart Beat,SAEJ1939,ISOBUS"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body lang="FI" xml:lang="FI">
+  <h1>Defining CAN and CANopen</h1>
+  <p>CAN bus configurations and CANopen initialization are done on the <span style="font-weight: bold;">CAN</span> tab. The <span style="font-weight: bold;">CAN</span> tab also includes <span style="font-weight: bold;">Network Monitoring</span>, where the device monitoring settings can be done. For more information about <span style="font-weight: bold;">Network Monitoring</span>, see <span style="font-style: italic;"><i><span style="font-size:11.0pt"><span style="font-family:&quot;Calibri&quot;,sans-serif"><a href="7_9_9_Monitoring.htm#h">Monitoring CANopen Devices</a></span></span></i>.</span></p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="57">
+          <p class="InlineBodyText" style="font-weight: bold;"><span><img alt="" border="0" height="42" src="../assets/images/image006.jpg" title="" width="42"/></span></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt;" width="510">
+          <p class="InlineBodyText23" style="text-align: left; 
+							 font-weight: normal; background-color: Transparent;">To configure a generic device, see section <span style="font-style: italic;"><a href="topic200017.htm" style="background-color: Transparent; font-style: italic;">Configuring CANopen slave Devices</a>.</span></p>
+          <p class="InlineBodyText3" style="text-align: left; font-weight: normal; 
+			 background-color: Transparent;">This section describes CAN configurations for all the other device types.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p class="InlineNormal" style="background-color: Transparent;"><img alt="" border="0" src="../assets/images/MultiTool/Used/can_tab.jpg" style="border: none;"/></p>
+  <p> </p>
+  <p> </p>
+  <p>First select the <span style="font-weight: bold;">CAN</span> channel from the tabs. The configurable fields of each CAN are described in the following table:</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt; left: 0px; top: 825px; 
+		 height: 1413px;" width="1000">
+    <colgroup>
+      <col width="204"/>
+      <col width="242"/>
+      <col width="925"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td colspan="2" style="border: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Property</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Send and Receive</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;">Short ID Messages</p>
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+          <p class="TaulukonSisalto" style="margin-left: 0px;">Extended ID Messages</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">If the <span style="font-weight: bold;">Short ID Messages</span> option is selected, the CAN bus uses short ID messages (11 bit message IDs).</p>
+          <p class="TaulukonSisalto">Short ID messages should be used, when using for example CANopen protocol.</p>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto">If the <span style="font-weight: bold;">Extended ID Messages</span> option is selected, the CAN bus uses extended ID messages (29 bit message IDs).</p>
+          <p class="TaulukonSisalto">Extended ID messages should be used, when using for example ISOBUS or SAEJ1939 protocol.</p>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto">If both <span style="font-weight: bold;">Short</span> and <span style="font-weight: bold;">Extended ID Messages</span> are selected, the CAN bus uses short AND extended ID messages.</p>
+          <p class="TaulukonSisalto">Both short and extended ID messages should be used, when using for example CANopen device that receives SAEJ1939 messages.</p>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto">This setting is disabled for CODESYS 3.5 devices, since they always receive both <span style="font-weight: bold;">Short</span> and <span style="font-weight: bold;">Extended ID</span> messages.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Bit rate</p>
+          <p class="TaulukonOtsikko" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Select the bit rate from the drop-down list. When <span style="font-weight: bold;">From Communication Parameters</span> is selected, the bit rate is read from the device&#39;s communication parameters (non-volatile memory, index 2150h). This enables the bit rate to be changed via CAN.</p>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto">The bit rate is always the same for all devices in the same network. If the device is connected to a network, this field will be read-only and the bit rate can be defined in <span><a href="6_7_Edit_Networks.htm" style="font-style: italic; 
+							 font-weight: normal;">Network properties</a></span><span style="font-style: italic;">.</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Buffering</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;">Enabled</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">This setting is visible only for 3000 series devices.</p>
+          <p class="TaulukonSisalto">Select to initialize 3000CANVXD library&#39;s RX message buffering for the current CAN channel.</p>
+          <p class="TaulukonSisalto">Enable buffering when using J1939 and/or ISOBUS. For more information, see<span style="font-style: italic;"> Epec Programming and Libraries</span> manual, section <span style="font-style: italic;">Libraries &gt; 3000 Specific &gt; 3000CANVXD</span>.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">CANopen</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;">Initialize</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Select <span style="font-weight: bold;">Initialize</span> to use CANopen protocol. CANopen protocol initialization is required when, for example, <span style="font-weight: bold;">Object Dictionary</span>, <span style="font-weight: bold;">PDO</span> messages, <span style="font-weight: bold;">Events</span> and/or <span style="font-weight: bold;">Network Monitoring</span> are used.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Application Node-ID</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Shows the Node-ID for the CAN Bus. Possible values are 1...127. Select a static value or <span style="font-weight: bold;">From Communication Parameters</span> check box.</p>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto">The selection <span style="font-weight: bold;">From Communication Parameters</span> means that the node-ID is read from the device’s communication parameters. This enables the node-ID to be changed via CAN. If the <span style="font-weight: bold;">From Communication Parameters</span> is selected, the node-ID should be set to correct default value since it is used for PDO COB-IDs.</p>
+          <p class="TaulukonSisalto">To enable the cable detection in devices, select <span style="font-weight: bold;">From Communication Parameters</span>.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Node-ID Offset for PDOs</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Set the <span style="font-weight: bold;">Node-ID Offset for PDOs</span> for calculating PDO COB-ID&#39;s dynamically. The offset is needed, if there are more than four transmitted PDOs. The first four values can be calculated based on the <span style="font-weight: bold;">Application Node-ID</span>. The next COB-ID values need to be calculated based on the <span style="font-weight: bold;">Application Node-ID</span> and the offset as follows:</p>
+          <ul class="p-TaulukonSisalto">
+            <li class="p-TaulukonSisalto">
+              <p class="TaulukonSisalto">180 h + node-ID</p>
+            </li>
+            <li class="p-TaulukonSisalto">
+              <p class="TaulukonSisalto">280 h + node-ID</p>
+            </li>
+            <li class="p-TaulukonSisalto">
+              <p class="TaulukonSisalto">380 h + node-ID</p>
+            </li>
+            <li class="p-TaulukonSisalto">
+              <p class="TaulukonSisalto">480 h + node-ID</p>
+            </li>
+            <li class="p-TaulukonSisalto">
+              <p class="TaulukonSisalto">180 h + node-ID + offset</p>
+            </li>
+            <li class="p-TaulukonSisalto">
+              <p class="TaulukonSisalto">280 h + node-ID + offset</p>
+            </li>
+            <li class="p-TaulukonSisalto">
+              <p class="TaulukonSisalto">...etc</p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Heartbeat Interval (ms)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">The time between two consecutive heartbeat messages. A heartbeat is a periodically sent message that is used for monitoring the nodes in the network. Possible values for the heartbeat are 0...65535. If the heartbeat interval is 0, the message will not be sent.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Device profile</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span>Type in the used device profile, this information can be requested from the device by CANopen index 1000h value.</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Application Version String</p>
+          <p class="TaulukonOtsikko" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span>Fill in the application version. The version is written to index 2130h (Application version number).</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Simultaneous SDO Transfers</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt;">
+          <p class="TaulukonSisalto">Defines how many node IDs can be communicated simultaneously with SDO client messages.</p>
+          <p class="TaulukonSisalto">For more information, refer to <span style="font-weight: bold;">Epec Programming and Libraries manual &gt; Libraries &gt; Common Libraries for Control Units &gt; CANopen (C3.5 V 4).</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">NMT Protocol</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;">slave / Master</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="font-weight: bold;">NMT Master</span><span style="mso-ascii-font-family: &#39;Lucida Sans&#39;; 
+							 mso-fareast-font-family: +mn-ea; mso-bidi-font-family: &#39;Lucida Sans&#39;; 
+							 mso-fareast-theme-font: minor-fareast; mso-bidi-theme-font: minor-bidi; 
+							 mso-color-index: 8; mso-font-kerning: 12.0pt; 
+							 language: en-US; mso-style-textfill-type: solid; 
+							 mso-style-textfill-fill-themecolor: accent5; 
+							 mso-style-textfill-fill-color: #5F5C5C; mso-style-textfill-fill-alpha: 100.0%;"> can control the communication state of the other nodes with NMT messages. The</span> NMT Master monitors the NMT states and makes actions according to the NMT states depending on configurations made to <span style="font-weight: bold;">Consumer Time</span>, <span style="font-weight: bold;">Keep Alive</span>, <span style="font-weight: bold;">Reset Node</span> and <span style="font-weight: bold;">Mandatory</span>.</p>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto"><span style="font-weight: bold;">NMT slave</span> can monitor NMT states of other network devices, but cannot command NMT state transitions to them. The <span style="font-weight: bold;">NMT slave</span> device starts up in pre-operational state and waits for NMT Masters command to change the NMT state to operational.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Monitoring Start Interval</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span style="font-weight: bold;">Monitoring Start Interval</span> is enabled only when <b>NMT Master</b> is selected.</p>
+          <p class="TaulukonSisalto">The <span style="font-weight: bold;">Monitoring Start Interval</span> defines the time that elapses between each restart of the device. Also, <b>Keep Alive</b> must be selected in the table for <span style="font-weight: bold;">Monitoring Start Interval</span> to work.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Network Status</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;">Is a Condition for G_SystemOk Variable</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Selecting this makes the CAN bus status a condition for the global variable <span style="font-style: italic;">G_SystemOk</span> state<span style="font-style: italic;">.</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Simultaneous slave Configurations</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">To configure multiple slave devices by the master simultaneously, select <span style="font-weight: bold;">Simultaneous slave configurations</span>. This check box is enabled only when configuring a master device that has multipslavesponder devices (all the devices must be in the same network and configured by the same slave device).</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Sync</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;">Producer</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Defines that the device is a Sync producer.</p>
+          <p class="TaulukonSisalto">Only one device can be defined as a Sync Producer in the Network.</p>
+          <p class="TaulukonSisalto">Note that Sync Producer functionality is supported only with CODESYS 3.5 devices (CANopen library 4.0.2.2 or newer).</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Cycle Time</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span>Defines the time (ms) that elapses between SYNC messages.</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Sync Counter</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Defines that a Sync message contains a Sync Counter value.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Counter Maximum</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Defines the Sync Counter maximum value.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">Sync COBID (hex)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;"> </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span>Defines the COB-ID for the SYNC Producer. The default value is 80.</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">EMCY</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;">Producer</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Defines that the device is an EMCY producer.</p>
+          <p class="TaulukonSisalto">Note that the EMCY functionality (Producer/Consumer) is supported only with CODESYS 3.5 devices (CANopen library 4.0.2.4 or newer).</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;">Consumer</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">Defines that the device is a EMCY consumer. The EMCY consumer receives EMCY messages from all other devices defined in network.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko" style="margin-left: 0px;">EMCY Inhibit Time</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto" style="margin-left: 0px;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span>Defines the inhibit time forthe EMCY message. The default value is 0.</span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p data-condition="Others:EpecSpecific">If an S series product unit is selected, CANopen Safety tab is visible.</p>
+  <p> </p>
+  <p>See also,</p>
+  <ul class="p">
+    <li class="p" style="font-style: italic;">
+      <p style="font-style: italic;"><i><span style="font-size:11.0pt"><span style="font-family:&quot;Calibri&quot;,sans-serif"><a href="7_9_9_Monitoring.htm#h">Monitoring CANopen Devices</a></span></span></i></p>
+    </li>
+    <li class="p" style="font-style: italic;">
+      <p style="font-style: italic;"><a href="topic200010.htm">Defining CAN and SAE J1939/NMEA 2000</a></p>
+    </li>
+  </ul>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">7_9_2_CAN.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

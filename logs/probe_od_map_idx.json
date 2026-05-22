@@ -1,0 +1,86 @@
+[
+  {
+    "idx": 0,
+    "rect": [
+      227,
+      121,
+      263,
+      157
+    ],
+    "enabled": true,
+    "dialog_title": "Pre-Defined Index",
+    "new_count": 1
+  },
+  {
+    "idx": 1,
+    "rect": [
+      265,
+      121,
+      301,
+      157
+    ],
+    "enabled": false,
+    "dialog_title": null,
+    "note": "disabled (row not selected)"
+  },
+  {
+    "idx": 2,
+    "rect": [
+      309,
+      121,
+      345,
+      157
+    ],
+    "enabled": false,
+    "dialog_title": null,
+    "note": "disabled (row not selected)"
+  },
+  {
+    "idx": 3,
+    "rect": [
+      353,
+      121,
+      389,
+      157
+    ],
+    "enabled": true,
+    "dialog_title": null,
+    "new_count": 0
+  },
+  {
+    "idx": 4,
+    "rect": [
+      397,
+      121,
+      433,
+      157
+    ],
+    "enabled": true,
+    "dialog_title": null,
+    "new_count": 0
+  },
+  {
+    "idx": 5,
+    "rect": [
+      441,
+      121,
+      477,
+      157
+    ],
+    "enabled": true,
+    "dialog_title": "Open File",
+    "new_count": 1
+  },
+  {
+    "idx": 6,
+    "rect": [
+      479,
+      121,
+      515,
+      157
+    ],
+    "enabled": true,
+    "dialog_title": "Export EDS/DCF/XDD/XDC/XML",
+    "new_count": 1
+  }
+]

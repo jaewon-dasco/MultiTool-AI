@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>How to Setup a Firewall</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>How to Setup a Firewall</h1>
+  <p>By default, all inbound connections from all network interfaces to the device are allowed. To improve data security, a firewall must be setup. This can be done by creating a file called <span style="font-style: italic;">firewall.sh</span> to the /opt/user/<span style="font-style: italic;">userapp/etc</span> directory. The <span style="font-weight: bold;">Data Security</span> tab in <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span></span> provides an easy way to setup the file.</p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/DataSecurity.png"/></p>
+  <p> </p>
+  <p><span lang="EN-GB" xml:lang="EN-GB">In the </span><i style="mso-bidi-font-style: normal;"><span lang="EN-GB" style="font-style: normal; font-weight: bold;" xml:lang="EN-GB">Basic</span><span lang="EN-GB" xml:lang="EN-GB"> </span><span lang="EN-GB" style="font-style: normal;" xml:lang="EN-GB">tab, connections to specified applications/protocols can be allowed. All connections that have not been selected are denied. Check the boxes to allow inbound connections. If an unlisted protocol is needed, use the </span><span lang="EN-GB" style="font-style: normal; font-weight: bold;" xml:lang="EN-GB">Advanced</span><span lang="EN-GB" style="font-style: normal;" xml:lang="EN-GB"> tab. </span></i></p>
+  <p><span lang="EN-GB" style="line-height: 107%; mso-ascii-theme-font: minor-latin; 
+		 mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; 
+		 mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-GB; mso-fareast-language: EN-US; 
+		 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Firewall settings can be reset with <i style="mso-bidi-font-style: normal; font-style: normal; font-weight: bold;">Reset to Default</i> </span><img alt="" border="0" src="../assets/images/MultiTool/Epec/ResetToDefault.png" style="border: none;" title=""/> icon.</p>
+  <p> </p>
+  <p> </p>
+  <p><img alt="" border="0" src="../assets/images/MultiTool/Epec/DataSecurityBasicView.png" style="border: none; cursor: nesw-resize;" title=""/></p>
+  <p> </p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="100%">
+    <colgroup>
+      <col style="width: 30%;"/>
+      <col style="width: 50%;"/>
+      <col style="width: 20%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-top: Solid 1px #000000; 
+			 border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonOtsikko">Protocol</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Default port(s)</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; mso-ascii-theme-font: minor-latin; 
+		 mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; 
+		 mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-GB; mso-fareast-language: EN-US; 
+		 mso-bidi-language: AR-SA;" xml:lang="EN-GB">CODESYS login</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; 
+											 mso-ascii-theme-font: minor-latin; 
+											 mso-fareast-font-family: Calibri; 
+											 mso-fareast-theme-font: minor-latin; 
+											 mso-hansi-theme-font: minor-latin; 
+											 mso-bidi-font-family: &#39;Times New Roman&#39;; 
+											 mso-bidi-theme-font: minor-bidi; 
+											 mso-ansi-language: EN-GB; 
+											 mso-fareast-language: EN-US; 
+											 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Enables CODESYS login to the device via selected interface.</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">11740 (TCP), 1740 (UDP)</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; mso-ascii-theme-font: minor-latin; 
+		 mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; 
+		 mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-GB; mso-fareast-language: EN-US; 
+		 mso-bidi-language: AR-SA;" xml:lang="EN-GB">File Transfer Protocol (FTP)</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; 
+											 mso-ascii-theme-font: minor-latin; 
+											 mso-fareast-font-family: Calibri; 
+											 mso-fareast-theme-font: minor-latin; 
+											 mso-hansi-theme-font: minor-latin; 
+											 mso-bidi-font-family: &#39;Times New Roman&#39;; 
+											 mso-bidi-theme-font: minor-bidi; 
+											 mso-ansi-language: EN-GB; 
+											 mso-fareast-language: EN-US; 
+											 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Enables FTP transfer to device via selected interface.</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">20 (data transfer), 21 (control)</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; mso-ascii-theme-font: minor-latin; 
+		 mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; 
+		 mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-GB; mso-fareast-language: EN-US; 
+		 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Secure Shell (SSH)</span> /Secure File Transfer Protocol (SFTP)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; 
+											 mso-ascii-theme-font: minor-latin; 
+											 mso-fareast-font-family: Calibri; 
+											 mso-fareast-theme-font: minor-latin; 
+											 mso-hansi-theme-font: minor-latin; 
+											 mso-bidi-font-family: &#39;Times New Roman&#39;; 
+											 mso-bidi-theme-font: minor-bidi; 
+											 mso-ansi-language: EN-GB; 
+											 mso-fareast-language: EN-US; 
+											 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Enables SSH/SFTP login to device via selected interface.</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">22</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; mso-ascii-theme-font: minor-latin; 
+		 mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; 
+		 mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-GB; mso-fareast-language: EN-US; 
+		 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Web Visualization</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; 
+											 mso-ascii-theme-font: minor-latin; 
+											 mso-fareast-font-family: Calibri; 
+											 mso-fareast-theme-font: minor-latin; 
+											 mso-hansi-theme-font: minor-latin; 
+											 mso-bidi-font-family: &#39;Times New Roman&#39;; 
+											 mso-bidi-theme-font: minor-bidi; 
+											 mso-ansi-language: EN-GB; 
+											 mso-fareast-language: EN-US; 
+											 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Enables web visualization of device via selected interface.</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">8080</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; mso-ascii-theme-font: minor-latin; 
+		 mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; 
+		 mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-GB; mso-fareast-language: EN-US; 
+		 mso-bidi-language: AR-SA;" xml:lang="EN-GB">CODESYS 2.3 gateway</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; 
+											 mso-ascii-theme-font: minor-latin; 
+											 mso-fareast-font-family: Calibri; 
+											 mso-fareast-theme-font: minor-latin; 
+											 mso-hansi-theme-font: minor-latin; 
+											 mso-bidi-font-family: &#39;Times New Roman&#39;; 
+											 mso-bidi-theme-font: minor-bidi; 
+											 mso-ansi-language: EN-GB; 
+											 mso-fareast-language: EN-US; 
+											 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Enables CODESYS login to CODESYS 2.3 control units in network via selected interface.</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">1200</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; mso-ascii-theme-font: minor-latin; 
+		 mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; 
+		 mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-GB; mso-fareast-language: EN-US; 
+		 mso-bidi-language: AR-SA;" xml:lang="EN-GB">CODESYS 3.5 gateway</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; 
+											 mso-ascii-theme-font: minor-latin; 
+											 mso-fareast-font-family: Calibri; 
+											 mso-fareast-theme-font: minor-latin; 
+											 mso-hansi-theme-font: minor-latin; 
+											 mso-bidi-font-family: &#39;Times New Roman&#39;; 
+											 mso-bidi-theme-font: minor-bidi; 
+											 mso-ansi-language: EN-GB; 
+											 mso-fareast-language: EN-US; 
+											 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Enables CODESYS login to CODESYS 3.5 control units in network via selected interface.</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">1217</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; mso-ascii-theme-font: minor-latin; 
+		 mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; 
+		 mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-GB; mso-fareast-language: EN-US; 
+		 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Virtual Network Computing (VNC)</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto"><span lang="EN-GB" style="line-height: 107%; 
+											 mso-ascii-theme-font: minor-latin; 
+											 mso-fareast-font-family: Calibri; 
+											 mso-fareast-theme-font: minor-latin; 
+											 mso-hansi-theme-font: minor-latin; 
+											 mso-bidi-font-family: &#39;Times New Roman&#39;; 
+											 mso-bidi-theme-font: minor-bidi; 
+											 mso-ansi-language: EN-GB; 
+											 mso-fareast-language: EN-US; 
+											 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Enables VNC connection of device via selected interface.</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonSisalto">5900</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="mso-ansi-language: EN-GB;"> </p>
+  <p class="MsoNormal" style="mso-ansi-language: EN-GB;"><span lang="EN-GB" xml:lang="EN-GB">In the </span><i style="mso-bidi-font-style: normal; font-style: normal;"><span lang="EN-GB" style="font-weight: bold;" xml:lang="EN-GB">Advanced</span><span lang="EN-GB" xml:lang="EN-GB"> tab, any connection can be allowed. The source address, port and protocol of the allowed inbound connection must be specified. </span></i></p>
+  <p><span lang="EN-GB" style="line-height: 107%; mso-ascii-theme-font: minor-latin; 
+		 mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; 
+		 mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-GB; mso-fareast-language: EN-US; 
+		 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Allowed inbound connections can be added with the</span><img alt="" border="0" src="../assets/images/MultiTool/Epec/icon_add_index.png" style="border: none;" title=""/>icon and removed with the<img alt="" border="0" src="../assets/images/MultiTool/Epec/icon_remove_files.png" style="border: none;" title=""/> icon.</p>
+  <p>  </p>
+  <p class="MsoNormal" style="line-height: 107%;"><span lang="EN-GB" style="mso-ascii-theme-font: minor-latin; 
+														 mso-fareast-font-family: Calibri; 
+														 mso-fareast-theme-font: minor-latin; 
+														 mso-hansi-theme-font: minor-latin; 
+														 mso-bidi-font-family: &#39;Times New Roman&#39;; 
+														 mso-bidi-theme-font: minor-bidi; 
+														 mso-ansi-language: EN-GB; 
+														 mso-fareast-language: EN-US; 
+														 mso-bidi-language: AR-SA;" xml:lang="EN-GB">Firewall settings can be reset with <i style="mso-bidi-font-style: normal; font-style: normal; 
+								 font-weight: bold;">Reset to Default</i> </span><span style="font-size: 11.0pt; font-family: Calibri, sans-serif; 
+				 mso-ascii-theme-font: minor-latin; mso-fareast-font-family: Calibri; 
+				 mso-fareast-theme-font: minor-latin; mso-hansi-theme-font: minor-latin; 
+				 mso-bidi-font-family: &#39;Times New Roman&#39;; mso-bidi-theme-font: minor-bidi; 
+				 mso-ansi-language: EN-GB; mso-fareast-language: EN-US; 
+				 mso-bidi-language: AR-SA;"> <img alt="" border="0" src="../assets/images/MultiTool/Epec/ResetToDefault.png" style="border: none;" title=""/> icon. </span></p>
+  <p> </p>
+  <p class="MsoNormal"><span lang="EN-GB" style="mso-ansi-language: EN-GB;" xml:lang="EN-GB">If any settings are changed in the </span><span lang="EN-GB" style="mso-ansi-language: EN-GB; 
+												 font-weight: bold;" xml:lang="EN-GB">Advanced </span><span lang="EN-GB" style="mso-ansi-language: EN-GB;" xml:lang="EN-GB">tab, the </span><span lang="EN-GB" style="mso-ansi-language: EN-GB; 
+					 font-weight: bold;" xml:lang="EN-GB">Basic </span><span lang="EN-GB" style="mso-ansi-language: EN-GB;" xml:lang="EN-GB">tab is disabled, unless settings are restored to defaults. </span></p>
+  <p style="mso-ansi-language: EN-GB;"> </p>
+  <p style="mso-ansi-language: EN-GB;"><img alt="" border="0" src="../assets/images/MultiTool/Epec/DataSecurityAdvancedView.png" style="border: none;" title=""/></p>
+  <p style="mso-ansi-language: EN-GB;"> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="100%">
+    <colgroup>
+      <col style="width: 37.5%;"/>
+      <col style="width: 62.5%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-top: Solid 1px #000000; 
+			 border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;">
+          <p class="TaulukonOtsikko">Settings</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;"><span style="font-family: Arial, sans-serif; 
+											 font-size: 10pt;">Interface</span></td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;"><span style="font-family: Arial, sans-serif; font-size: 10pt;">Network interface from which the connection is allowed</span> <span style="font-family: Arial, sans-serif; 
+								 font-size: 10pt;">Eth0: Ethernet 1</span> <span style="font-family: Arial, sans-serif; 
+								 font-size: 10pt;">Eth1: Ethernet 2</span> <span style="font-family: Arial, sans-serif; 
+								 font-size: 10pt;">Wlan0: WLAN client</span> <span style="font-family: Arial, sans-serif; 
+								 font-size: 10pt;">Uap0: WLAN access point</span> <span style="font-family: Arial, sans-serif; 
+								 font-size: 10pt;">Ppp0: Cellular</span></td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;"><span style="font-family: Arial, sans-serif; 
+											 font-size: 10pt;">Source address</span></td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;"><span style="font-family: Arial, sans-serif; font-size: 10pt;">IP address from which the connection is allowed</span></td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;"><span style="font-family: Arial, sans-serif; 
+											 font-size: 10pt;">Port</span></td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;"><span style="font-family: Arial, sans-serif; font-size: 10pt;">Inbound port from which the connection is allowed</span></td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;"><span style="font-family: Arial, sans-serif; 
+											 font-size: 10pt;">Protocol</span></td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;"><span style="font-family: Arial, sans-serif; font-size: 10pt;">Allowed protocol (TCP, UDP, or Both)</span></td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; 
+			 vertical-align: middle;"><span style="font-family: Arial, sans-serif; 
+											 font-size: 10pt;">Description</span></td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px; vertical-align: middle;"><span style="font-family: Arial, sans-serif; font-size: 10pt;">Text field can be freely used</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="MsoNormal"> </p>
+  <p style="mso-ansi-language: EN-GB;"> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200205.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

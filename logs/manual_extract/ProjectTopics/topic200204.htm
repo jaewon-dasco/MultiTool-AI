@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>How to Create a Software Update Packet in MultiTool</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>How to Create a Software Update Packet in <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span></span></h1>
+  <p><span lang="EN-GB" style="line-height: normal; mso-ansi-language: EN-GB;" xml:lang="EN-GB">A software update packet can be created in </span><span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span></span><span lang="EN-GB" style="line-height: normal; mso-ansi-language: EN-GB;" xml:lang="EN-GB">, to be loaded to the target device. </span></p>
+  <p> </p>
+  <p><span lang="EN-GB" style="line-height: normal; mso-ansi-language: EN-GB;" xml:lang="EN-GB">The </span><span lang="EN-GB" style="line-height: normal; 
+				 mso-ansi-language: EN-GB; font-weight: bold;" xml:lang="EN-GB">Update Packet</span><span lang="EN-GB" style="line-height: normal; mso-ansi-language: EN-GB;" xml:lang="EN-GB"> tab configures the contents of the update packet. By default, all the devices connected to the </span><span lang="EN-GB" style="line-height: normal; 
+										 mso-ansi-language: EN-GB;" xml:lang="EN-GB">display or IoT unit are listed. The application binaries of the devices are added automatically to the list and their versions are defined according to the devices&#39; configurations. If the device&#39;s firmware is being updated, the firmware </span><span lang="EN-GB" style="line-height: normal; 
+							 mso-ansi-language: EN-GB; font-weight: bold;" xml:lang="EN-GB">SRP-Packet</span><span lang="EN-GB" style="line-height: normal; mso-ansi-language: EN-GB;" xml:lang="EN-GB"> must be selected.  </span></p>
+  <p>  <img src="../assets/images/MultiTool/Epec/UpdatePacketTab.png"/>  </p>
+  <p>Included files and their versions can be changed. Double-click on the file name to select a different file. The <span style="font-weight: bold;">File Version</span> field can be edited, which also affects the <span style="font-weight: bold;">Application Version String</span> setting of the device, which can be seen from the device properties in the <span style="font-weight: bold;">CAN</span> tab.</p>
+  <p> </p>
+  <p>Additional files or folders can be added to <span data-keyref="6000XSeries">6000/X Series</span> devices by selecting the <span style="mso-ansi-language: EN-GB;"> </span><span lang="EN-GB" style="mso-ansi-language: EN-GB; mso-no-proof: yes;" xml:lang="EN-GB"><a id="_Hlk535922987"></a><img alt="" border="0" height="25" src="../assets/images/clip_image003.png" title="" width="21"/> icon </span>and removed with the<img alt="" border="0" src="../assets/images/MultiTool/Epec/icon_remove_files.png" style="border: none;" title=""/> icon.</p>
+  <p> </p>
+  <p>To add the update functionality to the code template, select <span style="font-weight: bold;">Generate Update functionality to code template </span><span>at the bottom of the screen. </span></p>
+  <p> </p>
+  <p>To generate an updat packet, select<span lang="EN-GB" style="mso-ansi-language: EN-GB;" xml:lang="EN-GB"> the </span><span style="mso-no-proof: yes;"><img alt="" border="0" height="29" src="../assets/images/clip_image004.png" title="" width="32"/> icon</span><span lang="EN-GB" style="mso-ansi-language: EN-GB;" xml:lang="EN-GB">. Note that all the application binaries have to be built before generating the update packet. </span></p>
+  <p><br/>
+    <span lang="EN-GB" style="mso-ansi-language: EN-GB;" xml:lang="EN-GB">The generated software packet can be loaded to the target display unit, for example, via one of the following options:</span>
+  </p>
+  <ul class="p">
+    <li class="p">
+      <p><span lang="EN-GB" style="mso-ansi-language: EN-GB;" xml:lang="EN-GB">USB memory and ApplicationLoader</span></p>
+    </li>
+    <li class="p">
+      <p><span lang="EN-GB" style="mso-ansi-language: EN-GB;" xml:lang="EN-GB">FTP transfer</span></p>
+    </li>
+    <li class="p">
+      <p><span lang="EN-GB" style="mso-ansi-language: EN-GB;" xml:lang="EN-GB">GlobE service</span></p>
+    </li>
+  </ul>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" data-condition="Others:EpecSpecific" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 56.85pt;">
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66">
+          <p><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501">
+          <p><span lang="EN-GB" xml:lang="EN-GB">When updating unit firmware, the SRP-Packet needs to be separately loaded from Epec extranet.</span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 56.85pt;">
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66">
+          <p><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501">
+          <p><span lang="EN-GB" xml:lang="EN-GB">Some applications have separate checksum files. The checksum files are not shown in the selection window, but added to the packet automatically along with the application binary.</span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" data-condition="Others:EpecSpecific" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 56.85pt;">
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66">
+          <p><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none; cursor: nwse-resize;" title="" width="43"/></p>
+        </td>
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501">
+          <p style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span lang="EN-GB" xml:lang="EN-GB">The software update package does not support 2000 series units. </span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200204.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

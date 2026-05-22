@@ -1,0 +1,95 @@
+NAME=ADC 
+A/D converter
+NAME=API 
+ Open Menu  Application programming interface
+NAME=Big-endian 
+Describe the order in which a sequence of bytes are stored in computer memory. Big-endian (motorola format) means that the most significant  byte is in the smallest address (0xabcd > b0 = AB, b1 = CD).
+NAME=CAN 
+Controller area network
+NAME=CANopen 
+ Communication protocol and device profile specification for embedded systems used in automation by CAN in automation (CiA) http://www.can-cia.org/
+NAME=Cat. 2 
+Classification of safety related parts of a control system, according to ISO 13849-1:2015.
+NAME=CFG 
+Configuration file
+NAME=COB 
+Configuration file
+A unit of transportation in a CAN network. Data must be sent across a network inside a COB. 
+NAME=COB-ID 
+Communication object identifier (11 bit ID of a CAN-frame, used in CANopen and 29 bit ID of a CAN-frame, used in SAE J1939).
+NAME=CODESYS 
+Controller development system
+NAME=CRC 
+Cyclic redundancy check
+NAME=CSV 
+Comma-separated values (a file format that stores simple table data in a text file)
+NAME=DCF 
+Device configuration file
+NAME=DLC 
+Data length code. Number of bytes of data when using CAN bus (0..8), CAN FD (0..64). http://www.bosch-semiconductors.de/media/pdf/canliteratur/can_fd_spe and http://www.bosch-semiconductors.de/media/pdf/canliteratur/can_fd.pdf 22.7.2013 14:48 22.7.2013 14:48
+NAME=DMA 
+Direct memory access
+NAME=ECU 
+Electronic control unit or Engine Control Unit
+NAME=EDS 
+Electronic datasheet
+NAME=EMC 
+Electromagnetic compatibility 
+NAME=EMI 
+Electromagnetic interference
+NAME=EVENT 
+The time that elapses between the transmitted messages
+NAME=EXP 
+Export file
+NAME=FB 
+Function block. A program organization unit type in CoDeSys programming tool
+NAME=Heartbeat 
+A heartbeat is a periodically sent message that is used for monitoring the nodes in the network and verifying that they are alive. If the heartbeat producer time is 0, the message will not be sent
+NAME=HMI 
+Human machine interface
+NAME=Inhibit time 
+The minimum time that has to elapse between two consecutive messages of a PDO service to avoid blocking the bus with messages. 
+NAME=J1939 
+ Open Menu  SAE J1939 protocol. Vehicle bus standard used for communication and diagnostics.
+NAME=Little-endian 
+Describe the order in which a sequence of bytes are stored in computer memory. Little-endian (intel format) means that the least significant byte is in the smallest address (0xabcd > b0 = CD, b1 =  AB).
+NAME=MB 
+Megabyte.
+NAME=NMT 
+Network management. COBs designated for network management ie. initialize, start, stop nodes etc.; this service is implemented according to master-slave concept.
+NAME=OD 
+Object dictionary. Common representation of device parameters, process variables, configuration, communication settings and device data types. Accessible as SDO objects from CANopen network. The textual description of OD is called EDS file.
+NAME=PCB 
+Printed circuti board.
+NAME=PDO 
+Process data object. PDOs are used in CANopen for broadcasting high-priority control- and status information.
+NAME=PGN 
+Parameter group number. A set of variables normally transferred through CAN bus with J1939 protocol.
+NAME=PLC 
+Programmable logic controller.
+NAME=PLCopen 
+PLCopen is a global standard for industrial control programming. IEC61131
+NAME=POU 
+Program organisation unit. POU is a unit of lines of code which can be called by another POU. POUs are similar to functions in C
+NAME=PWM 
+Pulse-width modulation.
+NAME=RPDO 
+Receive-PDO
+NAME=RTR 
+Remote Transmission Request
+NAME=RX 
+Receive
+NAME=SDO 
+Service data object. The SDO protocol is used to set and read values from remote device's object dictionary.
+NAME=SPN 
+ Suspect parameter number. A pre-defined variable in J1939 protocol.
+NAME=SRDO 
+Safety related data object
+NAME=TPDO 
+Transmit-PDO
+NAME=TX 
+Transmit
+NAME=Vendor-ID 
+The CANopen vendor-ID identifies the manufacturer of a device and can be found in object 1018h. Epec's vendor-ID is 00000030. For more vendor-IDs, refer to http://www.can-cia.org/index.php?id=745. 
+NAME=XML 
+Extensible markup language.

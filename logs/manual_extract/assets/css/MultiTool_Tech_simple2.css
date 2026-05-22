@@ -1,0 +1,1301 @@
+/*Created with Adobe RoboHelp.*/
+/*Created with Adobe RoboHelp.*/
+/*Created with Adobe RoboHelp.*/
+p {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+/*Created with Adobe RoboHelp.*/
+/*Created with Adobe RoboHelp.*/
+LI.p {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+h1 {
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	text-indent: 0cm;
+	border: none;
+	padding: 0cm;
+	font-size: 16.0pt;
+	font-family: Arial;
+	text-transform: uppercase;
+	font-weight: normal;
+	margin-left: 0cm;
+	margin-bottom: 9pt;
+}
+LI.h1 {
+	text-indent: 0cm;
+	font-size: 16.0pt;
+	font-family: Arial;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+
+h2 {
+	margin-top: 18.0pt;
+	margin-right: 0cm;
+	margin-bottom: 6.0pt;
+	margin-left: 28.9pt;
+	text-indent: -28.9pt;
+	font-size: 11.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+LI.h2 {
+	text-indent: -28.9pt;
+	font-size: 11.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+
+h3 {
+	margin-top: 18.0pt;
+	margin-right: 0cm;
+	margin-bottom: 6.0pt;
+	margin-left: 36.0pt;
+	text-indent: -36.0pt;
+	font-size: 11.0pt;
+	font-family: Arial;
+	font-weight: bold;
+}
+LI.h3 {
+	text-indent: -36.0pt;
+	font-size: 11.0pt;
+	font-family: Arial;
+	font-weight: bold;
+}
+
+h4 {
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 43.2pt;
+	text-indent: -43.2pt;
+	font-size: 14.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+LI.h4 {
+	text-indent: -43.2pt;
+	font-size: 14.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+
+h5 {
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 50.4pt;
+	text-indent: -50.4pt;
+	font-size: 13.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+	font-style: italic;
+}
+LI.h5 {
+	text-indent: -50.4pt;
+	font-size: 13.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+	font-style: italic;
+}
+
+h6 {
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 57.6pt;
+	text-indent: -57.6pt;
+	font-size: 11.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+LI.h6 {
+	text-indent: -57.6pt;
+	font-size: 11.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+
+p.Heading7 {
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 64.8pt;
+	text-indent: -64.8pt;
+	font-size: 12.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-Heading7 {
+	text-indent: -64.8pt;
+	font-size: 12.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.Heading8 {
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 72.0pt;
+	text-indent: -72.0pt;
+	font-size: 12.0pt;
+	font-family: "Lucida Sans";
+	font-style: italic;
+}
+LI.p-Heading8 {
+	text-indent: -72.0pt;
+	font-size: 12.0pt;
+	font-family: "Lucida Sans";
+	font-style: italic;
+}
+
+p.Heading9 {
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 79.2pt;
+	text-indent: -79.2pt;
+	font-size: 11.0pt;
+	font-family: Arial;
+}
+LI.p-Heading9 {
+	text-indent: -79.2pt;
+	font-size: 11.0pt;
+	font-family: Arial;
+}
+
+p.Toc1 {
+	margin-top: 6.0pt;
+	margin-right: 0cm;
+	margin-bottom: .0001pt;
+	margin-left: 0cm;
+	font-size: 10.0pt;
+	font-family: Arial;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+LI.p-Toc1 {
+	font-size: 10.0pt;
+	font-family: Arial;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+p.Toc2 {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: .0001pt;
+	margin-left: 1.0cm;
+	font-size: 10.0pt;
+	font-family: Arial;
+	font-style: italic;
+}
+LI.p-Toc2 {
+	font-size: 10.0pt;
+	font-family: Arial;
+	font-style: italic;
+}
+
+p.Toc3 {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: .0001pt;
+	margin-left: 2.0cm;
+	font-size: 10.0pt;
+	font-family: Arial;
+	font-style: italic;
+}
+LI.p-Toc3 {
+	font-size: 10.0pt;
+	font-family: Arial;
+	font-style: italic;
+}
+
+p.CommentText {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+LI.p-CommentText {
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.Header {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: Arial;
+	font-weight: bold;
+}
+LI.p-Header {
+	font-size: 10.0pt;
+	font-family: Arial;
+	font-weight: bold;
+}
+
+p.Footer {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	border: none;
+	padding: 0cm;
+	font-size: 8.0pt;
+	font-family: Arial;
+	color: #c0c0c0;
+	font-style: italic;
+	font-weight: normal;
+}
+LI.p-Footer {
+	font-size: 8.0pt;
+	font-family: Arial;
+	color: #c0c0c0;
+	font-style: italic;
+	font-weight: normal;
+}
+
+span.CommentReference {
+}
+span.PageNumber {
+	font-family: "Times New Roman";
+}
+p.BodyText {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-BodyText {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+a:link {
+	color: #0000ff;
+	text-underline: single;
+	text-decoration: underline;
+}
+span.Hyperlink {
+	color: #0000ff;
+	text-underline: single;
+	text-decoration: underline;
+}
+a:visited {
+	color: #800080;
+	text-underline: single;
+	text-decoration: underline;
+}
+span.HyperlinkFollowed {
+	color: #800080;
+	text-underline: single;
+	text-decoration: underline;
+}
+p.WordNormalWeb {
+	margin-right: 0cm;
+	margin-left: 0cm;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+}
+LI.p-WordNormalWeb {
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+}
+
+p.Acetate {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 8.0pt;
+	font-family: Tahoma;
+}
+LI.p-Acetate {
+	font-size: 8.0pt;
+	font-family: Tahoma;
+}
+
+p.List {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: .0001pt;
+	margin-left: 14.15pt;
+	text-indent: -14.15pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-List {
+	text-indent: -14.15pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.Kansi1 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: center;
+	font-size: 24.0pt;
+	font-family: Arial;
+	font-weight: bold;
+}
+LI.p-Kansi1 {
+	text-align: center;
+	font-size: 24.0pt;
+	font-family: Arial;
+	font-weight: bold;
+}
+
+p.Kansi2 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: center;
+	font-size: 14.0pt;
+	font-family: Arial;
+	font-weight: bold;
+}
+LI.p-Kansi2 {
+	text-align: center;
+	font-size: 14.0pt;
+	font-family: Arial;
+	font-weight: bold;
+}
+
+p.Sisällysluettelonotsikko {
+	margin-top: 24.0pt;
+	margin-right: 0cm;
+	margin-bottom: 12.0pt;
+	margin-left: 0cm;
+	border: none;
+	padding: 0cm;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	font-weight: bold;
+}
+LI.p-Sisällysluettelonotsikko {
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	font-weight: bold;
+}
+
+span {
+	font-family: "Lucida Sans";
+}
+span.article {
+}
+span.CharChar1 {
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+p.whs1 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	font-weight: bold;
+}
+LI.p-whs1 {
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	font-weight: bold;
+}
+
+p.whs2 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+}
+LI.p-whs2 {
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+}
+
+p.whs3 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	font-weight: bold;
+}
+LI.p-whs3 {
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	font-weight: bold;
+}
+
+p.whs10 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+}
+LI.p-whs10 {
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+}
+
+p.Taulukonotsikko {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 6.0pt;
+	margin-left: 0cm;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+	font-style: italic;
+}
+LI.p-Taulukonotsikko {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+	font-style: italic;
+}
+
+OL {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+UL {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+p.CommentSubject {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+LI.p-CommentSubject {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+
+p.Koodi {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+}
+LI.p-Koodi {
+	font-size: 10.0pt;
+	font-family: "Courier New";
+}
+
+span.Koodi {
+	font-family: "Courier New";
+}
+p.InlineBodyText27 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 72.0pt;
+}
+LI.p-InlineBodyText27 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText10 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 18.0pt;
+}
+LI.p-InlineBodyText10 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText5 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-right: -21.3pt;
+}
+LI.p-InlineBodyText5 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineNormal {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-InlineNormal {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText1 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: center;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 63.8pt;
+	text-indent: -63.8pt;
+}
+LI.p-InlineBodyText1 {
+	text-align: center;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-indent: -63.8pt;
+}
+
+p.InlineBodyText7 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 63.8pt;
+	text-indent: -63.8pt;
+}
+LI.p-InlineBodyText7 {
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-indent: -63.8pt;
+}
+
+p.InlineNormal5 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: Arial;
+	color: #000080;
+}
+LI.p-InlineNormal5 {
+	font-size: 10.0pt;
+	font-family: Arial;
+	color: #000080;
+}
+
+p.InlineWordNormalWeb1 {
+	margin-right: 0cm;
+	margin-left: 2.0cm;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	text-indent: -2.0cm;
+}
+LI.p-InlineWordNormalWeb1 {
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	text-indent: -2.0cm;
+}
+
+p.InlineBodyText8 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 12.75pt;
+}
+LI.p-InlineBodyText8 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText9 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: left;
+	font-size: 16.0pt;
+	font-family: "Lucida Sans";
+	margin-top: 24.0pt;
+	border: none;
+	padding: 0cm;
+}
+LI.p-InlineBodyText9 {
+	text-align: left;
+	font-size: 16.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineKansi {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: center;
+	font-size: 16.0pt;
+	font-family: Arial;
+	font-weight: normal;
+	margin-left: 63.8pt;
+	text-indent: -63.8pt;
+}
+LI.p-InlineKansi {
+	text-align: center;
+	font-size: 16.0pt;
+	font-family: Arial;
+	font-weight: normal;
+	text-indent: -63.8pt;
+}
+
+p.InlineNormal8 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 14.2pt;
+}
+LI.p-InlineNormal8 {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText12 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+LI.p-InlineBodyText12 {
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+
+p.InlineNormal13 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+LI.p-InlineNormal13 {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+
+p.InlineBodyText15 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 45.8pt;
+}
+LI.p-InlineBodyText15 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineNormal15 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	text-align: center;
+	font-weight: bold;
+}
+LI.p-InlineNormal15 {
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	text-align: center;
+	font-weight: bold;
+}
+
+p.InlineBodyText17 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+	font-style: italic;
+}
+LI.p-InlineBodyText17 {
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+	font-style: italic;
+}
+
+p.InlineBodyText3 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-InlineBodyText3 {
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText11 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-InlineBodyText11 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineNormal2 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: Arial;
+}
+LI.p-InlineNormal2 {
+	font-size: 10.0pt;
+	font-family: Arial;
+}
+
+p.InlineNormal17 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 8.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-InlineNormal17 {
+	font-size: 8.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.Inlinewhs {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+}
+LI.p-Inlinewhs {
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+}
+
+p.InlineBodyText2 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: center;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 63.8pt;
+	text-indent: -63.8pt;
+	border: none;
+	padding: 0cm;
+}
+LI.p-InlineBodyText2 {
+	text-align: center;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-indent: -63.8pt;
+}
+
+p.InlineNormal7 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+}
+LI.p-InlineNormal7 {
+	font-size: 10.0pt;
+	font-family: "Courier New";
+}
+
+p.InlineNormal1 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+LI.p-InlineNormal1 {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+
+p.InlineBodyText13 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 36.0pt;
+}
+LI.p-InlineBodyText13 {
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText14 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-InlineBodyText14 {
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-InlineBodyText {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText16 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 18.0pt;
+}
+LI.p-InlineBodyText16 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineNormal9 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	font-weight: bold;
+}
+LI.p-InlineNormal9 {
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	font-weight: bold;
+}
+
+p.InlineBodyText6 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 12.0pt;
+}
+LI.p-InlineBodyText6 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineNormal10 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-align: justify;
+}
+LI.p-InlineNormal10 {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-align: justify;
+}
+
+p.InlineNormal11 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+}
+LI.p-InlineNormal11 {
+	font-size: 10.0pt;
+	font-family: "Courier New";
+}
+
+p.InlineNormal12 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-align: center;
+}
+LI.p-InlineNormal12 {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-align: center;
+}
+
+p.InlineBodyText18 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-indent: 35.45pt;
+}
+LI.p-InlineBodyText18 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-indent: 35.45pt;
+}
+
+p.InlineBodyText19 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 36.0pt;
+}
+LI.p-InlineBodyText19 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText20 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-InlineBodyText20 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText21 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+LI.p-InlineBodyText21 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+}
+
+p.InlineNormal3 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 9.0pt;
+	font-family: Courier;
+}
+LI.p-InlineNormal3 {
+	font-size: 9.0pt;
+	font-family: Courier;
+}
+
+p.InlineKoodi {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+}
+LI.p-InlineKoodi {
+	font-size: 10.0pt;
+	font-family: "Courier New";
+}
+
+p.InlineNormal14 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-align: justify;
+}
+LI.p-InlineNormal14 {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-align: justify;
+}
+
+p.InlineNormal4 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 65.2pt;
+	text-indent: -65.2pt;
+}
+LI.p-InlineNormal4 {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-indent: -65.2pt;
+}
+
+p.InlineWordNormalWeb {
+	margin-right: 0cm;
+	margin-left: 0cm;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+}
+LI.p-InlineWordNormalWeb {
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+}
+
+p.InlineBodyText22 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 36.0pt;
+}
+LI.p-InlineBodyText22 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineSisällysluettelonotsikko {
+	margin-top: 24.0pt;
+	margin-right: 0cm;
+	margin-bottom: 12.0pt;
+	margin-left: 0cm;
+	border: none;
+	padding: 0cm;
+	font-size: 16.0pt;
+	font-family: "Lucida Sans";
+	font-weight: normal;
+}
+LI.p-InlineSisällysluettelonotsikko {
+	font-size: 16.0pt;
+	font-family: "Lucida Sans";
+	font-weight: normal;
+}
+
+p.InlineKansi1 {
+	margin: 0cm;
+	margin-bottom: 12.0pt;
+	text-align: center;
+	font-size: 24.0pt;
+	font-family: Arial;
+	font-weight: normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-left: 63.8pt;
+	text-indent: -63.8pt;
+}
+LI.p-InlineKansi1 {
+	text-align: center;
+	font-size: 24.0pt;
+	font-family: Arial;
+	font-weight: normal;
+	text-indent: -63.8pt;
+}
+
+p.InlineBodyText23 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-InlineBodyText23 {
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineNormal16 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: Courier;
+}
+LI.p-InlineNormal16 {
+	font-size: 10.0pt;
+	font-family: Courier;
+}
+
+p.InlineBodyText24 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-indent: 36.0pt;
+}
+LI.p-InlineBodyText24 {
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-indent: 36.0pt;
+}
+
+p.InlineBodyText25 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 36.0pt;
+}
+LI.p-InlineBodyText25 {
+	text-align: left;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineNormal6 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 18.0pt;
+}
+LI.p-InlineNormal6 {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText26 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: center;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-InlineBodyText26 {
+	text-align: center;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineBodyText4 {
+	margin: 0cm;
+	margin-bottom: 6.0pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-InlineBodyText4 {
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+p.InlineNormal18 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-align: justify;
+}
+LI.p-InlineNormal18 {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-align: justify;
+}
+
+p.InlineNormal19 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: Courier;
+	margin-left: 24.0pt;
+}
+LI.p-InlineNormal19 {
+	font-size: 10.0pt;
+	font-family: Courier;
+}
+
+p.InlineBodyText28 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	text-align: center;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	margin-left: 63.8pt;
+	text-indent: -63.8pt;
+	border: none;
+	padding: 0cm;
+}
+LI.p-InlineBodyText28 {
+	text-align: center;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	text-indent: -63.8pt;
+}
+
+p.InlineNormal20 {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+LI.p-InlineNormal20 {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+}
+
+P.Preformatted {
+	line-height: normal;
+	margin-top: 14pt;
+	x-text-tab-stops: repeat 1in;
+	white-space: nowrap;
+	font-family: "Courier New";
+	font-size: 10.0pt;
+	margin-bottom: .0001pt;
+	margin: 0cm;
+}
+LI.P-Preformatted {
+	line-height: normal;
+	x-text-tab-stops: repeat 1in;
+	white-space: nowrap;
+	font-family: "Courier New";
+	font-size: 10.0pt;
+}
+
+P.TableTitle {
+	margin: 0cm;
+	margin-bottom: .0001pt;
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+	font-style: normal;
+}
+LI.P-TableTitle {
+	font-size: 10.0pt;
+	font-family: "Lucida Sans";
+	font-weight: bold;
+	font-style: normal;
+}

@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Editing Parameter CSV</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta name="rh-index-keywords" content="Edit Parameter CSV"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Editing Parameter CSV</h1>
+  <p>Use <span style="font-weight: bold;">CSV</span> <span style="font-weight: bold;">Editor</span> view to <span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">edit some of the parameter’s properties, organize parameters into logical groupings and export edited structure into CSV format.</span></p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;"><span><span style="mso-ansi-language: EN-US;">Before editing parameter CSV:</span></span></p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <ol style="list-style: decimal;">
+    <li>
+      <p style="mso-ansi-language: EN-US;">Add the needed devices and configure the needed ODs for them (double-click the device and select the <span style="font-weight: bold;">Object Dictionary</span> tab)</p>
+    </li>
+    <li>
+      <p style="mso-ansi-language: EN-US;">Add a network between the devices (<a href="6_7_Edit_Networks.htm" style="font-style: italic;">Adding, Editing and Deleting Network</a>)</p>
+    </li>
+  </ol>
+  <p>To open the <span style="font-weight: bold;">CSV</span> <span style="font-weight: bold;">Editor</span> and edit the parameter CSV configuration, select a network and click <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_edit_param_csv.png" style="border: none;"/> icon on the hover menu.</p>
+  <p> </p>
+  <p style="mso-ansi-language: EN-US;">The <span style="font-weight: bold;">CSV Editor</span> shows all parameters with <span style="font-weight: bold;">Variable Type</span> <span lang="EN-US" xml:lang="EN-US">Parameter, Retain or Retain Persistent. When the editor is opened, parameters are updated automatically based on the network’s devices&#39; OD definitions.</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Parameter / Group Name</span> <span lang="EN-US" xml:lang="EN-US">column has its</span> <span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">own identifying colors. New parameters are designated with a blue color.</span></p>
+  <p style="mso-ansi-language: EN-US;">By default, <span lang="EN-US" xml:lang="EN-US">only some of the parameter properties are shown. To show all the parameter columns, select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_show_hidden.png" style="border: none;"/> icon.</span></p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;">The following chapters describes</p>
+  <ul style="list-style: disc;">
+    <li>
+      <p style="mso-ansi-language: EN-US;"><a href="#Adding_and_Removing_Groups">Adding and Removing Groups</a></p>
+    </li>
+    <li>
+      <p style="mso-ansi-language: EN-US;"><a href="#Editing_and_Organizing_Parameters">Editing and Organizing Parameters</a></p>
+    </li>
+    <li>
+      <p style="mso-ansi-language: EN-US;"><a href="#Adding_Extra_Columns">Adding Extra Columns</a></p>
+    </li>
+    <li>
+      <p style="mso-ansi-language: EN-US;"><a href="#Editing_Access_Levels">Editing Access Levels</a></p>
+    </li>
+    <li>
+      <p style="mso-ansi-language: EN-US;"><a href="#Exporting_CSV">Exporting CSV</a></p>
+    </li>
+    <li>
+      <p style="mso-ansi-language: EN-US;"><a href="#Resetting_to_Defaults">Resetting to Defaults</a></p>
+    </li>
+    <li>
+      <p style="mso-ansi-language: EN-US;"><a href="#CSV_Table">CSV Table</a></p>
+    </li>
+  </ul>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p><img alt="" border="0" src="../assets/images/MultiTool/Epec/csv_editor_3.png" style="border: none;"/></p>
+  <h2><a id="Adding_and_Removing_Groups" name="Adding_and_Removing_Groups">Adding and Removing Groups</a></h2>
+  <p>To add new groups, right<span lang="EN-US" xml:lang="EN-US">-click on table and select</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Insert Group</span> <span lang="EN-US" xml:lang="EN-US">/</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Add Group Above</span> <span lang="EN-US" xml:lang="EN-US">/</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Add Group Below</span><span lang="EN-US" xml:lang="EN-US">. The </span><span lang="EN-US" style="line-height: 115%; mso-ascii-theme-font: minor-latin; 
+	 mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; 
+	 mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+	 mso-bidi-theme-font: minor-bidi; mso-bidi-language: AR-SA;" xml:lang="EN-US">maximum amount of grouping levels is 4.</span> The groups can be organized by <span style="line-height: 115%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: Calibri; 
+		 mso-fareast-theme-font: minor-latin; mso-hansi-theme-font: minor-latin; 
+		 mso-bidi-font-family: &#39;Times New Roman&#39;; mso-bidi-theme-font: minor-bidi; 
+		 mso-bidi-language: AR-SA;">d</span>rag-and-drop.</p>
+  <p> </p>
+  <p>To remove a group, right-click on the group row and select <span style="font-weight: bold;">Remove</span>.</p>
+  <p> </p>
+  <p> </p>
+  <h2><a id="Editing_and_Organizing_Parameters" name="Editing_and_Organizing_Parameters">Editing and Organizing Parameters</a></h2>
+  <p><span lang="EN-US" xml:lang="EN-US">T</span>o edit column values, double-click the cell and edit it.</p>
+  <p> </p>
+  <p><span lang="EN-US" xml:lang="EN-US">To organize parameters, select the parameter/group and drag-and-drop it to a new group</span></p>
+  <p style="font-size: 11.0pt; line-height: 115%; mso-ascii-theme-font: minor-latin; 
+	 mso-fareast-theme-font: minor-latin; mso-hansi-theme-font: minor-latin; 
+	 mso-fareast-font-family: Calibri; font-family: Calibri, sans-serif; 
+	 mso-bidi-font-family: &#39;Times New Roman&#39;; mso-bidi-theme-font: minor-bidi;"> </p>
+  <p style="margin-left: 0px;"> </p>
+  <h2><a id="Adding_Extra_Columns" name="Adding_Extra_Columns">Adding Extra Columns</a></h2>
+  <p>To add extra columns to the parameter table, select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_edit_columns.png" style="border: none;"/> icon and</p>
+  <p> </p>
+  <ol style="list-style: decimal;">
+    <li>
+      <p><span style="font-weight: bold;">Extra Columns</span> dialog opens</p>
+    </li>
+    <li>
+      <p><span style="font-weight: bold;">Add New</span> column</p>
+    </li>
+    <li>
+      <p>Double-click the created column to give a name for it</p>
+    </li>
+    <li>
+      <p>Select the <span style="font-weight: bold;">Data Type</span></p>
+      <ul>
+        <li style="list-style: disc;">
+          <p>Note that the extra columns are not validated based on the <span style="font-weight: bold;">Data Type</span></p>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <p>Click <span style="font-weight: bold;">OK</span> and the new columns are added to the end of the table</p>
+    </li>
+  </ol>
+  <p style="font-weight: normal;"> </p>
+  <p style="font-weight: normal;"> </p>
+  <h2><a id="Editing_Access_Levels" name="Editing_Access_Levels">Editing Access Levels</a></h2>
+  <p>To edit parameter access levels, select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_edit_access_levels.png" style="border: none;"/> icon and</p>
+  <p> </p>
+  <ol style="list-style: decimal;">
+    <li>
+      <p><span style="font-weight: bold;">Edit Access Levels</span> dialog opens</p>
+    </li>
+    <li>
+      <p>It is possible to change the level value, name and number of levels in the dialog.</p>
+    </li>
+    <li>
+      <p>Click <span style="font-weight: bold;">OK</span> to save changes and exit the dialog.</p>
+    </li>
+  </ol>
+  <p> </p>
+  <p>The given access levels are used in parameter table columns <span style="font-weight: bold;">Read Access</span> and <span style="font-weight: bold;">Write Access</span>, select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_show_hidden.png" style="border: none;"/> icon to see the hidden columns and select the cell to change the access level.</p>
+  <p> </p>
+  <p> </p>
+  <h2><a id="Exporting_CSV" name="Exporting_CSV">Exporting CSV</a></h2>
+  <p>To export the parameter CSV, select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_export_csv.png" style="border: none;"/> icon. Select the file location and click <span style="font-weight: bold;">OK</span>.</p>
+  <p> </p>
+  <p>The parameter CSV file is automatically exported on <span style="font-weight: bold;">System Export</span>. The parameter CSV file name is automatically generated on <span style="font-weight: bold;">System Export</span> to the project directory with the network name.</p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <h2><a id="Resetting_to_Defaults" name="Resetting_to_Defaults">Resetting to Defaults</a></h2>
+  <p>To reset the parameter CSV to defaults, select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_reset_to_defaults.png" style="border: none;"/>icon. Reset reads the values from OD and updates the CSV table accordingly. Note that the values for <span style="font-weight: bold;">Low</span>, <span style="font-weight: bold;">High</span> and <span style="font-weight: bold;">Default</span> are synchronized also from CSV to OD, so reset will not affect them.</p>
+  <p> </p>
+  <p> </p>
+  <h2><a id="CSV_Table" name="CSV_Table">CSV Table</a></h2>
+  <p style="margin-left: 0px;">The parameter CSV table columns are described in the following table:</p>
+  <p style="margin-left: 0px;"> </p>
+  <table cellpadding="1" cellspacing="0" class="MsoNormalTable" style="border-collapse: collapse; mso-table-layout-alt: fixed; 
+		 mso-border-alt: solid windowtext .5pt; mso-padding-alt: 0cm 3.5pt 0cm 3.5pt; 
+		 mso-border-insideh: .5pt solid windowtext; mso-border-insidev: .5pt solid windowtext;" width="88%">
+    <colgroup>
+      <col style="width: 18.182%;"/>
+      
+      <col style="width: 9.091%;"/>
+      <col style="width: 9.091%;"/>
+      <col style="width: 9.091%;"/>
+      <col style="width: 45.455%;"/>
+    </colgroup>
+    <tbody>
+      <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; height: 16.1pt;">
+        <td style="border: solid 1pt #000000; vertical-align: top; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><b style="mso-bidi-font-weight: normal;"><span lang="EN-US" style="font-weight: bold; 
+													 mso-bidi-font-weight: normal;" xml:lang="EN-US">Column</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Name</span></b></p>
+        </td>
+        
+        <td style="border-top: solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p style="text-align: center;"><b style="mso-bidi-font-weight: normal;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Read Only</span></b></p>
+        </td>
+        <td style="border-top: solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p style="text-align: center;"><b style="mso-bidi-font-weight: normal;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Hidden by Default</span></b></p>
+        </td>
+        <td style="border-top: solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko" style="text-align: center;">Synchronized with OD</p>
+        </td>
+        <td style="border-top: solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-left-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p><b style="mso-bidi-font-weight: normal;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Notes</span></b></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 1; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Parameter / Group Name</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">Yes (*)</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Default values are</span></p>
+          <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">- Variable: Variable name</span></p>
+          <p class="TaulukonSisalto"><span lang="EN-US" xml:lang="EN-US">- Array:</span> <span lang="EN-US" style="mso-ansi-language: EN-US; 
+							 font-style: italic;" xml:lang="EN-US">&lt;ArrayName&gt;</span> <span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">or</span> <span lang="EN-US" style="mso-ansi-language: EN-US; 
+				 font-style: italic;" xml:lang="EN-US">&lt;ArrayIndexName&gt;</span></p>
+          <p class="TaulukonSisalto"><span lang="EN-US" xml:lang="EN-US">- Record:</span> <span lang="EN-US" style="font-style: italic;" xml:lang="EN-US">&lt;RecordName&gt;</span> <span lang="EN-US" xml:lang="EN-US">or &lt;</span><span lang="EN-US" style="font-style: italic;" xml:lang="EN-US">RecordVariableName&gt;</span></p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 2; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Variable</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p style="text-align: center;">Yes</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">Variable&#39;s</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Name</span> <span lang="EN-US" xml:lang="EN-US">in OD.</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 17; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Data Type</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">Yes</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">Variable&#39;s</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Data Type</span> <span lang="EN-US" xml:lang="EN-US">in OD, for example, UINT, BYTE.</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 18; mso-yfti-lastrow: yes; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Index Type</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">Yes</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: EN-US;"><span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Variable Type</span> <span lang="EN-US" xml:lang="EN-US">in OD. Possible values: Parameter, Retain or RetainPersistent.</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 3; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Unit</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Parameter unit. The d</span>efault units are mA, V, bar, Ohm and %.<br/>
+            It is possible to write own unit to this cell. New unit is saved to the unit list in addition to the default units.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 4; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Steps</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Parameter editing step. Value range is 0-65535.</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 5; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Decimals</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Number of decimals.</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 6; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Info</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p style="text-align: center;">Yes (*)</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">Parameter</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Description</span> <span lang="EN-US" xml:lang="EN-US">(OD variable description by default)</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 7; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Read Access</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Read access level for the variable. By default, Admin=1, Service=2, Operator=3.</span></p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 8; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Write Access</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Write access level for the variable. By default, Admin=1, Service=2, Operator=3.</span></p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 9; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Low</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">Yes</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto"><span lang="EN-US" xml:lang="EN-US">OD definition for</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Minimum</span> <span lang="EN-US" xml:lang="EN-US">limit. Editing this changes the corresponding value in the OD.</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 10; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">High</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">Yes</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto"><span lang="EN-US" xml:lang="EN-US">OD definition for</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Maximum</span> <span lang="EN-US" xml:lang="EN-US">limit. Editing this changes the corresponding value in the OD.</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 13; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Default</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">Yes</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: EN-US;"><span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Default</span> <span lang="EN-US" xml:lang="EN-US">value for the variable in OD. Editing this changes the corresponding value in the OD.</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 14; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Node-ID</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">Yes</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">Device&#39;s</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Application Node-ID</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 15; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Index</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">Yes</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto"><span lang="EN-US" xml:lang="EN-US">Variable&#39;s OD index</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 16; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Sub-Index</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">Yes</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Variable&#39;s sub-index</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 11; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Bit</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Yes</span></p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">Yes</p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">OD variable’s bit variable’s bit</span></p>
+        </td>
+      </tr>
+      <tr style="mso-yfti-irow: 12; height: 37.3pt;">
+        <td style="border-left: Solid 1pt #000000; border-right: solid 1pt #000000; 
+			 border-bottom: solid 1pt #000000; vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-alt: solid windowtext .5pt; padding: 0cm 3.5pt 0cm 3.5pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko"><span lang="EN-US" xml:lang="EN-US">Value Texts</span></p>
+        </td>
+        
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: solid 1pt #000000; border-bottom: solid 1pt #000000; 
+			 vertical-align: top; mso-border-top-alt: solid windowtext .5pt; 
+			 mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; 
+			 padding: 0cm 3.5pt 0cm 3.5pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Definition of key value pairs, for example, 0=No|1=Yes|3=Deutz|8=Cummings|12=CAT</span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-left: 0px;"> </p>
+  <p style="margin-left: 0px;">* If the parameter has been modified in the <span style="font-weight: bold;">CSV Editor</span>, it is no longer synchronized with the <span style="font-weight: bold;">Object Dictionary</span></p>
+  <p style="margin-left: 0px;"> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200086.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

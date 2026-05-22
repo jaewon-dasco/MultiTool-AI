@@ -1,0 +1,39 @@
+{
+  "od_buttons": [
+    [
+      "Hide",
+      204,
+      58,
+      220,
+      74
+    ],
+    [
+      "minimizeButton",
+      2495,
+      0,
+      2517,
+      22
+    ],
+    [
+      "maximizeButton",
+      2517,
+      0,
+      2539,
+      22
+    ],
+    [
+      "closeButton",
+      2539,
+      0,
+      2561,
+      22
+    ],
+    [
+      "PART_DropdownButton",
+      2545,
+      119,
+      2555,
+      159
+    ]
+  ]
+}

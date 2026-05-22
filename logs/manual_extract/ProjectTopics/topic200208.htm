@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Defining J1939/NMEA 2000 Device Address Claiming</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Defining J1939/NMEA 2000 Device Address Claiming</h1>
+  <p><img alt="" border="0" src="../assets/images/MultiTool/Used/J1939DevAddressClaimingConf.JPG" style="border: none;" title=""/></p>
+  <p> </p>
+  <p>J1939/NMEA 2000 device address claiming should be initialized if J1939/NMEA 2000 device does not use fixed address and supports address claiming protocol.</p>
+  <p> </p>
+  <p>To initialize J1939 device address claiming:</p>
+  <p> </p>
+  <ol class="p">
+    <li class="p">
+      <p>Double-click the correct J1939/NMEA 2000 device to open the device configuration.</p>
+    </li>
+    <li class="p" style="font-size: 12pt;">
+      <p>Select <span style="font-weight: bold;">Address Claiming Enabled</span>.</p>
+    </li>
+    <li class="p" style="font-size: 12pt;">
+      <p>Configure address claiming according the specification of J1939/NMEA 2000 device.</p>
+    </li>
+    <li class="p" style="font-size: 12pt;">
+      <p>Select the address claiming fields which are used for identifying the device in J1939 network by selecting the corresponding <span style="font-weight: bold;">Enable Search Condition</span>.</p>
+    </li>
+  </ol>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="EpecTable" style="margin-left: 40px;" width="37.306%">
+    <colgroup>
+      <col style="width: 23.33%;"/>
+      <col style="width: 76.67%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Field</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr class="t2Row">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Self Configurable</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="margin-left: 3px;">Indicates if device can change it&#39;s initial address or not. Use always value 1 with ISOBUS devices</p>
+        </td>
+      </tr>
+      <tr class="t1Row">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Industry group</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="margin-left: 3px;">Industry group, for example 2 = Agriculture and forestry equipment</p>
+        </td>
+      </tr>
+      <tr class="t2Row">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Device class</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="margin-left: 3px;">Provides name for group of functions which are combined under same device class. For example 4 = planter and seeders</p>
+        </td>
+      </tr>
+      <tr class="t1Row">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Function</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="margin-left: 3px;">Function for control function, for example 132 = Planters/Seeders Machine Control</p>
+        </td>
+      </tr>
+      <tr class="t2Row">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Device class instance </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="margin-left: 3px;">Value is used to make difference for identical device classes in same network. 0 recommended.</p>
+        </td>
+      </tr>
+      <tr class="t1Row">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Function instance</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="margin-left: 3px;">Value is used to make difference with several identical function instances. 0 recommended.</p>
+        </td>
+      </tr>
+      <tr class="t2Row">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">ECU instance</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="margin-left: 3px;">Value is used to make difference if there is several ECUs which together form a single function. 0 recommended (function is managed by one ECU).</p>
+        </td>
+      </tr>
+      <tr class="t1Row">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Manufacturer code</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="margin-left: 3px;">Indicates the machine manufacturer (see <a href="http://www.sae.org/" style="font-style: italic;">www.sae.org</a> for SAE Manufacturer Code Request). See also</p>
+          <p class="TaulukonSisalto" style="margin-left: 3px;">ISOBUS Data Dictionary <a href="http://dictionary.isobus.net/isobus/" style="font-style: italic;">http://dictionary.isobus.net/isobus/</a> &gt; ISO 11783-1 Parameter group assignments: Complete list with details – PDF.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200208.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

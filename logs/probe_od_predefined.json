@@ -1,0 +1,1458 @@
+[
+  {
+    "depth": 0,
+    "class": "RadRibbonWindow",
+    "name": "DasDemoProject *  - MultiTool Creator 8.4",
+    "auto_id": "MainView_MultiToolMainWindow",
+    "ctrl_type": "Window",
+    "rect": [
+      -8,
+      -8,
+      2568,
+      1400
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "Image",
+    "name": "",
+    "auto_id": "PART_Icon",
+    "ctrl_type": "Image",
+    "rect": [
+      2,
+      4,
+      18,
+      20
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "RadButton",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      26,
+      1,
+      50,
+      25
+    ]
+  },
+  {
+    "depth": 2,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      27,
+      2,
+      49,
+      24
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "RadButton",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      56,
+      1,
+      80,
+      25
+    ]
+  },
+  {
+    "depth": 2,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      57,
+      2,
+      79,
+      24
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "WindowTitle",
+    "name": "WindowTitle",
+    "auto_id": "WindowTitle",
+    "ctrl_type": "TitleBar",
+    "rect": [
+      1217,
+      5,
+      1439,
+      21
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "RadButton",
+    "name": "minimizeButton",
+    "auto_id": "minimizeButton",
+    "ctrl_type": "Button",
+    "rect": [
+      2495,
+      0,
+      2517,
+      22
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "RadToggleButton",
+    "name": "maximizeButton",
+    "auto_id": "maximizeButton",
+    "ctrl_type": "Button",
+    "rect": [
+      2517,
+      0,
+      2539,
+      22
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "RadButton",
+    "name": "closeButton",
+    "auto_id": "closeButton",
+    "ctrl_type": "Button",
+    "rect": [
+      2539,
+      0,
+      2561,
+      22
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "RadMenu",
+    "name": "Rad Menu",
+    "auto_id": "",
+    "ctrl_type": "Menu",
+    "rect": [
+      0,
+      26,
+      2560,
+      50
+    ]
+  },
+  {
+    "depth": 2,
+    "class": "RadMenuItem",
+    "name": "MultiTool.ViewModels.Menu.MenuItem",
+    "auto_id": "",
+    "ctrl_type": "MenuItem",
+    "rect": [
+      0,
+      26,
+      41,
+      50
+    ]
+  },
+  {
+    "depth": 3,
+    "class": "TextBlock",
+    "name": "FILE",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      10,
+      30,
+      31,
+      46
+    ]
+  },
+  {
+    "depth": 2,
+    "class": "RadMenuItem",
+    "name": "MultiTool.ViewModels.Menu.MenuItem",
+    "auto_id": "",
+    "ctrl_type": "MenuItem",
+    "rect": [
+      41,
+      26,
+      108,
+      50
+    ]
+  },
+  {
+    "depth": 3,
+    "class": "TextBlock",
+    "name": "PROJECT",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      51,
+      30,
+      98,
+      46
+    ]
+  },
+  {
+    "depth": 2,
+    "class": "RadMenuItem",
+    "name": "MultiTool.ViewModels.Menu.MenuItem",
+    "auto_id": "",
+    "ctrl_type": "MenuItem",
+    "rect": [
+      108,
+      26,
+      155,
+      50
+    ]
+  },
+  {
+    "depth": 3,
+    "class": "TextBlock",
+    "name": "HELP",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      118,
+      30,
+      145,
+      46
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "RadBusyIndicator",
+    "name": "System.Windows.Controls.StackPanel",
+    "auto_id": "IsBusyIndicator",
+    "ctrl_type": "ProgressBar",
+    "rect": [
+      0,
+      50,
+      2560,
+      1367
+    ]
+  },
+  {
+    "depth": 2,
+    "class": "RadDocking",
+    "name": "radDocking",
+    "auto_id": "radDocking",
+    "ctrl_type": "Custom",
+    "rect": [
+      0,
+      55,
+      2560,
+      1367
+    ]
+  },
+  {
+    "depth": 3,
+    "class": "AutoHideArea",
+    "name": "Auto Hide Area (Left)",
+    "auto_id": "LeftAutoHide",
+    "ctrl_type": "Tab",
+    "rect": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "depth": 3,
+    "class": "AutoHideArea",
+    "name": "Auto Hide Area (Top)",
+    "auto_id": "TopAutoHide",
+    "ctrl_type": "Tab",
+    "rect": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "depth": 3,
+    "class": "AutoHideArea",
+    "name": "Auto Hide Area (Right)",
+    "auto_id": "RightAutoHide",
+    "ctrl_type": "Tab",
+    "rect": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "depth": 3,
+    "class": "AutoHideArea",
+    "name": "Auto Hide Area (Bottom)",
+    "auto_id": "BottomAutoHide",
+    "ctrl_type": "Tab",
+    "rect": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "depth": 3,
+    "class": "RadSplitContainer",
+    "name": "Rad Split Container",
+    "auto_id": "",
+    "ctrl_type": "Custom",
+    "rect": [
+      1,
+      56,
+      2559,
+      1366
+    ]
+  },
+  {
+    "depth": 4,
+    "class": "RadPaneGroup",
+    "name": "Pane Group Base",
+    "auto_id": "",
+    "ctrl_type": "Tab",
+    "rect": [
+      1,
+      56,
+      2559,
+      1366
+    ]
+  },
+  {
+    "depth": 5,
+    "class": "RadPane",
+    "name": "Network Editor",
+    "auto_id": "",
+    "ctrl_type": "TabItem",
+    "rect": [
+      1,
+      56,
+      116,
+      76
+    ]
+  },
+  {
+    "depth": 6,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      98,
+      58,
+      114,
+      74
+    ]
+  },
+  {
+    "depth": 6,
+    "class": "TextBlock",
+    "name": "Network Editor",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      6,
+      58,
+      89,
+      74
+    ]
+  },
+  {
+    "depth": 5,
+    "class": "RadPane",
+    "name": "CU_3606_21_1",
+    "auto_id": "",
+    "ctrl_type": "TabItem",
+    "rect": [
+      116,
+      56,
+      222,
+      76
+    ]
+  },
+  {
+    "depth": 6,
+    "class": "RadButton",
+    "name": "Hide",
+    "auto_id": "RadPaneCloseButton",
+    "ctrl_type": "Button",
+    "rect": [
+      204,
+      58,
+      220,
+      74
+    ]
+  },
+  {
+    "depth": 6,
+    "class": "TextBlock",
+    "name": "CU_3606_21_1",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      121,
+      58,
+      195,
+      74
+    ]
+  },
+  {
+    "depth": 6,
+    "class": "DeviceConfigurationView",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Custom",
+    "rect": [
+      2,
+      78,
+      2558,
+      1365
+    ]
+  },
+  {
+    "depth": 7,
+    "class": "RadTabControl",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Tab",
+    "rect": [
+      2,
+      78,
+      2558,
+      1365
+    ]
+  },
+  {
+    "depth": 8,
+    "class": "RadTabItem",
+    "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+    "auto_id": "CANSettingsViewRadTabItem",
+    "ctrl_type": "TabItem",
+    "rect": [
+      6,
+      182,
+      177,
+      222
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      16,
+      186,
+      48,
+      218
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "TextBlock",
+    "name": "CAN",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      58,
+      194,
+      84,
+      211
+    ]
+  },
+  {
+    "depth": 8,
+    "class": "RadTabItem",
+    "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+    "auto_id": "DeviceConfigureView_TabJ1939",
+    "ctrl_type": "TabItem",
+    "rect": [
+      6,
+      222,
+      177,
+      262
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      16,
+      226,
+      48,
+      258
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "TextBlock",
+    "name": "J1939",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      58,
+      234,
+      91,
+      251
+    ]
+  },
+  {
+    "depth": 8,
+    "class": "RadTabItem",
+    "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+    "auto_id": "DeviceConfigureView_NMEA2000",
+    "ctrl_type": "TabItem",
+    "rect": [
+      6,
+      262,
+      177,
+      302
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      16,
+      266,
+      48,
+      298
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "TextBlock",
+    "name": "NMEA 2000",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      58,
+      274,
+      126,
+      291
+    ]
+  },
+  {
+    "depth": 8,
+    "class": "RadTabItem",
+    "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+    "auto_id": "AddressClaimingViewRadTabItem",
+    "ctrl_type": "TabItem",
+    "rect": [
+      6,
+      302,
+      177,
+      342
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      18,
+      306,
+      46,
+      338
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "TextBlock",
+    "name": "Address Claiming",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      58,
+      314,
+      158,
+      331
+    ]
+  },
+  {
+    "depth": 8,
+    "class": "RadTabItem",
+    "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+    "auto_id": "DiagnosticsViewRadTabItem",
+    "ctrl_type": "TabItem",
+    "rect": [
+      6,
+      342,
+      177,
+      382
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      16,
+      346,
+      48,
+      378
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "TextBlock",
+    "name": "Diagnostics",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      58,
+      354,
+      124,
+      371
+    ]
+  },
+  {
+    "depth": 8,
+    "class": "RadTabItem",
+    "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+    "auto_id": "ObjectDictionaryViewRadTabItem",
+    "ctrl_type": "TabItem",
+    "rect": [
+      6,
+      382,
+      177,
+      422
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      16,
+      386,
+      48,
+      418
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "TextBlock",
+    "name": "Object Dictionary",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      58,
+      394,
+      158,
+      411
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "TextBlock",
+    "name": "No CAN selected, select configurable CAN above.",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      1234,
+      713,
+      1496,
+      729
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "ObjectDictionaryView",
+    "name": "",
+    "auto_id": "OdUserControl",
+    "ctrl_type": "Custom",
+    "rect": [
+      174,
+      78,
+      2557,
+      1364
+    ]
+  },
+  {
+    "depth": 10,
+    "class": "RadTabControl",
+    "name": "",
+    "auto_id": "TabControl",
+    "ctrl_type": "Tab",
+    "rect": [
+      174,
+      78,
+      2557,
+      1364
+    ]
+  },
+  {
+    "depth": 11,
+    "class": "RadTabItem",
+    "name": "Epec.MT.Impl.CanOpen",
+    "auto_id": "",
+    "ctrl_type": "TabItem",
+    "rect": [
+      176,
+      82,
+      274,
+      122
+    ]
+  },
+  {
+    "depth": 12,
+    "class": "TextBlock",
+    "name": "CAN 1",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      223,
+      94,
+      260,
+      111
+    ]
+  },
+  {
+    "depth": 12,
+    "class": "RadToolBar",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "ToolBar",
+    "rect": [
+      176,
+      119,
+      2555,
+      159
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadToggleButton",
+    "name": "PART_DropdownButton",
+    "auto_id": "PART_DropdownButton",
+    "ctrl_type": "Button",
+    "rect": [
+      2545,
+      119,
+      2555,
+      159
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadButton",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      189,
+      121,
+      225,
+      157
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadButton",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      227,
+      121,
+      263,
+      157
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadButton",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      265,
+      121,
+      301,
+      157
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadToolBarSeparator",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Separator",
+    "rect": [
+      304,
+      122,
+      306,
+      156
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadButton",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      309,
+      121,
+      345,
+      157
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadToolBarSeparator",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Separator",
+    "rect": [
+      348,
+      122,
+      350,
+      156
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadToggleButton",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      353,
+      121,
+      389,
+      157
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadToolBarSeparator",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Separator",
+    "rect": [
+      392,
+      122,
+      394,
+      156
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadButton",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      397,
+      121,
+      433,
+      157
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadToolBarSeparator",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Separator",
+    "rect": [
+      436,
+      122,
+      438,
+      156
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadButton",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      441,
+      121,
+      477,
+      157
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadButton",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      479,
+      121,
+      515,
+      157
+    ]
+  },
+  {
+    "depth": 12,
+    "class": "RadTreeListView",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "DataGrid",
+    "rect": [
+      175,
+      160,
+      1957,
+      1363
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "GridViewHeaderRow",
+    "name": "",
+    "auto_id": "PART_HeaderRow",
+    "ctrl_type": "Header",
+    "rect": [
+      176,
+      161,
+      1956,
+      189
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "TreeListViewVirtualizingPanel",
+    "name": "",
+    "auto_id": "PART_GridViewVirtualizingPanel",
+    "ctrl_type": "Custom",
+    "rect": [
+      176,
+      189,
+      1956,
+      1362
+    ]
+  },
+  {
+    "depth": 12,
+    "class": "GridSplitter",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Thumb",
+    "rect": [
+      1957,
+      160,
+      1962,
+      1363
+    ]
+  },
+  {
+    "depth": 12,
+    "class": "ScrollViewer",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Pane",
+    "rect": [
+      1962,
+      160,
+      2556,
+      1363
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "TextBlock",
+    "name": "Index Properties",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      1973,
+      171,
+      2545,
+      199
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "TextBlock",
+    "name": "No Index Selected. Select Index.",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      1973,
+      219,
+      2545,
+      236
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadComboBox",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "ComboBox",
+    "rect": [
+      2053,
+      298,
+      2535,
+      320
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadComboBox",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "ComboBox",
+    "rect": [
+      2053,
+      330,
+      2535,
+      352
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadComboBox",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "ComboBox",
+    "rect": [
+      2053,
+      362,
+      2535,
+      384
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadComboBox",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "ComboBox",
+    "rect": [
+      2053,
+      394,
+      2535,
+      416
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "TextBlock",
+    "name": "Sub-Index Properties",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      1973,
+      256,
+      2545,
+      284
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "TextBlock",
+    "name": "No Sub-Index Selected. Select Sub-Index.",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      1973,
+      304,
+      2545,
+      321
+    ]
+  },
+  {
+    "depth": 13,
+    "class": "RadComboBox",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "ComboBox",
+    "rect": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "depth": 8,
+    "class": "RadTabItem",
+    "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+    "auto_id": "PDOViewRadTabItem",
+    "ctrl_type": "TabItem",
+    "rect": [
+      6,
+      422,
+      177,
+      462
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      16,
+      426,
+      48,
+      458
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "TextBlock",
+    "name": "PDO",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      58,
+      434,
+      84,
+      451
+    ]
+  },
+  {
+    "depth": 8,
+    "class": "RadTabItem",
+    "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+    "auto_id": "IoViewRadTabItem",
+    "ctrl_type": "TabItem",
+    "rect": [
+      6,
+      462,
+      177,
+      502
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      16,
+      466,
+      48,
+      498
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "TextBlock",
+    "name": "I/O",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      58,
+      474,
+      76,
+      491
+    ]
+  },
+  {
+    "depth": 8,
+    "class": "RadTabItem",
+    "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+    "auto_id": "EventsViewRadTabItem",
+    "ctrl_type": "TabItem",
+    "rect": [
+      6,
+      502,
+      177,
+      542
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      16,
+      506,
+      48,
+      538
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "TextBlock",
+    "name": "Events",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      58,
+      514,
+      95,
+      531
+    ]
+  },
+  {
+    "depth": 8,
+    "class": "RadTabItem",
+    "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+    "auto_id": "IsobusViewRadTabItem",
+    "ctrl_type": "TabItem",
+    "rect": [
+      6,
+      542,
+      177,
+      582
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      16,
+      546,
+      48,
+      578
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "TextBlock",
+    "name": "ISOBUS",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      58,
+      554,
+      101,
+      571
+    ]
+  },
+  {
+    "depth": 8,
+    "class": "RadTabItem",
+    "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+    "auto_id": "LibraryManagerViewRadTabItem",
+    "ctrl_type": "TabItem",
+    "rect": [
+      6,
+      582,
+      177,
+      622
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      16,
+      586,
+      48,
+      618
+    ]
+  },
+  {
+    "depth": 9,
+    "class": "TextBlock",
+    "name": "Library Manager",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      58,
+      594,
+      152,
+      611
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "RadButton",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      3,
+      1368,
+      29,
+      1393
+    ]
+  },
+  {
+    "depth": 2,
+    "class": "Image",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Image",
+    "rect": [
+      8,
+      1372,
+      24,
+      1388
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "TextBlock",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      43,
+      1373,
+      2251,
+      1388
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "RepeatButton",
+    "name": "-",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      2264,
+      1368,
+      2272,
+      1390
+    ]
+  },
+  {
+    "depth": 2,
+    "class": "TextBlock",
+    "name": "-",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      2264,
+      1363,
+      2272,
+      1390
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "RadSlider",
+    "name": "",
+    "auto_id": "",
+    "ctrl_type": "Slider",
+    "rect": [
+      2275,
+      1375,
+      2494,
+      1383
+    ]
+  },
+  {
+    "depth": 2,
+    "class": "RepeatButton",
+    "name": "",
+    "auto_id": "LargeDecreaseButton",
+    "ctrl_type": "Button",
+    "rect": [
+      2275,
+      1375,
+      2377,
+      1383
+    ]
+  },
+  {
+    "depth": 2,
+    "class": "Thumb",
+    "name": "",
+    "auto_id": "SingleThumbHost",
+    "ctrl_type": "Thumb",
+    "rect": [
+      2377,
+      1375,
+      2381,
+      1383
+    ]
+  },
+  {
+    "depth": 2,
+    "class": "RepeatButton",
+    "name": "",
+    "auto_id": "LargeIncreaseButton",
+    "ctrl_type": "Button",
+    "rect": [
+      2381,
+      1375,
+      2494,
+      1383
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "RepeatButton",
+    "name": "+",
+    "auto_id": "",
+    "ctrl_type": "Button",
+    "rect": [
+      2497,
+      1368,
+      2511,
+      1390
+    ]
+  },
+  {
+    "depth": 2,
+    "class": "TextBlock",
+    "name": "+",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      2497,
+      1363,
+      2511,
+      1390
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "TextBox",
+    "name": "100",
+    "auto_id": "",
+    "ctrl_type": "Edit",
+    "rect": [
+      2517,
+      1368,
+      2548,
+      1390
+    ]
+  },
+  {
+    "depth": 1,
+    "class": "TextBlock",
+    "name": "%",
+    "auto_id": "",
+    "ctrl_type": "Text",
+    "rect": [
+      2548,
+      1371,
+      2558,
+      1387
+    ]
+  }
+]

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Library Manager</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta name="rh-index-keywords" content="Library Manager"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Library Manager</h1>
+  <p> </p>
+  <p>This topic describes library version handling in <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>projects and in both CODESYS environments. <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span><span style="font-weight: bold;">Library Manager</span> lists all PLCopen libraries and their versions for each device. The selected library&#39;s version history is shown on the right side of the window.</p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Creator/LibraryVersionHistory.png"/></p>
+  <p> </p>
+  <h3>CODESYS 2.3</h3>
+  <p style="background-color: Transparent;">Since <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>creates a CODESYS code template, all libraries related to the template are always included to the project and the selection cannot be removed from the <span style="font-weight: bold;">Library Manager</span>.</p>
+  <p style="background-color: Transparent;">All additional libraries can be selected to be included in the project.</p>
+  <p> </p>
+  <p>To select project libraries</p>
+  <ol class="p" start="1">
+    <li class="p" style="font-size: 10pt;">
+      <p><span lang="EN-GB" xml:lang="EN-GB">Select the library versions or click</span> <span lang="EN-GB" style="font-weight: bold;" xml:lang="EN-GB">Update All to Latest</span><span lang="EN-GB" xml:lang="EN-GB">.</span></p>
+      <ul class="p">
+        <li class="p" style="font-size: 10pt; list-style: disc;">
+          <p><span lang="EN-GB" xml:lang="EN-GB">Note that t</span>here is no cancel option in the <span style="font-weight: bold;">Library Manager.</span> When the library version is changed, the change is activated immediately.</p>
+        </li>
+      </ul>
+    </li>
+    <li class="p" style="font-size: 10pt;">
+      <p>Leave the <span style="font-weight: bold;">Include</span> box unchecked if you do not want the library to be included in the project.</p>
+    </li>
+  </ol>
+  <p>To update libraries into an existing CODESYS project, see <span style="font-style: italic;"><a href="topic200038.htm" style="font-style: italic;">Updating <span data-keyref="SoftwareName">MultiTool Creator</span> Configurations to CODESYS Project</a>.</span></p>
+  <p> </p>
+  <p style="background-color: Transparent;">The <span style="font-weight: bold;">Current Version</span> column shows the library version. The column includes also a colored square that indicates if a new library version is available.</p>
+  <p style="background-color: Transparent;">In case a new library version is available, the color is yellow. If the current version is the newest one, the color is green.</p>
+  <p> </p>
+  <p> </p>
+  <h3>CODESYS 3.5</h3>
+  <p>In CODESYS 3.5, the used libraries and their versions are defined in the device description. T<span style="mso-ansi-language: EN-US;">he libraries are automatically included to the project according to the device description.</span></p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;">In case the library version(s) need to be changed, there is two ways to do it:</p>
+  <ol class="p" style="font-size: 10pt;">
+    <li class="p">
+      <p>Changing the device description version from the <span style="font-weight: bold;">Device Properties</span>. To change the device description version, select the device and the <span style="font-weight: bold;">Device Properties</span> are shown on the left side.</p>
+    </li>
+  </ol>
+  <p> </p>
+  <p style="margin-left: 40px;"><img alt="" border="0" src="../assets/images/MultiTool/Used/DeviceProperties.JPG" style="border: none;" title=""/></p>
+  <p style="margin-left: 40px;"> </p>
+  <p paraeid="{c51a455a-f881-4b3e-9ae3-c23300ce9bf8}{188}" paraid="1388480540"><span data-contrast="auto"><span>Device description selection box </span></span><span data-contrast="auto"><span>includes</span><span> </span><span>a colored square that </span><span>indicates</span><span> if a new </span><span>device description</span><span> version is available.</span></span><span data-ccp-props="{&quot;335559685&quot;:720}"> </span></p>
+  <p paraeid="{c51a455a-f881-4b3e-9ae3-c23300ce9bf8}{208}" paraid="881791983"><span data-contrast="auto"><span>In case a new </span><span>device description</span><span> version is available, the color is yellow. If the current version is the newest one, the color is green.</span></span></p>
+  <p style="margin-left: 40px;"> </p>
+  <p style="margin-left: 40px;"> </p>
+  <p style="margin-left: 40px;"><span style="font-weight: bold;">Note</span> that the device description version has to be compatible with the device&#39;s CODESYS 3.5 runtime version. Otherwise, CODESYS 3.5 gives an error before downloading the application to the device (&quot;The selected target system is different from the connected device. Version mismatch...&quot;). Downloading is possible when the versions are correct. Both the device description and the CODESYS 3.5 runtime version consists of four digits. To be compatible with each other,</p>
+  <ol style="list-style: disc;">
+    <li style="list-style: none; display: inline;">
+      <ul class="p">
+        <li class="p">
+          <p style="mso-ansi-language: EN-US;">the first three digits have to be the same and</p>
+        </li>
+        <li class="p">
+          <p style="mso-ansi-language: EN-US;">the last digit can be different (see the following table)</p>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <p style="margin-left: 40px;"> </p>
+  <table cellpadding="1" cellspacing="0" style="margin-left: 40px; height: 117px; left: 0px; top: 1398px;" width="565">
+    <colgroup>
+      <col style="width: 68.492%;"/>
+      <col style="width: 31.508%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Device description and CODESYS runtime versions</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko" style="text-align: center;">Compatible</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: EN-US;">Device description file</span> <span style="font-weight: bold; color: #0000ff;">1.0.1.</span><span style="mso-ansi-language: EN-US; color: #0000ff; font-weight: bold;">x</span></p>
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: EN-US;">CODESYS runtime</span> <span style="font-weight: bold; color: #0000ff;">1.0.1</span><span style="color: #0000ff; font-weight: bold;">.</span><span style="mso-ansi-language: EN-US; 
+		 color: #0000ff; font-weight: bold;">y</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center; color: #0000ff;">YES</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: EN-US;">Device description file</span> <span style="font-weight: bold;">1.0.</span><span style="font-weight: bold; 
+															 color: #ff0000;">1</span><span style="font-weight: bold;">.</span><span style="mso-ansi-language: EN-US; 
+													 font-weight: bold;">n</span></p>
+          <p class="TaulukonSisalto"><span style="mso-ansi-language: EN-US;">CODESYS runtime</span> <span style="font-weight: bold;">1.0.</span><span style="font-weight: bold; color: #ff0000;">2</span><span style="font-weight: bold;">.k</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center; color: #ff0000;">NO</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="mso-ansi-language: EN-US; margin-left: 40px;"> </p>
+  <p style="mso-ansi-language: EN-US; margin-left: 40px;"><img src="../assets/images/MultiTool/Creator/MT_CreatorCompatibility.png"/></p>
+  <p style="mso-ansi-language: EN-US; margin-left: 40px;"> </p>
+  <p style="margin-left: 40px;"> </p>
+  <p style="margin-left: 40px;"> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 47px;" width="567">
+    <tbody>
+      <tr>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt;" width="57">
+          <p class="Note"><img alt="" border="0" height="42" src="../assets/images/image006.jpg" title="" width="42"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt;" width="510">
+          <p class="Note">In <span data-condition="Others:EpecSpecific">S series / </span><span data-keyref="E_Series">E Series</span>, the CODESYS runtime version number is according to 3S version numbering and should not be confused with the <span data-condition="Others:EpecSpecific">S series / </span><span data-keyref="E_Series">E Series</span> firmware binary&#39;s version. Device description version (e.g. 3.5.10.0) corresponds with the 3S CODESYS runtime version.</p>
+          <p class="Note"> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-left: 40px;"> </p>
+  <p paraeid="{c51a455a-f881-4b3e-9ae3-c23300ce9bf8}{188}" paraid="1388480540"> </p>
+  <ol class="p" start="2" style="font-size: 10pt;">
+    <li class="p">
+      <p>Change the library version to a placeholder used in CODESYS 3.5</p>
+    </li>
+  </ol>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 47px;" width="567">
+    <tbody>
+      <tr>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt;" width="57">
+          <p class="Note"><img alt="" border="0" height="42" src="../assets/images/image006.jpg" title="" width="42"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt;" width="510">
+          <p class="Note">It is not recommended to change library versions directly in the project because it can cause errors due to incompatibility between library versions.</p>
+          <p class="Note"> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-left: 40px;"> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 47px;" width="567">
+    <tbody>
+      <tr>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt;" width="57">
+          <p class="Note"><img alt="" border="0" height="42" src="../assets/images/image006.jpg" title="" width="42"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt;" width="510">
+          <p class="Note">If a placeholder value is redirected via CODESYS 3.5 Library Manager, <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>import doesn&#39;t change it&#39;s value even device description version is changed. To release the redirection you must reset the placeholder to the default value.</p>
+          <p class="Note"> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-left: 40px;"> </p>
+  <p style="margin-left: 40px;">A placeholder in CODESYS 3.5 refers to a definite library version. To change the used library version directly in CODESYS 3.5 project:</p>
+  <ol style="list-style: decimal;">
+    <li style="list-style: none; display: inline;">
+      <ol style="list-style: decimal;">
+        <li style="list-style: none; display: inline;">
+          <ul class="p" style="font-size: 10pt;">
+            <li class="p">
+              <p>Open CODESYS 3.5 <span style="font-weight: bold;">Library Manager</span> &gt; <span style="font-weight: bold;">Placeholders</span> dialog</p>
+            </li>
+            <li class="p">
+              <p>Select the placeholder and define the used library version</p>
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </li>
+  </ol>
+  <p> </p>
+  <p style="margin-left: 80px;"><img alt="" border="0" src="../assets/images/MultiTool/Used/LibraryManager35_Placeholder.JPG" style="border: none;" title=""/></p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">Library_Manager.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

@@ -1,0 +1,173 @@
+{
+  "tab": "I/O",
+  "device": "CU_3606_21_1",
+  "total_ocr_items": 20,
+  "findings": {
+    "VAVLE_UP": {
+      "count": 0,
+      "hits": []
+    },
+    "VAVLE_DN": {
+      "count": 0,
+      "hits": []
+    },
+    "LED1": {
+      "count": 0,
+      "hits": []
+    },
+    "LED2": {
+      "count": 0,
+      "hits": []
+    },
+    "X1_9": {
+      "count": 0,
+      "hits": []
+    },
+    "X1_10": {
+      "count": 0,
+      "hits": []
+    },
+    "X1_11": {
+      "count": 0,
+      "hits": []
+    },
+    "X1_12": {
+      "count": 0,
+      "hits": []
+    },
+    "Modes": {
+      "count": 1,
+      "hits": [
+        {
+          "text": "Connector / Pin Variable Name Modes",
+          "x": 179,
+          "y": 88,
+          "right": 429,
+          "yc": 93
+        }
+      ]
+    },
+    "Variable Name": {
+      "count": 1,
+      "hits": [
+        {
+          "text": "Connector / Pin Variable Name Modes",
+          "x": 179,
+          "y": 88,
+          "right": 429,
+          "yc": 93
+        }
+      ]
+    },
+    "Active": {
+      "count": 0,
+      "hits": []
+    },
+    "Filter": {
+      "count": 0,
+      "hits": []
+    }
+  },
+  "first_50_ocr_items": [
+    {
+      "text": "DasDemoProject - Multilool Creator 84",
+      "x": 1223,
+      "y": 9
+    },
+    {
+      "text": "FILE PROJECT",
+      "x": 11,
+      "y": 34
+    },
+    {
+      "text": "Network Editor",
+      "x": 7,
+      "y": 62
+    },
+    {
+      "text": "3606",
+      "x": 74,
+      "y": 142
+    },
+    {
+      "text": "CAN",
+      "x": 58,
+      "y": 199
+    },
+    {
+      "text": "11939",
+      "x": 58,
+      "y": 239
+    },
+    {
+      "text": "HELP",
+      "x": 119,
+      "y": 34
+    },
+    {
+      "text": "cu 3606211 x",
+      "x": 121,
+      "y": 62
+    },
+    {
+      "text": "Connector / Pin Variable Name Modes",
+      "x": 179,
+      "y": 88
+    },
+    {
+      "text": "1 sous",
+      "x": 18,
+      "y": 559
+    },
+    {
+      "text": "N MEA 2000",
+      "x": 59,
+      "y": 279
+    },
+    {
+      "text": "Address Claiming",
+      "x": 58,
+      "y": 318
+    },
+    {
+      "text": "Diagnostics",
+      "x": 59,
+      "y": 358
+    },
+    {
+      "text": "Object Dictionary",
+      "x": 58,
+      "y": 398
+    },
+    {
+      "text": "Events",
+      "x": 59,
+      "y": 519
+    },
+    {
+      "text": "ISOBUS",
+      "x": 59,
+      "y": 559
+    },
+    {
+      "text": "Library Manager",
+      "x": 59,
+      "y": 598
+    },
+    {
+      "text": "Select Pin",
+      "x": 1921,
+      "y": 715
+    },
+    {
+      "text": "805",
+      "x": 2519,
+      "y": 1403
+    },
+    {
+      "text": "2026-05-19",
+      "x": 2479,
+      "y": 1419
+    }
+  ]
+}

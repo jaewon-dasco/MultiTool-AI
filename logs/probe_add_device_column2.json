@@ -1,0 +1,826 @@
+{
+  "family_before": [
+    {
+      "type": "Text",
+      "name": "2000 series",
+      "rect": [
+        324,
+        172,
+        398,
+        188
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3000 series",
+      "rect": [
+        324,
+        216,
+        398,
+        232
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "4000 series",
+      "rect": [
+        324,
+        260,
+        398,
+        276
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "5000 series",
+      "rect": [
+        324,
+        304,
+        398,
+        320
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "6000/X series",
+      "rect": [
+        324,
+        348,
+        398,
+        364
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "S/E series",
+      "rect": [
+        324,
+        392,
+        398,
+        408
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2000 series",
+      "rect": [
+        324,
+        172,
+        398,
+        188
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3000 series",
+      "rect": [
+        324,
+        216,
+        398,
+        232
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "4000 series",
+      "rect": [
+        324,
+        260,
+        398,
+        276
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "5000 series",
+      "rect": [
+        324,
+        304,
+        398,
+        320
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "6000/X series",
+      "rect": [
+        324,
+        348,
+        398,
+        364
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "S/E series",
+      "rect": [
+        324,
+        392,
+        398,
+        408
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        266,
+        147,
+        426,
+        191
+      ],
+      "size": [
+        160,
+        44
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        266,
+        191,
+        426,
+        235
+      ],
+      "size": [
+        160,
+        44
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        266,
+        235,
+        426,
+        279
+      ],
+      "size": [
+        160,
+        44
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        266,
+        279,
+        426,
+        323
+      ],
+      "size": [
+        160,
+        44
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        266,
+        323,
+        426,
+        367
+      ],
+      "size": [
+        160,
+        44
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        266,
+        367,
+        426,
+        411
+      ],
+      "size": [
+        160,
+        44
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        266,
+        147,
+        426,
+        191
+      ],
+      "size": [
+        160,
+        44
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        266,
+        191,
+        426,
+        235
+      ],
+      "size": [
+        160,
+        44
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        266,
+        235,
+        426,
+        279
+      ],
+      "size": [
+        160,
+        44
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        266,
+        279,
+        426,
+        323
+      ],
+      "size": [
+        160,
+        44
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        266,
+        323,
+        426,
+        367
+      ],
+      "size": [
+        160,
+        44
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        266,
+        367,
+        426,
+        411
+      ],
+      "size": [
+        160,
+        44
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        427,
+        148,
+        475,
+        410
+      ],
+      "size": [
+        48,
+        262
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        427,
+        148,
+        475,
+        410
+      ],
+      "size": [
+        48,
+        262
+      ]
+    }
+  ],
+  "dev_before": [
+    {
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        427,
+        148,
+        475,
+        410
+      ],
+      "size": [
+        48,
+        262
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        475,
+        148,
+        589,
+        410
+      ],
+      "size": [
+        114,
+        262
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        427,
+        148,
+        475,
+        410
+      ],
+      "size": [
+        48,
+        262
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        475,
+        148,
+        589,
+        410
+      ],
+      "size": [
+        114,
+        262
+      ]
+    }
+  ],
+  "dev_after": [
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        147,
+        587,
+        201
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        201,
+        587,
+        255
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        255,
+        587,
+        309
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        309,
+        587,
+        363
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        147,
+        587,
+        201
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        201,
+        587,
+        255
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        255,
+        587,
+        309
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        309,
+        587,
+        363
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        148,
+        588,
+        478
+      ],
+      "size": [
+        161,
+        330
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        148,
+        588,
+        478
+      ],
+      "size": [
+        161,
+        330
+      ]
+    }
+  ],
+  "wider_after": [
+    {
+      "type": "Text",
+      "name": "3724",
+      "rect": [
+        485,
+        182,
+        559,
+        198
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3720",
+      "rect": [
+        485,
+        236,
+        559,
+        252
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3610",
+      "rect": [
+        485,
+        290,
+        559,
+        306
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606",
+      "rect": [
+        485,
+        344,
+        559,
+        360
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3724",
+      "rect": [
+        485,
+        182,
+        559,
+        198
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3720",
+      "rect": [
+        485,
+        236,
+        559,
+        252
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3610",
+      "rect": [
+        485,
+        290,
+        559,
+        306
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606",
+      "rect": [
+        485,
+        344,
+        559,
+        360
+      ],
+      "size": [
+        74,
+        16
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        147,
+        587,
+        201
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        201,
+        587,
+        255
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        255,
+        587,
+        309
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        309,
+        587,
+        363
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        147,
+        587,
+        201
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        201,
+        587,
+        255
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        255,
+        587,
+        309
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "System.Collections.Generic.List`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        309,
+        587,
+        363
+      ],
+      "size": [
+        160,
+        54
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        148,
+        588,
+        478
+      ],
+      "size": [
+        161,
+        330
+      ]
+    },
+    {
+      "type": "Custom",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[Epec.MT.Models.Templates.IDeviceTemplate]",
+      "rect": [
+        427,
+        148,
+        588,
+        478
+      ],
+      "size": [
+        161,
+        330
+      ]
+    }
+  ],
+  "column_x_device": [
+    428,
+    475
+  ]
+}

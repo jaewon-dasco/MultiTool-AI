@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="Originator" content="ImportDoc"/>
+  <meta name="OriginalFile" content="MultiTool_Tech_simple2.doc"/>
+  <meta name="topic-check-list" content="Ran Smart Index"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Transmitting and Receiving PDOs</title>
+  <link rel="stylesheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <style type="text/css">
+    /*
+      <![CDATA[*/
+    A:visited {
+      color: #800080;
+    }
+    A:link {
+      color: #0000ff;
+    }
+    /*]]>*/
+  </style>
+  <meta name="rh-index-keywords" content="Transmitting and Receiving PDOs,TPDO,PDOs,NodeID,COB-ID,COB,Add PDO,Event-controlled,Inhibit Time,Event Time"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body lang="FI" xml:lang="FI">
+  <h1><span lang="EN-GB" xml:lang="EN-GB">Transmitting and Receiving PDOs </span></h1>
+  <p>This topic describes how the transmit and receive PDO messages are added and configured</p>
+  <ul class="p">
+    <li class="p">
+      <p><a href="#Adding__Editing_and_Deleting_PDOs">Adding, Editing and Deleting PDOs</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#Adding_Variables_on_the_Object_Dictionary_Tab_">Adding Variables Defined on the <span style="font-weight: bold;">Object Dictionary</span> Tab</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#Adding_Variables_Directly_on_the_PDO_Tab">Adding Variables Directly on the <span style="font-weight: bold;">PDO</span> Tab</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#PDO_Message_Properties_">PDO Message Properties</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#Receiving_PDOs">Receiving PDOs</a></p>
+    </li>
+    <li class="p">
+      <p><a href="#Variable_Properties">Variable Properties</a></p>
+    </li>
+  </ul>
+  <p> </p>
+  <p>To export PDOs into a PDF or Excel file, press SHIFT + ALT + S.</p>
+  <p>To search PDOs, press CTRL + F.</p>
+  <p> </p>
+  <h2><a id="Adding__Editing_and_Deleting_PDOs" name="Adding__Editing_and_Deleting_PDOs">Adding, Editing and Deleting PDOs</a></h2>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;">To add a PDO message,  </p>
+  <ol class="p">
+    <li class="p">
+      <p style="mso-ansi-language: EN-US;">Select the CAN channel from the tabs</p>
+    </li>
+    <li class="p">
+      <p style="mso-ansi-language: EN-US;">Then select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_AddPDO.JPG" style="border: none;" title=""/> icon from the <span style="font-weight: bold;">Transmit PDOs</span> section or <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_add_rpdo.png" style="border: none;" title=""/> icon from the <span style="font-weight: bold;">Receive PDOs</span> section for manually added receive PDO</p>
+    </li>
+  </ol>
+  <ol class="p" start="3">
+    <li class="p">
+      <p style="mso-ansi-language: EN-US;">Then add the variables that should be transmitted.</p>
+    </li>
+  </ol>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;">To delete a PDO message,</p>
+  <ol class="p">
+    <li class="p">
+      <p style="mso-ansi-language: EN-US;">Select the PDO message</p>
+    </li>
+    <li class="p">
+      <p style="mso-ansi-language: EN-US;">Then select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_remove_tpdo.png" style="border: none;" title=""/> icon from the <span style="font-weight: bold;">Transmit PDOs</span> section or <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_remove_rpdo.png" style="border: none;" title=""/> icon from the <span style="font-weight: bold;">Receive PDOs</span> section</p>
+    </li>
+  </ol>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;">To change the variable&#39;s location on the PDO message, drag-and-drop the variable to the new location.</p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;"><span data-keyref="SoftwareName">MultiTool Creator</span> provides two ways of adding variables to a PDO message:</p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <ol class="p">
+    <li class="p">
+      <p>adding variables on the <span style="font-weight: bold;">Object Dictionary</span> tab and then adding them to the PDO message</p>
+    </li>
+    <li class="p">
+      <p>adding variables directly on the <span style="font-weight: bold;">PDO</span> tab (automated definition to the OD)</p>
+    </li>
+  </ol>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;">The following chapters describe these two ways in more detail.</p>
+  <p> </p>
+  <p style="mso-ansi-language: EN-US;"><img alt="" border="0" height="524" src="../assets/images/MultiTool/Used/PDOtab.png" style="border: none;" title="" width="1100"/></p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <h2><a id="Adding_Variables_on_the_Object_Dictionary_Tab_" name="Adding_Variables_on_the_Object_Dictionary_Tab_">Adding Variables Defined on the Object Dictionary Tab</a></h2>
+  <p style="mso-ansi-language: EN-US;">An object dictionary variable can be seen on the <span style="font-weight: bold;">PDO</span> tab&#39;s list when the index properties have <span style="font-style: italic;">Variable Type</span> RAM and <span style="font-style: italic;">PDO Mapping</span> selected. To add an existing variable to a PDO message:</p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <ol class="p">
+    <li class="p" style="background-color: Transparent;">
+      <p>Open the device&#39;s <span style="font-weight: bold;">PDO</span> tab and select the correct CAN channel</p>
+    </li>
+    <li class="p" style="background-color: Transparent;">
+      <p>Add a PDO</p>
+    </li>
+    <li class="p" style="background-color: Transparent;">
+      <p style="mso-ansi-language: EN-US;">Drag-and-drop the variable from the variable list to the PDO message (see the image below)</p>
+    </li>
+  </ol>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US; margin-left: 40px;"><img alt="" border="0" src="../assets/images/MultiTool/Used/PDO_DO.png" style="border: none;" title=""/></p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <h2><a id="Adding_Variables_Directly_on_the_PDO_Tab" name="Adding_Variables_Directly_on_the_PDO_Tab">Adding Variables Directly on the PDO Tab</a></h2>
+  <p style="mso-ansi-language: EN-US;">In addition to the <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Object Dictionary</span> <span lang="EN-US" xml:lang="EN-US">tab, variables can be created directly to a PDO message on the</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">PDO</span> <span lang="EN-US" xml:lang="EN-US">tab. These variables are automatically added to the</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Object Dictionary</span> <span lang="EN-US" xml:lang="EN-US">as RAM parameters.</span></p>
+  <p style="mso-ansi-language: EN-US;"> </p>
+  <p style="mso-ansi-language: EN-US;">Giving a variable name and <span lang="EN-US" xml:lang="EN-US">data type</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US"> </span><span lang="EN-US" xml:lang="EN-US">on the</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">PDO</span> <span lang="EN-US" xml:lang="EN-US">tab creates a new variable into the</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Object Dictionary.</span> <span lang="EN-US" xml:lang="EN-US">The OD index depends on the defined data type</span>. <span data-keyref="SoftwareName">MultiTool Creator</span> reserves t<span lang="EN-US" xml:lang="EN-US">he indexes from 5FFFh to 5FB0h for</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">PDO Variables</span><span lang="EN-US" xml:lang="EN-US">.</span></p>
+  <p> </p>
+  <p><span style="font-weight: bold;">PDO Variables</span> have the following properties:</p>
+  <ul class="p">
+    <li class="p">
+      <p>Variable Type: RAM</p>
+    </li>
+    <li class="p" style="font-weight: normal;">
+      <p>Access Type:  RW</p>
+    </li>
+    <li class="p" style="font-weight: normal;">
+      <p>Index Type:     SingleVariables</p>
+    </li>
+    <li class="p" style="font-weight: normal;">
+      <p><span lang="EN-US" xml:lang="EN-US">PDO Mapping: TRUE</span></p>
+    </li>
+    <li class="p" style="font-weight: normal;">
+      <p><span lang="EN-US" xml:lang="EN-US">Name:            </span>Auto of Type {datatype}</p>
+    </li>
+    <li class="p" style="font-weight: normal;">
+      <p><span lang="EN-US" xml:lang="EN-US">Description:    </span>Automatically created {datatype} variables</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p>To add a <span style="font-weight: bold;">PDO Variable,</span></p>
+  <ol class="p" style="background-color: Transparent;">
+    <li class="p" style="background-color: Transparent;">
+      <p>Open the device&#39;s <span style="font-weight: bold;">PDO</span> tab and select the correct CAN channel</p>
+    </li>
+    <li class="p" style="background-color: Transparent;">
+      <p>Add a <span style="font-weight: bold;">PDO</span></p>
+    </li>
+    <li class="p" style="background-color: Transparent;">
+      <p>Select an empty byte, start typing a variable name and press <span style="font-weight: bold;">ENTER</span></p>
+      <ul class="p">
+        <li class="p">
+          <p>In case of the Object Dictionary already has similar variable names, <span data-keyref="SoftwareName">MultiTool Creator</span> suggests them on a drop-down menu</p>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <p> </p>
+  <p><img alt="" border="0" src="../assets/images/MultiTool/Used/PDO_PDOVar.png" style="border: none;" title=""/></p>
+  <p> </p>
+  <ol class="p" start="4">
+    <li class="p">
+      <p>If there is no existing variable, a dialog is opened (see the image below). A description of the variable can be added. Select the <span style="font-weight: bold;">Data Type</span> and click <span style="font-weight: bold;">Create New Variable</span></p>
+    </li>
+  </ol>
+  <p> </p>
+  <p style="font-weight: bold; margin-left: 40px;"><img alt="" border="0" src="../assets/images/MultiTool/Epec/new_variable.png" style="border: none;" title=""/></p>
+  <p style="font-weight: bold; margin-left: 40px;"> </p>
+  <ol class="p" start="5">
+    <li class="p">
+      <p style="mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">The created</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">PDO Variable</span> <span lang="EN-US" xml:lang="EN-US">is automatically added to</span> <span lang="EN-US" xml:lang="EN-US">the</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Object Dictionary</span></p>
+    </li>
+  </ol>
+  <p> </p>
+  <p> </p>
+  <h2><a id="PDO_Message_Properties_" name="PDO_Message_Properties_">PDO Message Properties</a></h2>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 56.85pt;">
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66">
+          <p class="InlineBodyText26" style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501">
+          <p class="Note">PDO Properties are always configured in the device where the PDO message was created:</p>
+          <ul class="p-Note">
+            <li class="p-Note">
+              <p class="Note">Selecting <span style="font-weight: bold;">Received By</span> device(s) for<span style="font-weight: bold;"> Transmit PDOs</span> automatically generates them to the receivers&#39; <span style="font-weight: bold;">Receive PDOs</span> list</p>
+            </li>
+            <li class="p-Note">
+              <p class="Note">Selecting <span style="font-weight: bold;">Transmitter</span> device for<span style="font-weight: bold;"> Receive PDOs</span> automatically generates them to the transmitters&#39; <span style="font-weight: bold;">Transmit PDOs</span> list</p>
+            </li>
+          </ul>
+          <p class="Note"> </p>
+          <p class="Note">Automatically generated PDOs are shown with lighter font.</p>
+          <p class="Note"> </p>
+          <p class="Note">Select an automatic generated PDO to show its properties. </p>
+          <p class="Note"> </p>
+          <p class="Note">Selecting the transmitters name in the generated RPDO properties, navigates to the transmitter&#39;s PDO.</p>
+          <p class="Note"> </p>
+          <p class="Note"><img src="../assets/images/MultiTool/Creator/GeneratedRPDOproperties.png"/></p>
+          <p class="Note"> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p>The following table describes the configurable fields of each PDO.</p>
+  <p>Fields with (*) are hidden by default. Click <span style="font-weight: bold;">Advanced..</span> to show them in PDO Properties section.</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" style="left: 0px;top: 1438px;background-color: #FFFFFF" width="1000">
+    <colgroup>
+      <col style="width: 20%;"/>
+      <col style="width: 80%;"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 20px;">
+        <td style="border: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Property</p>
+        </td>
+        <td style="border-top: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Name</p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonSisalto">PDO name</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">COB-ID</p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p><span style="font-weight: bold;">COB-ID</span> (Communication Object ID) is an unique identifier for PDO message that also determines the priority of the message. It can be edited on the <span style="font-weight: bold;">PDO Message Properties</span> or directly on the <span style="font-weight: bold;">Transmit/Receive PDOs</span> table.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 195px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Is Manual*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p>When the <span style="font-weight: bold;">Is Manual</span> is not selected: the COB-ID is automatically generated according to the CANopen predefined connection set using the Application Node-ID and the Node-ID Offset for PDOs given on the CAN tab. Predefined connection set defines a pattern for message identifiers. For example, the transmit PDO COB-ID pattern is:</p>
+          <ul class="p">
+            <li class="p">
+              <p>180 + node-ID (1. Transmit PDO)</p>
+            </li>
+            <li class="p">
+              <p>280 + node-ID (2. Transmit PDO)</p>
+            </li>
+            <li class="p">
+              <p>380 + node-ID (3. Transmit PDO)</p>
+            </li>
+            <li class="p">
+              <p>480 + node-ID (4. Transmit PDO)</p>
+            </li>
+            <li class="p">
+              <p>180 + node-ID + Offset (5. Transmit PDO)</p>
+            </li>
+            <li class="p">
+              <p>etc.</p>
+            </li>
+          </ul>
+          <p>When the <strong>Is Manual</strong> is selected: the COB-ID can be set manually to the COB-ID field</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 67px;background-color: #EDEDED">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Is Extended*</p>
+          <p class="TaulukonOtsikko"> </p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p>When the <span style="font-weight: bold;">Is Extended</span> is selected: 29 bit (extended) COB-IDs are used</p>
+          <p> </p>
+          <p>When the <span style="font-weight: bold;">Is Extended</span> is not selected: 11 bit (standard) COB-IDs are used</p>
+          <p> </p>
+          <p>If the COB-ID exceeds 7FFh, <span style="font-weight: bold;">Is Extended</span> is automatically selected.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 35px;">
+        <td style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">DLC</p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p>Data Length Code, the length of the data field in bytes.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 147px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Transmission Type*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p><span style="font-weight: bold;">Transmission Type</span> can be <span style="font-weight: bold;">Sync, Manual</span> and <span style="font-weight: bold;">Async.</span></p>
+          <p> </p>
+          <p><span style="font-weight: bold;">Sync</span>: The PDO is transferred synchronously and cyclically. The PDO is sent/received after the Sync Count amount of SYNC messages has been received</p>
+          <p> </p>
+          <p><span style="font-weight: bold;">Manual</span>: Asynchronous transmission. Manufacturer specific functionality, sending the PDO can be triggered from application. Sending is triggered by setting a CANopen PDO Boolean variable <span style="font-style: italic;">CAN1_CANopenDevice_TPDOS[x].i_TriggerSend</span> to TRUE (x = the PDO number).</p>
+          <p> </p>
+          <p><span style="font-weight: bold;">Async</span>: Asynchronous transmission. The PDO is sent according to the Event Time and Inhibit Time</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 51px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Transmitter settings*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p>CANopen slave unit RPDO messages are added as TPDOs of another selected unit. Settings under Transmitter settings are used in the TPDO of the transmitter</p>
+        </td>
+      </tr>
+      <tr style="height: 51px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Transmitter settings -&gt; Transmission Type*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p><span style="font-weight: bold;">Transmission Type</span> can be <strong>F</strong><strong>romRPDO</strong>, <span style="font-weight: bold;">Sync, Manual</span> and <span style="font-weight: bold;">Async.</span></p>
+          <p> </p>
+          <p>If <span style="font-weight: bold;">FromRPDO</span> is selected, the transmitter uses the same transmission type and sync count that is selected for the RPDO.  </p>
+          <p> </p>
+          <p>For more information about the other settings, see <span style="font-weight: bold;">Transmission Type</span></p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 51px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Transmitter settings -&gt;</p>
+          <p class="TaulukonOtsikko">Sync Count*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p><span style="font-weight: bold;">Sync Count</span> defines the amount of SYNC messages that is required before sending/receiving the PDO message.</p>
+          <p>Values between 1...240 (dec) allowed.</p>
+          <p> </p>
+          <p>If <span style="font-weight: bold;">From RPDO</span> is selected in the Transmitter settings -&gt; Transmission Type, the transmitter uses the same sync count that is selected for the RPDO.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 51px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Transmitter settings -&gt; Event time*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p><span style="font-weight: bold;">Event Time</span> defines the time that elapses between two consecutively transmitted messages.</p>
+          <p> </p>
+          <p>When the <span style="font-weight: bold;">Event Time</span> is set to 0 ms, the PDO is sent when the variable value changes.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 51px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Transmitter settings -&gt;  Inhibit time*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p><span style="font-weight: bold;">Inhibit time</span> defines the minimum time that has to elapse between two consecutively transmitted messages of a PDO service to avoid blocking the bus with messages.</p>
+          <p> </p>
+          <p>The message is sent only as often as the <span style="font-weight: bold;">Inhibit Time</span> defines, even if the variable values are changing more often.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 51px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Sync Count*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p><span style="font-weight: bold;">Sync Count</span> defines the amount of SYNC messages that is required before sending/receiving the PDO message.</p>
+          <p>Values between 1...240 (dec) allowed.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 51px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Event Time*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p><span style="font-weight: bold;">Event Time</span> defines the time that elapses between two consecutively transmitted messages.</p>
+          <p>When the <span style="font-weight: bold;">Event Time</span> is set to 0 ms, the PDO is sent when the variable value changes.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 67px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Inhibit Time*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p><span style="font-weight: bold;">Inhibit time</span> defines the minimum time that has to elapse between two consecutively transmitted messages of a PDO service to avoid blocking the bus with messages.</p>
+          <p>The message is sent only as often as the <span style="font-weight: bold;">Inhibit Time</span> defines, even if the variable values are changing more often.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 67px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Receive Timeout*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p><span style="font-weight: bold;">Receive Timeout</span> defines the timeout for the receiver (0 = not in use). If the RPDO is not received within the given time period, the timeout flag in the receiver device is enabled and RPDO content is reset to zero.</p>
+          <p> </p>
+          <p>For more information, see <span data-condition="Others:EpecSpecific" style="font-style: italic;">Epec</span><span style="font-style: italic;"> Programming and Libraries Manual</span><span data-condition="Others:EpecSpecific"> (available in Epec Extranet)</span>, section <span style="font-style: italic;">Libraries &gt; CANopen &gt; POUs &gt; PDO &gt; CANopenPDO (FB)</span>.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 67px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Enabled*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Enabled<span style="font-weight: normal;"> field is only configurable when</span></p>
+          <ul class="p-TaulukonSisalto">
+            <li class="p-TaulukonSisalto">
+              <p class="TaulukonSisalto">configuring slave PDOs that are EDS imported</p>
+            </li>
+          </ul>
+          <p class="TaulukonSisalto" style="margin-left: 43px;">and</p>
+          <ul class="p-TaulukonSisalto">
+            <li class="p-TaulukonSisalto">
+              <p class="TaulukonSisalto">the slave has a master device that uses NetworkManagement library version</p>
+              <ul class="p-TaulukonSisalto">
+                <li class="p-TaulukonSisalto">
+                  <p class="TaulukonSisalto">1.2.5 or newer (CODESYS 2.3)</p>
+                </li>
+                <li class="p-TaulukonSisalto" data-condition="Others:CODESYS_35_Specific">
+                  <p class="TaulukonSisalto">3.2.4.8 or newer (CODESYS 3.5)</p>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonOtsikko">Enabled<span style="font-weight: normal;"> defines the PDO to be disabled or enabled in the master device’s code template.</span> <span style="font-weight: normal;">If unchecked, the PDO will not be sent to the bus (in case of TPDO) or it will not be received by the receiver device (in case of RPDO). </span></p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr style="height: 67px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">RTR Enabled*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko" style="font-weight: normal;"><span style="font-weight: bold;">RTR Enabled</span> field is visible only when configuring slave PDOs that are EDS imported. The field is editable when the slave has a master device with a library version with the feature enabled (NetworkManager.lib version 1.2.5 or newer, NetworkManager.library version 3.2.4.8 or newer).</p>
+          <p class="TaulukonOtsikko" style="font-weight: normal;"><span style="font-weight: bold;">RTR Enabled</span> defines whether the PDO can be requested using RTR message (remote transmission request).</p>
+        </td>
+      </tr>
+      <tr style="height: 67px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Communication parameters read only*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko" style="font-weight: normal;"><span style="font-weight: bold;">Communication parameters read only</span> field is visible only when configuring slave PDOs that are EDS imported.</p>
+          <p class="TaulukonOtsikko" style="font-weight: normal;">If <span style="font-weight: bold;">Communication parameters read only</span> is selected, the PDO communication parameters (COB-ID, transmission type, event time, inhibit time, Sync count) cannot be changed.</p>
+        </td>
+      </tr>
+      <tr style="height: 67px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Mappings read only*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko" style="font-weight: normal;"><span style="font-weight: bold;">Mappings read only</span> field is visible only when configuring slave PDOs that are EDS imported.  </p>
+          <p class="TaulukonOtsikko" style="font-weight: normal;">This field is automatically selected and cannot be unselected if <span style="font-weight: bold;">Communication parameters read only</span> is selected.</p>
+          <p class="TaulukonOtsikko" style="font-weight: normal;">If<span style="font-weight: bold;"> Mappings read only </span>is selected, the PDO mappings cannot be changed. <span style="font-weight: bold;"> </span></p>
+        </td>
+      </tr>
+      <tr style="height: 67px;">
+        <td bgcolor="#F7F7F7" style="border-left: Solid 1px #000000;border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p class="TaulukonOtsikko">Write Configuration*</p>
+        </td>
+        <td bgcolor="#F7F7F7" style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;background-color: #FFFFFF">
+          <p><span style="font-weight: bold;">Write Configuration</span> field is visible only when configuring slave PDOs that are EDS imported. This field is disabled if <span style="font-weight: bold;">Communication parameters read only</span> is selected.</p>
+          <p> </p>
+          <p class="TaulukonOtsikko">Write Configuration <span style="font-weight: normal;">defines if the PDO configuration is added to the master device’s code template.</span></p>
+          <p class="TaulukonOtsikko"> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <h2><a id="Receiving_PDOs" name="Receiving_PDOs">Receiving PDOs</a></h2>
+  <h4>Received By</h4>
+  <p>When configuring a transmit PDO, the <span style="font-weight: bold;">Received By</span> setting can be used to define the devices that receive the PDO. The <span style="font-weight: bold;">Received By</span> list shows all the devices in the same network.</p>
+  <p>Selecting the devices from the <span style="font-weight: bold;">Received By</span> list adds</p>
+  <ul class="p">
+    <li class="p">
+      <p>the transmit PDO to be received by the other device(s)</p>
+    </li>
+    <li class="p">
+      <p>the PDO variables to the receiving device&#39;s OD</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p>For example,</p>
+  <ul class="p">
+    <li class="p">
+      <p>Transmit PDO is added to Display device on the <span style="font-weight: bold;">PDO</span> tab</p>
+    </li>
+    <li class="p">
+      <p>in the PDO&#39;s <span style="font-weight: bold;">Received By</span> settings, Cabin device is selected (see the following image)</p>
+    </li>
+  </ul>
+  <p style="margin-left: 40px;"><img alt="" border="0" src="../assets/images/MultiTool/Used/ReceivedBy.png" style="border: none;" title=""/></p>
+  <p style="margin-left: 40px;"> </p>
+  <ul class="p">
+    <li class="p">
+      <p>on the Cabin <span style="font-weight: bold;">Configuration</span> &gt; <span style="font-weight: bold;">PDO</span> tab, the Display PDO is listed to <span style="font-weight: bold;">Receive PDOs</span> table with <span style="font-weight: bold;">Is Received</span> selection (see the following image)</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p><img alt="" border="0" src="../assets/images/MultiTool/Used/ReceivedByExample.jpg" style="border: none;" title=""/></p>
+  <p> </p>
+  <ul class="p">
+    <li class="p">
+      <p>Also, the Display PDO variables (<span style="font-style: italic;">Buttons</span>, <span style="font-style: italic;">CalibrationMode</span>) are automatically added to the Cabin OD with the prefix <span style="font-style: italic;">Display_</span></p>
+    </li>
+  </ul>
+  <p style="margin-left: 40px;"> </p>
+  <p style="margin-left: 40px;"> </p>
+  <p style="margin-left: 40px;"> </p>
+  <h4>Receive PDOs List</h4>
+  <p> </p>
+  <p>The <span style="font-weight: bold;">Receive PDOs</span> section on the <span style="font-weight: bold;">PDO</span> tab lists all the PDOs and SRDOs that are transmitted on the same network. The following table describes the <span style="font-weight: bold;">Receive PDO</span> properties:</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" style="left: 0px; top: 1438px;" width="1000">
+    <colgroup>
+      <col style="width: 20%;"/>
+      <col style="width: 80%;"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 20px;">
+        <td style="border: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Property</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Is Received</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">In <span style="font-weight: bold;">Is Received</span> column it is possible to select/unselect the receive PDO messages. Selecting <span style="font-weight: bold;">Is Received</span> adds the PDO variables to the OD with the prefix <span style="font-style: italic;">DeviceName_ </span>and<span style="font-style: italic;"> </span>to the receiving device&#39;s <span style="font-weight: bold;">Receive PDOs</span> list. Select a unit name to open its settings.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Transmitter</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">The device sending the PDO.</p>
+          <p class="TaulukonSisalto"><span style="font-style: italic;">Unknown</span> transmitter means that the PDO is manually added.</p>
+          <p class="TaulukonSisalto">Selecting <span style="font-weight: bold;">Transmitter</span>  adds the PDO variables to the OD with the prefix <span style="font-style: italic;">DeviceName_ </span>and<span style="font-style: italic;"> </span>adds the corresponding TPDO to the transmitter device&#39;s <span style="font-weight: bold;">Transmit PDOs</span> list.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <h2><a id="Variable_Properties" name="Variable_Properties">Variable Properties</a></h2>
+  <p>The <span style="font-weight: bold;">Variable Properties</span> show the variable definition: <span style="font-weight: bold;">Name, Data Type</span> and <span style="font-weight: bold;">Bits</span> selection. Editing the <span style="font-weight: bold;">Variable Properties</span> is only allowed for PDO Variables (created directly on the <span style="font-weight: bold;">PDO</span> tab), not for the variables that are created on the <span style="font-weight: bold;">Object Dictionary</span> tab.</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" style="left: 0px; top: 1438px;" width="1000">
+    <colgroup>
+      <col style="width: 20%;"/>
+      <col style="width: 80%;"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 20px;">
+        <td style="border: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Property</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Name</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Name of the OD variable.</p>
+          <p> </p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">DataType</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">The <b>Data Type <span style="font-weight: normal;">is one of</span></b> <span data-keyref="CODESYS">CODESYS</span>&#39; variable types:</p>
+          <p class="TaulukonSisalto"> </p>
+          <table cellpadding="1" cellspacing="0" class="TableGrid" style="height: 325px; left: 0px; top: 37px;" width="566">
+            <colgroup>
+              <col style="width: 25%;"/>
+              <col style="width: 25%;"/>
+              <col style="width: 25%;"/>
+              <col style="width: 25%;"/>
+            </colgroup>
+            <tbody>
+              <tr>
+                <td>
+                  <p class="TaulukonOtsikko">Data Type</p>
+                </td>
+                <td>
+                  <p class="TaulukonOtsikko">Lower limit</p>
+                </td>
+                <td>
+                  <p class="TaulukonOtsikko">Upper limit</p>
+                </td>
+                <td>
+                  <p class="TaulukonOtsikko">Memory space</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">SINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">-128 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">127 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">8 Bit </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">INT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">-32768 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32767 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">16 Bit </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">DINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">-2147483648 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">2147483647 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32 Bit </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">BYTE</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">255</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">8 Bit </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">WORD</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">65535 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">16 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">DWORD</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">4294967295 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">USINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">255</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">8 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">UDINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">4294967295 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">UINT</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">0</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">65535 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">16 Bit</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="TaulukonSisalto">REAL</p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">1.175494351e-38 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">3.402823466e+38 </p>
+                </td>
+                <td>
+                  <p class="TaulukonSisalto">32 Bit</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="TaulukonSisalto"> </p>
+          <p class="TaulukonSisalto">A STRING type variable are initialized as STRING(79), 79 characters long variables. STRING type variables cannot be mapped into PDO.</p>
+          <p class="TaulukonSisalto">A BOOL type variable can have values TRUE or FALSE, 8 bits of memory space will be reserved. BOOL type variables cannot be mapped into PDO.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+      </tr>
+      <tr style="height: 7px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Bits</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>When <span style="font-weight: bold;">Bits</span> is selected, the bit variables are generated to <span data-keyref="CODESYS">CODESYS</span> code according to selected <span style="font-weight: bold;">Data Type</span>. The variable names for the bits can be edited here too.</p>
+          <p> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p><span data-keyref="SoftwareName">MultiTool Creator</span> does not restrict the use of access types but CANopen standard does. According to the standard the OD variables that can be mapped to TPDO can have only access types RO, CONST and RWR. RDPO supports only types WO and RWW. RWR and RWW are used for objects that can be read and written via SDO.</p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">7_9_4_TPDO.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

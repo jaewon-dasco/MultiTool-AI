@@ -1,0 +1,30 @@
+{
+  "ocr_count": 28,
+  "row_hits": {
+    "Temperature": [
+      {
+        "text": "V Temperature alarm limits",
+        "x": 219,
+        "y": 177,
+        "yc": 183,
+        "xc": 293
+      }
+    ],
+    "SupplyVoltage": [],
+    "Ref5V": [],
+    "CycleTime": []
+  },
+  "col_hits": {
+    "Minimum": [],
+    "Maximum": [],
+    "Default": [
+      {
+        "text": "(C) Reset to Defaults",
+        "x": 193,
+        "y": 88,
+        "yc": 100,
+        "xc": 258
+      }
+    ]
+  }
+}

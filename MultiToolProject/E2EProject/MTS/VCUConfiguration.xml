@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<mtsConfiguration version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="multitool_export.xsd">
+  <meta>
+    <name>DasDemoProject</name>
+    <multiTool>
+      <version>8.4.9308.1109</version>
+      <systemVersion>1.0.13</systemVersion>
+    </multiTool>
+    <exportDate>2026-05-21T23:07:35.6768413+09:00</exportDate>
+  </meta>
+  <modules>
+    <vcu name="EPEC_CU9">
+      <icon name="gc44.png" locX="140" locY="120" />
+      <info>
+        <param name="platform">CANopenResponder_x86</param>
+        <param name="unittype">CANopenResponder</param>
+        <param name="functionalversion">GC44-021</param>
+        <param name="eds">GC44_Epec.eds</param>
+        <param name="1018sub2">9004</param>
+        <param name="1018sub4">2134087734</param>
+        <param name="2150sub2">3</param>
+      </info>
+      <dataFiles>
+        <dataFile>GC44_Epec.eds</dataFile>
+      </dataFiles>
+      <packageVersions>
+        <vcu>*</vcu>
+        <codesys>-</codesys>
+        <platform>1.0</platform>
+        <hardware>-</hardware>
+      </packageVersions>
+      <commParameters>
+        <canPorts>
+          <can port="0">
+            <nodeID>3</nodeID>
+            <bitrate>250</bitrate>
+            <network />
+            <icon locX="-10" locY="40" />
+          </can>
+        </canPorts>
+      </commParameters>
+      <simulation>
+        <inputs />
+        <outputs />
+      </simulation>
+    </vcu>
+  </modules>
+  <networks>
+    <can name="NETWORK1">
+      <icon name="network.png" locX="274" locY="114" color="#33CCFF" />
+    </can>
+  </networks>
+  <binaryData path="images" />
+</mtsConfiguration>

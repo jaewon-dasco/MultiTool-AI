@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Code Template Structure CODESYS 3.5</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta name="rh-index-keywords" content="Fixed Variable Names"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Code Template Structure CODESYS 3.5</h1>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" data-condition="Others:EpecSpecific" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 46px;">
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; background-color: Transparent;" width="66">
+          <p class="Caution" style="font-size: 10pt;"><img alt="" border="0" height="42" src="../assets/images/image006.jpg" title="" width="42"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; background-color: Transparent;" width="501">
+          <p class="Note" data-condition="Others:EpecSpecific">Code template structure for S Series can be found from section <a data-condition="Others:EpecSpecific" href="topic200200.htm"><span style="font-style: italic;">Code Template Structure S Series</span></a>.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 45px;">
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66">
+          <p class="InlineBodyText26" style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none; cursor: nwse-resize;" title="" width="43"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501">
+          <p class="Note">Code template structure for <span data-keyref="E_Series">E Series</span> can be found from section <a href="topic200040.htm" style="font-style: italic;">Code Template Structure E Series</a></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p><span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>automatically creates a code template for CODESYS project when <span style="font-weight: bold;">Create CODESYS Project</span> is selected. The code template contains all variable definitions and initialization needed for programming the device.</p>
+  <p>This topic briefly introduces the code template parts:</p>
+  <ul class="p">
+    <li class="p">
+      <p><a href="#PLC_PRG" style="font-style: normal;">PLC_PRG</a>,</p>
+    </li>
+    <li class="p">
+      <p><a href="#_Implicit__Globals">Global variables</a> and</p>
+    </li>
+    <li class="p">
+      <p><a href="#Data__Unit__Types">Data types</a></p>
+    </li>
+  </ul>
+  <p> </p>
+  <h2><a id="PLC_PRG" name="PLC_PRG">PLC_PRG</a></h2>
+  <p>The <span style="font-style: italic;">PLC_PRG</span> is the main POU of a CODESYS project. <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>automatically generates <span style="font-style: italic;">PLC_PRG</span> for the CODESYS project and it will always be overwritten when changes done in <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>are imported to the CODESYS project. For this reason, the user application code should never be added to <span style="font-style: italic;">PLC_PRG</span>.</p>
+  <p> </p>
+  <p>The entry point of the user application will be a POU <span>c</span>alled <span style="font-style: italic;">Main</span>. The code template automatically calls the <span style="font-style: italic;">Main</span> program in the <span style="font-style: italic;">PLC_PRG&#39;s</span> action Application. It is not overwritten by <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span></span>. If the <span style="font-style: italic;">Main</span> POU is missing from the application, the CODESYS build command gives an error. The code template in CODESYS 3.5 projects includes a Main POU that is made with ST language. To make the Main POU with another programming language, delete the Main POU and make a new one.</p>
+  <p> </p>
+  <p data-condition="Others:CODESYS_35_Specific">The CODESYS 3.5 <span style="font-weight: bold;">Device tree</span> in the following images includes all project objects on the same view.</p>
+  <p data-condition="Others:CODESYS_35_Specific"> </p>
+  <p data-condition="Others:CODESYS_35_Specific;Others:EpecSpecific">The following project structure is used in:</p>
+  <ul class="p" data-condition="Others:EpecSpecific">
+    <li class="p" data-condition="Others:CODESYS_35_Specific;Others:EpecSpecific">
+      <p data-condition="Others:EpecSpecific;Others:CODESYS_35_Specific">5050 CODESYS 3.5 projects with device description 1.1.0.X or older</p>
+    </li>
+    <li class="p" data-condition="Others:CODESYS_35_Specific;Others:EpecSpecific">
+      <p data-condition="Others:EpecSpecific;Others:CODESYS_35_Specific">6000 series projects with device description 1.2.0.X or older</p>
+    </li>
+  </ul>
+  <p data-condition="Others:CODESYS_35_Specific;Others:EpecSpecific"> </p>
+  <p data-condition="Others:CODESYS_35_Specific;Others:EpecSpecific"><img alt="" border="0" src="../assets/images/MultiTool/Used/DeviceTree35.JPG" style="border: none;" title=""/></p>
+  <p> </p>
+  <p> </p>
+  <p data-condition="Others:CODESYS_35_Specific"><span data-condition="Others:CODESYS_35_Specific">The following project structure is used in:</span></p>
+  <ul class="p">
+    <li class="p" data-condition="Others:CODESYS_35_Specific;Others:EpecSpecific">
+      <p data-condition="Others:EpecSpecific;Others:CODESYS_35_Specific">5050 CODESYS 3.5 projects with device description 1.2.0.X or newer</p>
+    </li>
+    <li class="p" data-condition="Others:CODESYS_35_Specific">
+      <p data-condition="Others:CODESYS_35_Specific">6000 series projects with device description 1.3.1.X or newer</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p><img alt="" border="0" src="../assets/images/MultiTool/Used/DeviceTree35_6000_1_3_1_0.PNG" style="border: none;" title=""/></p>
+  <p> </p>
+  <p>The <span style="font-style: italic;">PLC_PRG</span> is divided into four actions: <span style="font-style: italic;">Init, </span><span style="font-style: italic; 
+	 text-transform: uppercase;"><span data-keyref="ManufacturerName">Epec</span></span><span style="font-style: italic;">_In, Application</span> and <span style="font-style: italic; 
+	 text-transform: uppercase;"><span data-keyref="ManufacturerName">Epec</span></span><span style="font-style: italic;">_Out</span>.</p>
+  <p> </p>
+  <p class="MsoNormal" style="margin-bottom: .0001pt; line-height: normal; 
+	 mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">The</span> <span lang="EN-US" style="font-style: italic;" xml:lang="EN-US">Init</span> <span lang="EN-US" xml:lang="EN-US">action is run on each program cycle until all initializations are done. The initialization phase is divided into several steps to minimize the needed time of each program cycle. After the initialization phase,</span> <span style="font-style: italic; 
+												 text-transform: uppercase;"><span data-keyref="ManufacturerName">Epec</span></span><span lang="EN-US" style="font-style: italic;" xml:lang="EN-US">_In, Application</span> <span lang="EN-US" xml:lang="EN-US">and</span> <span style="font-style: italic; 
+														 text-transform: uppercase;"><span data-keyref="ManufacturerName">Epec</span></span><span lang="EN-US" style="font-style: italic;" xml:lang="EN-US">_Out</span> <span lang="EN-US" xml:lang="EN-US">actions are run on each program cycle.</span></p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="MsoTableGrid" style="border: Solid 1px #000000; border-collapse: collapse; 
+		 mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 1184; 
+		 mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;" width="100%">
+    <colgroup>
+      <col style="width: 11.83%;"/>
+      <col style="width: 31.475%;"/>
+      <col style="width: 56.695%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border: Solid 1px #000000;">
+          <p style="font-weight: bold;">PLC_PRGs action</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p style="font-weight: bold;">Sub-action</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p style="font-weight: bold;">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="8" style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>Init</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Init_Entry</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Reads system parameters</p>
+          <p>Contains call of the user POU</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Init_Flash</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Initializes non volatile memory</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Init_IO</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>I/O initialization functions</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Init_Bus</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Initializes CANVXD library instance for each CAN</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Init_Protocols_CANx (*)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>CAN protocol initializations for each CAN bus, including CANopen and SAE J1939</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Init_Events</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Initializations for Events</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Init_Globe</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Initializations for GlobE (6000/X series with device 1.3.1.X or newer)</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Init_Exit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Initializations for other variables which do not have own action</p>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="4" style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p><span style="text-transform: uppercase;"><span data-keyref="ManufacturerName">Epec</span></span>_In</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>IO_Filter</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Filters I/O pin raw values</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Diag</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>CAN bus diagnostics</p>
+          <p>HWD_Diagnostic instance call</p>
+          <p>G_SystemOk  variable handling</p>
+          <p>LED handling</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Bus</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Updates CAN buffers and protocols</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Other</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Reserved for future use</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>Application</p>
+        </td>
+        <td colspan="2" style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Only contains call for the user application <span style="font-style: italic;">Main</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td rowspan="2" style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p><span style="text-transform: uppercase;"><span data-keyref="ManufacturerName">Epec</span></span>_Out</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Other</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>All functions that are needed to run at the end of the program cycle, such as</p>
+          <p>- analogue input protection</p>
+          <p>- parameter saving</p>
+          <p>- resetting the control device if needed (NMT reset)</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>IOHandleOutputs</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Copies data from variables which are used in application for the IO to variables defined in description file. This copying sets actual IO to wanted state.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p style="mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">* CAN bus consecutive numbering, typically 1=CAN1, 2=CAN2 etc.</span></p>
+  <p> </p>
+  <p> </p>
+  <h2><a id="_Implicit__Globals"></a>(Implicit) Globals</h2>
+  <p><span data-keyref="SoftwareName">MultiTool Creator</span> generates global variable and function block instance definitions to <span style="font-style: italic;">(Implicit) Globals</span> lists. These variables and instances can be used, for example, for diagnosing CAN bus and hardware. Code template calls these function blocks automatically. Code template global definitions can be found from the <span style="font-weight: bold;">Device tree</span> in CODESYS 3.5 (<span style="font-style: italic;">CodeTemplate &gt; Globals</span>)</p>
+  <p> </p>
+  <p>Variable definitions are divided into several global lists.</p>
+  <p> </p>
+  <p>The table below applies to:</p>
+  <ul class="p">
+    <li class="p" data-condition="Others:EpecSpecific">
+      <p>5050 CODESYS 3.5 projects with device description 1.1.0.X or older</p>
+    </li>
+    <li class="p">
+      <p><span>6000/X series projects with device description 1.2.0.X or older</span></p>
+    </li>
+  </ul>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="MsoNormalTable" style="border: Solid 1px #000000;" width="100%">
+    <colgroup>
+      <col width="179"/>
+      <col width="1114"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 20px;">
+        <td style="border: Solid 1px #000000;">
+          <p style="font-weight: bold;">Global variable list</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p style="font-weight: bold;">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 21px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p style="background-color: Transparent;">Code_Template_constants</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Constant definitions</p>
+        </td>
+      </tr>
+      <tr style="height: 83px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>Code_Template_Globals</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>All variable definitions and function block instances needed in code template, such as init phase booleans</p>
+          <p>- CANopen instance and array definitions</p>
+          <p>Variables that might be needed in application, such as G_SystemOk boolean, HWD_Measurements instance and limit definitions.</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>ERRORS</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Error variables</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>CANx_Events</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Event source addresses and data initialization.</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>IO</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>I/O pin variables that are needed when developing an application</p>
+        </td>
+      </tr>
+      <tr style="height: 35px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>IO_RAW</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Non scaled raw values of I/O pins.</p>
+          <p>Not needed in normal use, since the code template filters and scales the values before writing them to I/O variables.</p>
+        </td>
+      </tr>
+      <tr style="height: 83px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>IO_CONFIG</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>I/O pin configurations, such as</p>
+          <p>- input pull up configurations</p>
+          <p>- pulse input range selections</p>
+          <p>- input mode selections (mA/V)</p>
+          <p>- output mode selections</p>
+        </td>
+      </tr>
+      <tr style="height: 63px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>IO_INTERNAL</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Internal I/O</p>
+          <p>- Scaled and filtered voltage and temperature measurements</p>
+          <p>- Reference output enable variables</p>
+          <p>- Overcurrent error statuses for AI pins</p>
+        </td>
+      </tr>
+      <tr style="height: 67px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>J1939 (optional)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>J1939 library instance</p>
+          <p>Global variable definitions</p>
+          <p>- J1939_CANx(*) variable for each CAN bus that uses J1939</p>
+          <p>- Variable type is a structure defined in the application</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>ODx_VAR (*)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>OD variables whose variable type is RAM, retain or retain persistent.</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>ODx_PAR (*)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>OD variables whose variable type is Parameter</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>ODx_CANI (*)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Variables of received PDOs (RPDO)</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>ODx_CANO (*)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Variables of transmitted PDOs (TPDO)</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>SYSTEM</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Project information, such as device type, serial number, firmware version<span data-condition="Others:EpecSpecific">, 5050 FW error log</span>.</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>slave Configurations (folder)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>This folder includes a global variable list for each slave device</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p>* OD&#39;s consecutive numbering, typically 1=CAN1, 2=CAN2 etc.</p>
+  <p> </p>
+  <p>The table below applies to:</p>
+  <ul class="p">
+    <li class="p" data-condition="Others:EpecSpecific">
+      <p>5050 CODESYS 3.5 projects with device description 1.2.0.X or newer</p>
+    </li>
+    <li class="p">
+      <p>6000/X series projects with device description 1.3.1.X or newer</p>
+    </li>
+  </ul>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="MsoNormalTable" style="border: Solid 1px #000000;" width="100%">
+    <colgroup>
+      <col width="179"/>
+      <col width="1114"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 20px;">
+        <td style="border: Solid 1px #000000;">
+          <p style="font-weight: bold;">Global variable list</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p style="font-weight: bold;">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 21px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p style="background-color: Transparent;">Code_Template_constants</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Constant definitions</p>
+        </td>
+      </tr>
+      <tr style="height: 83px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>Code_Template_Globals</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>All variable definitions and function block instances needed in code template which are not defined in other variable lists, such as init phase booleans.</p>
+          <p>Variables that might be needed in application, such as G_SystemOk boolean, HWD_Measurements instance and limit definitions.</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>ERRORS</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Error variables</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>CANx_Events</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Event source addresses and data initialization.</p>
+        </td>
+      </tr>
+      <tr style="height: 19px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>IO</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>I/O pin variables that are needed when developing an application</p>
+        </td>
+      </tr>
+      <tr style="height: 83px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>IO_CONFIG</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>I/O pin configurations, such as</p>
+          <p>- input pull up configurations</p>
+          <p>- pulse input range selections</p>
+          <p>- input mode selections (mA/V)</p>
+          <p>- output mode selections</p>
+        </td>
+      </tr>
+      <tr style="height: 63px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>IO_INTERNAL</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>Internal I/O</p>
+          <p>- Scaled and filtered voltage and temperature measurements</p>
+          <p>- Reference output enable variables</p>
+          <p>- Overcurrent error statuses for AI pins</p>
+        </td>
+      </tr>
+      <tr style="height: 67px;">
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p>J1939 (optional)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p>J1939 library instance</p>
+          <p>Global variable definitions</p>
+          <p>- J1939_CANx(*) variable for each CAN bus that uses J1939</p>
+          <p>- Variable type is a structure defined in the application</p>
+        </td>
+      </tr>
+      <tr style="height: 25px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko" style="font-weight: normal;">G_CANx_PAR</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">OD variables stored in non-volatile memory, so called application parameters</p>
+        </td>
+      </tr>
+      <tr style="height: 22px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko" style="font-weight: normal;">G_CANx_RPDO</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Variables received in PDO messages</p>
+        </td>
+      </tr>
+      <tr style="height: 22px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko" style="font-weight: normal;">G_CANx_TPDO</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto">Variables transmitted in PDO messages</p>
+        </td>
+      </tr>
+      <tr style="height: 53px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko" style="font-weight: normal;">G_CANx_VAR</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto">- parameter stored in volatile memory (RAM parameter) and  defined in OD</p>
+          <p class="TaulukonSisalto">- all the other OD variables that do not belong to any of the other G_CANx groups mentioned above</p>
+        </td>
+      </tr>
+      <tr style="height: 27px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko" style="font-weight: normal;">G_CANopen_CANx</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto">CANopen related function blocks that the code template uses</p>
+        </td>
+      </tr>
+      <tr style="height: 22px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko" style="font-weight: normal;">G_CANopen_CANx_Mappings</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto">PDO mappings</p>
+        </td>
+      </tr>
+      <tr style="height: 26px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko" style="font-weight: normal;">G_CANopen_CANx_slave_Configurations</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto">A global variable list for each slave device</p>
+        </td>
+      </tr>
+      <tr style="height: 26px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko" style="font-weight: normal;">G_CANopen_CANx_VAR</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto">CANopen related variables that the code template uses</p>
+        </td>
+      </tr>
+      <tr style="height: 22px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko" style="font-weight: normal;">G_Common</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="background-color: Transparent;">Contains variables common for all CANs, e.g. parameter system handlers which are used by code template.</p>
+        </td>
+      </tr>
+      <tr style="height: 22px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko" style="font-weight: normal;">G_SystemInfo</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Information about the project and the unit</p>
+        </td>
+      </tr>
+      <tr style="height: 22px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko" style="font-weight: normal;">G_UI</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Code template variables related to UI, e.g. UI time and offset</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p>* OD&#39;s consecutive numbering, typically 1=CAN1, 2=CAN2 etc.</p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <h2><a id="Data__Unit__Types" name="Data__Unit__Types">Data (Unit) Types</a></h2>
+  <p><span data-keyref="SoftwareName">MultiTool Creator</span> creates structures and/or enumerations for</p>
+  <ul class="p">
+    <li class="p">
+      <p>J1939 receive and transmit PGNs</p>
+    </li>
+    <li class="p">
+      <p>Pre-defined indexes</p>
+    </li>
+    <li class="p">
+      <p>User defined record indexes</p>
+    </li>
+    <li class="p">
+      <p>Events</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p> </p>
+  <p data-condition="Others:CODESYS_35_Specific">In CODESYS 3.5, Data unit types (DUT) can be found from the <span data-condition="Others:CODESYS_35_Specific" style="font-weight: bold;">Device tree</span>. Enumerations are placed into the <span data-condition="Others:CODESYS_35_Specific" style="font-weight: bold;">Enums</span> and structures into the <span data-condition="Others:CODESYS_35_Specific" style="font-weight: bold;">Structs</span> folder.</p>
+  <p data-condition="Others:CODESYS_35_Specific"> </p>
+  <p data-condition="Others:CODESYS_35_Specific"><img alt="" border="0" data-condition="Others:CODESYS_35_Specific" src="../assets/images/MultiTool/Used/DeviceTree35_2.JPG" style="border: none;" title=""/></p>
+  <p data-condition="Others:CODESYS_35_Specific"> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200014.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

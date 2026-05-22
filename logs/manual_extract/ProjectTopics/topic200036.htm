@@ -1,0 +1,2318 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="topic-status" content="Ready for Review"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Event System and Automatically Generated Events</title>
+  <link rel="stylesheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta name="rh-index-keywords" content="Event System and Automatically Generated Events"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1 style="margin-right: 92px;">Event System and Automatically Generated Events</h1>
+  <p style="mso-ansi-language: EN-US; margin-right: 92px;"><span lang="EN-US" xml:lang="EN-US">The purpose of Events is to send system event information, such as notifications, warnings and alarms, from producer devices to event consumer devices. The control system can have several event producers and one</span> <span lang="EN-US" style="mso-bidi-font-style: normal;" xml:lang="EN-US">e</span><span lang="EN-US" xml:lang="EN-US"><i style="mso-bidi-font-style: normal; 
+										 font-style: normal;">vent consumer</i> that receives all transmitted events. The event consumer, such as display, can log events to a file and/or show them to the user.</span></p>
+  <p style="mso-ansi-language: EN-US; margin-right: 92px;"> </p>
+  <p style="mso-ansi-language: EN-US; margin-right: 92px;"><span lang="EN-US" xml:lang="EN-US">Events use PDO protocol for transmitting event information in CAN bus and therefore, two PDO messages are reserved for Events. One PDO is used to transmit event information and the other one is for acknowledge message from producer to consumer. The PDO&#39;s are generated once events are created on the</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">Events</span> <span lang="EN-US" xml:lang="EN-US">tab.</span></p>
+  <p style="mso-ansi-language: EN-US; margin-right: 92px;"> </p>
+  <p style="mso-ansi-language: EN-US; margin-right: 92px;"><span lang="EN-US" xml:lang="EN-US">To change the suggested PDO COB-ID&#39;s for event communication, open the</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">PDO</span> <span lang="EN-US" xml:lang="EN-US">tab and change the</span> <span lang="EN-US" style="font-weight: bold;" xml:lang="EN-US">COB-ID</span> <span lang="EN-US" xml:lang="EN-US">for the</span> <span lang="EN-US" style="font-style: italic;" xml:lang="EN-US">Event Send Message</span><span lang="EN-US" xml:lang="EN-US">.</span></p>
+  <p style="mso-ansi-language: EN-US; margin-right: 92px;"> </p>
+  <p style="mso-ansi-language: EN-US; margin-right: 92px;"> </p>
+  <p style="margin-right: 92px;"> </p>
+  <p style="background-color: transparent;"><span data-keyref="SoftwareName">MultiTool Creator</span> generates all the needed initializations for Events, such as event enumeration and global variables for connection between event producer and consumer, to the CODESYS code template <span style="font-style: italic;">PLC_PRG &gt; Init &gt; Init_Events</span> action.</p>
+  <p style="background-color: transparent;"> </p>
+  <p style="background-color: transparent;">For more information about Event System:</p>
+  <ul class="p">
+    <li class="p" style="font-style: italic;">
+      <p style="background-color: Transparent; 
+												 font-style: italic;"><a href="topic200015.htm" style="background-color: Transparent;"><span style="font-style: italic;">Using Events</span></a></p>
+    </li>
+    <li class="p" style="font-style: italic;">
+      <p><span>Epec </span>Programming and Libraries Manual &gt; Libraries &gt; Common Libraries for Control Units &gt; Event Log</p>
+    </li>
+  </ul>
+  <p style="background-color: transparent;"> </p>
+  <h2 style="margin-right: 92px;">Automatic Events</h2>
+  <p style="margin-right: 92px;">Once the events are added for the device, the diagnostic events of the hardware are automatically generated to the code template.</p>
+  <p style="margin-right: 92px;"> </p>
+  <table cellpadding="1" cellspacing="0" style="left: 0px; top: 1076px; height: 1702px; margin-right: 92px;" width="963">
+    <colgroup>
+      <col style="width: 25.76%;"/>
+      <col style="width: 26.157%;"/>
+      <col style="width: 4.093%;"/>
+      <col style="width: 3.561%;"/>
+      <col style="width: 4.043%;"/>
+      <col style="width: 4.051%;"/>
+      <col style="width: 5.329%;"/>
+      <col style="width: 5.329%;"/>
+      <col style="width: 4.041%;"/>
+      <col style="width: 4.159%;"/>
+      <col style="width: 5.066%;"/>
+      <col style="width: 3.97%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">ENUM EL_LibraryEventCodes</p>
+          <p class="TaulukonOtsikko">(EventLog library)</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko" style="text-align: center;">3606</p>
+          <p class="TaulukonOtsikko" style="text-align: center;"> </p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko" style="text-align: center;">3724</p>
+          <p class="TaulukonOtsikko" style="text-align: center; 
+													 font-weight: bold;"> </p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko" style="text-align: center;">4602</p>
+          <p class="TaulukonOtsikko" style="text-align: center;"> </p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko" style="text-align: center;">5050</p>
+          <p class="TaulukonOtsikko" style="text-align: center;"> </p>
+        </td>
+        <td style="border-top: Solid 1px #000000; 
+														 border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko" style="text-align: center;">S series</p>
+          <p class="TaulukonOtsikko" style="text-align: center;"> </p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko" style="text-align: center;">6000/X series </p>
+          <p class="TaulukonOtsikko" style="text-align: center;"> </p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko" style="text-align: center;">2020, 2038</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko" style="text-align: center;">2021</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko" style="text-align: center;">2023, 2024</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; 
+														 border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko" style="text-align: center;">2040</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_SUPPLY1_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Supply voltage over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_SUPPLY1_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Supply voltage under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_TEMP1_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Temperature over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x(PCB)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_TEMP1_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Temperature under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x(PCB)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_TEMP2_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Temperature over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x(CPU)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_TEMP2_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Temperature under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x(CPU)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REF5_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">5V reference output over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x*</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x (2024)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REF5_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">5V reference output under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x*</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x (2024)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REF2V5_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">2.5V internal reference over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REF2V5_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">2.5V internal reference under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REF10_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">10V reference output over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REF10_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">10V reference output under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td dstyle="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REF12_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">12V reference output over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REF12_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">12V reference output under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td dstyle="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CYCLE_TIME_HIGH</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Cycle time over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td dstyle="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_PULLUP10_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">10V pull-up voltage over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_PULLUP10_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">10V pull-up voltage under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REFADC_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">ADC voltage over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REFADC_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">ADC voltage under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_UPSVOLTAGE_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">UPS voltage over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_UPSVOLTAGE_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">UPS voltage under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_IO_AUX_OUTPUT_FAILURE</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Failure in auxiliary output pin</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_IO_5V_REF_OVL</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Overload of the 5V reference output</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_IO_OUT_ST_ERROR</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Output status error in one of the pins</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REF7V3_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">7.3V internal reference over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REF7V3_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">7.3V internal reference under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REF3V6_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">3.6V internal reference over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_REF3V6_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">3.6V internal reference under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000;  
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_RS485H_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">RS485 high line voltage over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_RS485H_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">RS485 high line voltage under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_RS485L_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">RS485 low line voltage over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_RS485L_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">RS485 low line voltage under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CAN1H_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">CAN1 high line voltage over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CAN1H_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">CAN1 high line voltage under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CAN1L_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">CAN1 low line voltage over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CAN1L_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">CAN1 low line voltage under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CAN2H_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">CAN2 high line voltage over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CAN2H_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">CAN2 high line voltage under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CAN2L_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">CAN2 low line voltage over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CAN2L_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">CAN2 low line voltage under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CONN1_CURRENT_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Connector 1 current over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CONN1_CURRENT_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Connector 1 current under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CONN2_CURRENT_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Connector 2 current over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CONN2_CURRENT_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Connector 2 current under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CONN3_CURRENT_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Connector 3 current over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CONN3_CURRENT_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Connector 3 current under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CONN5_CURRENT_HIGH_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Connector 5 current over defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">EL_HWD_CONN5_CURRENT_LOW_LIMIT</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Connector 5 current under defined limit</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; 
+														 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-right: 92px;">* if available in Hardware</p>
+  <p style="margin-right: 92px;"> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200036.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

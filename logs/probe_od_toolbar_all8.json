@@ -1,0 +1,1112 @@
+{
+  "tooltips": {
+    "0": null,
+    "1": null,
+    "2": "Show Hidden",
+    "3": "Store / Restore Settings",
+    "4": "Import from supported file types",
+    "5": "Export to supported file types"
+  },
+  "tree_after_pre": [
+    {
+      "d": 16,
+      "type": "Text",
+      "name": "AngleSensor",
+      "rect": [
+        300,
+        246,
+        383,
+        262
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 2",
+      "rect": [
+        386,
+        241,
+        472,
+        267
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Text",
+      "name": "",
+      "rect": [
+        390,
+        246,
+        469,
+        262
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 3",
+      "rect": [
+        472,
+        241,
+        550,
+        267
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Text",
+      "name": "Record",
+      "rect": [
+        476,
+        246,
+        547,
+        262
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 4",
+      "rect": [
+        550,
+        241,
+        651,
+        267
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 5",
+      "rect": [
+        651,
+        241,
+        727,
+        267
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 6",
+      "rect": [
+        727,
+        241,
+        790,
+        267
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 7",
+      "rect": [
+        790,
+        241,
+        1956,
+        267
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        176,
+        241,
+        198,
+        267
+      ]
+    },
+    {
+      "d": 14,
+      "type": "DataItem",
+      "name": "CU_3606_21_1 // CAN 1 // OD (Index level)",
+      "rect": [
+        176,
+        267,
+        1956,
+        293
+      ]
+    },
+    {
+      "d": 15,
+      "type": "DataItem",
+      "name": "CU_3606_21_1 // CAN 1 // OD (Index level)",
+      "rect": [
+        176,
+        267,
+        1956,
+        293
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 0",
+      "rect": [
+        198,
+        267,
+        296,
+        293
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        202,
+        267,
+        293,
+        293
+      ]
+    },
+    {
+      "d": 17,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        202,
+        272,
+        218,
+        288
+      ]
+    },
+    {
+      "d": 17,
+      "type": "Text",
+      "name": "2202h",
+      "rect": [
+        223,
+        272,
+        256,
+        288
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 1",
+      "rect": [
+        296,
+        267,
+        386,
+        293
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Text",
+      "name": "UpDnPairValve",
+      "rect": [
+        300,
+        272,
+        383,
+        288
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 2",
+      "rect": [
+        386,
+        267,
+        472,
+        293
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Text",
+      "name": "",
+      "rect": [
+        390,
+        272,
+        469,
+        288
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 3",
+      "rect": [
+        472,
+        267,
+        550,
+        293
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Text",
+      "name": "Record",
+      "rect": [
+        476,
+        272,
+        547,
+        288
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 4",
+      "rect": [
+        550,
+        267,
+        651,
+        293
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 5",
+      "rect": [
+        651,
+        267,
+        727,
+        293
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 6",
+      "rect": [
+        727,
+        267,
+        790,
+        293
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 7",
+      "rect": [
+        790,
+        267,
+        1956,
+        293
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        176,
+        267,
+        198,
+        293
+      ]
+    },
+    {
+      "d": 14,
+      "type": "DataItem",
+      "name": "CU_3606_21_1 // CAN 1 // OD (Index level)",
+      "rect": [
+        176,
+        293,
+        1956,
+        319
+      ]
+    },
+    {
+      "d": 15,
+      "type": "DataItem",
+      "name": "CU_3606_21_1 // CAN 1 // OD (Index level)",
+      "rect": [
+        176,
+        293,
+        1956,
+        319
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 0",
+      "rect": [
+        198,
+        293,
+        296,
+        319
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        202,
+        293,
+        293,
+        319
+      ]
+    },
+    {
+      "d": 17,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        202,
+        298,
+        218,
+        314
+      ]
+    },
+    {
+      "d": 17,
+      "type": "Text",
+      "name": "2204h",
+      "rect": [
+        223,
+        298,
+        256,
+        314
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 1",
+      "rect": [
+        296,
+        293,
+        386,
+        319
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Text",
+      "name": "Regulation",
+      "rect": [
+        300,
+        298,
+        383,
+        314
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 2",
+      "rect": [
+        386,
+        293,
+        472,
+        319
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Text",
+      "name": "",
+      "rect": [
+        390,
+        298,
+        469,
+        314
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 3",
+      "rect": [
+        472,
+        293,
+        550,
+        319
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Text",
+      "name": "Record",
+      "rect": [
+        476,
+        298,
+        547,
+        314
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 4",
+      "rect": [
+        550,
+        293,
+        651,
+        319
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 5",
+      "rect": [
+        651,
+        293,
+        727,
+        319
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 6",
+      "rect": [
+        727,
+        293,
+        790,
+        319
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 7",
+      "rect": [
+        790,
+        293,
+        1956,
+        319
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        176,
+        293,
+        198,
+        319
+      ]
+    },
+    {
+      "d": 14,
+      "type": "DataItem",
+      "name": "CU_3606_21_1 // CAN 1 // OD (Index level)",
+      "rect": [
+        176,
+        319,
+        1956,
+        345
+      ]
+    },
+    {
+      "d": 15,
+      "type": "DataItem",
+      "name": "CU_3606_21_1 // CAN 1 // OD (Index level)",
+      "rect": [
+        176,
+        319,
+        1956,
+        345
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 0",
+      "rect": [
+        198,
+        319,
+        296,
+        345
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        202,
+        319,
+        293,
+        345
+      ]
+    },
+    {
+      "d": 17,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        202,
+        324,
+        218,
+        340
+      ]
+    },
+    {
+      "d": 17,
+      "type": "Text",
+      "name": "2300h",
+      "rect": [
+        223,
+        324,
+        256,
+        340
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 1",
+      "rect": [
+        296,
+        319,
+        386,
+        345
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Text",
+      "name": "TestScenarioVar",
+      "rect": [
+        300,
+        324,
+        383,
+        340
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 2",
+      "rect": [
+        386,
+        319,
+        472,
+        345
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Text",
+      "name": "",
+      "rect": [
+        390,
+        324,
+        469,
+        340
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 3",
+      "rect": [
+        472,
+        319,
+        550,
+        345
+      ]
+    },
+    {
+      "d": 16,
+      "type": "Text",
+      "name": "DWORD",
+      "rect": [
+        476,
+        324,
+        547,
+        340
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 4",
+      "rect": [
+        550,
+        319,
+        651,
+        345
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 5",
+      "rect": [
+        651,
+        319,
+        727,
+        345
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 6",
+      "rect": [
+        727,
+        319,
+        790,
+        345
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Custom",
+      "name": "Item: CU_3606_21_1 // CAN 1 // OD (Index level), Column Display Index: 7",
+      "rect": [
+        790,
+        319,
+        1956,
+        345
+      ]
+    },
+    {
+      "d": 15,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        176,
+        319,
+        198,
+        345
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        1957,
+        160,
+        1962,
+        1363
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Pane",
+      "name": "",
+      "rect": [
+        1962,
+        160,
+        2556,
+        1363
+      ]
+    },
+    {
+      "d": 13,
+      "type": "Text",
+      "name": "Index Properties",
+      "rect": [
+        1973,
+        171,
+        2545,
+        199
+      ]
+    },
+    {
+      "d": 13,
+      "type": "Text",
+      "name": "No Index Selected. Select Index.",
+      "rect": [
+        1973,
+        219,
+        2545,
+        236
+      ]
+    },
+    {
+      "d": 13,
+      "type": "ComboBox",
+      "name": "",
+      "rect": [
+        2053,
+        298,
+        2535,
+        320
+      ]
+    },
+    {
+      "d": 13,
+      "type": "ComboBox",
+      "name": "",
+      "rect": [
+        2053,
+        330,
+        2535,
+        352
+      ]
+    },
+    {
+      "d": 13,
+      "type": "ComboBox",
+      "name": "",
+      "rect": [
+        2053,
+        362,
+        2535,
+        384
+      ]
+    },
+    {
+      "d": 13,
+      "type": "ComboBox",
+      "name": "",
+      "rect": [
+        2053,
+        394,
+        2535,
+        416
+      ]
+    },
+    {
+      "d": 13,
+      "type": "Text",
+      "name": "Sub-Index Properties",
+      "rect": [
+        1973,
+        256,
+        2545,
+        284
+      ]
+    },
+    {
+      "d": 13,
+      "type": "Text",
+      "name": "No Sub-Index Selected. Select Sub-Index.",
+      "rect": [
+        1973,
+        304,
+        2545,
+        321
+      ]
+    },
+    {
+      "d": 13,
+      "type": "ComboBox",
+      "name": "",
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        422,
+        177,
+        462
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        426,
+        48,
+        458
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "PDO",
+      "rect": [
+        58,
+        434,
+        84,
+        451
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        462,
+        177,
+        502
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        466,
+        48,
+        498
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "I/O",
+      "rect": [
+        58,
+        474,
+        76,
+        491
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        502,
+        177,
+        542
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        506,
+        48,
+        538
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "Events",
+      "rect": [
+        58,
+        514,
+        95,
+        531
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        542,
+        177,
+        582
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        546,
+        48,
+        578
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "ISOBUS",
+      "rect": [
+        58,
+        554,
+        101,
+        571
+      ]
+    },
+    {
+      "d": 8,
+      "type": "TabItem",
+      "name": "Telerik.Windows.Controls.RadTabItem Header: Content:",
+      "rect": [
+        6,
+        582,
+        177,
+        622
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        16,
+        586,
+        48,
+        618
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Text",
+      "name": "Library Manager",
+      "rect": [
+        58,
+        594,
+        152,
+        611
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        3,
+        1368,
+        29,
+        1393
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        8,
+        1372,
+        24,
+        1388
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Text",
+      "name": "",
+      "rect": [
+        43,
+        1373,
+        2251,
+        1388
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Button",
+      "name": "-",
+      "rect": [
+        2264,
+        1368,
+        2272,
+        1390
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Text",
+      "name": "-",
+      "rect": [
+        2264,
+        1363,
+        2272,
+        1390
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Slider",
+      "name": "",
+      "rect": [
+        2275,
+        1375,
+        2494,
+        1383
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        2275,
+        1375,
+        2377,
+        1383
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Thumb",
+      "name": "",
+      "rect": [
+        2377,
+        1375,
+        2381,
+        1383
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Button",
+      "name": "",
+      "rect": [
+        2381,
+        1375,
+        2494,
+        1383
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Button",
+      "name": "+",
+      "rect": [
+        2497,
+        1368,
+        2511,
+        1390
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Text",
+      "name": "+",
+      "rect": [
+        2497,
+        1363,
+        2511,
+        1390
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Edit",
+      "name": "100",
+      "rect": [
+        2517,
+        1368,
+        2548,
+        1390
+      ]
+    },
+    {
+      "d": 1,
+      "type": "Text",
+      "name": "%",
+      "rect": [
+        2548,
+        1371,
+        2558,
+        1387
+      ]
+    }
+  ]
+}

@@ -1,0 +1,676 @@
+{
+  "drop_buttons": 2,
+  "new_controls": [
+    {
+      "d": 1,
+      "type": "Window",
+      "name": "",
+      "rect": [
+        265,
+        121,
+        697,
+        411
+      ]
+    },
+    {
+      "d": 2,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        266,
+        122,
+        696,
+        410
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Text",
+      "name": "Product family",
+      "rect": [
+        305,
+        127,
+        388,
+        143
+      ]
+    },
+    {
+      "d": 3,
+      "type": "List",
+      "name": "",
+      "rect": [
+        266,
+        148,
+        427,
+        410
+      ]
+    },
+    {
+      "d": 4,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[E",
+      "rect": [
+        266,
+        147,
+        426,
+        191
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        275,
+        150,
+        313,
+        188
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Text",
+      "name": "2000 series",
+      "rect": [
+        324,
+        172,
+        398,
+        188
+      ]
+    },
+    {
+      "d": 4,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[E",
+      "rect": [
+        266,
+        191,
+        426,
+        235
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        275,
+        194,
+        313,
+        232
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Text",
+      "name": "3000 series",
+      "rect": [
+        324,
+        216,
+        398,
+        232
+      ]
+    },
+    {
+      "d": 4,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[E",
+      "rect": [
+        266,
+        235,
+        426,
+        279
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        275,
+        238,
+        313,
+        276
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Text",
+      "name": "4000 series",
+      "rect": [
+        324,
+        260,
+        398,
+        276
+      ]
+    },
+    {
+      "d": 4,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[E",
+      "rect": [
+        266,
+        279,
+        426,
+        323
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        275,
+        282,
+        313,
+        320
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Text",
+      "name": "5000 series",
+      "rect": [
+        324,
+        304,
+        398,
+        320
+      ]
+    },
+    {
+      "d": 4,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[E",
+      "rect": [
+        266,
+        323,
+        426,
+        367
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        275,
+        326,
+        313,
+        364
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Text",
+      "name": "6000/X series",
+      "rect": [
+        324,
+        348,
+        398,
+        364
+      ]
+    },
+    {
+      "d": 4,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[E",
+      "rect": [
+        266,
+        367,
+        426,
+        411
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        275,
+        370,
+        313,
+        408
+      ]
+    },
+    {
+      "d": 5,
+      "type": "Text",
+      "name": "S/E series",
+      "rect": [
+        324,
+        392,
+        398,
+        408
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Text",
+      "name": "Device",
+      "rect": [
+        432,
+        127,
+        470,
+        143
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        427,
+        148,
+        475,
+        410
+      ]
+    },
+    {
+      "d": 4,
+      "type": "List",
+      "name": "",
+      "rect": [
+        427,
+        148,
+        475,
+        410
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Text",
+      "name": "Functional Version",
+      "rect": [
+        480,
+        127,
+        584,
+        143
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        475,
+        148,
+        589,
+        410
+      ]
+    },
+    {
+      "d": 4,
+      "type": "List",
+      "name": "",
+      "rect": [
+        475,
+        148,
+        589,
+        410
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Text",
+      "name": "CODESYS Version",
+      "rect": [
+        594,
+        127,
+        691,
+        143
+      ]
+    },
+    {
+      "d": 3,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        589,
+        148,
+        696,
+        410
+      ]
+    },
+    {
+      "d": 4,
+      "type": "List",
+      "name": "",
+      "rect": [
+        589,
+        148,
+        696,
+        410
+      ]
+    },
+    {
+      "d": 9,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        266,
+        122,
+        696,
+        410
+      ]
+    },
+    {
+      "d": 10,
+      "type": "Text",
+      "name": "Product family",
+      "rect": [
+        305,
+        127,
+        388,
+        143
+      ]
+    },
+    {
+      "d": 10,
+      "type": "List",
+      "name": "",
+      "rect": [
+        266,
+        148,
+        427,
+        410
+      ]
+    },
+    {
+      "d": 11,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[E",
+      "rect": [
+        266,
+        147,
+        426,
+        191
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        275,
+        150,
+        313,
+        188
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "2000 series",
+      "rect": [
+        324,
+        172,
+        398,
+        188
+      ]
+    },
+    {
+      "d": 11,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[E",
+      "rect": [
+        266,
+        191,
+        426,
+        235
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        275,
+        194,
+        313,
+        232
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "3000 series",
+      "rect": [
+        324,
+        216,
+        398,
+        232
+      ]
+    },
+    {
+      "d": 11,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[E",
+      "rect": [
+        266,
+        235,
+        426,
+        279
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        275,
+        238,
+        313,
+        276
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "4000 series",
+      "rect": [
+        324,
+        260,
+        398,
+        276
+      ]
+    },
+    {
+      "d": 11,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[E",
+      "rect": [
+        266,
+        279,
+        426,
+        323
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        275,
+        282,
+        313,
+        320
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "5000 series",
+      "rect": [
+        324,
+        304,
+        398,
+        320
+      ]
+    },
+    {
+      "d": 11,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[E",
+      "rect": [
+        266,
+        323,
+        426,
+        367
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        275,
+        326,
+        313,
+        364
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "6000/X series",
+      "rect": [
+        324,
+        348,
+        398,
+        364
+      ]
+    },
+    {
+      "d": 11,
+      "type": "ListItem",
+      "name": "System.Linq.Lookup`2+Grouping[System.String,System.Collections.Generic.IList`1[E",
+      "rect": [
+        266,
+        367,
+        426,
+        411
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Image",
+      "name": "",
+      "rect": [
+        275,
+        370,
+        313,
+        408
+      ]
+    },
+    {
+      "d": 12,
+      "type": "Text",
+      "name": "S/E series",
+      "rect": [
+        324,
+        392,
+        398,
+        408
+      ]
+    },
+    {
+      "d": 10,
+      "type": "Text",
+      "name": "Device",
+      "rect": [
+        432,
+        127,
+        470,
+        143
+      ]
+    },
+    {
+      "d": 10,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        427,
+        148,
+        475,
+        410
+      ]
+    },
+    {
+      "d": 11,
+      "type": "List",
+      "name": "",
+      "rect": [
+        427,
+        148,
+        475,
+        410
+      ]
+    },
+    {
+      "d": 10,
+      "type": "Text",
+      "name": "Functional Version",
+      "rect": [
+        480,
+        127,
+        584,
+        143
+      ]
+    },
+    {
+      "d": 10,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        475,
+        148,
+        589,
+        410
+      ]
+    },
+    {
+      "d": 11,
+      "type": "List",
+      "name": "",
+      "rect": [
+        475,
+        148,
+        589,
+        410
+      ]
+    },
+    {
+      "d": 10,
+      "type": "Text",
+      "name": "CODESYS Version",
+      "rect": [
+        594,
+        127,
+        691,
+        143
+      ]
+    },
+    {
+      "d": 10,
+      "type": "Custom",
+      "name": "",
+      "rect": [
+        589,
+        148,
+        696,
+        410
+      ]
+    },
+    {
+      "d": 11,
+      "type": "List",
+      "name": "",
+      "rect": [
+        589,
+        148,
+        696,
+        410
+      ]
+    }
+  ]
+}

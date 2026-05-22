@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="Originator" content="ImportDoc"/>
+  <meta name="OriginalFile" content="MultiTool_Tech_simple2.doc"/>
+  <meta name="topic-check-list" content="Ran Smart Index"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Monitoring</title>
+  <link rel="stylesheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <style type="text/css">
+    /*
+      <![CDATA[*/
+    A:visited {
+      color: #800080;
+    }
+    A:link {
+      color: #0000ff;
+    }
+    /*]]>*/
+  </style>
+  <meta name="rh-index-keywords" content="Monitoring CANopen Devices,NodeID,Node,Consumer Time,BusMaster,NMT Slave,Monitoring,NodeMonitoring,NMT Master,Reset Node,Keep Alive,Heart Beat"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body lang="FI" xml:lang="FI">
+  <h1 id="h"><span lang="EN-GB" xml:lang="EN-GB">Monitoring CANopen Devices</span></h1>
+  <p>The settings for monitoring other CANopen devices can be set on the <span style="font-weight: bold;">CAN</span> tab. To define the monitored devices, first select the <span style="font-weight: bold;">CAN</span> tab and then the correct <span style="font-weight: bold;">CAN channel</span>. The <span style="font-weight: bold;">Network Monitoring</span> is available when <span style="font-weight: bold;">Initialize CANopen</span> is selected on the <span style="font-weight: bold;">CAN</span> <span style="font-weight: bold;">Properties</span>. By default, <span data-keyref="SoftwareName">MultiTool Creator</span> adds the devices in the same network to be monitored. The monitoring configurations of the selected <span style="font-weight: bold;">CAN channel</span> are displayed on the right.</p>
+  <p> </p>
+  <p>To add a node manually to the monitored device, select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_add_monitoring.png" style="border: none;"/> icon above the table. To delete the manually added device from the list, select the device and select <img alt="" border="0" src="../assets/images/MultiTool/Used/icon_remove_monitoring.png" style="border: none;"/> icon.</p>
+  <p> </p>
+  <p>For more information about CAN properties, see <a href="7_9_2_CAN.htm" style="font-style: italic;">Defining CAN and CANopen</a>.</p>
+  <p style="background-color: Transparent;"> </p>
+  <p style="background-color: Transparent;"><img alt="" border="0" src="../assets/images/MultiTool/Used/can_tab.jpg" style="border: none;"/></p>
+  <p> </p>
+  <p>When the <span style="font-weight: bold;">Network Status</span> has been selected to be one of the <em>G_SystemOk</em> conditions, the network status is read from <span style="font-style: italic;">G_CANx_NetworkManager.o_BusOk</span> variable. This variable is set to TRUE when all <span style="font-weight: bold;">Mandatory</span> devices are in operational state, otherwise the variable status is FALSE.</p>
+  <p> </p>
+  <p>The following table describes the <span style="font-weight: bold;">Network Monitoring</span> settings for the NMT master aslavesponder:</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt; left: 0px; top: 861px;" width="1000">
+    <colgroup>
+      <col/>
+      <col width="649"/>
+      <col width="92"/>
+      <col width="90"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border: Solid 1px #000000; vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="85">
+          <p class="TaulukonOtsikko">Setting</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko" style="text-align: center;">Setting for NMT Master</p>
+        </td>
+        <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonOtsikko" style="text-align: center;">Setting for NMT slave</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="85">
+          <p class="TaulukonOtsikko">Monitor</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto">Select the device to be monitored.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="85">
+          <p class="TaulukonOtsikko">Name / Node-ID</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto">For devices in the same network, the device name and node-ID are shown. The device name and node-ID are not editable in this table. For manually added devices, only node-ID can be defined. Select the device name and click it again to open the device settings.</p>
+          <p class="TaulukonSisalto">.</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="85">
+          <p class="TaulukonOtsikko">Consumer Time</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto">The maximum time between two heartbeat messages. If the time is exceeded, the CODESYS code template determines that the device is missing from the bus.</p>
+          <p class="TaulukonSisalto">In case of an NMT Master: If a heartbeat message is not received within the consumer time and</p>
+          <ul style="list-style: disc;">
+            <li>
+              <p class="TaulukonSisalto">the <b>Keep Alive</b> is checked, a start message will be sent.</p>
+            </li>
+            <li>
+              <p class="TaulukonSisalto">the <b>Reset Node</b> is checked, a reset message will be sent.</p>
+            </li>
+          </ul>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="85">
+          <p class="TaulukonOtsikko">Keep Alive</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto">When the <b>Keep Alive</b> is selected and the monitored unit is in NMT preoperational state, the device will be started by NMT Master after the elapsed time sequence that has been defined in the <span style="font-weight: bold;">Monitoring</span> <b>Start Interval<span style="font-weight: normal;">.</span></b></p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="85">
+          <p class="TaulukonOtsikko">Reset Node</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto">When the <span style="font-weight: bold;">Reset Node</span> is selected and the heartbeat message is not received within the consumer time, the device will be reset by the NMT Master.</p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;"> </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="85">
+          <p class="TaulukonOtsikko">Mandatory</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto">Select the <span style="font-weight: bold;">Mandatory</span> box if you want the node status to be a condition for the <span style="font-style: italic;">G_CANx_NetworkManager.o_BusOk</span> variable<span style="font-style: italic;">.</span></p>
+          <p class="TaulukonSisalto"> </p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="TaulukonSisalto" style="text-align: center;">x</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p>See also,</p>
+  <ul style="list-style: disc;">
+    <li style="font-style: italic;">
+      <p style="font-style: italic;"><a href="7_9_2_CAN.htm" style="font-style: italic;">Defining CAN and CANopen</a></p>
+    </li>
+  </ul>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">7_9_9_Monitoring.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

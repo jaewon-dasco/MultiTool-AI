@@ -1,0 +1,766 @@
+{
+  "cds_area": [
+    {
+      "type": "Text",
+      "name": "3606-01",
+      "rect": [
+        596,
+        153,
+        883,
+        169
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\n1A FB\nPWM pull-down to ground",
+      "rect": [
+        596,
+        169,
+        883,
+        233
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-02",
+      "rect": [
+        596,
+        245,
+        883,
+        261
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n2xCAN\n1A FB\nPWM pull-down to ground",
+      "rect": [
+        596,
+        261,
+        883,
+        325
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-20",
+      "rect": [
+        596,
+        337,
+        883,
+        353
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\nReduced IO version\n",
+      "rect": [
+        596,
+        353,
+        883,
+        417
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-21",
+      "rect": [
+        596,
+        429,
+        883,
+        445
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\n2A FB\nPWM pull-up to voltage.",
+      "rect": [
+        596,
+        445,
+        883,
+        509
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-22",
+      "rect": [
+        596,
+        521,
+        883,
+        537
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\n2A FB\nPWM pull-up to voltage (Pin 1.8 pull-down to ground)",
+      "rect": [
+        596,
+        537,
+        883,
+        601
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-01",
+      "rect": [
+        596,
+        153,
+        883,
+        169
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\n1A FB\nPWM pull-down to ground",
+      "rect": [
+        596,
+        169,
+        883,
+        233
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-02",
+      "rect": [
+        596,
+        245,
+        883,
+        261
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n2xCAN\n1A FB\nPWM pull-down to ground",
+      "rect": [
+        596,
+        261,
+        883,
+        325
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-20",
+      "rect": [
+        596,
+        337,
+        883,
+        353
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\nReduced IO version\n",
+      "rect": [
+        596,
+        353,
+        883,
+        417
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-21",
+      "rect": [
+        596,
+        429,
+        883,
+        445
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\n2A FB\nPWM pull-up to voltage.",
+      "rect": [
+        596,
+        445,
+        883,
+        509
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-22",
+      "rect": [
+        596,
+        521,
+        883,
+        537
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\n2A FB\nPWM pull-up to voltage (Pin 1.8 pull-down to ground)",
+      "rect": [
+        596,
+        537,
+        883,
+        601
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "",
+      "rect": [
+        588,
+        147,
+        891,
+        239
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "",
+      "rect": [
+        588,
+        239,
+        891,
+        331
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "",
+      "rect": [
+        588,
+        331,
+        891,
+        423
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "",
+      "rect": [
+        588,
+        423,
+        891,
+        515
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "",
+      "rect": [
+        588,
+        515,
+        891,
+        607
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "",
+      "rect": [
+        588,
+        147,
+        891,
+        239
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "",
+      "rect": [
+        588,
+        239,
+        891,
+        331
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "",
+      "rect": [
+        588,
+        331,
+        891,
+        423
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "",
+      "rect": [
+        588,
+        423,
+        891,
+        515
+      ]
+    },
+    {
+      "type": "ListItem",
+      "name": "",
+      "rect": [
+        588,
+        515,
+        891,
+        607
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "",
+      "rect": [
+        588,
+        147,
+        891,
+        239
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "",
+      "rect": [
+        588,
+        239,
+        891,
+        331
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "",
+      "rect": [
+        588,
+        331,
+        891,
+        423
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "",
+      "rect": [
+        588,
+        423,
+        891,
+        515
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "",
+      "rect": [
+        588,
+        515,
+        891,
+        607
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "",
+      "rect": [
+        588,
+        147,
+        891,
+        239
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "",
+      "rect": [
+        588,
+        239,
+        891,
+        331
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "",
+      "rect": [
+        588,
+        331,
+        891,
+        423
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "",
+      "rect": [
+        588,
+        423,
+        891,
+        515
+      ]
+    },
+    {
+      "type": "Button",
+      "name": "",
+      "rect": [
+        588,
+        515,
+        891,
+        607
+      ]
+    }
+  ],
+  "wide_text": [
+    {
+      "type": "Text",
+      "name": "2000 series",
+      "rect": [
+        324,
+        172,
+        398,
+        188
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3000 series",
+      "rect": [
+        324,
+        216,
+        398,
+        232
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "4000 series",
+      "rect": [
+        324,
+        260,
+        398,
+        276
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "5000 series",
+      "rect": [
+        324,
+        304,
+        398,
+        320
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "6000/X series",
+      "rect": [
+        324,
+        348,
+        398,
+        364
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "S/E series",
+      "rect": [
+        324,
+        392,
+        398,
+        408
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3724",
+      "rect": [
+        485,
+        182,
+        559,
+        198
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3720",
+      "rect": [
+        485,
+        236,
+        559,
+        252
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3610",
+      "rect": [
+        485,
+        290,
+        559,
+        306
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606",
+      "rect": [
+        485,
+        344,
+        559,
+        360
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-01",
+      "rect": [
+        596,
+        153,
+        883,
+        169
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\n1A FB\nPWM pull-down to ground",
+      "rect": [
+        596,
+        169,
+        883,
+        233
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-02",
+      "rect": [
+        596,
+        245,
+        883,
+        261
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n2xCAN\n1A FB\nPWM pull-down to ground",
+      "rect": [
+        596,
+        261,
+        883,
+        325
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-20",
+      "rect": [
+        596,
+        337,
+        883,
+        353
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\nReduced IO version\n",
+      "rect": [
+        596,
+        353,
+        883,
+        417
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-21",
+      "rect": [
+        596,
+        429,
+        883,
+        445
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\n2A FB\nPWM pull-up to voltage.",
+      "rect": [
+        596,
+        445,
+        883,
+        509
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2000 series",
+      "rect": [
+        324,
+        172,
+        398,
+        188
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3000 series",
+      "rect": [
+        324,
+        216,
+        398,
+        232
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "4000 series",
+      "rect": [
+        324,
+        260,
+        398,
+        276
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "5000 series",
+      "rect": [
+        324,
+        304,
+        398,
+        320
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "6000/X series",
+      "rect": [
+        324,
+        348,
+        398,
+        364
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "S/E series",
+      "rect": [
+        324,
+        392,
+        398,
+        408
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3724",
+      "rect": [
+        485,
+        182,
+        559,
+        198
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3720",
+      "rect": [
+        485,
+        236,
+        559,
+        252
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3610",
+      "rect": [
+        485,
+        290,
+        559,
+        306
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606",
+      "rect": [
+        485,
+        344,
+        559,
+        360
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-01",
+      "rect": [
+        596,
+        153,
+        883,
+        169
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\n1A FB\nPWM pull-down to ground",
+      "rect": [
+        596,
+        169,
+        883,
+        233
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-02",
+      "rect": [
+        596,
+        245,
+        883,
+        261
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n2xCAN\n1A FB\nPWM pull-down to ground",
+      "rect": [
+        596,
+        261,
+        883,
+        325
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-20",
+      "rect": [
+        596,
+        337,
+        883,
+        353
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\nReduced IO version\n",
+      "rect": [
+        596,
+        353,
+        883,
+        417
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "3606-21",
+      "rect": [
+        596,
+        429,
+        883,
+        445
+      ]
+    },
+    {
+      "type": "Text",
+      "name": "2kByte FRAM\n1xCAN\n2A FB\nPWM pull-up to voltage.",
+      "rect": [
+        596,
+        445,
+        883,
+        509
+      ]
+    }
+  ]
+}

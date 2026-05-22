@@ -1,0 +1,1312 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Defining ISOBUS</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1 style="background-color: Transparent;">Defining ISOBUS</h1>
+  <p> </p>
+  <p> </p>
+  <p>This topic describes</p>
+  <ul class="p">
+    <li class="p">
+      <p>adding ISOBUS VT client for a device</p>
+    </li>
+    <li class="p">
+      <p>adding ISOBUS TC client for a device</p>
+    </li>
+    <li class="p">
+      <p>adding ISOBUS Tractor-ECU (TECU) interface for a device</p>
+    </li>
+    <li class="p">
+      <p>adding ISOBUS Diagnostics messages for a device</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="723">
+    <colgroup>
+      <col style="width: 9.134%;"/>
+      <col width="657"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 63px;">
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p>For implementation guides and supported features, see <span style="font-style: italic;">Epec Programming and Libraries Manual.</span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="723">
+    <colgroup>
+      <col style="width: 9.134%;"/>
+      <col width="657"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 63px;">
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="InlineBodyText26" style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p>ISOBUS initialization requires <span style="font-style: italic;">Addressclaiming.</span></p>
+          <p><span style="font-style: italic;"></span><span style="font-style: italic;">J1939</span> is automatically added to the used CAN channel when ISOBUS and AddressClaiming are in use.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="723">
+    <colgroup>
+      <col style="width: 9.134%;"/>
+      <col width="657"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 63px;">
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p class="InlineBodyText26" style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p>ISOBUS library requires device with ISOBUS SW license to enable operation. </p>
+          <p> </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <h3>Supported versions</h3>
+  <p>See <span data-condition="Others:EpecSpecific">Epec </span><span style="font-style: italic;">Programming and Libraries Manual </span>for more information on supported functionalities and ISOBUS Conformance Guide.</p>
+  <p> </p>
+  <h3>Initializing ISOBUS Functionalities</h3>
+  <p>To initialize ISOBUS functionalities:</p>
+  <ol class="p">
+    <li class="p">
+      <p>Double-click the correct device to open the device configuration</p>
+    </li>
+    <li class="p">
+      <p>Select <span style="font-weight: bold;">ISOBUS </span>tab and the correct <span style="font-weight: bold;">CAN</span> channel</p>
+    </li>
+    <li class="p">
+      <p>Select <span style="font-weight: bold;">ISOBUS Initialize</span></p>
+    </li>
+    <li class="p">
+      <p>Select a<span style="font-weight: bold;"> </span>value for<span style="font-weight: bold;"> Object Pool Size</span>. The object pool binary data needs to fit into the reserved space.</p>
+      <ul class="Disc">
+        <li class="p">
+          <p>In 3000-series control units, the object pool is downloaded as a separate binary file and setting will decrease the space available for CODESYS application (768 kB total size or 1088kB total size for EM units.). </p>
+        </li>
+        <li class="p">
+          <p>In CODESYS 3.5 platforms the object pool binary data is imported to CODESYS project. In S and E series units this data is located in flash area and decreases the space available for application code.</p>
+        </li>
+      </ul>
+    </li>
+    <li class="p">
+      <p>Select the correct <span style="font-weight: bold;">Address Claiming </span>device for ISOBUS. If the <span style="font-weight: bold;">Address Claiming </span>dropdown list does not contain any items go to the <a href="topic200207.htm">Address Claiming</a> tab to add a new Address Claiming.</p>
+    </li>
+    <li class="p">
+      <p>Select <span style="font-weight: bold;">Initialize</span> for the needed ISOBUS functionalities</p>
+    </li>
+  </ol>
+  <p> </p>
+  <p> </p>
+  <p style="margin-left: 0px;"> </p>
+  <p><img src="../assets/images/MultiTool/Epec/ISOBUS_ProtocolTab.png"/></p>
+  <h2>Configuring ISOBUS Components</h2>
+  <p>The selected ISOBUS functionalities have additional settings which are configured in <span style="font-weight: bold;">ISOBUS </span>tab.</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="723">
+    <colgroup>
+      <col style="width: 9.134%;"/>
+      <col width="657"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 63px;">
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p style="font-weight: normal;">AUX-N Function is initialized from <span style="font-weight: bold;">ISOBUS &gt; Virtual Terminal Client</span> tab. AUX-N requires VT client functionality.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/ISOBUS_VirtualTerminalClientTab.png"/></p>
+  <p> </p>
+  <p>The following tables describe the ISOBUS Components&#39; settings and their default values.</p>
+  <p> </p>
+  <p> </p>
+  <p class="TaulukonOtsikko">Virtual Terminal Client</p>
+  <p> </p>
+  <table border="1" cellspacing="0" style="border-collapse: separate; border-collapse: separate;" width="85.774%">
+    <colgroup>
+      <col style="width: 17.795%;"/>
+      <col style="width: 11.296%;"/>
+      <col style="width: 11.582%;"/>
+      <col style="width: 59.327%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Configuration</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Default Value</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Range</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">AEF UT Generation</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">2</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1 - 2</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">UT functionality generation which application is designed for. Generations are defined by AEF. Used in Diagnostics Functionalities PGN message.</p>
+          <p class="TaulukonSisalto">Note that the UT generation and VT ISO Version are related (UT1.0 = VT V2, UT2.0 = VT V3).</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">ISO Version</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">3</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">2 - 4</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">ISO 11783-6 defines the VT versions. The value indicates the version which VT object pool is designed for and is used to configure VT client. Note that Jetter ISO-Designer<span style="font-size: 11.0pt; font-family: Calibri, sans-serif; mso-fareast-font-family: Calibri; 
+		 mso-fareast-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: FI; mso-bidi-language: AR-SA;">™</span> project should use the same version.</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">VT Datamask Dimensions</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">480</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">200 - 1000</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Datamask resolution (width&amp;height) which application is designed for. Should match with Jetter ISO-Designer<span style="font-size: 11.0pt; font-family: Calibri, sans-serif; mso-fareast-font-family: Calibri; 
+		 mso-fareast-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: FI; mso-bidi-language: AR-SA;">™</span> project&#39;s datamask size. The value is used for VT client&#39;s scaling operations.</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">VT Softkey Width</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">72</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">60 - 200</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Softkey width which application is designed for. Should match with Jetter ISO-Designer<span style="font-size: 11.0pt; 
+		 font-family: Calibri, sans-serif; mso-fareast-font-family: Calibri; 
+		 mso-fareast-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: FI; mso-bidi-language: AR-SA;">™</span> project&#39;s softkey width. The value is used for VT client&#39;s scaling operations.</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">VT Softkey Height</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">72</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">32 - 200</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Softkey height which application is designed for. Should match with Jetter ISO-Designer<span style="font-size: 11.0pt; 
+		 font-family: Calibri, sans-serif; mso-fareast-font-family: Calibri; 
+		 mso-fareast-theme-font: minor-latin; mso-bidi-font-family: &#39;Times New Roman&#39;; 
+		 mso-ansi-language: FI; mso-fareast-language: FI; mso-bidi-language: AR-SA;">™</span> project&#39;s softkey height. The value is used for VT client&#39;s scaling operations.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p>The following VT client settings are CODESYS 2.3 specific:</p>
+  <p> </p>
+  <table border="1" cellspacing="0" style="border-collapse: separate; border-collapse: separate;" width="85.774%">
+    <tbody>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Configuration</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Default Value</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Range</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-bottom:1px #000000; border-right:1px #000000; border-left:1px #000000">
+          <p class="TaulukonOtsikko">Timeout for Pool Transfer</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">40 seconds</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p style="text-align:center">20 - 150</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto">VT client&#39;s object pool transfer sequence timeout. Increase the value if large VT object pool is used.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p>The following VT client settings are CODESYS 3.5 specific:</p>
+  <p> </p>
+  <table border="1" cellspacing="0" style="border-collapse: separate; border-collapse: separate;" width="85.774%">
+    <colgroup>
+      <col style="width: 112px;"/>
+      <col style="width: 54px;"/>
+      <col style="width: 68px;"/>
+      <col/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: 1px solid rgb(0, 0, 0); border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Configuration</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Default Value</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Range</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-bottom: 1px rgb(0, 0, 0); border-right: 1px rgb(0, 0, 0); border-left: 1px rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Tx PGN buffer size</p>
+        </td>
+        <td style="border-bottom: 1px rgb(0, 0, 0); border-right: 1px rgb(0, 0, 0); text-align: center;">
+          <p class="TaulukonSisalto">4096</p>
+        </td>
+        <td style="border-bottom: 1px rgb(0, 0, 0); border-right: 1px rgb(0, 0, 0); text-align: center;">
+          <p class="TaulukonSisalto">1785 - 65535</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto">Defines tx PGN buffer size (in bytes) which is used by VT client for UI communication</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 1px rgb(0, 0, 0); border-right: 1px rgb(0, 0, 0); border-left: 1px rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">User defined object handlers max count</p>
+        </td>
+        <td style="border-bottom: 1px rgb(0, 0, 0); border-right: 1px rgb(0, 0, 0); text-align: center;">
+          <p class="TaulukonSisalto">50</p>
+        </td>
+        <td style="border-bottom: 1px rgb(0, 0, 0); border-right: 1px rgb(0, 0, 0); text-align: center;">
+          <p class="TaulukonSisalto">1 - 65535</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto">Defines how many application defined object handler instances can be initialized to main object handler</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p>The following VT client settings are AUX-N Function related:</p>
+  <p> </p>
+  <table border="1" cellspacing="0" style="border-collapse: separate; border-collapse: separate;" width="85.774%">
+    <tbody>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Configuration</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Default Value</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Range</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko"><span style="font-weight: bold;">AUX-N Function in use</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">FALSE</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">FALSE/TRUE</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">AUX-N function is taken in use when setting is TRUE. Requires VT client version 3 or higher.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">AEF AUX-N Function generation</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">AUX-N functionality generation which application is designed for. Generations are defined by AEF. Used in Diagnostics Functionalities PGN message.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">AUX-N Functionality options</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">FALSE</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">FALSE/TRUE</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">AUX-N Function types 0...14 each has ON/OFF setting which is used in Diagnostic Functionalities PGN message. Those AUX-N Function types which are used by application shall be checked TRUE.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p>The following AUX-N Function settings are CODESYS 3.5 specific:</p>
+  <p> </p>
+  <table border="1" cellspacing="0" style="border-collapse: separate; border-collapse: separate;" width="85.774%">
+    <colgroup>
+      <col style="width: 99px;"/>
+      <col style="width: 56px;"/>
+      <col style="width: 79px;"/>
+      <col style="width: 364px;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: 1px solid rgb(0, 0, 0); border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Configuration</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Default Value</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Range</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: 1px solid rgb(0, 0, 0); border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">AUX-N Tx PGN buffer size</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); text-align: center;">
+          <p class="TaulukonSisalto">2048</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); text-align: center;">
+          <p class="TaulukonSisalto">1785 - 65535</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonSisalto">Defines tx PGN buffer size (in bytes) which is used for AUX-N object pool objects when UI is connected to secondary VT </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: 1px solid rgb(0, 0, 0); border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">AUX-N Input maximum count</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); text-align: center;">
+          <p class="TaulukonSisalto">3</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); text-align: center;">
+          <p class="TaulukonSisalto">1 - 255</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonSisalto">Defines maximum number of simultaneous AUX-N Input devices which can be monitored and used for assignments. Note that single AUX-N Input device may have multiple input objects and this does not limit the number of input objects.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p class="TaulukonOtsikko">Task Controller Client</p>
+  <p class="TaulukonOtsikko"> </p>
+  <table border="1" cellspacing="0" style="border-collapse: separate; border-collapse: separate;" width="85.774%">
+    <colgroup>
+      <col style="width: 99px;"/>
+      <col style="width: 56px;"/>
+      <col style="width: 79px;"/>
+      <col style="width: 364px;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: 1px solid rgb(0, 0, 0); border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Configuration</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Default Value</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Range</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">AEF TC Generation</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">TC functionality generation which application is designed for. Generations are defined by AEF.</p>
+          <p class="TaulukonSisalto">Used in Diagnostics Functionalities PGN message.</p>
+          <p class="TaulukonSisalto">Note that the TC generation and ISO Version are related (TC1.0 = TC V3).</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">ISO Version</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">3</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">3</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">ISO 11783-10 defines TC versions. The value indicates version which TC object pool is designed for and used to configure TC client.</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">TC-BAS Configuration</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">TC-BAS Selected</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">FALSE</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">FALSE/TRUE</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Set TRUE if application implements TC-BAS functionality (see ISO 11783-10:2015 Annex F for more info).</p>
+          <p class="TaulukonSisalto">Configures TC client and enables TC-BAS in Diagnostics Functionalities PGN message.</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">TC-GEO Configuration</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">TC-GEO Selected</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">FALSE</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">FALSE/TRUE</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Set TRUE if application implements TC-GEO functionality (see ISO 11783-10:2015 Annex F for more info).</p>
+          <p class="TaulukonSisalto">Configures TC client and enables TC-GEO in Diagnostics Functionalities PGN-message.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Number of Control Channels</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1 - 255</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Defines how many control channels are required by application.</p>
+          <p class="TaulukonSisalto">The value configures TC client and Diagnostics Functionalities PGN message.</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">TC-SC Configuration</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">TC-SC Selected</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">FALSE</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">FALSE/TRUE</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Set TRUE if application implements TC-SC functionality (see ISO 11783-10:2015 Annex F for more info).</p>
+          <p class="TaulukonSisalto">Configures TC client and enables TC-SC in Diagnostics Functionalities PGN message.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Number of Booms</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1 - 255</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Defines how many booms are required by application.</p>
+          <p class="TaulukonSisalto">The value configures TC client and Diagnostics Functionalities PGN message.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Number of Sections</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1 - 255</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Defines how many sections are required by application.</p>
+          <p class="TaulukonSisalto">The value configures TC client and Diagnostics Functionalities PGN-message.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p>The following TC client settings are CODESYS 2.3 specific:</p>
+  <p> </p>
+  <table border="1" cellspacing="0" style="border-collapse: separate; border-collapse: separate;" width="85.774%">
+    <colgroup>
+      <col/>
+      <col/>
+      <col style="width: 75px;"/>
+      <col style="width: 360px;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: 1px solid rgb(0, 0, 0); border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Configuration</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Default Value</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Range</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Timeout for Pool Transfer</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">20 seconds</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonSisalto" style="text-align: center;">10 - 60</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonSisalto">TC client&#39;s object pool transfer sequence timeout. The value should be increased if large TC object pool is used.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p><span style="font-size: 10pt;">The following </span>TC<span style="font-size: 10pt;"> client settings are CODESYS 3.5 specific:</span></p>
+  <p> </p>
+  <table border="1" cellspacing="0" style="border-collapse: separate; border-collapse: separate;" width="85.774%">
+    <colgroup>
+      <col/>
+      <col/>
+      <col style="width: 75px;"/>
+      <col style="width: 360px;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: 1px solid rgb(0, 0, 0); border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Configuration</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Default Value</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Range</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Tx PGN buffer size</p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;text-align: center">
+          <p class="TaulukonSisalto">255</p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;text-align: center">
+          <p class="TaulukonSisalto">255 - 65535</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Defines tx PGN buffer size (in bytes) which is used by TC client</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p class="TaulukonOtsikko">Tractor-ECU Interface</p>
+  <p> </p>
+  <table border="1" cellspacing="0" style="border-collapse: separate; border-collapse: separate;" width="85.774%">
+    <colgroup>
+      <col/>
+      <col/>
+      <col style="width: 75px;"/>
+      <col style="width: 360px;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: 1px solid rgb(0, 0, 0); border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Configuration</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Default Value</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Range</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">AEF TECU Generation</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">TECU functionality generation which application is designed for. Generations are defined by AEF.</p>
+          <p class="TaulukonSisalto">Used in Diagnostics Functionalities PGN message.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">TECU Class</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">2</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1 - 3</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">TECU class which is required by application.</p>
+          <p class="TaulukonSisalto">Selected class affects which signals are requested from TECU and also Diagnostics Functionalities PGN message.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p><span style="font-size: 10pt;">The following </span>TECU<span style="font-size: 10pt;"> settings are CODESYS 3.5 specific:</span></p>
+  <p> </p>
+  <table border="1" cellspacing="0" style="border-collapse: separate; border-collapse: separate;" width="85.774%">
+    <colgroup>
+      <col/>
+      <col/>
+      <col style="width: 75px;"/>
+      <col style="width: 360px;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: 1px solid rgb(0, 0, 0); border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Configuration</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Default Value</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Range</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">TECU instance maximum count</p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;text-align: center">
+          <p class="TaulukonSisalto">3</p>
+        </td>
+        <td style="border-right: Solid 1px #000000;border-bottom: Solid 1px #000000;text-align: center">
+          <p class="TaulukonSisalto">1 - 255</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Defines how many TECU device instances library can request Tractor Facilities messages from. Facilities messages are used to check which signal TECU device supports.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p class="TaulukonOtsikko">ISOBUS Diagnostic</p>
+  <p> </p>
+  <p>Settings in <span style="font-weight: bold;">ISOBUS Diagnostics</span> tab configure the contents of Diagnostics PGN messages.</p>
+  <p>Note that some information from VT, TC and TECU tabs are also used for Diagnostics Functionalities message.</p>
+  <p> </p>
+  <table border="1" cellspacing="0" style="border-collapse: separate; border-collapse: separate;" width="85.774%">
+    <colgroup>
+      <col style="width: 99px;"/>
+      <col style="width: 56px;"/>
+      <col style="width: 79px;"/>
+      <col style="width: 364px;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: 1px solid rgb(0, 0, 0); border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Configuration</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Default Value</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Range</p>
+        </td>
+        <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr style="height: 23px;">
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">AEF Min CF Generation</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Minimum Control Function functionality generation which application is designed for. Generations are defined by AEF. Used in Diagnostics Functionalities PGN message.</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Software Identification</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">ECU FW Version</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">From system parameters</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">N/A</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">FW version is automatically read from the control unit&#39;s system parameters to the Software Identification PGN.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Application SW Version</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">Empty string</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">ASCII (80 char)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Application specific version info to Software Identification PGN.</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">ECU Identification Info</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px #000000; border-right:1px #000000; border-left:1px #000000">
+          <p class="TaulukonOtsikko">ECU Part Number</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">Empty string</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">ASCII (20 char)</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto">ECU part number to ECU Identification Info PGN (e.g. unit&#39;s E-code).</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px #000000; border-right:1px #000000; border-left:1px #000000">
+          <p class="TaulukonOtsikko">ECU Serial Number</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">From system parameters</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">N/A</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto">Serial number is automatically read from the control unit&#39;s system parameters to the ECU Identification Info PGN.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px #000000; border-right:1px #000000; border-left:1px #000000">
+          <p class="TaulukonOtsikko">ECU Location</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">Empty string</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">ASCII (20 char)</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto">Location of the ECU in implement to the ECU Identification Info PGN.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px #000000; border-right:1px #000000; border-left:1px #000000">
+          <p class="TaulukonOtsikko">ECU Type</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">From system parameters</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">N/A</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto">Control unit type is automatically read from the control unit&#39;s system parameters to the ECU Identification Info PGN.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px #000000; border-right:1px #000000; border-left:1px #000000">
+          <p class="TaulukonOtsikko">ECU Manufacturer</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">Epec Oy</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">ASCII (20 char)</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto">Manufacturer name to the ECU Identification Info PGN.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px #000000; border-right:1px #000000; border-left:1px #000000">
+          <p class="TaulukonOtsikko">ECU Hardware ID</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">Hardware specific identifier in AEF database</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto" style="text-align:center">ASCII (80 char)</p>
+        </td>
+        <td style="border-bottom:1px #000000; border-right:1px #000000">
+          <p class="TaulukonSisalto">ECU hardware identifier to the ECU Identification Info PGN.</p>
+          <p class="TaulukonSisalto">MultiTool Creator 5.9 and newer initializes this field with control unit specific AEF database identifier. Value is available only for AEF HW tested units. </p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="border-bottom:1px #000000; border-right:1px #000000; border-left:1px #000000">
+          <p class="TaulukonOtsikko">ISOBUS Compliance Certification</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Protocol Year</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">Current year</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">2000 - 2061</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Defined by test laboratory for conformance test.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Protocol Revision</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">1</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">0 - 30</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Defined by test laboratory for conformance test.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Laboratory ID</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">0</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">0 - 2047</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Defined by test laboratory for conformance test. For non-certified setting, an own manufacturer code can be used.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Laboratory Type</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">Self-certification (non-certified laboratory)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">Self-certification, AEF Certified,</p>
+          <p class="TaulukonSisalto" style="text-align: center;">Reserved,</p>
+          <p class="TaulukonSisalto" style="text-align: center;"><span style="text-align: center;">N/A (Not Certified)</span></p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Defined by test laboratory for conformance test.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Reference Number</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">0</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">0 - 65535</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">Defined by test laboratory for conformance test.</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="border-bottom:1px #000000; border-right:1px #000000; border-left:1px #000000">
+          <p class="TaulukonOtsikko">Product Identification Info</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Code</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">Empty string</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">ASCII (50 char)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">End product&#39;s identification code.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Brand</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">Empty string</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">ASCII (50 char)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">End product&#39;s brand name.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;">
+          <p class="TaulukonOtsikko">Model</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">Empty string</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto" style="text-align: center;">ASCII (50 char)</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;">
+          <p class="TaulukonSisalto">End product&#39;s model name.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <h2>Creating CODESYS project</h2>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="723">
+    <colgroup>
+      <col style="width: 9.134%;"/>
+      <col width="657"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 63px;">
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p>ISOBUS VT object pool is created using a separate user interface design tool.</p>
+          <p><span data-keyref="SoftwareName">MultiTool Creator</span> supports a design tool called <span style="font-size: 11.0pt; 
+											 font-family: Calibri, sans-serif; 
+											 mso-fareast-font-family: Calibri; 
+											 mso-fareast-theme-font: minor-latin; 
+											 mso-bidi-font-family: &#39;Times New Roman&#39;; 
+											 mso-ansi-language: FI; mso-fareast-language: FI; 
+											 mso-bidi-language: AR-SA;">Jetter ISO-Designer™</span></p>
+          <ul class="Disc">
+            <li>
+              <p>Recommended version 4.0.6 or newer for CODESYS 2.3 devices</p>
+            </li>
+            <li>
+              <p>Recommended version 5.5.1 or newer for CODESYS 3.5 devices</p>
+            </li>
+          </ul>
+          <p> </p>
+          <p>The software can be downloaded from Jetter web page</p>
+          <p><a href="https://www.jetter.de/en/products/software/iso-designer.html" target="_blank" title="Jetter Designer">https://www.jetter.de/en/products/software/iso-designer.html</a>.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p>To create CODESYS project, <span lang="EN-US" style="mso-bidi-font-family: &#39;Times New Roman&#39;; 
+									 mso-bidi-theme-font: minor-bidi; mso-ascii-theme-font: minor-latin; 
+									 mso-fareast-font-family: Calibri; 
+									 mso-fareast-theme-font: minor-latin; 
+									 mso-hansi-theme-font: minor-latin; 
+									 mso-bidi-language: AR-SA;" xml:lang="EN-US">select the device and press</span> <img alt="" border="0" src="../assets/images/MultiTool/Used/CreateCODESYS.jpg" style="border: none;" title=""/> <span lang="EN-US" style="mso-bidi-font-family: &#39;Times New Roman&#39;; 
+														 mso-bidi-theme-font: minor-bidi; 
+														 mso-ascii-theme-font: minor-latin; 
+														 mso-fareast-font-family: Calibri; 
+														 mso-fareast-theme-font: minor-latin; 
+														 mso-hansi-theme-font: minor-latin; 
+														 mso-bidi-language: AR-SA;" xml:lang="EN-US">icon.</span></p>
+  <p> </p>
+  <p><span data-keyref="SoftwareName">MultiTool Creator</span> creates a device folder including:</p>
+  <ul style="list-style: disc;">
+    <li class="p">
+      <p>CODESYS project file (.pro for C2.3 or .project for C3.5)</p>
+    </li>
+    <li class="p">
+      <p>Libraries folder (CODESYS 2.3 only)</p>
+    </li>
+    <li class="p">
+      <p><span style="font-weight: bold;">ISOBUS</span> folder including</p>
+    </li>
+    <li style="list-style: none; display: inline;">
+      <ul style="list-style: disc;">
+        <li class="p">
+          <p>Jetter folder</p>
+        </li>
+        <li style="list-style: none; display: inline;">
+          <ul class="p">
+            <li class="p">
+              <p>Empty ISO-Designer project template with one Working Set and Data Mask</p>
+            </li>
+          </ul>
+        </li>
+        <li class="p">
+          <p>Python folder</p>
+        </li>
+        <li style="list-style: none; display: inline;">
+          <ul class="p">
+            <li class="p">
+              <p>Converters for generating ISOBUS object pool binary</p>
+            </li>
+            <li class="p">
+              <p>TC client object pool xml</p>
+            </li>
+            <li class="p">
+              <p>Languages xml</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <p> </p>
+  <p style="mso-bidi-font-family: &#39;Times New Roman&#39;; mso-bidi-theme-font: minor-bidi; 
+	 mso-ascii-theme-font: minor-latin; mso-fareast-font-family: Calibri; 
+	 mso-fareast-theme-font: minor-latin; mso-hansi-theme-font: minor-latin; 
+	 mso-bidi-language: AR-SA;"> </p>
+  <p style="mso-bidi-font-family: &#39;Times New Roman&#39;; mso-bidi-theme-font: minor-bidi; 
+	 mso-ascii-theme-font: minor-latin; mso-fareast-font-family: Calibri; 
+	 mso-fareast-theme-font: minor-latin; mso-hansi-theme-font: minor-latin; 
+	 mso-bidi-language: AR-SA;"> </p>
+  <h2>Building CODESYS project</h2>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="723">
+    <colgroup>
+      <col style="width: 9.134%;"/>
+      <col width="657"/>
+    </colgroup>
+    <tbody>
+      <tr style="height: 63px;">
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" title="" width="43"/></p>
+        </td>
+        <td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+          <p style="font-weight: normal;">For implementation guides, see <span style="font-style: italic;">Epec Programming and Libraries Manual.</span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p> </p>
+  <p>See also,</p>
+  <ul class="p">
+    <li class="p" style="font-style: normal;">
+      <p style="font-style: italic;"><span data-condition="Others:EpecSpecific">Epec </span>Programming and Libraries Manual &gt; Libraries &gt; Common Libraries &gt; ISOBUS CODESYS 2.3</p>
+    </li>
+    <li class="p" style="font-style: normal;">
+      <p style="font-style: italic;"><span data-condition="Others:EpecSpecific">Epec </span>Programming and Libraries Manual &gt; Libraries &gt; Common Libraries &gt; ISOBUS CODESYS 3.5</p>
+    </li>
+    <li class="p" style="font-style: normal;">
+      <p style="font-style: italic;"><span data-condition="Others:EpecSpecific">Epec </span>Programming and Libraries Manual &gt; Programming &gt; Programming ISOBUS</p>
+    </li>
+  </ul>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200091.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+  <script type="text/javascript" language="JavaScript1.2"></script>
+
+</body></html>

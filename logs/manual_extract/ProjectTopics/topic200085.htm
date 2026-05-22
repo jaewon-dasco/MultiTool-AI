@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+<meta name="generator" content="Adobe RoboHelp 2022"/>
+<title>Using Non-Volatile Memory</title>
+<link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+<meta name="rh-index-keywords" content="Using Non-Volatile Memory"/><meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+
+<body>
+<h1>Using Non-Volatile Memory</h1>
+<p><span data-keyref="ManufacturerName">Epec</span> devices 
+ have non-volatile memory which is used to store parameters and to log 
+ information. Parameters are variables that are stored into non-volatile 
+ memory, they keep their values after boot up.</p>
+<p> </p>
+<p>The parameter system is based on the CANopen Object Dictionary (OD). 
+ The Object Dictionary is an interface between the application and CAN 
+ bus. All variables, that should be accessible via CAN bus, have to be 
+ defined in the device&#39;s OD. <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>automatically 
+ creates OD(s) and all needed platform specific initializations for <span data-keyref="ManufacturerName">Epec</span> devices.</p>
+<p> </p>
+<p class="TaulukonSisalto">The possible variable types are:</p>
+<p class="TaulukonSisalto"><span style="font-weight: bold;">- RAM:</span> 
+ Variables exist only in the device’s RAM memory, on reboot the values 
+ return to default</p>
+<p class="TaulukonSisalto"><span style="font-weight: bold;">- Parameter:</span> 
+ A variable can be saved to the device’s non volatile memory</p>
+<p class="TaulukonSisalto"><span style="font-weight: bold;">- Retain(*):</span> 
+ Automatically written to the non-volatile memory, the value returns to 
+ default when a new application is downloaded. Supported for <span style="font-weight: bold;">ArrayOf</span> 
+ and <span style="font-weight: bold;">Record</span> index types.</p>
+<p class="TaulukonSisalto"><span style="font-weight: bold;">- Retain Persistent(*):</span> 
+ Automatically written to the non-volatile memory, the value is retained 
+ even if a new application is downloaded to the device. Supported for <span style="font-weight: bold;">ArrayOf</span> and <span style="font-weight: bold;">Record</span> 
+ index types.</p>
+<p class="TaulukonSisalto" style="font-weight: bold;">- Safety Parameters(*): 
+ <span style="font-weight: normal;">A variable can be saved to the device&#39;s 
+ non-volatile memory. Authentication is required to adjust safety parameters. 
+ Parameter validity is checked during every boot-up.</span> </p>
+<p class="TaulukonSisalto"> </p>
+<p class="TaulukonSisalto" style="font-weight: bold;">* The variable type 
+ possibilities depends on the hardware</p>
+<p> </p>
+<p>Retain and Retain Persistent variables are automatically written to 
+ non-volatile memory. The following chapters do not apply to them.</p>
+<p> </p>
+<p>The following chapters describe</p>
+<ul class="p">
+	<li class="p"><p>the standard and application specific store/restore 
+	 functionality for parameters</p></li>
+	<li class="p"><p>keyword protection of the parameter system</p></li>
+</ul>
+<p> </p>
+<p> </p>
+<table class="TableGrid" style="margin-left: 5.4pt;" cellspacing="0" width="567" cellpadding="1">
+	<tbody><tr style="height: 46px;">
+		<td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66"><p class="Caution" style="font-size: 10pt;"><img src="../assets/images/image006.jpg" alt="" title="" width="42" height="42" border="0"/></p></td>
+		<td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501"><p class="Note">To use parameters, CANopen must 
+		 be initialized.</p></td>
+	</tr>
+</tbody></table>
+<p style="margin-left: 40px;"> </p>
+<table class="TableGrid" style="margin-left: 5.4pt;" cellspacing="0" width="567" cellpadding="1">
+	<tbody><tr style="height: 46px;">
+		<td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66"><p class="Caution" style="font-size: 10pt;"><img src="../assets/images/image006.jpg" alt="" title="" width="42" height="42" border="0"/></p></td>
+		<td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501"><p class="Note">It is possible to use OD backup 
+		 functionality for <span data-condition="Others:EpecSpecific">E 
+		 series and S series </span>devices. It can be taken into 
+		 use from the MultiTool library manager. For more information, 
+		 see <span style="font-style: italic;">Epec Programming &amp; Libraries 
+		 manual</span>, section <span style="font-style: italic;">Using 
+		 NVRAM</span>.</p></td>
+	</tr>
+</tbody></table>
+<p style="margin-left: 40px;"> </p>
+<h2>Keyword - Protecting Application Parameters</h2>
+<table class="TableGrid" style="margin-left: 5.4pt;" cellspacing="0" width="567" cellpadding="1">
+	<tbody><tr style="height: 63px;">
+		<td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66"><p class="InlineBodyText26" style="text-align: center;"><img src="../assets/images/CANmoon/note.jpg" alt="" title="" style="border: none;" width="43" height="43" border="0"/></p></td>
+		<td style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501"><p class="Note"><span data-condition="Others:EpecSpecific">S 
+		 series / </span><span data-keyref="E_Series">E Series</span> 
+		 products do not use the file system library and the variable names 
+		 differ from the names in this chapter. However, the functionality 
+		 is the same. </p></td>
+	</tr>
+</tbody></table>
+<p> </p>
+<p><span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>automatically 
+ creates a keyword protection for each application so that it is not possible 
+ to use of another application&#39;s parameters. The keyword is a fixed numeric 
+ value, stored in a global variable <span style="font-style: italic;">G_FileSysKeyWord.</span> 
+ The keyword is created for each device that is added to a <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>project. This 
+ value is saved to non-volatile memory together with parameters.</p>
+<p> </p>
+<p>When the file system is initialized, this value is given for the file 
+ system and checked if it corresponds to the saved value. The keyword can 
+ mismatch, if a different application is downloaded to the device. If there 
+ is a mismatch, the file system is formatted and all parameters reset to 
+ their default values. Keyword mismatches can be seen after file system 
+ initialization in a <span style="font-style: italic;">Filesys</span> librarys 
+ global variable <span style="font-style: italic;">G_FileSysFileSystem,</span> 
+ as seen in the following image.</p>
+<p> </p>
+<p><img src="../assets/images/MultiTool/Used/keyworderror.jpg" alt="" title="" style="border: none;" border="0"/></p>
+<p> </p>
+<h2>Storing (1010h) and Restoring (1011h) Parameters</h2>
+<p> </p>
+<p style="margin-right: 118px;">The CANopen standard defines two indexes 
+ for parameter handling: store and restore default parameter. The standard 
+ provides also manufacturer specific sub-indexes which are used in <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span></span> 
+ to define application specific storing and restoring index ranges.</p>
+<p style="margin-right: 118px;"> </p>
+<p style="margin-right: 118px;">Saving parameters into the device&#39;s non-volatile 
+ memory is done by store parameters index (1010h). By restore default parameters 
+ index (1011h) the default values of parameters are taken into use. The 
+ selected sub-index defines the parameter range to be saved / restored:</p>
+<ul style="list-style: disc;">
+	<li style="color: #c0c0c0;" class="p"><p style="margin-right: 118px;">Sub-index 
+	 0 the amount of sub-indexes</p></li>
+	<li class="p"><p style="margin-right: 118px;">Sub-index 1 refers to 
+	 all parameters that can be stored on the device.</p></li>
+	<li class="p"><p style="margin-right: 118px;">Sub-index 2 refers to 
+	 communication related parameters (Index 1000h - 1FFFh manufacturer 
+	 specific communication parameters)</p></li>
+	<li style="list-style: none; display: inline;"><ul class="p">
+		<li class="p"><p style="margin-right: 118px;"><span data-keyref="ManufacturerName">Epec</span> 
+		 devices have communication parameters in index 2003h or 2150h, 
+		 using sub-index 2 also saves these communication parameters when 
+		 <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span></span> code template 
+		 is used (except S Series / <span data-keyref="E_Series">E Series</span>).</p></li>
+	</ul></li>
+	<li class="p"><p style="margin-right: 118px;">Sub-index 3 refers to 
+	 application related parameters (Index 2000h - FFFFh manufacturer specific 
+	 application parameters)</p></li>
+	<li class="p"><p style="margin-right: 118px;">Sub-indexes 4 - 127 manufacturers 
+	 may define their own parameter groups</p></li>
+	<li class="p"><p style="margin-right: 118px;">Sub-indexes 128-254 are 
+	 reserved for future use</p></li>
+</ul>
+<p style="margin-right: 118px;"> </p>
+<p style="margin-right: 118px;">Storing and restoring parameters functionality 
+ is only executed when a specific signature is written to the appropriate 
+ sub-index. The signatures are &quot;save“ and &quot;load“ in ASCII, see 
+ the following tables.</p>
+<p style="margin-right: 118px;"> </p>
+<p style="margin-right: 118px;">Saving signature:</p>
+<table style="height: 67px; left: 0px; top: 911px; border-collapse: separate; 
+		 border-collapse: separate;" cellspacing="0" width="333" border="1">
+	<colgroup><col style="width: 19.298%;"/>
+	<col style="width: 19.298%;"/>
+	<col style="width: 20.284%;"/>
+	<col style="width: 20.661%;"/>
+	<col style="width: 20.46%;"/>
+	</colgroup><tbody><tr>
+		<td style="border: Solid 1px #000000;"><p class="TaulukonOtsikko"> </p></td>
+		<td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;"><p class="TaulukonOtsikko" style="text-align: center;">MSB</p></td>
+		<td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;"><p class="TaulukonOtsikko" style="text-align: center;"> </p></td>
+		<td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;"><p class="TaulukonOtsikko" style="text-align: center;"> </p></td>
+		<td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;"><p class="TaulukonOtsikko" style="text-align: center;">LSB</p></td>
+	</tr>
+	<tr>
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;"><p class="TaulukonOtsikko" style="text-align: right;">ASCII</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">e</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">v</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">a</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">s</p></td>
+	</tr>
+	<tr>
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;"><p class="TaulukonOtsikko" style="text-align: right;">hex</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">65h</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">76h</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">61h</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">73h</p></td>
+	</tr>
+</tbody></table>
+<p style="margin-right: 118px;"> </p>
+<p style="margin-right: 118px;">Restoring signature:</p>
+<table style="height: 67px; left: 0px; top: 911px; border-collapse: separate; 
+		 border-collapse: separate;" cellspacing="0" width="333" border="1">
+	<colgroup><col style="width: 19.298%;"/>
+	<col style="width: 19.298%;"/>
+	<col style="width: 20.284%;"/>
+	<col style="width: 20.661%;"/>
+	<col style="width: 20.46%;"/>
+	</colgroup><tbody><tr>
+		<td style="border: Solid 1px #000000;"><p class="TaulukonOtsikko"> </p></td>
+		<td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;"><p class="TaulukonOtsikko" style="text-align: center;">MSB</p></td>
+		<td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;"><p class="TaulukonOtsikko" style="text-align: center;"> </p></td>
+		<td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;"><p class="TaulukonOtsikko" style="text-align: center;"> </p></td>
+		<td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;"><p class="TaulukonOtsikko" style="text-align: center;">LSB</p></td>
+	</tr>
+	<tr>
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;"><p class="TaulukonOtsikko" style="text-align: right;">ASCII</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">d</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">a</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">o</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">l</p></td>
+	</tr>
+	<tr>
+		<td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000;"><p class="TaulukonOtsikko" style="text-align: right;">hex</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">64h</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">61h</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">6Fh</p></td>
+		<td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000;"><p class="TaulukonSisalto" style="text-align: center;">6Ch</p></td>
+	</tr>
+</tbody></table>
+<p style="margin-right: 118px;"> </p>
+<h3>Application Specific Storing and Restoring Sub-Indexes</h3>
+<p style="margin-right: 118px;">The CANopen standard defines the sub-indexes 
+ 1-3, <span data-keyref="ManufacturerName">Epec</span> reserves 
+ the fourth sub-index. The application can use sub-indexes 5-127 to define 
+ the application specific store/restore areas.</p>
+<p style="margin-right: 118px;">To define the application specific store 
+ and restore areas, open the <span style="font-weight: bold;">Object Dictionary</span> 
+ tab and select <img src="../assets/images/MultiTool/Used/icon_store_restore.JPG" alt="" title="" style="border: none;" border="0"/> 
+ icon. This will open the <span style="font-weight: bold;">Store / Restore 
+ Settings</span> (see the following image).</p>
+<p style="margin-right: 118px;">To add sub-indexes, select <img src="../assets/images/MultiTool/Used/icon_store_restore_add_subindex.JPG" alt="" title="" style="border: none;" border="0"/> icon. Then, define 
+ the index range for storing/restoring to <span style="font-weight: bold;">Start</span> 
+ and <span style="font-weight: bold;">End Index</span>.</p>
+<p style="margin-right: 118px;">To delete a sub-index, first select the 
+ sub-index and then delete <img src="../assets/images/MultiTool/Used/icon_store_restore_remove_subindex.JPG" alt="" title="" style="border: none;" border="0"/> icon.</p>
+<p style="margin-right: 118px;"> </p>
+<p style="margin-right: 118px; background-color: Transparent;"><img src="../assets/images/MultiTool/Used/Store_Restore_Settings.JPG" alt="" title="" style="border: none;" border="0"/></p>
+<p> </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p style="margin-right: 118px;"> </p>
+<p style="margin-right: 118px;"> </p>
+<p>See also,</p>
+<ul class="p">
+	<li style="font-style: italic;" class="p"><p style="font-style: italic;"><a href="7_9_3_OD.htm" style="font-style: italic;">Using Object Dictionary 
+	 (OD)</a></p></li>
+	<li style="font-style: italic;" class="p"><p>Epec Programming and Libraries 
+	 &gt; Programming &gt; Using NVRAM</p></li>
+	<li style="font-style: italic;" class="p"><p><span>Epec Programming 
+	 and Libraries &gt; Libraries &gt; Common Libraries for Control Units 
+	 &gt; CANopenODSave</span></p></li>
+	<li style="font-style: italic;" class="p" data-condition="Others:EpecSpecific"><p>Epec 
+	 Programming and Libraries &gt; Libraries &gt; Common Libraries for 
+	 Safety projects &gt; CANopenODSave</p></li>
+	<li style="font-style: italic;" class="p"><p>Epec Programming and Libraries 
+	 &gt; Programming &gt; Saving/Restoring parameters</p></li>
+</ul>
+<p> </p>
+<p> </p>
+<div data-region="footer">
+	<p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> 
+	 reserves all rights for improvements without prior notice.</p>
+	<p style="color: #c0c0c0;"> </p>
+	<p style="color: #c0c0c0;"><span>Source file <span data-format="default" data-field="file">topic200085.htm</span></span></p>
+	<p style="color: #c0c0c0;"><span>Last updated <span data-format="D-MMM-YYYY" data-field="date">25-Jun-2025</span></span></p>
+</div>
+
+
+</body></html>

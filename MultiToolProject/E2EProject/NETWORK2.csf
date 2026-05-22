@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Setup Version="3.2.0.10" Date="05/15/2026 11:38:33">
+  <Globals>
+    <Database>
+      <Files>
+        <File>NETWORK2.dbc</File>
+      </Files>
+    </Database>
+  </Globals>
+  <Main>
+    <NodeInfo>
+      <ArrayOfSerializableTupleOfInt32Int32Int32>
+        <SerializableTupleOfInt32Int32Int32>
+          <I1>3</I1>
+          <I2>48</I2>
+          <I3>5050</I3>
+        </SerializableTupleOfInt32Int32Int32>
+        <SerializableTupleOfInt32Int32Int32>
+          <I1>2</I1>
+          <I2>48</I2>
+          <I3>3606</I3>
+        </SerializableTupleOfInt32Int32Int32>
+      </ArrayOfSerializableTupleOfInt32Int32Int32>
+    </NodeInfo>
+    <BaudRate>500</BaudRate>
+  </Main>
+  <Parameters>
+    <Path>Parameters_NETWORK2.csv</Path>
+  </Parameters>
+</Setup>

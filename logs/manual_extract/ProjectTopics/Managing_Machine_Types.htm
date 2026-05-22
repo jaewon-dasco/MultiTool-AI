@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/><link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Managing Machine Types</title>
+  <meta name="topic-status" content="Draft"/>
+  <meta name="template" content="../assets/masterpages/DefaultTopic.htt"/>
+  <link rel="stylesheet" type="text/css" href="../assets/css/MultiTool.css"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <div>
+  <h1>Managing Machine Types</h1>
+  <p paraeid="{ddf5346b-def8-4994-8c1e-48bfa69c7b7e}{168}" paraid="2041222345"><span data-contrast="auto"><span>The </span><span>Machine T</span>ypes<span> feature adds the possibility to define different machine types in MTC. </span></span><span data-contrast="auto"><span>Traditionally</span><span>,</span><span> an MTC project defines one machine type with specific control units and hard coded settings for their I/O and CAN buses.</span><span> </span><span>Several machine types can be defined, that may include different control units and different settings. </span><span> </span><span>For example, one machine type may include a CANopen responder unit that is not included in other machine types.</span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{ddf5346b-def8-4994-8c1e-48bfa69c7b7e}{180}" paraid="452330139"> </p>
+  <p paraeid="{ddf5346b-def8-4994-8c1e-48bfa69c7b7e}{198}" paraid="856325557"><span data-contrast="auto"><span>Typically</span><span>,</span><span> at leas</span><span>t one control unit is common between all machine types, but its settings may s</span><span>till differ in the </span><span>different machine types.</span><span> For </span><span>example</span><span>,</span><span> its I/O pins can be configured to different modes in different machine types.</span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{ddf5346b-def8-4994-8c1e-48bfa69c7b7e}{222}" paraid="489543732"><span data-contrast="auto"><span>In a typical use case for the machine </span><span>types</span><span> feature, </span><span>there </span><span>are different machine models that are configured as machine types in MTC. For </span><span>example</span><span>,</span><span> a joystick may be connected t</span><span>o the I/O of a CANopen commander unit in one machine type, but in another machine type, the joystick is a CANopen responder device that is connected to the commander </span><span>units’</span><span> CAN </span><span>bus. </span><span>Another example for using the machine </span><span>types</span><span> feature</span><span>, </span><span>is that one model of the machine is more complex </span><span>than</span><span> others, </span><span>although </span><span>most of the features are the same. </span><span>The more complex machine is defined as a separate machine type in MTC, and it may include several more CANopen devices than the other machine types. </span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{ddf5346b-def8-4994-8c1e-48bfa69c7b7e}{222}" paraid="489543732"> </p>
+  <p paraeid="{60b4f0c9-64da-4830-bd19-b884ef792f35}{15}" paraid="1009813948"><span data-contrast="auto"><span>A common </span><span>code template (CODESYS project) is generated for all the machine types. It includes the initializations for all the different </span><span>machine types. The code template runs the </span><span>correct initializations and run time code</span><span>,</span><span> depending on the active machine type</span><span>.</span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{60b4f0c9-64da-4830-bd19-b884ef792f35}{15}" paraid="1009813948"> </p>
+  <p paraeid="{60b4f0c9-64da-4830-bd19-b884ef792f35}{33}" paraid="1479944279"><span data-contrast="auto"><span>The advantage</span><span> </span><span>of </span><span>using the Machine T</span>ypes<span> </span><span>feature</span><span>,</span><span> is that when the machine types are </span><span>similar to</span><span> each other, </span><span>only one CO</span><span>DESYS project</span><span> needs</span><span> to</span><span> be </span><span>maintain</span><span>ed</span><span>. </span><span>Changes made to the common part of the </span><span>application </span><span>affect</span><span> all the machine types.</span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{60b4f0c9-64da-4830-bd19-b884ef792f35}{89}" paraid="470286693"><span data-contrast="auto"><span></span></span></p>
+  <h2>Machine Type Manager</h2>
+  <p><span data-contrast="auto"><span>Machine types can be seen in the </span></span><strong><span data-contrast="auto"><span>Network editor</span></span></strong><span data-contrast="auto"><span>, under </span></span><strong><span data-contrast="auto"><span>Machine Type</span></span></strong><span data-contrast="auto"><span>. </span></span><span data-contrast="auto"><span>By </span><span>default</span><span>, </span><span>there</span><span> is only </span><span>one</span><span> </span><span>machine</span><span> type in </span><span>the</span><span> </span><span>drop-down</span><span> </span><span>list</span><span>, </span></span><strong><span data-contrast="auto"><span>Default</span></span></strong><span data-contrast="auto"><span>.</span></span><span data-contrast="auto"><span> </span></span><span data-ccp-props="{}"> </span></p>
+  <p> </p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/ManagingMachineType.png"/></p>
+  <p> </p>
+  <p> </p>
+  <p><span data-contrast="auto"><span>Machine types can be </span><span>managed</span><span>,</span><span> using </span></span><span data-contrast="auto"><strong><span>Machine Type </span><span>Manager</span></strong><span>, </span></span><span data-contrast="auto"><span>which can be accessed from </span><span>the settings</span></span><span data-contrast="auto"><span> </span><span>icon</span><span>.</span></span><span data-ccp-props="{}"> </span></p>
+  <p> </p>
+  <p><img src="../assets/images/MultiTool/Epec/MachineType.png" style="cursor: nesw-resize;"/></p>
+  <p> </p>
+  <p paraeid="{60b4f0c9-64da-4830-bd19-b884ef792f35}{203}" paraid="1679764024"><strong><span data-contrast="auto"><span>Machine Type</span><span> </span><span>Manager</span></span></strong><span data-contrast="auto"><span> </span><span>can</span><span> </span><span>be</span><span> </span><span>used</span><span> to</span><span>:</span></span><span data-ccp-props="{}"> </span></p>
+  <ul role="list">
+    <li aria-setsize="-1" data-aria-level="1" data-aria-posinset="1" data-font="Symbol" data-leveltext="&#61623;" data-list-defn-props="{&quot;335552541&quot;:1,&quot;335559685&quot;:720,&quot;335559991&quot;:360,&quot;469769226&quot;:&quot;Symbol&quot;,&quot;469769242&quot;:[8226],&quot;469777803&quot;:&quot;left&quot;,&quot;469777804&quot;:&quot;&#61623;&quot;,&quot;469777815&quot;:&quot;hybridMultilevel&quot;}" data-listid="24" role="listitem">
+      <p paraeid="{60b4f0c9-64da-4830-bd19-b884ef792f35}{229}" paraid="1351361054"><span data-contrast="auto"><span>Create</span><span> a </span><span>new</span><span> </span><span>machine</span><span> </span><span>type</span></span><span data-ccp-props="{}"> </span></p>
+    </li>
+  </ul>
+  <ul role="list">
+    <li aria-setsize="-1" data-aria-level="1" data-aria-posinset="2" data-font="Symbol" data-leveltext="&#61623;" data-list-defn-props="{&quot;335552541&quot;:1,&quot;335559685&quot;:720,&quot;335559991&quot;:360,&quot;469769226&quot;:&quot;Symbol&quot;,&quot;469769242&quot;:[8226],&quot;469777803&quot;:&quot;left&quot;,&quot;469777804&quot;:&quot;&#61623;&quot;,&quot;469777815&quot;:&quot;hybridMultilevel&quot;}" data-listid="24" role="listitem">
+      <p paraeid="{60b4f0c9-64da-4830-bd19-b884ef792f35}{247}" paraid="810608708"><span data-contrast="auto"><span>Delete</span><span> a </span><span>machine</span><span> </span><span>type</span></span><span data-ccp-props="{}"> </span></p>
+    </li>
+  </ul>
+  <ul role="list">
+    <li aria-setsize="-1" data-aria-level="1" data-aria-posinset="3" data-font="Symbol" data-leveltext="&#61623;" data-list-defn-props="{&quot;335552541&quot;:1,&quot;335559685&quot;:720,&quot;335559991&quot;:360,&quot;469769226&quot;:&quot;Symbol&quot;,&quot;469769242&quot;:[8226],&quot;469777803&quot;:&quot;left&quot;,&quot;469777804&quot;:&quot;&#61623;&quot;,&quot;469777815&quot;:&quot;hybridMultilevel&quot;}" data-listid="24" role="listitem">
+      <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{6}" paraid="919169621"><span data-contrast="auto"><span>Rename</span><span> a </span><span>machine</span><span> </span><span>type</span></span></p>
+    </li>
+  </ul>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{20}" paraid="1234557789"> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 56.85pt;">
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66">
+          <p class="InlineBodyText26" style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none; cursor: nesw-resize;" width="43"/></p>
+        </td>
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501">
+          <p class="Note">The Machine Type name cannot contain spaces or special characters and must contain letters and numbers. A red error occurs if the name is not valid/does not meet requirements. </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{20}" paraid="1234557789"> </p>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{20}" paraid="1234557789"><img src="../assets/images/MultiTool/Epec/MachineTypeManager.png"/></p>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{85}" paraid="881424778"> </p>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{85}" paraid="881424778"><span data-contrast="auto"><span>When a m</span></span><span data-contrast="auto"><span>achine t</span>ype</span><span data-contrast="auto"><span> is selected, the </span><span>following </span><span>contents are shown for that machine type:</span></span><span data-ccp-props="{}"> </span></p>
+  <ul role="list">
+    <li aria-setsize="-1" data-aria-level="1" data-aria-posinset="1" data-font="Symbol" data-leveltext="&#61623;" data-list-defn-props="{&quot;335552541&quot;:1,&quot;335559685&quot;:720,&quot;335559991&quot;:360,&quot;469769226&quot;:&quot;Symbol&quot;,&quot;469769242&quot;:[8226],&quot;469777803&quot;:&quot;left&quot;,&quot;469777804&quot;:&quot;&#61623;&quot;,&quot;469777815&quot;:&quot;hybridMultilevel&quot;}" data-listid="25" role="listitem">
+      <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{105}" paraid="2126784234"><span data-contrast="auto"><span>Unit name/network name</span></span><span data-ccp-props="{}"> </span></p>
+    </li>
+  </ul>
+  <ul role="list">
+    <li aria-setsize="-1" data-aria-level="1" data-aria-posinset="2" data-font="Symbol" data-leveltext="&#61623;" data-list-defn-props="{&quot;335552541&quot;:1,&quot;335559685&quot;:720,&quot;335559991&quot;:360,&quot;469769226&quot;:&quot;Symbol&quot;,&quot;469769242&quot;:[8226],&quot;469777803&quot;:&quot;left&quot;,&quot;469777804&quot;:&quot;&#61623;&quot;,&quot;469777815&quot;:&quot;hybridMultilevel&quot;}" data-listid="25" role="listitem">
+      <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{111}" paraid="1313245603"><span data-contrast="auto"><span>Unit type (</span><span>e.g.</span><span> 3724-01</span><span>, </span></span><span data-contrast="auto"><span>6</span><span>200-020</span><span>, Network, J1939/NMEA 2000, GL84</span></span><span data-contrast="auto"><span>)</span><span> </span></span><span data-ccp-props="{}"> </span></p>
+    </li>
+  </ul>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{111}" paraid="1313245603"> </p>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{111}" paraid="1313245603"> </p>
+  <h2 paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{111}" paraid="1313245603">Copying a Machine Type</h2>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{151}" paraid="1046184384"><span data-contrast="auto"><span>When </span></span><span data-contrast="auto"><span><strong>Copy Machine Type</strong> </span></span><span data-contrast="auto"><span>is </span><span>selected,</span><span> </span><span>two</span><span> new columns appear, that can be selected to either </span></span><strong><span data-contrast="auto"><span>Include</span></span></strong><span data-contrast="auto"><span> the unit or </span></span><strong><span data-contrast="auto"><span>Sync</span></span></strong><span data-contrast="auto"><span> the unit to the new machine type. </span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{151}" paraid="1046184384"> </p>
+  <ul role="list">
+    <li aria-setsize="-1" data-aria-level="1" data-aria-posinset="1" data-font="Symbol" data-leveltext="&#61623;" data-list-defn-props="{&quot;335552541&quot;:1,&quot;335559685&quot;:720,&quot;335559991&quot;:360,&quot;469769226&quot;:&quot;Symbol&quot;,&quot;469769242&quot;:[8226],&quot;469777803&quot;:&quot;left&quot;,&quot;469777804&quot;:&quot;&#61623;&quot;,&quot;469777815&quot;:&quot;hybridMultilevel&quot;}" data-listid="26" role="listitem">
+      <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{179}" paraid="810736223"><span data-contrast="auto"><span><strong>Include</strong>: </span><span>select this, to copy the unit and </span><span>it’s</span><span> settings to the new machine type. </span></span><span data-ccp-props="{}"> </span></p>
+    </li>
+  </ul>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{20}" paraid="1234557789"> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 56.85pt;">
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66">
+          <p class="InlineBodyText26" style="text-align: center;"><img alt="" border="0" height="43" src="../assets/images/CANmoon/note.jpg" style="border: none;" width="43"/></p>
+        </td>
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501">
+          <p> </p>
+          <p>When a unit selected, the network is also automatically selected. </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{191}" paraid="79779417"> </p>
+  <ul role="list">
+    <li aria-setsize="-1" data-aria-level="1" data-aria-posinset="1" data-font="Symbol" data-leveltext="&#61623;" data-list-defn-props="{&quot;335552541&quot;:1,&quot;335559685&quot;:720,&quot;335559991&quot;:360,&quot;469769226&quot;:&quot;Symbol&quot;,&quot;469769242&quot;:[8226],&quot;469777803&quot;:&quot;left&quot;,&quot;469777804&quot;:&quot;&#61623;&quot;,&quot;469777815&quot;:&quot;hybridMultilevel&quot;}" data-listid="27" role="listitem">
+      <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{203}" paraid="1575430521"><span data-contrast="auto"><span>Synchronize (<strong>Sync</strong>):</span><span> select this, to synchronize the unit to the original machine type unit. </span></span><span data-ccp-props="{}"> </span></p>
+    </li>
+  </ul>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{211}" paraid="1485221443"> </p>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{211}" paraid="1485221443"><span data-contrast="auto"><span>E</span><span>nter the New Machine Type Name</span><span> </span><span>in the provided field. </span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{223}" paraid="996330703"> </p>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{223}" paraid="996330703"><span data-contrast="auto"><span>Select </span></span><strong><span data-contrast="auto"><span>Copy</span></span></strong><span data-contrast="auto"><span>, to complete the process, or </span></span><span data-contrast="auto"><strong><span>Cancel</span></strong><span> </span></span><span data-contrast="auto"><span>to cancel the new Machine type. </span></span><span data-ccp-props="{}"> </span></p>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{223}" paraid="996330703"> </p>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{223}" paraid="996330703"><img src="../assets/images/MultiTool/Epec/MachineTypeCopy.png"/></p>
+  <p paraeid="{5d1167b4-3de5-46fe-a65b-de5849ceff8b}{223}" paraid="996330703"> </p>
+
+</div>
+  <div>
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull" style="font-family: &#39;Lucida Sans&#39;">Epec Oy</span> <span style="font-family:&#39;Lucida Sans&#39;;">reserves all rights for improvements without prior notice.</span></p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span style="font-family:&#39;Lucida Sans&#39;;">Source file <span data-field="file" data-format="default">Managing_Machine_Types.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span style="font-family:&#39;Lucida Sans&#39;;">Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

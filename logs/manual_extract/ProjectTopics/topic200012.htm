@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Configuring Epec CANopen Slave Units</title>
+  <meta name="rh-index-keywords" content="Signature Definitions"/>
+  <link rel="stylesheet" type="text/css" href="../assets/css/MultiTool.css"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Configuring Epec CANopen Slave Units</h1>
+  <p>This topic describes CANopen slave configuration of Epec slave Units. A master unit is needed to control a slave unit; slave units are not programmable.</p>
+  <p> </p>
+  <h2>Required Steps</h2>
+  <p>1. Click the <span style="font-weight: bold;">Add slave Unit</span> on the <span style="font-weight: bold;">Network Editor</span></p>
+  <p> </p>
+  <p class="TaulukonSisalto"> <img alt="" border="0" src="../assets/images/MultiTool/Epec/AddSlaveUnit_NetworkEditor.JPG" style="border: none;" title=""/></p>
+  <p> </p>
+  <p> </p>
+  <p>2. Select the <span style="font-weight: bold;">Device type</span> and Version to add the device to the <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span></span> project.</p>
+  <p> </p>
+  <p>3. Add a programmable <span data-keyref="ManufacturerName">Epec</span> device to the <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>project.</p>
+  <p> </p>
+  <p>4. Add both of the devices to the same network (<a href="6_7_Edit_Networks.htm" style="font-style: italic;">Adding, Editing and Deleting Network</a>).</p>
+  <p> </p>
+  <p>5. Monitor the slave device by the programmable <span data-keyref="ManufacturerName">Epec</span> device. Double-click the <span data-keyref="ManufacturerName">Epec</span> device and select the slave device to be monitored on the <span style="font-weight: bold;">CAN</span> tab &gt; <span style="font-weight: bold;">Network Monitoring</span> (<a href="7_9_9_Monitoring.htm" style="font-style: italic;">Monitoring Other Devices</a>).</p>
+  <p> </p>
+  <h3>Configured by Selection</h3>
+  <p>To select the programmable device that configures the slave device, double-click the slave device and select the programmable device listed in the <span style="font-weight: bold;">Configured by</span> drop-down menu under General Settings.  </p>
+  <p> </p>
+  <p>The programmable device that configures the slave device must be NMT master.</p>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" style="border: Solid 1px #000000; margin-left: 40px;" width="82.111%">
+    <colgroup>
+      <col style="width: 14.249%;"/>
+      <col style="width: 85.751%;"/>
+    </colgroup>
+    <tbody>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Setting</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonOtsikko">Description</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Configuration timeout</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">The timeout for configuring one object dictionary index.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Save configuration</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Save configurations to slave unit&#39;s nonvolatile memory.</p>
+          <p class="TaulukonSisalto">This expedites the system&#39;s boot up because the slave needs to be configured only when the desired configuration is changed or the slave unit is changed to other one. *</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Enable SDO Query</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Enables the sending of consecutive SDO queries to node, to determine its presence.*</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">SDO query interval</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Interval time (ms) for consecutive SDO queries.*</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Delay before configuration</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Delay (ms) that configuration waits after reset before operation.*</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-left: solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+          <p class="TaulukonOtsikko">Configuration start timeout</p>
+        </td>
+        <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+          <p class="TaulukonSisalto">Delay time (s) of BusNotOk error. Possible SDO polling is also stopped after delay.*</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-left: 40px;">*visible if the selected master unit supports these features.</p>
+  <p> </p>
+  <p><img alt="" border="0" src="../assets/images/MultiTool/Epec/SlaveGeneralSettings.png" style="border: none;" title=""/></p>
+  <p> </p>
+  <p> </p>
+  <h2>Diagnostics</h2>
+  <p>The diagnostic limits can be adjusted. The slave device sends an emergency message (EMCY) if the value exceeds the diagnostic limits.</p>
+  <p> </p>
+  <p> </p>
+  <p><img alt="" border="0" height="300" src="../assets/images/MultiTool/Epec/SlaveDiagnostics.png" style="border: none;" title="" width="608"/></p>
+  <p> </p>
+  <h2>I/O</h2>
+  <p>Configuring I/O for slave devices is similar to configuring I/O for programmable devices. See <a href="topic200007.htm" style="font-style: italic;">Configuring I/O</a></p>
+  <p> </p>
+  <p><img alt="" border="0" height="265" src="../assets/images/MultiTool/Epec/SlaveIO.png" style="border: none;" title="" width="679"/></p>
+  <p> </p>
+  <p> </p>
+  <h2>PDO</h2>
+  <p>PDO settings can be defined in the <span style="font-weight: bold;">PDO</span> tab. The contents of PDOs can be defined. Also, the <span style="font-weight: bold;">Event Time</span>, <span style="font-weight: bold;">Inhibit Time</span> and <span style="font-weight: bold;">Transmission Type</span> can be configured. The master device writes PDO mappings and configurations to the slave device upon startup.</p>
+  <p> </p>
+  <p>The PDOs sent by the slave device can be received by either the master or any other device on the bus by selecting the receiving device on <span style="font-weight: bold;">Received By</span> list.</p>
+  <p>PDOs received by the slave device are not automatically added to the master device&#39;s transmit PDOs. The transmitter can be selected from the received PDO&#39;s drop-down. For more information, see section <a href="7_9_4_TPDO.htm" style="font-style: italic;">Transmitting and Receiving PDOs</a>.</p>
+  <p> </p>
+  <p><img alt="" border="0" height="384" src="../assets/images/MultiTool/Epec/SlavePDO.png" style="border: none;" title="" width="702"/></p>
+  <p> </p>
+  <h2>SRDO messages</h2>
+  <p>SRDO settings can be defined in the <span style="font-weight: bold;">SRDO</span> tab. This view shows all the SRDOs that are defined in EDS and SRDO can not be removed. Also, the <strong>Information Direction, Refresh Time, Safety Cycle Time, SR Validation time</strong> are configurable in the SRDO tab. The master device writes the SRDO mappings and configurations to the slave device upon startup if Write configuration is set ON for the SRDO.</p>
+  <p> </p>
+  <p>The SRDOs sent by the slave device can be received by either the master or any other device on the bus by selecting the receiving device on <span style="font-weight: bold;">Received By</span> list. The master unit is automatically set to receive all enabled SRDOs from the slave. SRDOs received by the slave device are automatically added to the master device&#39;s transmit SRDOs, but they can be changed there. For more information, see section <em><a href="topic200202.htm">Transmitting and Receiving SRDOs</a></em> .</p>
+  <p> </p>
+  <p>Variables on the left side are color coded according to where the variable can be mapped. Read only indexes are colored as green and can only be mapped to TxSRDO. Write only indexes are colored as light blue and can mapped only to RxSRDO. Read and write indexes color is purple and can be mapped both TxSRDO and RxSRDO.&#39;</p>
+  <p> </p>
+  <p>Variables can be dragged and dropped to SRDO messages. Note that only the plain variable must be added to each SRDO message. The inverted variable is automatically added and not shown in the user interface. </p>
+  <p> </p>
+  <p><img height="214" src="../assets/images/MultiTool/Epec/SRDO_EpecResponderVariables.png" width="899"/></p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span style="color: #c0c0c0; 
+														 font-style: italic;"><span>Epec Oy reserves all rights for improvements without prior notice.</span></span></p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200012.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

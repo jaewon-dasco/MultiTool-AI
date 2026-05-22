@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+    <meta name="generator" content="Adobe RoboHelp 2022"/>
+    <title>Code Template Structure S Series</title>
+    <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+  <body>
+    <h1 style="font-family: Arial, sans-serif; font-size: 24pt;">Code Template Structure S Series</h1>
+    <p><span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>automatically creates a code template for a CODESYS project when <span style="font-weight: bold;">Create CODESYS Project</span> is selected. The code template contains all variable definitions and initialization needed for programming the device.</p>
+    <p> </p>
+    <p>This topic briefly introduces the code template parts:</p>
+    <ul style="list-style: disc;">
+      <li>
+        <p><a href="#POUs">POUs</a>,</p>
+      </li>
+      <li>
+        <p><a href="#_Implicit__Globals1">Global variables</a> and</p>
+      </li>
+      <li>
+        <p><a href="#Data__Unit__Types1">Data types</a></p>
+      </li>
+    </ul>
+    <p> </p>
+    <h2><a id="POUs"></a>POUs</h2>
+    <p><span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>automatically generates several POUs for the CODESYS project and they will always be overwritten when changes done in <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>are imported to the CODESYS project. For this reason, the user application code should never be added to the generated POUs.</p>
+    <p> </p>
+    <p>S series code template includes two tasks: one for safety application and one for non-safety.</p>
+    <p> </p>
+    <p>The entry point of the user safety application will be a POU called <span style="font-style: italic;">S_Main</span>. The code template automatically calls the <span style="font-style: italic;">S_Main</span> program from the <span style="font-style: italic;">S_PLC_PRG</span> after initialization is done. It is not overwritten by MultiTool. If the <span style="font-style: italic;">S_Main</span> POU is missing from the application, the CODESYS build command gives and error. The code template in CODESYS 3.5 projects includes a <span style="font-style: italic;">S_Main POU</span> that is made with ST language. To make the<span style="font-style: italic;"> S_Main</span> POU with another programming language, delete the <span style="font-style: italic;">S_Main</span> POU and make a new one.</p>
+    <p> </p>
+    <p>The entry point of the user non-safety application will be a POU called <span style="font-style: italic;">Main</span>. The code template automatically calls the <span style="font-style: italic;">Main</span> program from the <span style="font-style: italic;">PLC_PRG </span>after initialization is done. Otherwise, the same rules apply than above for <span style="font-style: italic;">S_Main</span>.</p>
+    <p> </p>
+    <p>For more information on safety project programming, see <span style="font-style: italic;">Epec Programming and Libraries Manual</span>.  </p>
+    <p> </p>
+    <p>The CODESYS 3.5 <span style="font-weight: bold;">Device tree </span>for S series in the following image includes all project objects on the same view:</p>
+    <p> </p>
+    <p><img alt="" border="0" src="../assets/images/devicetree_1.png" style="border: none;"/></p>
+    <p><img alt="" border="0" src="../assets/images/devicetree_2.png" style="border: none;"/></p>
+    <p> </p>
+    <p>The following table lists the POUs of the code template.</p>
+    <p> </p>
+    <table cellpadding="1" cellspacing="0" class="MsoNormalTable" style="border-collapse: collapse; mso-yfti-tbllook: 1184; 
+		 mso-padding-alt: 0cm 0cm 0cm 0cm;" width="100%">
+      <tbody>
+        <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonOtsikko">POU</p>
+          </td>
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-left: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonOtsikko">Description</p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes;">
+          <td style="border-left: solid 1.0pt #000000; border-right: solid 1.0pt #000000; 
+			 border-bottom: solid 1.0pt #000000; vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Init_CAN</p>
+          </td>
+          <td style="border-left: solid 1.0pt #000000; border-right: solid 1.0pt #000000; 
+			 border-bottom: solid 1.0pt #000000; vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; 
+			 padding-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">CAN bus initializations (low level)</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 1;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Init_CANopen_CANx</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">CANopen initializations (protocol initialization)</p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 2;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Init_CANopen_ODx</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">CANopen OD initialization, add indices to OD</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 3;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Init_Entry</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Read system information and initialize random number generator (for authentication request code)</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 4;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Init_Events</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Event system initialization</p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 5;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Init_J1939_CANx</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">J1939 protocol initializations</p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 6;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Handle_CANopen_CANx</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Update CANopen protocols</p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 7;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Handle_Diagnostic</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Run diagnostics, update SystemOk flag</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 8;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Handle_Firmware_Errors</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Read firmware error log and add errors to application log</p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 8;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Handle_J1939_CANx</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Update J1939 protocol</p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 9;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">Inputs</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Read, filter and scale inputs. User should use input values from the outputs of this block</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 10;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">NVMemory</span></p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Handle OD parameter and User values reading and writing to/from non-volatile memory</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 11;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Outputs</span></p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Write outputs. To control the outputs of the unit, user should write to the inputs of this block</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 12;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">PLC_PRG</span></p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Non-safe program entry point. Handles initializations and run time updates. Calls the user application “Main”</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 13;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">S_CopyValidatedParameters</span></p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Copy validated safety parameters from OD to safety variables</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 14;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">S_Init_IO</span></p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Initialize the I/O of the unit. Both the non-safety and safety I/O are initialized here.</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 15;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">S_ValidateConfigurations</span></p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Check that parameters are correct and SRDO signatures are correct. If they are not, safe operation of the application is not allowed</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 16;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">S_ValidateParameters_CANx</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Check that safety parameter CRCs match with the ones saved to the non-volatile memory</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 17;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">S_ValidateSRDOSignatures_CANx</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Check that SRDO signatures match the ones set by MultiTool</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 18;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">S_Create_SRDOs_CANx</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Create SRDO variables from Safety variables. Four non-safety variables are created from each safety variable: Plain variable, Inverted variable and timestamps for both. The plain and inverted variables are then sent to the CAN bus with SRDO messages</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 19;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">S_Safety_Status</span></p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Check the conditions for enabling safe operation</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 20;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">S_ValidateAccessCode_CANx</span></p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Before adjusting safe variables, check that user has given a valid access code</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 21;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">S_Validate_SRDOs_CANx</span></p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Check that plain and inverted values received from SRDO messages match, and time limits of receiving SRDOs have not been exceeded</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 23;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">S_Inputs</span></p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Read, filter and scale safety related inputs. User should use input values from the outputs of this block</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 24;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">S_Outputs</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Write safety related outputs. To control the safety related outputs of the unit, user should write to the inputs of this block</span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow: 25; mso-yfti-lastrow: yes;">
+          <td style="vertical-align: top; border: solid #000000 1.0pt; border-top: none; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto">S_PLC_PRG</p>
+          </td>
+          <td style="vertical-align: top; border-top: none; border-left: none; 
+			 border-bottom: solid #000000 1.0pt; border-right: solid #000000 1.0pt; 
+			 padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;" width="301">
+            <p class="TaulukonSisalto"><span lang="EN-US" style="mso-ansi-language: EN-US;" xml:lang="EN-US">Safety related program entry point. Handles initializations and run time updates. Calls the safety related user application “S_Main”</span></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="TaulukonSisalto"> </p>
+    <p style="mso-ansi-language: EN-US;"><span lang="EN-US" xml:lang="EN-US">* CAN bus consecutive numbering, typically 1=CAN1, 2=CAN2 etc.</span></p>
+    <p> </p>
+    <h2><a id="_Implicit__Globals1"></a>(Implicit) Globals</h2>
+    <p><span data-keyref="SoftwareName">MultiTool Creator</span> generates global variable and function block instance definitions to <span style="font-style: italic;">(Implicit) Globals</span> lists. These variables and instances can be used, for example, for diagnosing CAN bus and hardware. Code template calls these function blocks automatically. Code template global definitions can be found from the <span style="font-weight: bold;">Device tree</span> in CODESYS 3.5 (<span style="font-style: italic;">CodeTemplate &gt; Globals</span>)</p>
+    <p>Variable definitions are divided into several global lists, defined in the table below.</p>
+    <table cellpadding="1" cellspacing="0" style="border: Solid 1px #000000;" width="81.148%">
+      <colgroup>
+        <col width="182"/>
+        <col width="313"/>
+      </colgroup>
+      <tbody>
+        <tr style="height: 23px;">
+          <td style="border: Solid 1px #000000; vertical-align: top; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonOtsikko">Object</p>
+          </td>
+          <td style="border-top: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonOtsikko">Description</p>
+          </td>
+        </tr>
+        <tr style="height: 25px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_CANx_PAR</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">OD variables stored in non-volatile memory, so called application parameters</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_CANx_RPDO</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Variables received in PDO messages</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_CANx_RSRDO</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Variables received in RSRDO messages</p>
+          </td>
+        </tr>
+        <tr style="height: 24px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_CANx_SPAR</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Validated safety parameter values</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_CANx_TPDO</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Variables transmitted in PDO messages</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_CANx_TSRDO</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Variables transmitted in TSRDO messages</p>
+          </td>
+        </tr>
+        <tr style="height: 53px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_CANx_VAR</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">- parameter stored in volatile memory (RAM parameter) and  defined in OD</p>
+            <p class="TaulukonSisalto">- all the other OD variables that do not belong to any of the other G_CANx groups mentioned above</p>
+          </td>
+        </tr>
+        <tr style="height: 27px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_CANopen_CANx</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">CANopen related function blocks that the code template uses</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_CANopen_CANx_Mappings</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">PDO and SRDO mappings</p>
+          </td>
+        </tr>
+        <tr style="height: 26px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_CANopen_CANx_slave_Configurations</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">A global variable list for each slave device</p>
+          </td>
+        </tr>
+        <tr style="height: 26px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_CANopen_CANx_VAR</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">CANopen related variables that the code template uses</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_CAN</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">CAN channel definitions</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_Common</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto" style="background-color: Transparent;">Contains variables common for all CANs, e.g. parameter system handlers and images which are used by code template.</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_Events_CANx</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Application specific events</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_J1939</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Application J1939 data</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_J1939_CANx_RPGN</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Receive PGN &amp; SPN variables</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_J1939_CANx_TPGN</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Transmit PGN &amp; SPN variables</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_J1939_FB</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">J1939 function block instances for code template</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_Logs</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Application code template log using <span style="font-style: italic;">SafeErrorLog</span> library</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_StatusFlags</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Code template flags</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_StatusFlags_Safe</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top; padding-left: 0px; padding-top: 0px; 
+			 padding-right: 0px; padding-bottom: 0px;">
+            <p class="TaulukonSisalto">Safety related code template flags</p>
+          </td>
+        </tr>
+        <tr style="height: 22px;">
+          <td style="border-left: Solid 1px #000000; border-right: Solid 1px #000000; 
+			 border-bottom: Solid 1px #000000; vertical-align: top;">
+            <p class="TaulukonOtsikko">G_SystemInfo</p>
+          </td>
+          <td style="border-right: Solid 1px #000000; border-bottom: Solid 1px #000000; 
+			 vertical-align: top;">
+            <p class="TaulukonSisalto">Information about the project and the unit</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>* OD&#39;s consecutive numbering, typically 1=CAN1, 2=CAN2 etc.</p>
+    <p> </p>
+    <p> </p>
+    <h2><a id="Data__Unit__Types1" name="Data__Unit__Types1">Data (Unit) Types</a></h2>
+    <p><span data-keyref="SoftwareName">MultiTool Creator</span> creates structures and/or enumerations for</p>
+    <ul style="list-style: disc;">
+      <li>
+        <p>J1939 receive and transmit PGNs</p>
+      </li>
+      <li>
+        <p>Pre-defined indexes</p>
+      </li>
+      <li>
+        <p>User defined record indexes</p>
+      </li>
+      <li>
+        <p>Events</p>
+      </li>
+    </ul>
+    <p> </p>
+    <p data-condition="Others:CODESYS_35_Specific">In CODESYS 3.5, Data unit types (DUT) can be found from the <span data-condition="Others:CODESYS_35_Specific" style="font-weight: bold;">Device tree</span>. Enumerations are placed into the <span data-condition="Others:CODESYS_35_Specific" style="font-weight: bold;">Enums</span> and structures into the <span data-condition="Others:CODESYS_35_Specific" style="font-weight: bold;">Structs</span> folder.</p>
+    <p data-condition="Others:CODESYS_35_Specific"> </p>
+    <p> </p>
+    <p> </p>
+    <p> </p>
+    <h2> </h2>
+    <p> </p>
+    <p> </p>
+    <div data-region="footer">
+      <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+      <p style="color: #c0c0c0;"> </p>
+      <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200200.htm</span></span></p>
+      <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+    </div>
+  
+</body></html>

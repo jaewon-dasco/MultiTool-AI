@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Updating MultiTool Configurations to CODESYS Project</title>
+  <link rel="stylesheet" href="../assets/css/MultiTool.css" type="text/css"/>
+  <meta name="rh-index-keywords" content="Updating MultiTool Configurations to CODESYS Project"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Updating <span data-keyref="SoftwareName">MultiTool Creator</span> Configurations to CODESYS Project</h1>
+  <p> </p>
+  <table cellpadding="1" cellspacing="0" class="TableGrid" style="margin-left: 5.4pt;" width="567">
+    <tbody>
+      <tr style="height: 56.85pt;">
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="66">
+          <p class="InlineBodyText26" style="text-align: center;"><img alt="" border="0" height="42" src="../assets/images/image006.jpg" width="42"/></p>
+        </td>
+        <td height="76" style="vertical-align: top; padding: 0cm 5.4pt 0cm 5.4pt; padding-left: 0px; 
+			 padding-top: 0px; padding-right: 0px; padding-bottom: 0px;" width="501">
+          <p class="Note">In some cases, unused variables and structures can exist in a code template even if they are not in use. <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>does not override all configurations that are done in a previous System Export. For example, if a record index is replaced with another one, <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>will not override the original index.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p> </p>
+  <p><span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>configurations are imported to CODESYS when a new project is created with <span style="font-weight: bold;">Create CODESYS Project</span> (<a href="topic200004.htm" style="font-style: italic;">Create CODESYS project</a>). At the project development phase, <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>and CODESYS projects are used in parallel - changes to the CODESYS project might need changes to the <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>project first, or vice versa. However, <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span>configuration updates can be easily exported and imported into CODESYS project.</p>
+  <p> </p>
+  <p>To update the existing project,</p>
+  <p> </p>
+  <p>1. Make the needed changes in <span style="mso-bidi-font-family: &#39;Times New Roman&#39;;"><span data-keyref="SoftwareName">MultiTool Creator</span> </span></p>
+  <p> </p>
+  <p>2. Save changes <span style="mso-ansi-language: EN-US;">from</span> <span style="font-weight: bold;">File</span> <span style="mso-ansi-language: EN-US;">menu &gt;</span> <span style="mso-ansi-language: EN-US; font-weight: bold;">Save Project</span> <span style="mso-ansi-language: EN-US;">or with</span> <span style="font-style: italic;"><i>CTRL+S</i></span></p>
+  <p> </p>
+  <p>3. To export the changes, select <span style="font-weight: bold;">Project &gt; System Export</span> from the menu (<span style="font-style: italic;"><a href="6_5_System_Export.htm" style="font-style: italic;">System Export</a>)</span></p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p>The following sections describe needed actions in CODESYS 2.3 and 3.5. As an alternative, MultiTool&#39;s Network Editor can be used, which is also described below. </p>
+  <p> </p>
+  <h3>CODESYS 2.3</h3>
+  <p>1. Open the <span data-keyref="CODESYS">CODESYS</span> 2.3 project to be updated always from its folder location by double-clicking the .pro file. (Selecting <span style="font-weight: bold;">File &gt; Open</span> in CODESYS makes the import macro dysfunctional)</p>
+  <p> </p>
+  <p>2. Select <span style="font-weight: bold;">Edit &gt; Macros &gt; Import </span><span style="mso-bidi-font-family: &#39;Times New Roman&#39;; 
+											 font-weight: bold;"><span data-keyref="SoftwareName">MultiTool Creator</span></span>. This function imports configurations and the libraries to <span data-keyref="CODESYS">CODESYS</span>.</p>
+  <p> </p>
+  <p>3. Select <b>Project &gt; Clean All</b>.</p>
+  <p> </p>
+  <p><span>4. Click <b>Project &gt;</b> <b>Build All</b>.</span></p>
+  <p> </p>
+  <h3>CODESYS 3.5</h3>
+  <p>1. Open an existing CODESYS 3.5 project.</p>
+  <p> </p>
+  <p>2. Select <span style="font-weight: bold;">Tools &gt; Scripting &gt; Execute Script File</span></p>
+  <p> </p>
+  <p>3. A browse dialog opens. Browse to the project folder &gt; exported device folder &gt; select a script <span lang="EN-US" style="mso-ansi-language: EN-US; 
+												 font-style: italic;" xml:lang="EN-US">project_update.py</span></p>
+  <ul class="Disc">
+    <li>
+      <p><span lang="EN-US" xml:lang="EN-US">for example, </span><em><span lang="EN-US" style="font-style: italic;" xml:lang="EN-US">PROJECT_FOLDER</span><span lang="EN-US" xml:lang="EN-US">/EPEC_CU1/project_update.py</span></em></p>
+    </li>
+  </ul>
+  <p>4. Select <span style="font-weight: bold;">Build</span> <b>&gt; Clean All</b>.</p>
+  <p> </p>
+  <p><span>5. Click </span><span style="font-weight: bold;">Build</span><span> <b>&gt;</b> <b>Build All</b>.</span></p>
+  <p> </p>
+  <h3> </h3>
+  <h3>Network Editor</h3>
+  <p><span lang="EN-US" style="font-size: 10pt;" xml:lang="EN-US">To update the CODESYS project directly from <span data-keyref="SoftwareName">MultiTool Creator</span>:</span></p>
+  <p><span lang="EN-US" style="font-size: 10pt;" xml:lang="EN-US">1. Select the device and press</span><span style="font-size: 10pt;"> </span><img alt="" border="0" src="../assets/images/MultiTool/Used/CreateCODESYS.jpg" style="font-size: 10pt; border: none;" title=""/><span style="font-size: 10pt;"> </span><span lang="EN-US" style="font-size: 10pt;" xml:lang="EN-US">icon</span><span style="font-size: 10pt;"> </span><span lang="EN-US" style="font-size: 10pt; font-weight: bold;" xml:lang="EN-US"> </span><span lang="EN-US" style="font-size: 10pt;" xml:lang="EN-US">from the hover menu.</span></p>
+  <p class="p"> </p>
+  <p class="p">2. Select <span style="font-weight: bold;">Create CODESYS Project</span></p>
+  <p><span style="font-weight: bold;"></span> </p>
+  <p><img height="166" src="../assets/images/MultiTool/Epec/CreateCODESYSproject.png" width="358"/></p>
+  <p> </p>
+  <p><span>3. Select <strong>Open and update</strong></span></p>
+  <p> </p>
+  <p><img height="128" src="../assets/images/MultiTool/Epec/OpenAndUpdate.png" width="442"/></p>
+  <p> </p>
+  <p><span>4. Click <strong>Project</strong> &gt; <b>Build All</b>.</span></p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200038.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>

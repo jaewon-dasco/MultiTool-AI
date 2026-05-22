@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><link rel="stylesheet" type="text/css" href="../_rhdefault.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252"/>
+  <meta name="generator" content="Adobe RoboHelp 2022"/>
+  <title>Troubleshooting</title>
+  <link rel="StyleSheet" href="../assets/css/MultiTool.css" type="text/css"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/><script type="text/javascript" src="../ehlpdhtm.js"></script></head>
+<body>
+  <h1>Troubleshooting</h1>
+  <h3> </h3>
+  <h3>Problem:</h3>
+  <p>CODESYS build gives an error message ”<span style="font-style: italic;">Maximum number of POUs is exceeded! Compile is aborted</span>”</p>
+  <p> </p>
+  <h3>Solution:</h3>
+  <ul style="list-style: disc;">
+    <li>
+      <p>In <span data-keyref="SoftwareName">MultiTool Creator</span> <span style="font-weight: bold;"><a href="Library_Manager.htm" style="font-style: italic;">Library Manager</a>,</span> unselect unused libraries, for example <span style="font-style: italic;">ISOBUS</span> libraries if you are not using ISOBUS.</p>
+    </li>
+  </ul>
+  <p style="margin-left: 40px;">or</p>
+  <ul style="list-style: disc;">
+    <li>
+      <p>In CODESYS IDE, go to to <span style="font-weight: bold;">Resources &gt; Target Settings</span> and increase the <span style="font-weight: bold;">Maximum number of POUs</span> to be larger than 1200:<br/>
+        <br/>
+        <img alt="" border="0" src="../assets/images/image24.gif" style="border: none; cursor: nwse-resize;"/>
+      </p>
+    </li>
+  </ul>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <h3>Problem:</h3>
+  <p><span data-keyref="SoftwareName">MultiTool Creator</span> gives an error message ”<span style="font-style: italic;">Project directory structure not valid</span>” when opening and updating a project that is created using <span data-keyref="SoftwareName">MultiTool Creator</span> version that is older than 5.0.</p>
+  <p> </p>
+  <h3>Solution:</h3>
+  <p>Navigate to the updated folder structure and open the project file from there.</p>
+  <ul style="list-style: disc;">
+    <li>
+      <p>old folder structure: <span style="font-style: italic;">..\folder\Project.net</span></p>
+    </li>
+    <li>
+      <p>updated folder structure: <span style="font-style: italic;">..\folder\Project\Project.net</span></p>
+    </li>
+  </ul>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <h3>Problem:</h3>
+  <p>Imported EDS content does not show correctly in <span data-keyref="SoftwareName">MultiTool Creator</span> (incorrect TPDO / RPDO mappings in OD).</p>
+  <p> </p>
+  <h3>Solution:</h3>
+  <ul style="list-style: disc;">
+    <li>
+      <p>Navigate to <span style="font-weight: bold;">File &gt; Settings</span>, open <span style="font-weight: bold;">Environment</span> tab and unselect <span style="font-weight: bold;">Convert EDS/DCF Array to SingleVariables</span> box. Then import the EDS again.</p>
+    </li>
+  </ul>
+  <p style="margin-left: 40px;">or</p>
+  <ul style="list-style: disc;">
+    <li>
+      <p>Open the EDS file and add ;@EPEC_MULTITOOL_ARRAYOF_VARIABLES before OD index definitions, for example:</p>
+      <table cellpadding="1" cellspacing="0" style="border-collapse:collapse;" width="24.08%">
+        <colgroup>
+          <col style="width: 100%;"/>
+        </colgroup>
+        <tbody>
+          <tr>
+            <td>
+              <p class="CodeExample"> </p>
+              <p class="CodeExample"> ;@EPEC_MULTITOOL_ARRAYOF_VARIABLES</p>
+              <p class="CodeExample"> [6000]</p>
+              <p class="CodeExample"> ParameterName=Read input 8 bit</p>
+              <p class="CodeExample"> ObjectType=0x8</p>
+              <p class="CodeExample"> SubNumber=5</p>
+              <p class="CodeExample"> </p>
+              <p class="CodeExample"> [6000sub0]</p>
+              <p class="CodeExample"> ParameterName=NrOfObjects</p>
+              <p class="CodeExample"> ObjectType=0x7</p>
+              <p class="CodeExample"> DataType=0x0005</p>
+              <p class="CodeExample"> AccessType=ro</p>
+              <p class="CodeExample"> DefaultValue=4</p>
+              <p class="CodeExample"> PDOMapping=0</p>
+              <p class="CodeExample"> </p>
+              <p class="CodeExample"> [6000sub1]</p>
+              <p class="CodeExample"> ParameterName=Read input 8-bit1</p>
+              <p class="CodeExample"> ObjectType=0x7</p>
+              <p class="CodeExample"> DataType=0x0005</p>
+              <p class="CodeExample"> </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+  </ul>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <div data-region="footer">
+    <p style="color: #c0c0c0; font-style: italic;"><span data-keyref="ManufacturerFull">Epec Oy</span> reserves all rights for improvements without prior notice.</p>
+    <p style="color: #c0c0c0;"> </p>
+    <p style="color: #c0c0c0;"><span>Source file <span data-field="file" data-format="default">topic200094.htm</span></span></p>
+    <p style="color: #c0c0c0;"><span>Last updated <span data-field="date" data-format="D-MMM-YYYY">25-Jun-2025</span></span></p>
+  </div>
+
+</body></html>
